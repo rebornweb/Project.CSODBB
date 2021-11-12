@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LoggingEngine filePrefix="UnifyLog" logDaysKeep="5" minimumLoggingLevel="Normal">
+  <LogWriter name="AsyncLogWriterComposite" id="ee18a5b8-073e-4205-bf60-d7fadbb48574" enabled="true" displayName="29e83f8e-2c97-45f2-8f96-9a292923e15d">
+    <LogWriter name="Console" />
+  </LogWriter>
+</LoggingEngine>

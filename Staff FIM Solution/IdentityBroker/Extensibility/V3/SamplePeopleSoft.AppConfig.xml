@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <system.serviceModel>
+    <extensions>
+      <bindingExtensions>
+        <add name="peopleSoftHttpBinding" type="Unify.Extensions.PeopleSoftHttpCollectionElement, Unify.Extensions.WCFCommunicator" />
+        <add name="peopleSoftHttpsBinding" type="Unify.Extensions.PeopleSoftHttpsCollectionElement, Unify.Extensions.WCFCommunicator" />
+      </bindingExtensions>
+    </extensions>
+    <bindings>
+      <peopleSoftBinding>
+        <binding name="FimService_Binding"/>
+      </peopleSoftBinding>
+    </bindings>
+    <client>
+      <!-- HTTP -->
+      <endpoint address="http://address:8000/Virtual/PeopleSoftServiceListeningConnector"
+          binding="peopleSoftHttpBinding" bindingConfiguration="FimService_Binding"
+          contract="FimService_PortType" name="FimService_Port" />
+      <endpoint address="http://address:8000/Virtual/PeopleSoftServiceListeningConnector"
+          binding="peopleSoftHttpBinding" bindingConfiguration="FimService_Binding"
+          contract="IdmService_PortType" name="IdmService_Port" />
+      <!-- HTTPS -->
+      <!--<endpoint address="https://address:8000/Virtual/PeopleSoftServiceListeningConnector"
+          binding="peopleSoftHttpsBinding" bindingConfiguration="FimService_Binding"
+          contract="FimService_PortType" name="FimService_Port" />
+      <endpoint address="https://address:8000/Virtual/PeopleSoftServiceListeningConnector"
+          binding="peopleSoftHttpsBinding" bindingConfiguration="FimService_Binding"
+          contract="IdmService_PortType" name="IdmService_Port" />-->
+    </client>
+  </system.serviceModel>
+</configuration>

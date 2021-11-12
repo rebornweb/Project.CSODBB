@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GroupEngine>
+  <GroupConfigurations>
+    <Group id="fc0d14b9-e3e4-4970-9f91-73455e0ff332" name="PeopleSoft" exclusion="false" comment="PeopleSoft PHRIS (WebService API)" />
+    <Group id="b0999a8d-6343-4e9a-a44a-760c690054c8" name="SAS2IDM" exclusion="false" comment="SAS2IDM SQL (OCCCP-DB222)" />
+  </GroupConfigurations>
+</GroupEngine>

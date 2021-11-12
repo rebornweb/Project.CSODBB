@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="ActiveDirectoryRE">
+</Property><Property Name="Solution File" Value="D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\ActiveDirectoryRE\ActiveDirectoryRE.sln">
+</Property><Property Name="User Options File" Value="D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\ActiveDirectoryRE\ActiveDirectoryRE.suo">
+</Property><Property Name="Date" Value="Wednesday, 13 July 2011">
+</Property><Property Name="Time" Value="14:56 PM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="ActiveDirectoryRE.sln" Description="File successfully backed up as D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\ActiveDirectoryRE\Backup\ActiveDirectoryRE.sln">
+</Event><Event ErrorLevel="0" Project="" Source="ActiveDirectoryRE.suo" Description="File successfully backed up as D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\ActiveDirectoryRE\Backup\ActiveDirectoryRE.suo">
+</Event><Event ErrorLevel="0" Project="ActiveDirectoryRE" Source="ActiveDirectoryRE.csproj" Description="Project file successfully backed up as D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\ActiveDirectoryRE\Backup\ActiveDirectoryRE.csproj">
+</Event><Event ErrorLevel="0" Project="ActiveDirectoryRE" Source="ActiveDirectoryRE.csproj.user" Description="Project user file successfully backed up as D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\ActiveDirectoryRE\Backup\ActiveDirectoryRE.csproj.user">
+</Event><Event ErrorLevel="0" Project="ActiveDirectoryRE" Source="ActiveDirectoryRE.cs" Description="File successfully backed up as D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\ActiveDirectoryRE\Backup\ActiveDirectoryRE.cs">
+</Event><Event ErrorLevel="0" Project="ActiveDirectoryRE" Source="AssemblyInfo.cs" Description="File successfully backed up as D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\ActiveDirectoryRE\Backup\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="ActiveDirectoryRE" Source="ActiveDirectoryRE.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="ActiveDirectoryRE" Source="ActiveDirectoryRE.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="ActiveDirectoryRE.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="ActiveDirectoryRE.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ActiveDirectoryRE" Source="ActiveDirectoryRE.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

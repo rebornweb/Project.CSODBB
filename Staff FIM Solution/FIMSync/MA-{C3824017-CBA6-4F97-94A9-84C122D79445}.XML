@@ -1,0 +1,299 @@
+<saved-ma-configuration server='D-OCCCP-IM303' export-date='2017-11-10 05:14:44.721'>
+<!--WARNING>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+!! The contents of this file should not be edited.
+!! Any such modifications to this file may result in errors during import.
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+</WARNING-->
+<ma-data>
+ <format-version>1</format-version>
+ <id>{C3824017-CBA6-4F97-94A9-84C122D79445}</id>
+ <name>NASS</name>
+ <category>LDIF</category>
+ <subtype/>
+ <ma-listname/>
+ <ma-companyname/>
+ <creation-time>2012-04-01 08:01:18.887</creation-time>
+ <last-modification-time>2017-11-10 04:53:24.887</last-modification-time>
+ <version>2726</version>
+ <internal-version>0</internal-version>
+ <password-sync-allowed>0</password-sync-allowed>
+ <schema>
+  <dsml:dsml xmlns:dsml="http://www.dsml.org/DSML" xmlns:ms-dsml="http://www.microsoft.com/MMS/DSML"><dsml:directory-schema ms-dsml:no-objectclass-validation="true"><dsml:class id="site" type="structural"><dsml:name>site</dsml:name><dsml:attribute ref="#SiteName" required="false" /><dsml:attribute ref="#ID" required="true" /><dsml:attribute ref="#ObjectType" required="true" /></dsml:class><dsml:class id="role" type="structural"><dsml:name>role</dsml:name><dsml:attribute ref="#ADSDescription" required="false" /><dsml:attribute ref="#ID" required="true" /><dsml:attribute ref="#ObjectType" required="true" /></dsml:class><dsml:class id="person" type="structural"><dsml:name>person</dsml:name><dsml:attribute ref="#ContractEndDate" required="false" /><dsml:attribute ref="#ContractID" required="false" /><dsml:attribute ref="#ContractStartDate" required="false" /><dsml:attribute ref="#DOB" required="false" /><dsml:attribute ref="#DaysToContractEnd" required="false" /><dsml:attribute ref="#EmailAccess" required="false" /><dsml:attribute ref="#EmployeeNumber" required="false" /><dsml:attribute ref="#EmployeeStatus" required="false" /><dsml:attribute ref="#Gender" required="false" /><dsml:attribute ref="#GivenName" required="false" /><dsml:attribute ref="#OrganisationName" required="false" /><dsml:attribute ref="#PositionLocation" required="false" /><dsml:attribute ref="#PositionTitle" required="false" /><dsml:attribute ref="#PreferredName" required="false" /><dsml:attribute ref="#SiteID" required="false" /><dsml:attribute ref="#Surname" required="false" /><dsml:attribute ref="#Title" required="false" /><dsml:attribute ref="#site" required="false" /><dsml:attribute ref="#DisplayName" required="false" /><dsml:attribute ref="#EmploymentTypeName" required="false" /><dsml:attribute ref="#department" required="false" /><dsml:attribute ref="#DepartmentID" required="false" /><dsml:attribute ref="#SiteName" required="false" /><dsml:attribute ref="#organisation" required="false" /><dsml:attribute ref="#EmployeeID" required="false" /><dsml:attribute ref="#ID" required="true" /><dsml:attribute ref="#ObjectType" required="true" /></dsml:class><dsml:class id="entitlement" type="structural"><dsml:name>entitlement</dsml:name><dsml:attribute ref="#ADSRoleEndDate" required="false" /><dsml:attribute ref="#ADSRoleStartDate" required="false" /><dsml:attribute ref="#ID" required="true" /><dsml:attribute ref="#ObjectType" required="true" /><dsml:attribute ref="#EmployeeID" required="true" /><dsml:attribute ref="#RoleID" required="true" /><dsml:attribute ref="#role" required="true" /><dsml:attribute ref="#user" required="true" /></dsml:class><dsml:class id="department" type="structural"><dsml:name>department</dsml:name><dsml:attribute ref="#DepartmentName" required="false" /><dsml:attribute ref="#ID" required="true" /><dsml:attribute ref="#ObjectType" required="true" /></dsml:class><dsml:class id="organisation" type="structural"><dsml:name>organisation</dsml:name><dsml:attribute ref="#OrganisationName" required="false" /><dsml:attribute ref="#AllowCustomEmployeeCode" required="false" /><dsml:attribute ref="#EmployeeCodeRangeFrom" required="false" /><dsml:attribute ref="#EmployeeCodeRangeTill" required="false" /><dsml:attribute ref="#EmployeeCodeLastValue" required="false" /><dsml:attribute ref="#ID" required="true" /><dsml:attribute ref="#ObjectType" required="true" /></dsml:class><dsml:attribute-type id="ID" single-value="true"><dsml:name>ID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ObjectType" single-value="true"><dsml:name>ObjectType</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="SiteName" single-value="true"><dsml:name>SiteName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ADSDescription" single-value="true"><dsml:name>ADSDescription</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ContractEndDate" single-value="true"><dsml:name>ContractEndDate</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ContractID" single-value="true"><dsml:name>ContractID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ContractStartDate" single-value="true"><dsml:name>ContractStartDate</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="DOB" single-value="true"><dsml:name>DOB</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="DaysToContractEnd" single-value="true"><dsml:name>DaysToContractEnd</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EmailAccess" single-value="true"><dsml:name>EmailAccess</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EmployeeNumber" single-value="true"><dsml:name>EmployeeNumber</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EmployeeStatus" single-value="true"><dsml:name>EmployeeStatus</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Gender" single-value="true"><dsml:name>Gender</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="GivenName" single-value="true"><dsml:name>GivenName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="OrganisationName" single-value="true"><dsml:name>OrganisationName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PositionLocation" single-value="true"><dsml:name>PositionLocation</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PositionTitle" single-value="true"><dsml:name>PositionTitle</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PreferredName" single-value="true"><dsml:name>PreferredName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="SiteID" single-value="true"><dsml:name>SiteID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Surname" single-value="true"><dsml:name>Surname</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Title" single-value="true"><dsml:name>Title</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="site" single-value="false"><dsml:name>site</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ADSRoleEndDate" single-value="true"><dsml:name>ADSRoleEndDate</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ADSRoleStartDate" single-value="true"><dsml:name>ADSRoleStartDate</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EmployeeID" single-value="true" ms-dsml:range-lower="0"><dsml:name>EmployeeID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="RoleID" single-value="false" ms-dsml:range-lower="0"><dsml:name>RoleID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="role" single-value="false"><dsml:name>role</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="user" single-value="true"><dsml:name>user</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="DisplayName" single-value="true"><dsml:name>DisplayName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EmploymentTypeName" single-value="true"><dsml:name>EmploymentTypeName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="DepartmentName" single-value="true"><dsml:name>DepartmentName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="AllowCustomEmployeeCode" single-value="true"><dsml:name>AllowCustomEmployeeCode</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.27</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EmployeeCodeRangeFrom" single-value="true"><dsml:name>EmployeeCodeRangeFrom</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.27</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EmployeeCodeRangeTill" single-value="true"><dsml:name>EmployeeCodeRangeTill</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.27</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EmployeeCodeLastValue" single-value="true"><dsml:name>EmployeeCodeLastValue</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.27</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="DepartmentID" single-value="true"><dsml:name>DepartmentID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="department" single-value="true"><dsml:name>department</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="organisation" single-value="true"><dsml:name>organisation</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type></dsml:directory-schema></dsml:dsml>
+ </schema>
+ <attribute-inclusion><attribute>ID</attribute><attribute>ObjectType</attribute><attribute>SiteName</attribute><attribute>ADSDescription</attribute><attribute>ContractEndDate</attribute><attribute>ContractID</attribute><attribute>ContractStartDate</attribute><attribute>DOB</attribute><attribute>DaysToContractEnd</attribute><attribute>EmailAccess</attribute><attribute>EmployeeNumber</attribute><attribute>EmployeeStatus</attribute><attribute>Gender</attribute><attribute>GivenName</attribute><attribute>OrganisationName</attribute><attribute>PositionLocation</attribute><attribute>PositionTitle</attribute><attribute>PreferredName</attribute><attribute>SiteID</attribute><attribute>Surname</attribute><attribute>Title</attribute><attribute>site</attribute><attribute>ADSRoleEndDate</attribute><attribute>ADSRoleStartDate</attribute><attribute>EmployeeID</attribute><attribute>RoleID</attribute><attribute>role</attribute><attribute>user</attribute><attribute>DisplayName</attribute><attribute>EmploymentTypeName</attribute><attribute>DepartmentName</attribute><attribute>AllowCustomEmployeeCode</attribute><attribute>EmployeeCodeRangeFrom</attribute><attribute>EmployeeCodeRangeTill</attribute><attribute>EmployeeCodeLastValue</attribute><attribute>DepartmentID</attribute><attribute>department</attribute><attribute>organisation</attribute></attribute-inclusion>
+ <stay-disconnector><filter-set import-filter="0" cd-object-type="person" type="declared"><filter-alternative id="{076C2CCA-3B1A-4282-971A-29E47A20B30C}"><condition cd-attribute="SiteID" operator="inequality"><value>SSCPW</value></condition><condition cd-attribute="SiteID" operator="inequality"><value>SSHPP</value></condition><condition cd-attribute="SiteID" operator="inequality"><value>OCCCP</value></condition></filter-alternative></filter-set></stay-disconnector>
+ <join>
+ <join-profile cd-object-type="entitlement">
+  <join-criterion join-cri-type="none" id="{1A45B400-DB6F-462D-922B-BC0F7682B239}">
+   <search mv-object-type="csoEntitlement">
+    <attribute-mapping mv-attribute="description">
+     <direct-mapping>
+      <src-attribute>EmployeeID</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+    <attribute-mapping mv-attribute="csoStartDate">
+     <direct-mapping>
+      <src-attribute>ADSRoleStartDate</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+    <attribute-mapping mv-attribute="csoEndDate">
+     <direct-mapping>
+      <src-attribute>ADSRoleEndDate</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+ </join-profile>
+ <join-profile cd-object-type="organisation">
+  <join-criterion join-cri-type="sync-rule" id="{42948271-9F52-4ED3-918C-F621382BD8E0}" sync-rule-id="{94B2DFAF-D2F7-E111-B609-0050568B4E65}">
+   <search mv-object-type="csoOrganisation">
+    <attribute-mapping mv-attribute="uid">
+     <direct-mapping>
+      <src-attribute>ID</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+ </join-profile>
+ <join-profile cd-object-type="department">
+  <join-criterion join-cri-type="sync-rule" id="{EEA480F9-4D21-414F-9BC7-8CE619EDC089}" sync-rule-id="{92B2DFAF-D2F7-E111-B609-0050568B4E65}">
+   <search mv-object-type="csoDepartment">
+    <attribute-mapping mv-attribute="uid">
+     <direct-mapping>
+      <src-attribute>DepartmentName</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+ </join-profile>
+ <join-profile cd-object-type="site">
+  <join-criterion join-cri-type="sync-rule" id="{3CFFD41B-95BA-46D8-B86F-2A99F7AF9381}" sync-rule-id="{90B2DFAF-D2F7-E111-B609-0050568B4E65}">
+   <search mv-object-type="csoSite">
+    <attribute-mapping mv-attribute="uid">
+     <direct-mapping>
+      <src-attribute>ID</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+ </join-profile>
+ <join-profile cd-object-type="entitlement">
+  <join-criterion join-cri-type="sync-rule" id="{9792CB6D-97F6-4F68-A0F0-504DDC2832E6}" sync-rule-id="{E9F605A1-D2F7-E111-B609-0050568B4E65}">
+   <search mv-object-type="csoEntitlement">
+    <attribute-mapping mv-attribute="uid">
+     <direct-mapping>
+      <src-attribute>ID</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+ </join-profile>
+ <join-profile cd-object-type="role">
+  <join-criterion join-cri-type="sync-rule" id="{BB5407A6-011E-4BF5-8942-EE83EB5D4D16}" sync-rule-id="{E7F605A1-D2F7-E111-B609-0050568B4E65}">
+   <search mv-object-type="csoRole">
+    <attribute-mapping mv-attribute="csoADSCode">
+     <direct-mapping>
+      <src-attribute>ID</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+ </join-profile>
+ <join-profile cd-object-type="person">
+  <join-criterion join-cri-type="sync-rule" id="{E1E53B6E-85ED-47D5-A65B-B973D76987C8}" sync-rule-id="{8EB2DFAF-D2F7-E111-B609-0050568B4E65}">
+   <search mv-object-type="person">
+    <attribute-mapping mv-attribute="csoLegacyEmployeeID">
+     <direct-mapping>
+      <src-attribute>EmployeeNumber</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+ </join-profile>
+</join>
+
+ <projection>
+ <class-mapping cd-object-type="person" type="sync-rule" id="{2EF6F4D2-9831-432A-816A-89FCACB24A00}" sync-rule-id="{8EB2DFAF-D2F7-E111-B609-0050568B4E65}">
+  <mv-object-type>person</mv-object-type>
+ </class-mapping>
+ <class-mapping cd-object-type="entitlement" type="sync-rule" id="{B9D8AE0E-A15D-497E-8BCF-8389A2FA11A2}" sync-rule-id="{E9F605A1-D2F7-E111-B609-0050568B4E65}">
+  <mv-object-type>csoEntitlement</mv-object-type>
+ </class-mapping>
+ <class-mapping cd-object-type="organisation" type="sync-rule" id="{ED383B43-C674-4E0C-9E24-275F010291FD}" sync-rule-id="{94B2DFAF-D2F7-E111-B609-0050568B4E65}">
+  <mv-object-type>csoOrganisation</mv-object-type>
+ </class-mapping>
+ <class-mapping cd-object-type="department" type="sync-rule" id="{2D80C22E-CB63-488C-B223-80593A25C9AB}" sync-rule-id="{92B2DFAF-D2F7-E111-B609-0050568B4E65}">
+  <mv-object-type>csoDepartment</mv-object-type>
+ </class-mapping>
+</projection>
+
+ <export-attribute-flow>
+</export-attribute-flow>
+
+ <provisioning-cleanup type="declared"><action>make-normal-disconnector</action></provisioning-cleanup>
+ <extension><assembly-name>Unify.CodelessProvisioning.MiisSp2.MAExtension.dll</assembly-name><application-protection>low</application-protection></extension>
+ <controller-configuration>
+ <application-protection>low</application-protection>
+ <application-architecture>process</application-architecture>
+</controller-configuration>
+
+ <description>CSO FIM V2: Ongoing NASS staff data feed from Production SQL (BOPS2DB)</description>
+ <ma-ui-settings><account-joiner-queries><attributes><cs><attribute name="ID" header="ID" size="100" /><attribute name="ObjectType" header="ObjectType" size="100" /><attribute name="SiteName" header="SiteName" size="100" /><attribute name="ADSDescription" header="ADSDescription" size="276" /></cs><mv /></attributes><filters max_mv_search_results="" /></account-joiner-queries></ma-ui-settings>
+ <private-configuration>
+  <MAConfig><ui-data><xmlwizard><properties><sample_file>F:\Development\CSODBB\nassData.ldif</sample_file><code_page_description>Unicode (UTF-8)</code_page_description></properties><partitions><partition cd_name="default" guid="{B52FB251-3AF6-49D9-9CDD-E9BA14A73813}" version="45"><object_class>site</object_class><object_class>role</object_class><object_class>person</object_class><object_class>entitlement</object_class><object_class>department</object_class><object_class>organisation</object_class></partition></partitions><primary_class_mappings><mapping object_class="site" primary_class="site" user_define="0"><attribute>ID</attribute><attribute>ObjectType</attribute><attribute>SiteName</attribute></mapping><mapping object_class="role" primary_class="role" user_define="0"><attribute>ADSDescription</attribute><attribute>ID</attribute><attribute>ObjectType</attribute></mapping><mapping object_class="person" primary_class="person" user_define="0"><attribute>ContractEndDate</attribute><attribute>ContractID</attribute><attribute>ContractStartDate</attribute><attribute>DOB</attribute><attribute>DaysToContractEnd</attribute><attribute>EmailAccess</attribute><attribute>EmployeeNumber</attribute><attribute>EmployeeStatus</attribute><attribute>Gender</attribute><attribute>GivenName</attribute><attribute>ID</attribute><attribute>ObjectType</attribute><attribute>OrganisationName</attribute><attribute>PositionLocation</attribute><attribute>PositionTitle</attribute><attribute>PreferredName</attribute><attribute>SiteID</attribute><attribute>Surname</attribute><attribute>Title</attribute><attribute>site</attribute></mapping><mapping object_class="entitlement" primary_class="entitlement" user_define="0"><attribute>ADSRoleEndDate</attribute><attribute>ADSRoleStartDate</attribute><attribute>EmployeeID</attribute><attribute>ID</attribute><attribute>ObjectType</attribute><attribute>RoleID</attribute><attribute>role</attribute><attribute>user</attribute></mapping><mapping object_class="department" primary_class="department" user_define="-1"><attribute>ID</attribute><attribute>ObjectType</attribute><attribute>SiteName</attribute><attribute>ADSDescription</attribute><attribute>ContractEndDate</attribute><attribute>ContractID</attribute><attribute>ContractStartDate</attribute><attribute>DOB</attribute><attribute>DaysToContractEnd</attribute><attribute>EmailAccess</attribute><attribute>EmployeeNumber</attribute><attribute>EmployeeStatus</attribute><attribute>Gender</attribute><attribute>GivenName</attribute><attribute>OrganisationName</attribute><attribute>PositionLocation</attribute><attribute>PositionTitle</attribute><attribute>PreferredName</attribute><attribute>SiteID</attribute><attribute>Surname</attribute><attribute>Title</attribute><attribute>site</attribute><attribute>ADSRoleEndDate</attribute><attribute>ADSRoleStartDate</attribute><attribute>EmployeeID</attribute><attribute>RoleID</attribute><attribute>role</attribute><attribute>user</attribute><attribute>DisplayName</attribute><attribute>EmploymentTypeName</attribute><attribute>DepartmentName</attribute><attribute>AllowCustomEmployeeCode</attribute><attribute>EmployeeCodeRangeFrom</attribute><attribute>EmployeeCodeRangeTill</attribute><attribute>EmployeeCodeLastValue</attribute></mapping><mapping object_class="organisation" primary_class="organisation" user_define="-1"><attribute>ID</attribute><attribute>ObjectType</attribute><attribute>SiteName</attribute><attribute>ADSDescription</attribute><attribute>ContractEndDate</attribute><attribute>ContractID</attribute><attribute>ContractStartDate</attribute><attribute>DOB</attribute><attribute>DaysToContractEnd</attribute><attribute>EmailAccess</attribute><attribute>EmployeeNumber</attribute><attribute>EmployeeStatus</attribute><attribute>Gender</attribute><attribute>GivenName</attribute><attribute>OrganisationName</attribute><attribute>PositionLocation</attribute><attribute>PositionTitle</attribute><attribute>PreferredName</attribute><attribute>SiteID</attribute><attribute>Surname</attribute><attribute>Title</attribute><attribute>site</attribute><attribute>ADSRoleEndDate</attribute><attribute>ADSRoleStartDate</attribute><attribute>EmployeeID</attribute><attribute>RoleID</attribute><attribute>role</attribute><attribute>user</attribute><attribute>DisplayName</attribute><attribute>EmploymentTypeName</attribute><attribute>DepartmentName</attribute><attribute>AllowCustomEmployeeCode</attribute><attribute>EmployeeCodeRangeFrom</attribute><attribute>EmployeeCodeRangeTill</attribute><attribute>EmployeeCodeLastValue</attribute><attribute>DepartmentID</attribute><attribute>department</attribute></mapping></primary_class_mappings><object_classes><object_class cd_name="site" selected="-1" user_define="0" configured="-1" anchor="" dn_as_anchor="-1"><attribute mandatory="0">SiteName</attribute><attribute mandatory="-1">ID</attribute><attribute mandatory="-1">ObjectType</attribute></object_class><object_class cd_name="role" selected="-1" user_define="0" configured="-1" anchor="" dn_as_anchor="-1"><attribute mandatory="0">ADSDescription</attribute><attribute mandatory="-1">ID</attribute><attribute mandatory="-1">ObjectType</attribute></object_class><object_class cd_name="person" selected="-1" user_define="0" configured="-1" anchor="" dn_as_anchor="-1"><attribute mandatory="0">ContractEndDate</attribute><attribute mandatory="0">ContractID</attribute><attribute mandatory="0">ContractStartDate</attribute><attribute mandatory="0">DOB</attribute><attribute mandatory="0">DaysToContractEnd</attribute><attribute mandatory="0">EmailAccess</attribute><attribute mandatory="0">EmployeeNumber</attribute><attribute mandatory="0">EmployeeStatus</attribute><attribute mandatory="0">Gender</attribute><attribute mandatory="0">GivenName</attribute><attribute mandatory="0">OrganisationName</attribute><attribute mandatory="0">PositionLocation</attribute><attribute mandatory="0">PositionTitle</attribute><attribute mandatory="0">PreferredName</attribute><attribute mandatory="0">SiteID</attribute><attribute mandatory="0">Surname</attribute><attribute mandatory="0">Title</attribute><attribute mandatory="0">site</attribute><attribute mandatory="0">DisplayName</attribute><attribute mandatory="0">EmploymentTypeName</attribute><attribute mandatory="0">department</attribute><attribute mandatory="0">DepartmentID</attribute><attribute mandatory="0">SiteName</attribute><attribute mandatory="0">organisation</attribute><attribute mandatory="0">EmployeeID</attribute><attribute mandatory="-1">ID</attribute><attribute mandatory="-1">ObjectType</attribute></object_class><object_class cd_name="entitlement" selected="-1" user_define="0" configured="-1" anchor="" dn_as_anchor="-1"><attribute mandatory="0">ADSRoleEndDate</attribute><attribute mandatory="0">ADSRoleStartDate</attribute><attribute mandatory="-1">ID</attribute><attribute mandatory="-1">ObjectType</attribute><attribute mandatory="-1">EmployeeID</attribute><attribute mandatory="-1">RoleID</attribute><attribute mandatory="-1">role</attribute><attribute mandatory="-1">user</attribute></object_class><object_class cd_name="department" selected="-1" user_define="0" configured="-1" anchor="" dn_as_anchor="-1"><attribute mandatory="0">DepartmentName</attribute><attribute mandatory="-1">ID</attribute><attribute mandatory="-1">ObjectType</attribute></object_class><object_class cd_name="organisation" selected="-1" user_define="0" configured="-1" anchor="" dn_as_anchor="-1"><attribute mandatory="0">OrganisationName</attribute><attribute mandatory="0">AllowCustomEmployeeCode</attribute><attribute mandatory="0">EmployeeCodeRangeFrom</attribute><attribute mandatory="0">EmployeeCodeRangeTill</attribute><attribute mandatory="0">EmployeeCodeLastValue</attribute><attribute mandatory="-1">ID</attribute><attribute mandatory="-1">ObjectType</attribute></object_class></object_classes><attributes><attribute cd_name="ID" binary="0" sample_data="1" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="ObjectType" binary="0" sample_data="site" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="SiteName" binary="0" sample_data="ICLT" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="ADSDescription" binary="0" sample_data="SSJGE Teaching Staff Member-G" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="ContractEndDate" binary="0" sample_data="2010-01-31T00:00:00" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="ContractID" binary="0" sample_data="551" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="ContractStartDate" binary="0" sample_data="2009-07-07T00:00:00" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="DOB" binary="0" sample_data="1975-11-19T00:00:00" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="DaysToContractEnd" binary="0" sample_data="-791" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="EmailAccess" binary="0" sample_data="1" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="EmployeeNumber" binary="0" sample_data="B600012" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="EmployeeStatus" binary="0" sample_data="Terminated" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="Gender" binary="0" sample_data="Female" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="GivenName" binary="0" sample_data="Paula" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="OrganisationName" binary="0" sample_data="Parishes" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="PositionLocation" binary="0" sample_data="SSJGE" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="PositionTitle" binary="0" sample_data="Casual Teacher St Josephs" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="PreferredName" binary="0" sample_data="Paula" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="SiteID" binary="0" sample_data="2" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="Surname" binary="0" sample_data="Zaia" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="Title" binary="0" sample_data="Mrs" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="site" binary="0" sample_data="uid=2,ou=site,ou=Objects" multi_valued="-1" file_reference="0" selected="-1" type="DN" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="ADSRoleEndDate" binary="0" sample_data="2009-12-21T00:00:00" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="ADSRoleStartDate" binary="0" sample_data="2009-07-07T00:00:00" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="EmployeeID" binary="0" sample_data="600012" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="0" upper_bound="" user_define="0" /><attribute cd_name="RoleID" binary="0" sample_data="O722103" multi_valued="-1" file_reference="0" selected="-1" type="String" lower_bound="0" upper_bound="" user_define="0" /><attribute cd_name="role" binary="0" sample_data="uid=O722103,ou=role,ou=Objects" multi_valued="-1" file_reference="0" selected="-1" type="DN" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="user" binary="0" sample_data="uid=600012,ou=person,ou=Objects" multi_valued="0" file_reference="0" selected="-1" type="DN" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="DisplayName" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="EmploymentTypeName" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="DepartmentName" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="AllowCustomEmployeeCode" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="Number" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="EmployeeCodeRangeFrom" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="Number" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="EmployeeCodeRangeTill" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="Number" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="EmployeeCodeLastValue" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="Number" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="DepartmentID" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="department" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="DN" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="organisation" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="DN" lower_bound="" upper_bound="" user_define="-1" /></attributes></xmlwizard></ui-data><importing><anchor><dn /></anchor><per-class-settings><class><name>site</name><anchor><dn /></anchor></class><class><name>role</name><anchor><dn /></anchor></class><class><name>person</name><anchor><dn /></anchor></class><class><name>entitlement</name><anchor><dn /></anchor></class><class><name>department</name><anchor><dn /></anchor></class><class><name>organisation</name><anchor><dn /></anchor></class></per-class-settings></importing><exporting></exporting><ldif_format><code_page>65001</code_page></ldif_format><primary_class_mappings><mapping><primary_class>site</primary_class><oc-value>site</oc-value></mapping><mapping><primary_class>role</primary_class><oc-value>role</oc-value></mapping><mapping><primary_class>person</primary_class><oc-value>person</oc-value></mapping><mapping><primary_class>entitlement</primary_class><oc-value>entitlement</oc-value></mapping><mapping><primary_class>department</primary_class><oc-value>department</oc-value></mapping><mapping><primary_class>organisation</primary_class><oc-value>organisation</oc-value></mapping></primary_class_mappings><enable-unapplied-merge>0</enable-unapplied-merge><password-extension-config><password-extension-enabled>0</password-extension-enabled><dll></dll><password-set-enabled></password-set-enabled><password-change-enabled></password-change-enabled><connection-info><connect-to></connect-to><user></user></connection-info><timeout></timeout></password-extension-config><case_normalize_dn_for_anchor>1</case_normalize_dn_for_anchor></MAConfig>
+ </private-configuration>
+ <SyncConfig-refresh-schema>0</SyncConfig-refresh-schema>
+ <ma-partition-data>
+ <partition>
+  <id>{B52FB251-3AF6-49D9-9CDD-E9BA14A73813}</id>
+  <name>default</name>
+  <creation-time>2012-04-01 08:01:18.887</creation-time>
+  <last-modification-time>2015-10-22 01:46:16.260</last-modification-time>
+  <version>46</version>
+  <selected>1</selected>
+  <filter>
+   <object-classes>
+    <object-class>site</object-class>
+    <object-class>role</object-class>
+    <object-class>person</object-class>
+    <object-class>entitlement</object-class>
+    <object-class>department</object-class>
+    <object-class>organisation</object-class>
+   </object-classes>
+   <containers>
+    <exclusions/>
+    <inclusions>
+     <inclusion></inclusion>
+    </inclusions>
+   </containers>
+  </filter>
+  <allowed-operations>25</allowed-operations>
+  <current>
+   <batch-number>1</batch-number>
+   <sequence-number>0</sequence-number>
+  </current>
+  <last-successful-batch>0</last-successful-batch>
+  <filter-hints>
+   <object-classes>
+    <object-class>
+     <name>site</name>
+     <hierarchy>
+      <object-class>site</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+    <object-class>
+     <name>role</name>
+     <hierarchy>
+      <object-class>role</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+    <object-class>
+     <name>person</name>
+     <hierarchy>
+      <object-class>person</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+    <object-class>
+     <name>entitlement</name>
+     <hierarchy>
+      <object-class>entitlement</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+    <object-class>
+     <name>department</name>
+     <hierarchy>
+      <object-class>department</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+    <object-class>
+     <name>organisation</name>
+     <hierarchy>
+      <object-class>organisation</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+   </object-classes>
+  </filter-hints>
+ </partition>
+</ma-partition-data>
+
+ <ma-run-data>
+ <run-configuration>
+  <id>{0970053F-A0DF-480B-8B5E-F12430670AE9}</id>
+  <name>FI</name>
+  <creation-time>2012-04-01 08:02:21.417</creation-time>
+  <version>4</version>
+  <last-modification-time>2012-10-15 00:15:47.273</last-modification-time>
+  <configuration><step><step-type type="full-import"><import-subtype>to-cs</import-subtype></step-type><threshold></threshold><partition>{B52FB251-3AF6-49D9-9CDD-E9BA14A73813}</partition><custom-data><run-config><input-file>nassData.ldif</input-file></run-config></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{FDC6AE18-BF5B-4101-B1D8-BA4AA461359A}</id>
+  <name>FS</name>
+  <creation-time>2012-04-01 08:02:31.880</creation-time>
+  <version>4</version>
+  <last-modification-time>2012-10-15 00:15:47.317</last-modification-time>
+  <configuration><step><step-type type="apply-rules"><apply-rules-subtype>reevaluate-flow-connectors</apply-rules-subtype></step-type><threshold></threshold><partition>{B52FB251-3AF6-49D9-9CDD-E9BA14A73813}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{0D39E3C5-5CF7-46D7-A2D1-E866E26BF98B}</id>
+  <name>FIFS</name>
+  <creation-time>2012-04-01 08:02:47.000</creation-time>
+  <version>4</version>
+  <last-modification-time>2012-10-15 00:15:47.303</last-modification-time>
+  <configuration><step><step-type type="full-import"><import-subtype>to-cs</import-subtype></step-type><threshold><batch-size>1</batch-size></threshold><partition>{B52FB251-3AF6-49D9-9CDD-E9BA14A73813}</partition><custom-data><run-config><input-file>nassData.ldif</input-file></run-config></custom-data></step><step><step-type type="apply-rules"><apply-rules-subtype>reevaluate-flow-connectors</apply-rules-subtype></step-type><threshold><batch-size>1</batch-size></threshold><partition>{B52FB251-3AF6-49D9-9CDD-E9BA14A73813}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{EAA6D73D-92B6-46F3-B309-10E5007254D5}</id>
+  <name>FIDS</name>
+  <creation-time>2012-04-01 08:02:59.837</creation-time>
+  <version>4</version>
+  <last-modification-time>2012-10-15 00:15:47.293</last-modification-time>
+  <configuration><step><step-type type="full-import"><import-subtype>to-cs</import-subtype></step-type><threshold><batch-size>1</batch-size></threshold><partition>{B52FB251-3AF6-49D9-9CDD-E9BA14A73813}</partition><custom-data><run-config><input-file>nassData.ldif</input-file></run-config></custom-data></step><step><step-type type="apply-rules"><apply-rules-subtype>apply-pending</apply-rules-subtype></step-type><threshold><batch-size>1</batch-size></threshold><partition>{B52FB251-3AF6-49D9-9CDD-E9BA14A73813}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{E02CE22D-92C0-4EB0-BCCC-815CC3D33D24}</id>
+  <name>DS</name>
+  <creation-time>2012-04-03 13:22:13.070</creation-time>
+  <version>4</version>
+  <last-modification-time>2012-10-15 00:15:47.267</last-modification-time>
+  <configuration><step><step-type type="apply-rules"><apply-rules-subtype>apply-pending</apply-rules-subtype></step-type><threshold></threshold><partition>{B52FB251-3AF6-49D9-9CDD-E9BA14A73813}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+</ma-run-data>
+
+ <capabilities-mask>9070</capabilities-mask>
+ <export-type>2</export-type>
+ <dn-construction/>
+ <password-sync><maximum-retry-count>10</maximum-retry-count><retry-interval>60</retry-interval><allow-low-security>0</allow-low-security></password-sync>
+ <component_mappings />
+</ma-data>
+
+</saved-ma-configuration>

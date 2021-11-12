@@ -1,0 +1,256 @@
+<html>
+
+<head>
+<meta content="en-us" http-equiv="Content-Language">
+<meta content="text/html; charset=windows-1252" http-equiv="Content-Type">
+<script src="Res\default.vbs" type="text/vbscript"></script>
+<title>FIM Object Visualizer</title>
+<style type="text/css">
+body {
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-family: Tahoma;
+	font-size: 11px;
+}
+.touter {
+	width: 100%;
+	border-collapse: collapse;
+	border: 0;
+}
+.menu {
+	background-color: ButtonFace;
+	font-family: Tahoma;
+	font-size: 11px;
+	width: auto;
+}
+.menu1 {
+	border-top: ThreeDDarkShadow 1px solid;
+	background-color: ButtonFace;
+	font-family: Tahoma;
+	font-size: 11px;
+	width: auto;
+}
+.label1 {
+	width: 70px;
+	font-family: Tahoma;
+	font-size: 11px;
+}
+.label2 {
+	width: 70px;
+	font-family: Tahoma;
+	font-size: 11px;
+}
+select {
+	font-family: Tahoma;
+	font-size: 11px;
+}
+.toolbar {
+	border-top: buttonshadow 1px solid;
+	border-right: white 1px solid;
+	border-left: white 1px solid;
+	border-bottom: buttonshadow 1px solid;
+	font-family: Tahoma;
+	font-size: 11px;
+}
+.button {
+	white-space: nowrap;
+	background-color: ButtonFace;
+	text-align: center;
+	cursor: default;
+	border: 1px buttonface solid;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-family: Tahoma;
+	font-size: 11px;
+}
+.over {
+	white-space: nowrap;
+	text-align: center;
+	cursor: default;
+	border-left: white 1px solid;
+	border-top: white 1px solid;
+	border-right: buttonshadow 1px solid;
+	border-bottom: buttonshadow 1px solid;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-family: Tahoma;
+	font-size: 11px;
+}
+.down {
+	white-space: nowrap;
+	text-align: center;
+	cursor: default;
+	border-top: buttonshadow 1px solid;
+	border-right: white 1px solid;
+	border-left: buttonshadow 1px solid;
+	border-bottom: white 1px solid;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-family: Tahoma;
+	font-size: 11px;
+}
+div.scroll {
+	font-family: Tahoma;
+	font-size: 11px;
+	overflow: auto;
+	background-color: white;
+	padding: 8px;
+}
+div.status {
+	font-family: Tahoma;
+	font-size: 11px;
+	width: 200px;
+	padding-left: 5px;
+	background-color: buttonface;
+	border-top: buttonshadow 1px solid;
+	border-right: white 1px solid;
+	border-left: buttonshadow 0px solid;
+	border-bottom: white 1px solid;
+}
+.lidsp1 {
+	padding-right: 10px;
+}
+.lidsp2 {
+	padding-right: 10px;
+	background-color: #F5F5DC;
+}
+a:link {
+	color: black;
+}
+a:visited {
+	color: black;
+}
+a:hover {
+	color: white;
+	background-color: #333333;
+	text-decoration: none;
+}
+a:active {
+	color: black;
+}
+</style>
+
+
+<hta:application 
+   id="oHTA"
+   version="6.0"
+   applicationname="FIM Object Visualizer"
+   application="yes"
+   caption="yes"
+   border="raised"
+   innerborder="no"
+   singleinstance="yes"
+   icon="Res\small.ico"
+   scroll="no"
+   sysmenu="yes">
+</hta:application>
+</head>
+
+<body onload="Initialize()" onresize="ResizeControls()" onunload="Destructor()">
+
+<table class="touter">
+	<tr class="menu">
+		<td class="toolbar" colspan="2">
+		<table class="menu">
+			<tr class="menu">
+				<td id="A10" class="button" onclick="GetAllCollectionData()" onmousedown="OnMouseDown(A10)" onmouseout="OnMouseOut(A10)" onmouseover="OnMouseOver(A10)" onmouseup="OnMouseUp(A10)">
+				Get All Objects</td>
+
+				<td><select id="lbCollection" name="B2" /></select></td>
+				<td id="A11" class="button" onclick="GetCollectionData()" onmousedown="OnMouseDown(A11)" onmouseout="OnMouseOut(A11)" onmouseover="OnMouseOver(A11)" onmouseup="OnMouseUp(A11)">
+				Get Objects</td>
+				<td><select id="lbCollectionNames" name="B2" /></select></td>
+				<td id="A12" class="button" onclick="GetDisplayNames()" onmousedown="OnMouseDown(A12)" onmouseout="OnMouseOut(A12)" onmouseover="OnMouseOver(A12)" onmouseup="OnMouseUp(A12)">
+				Show Names</td>
+				<td id="A13" class="button" onclick="CopyData()" onmousedown="OnMouseDown(A13)" onmouseout="OnMouseOut(A13)" onmouseover="OnMouseOver(A13)" onmouseup="OnMouseUp(A13)">
+				Copy</td>
+				<td id="A14" class="button" onclick="CopyHTML()" onmousedown="OnMouseDown(A14)" onmouseout="OnMouseOut(A14)" onmouseover="OnMouseOver(A14)" onmouseup="OnMouseUp(A14)">
+				HTML</td>
+				<td id="A15" class="button" onclick="ShowHelp()" onmousedown="OnMouseDown(A15)" onmouseout="OnMouseOut(A15)" onmouseover="OnMouseOver(A15)" onmouseup="OnMouseUp(A15)">
+				Help</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+		<tr class="menu">
+		<td class="toolbar" colspan="2">
+		<table class="menu">
+			<tr class="menu">
+				<td id="B10" class="button" onclick="GetAllReports()" onmousedown="OnMouseDown(B10)" onmouseout="OnMouseOut(B10)" onmouseover="OnMouseOver(B10)" onmouseup="OnMouseUp(B10)">
+				Get All Reports</td>
+
+				<td><select id="lbReports" /></select></td>
+				<td id="B11" class="button" onclick="GetReportData()" onmousedown="OnMouseDown(B11)" onmouseout="OnMouseOut(B11)" onmouseover="OnMouseOver(B11)" onmouseup="OnMouseUp(B11)">
+				Get Report</td>
+				<td><select id="lbReportNames" /></select></td>
+				<td id="B12" class="button" onclick="ShowReport()" onmousedown="OnMouseDown(B12)" onmouseout="OnMouseOut(B12)" onmouseover="OnMouseOver(B12)" onmouseup="OnMouseUp(B12)">
+				Show Report</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+
+	<tr>
+		<td class="menu" valign="top">
+		<table>
+			<tr>
+				<td class="menu" style="text-align: center; font-weight: bold;">
+				Resource</td>
+			</tr>
+			<tr>
+				<td>
+				<table style="border: buttonshadow 1px solid;">
+					<tr>
+						<td style="width: 5px;"></td>
+						<td><label class="label1" for="group1">Display Name</label><input id="r1" checked name="group1" type="radio" value="displayName" /></td>
+						<td style="width: 10px;"></td>
+					</tr>
+					<tr>
+						<td style="width: 5px;"></td>
+						<td><label class="label1" for="group1">Guid</label><input id="r2" name="group1" type="radio" value="guid" /></td>
+						<td style="width: 10px;"></td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+			<tr>
+				<td id="b21" class="button" onclick="GetResourceData()" onmousedown="OnMouseDown(b21)" onmouseout="OnMouseOut(b21)" onmouseover="OnMouseOver(b21)" onmouseup="OnMouseUp(b21)">
+				Get Data</td>
+			</tr>
+			<tr>
+				<td id="b22" class="button" onclick="ShowData()" onmousedown="OnMouseDown(b22)" onmouseout="OnMouseOut(b22)" onmouseover="OnMouseOver(b22)" onmouseup="OnMouseUp(b22)">
+				Show Data</td>
+			</tr>
+	        <tr>
+				<td style="height: 10px;"></td>
+			</tr>
+		</table>
+		</td>
+		<td>
+		<div id="oData" class="scroll" name="oData">
+		</div>
+		</td>
+	</tr>
+	<tr class="menu">
+		<td class="toolbar" colspan="2">
+		<div id="oStatus" class="status" name="oStatus">
+		</div>
+		</td>
+	</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</body>
+
+</html>
+

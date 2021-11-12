@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DataEngine>
+	<dataRepository>
+		<dataConnection name="sql" repository="Unify.IdentityBroker" connectionString="Data Source=LOCALHOST;Initial Catalog=Unify.IdentityBroker;Integrated Security=True" />
+	</dataRepository>
+</DataEngine>

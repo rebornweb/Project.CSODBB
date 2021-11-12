@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Copyright (c) Microsoft Corporation.  All rights reserved.-->
+<my:ObjectControlConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:my="http://schemas.microsoft.com/2006/11/ResourceManagement" xmlns:xd="http://schemas.microsoft.com/office/infopath/2003">
+  <my:ObjectDataSource my:TypeName="PrimaryResourceObjectDataSource" my:Name="object" />
+  <my:ObjectDataSource my:TypeName="PrimaryResourceDeltaDataSource" my:Name="delta" />
+  <my:ObjectDataSource my:TypeName="PrimaryResourceRightsDataSource" my:Name="rights" />
+  <my:ObjectDataSource my:TypeName="SchemaDataSource" my:Name="schema" />
+  <my:XmlDataSource my:Name="summaryTransformXsl" my:Parameters="Microsoft.IdentityManagement.WebUI.Controls.Resources.DefaultSummary.xsl" />
+  <my:Panel my:Name="page" my:AutoValidate="true" my:Caption="Default Configuration">
+    <my:Grouping my:Name="_caption" my:IsHeader="true" my:Caption="Caption">
+      <my:Control my:Name="_caption" my:TypeName="UocCaptionControl" my:ExpandArea="true" my:Caption="Create csoDepartment" my:Description="">
+        <my:Properties>
+          <my:Property my:Name="MaxHeight" my:Value="32" />
+          <my:Property my:Name="MaxWidth" my:Value="32" />
+        </my:Properties>
+      </my:Control>
+    </my:Grouping>
+    <my:Grouping my:Name="departmentAttributes" my:Caption="Department Attributes">
+      <my:Control my:Name="csoDeptID" my:TypeName="UocTextBox" my:Caption="{Binding Source=schema, Path=csoDeptID.DisplayName}" my:Description="{Binding Source=schema, Path=csoDeptID.Description}" my:RightsLevel="{Binding Source=rights, Path=csoDeptID}">
+        <my:Properties>
+          <my:Property my:Name="ReadOnly" my:Value="false" />
+          <my:Property my:Name="Required" my:Value="{Binding Source=schema, Path=csoDeptID.Required}" />
+          <my:Property my:Name="Text" my:Value="{Binding Source=object, Path=csoDeptID, Mode=TwoWay}" />
+          <my:Property my:Name="MaxLength" my:Value="400" />
+          <my:Property my:Name="RegularExpression" my:Value="{Binding Source=schema, Path=csoDeptID.StringRegex}" />
+          <my:Property my:Name="Hint" my:Value="{Binding Source=schema, Path=csoDeptID.Hint}" />
+          <my:Property my:Name="UniquenessValidationXPath" my:Value="/csoDepartment[csoDeptID='%VALUE%' and not(ObjectID='%ObjectID%')]" />
+        </my:Properties>
+      </my:Control>
+      <my:Control my:Name="DisplayName" my:TypeName="UocTextBox" my:Caption="{Binding Source=schema, Path=DisplayName.DisplayName}" my:Description="{Binding Source=schema, Path=DisplayName.Description}" my:RightsLevel="{Binding Source=rights, Path=DisplayName}">
+        <my:Properties>
+          <my:Property my:Name="ReadOnly" my:Value="false" />
+          <my:Property my:Name="Required" my:Value="{Binding Source=schema, Path=DisplayName.Required}" />
+          <my:Property my:Name="Text" my:Value="{Binding Source=object, Path=DisplayName, Mode=TwoWay}" />
+          <my:Property my:Name="MaxLength" my:Value="400" />
+          <my:Property my:Name="RegularExpression" my:Value="{Binding Source=schema, Path=DisplayName.StringRegex}" />
+          <my:Property my:Name="Hint" my:Value="{Binding Source=schema, Path=DisplayName.Hint}" />
+          <my:Property my:Name="UniquenessValidationXPath" my:Value="/csoDepartment[DisplayName='%VALUE%' and not(ObjectID='%ObjectID%')]" />
+        </my:Properties>
+      </my:Control>
+      <my:Control my:Name="Description" my:TypeName="UocTextBox" my:Caption="{Binding Source=schema, Path=Description.DisplayName}" my:Description="{Binding Source=schema, Path=Description.Description}" my:RightsLevel="{Binding Source=rights, Path=Description}">
+        <my:Properties>
+          <my:Property my:Name="ReadOnly" my:Value="false" />
+          <my:Property my:Name="Required" my:Value="{Binding Source=schema, Path=Description.Required}" />
+          <my:Property my:Name="Text" my:Value="{Binding Source=object, Path=Description, Mode=TwoWay}" />
+          <my:Property my:Name="MaxLength" my:Value="400" />
+          <my:Property my:Name="RegularExpression" my:Value="{Binding Source=schema, Path=Description.StringRegex}" />
+          <my:Property my:Name="Hint" my:Value="{Binding Source=schema, Path=Description.Hint}" />
+        </my:Properties>
+      </my:Control>
+      <my:Control my:Name="csoUpnSuffix" my:TypeName="UocTextBox" my:Caption="{Binding Source=schema, Path=csoUpnSuffix.DisplayName}" my:Description="{Binding Source=schema, Path=csoUpnSuffix.Description}" my:RightsLevel="{Binding Source=rights, Path=csoUpnSuffix}">
+        <my:Properties>
+          <my:Property my:Name="ReadOnly" my:Value="false" />
+          <my:Property my:Name="Required" my:Value="{Binding Source=schema, Path=csoUpnSuffix.Required}" />
+          <my:Property my:Name="Text" my:Value="{Binding Source=object, Path=csoUpnSuffix, Mode=TwoWay}" />
+          <my:Property my:Name="MaxLength" my:Value="400" />
+          <my:Property my:Name="RegularExpression" my:Value="{Binding Source=schema, Path=csoUpnSuffix.StringRegex}" />
+          <my:Property my:Name="Hint" my:Value="{Binding Source=schema, Path=csoUpnSuffix.Hint}" />
+        </my:Properties>
+      </my:Control>
+ 	  <my:Control my:Name="csoOrgUnit" my:TypeName="UocDropDownList" my:Caption="{Binding Source=schema, Path=csoOrgUnit.DisplayName}" my:Description="{Binding Source=schema, Path=csoOrgUnit.Description}">
+        <my:Properties>
+          <my:Property my:Name="Required" my:Value="{Binding Source=schema, Path=csoOrgUnit.Required}"/>
+          <my:Property my:Name="ValuePath" my:Value="Value"/>
+          <my:Property my:Name="CaptionPath" my:Value="Caption"/>
+          <my:Property my:Name="HintPath" my:Value="Hint"/>
+          <my:Property my:Name="ItemSource" my:Value="{Binding Source=schema, Path=csoOrgUnit.LocalizedAllowedValues}"/>
+          <my:Property my:Name="SelectedValue" my:Value="{Binding Source=object, Path=csoOrgUnit, Mode=TwoWay}"/>
+        </my:Properties>
+      </my:Control>
+      <my:Control my:Name="csoSourceSystem" my:TypeName="UocTextBox" my:Caption="{Binding Source=schema, Path=csoSourceSystem.DisplayName}" my:Description="{Binding Source=schema, Path=csoSourceSystem.Description}" my:RightsLevel="{Binding Source=rights, Path=csoSourceSystem}">
+        <my:Properties>
+          <my:Property my:Name="ReadOnly" my:Value="false" />
+          <my:Property my:Name="Required" my:Value="{Binding Source=schema, Path=csoSourceSystem.Required}" />
+          <my:Property my:Name="Text" my:Value="{Binding Source=object, Path=csoSourceSystem, Mode=TwoWay}" />
+          <my:Property my:Name="MaxLength" my:Value="400" />
+          <my:Property my:Name="RegularExpression" my:Value="{Binding Source=schema, Path=csoSourceSystem.StringRegex}" />
+          <my:Property my:Name="Hint" my:Value="{Binding Source=schema, Path=csoSourceSystem.Hint}" />
+        </my:Properties>
+      </my:Control>
+    </my:Grouping>
+    <my:Grouping my:Name="commonAttributes" my:Caption="Common Attributes">
+      <my:Control my:Name="CreatedTime" my:TypeName="UocDateTimeControl" my:Caption="{Binding Source=schema, Path=CreatedTime.DisplayName}" my:Description="{Binding Source=schema, Path=CreatedTime.Description}" my:RightsLevel="{Binding Source=rights, Path=CreatedTime}">
+        <my:Properties>
+          <my:Property my:Name="ReadOnly" my:Value="true" />
+          <my:Property my:Name="Required" my:Value="{Binding Source=schema, Path=CreatedTime.Required}" />
+          <my:Property my:Name="Value" my:Value="{Binding Source=object, Path=CreatedTime, Mode=TwoWay}" />
+          <my:Property my:Name="Hint" my:Value="{Binding Source=schema, Path=CreatedTime.Hint}" />
+        </my:Properties>
+      </my:Control>
+      <my:Control my:Name="Creator" my:TypeName="UocIdentityPicker" my:Caption="{Binding Source=schema, Path=Creator.DisplayName}" my:Description="{Binding Source=schema, Path=Creator.Description}" my:RightsLevel="{Binding Source=rights, Path=Creator}">
+        <my:Properties>
+          <my:Property my:Name="ReadOnly" my:Value="true" />
+          <my:Property my:Name="Required" my:Value="{Binding Source=schema, Path=Creator.Required}" />
+          <my:Property my:Name="ColumnsToDisplay" my:Value="DisplayName, ObjectType" />
+          <my:Property my:Name="AttributesToSearch" my:Value="DisplayName" />
+          <my:Property my:Name="Value" my:Value="{Binding Source=object, Path=Creator, Mode=TwoWay}" />
+          <my:Property my:Name="UsageKeywords" my:Value="Global,customized" />
+          <my:Property my:Name="ListViewTitle" my:Value="Select an Object" />
+          <my:Property my:Name="ObjectTypes" my:Value="*" />
+          <my:Property my:Name="Hint" my:Value="{Binding Source=schema, Path=Creator.Hint}" />
+        </my:Properties>
+      </my:Control>
+      <my:Control my:Name="DetectedRulesList" my:TypeName="UocIdentityPicker" my:Caption="{Binding Source=schema, Path=DetectedRulesList.DisplayName}" my:Description="{Binding Source=schema, Path=DetectedRulesList.Description}" my:RightsLevel="{Binding Source=rights, Path=DetectedRulesList}">
+        <my:Properties>
+          <my:Property my:Name="ReadOnly" my:Value="true" />
+          <my:Property my:Name="Required" my:Value="{Binding Source=schema, Path=DetectedRulesList.Required}" />
+          <my:Property my:Name="ColumnsToDisplay" my:Value="DisplayName, ObjectType" />
+          <my:Property my:Name="AttributesToSearch" my:Value="DisplayName" />
+          <my:Property my:Name="Value" my:Value="{Binding Source=object, Path=DetectedRulesList, Mode=TwoWay}" />
+          <my:Property my:Name="Mode" my:Value="MultipleResult" />
+          <my:Property my:Name="UsageKeywords" my:Value="Global,customized" />
+          <my:Property my:Name="ListViewTitle" my:Value="Select Resources" />
+          <my:Property my:Name="ObjectTypes" my:Value="*" />
+          <my:Property my:Name="Hint" my:Value="{Binding Source=schema, Path=DetectedRulesList.Hint}" />
+        </my:Properties>
+      </my:Control>
+      <my:Control my:Name="ExpectedRulesList" my:TypeName="UocIdentityPicker" my:Caption="{Binding Source=schema, Path=ExpectedRulesList.DisplayName}" my:Description="{Binding Source=schema, Path=ExpectedRulesList.Description}" my:RightsLevel="{Binding Source=rights, Path=ExpectedRulesList}">
+        <my:Properties>
+          <my:Property my:Name="ReadOnly" my:Value="true" />
+          <my:Property my:Name="Required" my:Value="{Binding Source=schema, Path=ExpectedRulesList.Required}" />
+          <my:Property my:Name="ColumnsToDisplay" my:Value="DisplayName, ObjectType" />
+          <my:Property my:Name="AttributesToSearch" my:Value="DisplayName" />
+          <my:Property my:Name="Value" my:Value="{Binding Source=object, Path=ExpectedRulesList, Mode=TwoWay}" />
+          <my:Property my:Name="Mode" my:Value="MultipleResult" />
+          <my:Property my:Name="UsageKeywords" my:Value="Global,customized" />
+          <my:Property my:Name="ListViewTitle" my:Value="Select Resources" />
+          <my:Property my:Name="ObjectTypes" my:Value="*" />
+          <my:Property my:Name="Hint" my:Value="{Binding Source=schema, Path=ExpectedRulesList.Hint}" />
+        </my:Properties>
+      </my:Control>
+      <my:Control my:Name="ExpirationTime" my:TypeName="UocDateTimeControl" my:Caption="{Binding Source=schema, Path=ExpirationTime.DisplayName}" my:Description="{Binding Source=schema, Path=ExpirationTime.Description}" my:RightsLevel="{Binding Source=rights, Path=ExpirationTime}">
+        <my:Properties>
+          <my:Property my:Name="ReadOnly" my:Value="false" />
+          <my:Property my:Name="Required" my:Value="{Binding Source=schema, Path=ExpirationTime.Required}" />
+          <my:Property my:Name="Value" my:Value="{Binding Source=object, Path=ExpirationTime, Mode=TwoWay}" />
+          <my:Property my:Name="Hint" my:Value="{Binding Source=schema, Path=ExpirationTime.Hint}" />
+        </my:Properties>
+      </my:Control>
+      <my:Control my:Name="Locale" my:TypeName="UocTextBox" my:Caption="{Binding Source=schema, Path=Locale.DisplayName}" my:Description="{Binding Source=schema, Path=Locale.Description}" my:RightsLevel="{Binding Source=rights, Path=Locale}">
+        <my:Properties>
+          <my:Property my:Name="ReadOnly" my:Value="false" />
+          <my:Property my:Name="Required" my:Value="{Binding Source=schema, Path=Locale.Required}" />
+          <my:Property my:Name="Text" my:Value="{Binding Source=object, Path=Locale, Mode=TwoWay}" />
+          <my:Property my:Name="MaxLength" my:Value="400" />
+          <my:Property my:Name="RegularExpression" my:Value="{Binding Source=schema, Path=Locale.StringRegex}" />
+          <my:Property my:Name="Hint" my:Value="{Binding Source=schema, Path=Locale.Hint}" />
+        </my:Properties>
+      </my:Control>
+      <my:Control my:Name="MVObjectID" my:TypeName="UocTextBox" my:Caption="{Binding Source=schema, Path=MVObjectID.DisplayName}" my:Description="{Binding Source=schema, Path=MVObjectID.Description}" my:RightsLevel="{Binding Source=rights, Path=MVObjectID}">
+        <my:Properties>
+          <my:Property my:Name="ReadOnly" my:Value="true" />
+          <my:Property my:Name="Required" my:Value="{Binding Source=schema, Path=MVObjectID.Required}" />
+          <my:Property my:Name="Text" my:Value="{Binding Source=object, Path=MVObjectID, Mode=TwoWay}" />
+          <my:Property my:Name="MaxLength" my:Value="400" />
+          <my:Property my:Name="RegularExpression" my:Value="{Binding Source=schema, Path=MVObjectID.StringRegex}" />
+          <my:Property my:Name="Hint" my:Value="{Binding Source=schema, Path=MVObjectID.Hint}" />
+        </my:Properties>
+      </my:Control>
+      <my:Control my:Name="ResourceTime" my:TypeName="UocDateTimeControl" my:Caption="{Binding Source=schema, Path=ResourceTime.DisplayName}" my:Description="{Binding Source=schema, Path=ResourceTime.Description}" my:RightsLevel="{Binding Source=rights, Path=ResourceTime}">
+        <my:Properties>
+          <my:Property my:Name="ReadOnly" my:Value="true" />
+          <my:Property my:Name="Required" my:Value="{Binding Source=schema, Path=ResourceTime.Required}" />
+          <my:Property my:Name="Value" my:Value="{Binding Source=object, Path=ResourceTime, Mode=TwoWay}" />
+          <my:Property my:Name="Hint" my:Value="{Binding Source=schema, Path=ResourceTime.Hint}" />
+        </my:Properties>
+      </my:Control>
+      <my:Control my:Name="ObjectType" my:TypeName="UocTextBox" my:Caption="{Binding Source=schema, Path=ObjectType.DisplayName}" my:Description="{Binding Source=schema, Path=ObjectType.Description}" my:RightsLevel="{Binding Source=rights, Path=ObjectType}">
+        <my:Properties>
+          <my:Property my:Name="ReadOnly" my:Value="true" />
+          <my:Property my:Name="Required" my:Value="{Binding Source=schema, Path=ObjectType.Required}" />
+          <my:Property my:Name="Text" my:Value="{Binding Source=object, Path=ObjectType, Mode=TwoWay}" />
+          <my:Property my:Name="MaxLength" my:Value="400" />
+          <my:Property my:Name="RegularExpression" my:Value="{Binding Source=schema, Path=ObjectType.StringRegex}" />
+          <my:Property my:Name="Hint" my:Value="{Binding Source=schema, Path=ObjectType.Hint}" />
+        </my:Properties>
+      </my:Control>
+    </my:Grouping>
+    <my:Grouping my:Name="summary" my:Caption="Summary" my:IsSummary="true">
+      <my:Control my:Name="summaryControl" my:TypeName="UocHtmlSummary" my:ExpandArea="true">
+        <my:Properties>
+          <my:Property my:Name="ModificationsXml" my:Value="{Binding Source=delta, Path=DeltaXml}" />
+          <my:Property my:Name="TransformXsl" my:Value="{Binding Source=summaryTransformXsl, Path=/}" />
+          <my:Property my:Name="Hint" my:Value="{Binding Source=schema, Path=%AttributeName%.Hint}" />
+        </my:Properties>
+      </my:Control>
+    </my:Grouping>
+  </my:Panel>
+</my:ObjectControlConfiguration>

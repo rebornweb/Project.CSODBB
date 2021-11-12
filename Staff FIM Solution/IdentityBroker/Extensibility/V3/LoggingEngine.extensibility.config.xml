@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LogWriter name="AsyncLogWriterComposite">
+  <!--<LogWriter name="LogWriterFilterDecorator">
+    <logFilter name="Severity" severity="All" />
+    <LogWriter name="ApplicationEventLog" />
+	<LogWriter name="CustomEventLog" customEventLog="UNIFY.IdB.PeopleSoft" />
+	<LogWriter name="CSV" prefix="IdentityBroker" directory="D:\Logs\IdentityBroker" days="7" />
+  </LogWriter>-->
+  <LogWriter name="CSV" prefix="IdentityBroker" directory="D:\Logs\IdentityBroker" days="7" />
+</LogWriter>

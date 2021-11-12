@@ -1,0 +1,21 @@
+[{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:53:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T09:48:08",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft Employee Connector started."
+},{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:53:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T09:48:08",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft Employee Connector."
+}]

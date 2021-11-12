@@ -1,0 +1,251 @@
+#==================================================================
+#
+# This file contains user extensions for extended user/person ADAM schema.
+# It should be imported with the following command:
+#   ldifde -i -f CSODBB-User.ldf -s server:port -b username domain password -k -j . -c "CN=Schema,CN=Configuration,DC=X" #schemaNamingContext
+#
+#==================================================================
+#
+# Attributes
+
+dn: CN=CSODBB-GUID,CN=Schema,CN=Configuration,DC=X
+changetype: ntdsschemaadd
+objectClass: top
+objectClass: attributeSchema
+cn: CSODBB-GUID
+distinguishedName: CN=CSODBB-GUID,CN=Schema,CN=Configuration,DC=X
+instanceType: 4
+attributeID: 1.2.840.113556.1.8000.2554.45516.51826.14852.20474.36993.6715101.7319242.2.0001
+attributeSyntax: 2.5.5.10
+# isSingleValued: TRUE
+showInAdvancedViewOnly: TRUE
+adminDisplayName: csodbbGUID
+adminDescription: CSODBB IAM - unique identifier
+oMSyntax: 4
+# rangeLower: 16
+rangeUpper: 16
+lDAPDisplayName: csodbbGUID
+name: csodbbGUID
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,DC=X
+
+dn: CN=CSODBB-PersonType,CN=Schema,CN=Configuration,DC=X
+changetype: ntdsschemaadd
+objectClass: top
+objectClass: attributeSchema
+cn: CSODBB-PersonType
+distinguishedName: CN=CSODBB-PersonType,CN=Schema,CN=Configuration,DC=X
+instanceType: 4
+attributeID: 1.2.840.113556.1.8000.2554.45516.51826.14852.20474.36993.6715101.7319242.2.0002
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+showInAdvancedViewOnly: TRUE
+adminDisplayName: csodbbPersonType
+adminDescription: CSODBB IAM - identity type = P(upil),T(eacher),S(taff)
+oMSyntax: 64
+rangeLower: 0
+rangeUpper: 10
+lDAPDisplayName: csodbbPersonType
+name: csodbbPersonType
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,DC=X
+
+dn: CN=CSODBB-HouseID,CN=Schema,CN=Configuration,DC=X
+changetype: ntdsschemaadd
+objectClass: top
+objectClass: attributeSchema
+cn: CSODBB-HouseID
+distinguishedName: CN=CSODBB-HouseID,CN=Schema,CN=Configuration,DC=X
+instanceType: 4
+attributeID: 1.2.840.113556.1.8000.2554.45516.51826.14852.20474.36993.6715101.7319242.2.0003
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+showInAdvancedViewOnly: TRUE
+adminDisplayName: csodbbHouseID
+adminDescription: CSODBB IAM - Class Identitfier
+oMSyntax: 64
+rangeLower: 0
+rangeUpper: 20
+lDAPDisplayName: csodbbHouseID
+name: csodbbHouseID
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,DC=X
+
+dn: CN=CSODBB-DOB,CN=Schema,CN=Configuration,DC=X
+changetype: ntdsschemaadd
+objectClass: top
+objectClass: attributeSchema
+cn: CSODBB-DOB
+distinguishedName: CN=CSODBB-DOB,CN=Schema,CN=Configuration,DC=X
+instanceType: 4
+attributeID: 1.2.840.113556.1.8000.2554.45516.51826.14852.20474.36993.6715101.7319242.2.0004
+attributeSyntax: 2.5.5.11
+isSingleValued: TRUE
+showInAdvancedViewOnly: TRUE
+adminDisplayName: csodbbDOB
+adminDescription: CSODBB IAM - Date of Birth
+oMSyntax: 24
+lDAPDisplayName: csodbbDOB
+name: csodbbDOB
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,DC=X
+
+dn: CN=CSODBB-DOBString,CN=Schema,CN=Configuration,DC=X
+changetype: ntdsschemaadd
+objectClass: top
+objectClass: attributeSchema
+cn: CSODBB-DOBString
+distinguishedName: CN=CSODBB-DOBString,CN=Schema,CN=Configuration,DC=X
+instanceType: 4
+attributeID: 1.2.840.113556.1.8000.2554.45516.51826.14852.20474.36993.6715101.7319242.2.0005
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+showInAdvancedViewOnly: TRUE
+adminDisplayName: csodbbDOBString
+adminDescription: CSODBB IAM - gender = M(ale),F(emale)
+oMSyntax: 64
+rangeLower: 0
+rangeUpper: 10
+lDAPDisplayName: csodbbDOBString
+name: csodbbDOBString
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,DC=X
+
+dn: CN=CSODBB-Sex,CN=Schema,CN=Configuration,DC=X
+changetype: ntdsschemaadd
+objectClass: top
+objectClass: attributeSchema
+cn: CSODBB-Sex
+distinguishedName: CN=CSODBB-Sex,CN=Schema,CN=Configuration,DC=X
+instanceType: 4
+attributeID: 1.2.840.113556.1.8000.2554.45516.51826.14852.20474.36993.6715101.7319242.2.0006
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+showInAdvancedViewOnly: TRUE
+adminDisplayName: csodbbSex
+adminDescription: CSODBB IAM - gender = M(ale),F(emale)
+oMSyntax: 64
+rangeLower: 0
+rangeUpper: 1
+lDAPDisplayName: csodbbSex
+name: csodbbSex
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,DC=X
+
+dn: CN=CSODBB-Year,CN=Schema,CN=Configuration,DC=X
+changetype: ntdsschemaadd
+objectClass: top
+objectClass: attributeSchema
+cn: CSODBB-Year
+distinguishedName: CN=CSODBB-Year,CN=Schema,CN=Configuration,DC=X
+instanceType: 4
+attributeID: 1.2.840.113556.1.8000.2554.45516.51826.14852.20474.36993.6715101.7319242.2.0007
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+showInAdvancedViewOnly: TRUE
+adminDisplayName: csodbbYear
+adminDescription: CSODBB IAM - Year level
+oMSyntax: 64
+rangeLower: 0
+rangeUpper: 2
+lDAPDisplayName: csodbbYear
+name: csodbbYear
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,DC=X
+
+dn: CN=CSODBB-SiteID,CN=Schema,CN=Configuration,DC=X
+changetype: ntdsschemaadd
+objectClass: top
+objectClass: attributeSchema
+cn: CSODBB-SiteID
+distinguishedName: CN=CSODBB-SiteID,CN=Schema,CN=Configuration,DC=X
+instanceType: 4
+attributeID: 1.2.840.113556.1.8000.2554.45516.51826.14852.20474.36993.6715101.7319242.2.0008
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+showInAdvancedViewOnly: TRUE
+adminDisplayName: csodbbSiteID
+adminDescription: CSODBB IAM - School Identitfier(s)
+oMSyntax: 64
+rangeLower: 0
+rangeUpper: 5
+lDAPDisplayName: csodbbSiteID
+name: csodbbSiteID
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,DC=X
+
+dn: CN=CSODBB-ClassID,CN=Schema,CN=Configuration,DC=X
+changetype: ntdsschemaadd
+objectClass: top
+objectClass: attributeSchema
+cn: CSODBB-ClassID
+distinguishedName: CN=CSODBB-ClassID,CN=Schema,CN=Configuration,DC=X
+instanceType: 4
+attributeID: 1.2.840.113556.1.8000.2554.45516.51826.14852.20474.36993.6715101.7319242.2.0009
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+showInAdvancedViewOnly: TRUE
+adminDisplayName: csodbbClassID
+adminDescription: CSODBB IAM - Class Identitfier(s)
+oMSyntax: 64
+rangeLower: 0
+rangeUpper: 50
+lDAPDisplayName: csodbbClassID
+name: csodbbClassID
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,DC=X
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+# Classes
+
+dn: CN=CSODBB-Organizational-Person,CN=Schema,CN=Configuration,DC=X
+changetype: ntdsschemaadd
+objectClass: classSchema
+governsID: 1.2.840.113556.1.8000.2554.45516.51826.14852.20474.36993.6715101.7319242.1.0001
+mayContain: csodbbGUID
+mayContain: csodbbPersonType
+mayContain: csodbbHouseID
+mayContain: csodbbSiteID
+mayContain: csodbbClassID
+mayContain: csodbbDOB
+mayContain: csodbbDOBString
+mayContain: csodbbSex
+mayContain: csodbbYear
+adminDisplayName: CSODBB-Organizational-Person
+adminDescription: extended user Object for CSODBB user profile
+lDAPDisplayName: csodbbOrganizationalPerson
+systemOnly: FALSE
+defaultSecurityDescriptor:
+ D:S:
+objectClassCategory: 3
+distinguishedName: CN=CSODBB-Organizational-Person,CN=Schema,CN=Configuration,DC=X
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=Organizational-Person,CN=Schema,CN=Configuration,DC=X
+changetype: ntdsschemamodify
+add: auxiliaryClass
+auxiliaryClass: csodbbOrganizationalPerson
+-
+
+dn: CN=User,CN=Schema,CN=Configuration,DC=X
+changetype: ntdsschemamodify
+add: mayContain
+mayContain: csodbbGUID
+mayContain: csodbbPersonType
+mayContain: csodbbHouseID
+mayContain: csodbbSiteID
+mayContain: csodbbClassID
+mayContain: csodbbDOB
+mayContain: csodbbDOBString
+mayContain: csodbbSex
+mayContain: csodbbYear
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+

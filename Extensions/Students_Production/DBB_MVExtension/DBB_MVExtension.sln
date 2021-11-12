@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBB_MVExtension", "DBB_MVExtension\DBB_MVExtension.csproj", "{52F6F02D-5E10-44C2-93D8-7F6D8DC92A46}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52F6F02D-5E10-44C2-93D8-7F6D8DC92A46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52F6F02D-5E10-44C2-93D8-7F6D8DC92A46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52F6F02D-5E10-44C2-93D8-7F6D8DC92A46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52F6F02D-5E10-44C2-93D8-7F6D8DC92A46}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

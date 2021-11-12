@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TransformXML.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="XmlFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">D:\Scripts\FIM.ScriptBox\FIM Object Visualizer\Reports\Data\</Value>
+    </Setting>
+    <Setting Name="XslFileName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">*.xsl*</Value>
+    </Setting>
+    <Setting Name="XslFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">D:\Scripts\FIM.ScriptBox\FIM Object Visualizer\Reports\</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

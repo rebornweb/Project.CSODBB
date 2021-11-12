@@ -1,0 +1,7 @@
+<SynchronizationRule>
+    <ConnectedSystemScope />
+    <OutboundScope />
+    <RelationshipCriteria><conditions><condition><ilmAttribute>csoADSCode</ilmAttribute><csAttribute>code</csAttribute></condition></conditions></RelationshipCriteria>
+    <InitialFlow />
+    <PersistentFlow><import-flow><src><attr>approver</attr></src><dest>description</dest><scoping /></import-flow><import-flow><src><attr>code</attr></src><dest>csoADSCode</dest><scoping /></import-flow><import-flow><src><attr>name</attr></src><dest>displayName</dest><scoping /><fn id="ReplaceString" isCustomExpression="false"><arg>name</arg><arg>"'"</arg><arg>""</arg></fn></import-flow><import-flow><src><attr>parentCodeCanonical</attr></src><dest>csoCanonicalCode</dest><scoping /></import-flow><import-flow><src><attr>parentDn</attr></src><dest>csoParentRole</dest><scoping /></import-flow><import-flow><src><attr>parentNameCanonical</attr></src><dest>csoCanonicalName</dest><scoping /></import-flow><import-flow><src><attr>rollUpDn</attr></src><dest>csoRollUpRole</dest><scoping /></import-flow><import-flow><src><attr>siteDN</attr></src><dest>csoSite</dest><scoping /></import-flow><import-flow><src><attr>isActive</attr></src><dest>csoIsActive</dest><scoping /></import-flow><import-flow><src><attr>isRollup</attr></src><dest>csoIsRollup</dest><scoping /></import-flow><import-flow><src><attr>inheritOwner</attr></src><dest>csoInheritOwner</dest><scoping /></import-flow></PersistentFlow>
+</SynchronizationRule>

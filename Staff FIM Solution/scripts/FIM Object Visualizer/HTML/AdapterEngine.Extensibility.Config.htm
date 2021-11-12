@@ -1,0 +1,516 @@
+<html>
+<head>
+<title>Identity Broker - Adapters</title>
+</head>
+<body>
+
+
+<TABLE style="BORDER-BOTTOM: rgb(212,208,200) 1px solid; BORDER-LEFT: rgb(212,208,200) 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-COLLAPSE: collapse; FONT-FAMILY: Tahoma; FONT-SIZE: 11px; BORDER-TOP: rgb(212,208,200) 1px solid; BORDER-RIGHT: rgb(212,208,200) 1px solid; PADDING-TOP: 0px" id=tdata xmlns:ms="urn:schemas-microsoft-com:xslt" xmlns:dsml="http://www.dsml.org/DSML"><TBODY>
+<TR>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=4><A name=top></A>Identity Broker 3.0 - Adapter Definitions</TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=4>
+<UL>
+<LI><A href="#Adapter:PHRIS HR:Department Adapter">PHRIS HR:Department Adapter</A></LI>
+<LI><A href="#Adapter:PHRIS HR:Grade Adapter">PHRIS HR:Grade Adapter</A></LI>
+<LI><A href="#Adapter:PHRIS HR:Job Adapter">PHRIS HR:Job Adapter</A></LI>
+<LI><A href="#Adapter:PHRIS HR:Person Adapter">PHRIS HR:Person Adapter</A></LI>
+<LI><A href="#Adapter:PHRIS HR:Person Email Adapter">PHRIS HR:Person Email Adapter</A></LI>
+<LI><A href="#Adapter:SAS2IDM Adapter:SAS2IDM Adapter">SAS2IDM Adapter:SAS2IDM Adapter</A></LI>
+<LI><A href="#Adapter:SAS2IDM Adapter:SAS2IDM Google Contact Adapter">SAS2IDM Adapter:SAS2IDM Google Contact Adapter</A></LI></UL></TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=3><A name="#Adapter:PHRIS HR:Department Adapter"></A>PHRIS HR:Department Adapter</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>Composite</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Class</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>department</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Base Connector</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>PeopleSoft Department Connector</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DN Template</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>CN={DeptId},OU=Departments</TH></TR></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=3><A name="#Adapter:PHRIS HR:Grade Adapter"></A>PHRIS HR:Grade Adapter</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>Composite</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Class</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>grade</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Base Connector</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>PeopleSoft Grade Connector</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DN Template</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>CN={Grade},OU=Grades,CN={SalAdminPlan},OU=Plans</TH></TR></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=3><A name="#Adapter:PHRIS HR:Job Adapter"></A>PHRIS HR:Job Adapter</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>Composite</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Class</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>job</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Base Connector</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>PeopleSoft Job Connector</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DN Template</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>CN={EmplRcd},CN={EmplId},OU=People</TH></TR></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"></TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=3></TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Reference target</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=3>JobGrade</TD></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>Relational.Composite</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship connector</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>PeopleSoft Grade Connector</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Relationships</TD>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Input Key </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Relationship Key </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>SalAdminPlan</TD>
+<TD>SalAdminPlan</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>Grade</TD>
+<TD>Grade</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Reference target</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=3>User</TD></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>Relational.dn</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Input key</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>EmplId</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship connector</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>PeopleSoft Employee Connector</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship key</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>EmplId</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DN - User</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>CN={EmplId},OU=People</TH></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Reference target</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=3>Manager</TD></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>Relational.dn</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Input key</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>SupervisorId</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship connector</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>PeopleSoft Employee Connector</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship key</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>EmplId</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DN - Manager</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>CN={EmplId},OU=People</TH></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Reference target</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=3>Department</TD></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>Relational.dn</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Input key</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>DeptId</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship connector</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>PeopleSoft Department Connector</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship key</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>DeptId</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DN - Department</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>CN={DeptId},OU=Departments</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=3><A name="#Adapter:PHRIS HR:Person Adapter"></A>PHRIS HR:Person Adapter</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>Composite</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Class</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>person</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Base Connector</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>PeopleSoft Employee Connector</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DN Template</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>CN={EmplId},OU=People</TH></TR></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"></TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=3></TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">ConstantValue</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=3>SmallDate</TD></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Value Type</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>Date</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Value</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>1900-01-01T10:00:00.000</TH></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">ConstantValue</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=3>BigDate</TD></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Value Type</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>Date</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Value</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>3999-12-30T10:00:00.000</TH></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Reference group target</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=3>jobs</TD></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>Relation.Group</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship connector</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>PeopleSoft Job Connector</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Input key</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>EmplId</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relation key</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>EmplId</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DN - jobs</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>CN={EmplRcd},CN={EmplId},OU=People</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relation reference</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>EmplRcd</TH></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Reference group target</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=3>Departments</TD></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>Relation.Group.Composite.Filter.String</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship connector</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>PeopleSoft Job Connector</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship filter key</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>HrStatus</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship filter key values</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>A</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DN - Departments</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>CN={DeptId},OU=Departments</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Relationships</TD>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Input Key </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Relationship Key </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>EmplId</TD>
+<TD>EmplId</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Reference group target</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=3>AllDepartments</TD></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>Relation.Group.dn</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship connector</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>PeopleSoft Job Connector</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Input key</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>EmplId</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relation key</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>EmplId</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DN - AllDepartments</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>CN={DeptId},OU=Departments</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relation reference</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>DeptId</TH></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Reference target</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=3>Multiple mappings</TD></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>Relational</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Input key</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>EmplId</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship connector</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>PeopleSoft EmployeeNid Connector</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Column Mappings</TD>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Source </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Target </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>NationalId</TD>
+<TD>NationalId</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Reference target</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=3>Multiple mappings</TD></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>Relational.Compare.String</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Input key</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>EmplId</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship connector</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>PeopleSoft Email Connector</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship key</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>EmplId</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Priority key</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>EmailType</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Priority key values</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>BUS</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Column Mappings</TD>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Source </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Target </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>EmailId</TD>
+<TD>Email</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Reference target</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=3>Multiple mappings</TD></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>Relational.Compare.String</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Input key</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>EmplId</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship connector</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>PeopleSoft Job Connector</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship key</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>EmplId</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Priority key</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>JobIndicator</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Priority key values</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>P</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Column Mappings</TD>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Source </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Target </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>Grade</TD>
+<TD>Grade</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>SalAdminPlan</TD>
+<TD>SalAdminPlan</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>SupervisorId</TD>
+<TD>SupervisorId</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>DeptId</TD>
+<TD>DeptId</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Reference target</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=3>Grades</TD></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>Relational.Composite</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship connector</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>PeopleSoft Grade Connector</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Relationships</TD>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Input Key </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Relationship Key </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>SalAdminPlan</TD>
+<TD>SalAdminPlan</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>Grade</TD>
+<TD>Grade</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Reference target</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=3>Multiple mappings</TD></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>Relational.Composite</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship connector</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>PeopleSoft Grade Connector</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Relationships</TD>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Input Key </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Relationship Key </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>SalAdminPlan</TD>
+<TD>SalAdminPlan</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>Grade</TD>
+<TD>Grade</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Column Mappings</TD>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Source </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Target </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>Description</TD>
+<TD>PrimJobTitle</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Reference target</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=3>Manager</TD></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>Relational.dn</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Input key</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>SupervisorId</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship connector</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>PeopleSoft Employee Connector</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Relationship key</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>EmplId</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DN - Manager</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>CN={EmplId},OU=People</TH></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">TimeOffset</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=3>BirthDateAdj</TD></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Source column</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>BirthDate</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Offset</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>PT0S</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Adjust for local</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>true</TH></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Join Relationships</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Input Key </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Relationship Key </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>EmplId</TD>
+<TD>EmplId</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Join Column Mappings</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Source </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Target </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>HrStatus</TD>
+<TD>HrStatus</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>ExpectedEndDate</TD>
+<TD>ExpectedEndDate</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Join Relationships</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Input Key </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Relationship Key </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>EmplId</TD>
+<TD>EmplId</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Join Column Mappings</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Source </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Target </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>HrStatus</TD>
+<TD>NextHrStatus</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>Effdt</TD>
+<TD>NextEffdt</TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=3><A name="#Adapter:PHRIS HR:Person Email Adapter"></A>PHRIS HR:Person Email Adapter</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>Composite</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Class</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>personEmail</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Base Connector</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>PeopleSoft Email Connector</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DN Template</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>CN={EmailType},CN={EmplId},OU=People</TH></TR></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"></TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=3></TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Column Mappings</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Source </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Target </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc"></TD>
+<TD>Class</TD>
+<TD>EmailClass</TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=3><A name="#Adapter:SAS2IDM Adapter:SAS2IDM Adapter"></A>SAS2IDM Adapter:SAS2IDM Adapter</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>Composite</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Class</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>person</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Base Connector</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>SAS2IDM Broker</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DN Template</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc colSpan=3>UID={UniversalIdentificationNumber},OU=People</TH></TR></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=3><A name="#Adapter:SAS2IDM Adapter:SAS2IDM Google Contact Adapter"></A>SAS2IDM Adapter:SAS2IDM Google Contact Adapter</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>Composite</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Class</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>contact</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Base Connector</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>SAS2IDM Google Contacts</TH></TR>
+<TR vAlign=top xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DN Template</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=3>UID={contactID},OU=Contacts</TH></TR></TR></TBODY></TABLE>
+
+</body>
+</html>

@@ -1,0 +1,158 @@
+<saved-ma-configuration server='OCCCP-AS002' export-date='2009-09-10 05:35:07.713'>
+<!--WARNING>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+!! The contents of this file should not be edited.
+!! Any such modifications to this file may result in errors during import.
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+</WARNING-->
+<ma-data>
+ <format-version>1</format-version>
+ <id>{CEFA41F2-62E7-4998-90F1-43B3624731AA}</id>
+ <name>NASS</name>
+ <category>MSSQL</category>
+ <subtype/>
+ <ma-listname/>
+ <ma-companyname/>
+ <creation-time>2008-12-24 05:00:40.577</creation-time>
+ <last-modification-time>2009-08-17 07:50:02.883</last-modification-time>
+ <version>31</version>
+ <internal-version>0</internal-version>
+ <password-sync-allowed>0</password-sync-allowed>
+ <schema>
+  <dsml:dsml xmlns:dsml="http://www.dsml.org/DSML" xmlns:ms-dsml="http://www.microsoft.com/MMS/DSML"><dsml:directory-schema ms-dsml:no-objectclass-validation="true"><dsml:class id="group" type="structural"><dsml:name>group</dsml:name><dsml:attribute ref="#ID" required="false" /><dsml:attribute ref="#EmployeeNumber" required="false" /><dsml:attribute ref="#GivenName" required="false" /><dsml:attribute ref="#Surname" required="false" /><dsml:attribute ref="#Gender" required="false" /><dsml:attribute ref="#Title" required="false" /><dsml:attribute ref="#MobileNumber" required="false" /><dsml:attribute ref="#ContactNumber" required="false" /><dsml:attribute ref="#Email" required="false" /><dsml:attribute ref="#EmailAccess" required="false" /><dsml:attribute ref="#EmploymentTypeName" required="false" /><dsml:attribute ref="#DepartmentName" required="false" /><dsml:attribute ref="#DOB" required="false" /><dsml:attribute ref="#PreferredName" required="false" /><dsml:attribute ref="#OrganisationName" required="false" /><dsml:attribute ref="#ContractStartDate" required="false" /><dsml:attribute ref="#ContractEndDate" required="false" /><dsml:attribute ref="#PositionTitle" required="false" /><dsml:attribute ref="#PositionLocation" required="false" /><dsml:attribute ref="#DaysToContractEnd" required="false" /><dsml:attribute ref="#EmployeeStatus" required="false" /><dsml:attribute ref="#ContractID" required="false" /><dsml:attribute ref="#CapsPin" required="false" /><dsml:attribute ref="#OrganisationID" required="false" /><dsml:attribute ref="#EmployeeID" required="false" /><dsml:attribute ref="#ADSCode" required="false" /><dsml:attribute ref="#ADSDescription" required="false" /><dsml:attribute ref="#group" required="false" /><dsml:attribute ref="#person" required="false" /><dsml:attribute ref="#export_password" required="false" /></dsml:class><dsml:class id="person" type="structural"><dsml:name>person</dsml:name><dsml:attribute ref="#ID" required="false" /><dsml:attribute ref="#EmployeeNumber" required="false" /><dsml:attribute ref="#GivenName" required="false" /><dsml:attribute ref="#Surname" required="false" /><dsml:attribute ref="#Gender" required="false" /><dsml:attribute ref="#Title" required="false" /><dsml:attribute ref="#MobileNumber" required="false" /><dsml:attribute ref="#ContactNumber" required="false" /><dsml:attribute ref="#Email" required="false" /><dsml:attribute ref="#EmailAccess" required="false" /><dsml:attribute ref="#EmploymentTypeName" required="false" /><dsml:attribute ref="#DepartmentName" required="false" /><dsml:attribute ref="#DOB" required="false" /><dsml:attribute ref="#PreferredName" required="false" /><dsml:attribute ref="#OrganisationName" required="false" /><dsml:attribute ref="#ContractStartDate" required="false" /><dsml:attribute ref="#ContractEndDate" required="false" /><dsml:attribute ref="#PositionTitle" required="false" /><dsml:attribute ref="#PositionLocation" required="false" /><dsml:attribute ref="#DaysToContractEnd" required="false" /><dsml:attribute ref="#EmployeeStatus" required="false" /><dsml:attribute ref="#ContractID" required="false" /><dsml:attribute ref="#CapsPin" required="false" /><dsml:attribute ref="#OrganisationID" required="false" /><dsml:attribute ref="#EmployeeID" required="false" /><dsml:attribute ref="#ADSCode" required="false" /><dsml:attribute ref="#ADSDescription" required="false" /><dsml:attribute ref="#group" required="false" /><dsml:attribute ref="#person" required="false" /><dsml:attribute ref="#export_password" required="false" /></dsml:class><dsml:attribute-type id="ID" single-value="true" ms-dsml:immutable="true" ms-dsml:range-upper="50"><dsml:name>ID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EmployeeNumber" single-value="true" ms-dsml:range-upper="7"><dsml:name>EmployeeNumber</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="GivenName" single-value="true" ms-dsml:range-upper="100"><dsml:name>GivenName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Surname" single-value="true" ms-dsml:range-upper="100"><dsml:name>Surname</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Gender" single-value="true" ms-dsml:range-upper="50"><dsml:name>Gender</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Title" single-value="true" ms-dsml:range-upper="50"><dsml:name>Title</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="MobileNumber" single-value="true" ms-dsml:range-upper="50"><dsml:name>MobileNumber</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ContactNumber" single-value="true" ms-dsml:range-upper="50"><dsml:name>ContactNumber</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Email" single-value="true" ms-dsml:range-upper="50"><dsml:name>Email</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EmailAccess" single-value="true"><dsml:name>EmailAccess</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.7</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EmploymentTypeName" single-value="true" ms-dsml:range-upper="100"><dsml:name>EmploymentTypeName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="DepartmentName" single-value="true" ms-dsml:range-upper="100"><dsml:name>DepartmentName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="DOB" single-value="true" ms-dsml:range-upper="16"><dsml:name>DOB</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PreferredName" single-value="true" ms-dsml:range-upper="100"><dsml:name>PreferredName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="OrganisationName" single-value="true" ms-dsml:range-upper="100"><dsml:name>OrganisationName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ContractStartDate" single-value="true" ms-dsml:range-upper="16"><dsml:name>ContractStartDate</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ContractEndDate" single-value="true" ms-dsml:range-upper="16"><dsml:name>ContractEndDate</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PositionTitle" single-value="true" ms-dsml:range-upper="100"><dsml:name>PositionTitle</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PositionLocation" single-value="true" ms-dsml:range-upper="100"><dsml:name>PositionLocation</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="DaysToContractEnd" single-value="true" ms-dsml:range-upper="2147483647" ms-dsml:range-lower="-2147483648"><dsml:name>DaysToContractEnd</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.27</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EmployeeStatus" single-value="true" ms-dsml:range-upper="50"><dsml:name>EmployeeStatus</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ContractID" single-value="true" ms-dsml:range-upper="2147483647" ms-dsml:range-lower="-2147483648"><dsml:name>ContractID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.27</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="CapsPin" single-value="true" ms-dsml:range-upper="11"><dsml:name>CapsPin</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="OrganisationID" single-value="true" ms-dsml:range-upper="2147483647" ms-dsml:range-lower="-2147483648"><dsml:name>OrganisationID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.27</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EmployeeID" single-value="true" ms-dsml:range-upper="2147483647" ms-dsml:range-lower="-2147483648"><dsml:name>EmployeeID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.27</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ADSCode" single-value="true" ms-dsml:range-upper="50"><dsml:name>ADSCode</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ADSDescription" single-value="true" ms-dsml:range-upper="256"><dsml:name>ADSDescription</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="group" single-value="false"><dsml:name>group</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="person" single-value="false"><dsml:name>person</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="export_password" single-value="true" ms-dsml:encrypted="true" ms-dsml:export-only="true"><dsml:name>export_password</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type></dsml:directory-schema></dsml:dsml>
+ </schema>
+ <attribute-inclusion><attribute>ID</attribute><attribute>EmployeeNumber</attribute><attribute>GivenName</attribute><attribute>Surname</attribute><attribute>Gender</attribute><attribute>Title</attribute><attribute>MobileNumber</attribute><attribute>ContactNumber</attribute><attribute>Email</attribute><attribute>EmailAccess</attribute><attribute>EmploymentTypeName</attribute><attribute>DepartmentName</attribute><attribute>DOB</attribute><attribute>PreferredName</attribute><attribute>OrganisationName</attribute><attribute>ContractStartDate</attribute><attribute>ContractEndDate</attribute><attribute>PositionTitle</attribute><attribute>PositionLocation</attribute><attribute>DaysToContractEnd</attribute><attribute>EmployeeStatus</attribute><attribute>ContractID</attribute><attribute>CapsPin</attribute><attribute>OrganisationID</attribute><attribute>EmployeeID</attribute><attribute>ADSCode</attribute><attribute>ADSDescription</attribute><attribute>group</attribute><attribute>person</attribute><attribute>export_password</attribute></attribute-inclusion>
+ <stay-disconnector />
+ <join><join-profile cd-object-type="group"><join-criterion id="{515C789A-2491-4DE4-ABCB-BE772E41D9DD}"><search mv-object-type="dbbGroup"><attribute-mapping mv-attribute="dbbADSCode"><direct-mapping><src-attribute>ID</src-attribute></direct-mapping></attribute-mapping></search><resolution type="none"><script-context></script-context></resolution></join-criterion></join-profile><join-profile cd-object-type="person"><join-criterion id="{19D37884-BE38-4FE5-AB44-744936219DF6}"><search mv-object-type="dbbStaff"><attribute-mapping mv-attribute="employeeID"><scripted-mapping><script-context>cd.person#3:CapsPin-&gt;employeeID</script-context><src-attribute>CapsPin</src-attribute></scripted-mapping></attribute-mapping></search><resolution type="none"><script-context></script-context></resolution></join-criterion><join-criterion id="{5885DEBC-61B4-432A-8DE9-A4C1CB1D6B76}"><search mv-object-type="dbbStaff"><attribute-mapping mv-attribute="employeeID"><scripted-mapping><script-context>cd.person#3:ID-&gt;employeeID</script-context><src-attribute>ID</src-attribute></scripted-mapping></attribute-mapping></search><resolution type="none"><script-context></script-context></resolution></join-criterion></join-profile></join>
+ <projection><class-mapping type="declared" id="{6B4C2C87-40E4-4146-AA30-8791C1B506EE}" cd-object-type="group"><mv-object-type>dbbGroup</mv-object-type></class-mapping><class-mapping type="scripted" id="{05C82740-2D37-4CDB-92CE-90FCB0C71BE1}" cd-object-type="person"></class-mapping></projection>
+ <export-attribute-flow />
+ <provisioning-cleanup type="declared"><action>make-normal-disconnector</action></provisioning-cleanup>
+ <extension><assembly-name>BOPS2RE.dll</assembly-name><application-protection>low</application-protection></extension>
+ <controller-configuration>
+ <application-protection>low</application-protection>
+ <impersonation>
+  <domain>dbb</domain>
+  <user>svcma_sql</user>
+ </impersonation>
+</controller-configuration>
+
+ <description>person and group objects derived from Employee and Contact data with ADSCode membership (formerly BOPS2)</description>
+ <ma-ui-settings><account-joiner-queries><attributes><cs><attribute name="ADSCode" header="ADSCode" size="100" /><attribute name="ADSDescription" header="ADSDescription" size="100" /><attribute name="member" header="member" size="100" /></cs><mv></mv></attributes><filters max_mv_search_results=""></filters></account-joiner-queries></ma-ui-settings>
+ <private-configuration>
+  <oledbma-configuration><connection-info><authentication>integrated</authentication><provider>SQLOLEDB</provider><server>OCCCP-DB003</server><databasename>BOPS2DB</databasename><tablename>[dbo].[vw_idmBOPSObjects]</tablename><delta-tablename>dbo.vw_idmBOPSObjectsChanges</delta-tablename><multivalued-tablename>[dbo].[vw_idmBOPSMultivalueObjects]</multivalued-tablename><user>svcma_sql</user><domain>dbb</domain></connection-info><mms-info><column-info><column><name>ObjectType</name><data-type>DBTYPE_STR</data-type><length>6</length><isnullable>0</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>1</exp-conv-flag></column><column><name>ID</name><data-type>DBTYPE_WSTR</data-type><length>50</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>EmployeeNumber</name><data-type>DBTYPE_WSTR</data-type><length>7</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>1</exp-conv-flag></column><column><name>GivenName</name><data-type>DBTYPE_WSTR</data-type><length>100</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>Surname</name><data-type>DBTYPE_WSTR</data-type><length>100</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>Gender</name><data-type>DBTYPE_WSTR</data-type><length>50</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>Title</name><data-type>DBTYPE_WSTR</data-type><length>50</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>MobileNumber</name><data-type>DBTYPE_WSTR</data-type><length>50</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>ContactNumber</name><data-type>DBTYPE_WSTR</data-type><length>50</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>Email</name><data-type>DBTYPE_WSTR</data-type><length>50</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>EmailAccess</name><data-type>DBTYPE_BOOL</data-type><length>2</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>Bool</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>EmploymentTypeName</name><data-type>DBTYPE_WSTR</data-type><length>100</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>DepartmentName</name><data-type>DBTYPE_WSTR</data-type><length>100</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>DOB</name><data-type>DBTYPE_DBTIMESTAMP</data-type><length>16</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>PreferredName</name><data-type>DBTYPE_WSTR</data-type><length>100</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>OrganisationName</name><data-type>DBTYPE_WSTR</data-type><length>100</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>1</exp-conv-flag></column><column><name>ContractStartDate</name><data-type>DBTYPE_DBTIMESTAMP</data-type><length>16</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>ContractEndDate</name><data-type>DBTYPE_DBTIMESTAMP</data-type><length>16</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>PositionTitle</name><data-type>DBTYPE_WSTR</data-type><length>100</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>PositionLocation</name><data-type>DBTYPE_WSTR</data-type><length>100</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>DaysToContractEnd</name><data-type>DBTYPE_I4</data-type><length>4</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>Number</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>EmployeeStatus</name><data-type>DBTYPE_WSTR</data-type><length>50</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>ContractID</name><data-type>DBTYPE_I4</data-type><length>4</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>Number</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>CapsPin</name><data-type>DBTYPE_WSTR</data-type><length>11</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>OrganisationID</name><data-type>DBTYPE_I4</data-type><length>4</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>Number</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>EmployeeID</name><data-type>DBTYPE_I4</data-type><length>4</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>Number</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>ADSCode</name><data-type>DBTYPE_WSTR</data-type><length>50</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>ADSDescription</name><data-type>DBTYPE_WSTR</data-type><length>256</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><primary-key></primary-key></column-info><multivalued-info><extra-columns><column><name>ID</name><data-type>DBTYPE_WSTR</data-type><length>50</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type></column><column><name>ObjectType</name><data-type>DBTYPE_STR</data-type><length>6</length><isnullable>0</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type></column><column><name>StringValue</name><data-type>DBTYPE_WSTR</data-type><length>50</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type></column></extra-columns><multivalued-columns><column><name>group</name><mms-type>String</mms-type><islongcolumn>0</islongcolumn><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>person</name><mms-type dn="1">String</mms-type><islongcolumn>0</islongcolumn><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column></multivalued-columns><attribute-column>ObjectType</attribute-column><string-column>StringValue</string-column></multivalued-info><anchor><attribute>ID</attribute></anchor><object-type-info><object-type-column>ObjectType</object-type-column><object-types><object-type>group</object-type><object-type>person</object-type></object-types></object-type-info><delta-info><extra-columns><column><name>changeIndicator</name><data-type>DBTYPE_STR</data-type><length>1</length><isnullable>0</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type></column></extra-columns><change-column>changeIndicator</change-column><update>U</update><add>I</add><delete>D</delete></delta-info></mms-info><password-extension-config><password-extension-enabled>0</password-extension-enabled><dll></dll><password-set-enabled></password-set-enabled><password-change-enabled></password-change-enabled><connection-info><connect-to></connect-to><user></user></connection-info><timeout></timeout></password-extension-config></oledbma-configuration>
+ </private-configuration>
+ <ma-partition-data>
+ <partition>
+  <id>{56BB9E4E-BAE2-4811-A550-F148746AFB97}</id>
+  <name>default</name>
+  <creation-time>2008-12-24 05:00:40.577</creation-time>
+  <last-modification-time>2009-08-17 07:50:02.853</last-modification-time>
+  <version>37</version>
+  <selected>1</selected>
+  <filter>
+   <object-classes>
+    <object-class>group</object-class>
+    <object-class>person</object-class>
+   </object-classes>
+   <containers>
+    <exclusions/>
+    <inclusions>
+     <inclusion></inclusion>
+    </inclusions>
+   </containers>
+  </filter>
+  <allowed-operations>7</allowed-operations>
+  <current>
+   <batch-number>1</batch-number>
+   <sequence-number>0</sequence-number>
+  </current>
+  <last-successful-batch>0</last-successful-batch>
+  <filter-hints>
+   <object-classes>
+    <object-class>
+     <name>group</name>
+     <hierarchy>
+      <object-class>group</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+    <object-class>
+     <name>person</name>
+     <hierarchy>
+      <object-class>person</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+   </object-classes>
+  </filter-hints>
+ </partition>
+</ma-partition-data>
+
+ <ma-run-data>
+ <run-configuration>
+  <id>{F142D935-D1ED-43E5-B41B-5EC7CD74BFE8}</id>
+  <name>Delta Import</name>
+  <creation-time>2009-01-12 07:25:15.533</creation-time>
+  <version>2</version>
+  <last-modification-time>2009-03-13 05:27:09.137</last-modification-time>
+  <configuration><step><step-type type="delta-import"><import-subtype>to-cs</import-subtype></step-type><threshold></threshold><partition>{56BB9E4E-BAE2-4811-A550-F148746AFB97}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{25F9E097-3574-4492-8EA7-4C1804BD23F3}</id>
+  <name>Delta Import Delta Sync</name>
+  <creation-time>2009-01-12 07:25:25.907</creation-time>
+  <version>2</version>
+  <last-modification-time>2009-03-13 05:27:09.137</last-modification-time>
+  <configuration><step><step-type type="delta-import"></step-type><threshold></threshold><partition>{56BB9E4E-BAE2-4811-A550-F148746AFB97}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{F3A14954-C685-44B4-8F08-0F32C25B6A57}</id>
+  <name>Delta Sync</name>
+  <creation-time>2009-01-05 08:15:26.763</creation-time>
+  <version>2</version>
+  <last-modification-time>2009-03-13 05:27:09.137</last-modification-time>
+  <configuration><step><step-type type="apply-rules"><apply-rules-subtype>apply-pending</apply-rules-subtype></step-type><threshold></threshold><partition>{56BB9E4E-BAE2-4811-A550-F148746AFB97}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{B4CB6AFA-C3B2-4CA8-8C4F-9BFE626B2C70}</id>
+  <name>Full Import</name>
+  <creation-time>2009-01-11 23:49:04.647</creation-time>
+  <version>2</version>
+  <last-modification-time>2009-03-13 05:27:09.150</last-modification-time>
+  <configuration><step><step-type type="full-import"><import-subtype>to-cs</import-subtype></step-type><threshold></threshold><partition>{56BB9E4E-BAE2-4811-A550-F148746AFB97}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{84170C3A-A2A8-4128-BA3A-28C7681B3DEB}</id>
+  <name>Full Import Delta Sync</name>
+  <creation-time>2008-12-24 05:00:40.623</creation-time>
+  <version>2</version>
+  <last-modification-time>2009-03-13 05:27:09.150</last-modification-time>
+  <configuration><step><step-type type="full-import"></step-type><threshold></threshold><partition>{56BB9E4E-BAE2-4811-A550-F148746AFB97}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{774E3651-6521-4AA6-8FC6-86276C5CC69F}</id>
+  <name>Full Import Full Sync</name>
+  <creation-time>2008-12-24 05:00:40.623</creation-time>
+  <version>2</version>
+  <last-modification-time>2009-03-13 05:27:09.150</last-modification-time>
+  <configuration><step><step-type type="full-import-reevaluate-rules"></step-type><threshold></threshold><partition>{56BB9E4E-BAE2-4811-A550-F148746AFB97}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{92A4AED5-EB17-4A40-9F08-C612494C0CBF}</id>
+  <name>Full Sync</name>
+  <creation-time>2008-12-24 05:00:40.623</creation-time>
+  <version>2</version>
+  <last-modification-time>2009-03-13 05:27:09.150</last-modification-time>
+  <configuration><step><step-type type="apply-rules"><apply-rules-subtype>reevaluate-flow-connectors</apply-rules-subtype></step-type><threshold></threshold><partition>{56BB9E4E-BAE2-4811-A550-F148746AFB97}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+</ma-run-data>
+
+ <capabilities-mask>bc05</capabilities-mask>
+ <export-type>2</export-type>
+ <dn-construction><attribute>ID</attribute></dn-construction>
+ <password-sync><maximum-retry-count>10</maximum-retry-count><retry-interval>60</retry-interval><allow-low-security>0</allow-low-security></password-sync>
+</ma-data>
+
+</saved-ma-configuration>

@@ -1,0 +1,1873 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configurationSection type="GLOBAL">
+    <configurationItem name="id">GLOBAL.SETTINGS</configurationItem>
+    <configurationItem name="name">GLOBAL.SETTINGS</configurationItem>
+    <configurationItem name="description">Global Settings</configurationItem>
+    <configurationItem name="version">3.2.0</configurationItem>
+    <configurationItem name="encryptionKey">4Vv3+NcbDa1YQTMDcyuXSK1HW+b8VjJAzz7qbmTZf0D30IVXoK1d4QkJX/OtJs4q5o+ZGb2xaBAmWfQP+RNocA==</configurationItem>
+    <configurationItem name="encryptionAlgorithm">AES2/CBC/PKCS#7</configurationItem>
+  </configurationSection>
+  <configurationSection type="VIS">
+    <configurationItem name="id">8a0d7301-eeae-4428-b271-ba39931b85f2</configurationItem>
+    <configurationItem name="name">VIS Main Instance</configurationItem>
+    <configurationItem name="description">VIS Main Instance</configurationItem>
+    <configurationItem name="serviceName">VIS_Service</configurationItem>
+    <configurationItem name="directoryPartition">dc=dbb,dc=local</configurationItem>
+    <configurationItem name="enabled">True</configurationItem>
+    <configurationItem name="port">389</configurationItem>
+    <configurationItem name="sslPort">0</configurationItem>
+    <configurationItem name="certificateName" />
+    <configurationItem name="maxValRange">20000</configurationItem>
+    <configurationItem name="maxPageSize">1000</configurationItem>
+    <configurationItem name="maxConnIdleTime">93600</configurationItem>
+    <configurationItem name="dynamicGroupsEnabled">True</configurationItem>
+    <configurationItem name="staticGroupsEnabled">True</configurationItem>
+    <configurationItem name="virtualSchemaEnabled">False</configurationItem>
+    <configurationItem name="autoGroupsEnabled">True</configurationItem>
+    <configurationItem name="watchDogInterval">300</configurationItem>
+    <configurationItem name="emulatingVisaId">8bf7c7c0-b9a6-494f-bdc3-2c3aa2d7c9f3</configurationItem>
+    <configurationItem name="emulatingLdapSchemaFile" />
+    <configurationItem name="emulatingLdapDsaFile" />
+    <configurationItem name="emulatingLdapDLL" />
+    <configurationItem name="emulatingLdapType">ADS</configurationItem>
+    <configurationItem name="anonymousSearchesEnabled">False</configurationItem>
+    <configurationItem name="maxThreads">2400</configurationItem>
+    <configurationItem name="maxQueryDuration">120</configurationItem>
+    <configurationItem name="persistAggregateSchema">False</configurationItem>
+    <configurationSection type="VIS_ADMIN_GROUP">
+      <configurationItem name="id">8aa7a7a0-b9a6-494a-aaa3-2a3aa2a7a9a3</configurationItem>
+      <configurationItem name="name">VIS Admins Group</configurationItem>
+      <configurationItem name="description">VIS Admins Group</configurationItem>
+      <configurationItem name="enabled">True</configurationItem>
+      <configurationItem name="virtualDn">cn=sg-visadminsgroup,cn=vis static groups,ou=optimalidm,ou=visconfig,dc=dbb,dc=local</configurationItem>
+      <configurationSection type="ASSOCIATED_BIND_PROFILE">
+        <configurationItem name="id">9880cbd4-fc1a-4b59-9df0-6dbd84a3c83e</configurationItem>
+        <configurationItem name="name">AD - Admin Rights</configurationItem>
+        <configurationItem name="description">AD - Admin Rights</configurationItem>
+        <configurationItem name="enabled">True</configurationItem>
+        <configurationItem name="visaId">8bf7c7c0-b9a6-494f-bdc3-2c3aa2d7c9f3</configurationItem>
+        <configurationItem name="bindProfileId">98f503ce-d76f-4f57-9347-30285ece704c</configurationItem>
+      </configurationSection>
+      <configurationSection type="ASSOCIATED_BIND_PROFILE">
+        <configurationItem name="id">4f43b5d8-c686-4488-a4f2-406c8ca477ef</configurationItem>
+        <configurationItem name="name">VISConfig - Admin Rights</configurationItem>
+        <configurationItem name="description">VISConfig - Admin Rights</configurationItem>
+        <configurationItem name="enabled">True</configurationItem>
+        <configurationItem name="visaId">020edeaf-7620-4b15-97d5-dea2b63f22ea</configurationItem>
+        <configurationItem name="bindProfileId">c50051e1-1054-4d5d-a572-dac62f8fb6af</configurationItem>
+      </configurationSection>
+      <configurationSection type="ASSOCIATED_BIND_PROFILE">
+        <configurationItem name="id">2765443d-0ca0-409a-9715-4e23c4f162f2</configurationItem>
+        <configurationItem name="name">CSODBB - Admin Rights</configurationItem>
+        <configurationItem name="description">CSODBB - Admin Rights</configurationItem>
+        <configurationItem name="visaId">a641214b-e6d2-453d-9e36-367708512469</configurationItem>
+        <configurationItem name="bindProfileId">522b5465-e3e0-4bb8-b0bf-148880bfe2aa</configurationItem>
+        <configurationItem name="enabled">True</configurationItem>
+      </configurationSection>
+    </configurationSection>
+    <configurationSection type="DYNAMIC_GROUP_CACHE">
+      <configurationItem name="id">dfac6c36-a9c7-4959-bdf4-f23fc8114117</configurationItem>
+      <configurationItem name="name">Dynamic Group Cache</configurationItem>
+      <configurationItem name="description">Dynamic Group Cache</configurationItem>
+      <configurationItem name="enabled">False</configurationItem>
+      <configurationItem name="cacheType">Memory</configurationItem>
+      <configurationItem name="cacheLifetime">3600</configurationItem>
+      <configurationItem name="percentageOfMemory">5</configurationItem>
+      <configurationItem name="pollingInterval">300</configurationItem>
+    </configurationSection>
+    <configurationSection type="REQUEST_CACHE">
+      <configurationItem name="id">c0ce2602-8f74-42d8-8838-9d7c4eccdb13</configurationItem>
+      <configurationItem name="name">Search Request/Result Cache</configurationItem>
+      <configurationItem name="description">Search Request/Results Cache</configurationItem>
+      <configurationItem name="cacheLifetime">300</configurationItem>
+      <configurationItem name="cacheType">Memory</configurationItem>
+      <configurationItem name="percentageOfMemory">5</configurationItem>
+      <configurationItem name="pollingInterval">60</configurationItem>
+      <configurationItem name="enabled">False</configurationItem>
+    </configurationSection>
+    <configurationSection type="SID_TRANSLATION_CACHE">
+      <configurationItem name="id">a3dd3713-8f33-33d8-2232-9d7c4beedb66</configurationItem>
+      <configurationItem name="name">SID Translation Cache</configurationItem>
+      <configurationItem name="description">SID Translation Cache</configurationItem>
+      <configurationItem name="enabled">False</configurationItem>
+      <configurationItem name="cacheLifetime">3600</configurationItem>
+      <configurationItem name="cacheType">Memory</configurationItem>
+      <configurationItem name="percentageOfMemory">5</configurationItem>
+      <configurationItem name="pollingInterval">120</configurationItem>
+    </configurationSection>
+    <configurationSection type="VISA_SET">
+      <configurationItem name="id">d402c775-c380-4d2b-8db3-16e6c9960faa</configurationItem>
+      <configurationItem name="name">Primary VISA Set</configurationItem>
+      <configurationItem name="description">Primary VISA Set</configurationItem>
+      <configurationItem name="enabled">True</configurationItem>
+      <configurationSection type="JOIN_CACHE">
+        <configurationItem name="id">bc83b562-e991-48a3-8625-a2dd0af382fc</configurationItem>
+        <configurationItem name="name">Join Cache</configurationItem>
+        <configurationItem name="description">Join Cache</configurationItem>
+        <configurationItem name="enabled">True</configurationItem>
+        <configurationItem name="cacheType">Memory</configurationItem>
+        <configurationItem name="cacheLifetime">3600</configurationItem>
+        <configurationItem name="percentageOfMemory">5</configurationItem>
+        <configurationItem name="pollingInterval">300</configurationItem>
+      </configurationSection>
+      <configurationSection type="VISA">
+        <configurationItem name="id">8bf7c7c0-b9a6-494f-bdc3-2c3aa2d7c9f3</configurationItem>
+        <configurationItem name="name">DBB</configurationItem>
+        <configurationItem name="description">DBB</configurationItem>
+        <configurationItem name="enabled">True</configurationItem>
+        <configurationItem name="virtualDn">dc=dbb,dc=local</configurationItem>
+        <configurationItem name="physicalDn">DC=dbb,DC=local</configurationItem>
+        <configurationItem name="physicalConfigurationDn">DC=dbb,DC=local</configurationItem>
+        <configurationItem name="searchOrder">1</configurationItem>
+        <configurationItem name="systemVisa">False</configurationItem>
+        <configurationItem name="ldapType">ADS</configurationItem>
+        <configurationItem name="filter" />
+        <configurationItem name="className" />
+        <configurationItem name="dllName" />
+        <configurationItem name="flattenSearchResults">False</configurationItem>
+        <configurationItem name="schemaVisaId">8bf7c7c0-b9a6-494f-bdc3-2c3aa2d7c9f3</configurationItem>
+        <configurationItem name="isCriticalVisa">True</configurationItem>
+        <configurationItem name="overrideVirtualAttributes">False</configurationItem>
+        <configurationItem name="overridePrecedentAttributes">False</configurationItem>
+        <configurationItem name="fspTranslationEnabled">False</configurationItem>
+        <configurationItem name="dnFormatAttributes" />
+        <configurationSection type="VISA_CONNECTION">
+          <configurationItem name="id">3bb3cc2e-caa9-4adf-b312-26ddbe3a9cf6</configurationItem>
+          <configurationItem name="name">AD CONN 1</configurationItem>
+          <configurationItem name="description">AD CONN 1</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+          <configurationItem name="host">dbb.local</configurationItem>
+          <configurationItem name="port">389</configurationItem>
+          <configurationItem name="sslPort">636</configurationItem>
+          <configurationItem name="connectionOrder">1</configurationItem>
+          <configurationItem name="sslEnabled">False</configurationItem>
+          <configurationItem name="timeOut">60</configurationItem>
+          <configurationItem name="className" />
+          <configurationItem name="dllName" />
+        </configurationSection>
+        <configurationSection type="BIND_PROFILE">
+          <configurationItem name="id">98f503ce-d76f-4f57-9347-30285ece704c</configurationItem>
+          <configurationItem name="name">AD - Admin Rights</configurationItem>
+          <configurationItem name="description">AD - Admin Rights</configurationItem>
+          <configurationItem name="bindDn">dbb\svcvis</configurationItem>
+          <configurationItem name="ENCRYPTED-bindPwd">bw5IxJGoGW9oL37f173UNlFHT7MEUi1WW+TOoBkigQ0=</configurationItem>
+          <configurationItem name="ldapAuthNType">Negotiate</configurationItem>
+          <configurationItem name="initialConnectionPoolSize">2</configurationItem>
+          <configurationItem name="maxConnectionPoolSize">20</configurationItem>
+          <configurationItem name="adminProfile">True</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+          <configurationItem name="databaseConnectionString" />
+        </configurationSection>
+        <configurationItem name="domainNames">DBB</configurationItem>
+        <configurationItem name="upnSuffixes">dbb.local</configurationItem>
+        <!--[VISA_CONNECTION]-->
+        <!--********************************************************************-->
+        <!--*  VISA_CONNECTION configurationSections define the connection     *-->
+        <!--*  information required for the VISA to connect to its backend     *-->
+        <!--*  LDAP.                                                           *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple VISA_CONNECTIONs can be defined for failover           *-->
+        <!--*  functionality.                                       .          *-->
+        <!--*                                                                  *-->
+        <!--*  The order in which a VISA_CONNECTION is used is base its        *-->
+        <!--*  connectionOrder, which is evaluated in an ascending mannor.     *-->
+        <!--*                                                                  *-->
+        <!--*  If more than one VISA_CONNECTION has the same connectionOrder   *-->
+        <!--*  their relative order is based on their location in the XML      *-->
+        <!--*  Configurqation file.  The order is based on a top-down order.   *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   host - LDAP server host name.                                  *-->
+        <!--*                                                                  *-->
+        <!--*   port - The TCP/IP port of the LDAP server for LDAP request.    *-->
+        <!--*                                                                  *-->
+        <!--*   sslPort - The TCP/IP port of the LDAP server for LDAPS         *-->
+        <!--*        requests.                                                 *-->
+        <!--*                                                                  *-->
+        <!--*   sslEnabled - Specifies if LDAPS (SSL) should be used for LDAP  *-->
+        <!--*        communication.                                            *-->
+        <!--*                                                                  *-->
+        <!--*   connectionOrder - Specifies the connection order for this      *-->
+        <!--*        VISA_CONNECTION.  The order in which a VISA_CONNECTION is *-->
+        <!--*        used is base its connectionOrder, which is evaluated in   *-->
+        <!--*         an ascending mannor.                                     *-->
+        <!--*                                                                  *-->
+        <!--*   dllName - Specifies the full path/filename of .NET DLL         *-->
+        <!--*        to be used for a 'custom' extensible VISA.                *-->
+        <!--*                                                                  *-->
+        <!--*   className - Specifies the .NET Class Name to be used for a     *-->
+        <!--*        'custom' extensible VISA.                                 *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="VISA_CONNECTION">
+          <configurationItem name="id">dfe593fa-e49b-42ae-9441-66d07f1979ac</configurationItem>
+          <configurationItem name="name">AD CONN 2</configurationItem>
+          <configurationItem name="description">AD CONN 2</configurationItem>
+          <configurationItem name="className" />
+          <configurationItem name="connectionOrder">2</configurationItem>
+          <configurationItem name="dllName" />
+          <configurationItem name="sslEnabled">False</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+          <configurationItem name="timeOut">60</configurationItem>
+          <configurationItem name="host">dbb.local</configurationItem>
+          <configurationItem name="port">389</configurationItem>
+          <configurationItem name="sslPort">636</configurationItem>
+        </configurationSection>
+        <configurationItem name="processTokenGroups">False</configurationItem>
+        <configurationItem name="allowPassthroughAuth">False</configurationItem>
+        <configurationItem name="excludedAttributes" />
+        <!--[EXCLUDED_SEARCHBASE]-->
+        <!--********************************************************************-->
+        <!--*  Excluded searchbase(s) for the Visa                             *-->
+        <!--*                                                                  *-->
+        <!--*  Each excluded searchbase is listed in its own configSection.    *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple excluded searchbases can be defined.                   *-->
+        <!--*                                                                  *-->
+        <!--*  Objects meeting the search request that end in an excluded      *-->
+        <!--*  searchbase will not be returned in the result set               *-->
+        <!--*                                                                  *-->
+        <!--*  The 'virtual Dn' of the searchbase is specified.                *-->
+        <!--*                                                                  *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualDn - The virtual dn of an excluded searchbase for this  *-->
+        <!--*        Visa.                                                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="EXCLUDED_SEARCHBASE">
+          <configurationItem name="id">78d308ff-e323-43d1-a1d1-55c3ab595ee9</configurationItem>
+          <configurationItem name="name">cn=computers,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="description">cn=computers,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="virtualDn">cn=computers,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <!--[EXCLUDED_SEARCHBASE]-->
+        <!--********************************************************************-->
+        <!--*  Excluded searchbase(s) for the Visa                             *-->
+        <!--*                                                                  *-->
+        <!--*  Each excluded searchbase is listed in its own configSection.    *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple excluded searchbases can be defined.                   *-->
+        <!--*                                                                  *-->
+        <!--*  Objects meeting the search request that end in an excluded      *-->
+        <!--*  searchbase will not be returned in the result set               *-->
+        <!--*                                                                  *-->
+        <!--*  The 'virtual Dn' of the searchbase is specified.                *-->
+        <!--*                                                                  *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualDn - The virtual dn of an excluded searchbase for this  *-->
+        <!--*        Visa.                                                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="EXCLUDED_SEARCHBASE">
+          <configurationItem name="id">975c9294-04a9-4b1c-909d-3a22267fcf35</configurationItem>
+          <configurationItem name="name">ou=diocese temporary,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="description">ou=diocese temporary,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="virtualDn">ou=diocese temporary,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <!--[EXCLUDED_SEARCHBASE]-->
+        <!--********************************************************************-->
+        <!--*  Excluded searchbase(s) for the Visa                             *-->
+        <!--*                                                                  *-->
+        <!--*  Each excluded searchbase is listed in its own configSection.    *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple excluded searchbases can be defined.                   *-->
+        <!--*                                                                  *-->
+        <!--*  Objects meeting the search request that end in an excluded      *-->
+        <!--*  searchbase will not be returned in the result set               *-->
+        <!--*                                                                  *-->
+        <!--*  The 'virtual Dn' of the searchbase is specified.                *-->
+        <!--*                                                                  *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualDn - The virtual dn of an excluded searchbase for this  *-->
+        <!--*        Visa.                                                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="EXCLUDED_SEARCHBASE">
+          <configurationItem name="id">1be85a83-ed86-4f71-8be8-df3ae5a4a6ad</configurationItem>
+          <configurationItem name="name">ou=domain controllers,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="description">ou=domain controllers,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="virtualDn">ou=domain controllers,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <!--[EXCLUDED_SEARCHBASE]-->
+        <!--********************************************************************-->
+        <!--*  Excluded searchbase(s) for the Visa                             *-->
+        <!--*                                                                  *-->
+        <!--*  Each excluded searchbase is listed in its own configSection.    *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple excluded searchbases can be defined.                   *-->
+        <!--*                                                                  *-->
+        <!--*  Objects meeting the search request that end in an excluded      *-->
+        <!--*  searchbase will not be returned in the result set               *-->
+        <!--*                                                                  *-->
+        <!--*  The 'virtual Dn' of the searchbase is specified.                *-->
+        <!--*                                                                  *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualDn - The virtual dn of an excluded searchbase for this  *-->
+        <!--*        Visa.                                                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="EXCLUDED_SEARCHBASE">
+          <configurationItem name="id">a4584fb0-1e2d-4a51-88a4-4ca383473091</configurationItem>
+          <configurationItem name="name">cn=foreignsecurityprincipals,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="description">cn=foreignsecurityprincipals,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="virtualDn">cn=foreignsecurityprincipals,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <!--[EXCLUDED_SEARCHBASE]-->
+        <!--********************************************************************-->
+        <!--*  Excluded searchbase(s) for the Visa                             *-->
+        <!--*                                                                  *-->
+        <!--*  Each excluded searchbase is listed in its own configSection.    *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple excluded searchbases can be defined.                   *-->
+        <!--*                                                                  *-->
+        <!--*  Objects meeting the search request that end in an excluded      *-->
+        <!--*  searchbase will not be returned in the result set               *-->
+        <!--*                                                                  *-->
+        <!--*  The 'virtual Dn' of the searchbase is specified.                *-->
+        <!--*                                                                  *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualDn - The virtual dn of an excluded searchbase for this  *-->
+        <!--*        Visa.                                                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="EXCLUDED_SEARCHBASE">
+          <configurationItem name="id">21b1ea2a-dbe3-41af-a1fb-b811ad80a938</configurationItem>
+          <configurationItem name="name">ou=inactivecomputeraccounts,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="description">ou=inactivecomputeraccounts,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="virtualDn">ou=inactivecomputeraccounts,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <!--[EXCLUDED_SEARCHBASE]-->
+        <!--********************************************************************-->
+        <!--*  Excluded searchbase(s) for the Visa                             *-->
+        <!--*                                                                  *-->
+        <!--*  Each excluded searchbase is listed in its own configSection.    *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple excluded searchbases can be defined.                   *-->
+        <!--*                                                                  *-->
+        <!--*  Objects meeting the search request that end in an excluded      *-->
+        <!--*  searchbase will not be returned in the result set               *-->
+        <!--*                                                                  *-->
+        <!--*  The 'virtual Dn' of the searchbase is specified.                *-->
+        <!--*                                                                  *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualDn - The virtual dn of an excluded searchbase for this  *-->
+        <!--*        Visa.                                                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="EXCLUDED_SEARCHBASE">
+          <configurationItem name="id">03fca953-fdb2-4fe1-afcc-4bad887adbbb</configurationItem>
+          <configurationItem name="name">ou=member servers,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="description">ou=member servers,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="virtualDn">ou=member servers,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <!--[EXCLUDED_SEARCHBASE]-->
+        <!--********************************************************************-->
+        <!--*  Excluded searchbase(s) for the Visa                             *-->
+        <!--*                                                                  *-->
+        <!--*  Each excluded searchbase is listed in its own configSection.    *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple excluded searchbases can be defined.                   *-->
+        <!--*                                                                  *-->
+        <!--*  Objects meeting the search request that end in an excluded      *-->
+        <!--*  searchbase will not be returned in the result set               *-->
+        <!--*                                                                  *-->
+        <!--*  The 'virtual Dn' of the searchbase is specified.                *-->
+        <!--*                                                                  *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualDn - The virtual dn of an excluded searchbase for this  *-->
+        <!--*        Visa.                                                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="EXCLUDED_SEARCHBASE">
+          <configurationItem name="id">574d4dda-a425-4383-95fd-7e8ecfdc4e5f</configurationItem>
+          <configurationItem name="name">ou=microsoft exchange security groups,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="description">ou=microsoft exchange security groups,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="virtualDn">ou=microsoft exchange security groups,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <!--[EXCLUDED_SEARCHBASE]-->
+        <!--********************************************************************-->
+        <!--*  Excluded searchbase(s) for the Visa                             *-->
+        <!--*                                                                  *-->
+        <!--*  Each excluded searchbase is listed in its own configSection.    *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple excluded searchbases can be defined.                   *-->
+        <!--*                                                                  *-->
+        <!--*  Objects meeting the search request that end in an excluded      *-->
+        <!--*  searchbase will not be returned in the result set               *-->
+        <!--*                                                                  *-->
+        <!--*  The 'virtual Dn' of the searchbase is specified.                *-->
+        <!--*                                                                  *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualDn - The virtual dn of an excluded searchbase for this  *-->
+        <!--*        Visa.                                                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="EXCLUDED_SEARCHBASE">
+          <configurationItem name="id">2e86be4d-b1a4-4ab1-9ac6-11ec47709acc</configurationItem>
+          <configurationItem name="name">cn=microsoft exchange system objects,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="description">cn=microsoft exchange system objects,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="virtualDn">cn=microsoft exchange system objects,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <!--[EXCLUDED_SEARCHBASE]-->
+        <!--********************************************************************-->
+        <!--*  Excluded searchbase(s) for the Visa                             *-->
+        <!--*                                                                  *-->
+        <!--*  Each excluded searchbase is listed in its own configSection.    *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple excluded searchbases can be defined.                   *-->
+        <!--*                                                                  *-->
+        <!--*  Objects meeting the search request that end in an excluded      *-->
+        <!--*  searchbase will not be returned in the result set               *-->
+        <!--*                                                                  *-->
+        <!--*  The 'virtual Dn' of the searchbase is specified.                *-->
+        <!--*                                                                  *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualDn - The virtual dn of an excluded searchbase for this  *-->
+        <!--*        Visa.                                                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="EXCLUDED_SEARCHBASE">
+          <configurationItem name="id">7e7ac140-963f-49e7-9c50-61244f0d270f</configurationItem>
+          <configurationItem name="name">cn=opsmgrlatencymonitors,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="description">cn=opsmgrlatencymonitors,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="virtualDn">cn=opsmgrlatencymonitors,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <!--[EXCLUDED_SEARCHBASE]-->
+        <!--********************************************************************-->
+        <!--*  Excluded searchbase(s) for the Visa                             *-->
+        <!--*                                                                  *-->
+        <!--*  Each excluded searchbase is listed in its own configSection.    *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple excluded searchbases can be defined.                   *-->
+        <!--*                                                                  *-->
+        <!--*  Objects meeting the search request that end in an excluded      *-->
+        <!--*  searchbase will not be returned in the result set               *-->
+        <!--*                                                                  *-->
+        <!--*  The 'virtual Dn' of the searchbase is specified.                *-->
+        <!--*                                                                  *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualDn - The virtual dn of an excluded searchbase for this  *-->
+        <!--*        Visa.                                                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="EXCLUDED_SEARCHBASE">
+          <configurationItem name="id">b2114551-5f96-41a8-86f1-a6bcef073846</configurationItem>
+          <configurationItem name="name">cn=program data,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="description">cn=program data,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="virtualDn">cn=program data,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <!--[EXCLUDED_SEARCHBASE]-->
+        <!--********************************************************************-->
+        <!--*  Excluded searchbase(s) for the Visa                             *-->
+        <!--*                                                                  *-->
+        <!--*  Each excluded searchbase is listed in its own configSection.    *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple excluded searchbases can be defined.                   *-->
+        <!--*                                                                  *-->
+        <!--*  Objects meeting the search request that end in an excluded      *-->
+        <!--*  searchbase will not be returned in the result set               *-->
+        <!--*                                                                  *-->
+        <!--*  The 'virtual Dn' of the searchbase is specified.                *-->
+        <!--*                                                                  *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualDn - The virtual dn of an excluded searchbase for this  *-->
+        <!--*        Visa.                                                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="EXCLUDED_SEARCHBASE">
+          <configurationItem name="id">b7ad0214-cabc-4809-8058-22935618219e</configurationItem>
+          <configurationItem name="name">cn=system,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="description">cn=system,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="virtualDn">cn=system,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <!--[EXCLUDED_SEARCHBASE]-->
+        <!--********************************************************************-->
+        <!--*  Excluded searchbase(s) for the Visa                             *-->
+        <!--*                                                                  *-->
+        <!--*  Each excluded searchbase is listed in its own configSection.    *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple excluded searchbases can be defined.                   *-->
+        <!--*                                                                  *-->
+        <!--*  Objects meeting the search request that end in an excluded      *-->
+        <!--*  searchbase will not be returned in the result set               *-->
+        <!--*                                                                  *-->
+        <!--*  The 'virtual Dn' of the searchbase is specified.                *-->
+        <!--*                                                                  *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualDn - The virtual dn of an excluded searchbase for this  *-->
+        <!--*        Visa.                                                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="EXCLUDED_SEARCHBASE">
+          <configurationItem name="id">3ff07d7e-826a-4f30-b3c6-67949449c51f</configurationItem>
+          <configurationItem name="name">cn=users,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="description">cn=users,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="virtualDn">cn=users,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <!--[EXCLUDED_SEARCHBASE]-->
+        <!--********************************************************************-->
+        <!--*  Excluded searchbase(s) for the Visa                             *-->
+        <!--*                                                                  *-->
+        <!--*  Each excluded searchbase is listed in its own configSection.    *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple excluded searchbases can be defined.                   *-->
+        <!--*                                                                  *-->
+        <!--*  Objects meeting the search request that end in an excluded      *-->
+        <!--*  searchbase will not be returned in the result set               *-->
+        <!--*                                                                  *-->
+        <!--*  The 'virtual Dn' of the searchbase is specified.                *-->
+        <!--*                                                                  *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualDn - The virtual dn of an excluded searchbase for this  *-->
+        <!--*        Visa.                                                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="EXCLUDED_SEARCHBASE">
+          <configurationItem name="id">9230cf10-4d67-40e1-9324-340c8550bfa9</configurationItem>
+          <configurationItem name="name">cn=vmmdkm,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="description">cn=vmmdkm,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="virtualDn">cn=vmmdkm,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <!--[EXCLUDED_SEARCHBASE]-->
+        <!--********************************************************************-->
+        <!--*  Excluded searchbase(s) for the Visa                             *-->
+        <!--*                                                                  *-->
+        <!--*  Each excluded searchbase is listed in its own configSection.    *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple excluded searchbases can be defined.                   *-->
+        <!--*                                                                  *-->
+        <!--*  Objects meeting the search request that end in an excluded      *-->
+        <!--*  searchbase will not be returned in the result set               *-->
+        <!--*                                                                  *-->
+        <!--*  The 'virtual Dn' of the searchbase is specified.                *-->
+        <!--*                                                                  *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualDn - The virtual dn of an excluded searchbase for this  *-->
+        <!--*        Visa.                                                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="EXCLUDED_SEARCHBASE">
+          <configurationItem name="id">99a04bef-d301-48ba-b5f2-5e22d12a67a0</configurationItem>
+          <configurationItem name="name">CN=LostAndFound,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="description">CN=LostAndFound,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="virtualDn">CN=LostAndFound,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <!--[EXCLUDED_SEARCHBASE]-->
+        <!--********************************************************************-->
+        <!--*  Excluded searchbase(s) for the Visa                             *-->
+        <!--*                                                                  *-->
+        <!--*  Each excluded searchbase is listed in its own configSection.    *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple excluded searchbases can be defined.                   *-->
+        <!--*                                                                  *-->
+        <!--*  Objects meeting the search request that end in an excluded      *-->
+        <!--*  searchbase will not be returned in the result set               *-->
+        <!--*                                                                  *-->
+        <!--*  The 'virtual Dn' of the searchbase is specified.                *-->
+        <!--*                                                                  *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualDn - The virtual dn of an excluded searchbase for this  *-->
+        <!--*        Visa.                                                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="EXCLUDED_SEARCHBASE">
+          <configurationItem name="id">49f9a862-1ede-482d-9288-0a372ab4d382</configurationItem>
+          <configurationItem name="name">CN=TPM Devices,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="description">CN=TPM Devices,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="virtualDn">CN=TPM Devices,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <!--[EXCLUDED_SEARCHBASE]-->
+        <!--********************************************************************-->
+        <!--*  Excluded searchbase(s) for the Visa                             *-->
+        <!--*                                                                  *-->
+        <!--*  Each excluded searchbase is listed in its own configSection.    *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple excluded searchbases can be defined.                   *-->
+        <!--*                                                                  *-->
+        <!--*  Objects meeting the search request that end in an excluded      *-->
+        <!--*  searchbase will not be returned in the result set               *-->
+        <!--*                                                                  *-->
+        <!--*  The 'virtual Dn' of the searchbase is specified.                *-->
+        <!--*                                                                  *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualDn - The virtual dn of an excluded searchbase for this  *-->
+        <!--*        Visa.                                                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="EXCLUDED_SEARCHBASE">
+          <configurationItem name="id">dccbc6b2-ad49-401b-a222-26b0405d33aa</configurationItem>
+          <configurationItem name="name">CN=Builtin,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="description">CN=Builtin,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="virtualDn">CN=Builtin,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <!--[EXCLUDED_SEARCHBASE]-->
+        <!--********************************************************************-->
+        <!--*  Excluded searchbase(s) for the Visa                             *-->
+        <!--*                                                                  *-->
+        <!--*  Each excluded searchbase is listed in its own configSection.    *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple excluded searchbases can be defined.                   *-->
+        <!--*                                                                  *-->
+        <!--*  Objects meeting the search request that end in an excluded      *-->
+        <!--*  searchbase will not be returned in the result set               *-->
+        <!--*                                                                  *-->
+        <!--*  The 'virtual Dn' of the searchbase is specified.                *-->
+        <!--*                                                                  *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualDn - The virtual dn of an excluded searchbase for this  *-->
+        <!--*        Visa.                                                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="EXCLUDED_SEARCHBASE">
+          <configurationItem name="id">79b29673-8edb-424e-bfb3-d98388a9f295</configurationItem>
+          <configurationItem name="name">CN=Infrastructure,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="description">CN=Infrastructure,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="virtualDn">CN=Infrastructure,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <!--[EXCLUDED_SEARCHBASE]-->
+        <!--********************************************************************-->
+        <!--*  Excluded searchbase(s) for the Visa                             *-->
+        <!--*                                                                  *-->
+        <!--*  Each excluded searchbase is listed in its own configSection.    *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple excluded searchbases can be defined.                   *-->
+        <!--*                                                                  *-->
+        <!--*  Objects meeting the search request that end in an excluded      *-->
+        <!--*  searchbase will not be returned in the result set               *-->
+        <!--*                                                                  *-->
+        <!--*  The 'virtual Dn' of the searchbase is specified.                *-->
+        <!--*                                                                  *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualDn - The virtual dn of an excluded searchbase for this  *-->
+        <!--*        Visa.                                                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="EXCLUDED_SEARCHBASE">
+          <configurationItem name="id">f21fdc7a-4ec4-4a39-9813-30ed10e52a1d</configurationItem>
+          <configurationItem name="name">CN=NTDS Quotas,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="description">CN=NTDS Quotas,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="virtualDn">CN=NTDS Quotas,dc=dbb,dc=local</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+      </configurationSection>
+      <!--[VISA]-->
+      <!--********************************************************************-->
+      <!--*  VISA configurationSections define VISAs that make up a VISA     *-->
+      <!--*  Set.                                                            *-->
+      <!--*                                                                  *-->
+      <!--*  Mulitple VISAs can be defined.                                  *-->
+      <!--*                                                                  *-->
+      <!--*  Each VISA defines a connection to a backend datastore.          *-->
+      <!--*                                                                  *-->
+      <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+      <!--* Configuration Items:                                             *-->
+      <!--*                                                                  *-->
+      <!--*   virtualDn - Specifies the root virutal DN presentted to the    *-->
+      <!--*        VIS Instance by the VISA. All DNs returned by the VISA    *-->
+      <!--*        will be children to this base DN.                         *-->
+      <!--*                                                                  *-->
+      <!--*   physicalDn - Specifies the base DN that will be accessed by    *-->
+      <!--*        this VISA.                                                *-->
+      <!--*                                                                  *-->
+      <!--*   searchOrder  - Specifies the order in which VISAs in a VISA    *-->
+      <!--*        Set will be searched. VISAs are searched in ascending     *-->
+      <!--*        order. This is important only when there are no join      *-->
+      <!--*        rules. In this case the VIS Instance will stop searching  *-->
+      <!--*        when the first matching object is found.                  *-->
+      <!--*                                                                  *-->
+      <!--*   systemVisa - Specifies whether or not a VISA is a              *-->
+      <!--*        'System VISA'. The System VISA is used to store:          *-->
+      <!--*                                                                  *-->
+      <!--*                      Virtual Schema                              *-->
+      <!--*                      Virtual Static Groups                       *-->
+      <!--*                      Virtual Dynamic Groups                      *-->
+      <!--*                                                                  *-->
+      <!--*   ldapType - Specifies what type of LDAP store the VISA is       *-->
+      <!--*         connecting to.  ADS, ADAM, or CUSTOM                     *-->
+      <!--*                                                                  *-->
+      <!--*   overrideVirtualAttributes - Local attributes should override   *-->
+      <!--*         VIS Virual Attributes for this particular VISA           *-->
+      <!--*                                                                  *-->
+      <!--*   filter - All searches against this VISA have this additional   *-->
+      <!--*        LDAP filter appended to the search.                       *-->
+      <!--*                                                                  *-->
+      <!--*   dllName - The  name of the .NET DLL containg the class which   *-->
+      <!--*        is used for this extensible VISA.                         *-->
+      <!--*                                                                  *-->
+      <!--*   className - The .NET Class which is instantiated for this      *-->
+      <!--*        extensible VISA.                                          *-->
+      <!--*                                                                  *-->
+      <!--********************************************************************-->
+      <!--[JOIN_ATTRIBUTE]-->
+      <!--********************************************************************-->
+      <!--*  JOIN_ATTRIBUTE configurationSections define join rules for a    *-->
+      <!--*  VISA Set.                                                       *-->
+      <!--*                                                                  *-->
+      <!--*  Mulitple JOIN_ATTRIBUTES can be defined.                        *-->
+      <!--*                                                                  *-->
+      <!--*  If multple JOIN_ATTRIBUTES are defined for the same objectclass *-->
+      <!--*  the are combined as an AND expression.                          *-->
+      <!--*                                                                  *-->
+      <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+      <!--* Configuration Items:                                             *-->
+      <!--*                                                                  *-->
+      <!--*   objectClass - Specifies the objectclass the join rule will be  *-->
+      <!--*                 applied to.                                      *-->
+      <!--*                                                                  *-->
+      <!--********************************************************************-->
+      <!--[VISA]-->
+      <!--********************************************************************-->
+      <!--*  VISA configurationSections define VISAs that make up a VISA     *-->
+      <!--*  Set.                                                            *-->
+      <!--*                                                                  *-->
+      <!--*  Mulitple VISAs can be defined.                                  *-->
+      <!--*                                                                  *-->
+      <!--*  Each VISA defines a connection to a backend datastore.          *-->
+      <!--*                                                                  *-->
+      <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+      <!--* Configuration Items:                                             *-->
+      <!--*                                                                  *-->
+      <!--*   virtualDn - Specifies the root virutal DN presentted to the    *-->
+      <!--*        VIS Instance by the VISA. All DNs returned by the VISA    *-->
+      <!--*        will be children to this base DN.                         *-->
+      <!--*                                                                  *-->
+      <!--*   physicalDn - Specifies the base DN that will be accessed by    *-->
+      <!--*        this VISA.                                                *-->
+      <!--*                                                                  *-->
+      <!--*   searchOrder  - Specifies the order in which VISAs in a VISA    *-->
+      <!--*        Set will be searched. VISAs are searched in ascending     *-->
+      <!--*        order. This is important only when there are no join      *-->
+      <!--*        rules. In this case the VIS Instance will stop searching  *-->
+      <!--*        when the first matching object is found.                  *-->
+      <!--*                                                                  *-->
+      <!--*   systemVisa - Specifies whether or not a VISA is a              *-->
+      <!--*        'System VISA'. The System VISA is used to store:          *-->
+      <!--*                                                                  *-->
+      <!--*                      Virtual Schema                              *-->
+      <!--*                      Virtual Static Groups                       *-->
+      <!--*                      Virtual Dynamic Groups                      *-->
+      <!--*                                                                  *-->
+      <!--*   ldapType - Specifies what type of LDAP store the VISA is       *-->
+      <!--*         connecting to.  ADS, ADAM, or CUSTOM                     *-->
+      <!--*                                                                  *-->
+      <!--*   overrideVirtualAttributes - Local attributes should override   *-->
+      <!--*         VIS Virual Attributes for this particular VISA           *-->
+      <!--*                                                                  *-->
+      <!--*   filter - All searches against this VISA have this additional   *-->
+      <!--*        LDAP filter appended to the search.                       *-->
+      <!--*                                                                  *-->
+      <!--*   dllName - The  name of the .NET DLL containg the class which   *-->
+      <!--*        is used for this extensible VISA.                         *-->
+      <!--*                                                                  *-->
+      <!--*   className - The .NET Class which is instantiated for this      *-->
+      <!--*        extensible VISA.                                          *-->
+      <!--*                                                                  *-->
+      <!--********************************************************************-->
+      <!--[JOIN_ATTRIBUTE]-->
+      <!--********************************************************************-->
+      <!--*  JOIN_ATTRIBUTE configurationSections define join rules for a    *-->
+      <!--*  VISA Set.                                                       *-->
+      <!--*                                                                  *-->
+      <!--*  Mulitple JOIN_ATTRIBUTES can be defined.                        *-->
+      <!--*                                                                  *-->
+      <!--*  If multple JOIN_ATTRIBUTES are defined for the same objectclass *-->
+      <!--*  the are combined as an AND expression.                          *-->
+      <!--*                                                                  *-->
+      <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+      <!--* Configuration Items:                                             *-->
+      <!--*                                                                  *-->
+      <!--*   objectClass - Specifies the objectclass the join rule will be  *-->
+      <!--*                 applied to.                                      *-->
+      <!--*                                                                  *-->
+      <!--********************************************************************-->
+      <!--[VISA]-->
+      <!--********************************************************************-->
+      <!--*  VISA configurationSections define VISAs that make up a VISA     *-->
+      <!--*  Set.                                                            *-->
+      <!--*                                                                  *-->
+      <!--*  Mulitple VISAs can be defined.                                  *-->
+      <!--*                                                                  *-->
+      <!--*  Each VISA defines a connection to a backend datastore.          *-->
+      <!--*                                                                  *-->
+      <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+      <!--* Configuration Items:                                             *-->
+      <!--*                                                                  *-->
+      <!--*   virtualDn - Specifies the root virutal DN presentted to the    *-->
+      <!--*        VIS Instance by the VISA. All DNs returned by the VISA    *-->
+      <!--*        will be children to this base DN.                         *-->
+      <!--*                                                                  *-->
+      <!--*   physicalDn - Specifies the base DN that will be accessed by    *-->
+      <!--*        this VISA.                                                *-->
+      <!--*                                                                  *-->
+      <!--*   searchOrder  - Specifies the order in which VISAs in a VISA    *-->
+      <!--*        Set will be searched. VISAs are searched in ascending     *-->
+      <!--*        order. This is important only when there are no join      *-->
+      <!--*        rules. In this case the VIS Instance will stop searching  *-->
+      <!--*        when the first matching object is found.                  *-->
+      <!--*                                                                  *-->
+      <!--*   systemVisa - Specifies whether or not a VISA is a              *-->
+      <!--*        'System VISA'. The System VISA is used to store:          *-->
+      <!--*                                                                  *-->
+      <!--*                      Virtual Schema                              *-->
+      <!--*                      Virtual Static Groups                       *-->
+      <!--*                      Virtual Dynamic Groups                      *-->
+      <!--*                                                                  *-->
+      <!--*   ldapType - Specifies what type of LDAP store the VISA is       *-->
+      <!--*         connecting to.  ADS, ADAM, or CUSTOM                     *-->
+      <!--*                                                                  *-->
+      <!--*   overrideVirtualAttributes - Local attributes should override   *-->
+      <!--*         VIS Virual Attributes for this particular VISA           *-->
+      <!--*                                                                  *-->
+      <!--*   filter - All searches against this VISA have this additional   *-->
+      <!--*        LDAP filter appended to the search.                       *-->
+      <!--*                                                                  *-->
+      <!--*   dllName - The  name of the .NET DLL containg the class which   *-->
+      <!--*        is used for this extensible VISA.                         *-->
+      <!--*                                                                  *-->
+      <!--*   className - The .NET Class which is instantiated for this      *-->
+      <!--*        extensible VISA.                                          *-->
+      <!--*                                                                  *-->
+      <!--********************************************************************-->
+      <!--[JOIN_ATTRIBUTE]-->
+      <!--********************************************************************-->
+      <!--*  JOIN_ATTRIBUTE configurationSections define join rules for a    *-->
+      <!--*  VISA Set.                                                       *-->
+      <!--*                                                                  *-->
+      <!--*  Mulitple JOIN_ATTRIBUTES can be defined.                        *-->
+      <!--*                                                                  *-->
+      <!--*  If multple JOIN_ATTRIBUTES are defined for the same objectclass *-->
+      <!--*  the are combined as an AND expression.                          *-->
+      <!--*                                                                  *-->
+      <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+      <!--* Configuration Items:                                             *-->
+      <!--*                                                                  *-->
+      <!--*   objectClass - Specifies the objectclass the join rule will be  *-->
+      <!--*                 applied to.                                      *-->
+      <!--*                                                                  *-->
+      <!--********************************************************************-->
+      <!--[JOIN_ATTRIBUTE]-->
+      <!--********************************************************************-->
+      <!--*  JOIN_ATTRIBUTE configurationSections define join rules for a    *-->
+      <!--*  VISA Set.                                                       *-->
+      <!--*                                                                  *-->
+      <!--*  Mulitple JOIN_ATTRIBUTES can be defined.                        *-->
+      <!--*                                                                  *-->
+      <!--*  If multple JOIN_ATTRIBUTES are defined for the same objectclass *-->
+      <!--*  the are combined as an AND expression.                          *-->
+      <!--*                                                                  *-->
+      <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+      <!--* Configuration Items:                                             *-->
+      <!--*                                                                  *-->
+      <!--*   objectClass - Specifies the objectclass the join rule will be  *-->
+      <!--*                 applied to.                                      *-->
+      <!--*                                                                  *-->
+      <!--********************************************************************-->
+      <!--[VISA]-->
+      <!--********************************************************************-->
+      <!--*  VISA configurationSections define VISAs that make up a VISA     *-->
+      <!--*  Set.                                                            *-->
+      <!--*                                                                  *-->
+      <!--*  Mulitple VISAs can be defined.                                  *-->
+      <!--*                                                                  *-->
+      <!--*  Each VISA defines a connection to a backend datastore.          *-->
+      <!--*                                                                  *-->
+      <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+      <!--* Configuration Items:                                             *-->
+      <!--*                                                                  *-->
+      <!--*   virtualDn - Specifies the root virutal DN presentted to the    *-->
+      <!--*        VIS Instance by the VISA. All DNs returned by the VISA    *-->
+      <!--*        will be children to this base DN.                         *-->
+      <!--*                                                                  *-->
+      <!--*   physicalDn - Specifies the base DN that will be accessed by    *-->
+      <!--*        this VISA.                                                *-->
+      <!--*                                                                  *-->
+      <!--*   searchOrder  - Specifies the order in which VISAs in a VISA    *-->
+      <!--*        Set will be searched. VISAs are searched in ascending     *-->
+      <!--*        order. This is important only when there are no join      *-->
+      <!--*        rules. In this case the VIS Instance will stop searching  *-->
+      <!--*        when the first matching object is found.                  *-->
+      <!--*                                                                  *-->
+      <!--*   systemVisa - Specifies whether or not a VISA is a              *-->
+      <!--*        'System VISA'. The System VISA is used to store:          *-->
+      <!--*                                                                  *-->
+      <!--*                      Virtual Schema                              *-->
+      <!--*                      Virtual Static Groups                       *-->
+      <!--*                      Virtual Dynamic Groups                      *-->
+      <!--*                                                                  *-->
+      <!--*   ldapType - Specifies what type of LDAP store the VISA is       *-->
+      <!--*         connecting to.  ADS, ADAM, or CUSTOM                     *-->
+      <!--*                                                                  *-->
+      <!--*   overrideVirtualAttributes - Local attributes should override   *-->
+      <!--*         VIS Virual Attributes for this particular VISA           *-->
+      <!--*                                                                  *-->
+      <!--*   filter - All searches against this VISA have this additional   *-->
+      <!--*        LDAP filter appended to the search.                       *-->
+      <!--*                                                                  *-->
+      <!--*   dllName - The  name of the .NET DLL containg the class which   *-->
+      <!--*        is used for this extensible VISA.                         *-->
+      <!--*                                                                  *-->
+      <!--*   className - The .NET Class which is instantiated for this      *-->
+      <!--*        extensible VISA.                                          *-->
+      <!--*                                                                  *-->
+      <!--********************************************************************-->
+      <configurationSection type="VISA">
+        <configurationItem name="id">a641214b-e6d2-453d-9e36-367708512469</configurationItem>
+        <configurationItem name="name">CSODBB</configurationItem>
+        <configurationItem name="description">CSODBB</configurationItem>
+        <configurationItem name="ldapType">ADAM</configurationItem>
+        <configurationItem name="searchOrder">2</configurationItem>
+        <configurationItem name="dllName">
+        </configurationItem>
+        <configurationItem name="className">
+        </configurationItem>
+        <configurationItem name="virtualDn">OU=CSODBB,dc=dbb,dc=local</configurationItem>
+        <configurationItem name="filter">
+        </configurationItem>
+        <configurationItem name="systemVisa">False</configurationItem>
+        <configurationItem name="enabled">True</configurationItem>
+        <configurationItem name="schemaVisaId">a641214b-e6d2-453d-9e36-367708512469</configurationItem>
+        <configurationItem name="processTokenGroups">False</configurationItem>
+        <configurationItem name="flattenSearchResults">False</configurationItem>
+        <configurationItem name="isCriticalVisa">True</configurationItem>
+        <configurationItem name="overridePrecedentAttributes">False</configurationItem>
+        <configurationItem name="overrideVirtualAttributes">False</configurationItem>
+        <configurationItem name="fspTranslationEnabled">False</configurationItem>
+        <configurationItem name="allowPassthroughAuth">False</configurationItem>
+        <configurationItem name="domainNames" />
+        <configurationItem name="upnSuffixes" />
+        <configurationItem name="physicalDn">DC=CSODBB</configurationItem>
+        <configurationItem name="physicalConfigurationDn">CN={CF427E6F-8F40-4FD7-A173-8F55E86FE3AF}</configurationItem>
+        <!--[VISA_CONNECTION]-->
+        <!--********************************************************************-->
+        <!--*  VISA_CONNECTION configurationSections define the connection     *-->
+        <!--*  information required for the VISA to connect to its backend     *-->
+        <!--*  LDAP.                                                           *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple VISA_CONNECTIONs can be defined for failover           *-->
+        <!--*  functionality.                                       .          *-->
+        <!--*                                                                  *-->
+        <!--*  The order in which a VISA_CONNECTION is used is base its        *-->
+        <!--*  connectionOrder, which is evaluated in an ascending mannor.     *-->
+        <!--*                                                                  *-->
+        <!--*  If more than one VISA_CONNECTION has the same connectionOrder   *-->
+        <!--*  their relative order is based on their location in the XML      *-->
+        <!--*  Configurqation file.  The order is based on a top-down order.   *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   host - LDAP server host name.                                  *-->
+        <!--*                                                                  *-->
+        <!--*   port - The TCP/IP port of the LDAP server for LDAP request.    *-->
+        <!--*                                                                  *-->
+        <!--*   sslPort - The TCP/IP port of the LDAP server for LDAPS         *-->
+        <!--*        requests.                                                 *-->
+        <!--*                                                                  *-->
+        <!--*   sslEnabled - Specifies if LDAPS (SSL) should be used for LDAP  *-->
+        <!--*        communication.                                            *-->
+        <!--*                                                                  *-->
+        <!--*   connectionOrder - Specifies the connection order for this      *-->
+        <!--*        VISA_CONNECTION.  The order in which a VISA_CONNECTION is *-->
+        <!--*        used is base its connectionOrder, which is evaluated in   *-->
+        <!--*         an ascending mannor.                                     *-->
+        <!--*                                                                  *-->
+        <!--*   dllName - Specifies the full path/filename of .NET DLL         *-->
+        <!--*        to be used for a 'custom' extensible VISA.                *-->
+        <!--*                                                                  *-->
+        <!--*   className - Specifies the .NET Class Name to be used for a     *-->
+        <!--*        'custom' extensible VISA.                                 *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="VISA_CONNECTION">
+          <configurationItem name="id">42c57ae9-fd12-4f36-a228-2497362468d4</configurationItem>
+          <configurationItem name="name">CSODBB Connection</configurationItem>
+          <configurationItem name="description">CSODBB Connection</configurationItem>
+          <configurationItem name="dllName" />
+          <configurationItem name="connectionOrder">1</configurationItem>
+          <configurationItem name="host">127.0.0.1</configurationItem>
+          <configurationItem name="port">50000</configurationItem>
+          <configurationItem name="sslPort">50001</configurationItem>
+          <configurationItem name="sslEnabled">False</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+          <configurationItem name="className" />
+          <configurationItem name="timeOut">60</configurationItem>
+        </configurationSection>
+        <!--[BIND_PROFILE]-->
+        <!--********************************************************************-->
+        <!--*  BIND_PROFILE configurationSections define the bind and          *-->
+        <!--*  connection pool size information required for the VISA to       *-->
+        <!--*  connect to its backend LDAP.                                    *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple BIND_PROFILE sections can be defined for allowing      *-->
+        <!--*  different permission levels for different admin groups.         *-->
+        <!--*                                                                  *-->
+        <!--*  For each VISA, one BIND_PROFILE should have its defaultProfile  *-->
+        <!--*  item set to TRUE.  This will be the BIND_PROFILE used for join  *-->
+        <!--*  searches if joins are configured for this VISA.                 *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   bindDn - Specifies the credentials (DN) of an                  *-->
+        <!--*        administrative account in the backend LDAP.               *-->
+        <!--*                                                                  *-->
+        <!--*   bindPwd - Specifies the credentials (password) of an           *-->
+        <!--*        administrative account in the backend LDAP.               *-->
+        <!--*                                                                  *-->
+        <!--*   ldapAuthNType - Specifies the authentication to use: Basic or  *-->
+        <!--*        Negotiate.                                                *-->
+        <!--*                                                                  *-->
+        <!--*   initialConnectionPoolSize - Initial Connection Pool Size.      *-->
+        <!--*                                                                  *-->
+        <!--*   maxConnectionPoolSize - Maximum Connection Pool Size.          *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="BIND_PROFILE">
+          <configurationItem name="id">522b5465-e3e0-4bb8-b0bf-148880bfe2aa</configurationItem>
+          <configurationItem name="name">CSODBB Admin Bind Profile</configurationItem>
+          <configurationItem name="description">CSODBB Admin Bind Profile  </configurationItem>
+          <configurationItem name="bindDn">dbb\svcadlds</configurationItem>
+          <configurationItem name="ENCRYPTED-bindPwd">LxrPCXbDIUI3yR9yCyzxuA3HFrxnI7pl0HBe+Youxy8=</configurationItem>
+          <configurationItem name="ldapAuthNType">Negotiate</configurationItem>
+          <configurationItem name="initialConnectionPoolSize">2</configurationItem>
+          <configurationItem name="maxConnectionPoolSize">20</configurationItem>
+          <configurationItem name="adminProfile">True</configurationItem>
+          <configurationItem name="defaultProfile">True</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+          <configurationItem name="databaseConnectionString" />
+        </configurationSection>
+        <!--[VISA_CONNECTION]-->
+        <!--********************************************************************-->
+        <!--*  VISA_CONNECTION configurationSections define the connection     *-->
+        <!--*  information required for the VISA to connect to its backend     *-->
+        <!--*  LDAP.                                                           *-->
+        <!--*                                                                  *-->
+        <!--*  Multiple VISA_CONNECTIONs can be defined for failover           *-->
+        <!--*  functionality.                                       .          *-->
+        <!--*                                                                  *-->
+        <!--*  The order in which a VISA_CONNECTION is used is base its        *-->
+        <!--*  connectionOrder, which is evaluated in an ascending mannor.     *-->
+        <!--*                                                                  *-->
+        <!--*  If more than one VISA_CONNECTION has the same connectionOrder   *-->
+        <!--*  their relative order is based on their location in the XML      *-->
+        <!--*  Configurqation file.  The order is based on a top-down order.   *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   host - LDAP server host name.                                  *-->
+        <!--*                                                                  *-->
+        <!--*   port - The TCP/IP port of the LDAP server for LDAP request.    *-->
+        <!--*                                                                  *-->
+        <!--*   sslPort - The TCP/IP port of the LDAP server for LDAPS         *-->
+        <!--*        requests.                                                 *-->
+        <!--*                                                                  *-->
+        <!--*   sslEnabled - Specifies if LDAPS (SSL) should be used for LDAP  *-->
+        <!--*        communication.                                            *-->
+        <!--*                                                                  *-->
+        <!--*   connectionOrder - Specifies the connection order for this      *-->
+        <!--*        VISA_CONNECTION.  The order in which a VISA_CONNECTION is *-->
+        <!--*        used is base its connectionOrder, which is evaluated in   *-->
+        <!--*         an ascending mannor.                                     *-->
+        <!--*                                                                  *-->
+        <!--*   dllName - Specifies the full path/filename of .NET DLL         *-->
+        <!--*        to be used for a 'custom' extensible VISA.                *-->
+        <!--*                                                                  *-->
+        <!--*   className - Specifies the .NET Class Name to be used for a     *-->
+        <!--*        'custom' extensible VISA.                                 *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="VISA_CONNECTION">
+          <configurationItem name="id">ef56fc38-294e-4983-b472-2e48b1598188</configurationItem>
+          <configurationItem name="name">CSODBB VISA Connection</configurationItem>
+          <configurationItem name="description">CSODBB VISA Connection</configurationItem>
+          <configurationItem name="className" />
+          <configurationItem name="connectionOrder">2</configurationItem>
+          <configurationItem name="dllName" />
+          <configurationItem name="sslEnabled">False</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+          <configurationItem name="timeOut">60</configurationItem>
+          <configurationItem name="host">d-occcp-ex002.dbb.local</configurationItem>
+          <configurationItem name="port">50000</configurationItem>
+          <configurationItem name="sslPort">50001</configurationItem>
+        </configurationSection>
+        <!--[OBJECTCLASS_MAPPING]-->
+        <!--********************************************************************-->
+        <!--*  OBJECTCLASS_MAPPING configurationSections define the mapping    *-->
+        <!--*  between a virtual objectclass name visible through the          *-->
+        <!--*  VISA_CONNECTION (and VIS) and physical objectclass in the       *-->
+        <!--*  backend LDAP.                                                   *-->
+        <!--*                                                                  *-->
+        <!--*  Objects of the specified objectclass will have the physical     *-->
+        <!--*  objectclass name replaced with the virutal objectclass name     *-->
+        <!--*  prior to the data being returned by the VISA_CONNECTION.        *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualObjectclassName - Specifies the virtual objectclass     *-->
+        <!--*                          visible in VIS.                         *-->
+        <!--*                                                                  *-->
+        <!--*   physicalObjectclassName - Specifies the physical objectclass   *-->
+        <!--*                          found in the backend LDAP.              *-->
+        <!--*                                                                  *-->
+        <!--*   rdnField - Specifies the naming attribute used for the         *-->
+        <!--*                          specified objectclass.                  *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <!--[ATTRIBUTE_MAPPING]-->
+        <!--********************************************************************-->
+        <!--*  ATTRIBUTE_MAPPING configurationSections define the mapping      *-->
+        <!--*  between a virtual attribute name visible through the            *-->
+        <!--*  VISA_CONNECTION (and VIS) and physical attribute in the backend *-->
+        <!--*  LDAP.                                                           *-->
+        <!--*                                                                  *-->
+        <!--*  Objects of the specified objectclass will have the physical     *-->
+        <!--*  attribute name  replaced with the virutal attribute name        *-->
+        <!--*  prior to the data being returned by the VISA_CONNECTION.        *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualAttributeName - Specifies the virtual attribute name    *-->
+        <!--*                          visible in VIS.                         *-->
+        <!--*                                                                  *-->
+        <!--*   physicalAttributeName - Specifies the physical attribute name  *-->
+        <!--*                          found in the backend LDAP.              *-->
+        <!--*                                                                  *-->
+        <!--*   objectClass - Specifies the physical objectclass the attribute *-->
+        <!--*                          is associated with.                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <!--[ATTRIBUTE_MAPPING]-->
+        <!--********************************************************************-->
+        <!--*  ATTRIBUTE_MAPPING configurationSections define the mapping      *-->
+        <!--*  between a virtual attribute name visible through the            *-->
+        <!--*  VISA_CONNECTION (and VIS) and physical attribute in the backend *-->
+        <!--*  LDAP.                                                           *-->
+        <!--*                                                                  *-->
+        <!--*  Objects of the specified objectclass will have the physical     *-->
+        <!--*  attribute name  replaced with the virutal attribute name        *-->
+        <!--*  prior to the data being returned by the VISA_CONNECTION.        *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualAttributeName - Specifies the virtual attribute name    *-->
+        <!--*                          visible in VIS.                         *-->
+        <!--*                                                                  *-->
+        <!--*   physicalAttributeName - Specifies the physical attribute name  *-->
+        <!--*                          found in the backend LDAP.              *-->
+        <!--*                                                                  *-->
+        <!--*   objectClass - Specifies the physical objectclass the attribute *-->
+        <!--*                          is associated with.                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <!--[ATTRIBUTE_PRECEDENCE]-->
+        <!--********************************************************************-->
+        <!--*  ATTRIBUTE_PRECEDENCE configurationSections define               *-->
+        <!--*  which attributes for a particular objectclass a particular      *-->
+        <!--*  VISA has precedence over.                                       *-->
+        <!--*      .                                                           *-->
+        <!--*  If a join occurs, attributes with no attribute precedence       *-->
+        <!--*  defined for any of the VISAs in the VISA Set will have          *-->
+        <!--*  values returned based solely the VISA's searchOrder. .          *-->
+        <!--*                                                                  *-->
+        <!--*  If a join occurs, attributes with attribute precedence          *-->
+        <!--*  defined will have the values returned from the VISA for which   *-->
+        <!--*  the precedence is defined.                                      *-->
+        <!--*                                                                  *-->
+        <!--*  If more than one a VISA_CONNECTION has attribute precedence     *-->
+        <!--*  for the same attribute/objectclass precedence is given based    *-->
+        <!--*  is based on their location in the XML Configurqation file.  The *-->
+        <!--*  precedence is granted based on a top-down order.                *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   attributeName - Specifies the physical attribute for which the *-->
+        <!--*                   VISA has precedence over.                      *-->
+        <!--*                                                                  *-->
+        <!--*   objectClass - Specifies the physical objectclass the attribute *-->
+        <!--*                   is associated with.                            *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="ATTRIBUTE_PRECEDENCE">
+          <configurationItem name="id">e5970766-15c1-4d27-b360-e545ba253c42</configurationItem>
+          <configurationItem name="name">DOB Attribute Precedence</configurationItem>
+          <configurationItem name="description">DOB Attribute Precedence</configurationItem>
+          <configurationItem name="objectClass">user</configurationItem>
+          <configurationItem name="attributeName">DOB</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <!--[ATTRIBUTE_PRECEDENCE]-->
+        <!--********************************************************************-->
+        <!--*  ATTRIBUTE_PRECEDENCE configurationSections define               *-->
+        <!--*  which attributes for a particular objectclass a particular      *-->
+        <!--*  VISA has precedence over.                                       *-->
+        <!--*      .                                                           *-->
+        <!--*  If a join occurs, attributes with no attribute precedence       *-->
+        <!--*  defined for any of the VISAs in the VISA Set will have          *-->
+        <!--*  values returned based solely the VISA's searchOrder. .          *-->
+        <!--*                                                                  *-->
+        <!--*  If a join occurs, attributes with attribute precedence          *-->
+        <!--*  defined will have the values returned from the VISA for which   *-->
+        <!--*  the precedence is defined.                                      *-->
+        <!--*                                                                  *-->
+        <!--*  If more than one a VISA_CONNECTION has attribute precedence     *-->
+        <!--*  for the same attribute/objectclass precedence is given based    *-->
+        <!--*  is based on their location in the XML Configurqation file.  The *-->
+        <!--*  precedence is granted based on a top-down order.                *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   attributeName - Specifies the physical attribute for which the *-->
+        <!--*                   VISA has precedence over.                      *-->
+        <!--*                                                                  *-->
+        <!--*   objectClass - Specifies the physical objectclass the attribute *-->
+        <!--*                   is associated with.                            *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="ATTRIBUTE_PRECEDENCE">
+          <configurationItem name="id">b000f44e-7950-4a7b-a61c-1d51b829cc17</configurationItem>
+          <configurationItem name="name">sex Attribute Precedence</configurationItem>
+          <configurationItem name="description">sex Attribute Precedence</configurationItem>
+          <configurationItem name="objectClass">user</configurationItem>
+          <configurationItem name="attributeName">sex</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <configurationItem name="excludedAttributes">
+        </configurationItem>
+        <!--[ATTRIBUTE_MAPPING]-->
+        <!--********************************************************************-->
+        <!--*  ATTRIBUTE_MAPPING configurationSections define the mapping      *-->
+        <!--*  between a virtual attribute name visible through the            *-->
+        <!--*  VISA_CONNECTION (and VIS) and physical attribute in the backend *-->
+        <!--*  LDAP.                                                           *-->
+        <!--*                                                                  *-->
+        <!--*  Objects of the specified objectclass will have the physical     *-->
+        <!--*  attribute name  replaced with the virutal attribute name        *-->
+        <!--*  prior to the data being returned by the VISA_CONNECTION.        *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualAttributeName - Specifies the virtual attribute name    *-->
+        <!--*                          visible in VIS.                         *-->
+        <!--*                                                                  *-->
+        <!--*   physicalAttributeName - Specifies the physical attribute name  *-->
+        <!--*                          found in the backend LDAP.              *-->
+        <!--*                                                                  *-->
+        <!--*   objectClass - Specifies the physical objectclass the attribute *-->
+        <!--*                          is associated with.                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="ATTRIBUTE_MAPPING">
+          <configurationItem name="id">98a7cf7d-40a6-4f6c-83cb-8cddeca79cea</configurationItem>
+          <configurationItem name="name">DOB Attribute Mapping</configurationItem>
+          <configurationItem name="description">DOB Attribute Mapping</configurationItem>
+          <configurationItem name="objectClass">user</configurationItem>
+          <configurationItem name="physicalAttributeName">csodbbDOBString</configurationItem>
+          <configurationItem name="virtualAttributeName">DOB</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+          <configurationItem name="schemaOID" />
+        </configurationSection>
+        <!--[ATTRIBUTE_MAPPING]-->
+        <!--********************************************************************-->
+        <!--*  ATTRIBUTE_MAPPING configurationSections define the mapping      *-->
+        <!--*  between a virtual attribute name visible through the            *-->
+        <!--*  VISA_CONNECTION (and VIS) and physical attribute in the backend *-->
+        <!--*  LDAP.                                                           *-->
+        <!--*                                                                  *-->
+        <!--*  Objects of the specified objectclass will have the physical     *-->
+        <!--*  attribute name  replaced with the virutal attribute name        *-->
+        <!--*  prior to the data being returned by the VISA_CONNECTION.        *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualAttributeName - Specifies the virtual attribute name    *-->
+        <!--*                          visible in VIS.                         *-->
+        <!--*                                                                  *-->
+        <!--*   physicalAttributeName - Specifies the physical attribute name  *-->
+        <!--*                          found in the backend LDAP.              *-->
+        <!--*                                                                  *-->
+        <!--*   objectClass - Specifies the physical objectclass the attribute *-->
+        <!--*                          is associated with.                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="ATTRIBUTE_MAPPING">
+          <configurationItem name="id">438124e9-974c-463f-ac14-e1e00e06afd3</configurationItem>
+          <configurationItem name="name">sex Attribute Mapping</configurationItem>
+          <configurationItem name="description">sex Attribute Mapping</configurationItem>
+          <configurationItem name="objectClass">user</configurationItem>
+          <configurationItem name="physicalAttributeName">csodbbSex</configurationItem>
+          <configurationItem name="virtualAttributeName">sex</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+          <configurationItem name="schemaOID" />
+        </configurationSection>
+        <!--[ATTRIBUTE_MAPPING]-->
+        <!--********************************************************************-->
+        <!--*  ATTRIBUTE_MAPPING configurationSections define the mapping      *-->
+        <!--*  between a virtual attribute name visible through the            *-->
+        <!--*  VISA_CONNECTION (and VIS) and physical attribute in the backend *-->
+        <!--*  LDAP.                                                           *-->
+        <!--*                                                                  *-->
+        <!--*  Objects of the specified objectclass will have the physical     *-->
+        <!--*  attribute name  replaced with the virutal attribute name        *-->
+        <!--*  prior to the data being returned by the VISA_CONNECTION.        *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualAttributeName - Specifies the virtual attribute name    *-->
+        <!--*                          visible in VIS.                         *-->
+        <!--*                                                                  *-->
+        <!--*   physicalAttributeName - Specifies the physical attribute name  *-->
+        <!--*                          found in the backend LDAP.              *-->
+        <!--*                                                                  *-->
+        <!--*   objectClass - Specifies the physical objectclass the attribute *-->
+        <!--*                          is associated with.                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="ATTRIBUTE_MAPPING">
+          <configurationItem name="id">1cfc1368-6cae-44fe-8fc4-dda322ef929d</configurationItem>
+          <configurationItem name="name">csodbbDOBString Attribute Mapping</configurationItem>
+          <configurationItem name="description">csodbbDOBString Attribute Mapping</configurationItem>
+          <configurationItem name="objectClass">user</configurationItem>
+          <configurationItem name="physicalAttributeName">csodbbDOBString</configurationItem>
+          <configurationItem name="virtualAttributeName">csodbbDOBString</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+          <configurationItem name="schemaOID" />
+        </configurationSection>
+        <!--[ATTRIBUTE_MAPPING]-->
+        <!--********************************************************************-->
+        <!--*  ATTRIBUTE_MAPPING configurationSections define the mapping      *-->
+        <!--*  between a virtual attribute name visible through the            *-->
+        <!--*  VISA_CONNECTION (and VIS) and physical attribute in the backend *-->
+        <!--*  LDAP.                                                           *-->
+        <!--*                                                                  *-->
+        <!--*  Objects of the specified objectclass will have the physical     *-->
+        <!--*  attribute name  replaced with the virutal attribute name        *-->
+        <!--*  prior to the data being returned by the VISA_CONNECTION.        *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualAttributeName - Specifies the virtual attribute name    *-->
+        <!--*                          visible in VIS.                         *-->
+        <!--*                                                                  *-->
+        <!--*   physicalAttributeName - Specifies the physical attribute name  *-->
+        <!--*                          found in the backend LDAP.              *-->
+        <!--*                                                                  *-->
+        <!--*   objectClass - Specifies the physical objectclass the attribute *-->
+        <!--*                          is associated with.                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="ATTRIBUTE_MAPPING">
+          <configurationItem name="id">bf9b781b-5084-4013-896e-9a9037914c1d</configurationItem>
+          <configurationItem name="name">csodbbSex Attribute Mapping</configurationItem>
+          <configurationItem name="description">csodbbSex Attribute Mapping</configurationItem>
+          <configurationItem name="objectClass">user</configurationItem>
+          <configurationItem name="physicalAttributeName">csodbbSex</configurationItem>
+          <configurationItem name="virtualAttributeName">csodbbSex</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+          <configurationItem name="schemaOID" />
+        </configurationSection>
+        <!--[ATTRIBUTE_MAPPING]-->
+        <!--********************************************************************-->
+        <!--*  ATTRIBUTE_MAPPING configurationSections define the mapping      *-->
+        <!--*  between a virtual attribute name visible through the            *-->
+        <!--*  VISA_CONNECTION (and VIS) and physical attribute in the backend *-->
+        <!--*  LDAP.                                                           *-->
+        <!--*                                                                  *-->
+        <!--*  Objects of the specified objectclass will have the physical     *-->
+        <!--*  attribute name  replaced with the virutal attribute name        *-->
+        <!--*  prior to the data being returned by the VISA_CONNECTION.        *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualAttributeName - Specifies the virtual attribute name    *-->
+        <!--*                          visible in VIS.                         *-->
+        <!--*                                                                  *-->
+        <!--*   physicalAttributeName - Specifies the physical attribute name  *-->
+        <!--*                          found in the backend LDAP.              *-->
+        <!--*                                                                  *-->
+        <!--*   objectClass - Specifies the physical objectclass the attribute *-->
+        <!--*                          is associated with.                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="ATTRIBUTE_MAPPING">
+          <configurationItem name="id">de2c8d05-4e02-481e-b669-400b52f2dd5c</configurationItem>
+          <configurationItem name="name">csodbbCeIder Attribute Mapping</configurationItem>
+          <configurationItem name="description">csodbbCeIder Attribute Mapping</configurationItem>
+          <configurationItem name="objectClass">user</configurationItem>
+          <configurationItem name="physicalAttributeName">csodbbCeIder</configurationItem>
+          <configurationItem name="virtualAttributeName">csodbbCeIder</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+          <configurationItem name="schemaOID" />
+        </configurationSection>
+        <!--[ATTRIBUTE_MAPPING]-->
+        <!--********************************************************************-->
+        <!--*  ATTRIBUTE_MAPPING configurationSections define the mapping      *-->
+        <!--*  between a virtual attribute name visible through the            *-->
+        <!--*  VISA_CONNECTION (and VIS) and physical attribute in the backend *-->
+        <!--*  LDAP.                                                           *-->
+        <!--*                                                                  *-->
+        <!--*  Objects of the specified objectclass will have the physical     *-->
+        <!--*  attribute name  replaced with the virutal attribute name        *-->
+        <!--*  prior to the data being returned by the VISA_CONNECTION.        *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   virtualAttributeName - Specifies the virtual attribute name    *-->
+        <!--*                          visible in VIS.                         *-->
+        <!--*                                                                  *-->
+        <!--*   physicalAttributeName - Specifies the physical attribute name  *-->
+        <!--*                          found in the backend LDAP.              *-->
+        <!--*                                                                  *-->
+        <!--*   objectClass - Specifies the physical objectclass the attribute *-->
+        <!--*                          is associated with.                     *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="ATTRIBUTE_MAPPING">
+          <configurationItem name="id">2dfe49ca-2dba-4455-a84a-0c1481770773</configurationItem>
+          <configurationItem name="name">CeIder Attribute Mapping</configurationItem>
+          <configurationItem name="description">CeIder Attribute Mapping</configurationItem>
+          <configurationItem name="objectClass">user</configurationItem>
+          <configurationItem name="physicalAttributeName">csodbbCeIder</configurationItem>
+          <configurationItem name="virtualAttributeName">CeIder</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+          <configurationItem name="schemaOID" />
+        </configurationSection>
+        <!--[ATTRIBUTE_PRECEDENCE]-->
+        <!--********************************************************************-->
+        <!--*  ATTRIBUTE_PRECEDENCE configurationSections define               *-->
+        <!--*  which attributes for a particular objectclass a particular      *-->
+        <!--*  VISA has precedence over.                                       *-->
+        <!--*      .                                                           *-->
+        <!--*  If a join occurs, attributes with no attribute precedence       *-->
+        <!--*  defined for any of the VISAs in the VISA Set will have          *-->
+        <!--*  values returned based solely the VISA's searchOrder. .          *-->
+        <!--*                                                                  *-->
+        <!--*  If a join occurs, attributes with attribute precedence          *-->
+        <!--*  defined will have the values returned from the VISA for which   *-->
+        <!--*  the precedence is defined.                                      *-->
+        <!--*                                                                  *-->
+        <!--*  If more than one a VISA_CONNECTION has attribute precedence     *-->
+        <!--*  for the same attribute/objectclass precedence is given based    *-->
+        <!--*  is based on their location in the XML Configurqation file.  The *-->
+        <!--*  precedence is granted based on a top-down order.                *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   attributeName - Specifies the physical attribute for which the *-->
+        <!--*                   VISA has precedence over.                      *-->
+        <!--*                                                                  *-->
+        <!--*   objectClass - Specifies the physical objectclass the attribute *-->
+        <!--*                   is associated with.                            *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="ATTRIBUTE_PRECEDENCE">
+          <configurationItem name="id">86bb8c9f-de60-4470-a679-176a83551392</configurationItem>
+          <configurationItem name="name">CeIder Attribute Precedence</configurationItem>
+          <configurationItem name="description">CeIder Attribute Precedence</configurationItem>
+          <configurationItem name="objectClass">user</configurationItem>
+          <configurationItem name="attributeName">CeIder</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+      </configurationSection>
+      <!--[JOIN_ATTRIBUTE]-->
+      <!--********************************************************************-->
+      <!--*  JOIN_ATTRIBUTE configurationSections define join rules for a    *-->
+      <!--*  VISA Set.                                                       *-->
+      <!--*                                                                  *-->
+      <!--*  Mulitple JOIN_ATTRIBUTES can be defined.                        *-->
+      <!--*                                                                  *-->
+      <!--*  If multple JOIN_ATTRIBUTES are defined for the same objectclass *-->
+      <!--*  the are combined as an AND expression.                          *-->
+      <!--*                                                                  *-->
+      <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+      <!--* Configuration Items:                                             *-->
+      <!--*                                                                  *-->
+      <!--*   objectClass - Specifies the objectclass the join rule will be  *-->
+      <!--*                 applied to.                                      *-->
+      <!--*                                                                  *-->
+      <!--********************************************************************-->
+      <configurationSection type="JOIN_ATTRIBUTE">
+        <configurationItem name="id">1e03af19-69ea-46b0-a3f8-3dcc76058490</configurationItem>
+        <configurationItem name="name">user Join Attribute</configurationItem>
+        <configurationItem name="description">user Join Attribute</configurationItem>
+        <configurationItem name="objectClass">user</configurationItem>
+        <configurationItem name="enabled">True</configurationItem>
+        <!--[ATTRIBUTE]-->
+        <!--********************************************************************-->
+        <!--*  ATTRIBUTE configurationSections define the attribtues that      *-->
+        <!--*  make up a join rule.                                            *-->
+        <!--*                                                                  *-->
+        <!--*  Mulitple ATTRIBUTEs can be defined.                             *-->
+        <!--*                                                                  *-->
+        <!--*  All ATTRIBUTEs must evaluate to the same 'value' for a join     *-->
+        <!--*  between the VISA objects to occur.                              *-->
+        <!--*                                                                  *-->
+        <!--*  A case insensitive comparision is made when evaluating the      *-->
+        <!--*  join rule.                                                      *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   VISAID        - Specifies the ID of the VISA for which this    *-->
+        <!--*                   join rule applies.                             *-->
+        <!--*                                                                  *-->
+        <!--*   attributeName - Specifies the physical attribute name.         *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="ATTRIBUTE">
+          <configurationItem name="id">85936b87-187e-4609-9c23-a54df3a2d1ee</configurationItem>
+          <configurationItem name="name">Join Attribute - DBB / sAMAccountName</configurationItem>
+          <configurationItem name="description">Join Attribute - DBB / sAMAccountName</configurationItem>
+          <configurationItem name="visaId">8bf7c7c0-b9a6-494f-bdc3-2c3aa2d7c9f3</configurationItem>
+          <configurationItem name="attributeName">sAMAccountName</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <!--[ATTRIBUTE]-->
+        <!--********************************************************************-->
+        <!--*  ATTRIBUTE configurationSections define the attribtues that      *-->
+        <!--*  make up a join rule.                                            *-->
+        <!--*                                                                  *-->
+        <!--*  Mulitple ATTRIBUTEs can be defined.                             *-->
+        <!--*                                                                  *-->
+        <!--*  All ATTRIBUTEs must evaluate to the same 'value' for a join     *-->
+        <!--*  between the VISA objects to occur.                              *-->
+        <!--*                                                                  *-->
+        <!--*  A case insensitive comparision is made when evaluating the      *-->
+        <!--*  join rule.                                                      *-->
+        <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+        <!--* Configuration Items:                                             *-->
+        <!--*                                                                  *-->
+        <!--*   VISAID        - Specifies the ID of the VISA for which this    *-->
+        <!--*                   join rule applies.                             *-->
+        <!--*                                                                  *-->
+        <!--*   attributeName - Specifies the physical attribute name.         *-->
+        <!--*                                                                  *-->
+        <!--********************************************************************-->
+        <configurationSection type="ATTRIBUTE">
+          <configurationItem name="id">bf5d0a4f-36ac-41da-b876-557170ecd188</configurationItem>
+          <configurationItem name="name">Join Attribute - CSODBB / adminDisplayName</configurationItem>
+          <configurationItem name="description">Join Attribute - CSODBB / adminDisplayName</configurationItem>
+          <configurationItem name="visaId">a641214b-e6d2-453d-9e36-367708512469</configurationItem>
+          <configurationItem name="attributeName">name</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+          <configurationSection type="JOIN_TO_ATTRIBUTE">
+            <configurationItem name="id">aebcfef7-c64e-4f8a-aec9-afd185a4777b</configurationItem>
+            <configurationItem name="name">Join From [CSODBB] to [DBB]</configurationItem>
+            <configurationItem name="description">Join From [CSODBB] to [DBB]</configurationItem>
+            <configurationItem name="enabled">True</configurationItem>
+            <configurationItem name="joinToAttributeId">85936b87-187e-4609-9c23-a54df3a2d1ee</configurationItem>
+          </configurationSection>
+        </configurationSection>
+      </configurationSection>
+    </configurationSection>
+    <configurationSection type="VISA_SET">
+      <configurationItem name="id">63535edd-9598-4885-a855-3edc7ae4093e</configurationItem>
+      <configurationItem name="name">System VISA Set</configurationItem>
+      <configurationItem name="description">System VISA Set</configurationItem>
+      <configurationItem name="enabled">True</configurationItem>
+      <configurationSection type="JOIN_CACHE">
+        <configurationItem name="id">08aba2db-246b-4eb8-a8dc-de5668d86635</configurationItem>
+        <configurationItem name="name">Join Cache</configurationItem>
+        <configurationItem name="description">Join Cache</configurationItem>
+        <configurationItem name="enabled">False</configurationItem>
+        <configurationItem name="cacheType">Memory</configurationItem>
+        <configurationItem name="cacheLifetime">3600</configurationItem>
+        <configurationItem name="percentageOfMemory">5</configurationItem>
+        <configurationItem name="pollingInterval">300</configurationItem>
+      </configurationSection>
+      <configurationSection type="VISA">
+        <configurationItem name="id">020edeaf-7620-4b15-97d5-dea2b63f22ea</configurationItem>
+        <configurationItem name="name">VISConfig</configurationItem>
+        <configurationItem name="description">VISConfig</configurationItem>
+        <configurationItem name="enabled">True</configurationItem>
+        <configurationItem name="virtualDn">ou=visconfig,dc=dbb,dc=local</configurationItem>
+        <configurationItem name="physicalDn">DC=VISConfig,DC=ADAM</configurationItem>
+        <configurationItem name="physicalConfigurationDn">CN={4FFD46DE-1F2F-4A6D-ACFE-EBA55346C902}</configurationItem>
+        <configurationItem name="searchOrder">2</configurationItem>
+        <configurationItem name="systemVisa">True</configurationItem>
+        <configurationItem name="ldapType">ADAM</configurationItem>
+        <configurationItem name="filter" />
+        <configurationItem name="className" />
+        <configurationItem name="dllName" />
+        <configurationItem name="flattenSearchResults">False</configurationItem>
+        <configurationItem name="schemaVisaId">020edeaf-7620-4b15-97d5-dea2b63f22ea</configurationItem>
+        <configurationItem name="isCriticalVisa">True</configurationItem>
+        <configurationItem name="overrideVirtualAttributes">False</configurationItem>
+        <configurationItem name="overridePrecedentAttributes">False</configurationItem>
+        <configurationItem name="fspTranslationEnabled">False</configurationItem>
+        <configurationItem name="dnFormatAttributes">vis-dynGroupSearchBase,vis-virtualDn,vis-member,vis-JoinedObjects,vis-owner</configurationItem>
+        <configurationSection type="VISA_CONNECTION">
+          <configurationItem name="id">f2055cf7-6364-4ccd-9c94-fb53ae3f592a</configurationItem>
+          <configurationItem name="name">System VISA Connection 1</configurationItem>
+          <configurationItem name="description">System VISA Connection 1</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+          <configurationItem name="host">127.0.0.1</configurationItem>
+          <configurationItem name="port">50389</configurationItem>
+          <configurationItem name="sslPort">50636</configurationItem>
+          <configurationItem name="connectionOrder">1</configurationItem>
+          <configurationItem name="sslEnabled">False</configurationItem>
+          <configurationItem name="timeOut">30</configurationItem>
+          <configurationItem name="className" />
+          <configurationItem name="dllName" />
+        </configurationSection>
+        <configurationSection type="VISA_CONNECTION">
+          <configurationItem name="id">f3166cf8-7475-5ccd-0c05-fb64ae4f603a</configurationItem>
+          <configurationItem name="name">System VISA Connection 2</configurationItem>
+          <configurationItem name="description">System VISA Connection 2</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+          <configurationItem name="host">127.0.0.1</configurationItem>
+          <configurationItem name="port">50389</configurationItem>
+          <configurationItem name="sslPort">50636</configurationItem>
+          <configurationItem name="connectionOrder">2</configurationItem>
+          <configurationItem name="sslEnabled">False</configurationItem>
+          <configurationItem name="timeOut">30</configurationItem>
+          <configurationItem name="className" />
+          <configurationItem name="dllName" />
+        </configurationSection>
+        <configurationSection type="BIND_PROFILE">
+          <configurationItem name="id">c50051e1-1054-4d5d-a572-dac62f8fb6af</configurationItem>
+          <configurationItem name="name">VISConfig - Admin Bind Profile</configurationItem>
+          <configurationItem name="description">VISConfig - Admin Bind Profile</configurationItem>
+          <configurationItem name="bindDn">dbb\bob.bradley.tst</configurationItem>
+          <configurationItem name="ENCRYPTED-bindPwd">RTFiis0k68B6sHu0rkV6V9RshjBA1q9UZb6AhlnEOqo=</configurationItem>
+          <configurationItem name="ldapAuthNType">Negotiate</configurationItem>
+          <configurationItem name="initialConnectionPoolSize">1</configurationItem>
+          <configurationItem name="maxConnectionPoolSize">10</configurationItem>
+          <configurationItem name="adminProfile">True</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+          <configurationItem name="databaseConnectionString" />
+        </configurationSection>
+        <configurationSection type="DN_FORMAT_ATTRIBUTE">
+          <configurationItem name="id">23ef4788-68f2-4d99-87f8-e5e8128416d8</configurationItem>
+          <configurationItem name="name">vis-dynGroupSearchBase DN Attribute</configurationItem>
+          <configurationItem name="description">vis-dynGroupSearchBase DN Attribute</configurationItem>
+          <configurationItem name="attributeName">vis-dynGroupSearchBase</configurationItem>
+          <configurationItem name="referentialIntegrityEnabled">True</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <configurationSection type="DN_FORMAT_ATTRIBUTE">
+          <configurationItem name="id">4c622922-1666-4852-aab9-698f7378e81d</configurationItem>
+          <configurationItem name="name">vis-member DN Attribute</configurationItem>
+          <configurationItem name="description">vis-member DN Attribute</configurationItem>
+          <configurationItem name="attributeName">vis-member</configurationItem>
+          <configurationItem name="referentialIntegrityEnabled">True</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <configurationSection type="DN_FORMAT_ATTRIBUTE">
+          <configurationItem name="id">32b57a3e-69b6-4f04-8f06-7e3d941043e8</configurationItem>
+          <configurationItem name="name">vis-JoinedObjects DN Attribute</configurationItem>
+          <configurationItem name="description">vis-JoinedObjects DN Attribute</configurationItem>
+          <configurationItem name="attributeName">vis-JoinedObjects</configurationItem>
+          <configurationItem name="referentialIntegrityEnabled">True</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <configurationSection type="DN_FORMAT_ATTRIBUTE">
+          <configurationItem name="id">40f06c0c-9389-4a9a-898e-5058b82f958f</configurationItem>
+          <configurationItem name="name">vis-owner DN Attribute</configurationItem>
+          <configurationItem name="description">vis-owner DN Attribute</configurationItem>
+          <configurationItem name="attributeName">vis-owner</configurationItem>
+          <configurationItem name="referentialIntegrityEnabled">True</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <configurationSection type="DN_FORMAT_ATTRIBUTE">
+          <configurationItem name="id">22f02c2c-2222-2a2a-898e-5058b82f958f</configurationItem>
+          <configurationItem name="name">vis-delAdminOf DN Attribute</configurationItem>
+          <configurationItem name="description">vis-delAdminOf DN Attribute</configurationItem>
+          <configurationItem name="attributeName">vis-delAdminOf</configurationItem>
+          <configurationItem name="referentialIntegrityEnabled">True</configurationItem>
+          <configurationItem name="enabled">True</configurationItem>
+        </configurationSection>
+        <configurationItem name="processTokenGroups">False</configurationItem>
+        <configurationItem name="allowPassthroughAuth">False</configurationItem>
+        <configurationItem name="excludedAttributes" />
+      </configurationSection>
+    </configurationSection>
+    <configurationSection type="LOGGING">
+      <configurationItem name="id">b42cf5a8-2beb-45b1-b547-3542f59ed65a</configurationItem>
+      <configurationItem name="name">Audit Logging</configurationItem>
+      <configurationItem name="description">Audit Logging</configurationItem>
+      <configurationItem name="logSetSize">120</configurationItem>
+      <configurationItem name="logSetDuration">120</configurationItem>
+      <configurationItem name="logRecoveryLocation">..\Logging\_Failed_Logs\</configurationItem>
+      <configurationItem name="dllName">.\OptimalIdM.VIS.Logging.Loggers.DLL</configurationItem>
+      <configurationItem name="className">OptimalIdM.VIS.Logging.Loggers.SQLLogger</configurationItem>
+      <configurationItem name="ext-SqlLoggerConnectionString">Password=YOUR_PASSWORD;User ID=YOUR_USERID;Initial Catalog=Virtual Identity Server;Data Source=YOUR_SQL_SERVER_HOSTNAME</configurationItem>
+      <configurationItem name="ext-ConnectionRetryInterval">120</configurationItem>
+      <configurationItem name="auditAuditEnabled">True</configurationItem>
+      <configurationItem name="auditAuthNFailedEnabled">True</configurationItem>
+      <configurationItem name="auditAuthNSuccessEnabled">True</configurationItem>
+      <configurationItem name="auditConnectionsEnabled">True</configurationItem>
+      <configurationItem name="auditSearchesEnabled">True</configurationItem>
+      <configurationItem name="enabled">False</configurationItem>
+      <configurationItem name="ext-XmlLoggerFolder">..\Logging\_XML_Logs\</configurationItem>
+    </configurationSection>
+    <configurationSection type="VIS_LDAP_REQUEST_PREPROCESSORS">
+      <configurationItem name="id">4187263d-959f-4056-84c9-2f53a38ccc82</configurationItem>
+      <configurationItem name="name">VIS Pre-Processor</configurationItem>
+      <configurationItem name="description">VIS Pre-Processor</configurationItem>
+      <configurationItem name="enabled">False</configurationItem>
+      <configurationItem name="addEnabled">False</configurationItem>
+      <configurationItem name="bindEnabled">False</configurationItem>
+      <configurationItem name="compareEnabled">False</configurationItem>
+      <configurationItem name="deleteEnabled">False</configurationItem>
+      <configurationItem name="modifyEnabled">False</configurationItem>
+      <configurationItem name="modifyDNEnabled">False</configurationItem>
+      <configurationItem name="searchEnabled">False</configurationItem>
+    </configurationSection>
+    <configurationSection type="VIS_LDAP_REQUEST_POSTPROCESSORS">
+      <configurationItem name="id">eb7f1809-e56f-44fb-9cc5-6709e4609964</configurationItem>
+      <configurationItem name="name">VIS Post-Processor</configurationItem>
+      <configurationItem name="description">VIS Post-Processor</configurationItem>
+      <configurationItem name="enabled">False</configurationItem>
+      <configurationItem name="addEnabled">False</configurationItem>
+      <configurationItem name="bindEnabled">False</configurationItem>
+      <configurationItem name="compareEnabled">False</configurationItem>
+      <configurationItem name="deleteEnabled">False</configurationItem>
+      <configurationItem name="modifyEnabled">False</configurationItem>
+      <configurationItem name="modifyDNEnabled">False</configurationItem>
+      <configurationItem name="searchEnabled">True</configurationItem>
+      <configurationItem name="postProcessorDllName">e:\program files\optimal idm\virtual identity server\bin\OptimalIdM.VIS.DynamicPrePostProcessor.dll</configurationItem>
+      <configurationItem name="postProcessorClassName">OptimalIdM.VIS.DynamicPrePostProcessor._PostProcessorEx</configurationItem>
+      <configurationItem name="codeFilePath">E:\Program Files\Optimal IdM\Virtual Identity Server\Extensibility\DynamicPrePostProcessor\PrePostProcessorEx.cs</configurationItem>
+      <configurationItem name="extendedRequestEnabled">False</configurationItem>
+    </configurationSection>
+    <configurationItem name="certificateThumbprint">BDB3A51B13841142F7B1F28BE8219DEDC38A4E88</configurationItem>
+    <!--[AUTHENTICATION_CACHE]-->
+    <!--********************************************************************-->
+    <!--*  AUTHENTICATION_CACHE configurationSections define the           *-->
+    <!--*  configuration of the cache associated with authentications      *-->
+    <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+    <!--* Configuration Items:                                             *-->
+    <!--*                                                                  *-->
+    <!--*   percentageOfMemory - The percentage of physical memory to      *-->
+    <!--*               dedicate to this cache                             *-->
+    <!--*                                                                  *-->
+    <!--*   pollingInterval - How often to poll the cache for expired      *-->
+    <!--*               objects (in seconds).                              *-->
+    <!--*                                                                  *-->
+    <!--*   cacheLifetime - The number of seconds that an object in the    *-->
+    <!--*               cache is considered valid.                         *-->
+    <!--*                                                                  *-->
+    <!--*   cacheType - Indicates if the cache should reside in 'Memory'   *-->
+    <!--*               or 'Persistent' (stored in System LDAP).           *-->
+    <!--*                                                                  *-->
+    <!--********************************************************************-->
+    <configurationSection type="AUTHENTICATION_CACHE">
+      <configurationItem name="id">VS-75CEA8B5-34B9-4887-8E25-B95A523A16EA</configurationItem>
+      <configurationItem name="name">Authentication Cache</configurationItem>
+      <configurationItem name="description">This is a new Authentication Cache</configurationItem>
+      <configurationItem name="cacheLifetime">3600</configurationItem>
+      <configurationItem name="enabled">True</configurationItem>
+      <configurationItem name="cacheType">Memory</configurationItem>
+      <configurationItem name="pollingInterval">60</configurationItem>
+      <configurationItem name="percentageOfMemory">10</configurationItem>
+    </configurationSection>
+    <!--[VIS_ADMIN_GROUP]-->
+    <!--********************************************************************-->
+    <!--*  Administrative groups for the VIS Istance.                      *-->
+    <!--*                                                                  *-->
+    <!--*  Each administrative group is listed in its own configSection.   *-->
+    <!--*                                                                  *-->
+    <!--*  Multiple administrative groups can be defined.                  *-->
+    <!--*                                                                  *-->
+    <!--*  Only users with membership in an administrative group have the  *-->
+    <!--*  ability to access the VIS Instance.                             *-->
+    <!--*                                                                  *-->
+    <!--*  The 'virtual Dn' of the group is specified.                     *-->
+    <!--*                                                                  *-->
+    <!--* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*-->
+    <!--* Configuration Items:                                             *-->
+    <!--*                                                                  *-->
+    <!--*   virtualDn - The virtual dn of an administrative group for this *-->
+    <!--*        VIS Instace.                                              *-->
+    <!--*                                                                  *-->
+    <!--********************************************************************-->
+    <configurationSection type="VIS_ADMIN_GROUP">
+      <configurationItem name="id">10eaf1e6-f817-444c-86c4-5b67ad3e3623</configurationItem>
+      <configurationItem name="name">VIS Readers Group</configurationItem>
+      <configurationItem name="description">VIS Readers Group</configurationItem>
+      <configurationItem name="enabled">True</configurationItem>
+      <configurationItem name="virtualDn">cn=sg-visreadersgroup,cn=vis static groups,ou=optimalidm,ou=visconfig,dc=dbb,dc=local</configurationItem>
+      <configurationItem name="anonymousSearchesEnabled">False</configurationItem>
+      <configurationSection type="ASSOCIATED_BIND_PROFILE">
+        <configurationItem name="id">908da865-e9dc-405d-bc98-ae2203294a2b</configurationItem>
+        <configurationItem name="name">AD - Admin Rights</configurationItem>
+        <configurationItem name="description">AD - Admin Rights</configurationItem>
+        <configurationItem name="bindProfileId">98f503ce-d76f-4f57-9347-30285ece704c</configurationItem>
+        <configurationItem name="visaId">8bf7c7c0-b9a6-494f-bdc3-2c3aa2d7c9f3</configurationItem>
+        <configurationItem name="enabled">True</configurationItem>
+        <configurationItem name="filter" />
+        <configurationItem name="includedAttributes" />
+        <configurationItem name="excludedAttributes" />
+        <configurationItem name="allowAdd">False</configurationItem>
+        <configurationItem name="allowCompare">True</configurationItem>
+        <configurationItem name="allowDelete">False</configurationItem>
+        <configurationItem name="allowExtendedRequest">False</configurationItem>
+        <configurationItem name="allowModify">False</configurationItem>
+        <configurationItem name="allowModifyDN">False</configurationItem>
+        <configurationItem name="allowSearch">True</configurationItem>
+      </configurationSection>
+      <configurationSection type="ASSOCIATED_BIND_PROFILE">
+        <configurationItem name="id">2649d3cc-84e9-4d41-ac16-aeab34b30b2e</configurationItem>
+        <configurationItem name="name">CSODBB - Admin Rights</configurationItem>
+        <configurationItem name="description">CSODBB - Admin Rights</configurationItem>
+        <configurationItem name="visaId">a641214b-e6d2-453d-9e36-367708512469</configurationItem>
+        <configurationItem name="bindProfileId">522b5465-e3e0-4bb8-b0bf-148880bfe2aa</configurationItem>
+        <configurationItem name="enabled">True</configurationItem>
+      </configurationSection>
+    </configurationSection>
+    <configurationItem name="auditLogConnectionString" />
+    <configurationItem name="staticGroupsConverted">True</configurationItem>
+  </configurationSection>
+</configuration>

@@ -1,0 +1,7 @@
+<SynchronizationRule>
+    <ConnectedSystemScope />
+    <OutboundScope />
+    <RelationshipCriteria><conditions><condition><ilmAttribute>uid</ilmAttribute><csAttribute>ID</csAttribute></condition></conditions></RelationshipCriteria>
+    <InitialFlow />
+    <PersistentFlow><import-flow><src><attr>group</attr></src><dest>csoRoles</dest><scoping /></import-flow><import-flow><src><attr>ID</attr></src><dest>displayName</dest><scoping /></import-flow><import-flow><src><attr>ID</attr></src><dest>uid</dest><scoping /></import-flow><import-flow><src><attr>PERS.PIN</attr></src><dest>description</dest><scoping /></import-flow><import-flow><src><attr>user</attr></src><dest>csoUserID</dest><scoping /></import-flow><import-flow><src><attr>PERS.PIN</attr></src><dest>csoLegacyEmployeeID</dest><scoping /></import-flow><import-flow><src><attr>ADS.CODE</attr></src><dest>csoADSCodes</dest><scoping /></import-flow><import-flow><src><attr>ADS.END</attr></src><dest>csoEndDate</dest><scoping /><fn id="IIF" isCustomExpression="false"><arg><fn id="IsPresent" isCustomExpression="true"><arg>ADS.END</arg></fn></arg><arg>ADS.END</arg><arg>"2099-12-31T13:00:00.000"</arg></fn></import-flow><import-flow><src><attr>ADS.START</attr></src><dest>csoStartDate</dest><scoping /><fn id="IIF" isCustomExpression="false"><arg><fn id="IsPresent" isCustomExpression="true"><arg>ADS.START</arg></fn></arg><arg>ADS.START</arg><arg>"1900-01-01T13:00:00.000"</arg></fn></import-flow></PersistentFlow>
+</SynchronizationRule>

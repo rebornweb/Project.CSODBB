@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="PrincipalForWindowsMA">
+</Property><Property Name="Solution File" Value="D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\PrincipalForWindowsMA\PrincipalForWindowsMA.sln">
+</Property><Property Name="User Options File" Value="D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\PrincipalForWindowsMA\PrincipalForWindowsMA.suo">
+</Property><Property Name="Date" Value="Friday, 15 July 2011">
+</Property><Property Name="Time" Value="8:18 AM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="PrincipalForWindowsMA.sln" Description="File successfully backed up as D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\PrincipalForWindowsMA\Backup\PrincipalForWindowsMA.sln">
+</Event><Event ErrorLevel="0" Project="" Source="PrincipalForWindowsMA.suo" Description="File successfully backed up as D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\PrincipalForWindowsMA\Backup\PrincipalForWindowsMA.suo">
+</Event><Event ErrorLevel="0" Project="PrincipalForWindowsMA" Source="PrincipalForWindowsMA.csproj" Description="Project file successfully backed up as D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\PrincipalForWindowsMA\Backup\PrincipalForWindowsMA.csproj">
+</Event><Event ErrorLevel="0" Project="PrincipalForWindowsMA" Source="PrincipalForWindowsMA.csproj.user" Description="Project user file successfully backed up as D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\PrincipalForWindowsMA\Backup\PrincipalForWindowsMA.csproj.user">
+</Event><Event ErrorLevel="0" Project="PrincipalForWindowsMA" Source="AssemblyInfo.cs" Description="File successfully backed up as D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\PrincipalForWindowsMA\Backup\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="PrincipalForWindowsMA" Source="PrincipalForWindowsDB.cs" Description="File successfully backed up as D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\PrincipalForWindowsMA\Backup\PrincipalForWindowsDB.cs">
+</Event><Event ErrorLevel="0" Project="PrincipalForWindowsMA" Source="PrincipalForWindowsMA.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="PrincipalForWindowsMA" Source="PrincipalForWindowsMA.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="PrincipalForWindowsMA.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="PrincipalForWindowsMA.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="PrincipalForWindowsMA" Source="PrincipalForWindowsMA.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

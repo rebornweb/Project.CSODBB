@@ -1,0 +1,7 @@
+<SynchronizationRule>
+    <ConnectedSystemScope />
+    <OutboundScope />
+    <RelationshipCriteria><conditions><condition><ilmAttribute>uid</ilmAttribute><csAttribute>ID</csAttribute></condition></conditions></RelationshipCriteria>
+    <InitialFlow />
+    <PersistentFlow><import-flow><src><attr>ID</attr></src><dest>uid</dest><scoping /></import-flow><import-flow><src><attr>OrganisationName</attr></src><dest>displayName</dest><scoping /></import-flow><import-flow><src><attr>AllowCustomEmployeeCode</attr></src><dest>csoAllowCustomEmployeeCode</dest><scoping /><fn id="IIF" isCustomExpression="false"><arg><fn id="Eq" isCustomExpression="true"><arg>AllowCustomEmployeeCode</arg><arg>1</arg></fn></arg><arg>"True"</arg><arg>"False"</arg></fn></import-flow><import-flow><src><attr>EmployeeCodeLastValue</attr></src><dest>csoEmployeeCodeLastValue</dest><scoping /></import-flow><import-flow><src><attr>EmployeeCodeRangeFrom</attr></src><dest>csoEmployeeCodeRangeFrom</dest><scoping /></import-flow><import-flow><src><attr>EmployeeCodeRangeTill</attr></src><dest>csoEmployeeCodeRangeTill</dest><scoping /></import-flow></PersistentFlow>
+</SynchronizationRule>

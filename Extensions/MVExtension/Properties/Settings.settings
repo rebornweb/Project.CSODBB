@@ -1,0 +1,58 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Mms_Metaverse.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ActiveMAs" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;DBB&lt;/string&gt;
+  &lt;string&gt;DBB Contacts&lt;/string&gt;
+  &lt;string&gt;DerivedADS.group Updater&lt;/string&gt;
+  &lt;string&gt;DerivedADS.nestedGroup Updater&lt;/string&gt;
+  &lt;string&gt;NASS&lt;/string&gt;
+  &lt;string&gt;CAPS Payroll&lt;/string&gt;
+  &lt;string&gt;Legacy Exchange - migrated mailboxes&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="UPN" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">dbb.local</Value>
+    </Setting>
+    <Setting Name="ExchangeMBXDNs" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;CN=Normal Mailboxes (A-G),CN=Storage Group 1,CN=InformationStore,CN=OCCCP-EX001,CN=Servers,CN=Curia,CN=Administrative Groups,CN=Diocese Of Broken Bay,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=dbb,DC=local&lt;/string&gt;
+  &lt;string&gt;CN=Normal Mailboxes (H-O),CN=Storage Group 1,CN=InformationStore,CN=OCCCP-EX001,CN=Servers,CN=Curia,CN=Administrative Groups,CN=Diocese Of Broken Bay,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=dbb,DC=local&lt;/string&gt;
+  &lt;string&gt;CN=Normal Mailboxes (P-Z),CN=Storage Group 1,CN=InformationStore,CN=OCCCP-EX001,CN=Servers,CN=Curia,CN=Administrative Groups,CN=Diocese Of Broken Bay,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=dbb,DC=local&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="defaultUserPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">01011900</Value>
+    </Setting>
+    <Setting Name="maxSAMAccountNameLength" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="maxSAMAccountNameRetries" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="OrganisationOUs" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Office of the Bishop&lt;/string&gt;
+  &lt;string&gt;Centacare&lt;/string&gt;
+  &lt;string&gt;Parishes&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="DisabledUserAccountsOU" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">OU=Disabled User Accounts,OU=Global Accounts,DC=dbb,DC=local</Value>
+    </Setting>
+    <Setting Name="ORAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">X400:c=US;a= ;p=Exchange5.5;o=NT4DOMAIN;s</Value>
+    </Setting>
+    <Setting Name="GroupsOU" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">OU=Security,OU=Groups,DC=dbb,DC=local</Value>
+    </Setting>
+    <Setting Name="StaffOU" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">OU=Staff,OU=Users,OU=Diocese,DC=dbb,DC=local</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,145 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>DBB Possible Duplicate Identity Report</title>
+
+<style type="text/css">
+body      {background-color:wheat;}
+table     {width:100%;font-family:Tahoma; font-size:70%;background-color:lightgrey;}
+td.tbname {font-weight:bold; background-color:papayawhip;}
+td.head   {font-weight:bold; background-color:buttonface;}
+td.data   {background-color:cornsilk;}
+</style>
+
+<script type="text/vbscript">
+<!--
+Option Explicit
+
+Const AD_OPEN_FORWARD_ONLY = 0
+Const AD_OPEN_STATIC = 3
+Const AD_LOCK_READ_ONLY = 1
+Const AD_LOCK_OPTIMISTIC = 3
+Const AD_USE_CLIENT = 3
+
+'Customizable parameters:
+
+Const MAX_ROWS      = 100
+Const SQL_SERVER    = "OCCCP-DB004"
+Const DATABASE_NAME = "FIMSynchronizationService"
+Const CONN_STRING = "Provider=SQLOLEDB.1;Persist Security Info=True;Integrated Security=SSPI;Initial Catalog=xxx1;Data Source=xxx2;Timeout=120"
+
+'Add the names of the tables or views you want to display here:
+Dim tableNames
+tableNames = array("dbo.vw_PossibleDuplicates")
+
+Sub Reload
+    Dim oData
+    Set oData = document.getElementById("DataArea")
+    oData.InnerHTML = "<table ID=""dataTable""></table>"
+    GetTableData()
+End Sub
+
+Sub GetTableData
+   Dim objConnection, strConnection
+   strConnection = Replace(Replace(CONN_STRING, "xxx2", SQL_SERVER), "xxx1", DATABASE_NAME)
+   Set objConnection = CreateObject("ADODB.Connection")
+   objConnection.ConnectionTimeout = 120
+   objConnection.Open strConnection
+   Dim objRecordset
+   Set objRecordset = CreateObject("ADODB.Recordset")
+   objRecordset.ActiveConnection = objConnection
+   objRecordset.ActiveConnection.CommandTimeout = 120
+   objRecordset.CursorLocation = AD_USE_CLIENT
+
+   Dim tableName, tableData, oTable, oRow, oTbNameCell, oCell
+   Set oTable = document.getElementById("dataTable")
+      
+   For Each tableName in tableNames
+      Set oRow              = oTable.insertRow()
+      Set oTbNameCell       = oRow.insertCell() 
+      oTbNameCell.ClassName = "tbname"
+      tableName = "( " & _
+      	"SELECT" & _
+		"	mv1.displayName as displayName1, " & _
+		"	mv1.csoLegacyEmployeeID as employeeID1, " & _
+		"	mv1.employeeStatus as employeeStatus1, " & _
+		"	mv1.accountName as accountName1, " & _
+		"	mv2.DisplayName as displayName2, " & _
+		"	mv2.csoLegacyEmployeeID as employeeID2, " & _
+		"	mv2.employeeStatus as employeeStatus2, " & _
+		"	mv2.accountName as accountName2 " & _
+		"From dbo.mms_metaverse mv1 with (nolock) " & _
+		"Inner Join dbo.mms_metaverse mv2 with (nolock) " & _
+		"	On mv2.object_type = 'person' " & _
+		"	And mv2.csoLegacyEmployeeID = mv1.csoLegacyEmployeeID " & _
+		"Where mv1.object_type = 'person' " & _
+		"And mv1.object_id > mv2.object_id " & _
+		") X"
+      oTbNameCell.InnerText = tableName 
+     
+      objRecordset.Open "SELECT * FROM " & tableName, objConnection, _
+                        AD_OPEN_FORWARD_ONLY, AD_LOCK_READ_ONLY
+      
+      If Not objRecordset.eof Then
+         objRecordset.MoveFirst
+         Set oRow   = oTable.insertRow()
+         Dim curField
+         For each curField in objRecordset.fields
+            Set oCell  = oRow.insertCell() 
+            oCell.ClassName = "head"
+            oCell.InnerText =  Trim(curField.Name) 
+         Next
+        oTbNameCell.colSpan = objRecordset.fields.count
+      End If
+  
+      Dim rowCounter 
+      rowCounter = 0
+      Do While Not objRecordset.eof
+         Set oRow   = oTable.insertRow()
+         For each curField in objRecordset.fields
+            Set oCell  = oRow.insertCell() 
+            oCell.ClassName = "data"
+            oCell.InnerText =  Trim(curField) 
+         Next
+         objRecordset.MoveNext
+
+         rowCounter = rowCounter + 1
+         If rowCounter = MAX_ROWS Then
+            Exit Do
+         End If
+      Loop
+      objRecordset.Close
+   Next
+   objConnection.Close
+End Sub
+
+
+
+Sub Quitsub
+     self.close()
+End Sub
+
+-->
+</script>
+
+<HTA:APPLICATION ID="oMyApp"
+APPLICATIONNAME="SQLTableViewer"
+APPLICATION="yes"
+CAPTION="yes"
+SINGLEINSTANCE="yes"
+ICON="unifyico1.ico"
+SYSMENU="yes">
+</HTA:APPLICATION>
+</head>
+
+<body onLoad="GetTableData">
+<span id="DataArea">
+    <table ID="dataTable"></table>
+</span>
+<p>
+<input id="Refresh" type="button" value=" Refresh " name="Refresh"  onClick="Reload">
+<input id="Quitbutton" type="button" value="  Quit  " name="Quit_button"  onClick="QuitSub">
+<p>
+</body>
+</html>

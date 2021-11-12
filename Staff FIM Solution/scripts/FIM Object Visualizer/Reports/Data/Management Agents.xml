@@ -1,0 +1,133 @@
+<ManagementAgents>
+  <ManagementAgent>
+    <Name>CAPS</Name>
+    <ID>53c78313-0971-4023-a31c-9e47d9655fe8</ID>
+    <Type>LDIF</Type>
+    <DataSource>{BFB65A8E-732F-48DA-9907-7DFEAAFDF224}</DataSource>
+    <SynchronizationRules>
+      <SynchronizationRule>cso Entitlements: CAPS ADS roles are imported to FIM, Inbound</SynchronizationRule>
+      <SynchronizationRule>cso Entitlements: CAPS entitlements are imported to FIM, Inbound</SynchronizationRule>
+      <SynchronizationRule>cso Entitlements: CAPS sites are imported to FIM, Inbound</SynchronizationRule>
+      <SynchronizationRule>cso Staff: CAPS Users are imported to FIM, Inbound</SynchronizationRule>
+    </SynchronizationRules>
+  </ManagementAgent>
+  <ManagementAgent>
+    <Name>CAPS Payroll</Name>
+    <ID>4c459c5d-31c3-48d1-910b-582d8b025f09</ID>
+    <Type>Extensible</Type>
+    <DataSource>{A8B67FA1-F2CF-419A-AF56-BDE6144EC5D4}</DataSource>
+    <SynchronizationRules />
+  </ManagementAgent>
+  <ManagementAgent>
+    <Name>Contacts</Name>
+    <ID>be7c3365-1725-4a58-abfb-42650294a04f</ID>
+    <Type>AD</Type>
+    <DataSource>{990D2767-C0CB-4B8C-8BF3-16D090D18C91}</DataSource>
+    <SynchronizationRules>
+      <SynchronizationRule>cso-Other: AD attributes imported to FIM, Inbound</SynchronizationRule>
+      <SynchronizationRule>DBBCSO - Manage Current Students as AD Contacts, Outbound</SynchronizationRule>
+      <SynchronizationRule>DBBCSO - Manage Former Students as AD Contacts, Outbound</SynchronizationRule>
+      <SynchronizationRule>DBBCSO - Manage Student Google Groups as AD Contacts, Outbound</SynchronizationRule>
+    </SynchronizationRules>
+  </ManagementAgent>
+  <ManagementAgent>
+    <Name>CSO ADS</Name>
+    <ID>a75f32c4-e2c7-4ea3-9a86-2bca34f91f01</ID>
+    <Type>LDIF</Type>
+    <DataSource>{E2D12F3B-24C2-4502-B1ED-96143245289A}</DataSource>
+    <SynchronizationRules>
+      <SynchronizationRule>cso Roles: ADS role attributes imported to FIM, Inbound</SynchronizationRule>
+      <SynchronizationRule>cso Roles: ADS site attributes imported to FIM, Inbound</SynchronizationRule>
+    </SynchronizationRules>
+  </ManagementAgent>
+  <ManagementAgent>
+    <Name>CSODBB LDS</Name>
+    <ID>f4d5786c-81dd-4e10-9ff7-c26cdcab74e8</ID>
+    <Type>ADAM</Type>
+    <DataSource>{B48CE52C-CE0F-4E1F-9A90-5642B97E2674}</DataSource>
+    <SynchronizationRules>
+      <SynchronizationRule>cso-People: All active staff and students are provisioned to ADLDS, Outbound</SynchronizationRule>
+    </SynchronizationRules>
+  </ManagementAgent>
+  <ManagementAgent>
+    <Name>FIM Portal</Name>
+    <ID>34fc452c-1076-4b1c-b85c-139314bf541c</ID>
+    <Type>FIM</Type>
+    <DataSource>{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}</DataSource>
+    <SynchronizationRules />
+  </ManagementAgent>
+  <ManagementAgent>
+    <Name>NASS</Name>
+    <ID>ff09aed3-e292-4a1d-9cce-0746799f18cc</ID>
+    <Type>LDIF</Type>
+    <DataSource>{C3824017-CBA6-4F97-94A9-84C122D79445}</DataSource>
+    <SynchronizationRules>
+      <SynchronizationRule>cso Entitlements: NASS ADS roles are imported to FIM, Inbound</SynchronizationRule>
+      <SynchronizationRule>cso Entitlements: NASS departments are imported to FIM, Inbound</SynchronizationRule>
+      <SynchronizationRule>cso Entitlements: NASS entitlements are imported to FIM, Inbound</SynchronizationRule>
+      <SynchronizationRule>cso Entitlements: NASS organisations are imported to FIM, Inbound</SynchronizationRule>
+      <SynchronizationRule>cso Entitlements: NASS sites are imported to FIM, Inbound</SynchronizationRule>
+      <SynchronizationRule>cso Staff: NASS Users are imported to FIM, Inbound</SynchronizationRule>
+    </SynchronizationRules>
+  </ManagementAgent>
+  <ManagementAgent>
+    <Name>PHRIS</Name>
+    <ID>99ddc8f8-52dd-496b-b5a4-e2ff08f5d083</ID>
+    <Type>Extensible</Type>
+    <DataSource>{6C9ECEDB-4256-4FCC-8C0C-DF9C05C8C664}</DataSource>
+    <SynchronizationRules>
+      <SynchronizationRule>cso-PHRIS grades are imported to FIM, Inbound</SynchronizationRule>
+      <SynchronizationRule>cso-PHRIS jobs are imported to FIM, Inbound</SynchronizationRule>
+      <SynchronizationRule>cso-PHRIS: FIM people attributes are exported to PHRIS, Outbound</SynchronizationRule>
+      <SynchronizationRule>cso-PHRIS: people are imported to FIM, Inbound</SynchronizationRule>
+    </SynchronizationRules>
+  </ManagementAgent>
+  <ManagementAgent>
+    <Name>Replay FIM Portal</Name>
+    <ID>e45a804f-e6d1-45a0-85b5-12d6f0792f1a</ID>
+    <Type>LDIF</Type>
+    <DataSource>{13052E4B-989A-4241-95A0-C0AE38B70FB4}</DataSource>
+    <SynchronizationRules />
+  </ManagementAgent>
+  <ManagementAgent>
+    <Name>SAS2IDM</Name>
+    <ID>c9738321-1e14-446c-b17f-2e7ef6342bd3</ID>
+    <Type>Extensible</Type>
+    <DataSource>{5339513E-6047-401E-AB66-A0F738F85AFB}</DataSource>
+    <SynchronizationRules />
+  </ManagementAgent>
+  <ManagementAgent>
+    <Name>Site</Name>
+    <ID>81e5dbcc-3550-47d6-966d-6289795c7279</ID>
+    <Type>LDIF</Type>
+    <DataSource>{5E7C7C8B-0525-440C-8001-30C563E63BEC}</DataSource>
+    <SynchronizationRules>
+      <SynchronizationRule>cso Sites: Site attributes are imported to FIM, Inbound</SynchronizationRule>
+    </SynchronizationRules>
+  </ManagementAgent>
+  <ManagementAgent>
+    <Name>Staff</Name>
+    <ID>5448014f-fd2e-471c-8953-3276dc892758</ID>
+    <Type>AD</Type>
+    <DataSource>{CB613D75-1D62-41AE-8C1A-090D77B898B6}</DataSource>
+    <SynchronizationRules>
+      <SynchronizationRule>cso Staff Groups: AD attributes are imported to FIM, Inbound</SynchronizationRule>
+      <SynchronizationRule>cso Staff Groups: moved to Deleted Role Groups OU, Outbound</SynchronizationRule>
+      <SynchronizationRule>cso Staff Groups: provisioned and synchronised with AD, Outbound</SynchronizationRule>
+      <SynchronizationRule>cso Staff: AD attributes imported to FIM, Inbound</SynchronizationRule>
+      <SynchronizationRule>cso Staff: provisioned and synchronised with AD, Outbound</SynchronizationRule>
+      <SynchronizationRule>cso Staff: User deprovisioning, Outbound</SynchronizationRule>
+    </SynchronizationRules>
+  </ManagementAgent>
+  <ManagementAgent>
+    <Name>Users and Groups</Name>
+    <ID>261591d1-35f7-4dfb-960d-4b6a22b64798</ID>
+    <Type>AD</Type>
+    <DataSource>{DCC43A0A-0D95-42E7-B9BC-9355E3D86451}</DataSource>
+    <SynchronizationRules>
+      <SynchronizationRule>DBBCSO - Manage Current Students as AD Users, Duplex</SynchronizationRule>
+      <SynchronizationRule>DBBCSO - Manage Former Students as AD Users, Duplex</SynchronizationRule>
+      <SynchronizationRule>DBBCSO - Manage Student Groups in AD, Duplex</SynchronizationRule>
+    </SynchronizationRules>
+  </ManagementAgent>
+</ManagementAgents>

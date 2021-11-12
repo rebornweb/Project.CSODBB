@@ -1,0 +1,733 @@
+﻿<HTML xmlns:user="http://www.myserver.com/user" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+  <HEAD>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <TITLE>MAConfigurationViewer 1.0 - </TITLE>
+    <STYLE type="text/css">
+       @page FullPage{margin-left:1.0in;margin-right:0.5in}
+
+        h1,h3{margin: 0px; padding: 0px;}
+        #S1 {width: 300px;}
+        h1 {color: #AAAAAA; font-size: 500%;}
+        h3 {color: #AAAAAA; font-size: 500%;}
+        
+        table{page:FullPage;width:575px;}
+        .tableClass1{page:FullPage; width:300px; border: medium ;}
+        .trtableClass1{width:375px;}
+        .tdtableClass1{width:165px;}
+
+        .tableMain{page:FullPage; width:540px;  FONT-FAMILY:Verdana; FONT-SIZE: 70%;}
+
+        .thTitle{background-color:#666666; color: #FFFFFF; FONT-SIZE: 70%;}
+        .thAttributeFlow{background-color:#bbbbbb;  FONT-SIZE: 70%;}
+        .thAttributeFlow1{background-color:#dddddd; FONT-SIZE: 70%;}
+        .thAttributeFlow2{background-color:#dddddd; FONT-SIZE: 70%; width:50px}
+
+        .tableMenu{FONT-SIZE: 300%; FONT-FAMILY: Verdana;  width:575px}
+        .tdMenu{border-right: 1px solid #999999;text-align:center;}
+        .trMenu{background-color:#ffffff;}
+
+        .tableClass2{cellspacing:'0' cellpadding:'0'; border='1'; width:100% FONT-SIZE: 80%; FONT-FAMILY: Verdana;  border-color: #eeeeee; border-style:solid; PADDING: .25em;}
+        .tableClass3{width:50px;}
+        .tableClass4{width:575px;vertical-align:left}
+        .tableClass5{vertical-align:middle; width:375px}
+        .tdLeftSection{background-color:#eeeeee; FONT-SIZE: 70%;}
+        
+
+        A{color:#0000FF; text-decoration: none;}
+        a:active {text-decoration: underline;}
+        a:hover {text-decoration: underline;}
+        img {border: none; }
+        .imgbanner {border: none; width:10px;}
+        .my .ct p {padding: 0px 0px 3px 0px;}
+        #btnsearch {border: none; margin-left: 95px; margin-top: -25px;}
+        body,div,span,p,ul,td,th,input,select,textarea,button {font-family: Arial, sans-serif; font-size: 70%;}
+        td{font-size: 70%;word-wrap:break-word;}
+
+
+        .tdClass1{font-size: 70%; width:400px; word-wrap:break-word;}
+        .tdClass2{font-size: 70%; width:350px; word-wrap:break-word;}
+        .tdClass3{font-size: 70%; width:175px; word-wrap:break-word;}
+        .tdClass4{font-size: 70%; width:20px; word-wrap:break-word;}
+        .tdClass5{font-size: 70%; width:350px; word-wrap:break-word;}
+        .tdClass6{font-family: Symbol;font-size: 70%; color:blue; text-align:center; width:8%;}
+        .tdClass7{font-size: 70%; word-wrap:break-word; width:350px;}
+
+        body {page:FullPage;}
+        br.clear, .clrbth {clear: both;}
+        hr {height: 1px; padding: 0px; border:1px solid; color:#BBBBBB; }
+        ol {list-style-position: outside; margin: -2px 0px 0px 23px;}
+        li {list-style-position: outside; margin: -2px 0px 0px 12px; padding: 0; margin-left: 20px;}
+
+        
+
+       </STYLE>
+  </HEAD>
+  <BODY><script>
+//scrolling TOP Link to navigate...
+var displayed="<nobr><b>[Top]</b></nobr>"
+var logolink='javascript:window.scrollTo(0,0)'
+var ie4 =document.all
+
+if (ie4)
+document.write('<span id="logo" style="position:absolute;top:-300;z-index:100">'+displayed+'</span>')
+
+function staticit()
+{
+crosslogo.style.left=document.body.scrollLeft+document.body.clientWidth-crosslogo.offsetWidth-10
+crosslogo.style.top=document.body.scrollTop+document.body.clientHeight-crosslogo.offsetHeight-10
+}
+
+function inserttext()
+{ 
+    if (ie4)
+    crosslogo=document.all.logo
+    if (ie4)
+    window.onscroll=staticit
+
+    crosslogo.innerHTML='<a href="'+logolink+'">'+displayed+'</a>'
+    crosslogo.style.left=document.body.clientWidth-crosslogo.offsetWidth-10
+    crosslogo.style.top=document.body.clientHeight-crosslogo.offsetHeight-10
+
+}
+
+if(ie4)
+{
+    window.onload=inserttext
+    window.onresize=new Function("window.location.reload()")
+}
+
+</script><TABLE cellpadding="0" cellspacing="0" class="tableMain">
+      <TR>
+        <TD>
+          <H1>MAConfigurationViewer 1.0 </H1>
+        </TD>
+      </TR>
+      <TR>
+        <TD>
+          <TABLE class="tableMenu">
+            <Tr class="trMenu">
+              <Td class="tdMenu"><b><A href="#properties"> Properties </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Attri"> Selected Attributes </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Map"> Map Object Types </A></b></Td>
+              <Td class="tdMenu"><b><A href="#DefineObjectTypes"> Define Object Types </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Partition"> Partitions Configured </A></b></Td>
+              <Td class="tdMenu"><b><A href="#connectorfilters"> Connector Filters </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Joinandprojection"> Join and Projection Rules </A></b></Td>
+              <Td class="tdMenu"><b><A href="#AttributeFlow"> Attribute Flow </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Deprovisioning"> Deprovisioning </A></b></Td>
+              <Td class="tdMenu"><b><A href="#MAExDLL"> MA Extensions </A></b></Td>
+              <Td class="tdMenu"><b><A href="#RSofMA"> Run Profiles</A></b></Td>
+            </Tr>
+          </TABLE>
+        </TD>
+      </TR>
+      <TR>
+        <TD>
+          <h3>Site Management Agent </h3>
+          <hr>
+        </TD>
+      </TR>
+      <TR>
+        <TD Align="center"></TD>
+      </TR>
+      <TR>
+        <TD>
+          <TABLE cellspacing="0" cellpadding="0" border="1" bordercolordark="#ffffff" class="tableClass2">
+            <TR>
+              <TH class="thTitle" colspan="2">
+                        Management Agent's Properties
+                </TH>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Properties</b></TD>
+              <TD align="left"><a NAME="#properties"></a><table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <td><b>MA Type: </b></td>
+                    <td> LDAP Data Interchange Format (LDIF) </td>
+                  </tr>
+                  <tr>
+                    <td><b>Description: </b></td>
+                    <td class="tdClass3">CSO FIM V2: Migrated site data export from legacy ILM2007 SQL table</td>
+                  </tr>
+                  <tr>
+                    <td><b>Creation Time: </b></td>
+                    <td>2012-04-02 05:22:45.107</td>
+                  </tr>
+                  <tr>
+                    <td><b>Last Modification Time: </b></td>
+                    <td>2017-04-21 01:45:29.912</td>
+                  </tr>
+                  <tr>
+                    <td><b> Run in Separate Process:</b></td>
+                    <td> No </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Selected Attributes </b></TD>
+              <TD align="left"><a NAME="#Attri"></a><TABLE align="left">
+                  <TR>
+                    <TD>
+                      <table border="1" cellpadding="0" cellspacing="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                        <tr>
+                          <td class="thAttributeFlow1"><b>Attribute Name </b></td>
+                          <td class="thAttributeFlow1"><b>Type </b></td>
+                          <td class="thAttributeFlow1"><b>MultiValued </b></td>
+                          <td class="thAttributeFlow1"><b>Min Length</b></td>
+                          <td class="thAttributeFlow1"><b>Max Length</b></td>
+                        </tr>
+                        <tr>
+                          <td>IsActive</td>
+                          <td>Number</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>IsMOE</td>
+                          <td>Number</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>IsSchool</td>
+                          <td>Number</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>SiteID</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>SiteName</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>forwarderContainer</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>physicalDeliveryOfficeName</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>ProfilePathLoc</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                      </table>
+                    </TD>
+                  </TR>
+                  <TR>
+                    <TD>
+                      <table border="1" cellpadding="0" cellspacing="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                        <tr>
+                          <td><b>Anchor Attribute(s): </b></td>
+                          <td> dn </td>
+                        </tr>
+                        <tr>
+                          <td><b>Code Page: </b></td>
+                          <td>65001
+                                                                        - Unicode (UTF-8)</td>
+                        </tr>
+                      </table>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Map Object Types </b></TD>
+              <TD align="left"><a NAME="#Map"></a><table border="1" bordercolordark="#ffffff" cellpadding="0" cellspacing="0" align="left" class="tableClass4">
+                  <tr>
+                    <td class="thAttributeFlow1"><b> Object Class </b></td>
+                    <td class="thAttributeFlow1"><b> Object Type </b></td>
+                  </tr>
+                  <tr>
+                    <td>site</td>
+                    <td>site</td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Define Object Types </b></TD>
+              <TD align="left"><a NAME="#DefineObjectTypes"></a><table align="left" class="tableClass4">
+                  <tr>
+                    <td><b> Object Type: </b></td>
+                    <td>site</td>
+                  </tr>
+                  <tr>
+                    <td><b>Use distinguished name as anchor attribute: </b></td>
+                    <td> Yes </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <table border="1" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" class="tableClass4">
+                        <tr>
+                          <td class="thAttributeFlow1"><b> Attribute Name </b></td>
+                          <td class="thAttributeFlow1"><b> Must Have </b></td>
+                        </tr>
+                        <tr>
+                          <td>IsActive</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>IsMOE</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>IsSchool</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SiteID</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SiteName</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>forwarderContainer</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>physicalDeliveryOfficeName</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>ProfilePathLoc</td>
+                          <td> No </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Partitions Configured </b></TD>
+              <TD align="left"><a NAME="#Partition"></a><table border="1" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                  <tr>
+                    <td align="center" class="thAttributeFlow1"><b> Object Type </b></td>
+                    <td align="center" class="thAttributeFlow1"><b> Partition Name </b></td>
+                  </tr>
+                  <tr>
+                    <td>site</td>
+                    <td>default</td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Connector Filters </b></TD>
+              <TD align="left"><a NAME="#connectorfilters"></a> None </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Join and Projection Rules </b></TD>
+              <TD align="left"><a NAME="#Joinandprojection"></a><br><TABLE align="left" class="tableClass4">
+                  <TR>
+                    <TD>
+                      <table cellpadding="0" cellspacing="0" width="100%" align="left" class="tableClass4">
+                        <tr>
+                          <td colspan="3"><b>Join Rules: </b></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" width="100%" align="center">
+                              <tr>
+                                <th class="thAttributeFlow1" align="center">Data Source Object</th>
+                                <th class="thAttributeFlow1" align="center">Mapping</th>
+                                <th class="thAttributeFlow1" align="center">Metaverse Object</th>
+                                <th class="thAttributeFlow1" align="center">Join Resolution Extension</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>site</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>csoSite</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">SiteID</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">csoSiteCode</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table><br></TD>
+                  </TR>
+                  <TR>
+                    <TD>
+                      <table width="100%" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                        <tr>
+                          <td><b>Projection Rules:</b></td>
+                        </tr>
+                        <tr>
+                          <TD>
+                            <table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" width="100%">
+                              <tr>
+                                <th class="thAttributeFlow1">Data Source Object</th>
+                                <th class="thAttributeFlow1">Mapping</th>
+                                <th class="thAttributeFlow1">Metaverse Object</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">site</td>
+                                <td> Declared </td>
+                              </tr>
+                            </table>
+                          </TD>
+                        </tr>
+                      </table>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Attribute Flow</b></TD>
+              <TD align="left"><a NAME="#AttributeFlow"></a><br><TABLE align="left" class="tableClass4">
+                  <TR>
+                    <TD>
+                      <TABLE cellspacing="0" cellpadding="0" border="1" bordercolorlight="#ffffff" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                        <TR>
+                          <TH class="thAttributeFlow" colspan="4"><b>Export Attribute Flow </b></TH>
+                        </TR>
+                        <TR>
+                          <TD> None </TD>
+                        </TR>
+                      </TABLE>
+                    </TD>
+                  </TR>
+                  <TR>
+                    <TD><br><TABLE cellspacing="0" border="1" cellpadding="0" bordercolorlight="#ffffff" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                        <TR>
+                          <TH class="thAttributeFlow" colspan="4"><b>Import Attribute Flow </b></TH>
+                        </TR>
+                        <TR>
+                          <TD>
+                            <table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" class="tableClass4">
+                              <tr>
+                                <th class="thAttributeFlow1" style="display:none;">MV Key</th>
+                                <th class="thAttributeFlow1">Data Source Attribute</th>
+                                <th class="thAttributeFlow1">To </th>
+                                <th class="thAttributeFlow1">Metaverse Attribute</th>
+                                <th class="thAttributeFlow1">Mapping Type</th>
+                                <th class="thAttributeFlow1">Precedence Order</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;"><b>csoSite</b></td>
+                                <td class="tdClass3"><b>site</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>csoSite</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoForwarderContainer</td>
+                                <td class="tdClass3">forwarderContainer</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoForwarderContainer</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">description</td>
+                                <td class="tdClass3">SiteName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">description</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoSiteCode</td>
+                                <td class="tdClass3">SiteID</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoSiteCode</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoProfilePathLoc</td>
+                                <td class="tdClass3">ProfilePathLoc</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoProfilePathLoc</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoIsSchool</td>
+                                <td class="tdClass3">
+													[<strong>IIF(</strong><strong>CustomExpression(</strong><strong>IsPresent(</strong>IsSchool<strong>)</strong><strong>)</strong>,<strong>CustomExpression(</strong><strong>IIF(</strong><strong>Eq(</strong>IsSchool,1<strong>)</strong>,"True","False"<strong>)</strong><strong>)</strong>,"False"<strong>)</strong>]
+												</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoIsSchool</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoIsMOE</td>
+                                <td class="tdClass3">
+													[<strong>IIF(</strong><strong>CustomExpression(</strong><strong>IsPresent(</strong>IsMOE<strong>)</strong><strong>)</strong>,<strong>CustomExpression(</strong><strong>IIF(</strong><strong>Eq(</strong>IsMOE,1<strong>)</strong>,"True","False"<strong>)</strong><strong>)</strong>,"False"<strong>)</strong>]
+												</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoIsMOE</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoIsActive</td>
+                                <td class="tdClass3">
+													[<strong>IIF(</strong><strong>CustomExpression(</strong><strong>IsPresent(</strong>IsActive<strong>)</strong><strong>)</strong>,<strong>CustomExpression(</strong><strong>IIF(</strong><strong>Eq(</strong>IsActive,1<strong>)</strong>,"True","False"<strong>)</strong><strong>)</strong>,"False"<strong>)</strong>]
+												</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoIsActive</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">uid</td>
+                                <td class="tdClass3">physicalDeliveryOfficeName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">uid</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">displayName</td>
+                                <td class="tdClass3">physicalDeliveryOfficeName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3">3 </td>
+                              </tr>
+                            </table>
+                          </TD>
+                        </TR>
+                      </TABLE>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Deprovisioning </b></TD>
+              <TD align="left"><a NAME="#Deprovisioning"></a><table cellpadding="0" cellspacing="0" bordercolordark="#ffffff" align="left" border="1" class="tableClass4">
+                  <tr>
+                    <td><b> Deprovision option: </b></td>
+                    <td> Make them disconnectors </td>
+                  </tr>
+                  <tr>
+                    <td><b> Do not recall attributes contributed by an object from this MA when it is disconnected:</b></td>
+                    <td> No </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>MA Extensions  </b></TD>
+              <TD align="left"><a NAME="#MAExDLL"></a><table cellpadding="0" cellspacing="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <td width="50%"><b>DLL:</b></td>
+                    <td width="50%"> None </td>
+                  </tr>
+                  <tr>
+                    <td width="50%"><b> Enable Password Management:</b></td>
+                    <td width="50%"> No </td>
+                  </tr>
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2">Partitions</th>
+                  </tr>
+                  <tr>
+                    <th class="thAttributeFlow1"><b>Partition Name </b></th>
+                    <th class="thAttributeFlow1"><b>Display Name</b></th>
+                  </tr>
+                  <tr>
+                    <td>default</td>
+                    <td>None</td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Run Profiles</b></TD>
+              <td class="tdClass2" align="left"><a NAME="#RSofMA"></a><table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">FI</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Input File Name: </td>
+                    <td>csoSites.ldif</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">FIFS</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Input File Name: </td>
+                    <td>csoSites.ldif</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 2</b>  Full Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">FIDS</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Input File Name: </td>
+                    <td>csoSites.ldif</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 2</b>  Delta Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">FS</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">DS</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                </table>
+              </td>
+            </TR>
+          </TABLE>
+        </TD>
+      </TR>
+    </TABLE>
+  </BODY>
+</HTML>

@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<plugins>
+  <plugin name="Unify.Connectors.PeopleSoft" type="Unify.Connectors.PeopleSoftConnectorPlugInFactory,Unify.Connectors.PeopleSoft" />
+</plugins>

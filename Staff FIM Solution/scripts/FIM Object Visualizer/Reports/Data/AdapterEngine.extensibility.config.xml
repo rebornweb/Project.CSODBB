@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AdapterEngine>
+	<AdapterEngineConfigurations>
+    <CompositeAdapterConfiguration AdapterId="{5DB0F5E1-A032-450a-9415-FA4863F171DA}"
+                               AdapterName="PHRIS HR">
+      <AdapterEngineConfigurations>
+        <!-- 001 Person -->
+        <AdapterConfiguration BaseConnectorId="{C5520333-987B-45D4-B1C1-24818DB8FAE9}"
+              AdapterId="{212556C5-D01D-4806-9538-0E170E0B970F}"
+              AdapterName="Person Adapter"
+              class="person" >
+          <dn>
+            <dnComponent name="Field" key="EmplId" attributeType="CN" />
+            <dnComponent name="Constant" value="People" attributeType="OU" />
+          </dn>
+          <adapterEntityTransformationFactory name="ChainList">
+            <adapter name="ConstantValue">
+              <field name="BigDate" validator="date" />
+              <value>3999-12-30T10:00:00.000</value>
+            </adapter>
+            <adapter
+                name="Relational"
+                InputKey="EmplId"
+                RelationshipConnectorId="{29BCC921-6B38-4AB7-95DF-47D1C297871E}"
+                RelationshipKey="EmplId">
+              <columnMappings>
+                <columnMapping SourceAttribute="NationalId" TargetAttribute="NationalId" />
+              </columnMappings>
+            </adapter>
+            <adapter
+                name="Relational.Compare.String"
+                InputKey="EmplId"
+                RelationshipConnectorId="{F80FD592-3EB2-4734-992E-2A28955AD3A7}"
+                RelationshipKey="EmplId"
+                PriorityKey="EmailType">
+              <columnMappings>
+                <columnMapping SourceAttribute="EmailId" TargetAttribute="Email" />
+              </columnMappings>
+              <items>
+                <item>BUS</item>
+              </items>
+            </adapter>
+            <adapterEntityTransformationFactory name="Relation.Group"
+              InputKey="EmplId"
+              RelationshipConnectorId="{0857EC4C-9916-47E7-89A7-BD797F9A0A85}"
+              RelationKey="EmplId"
+              RelationReference="EmplRcd"
+              GroupTarget="jobs">
+              <dn>
+                <dnComponent name="Field" key="EmplRcd" attributeType="CN" />
+                <dnComponent name="Constant" value="Job" attributeType="OU" />
+                <dnComponent name="Field" key="EmplId" attributeType="CN" />
+                <dnComponent name="Constant" value="People" attributeType="OU" />
+              </dn>
+            </adapterEntityTransformationFactory>
+            <!--
+              The following adapter is designed to connect to the PRIMARY JOB for a user ... since there are 
+              multiple jobs allowed per employee.  This is generally in place to derive other properties (e.g. at the
+              moment Grade is used to compute the dn collection of Grades).
+            -->
+            <!--
+                <columnMapping TargetAttribute="StdHours" SourceAttribute="StdHours" />
+                <columnMapping TargetAttribute="HrStatus" SourceAttribute="HrStatus" />
+                <columnMapping TargetAttribute="PositionNbr" SourceAttribute="PositionNbr" />
+                <columnMapping TargetAttribute="ApptType" SourceAttribute="ApptType" />
+                <columnMapping TargetAttribute="Location" SourceAttribute="Location" />
+                <columnMapping TargetAttribute="FullPartTime" SourceAttribute="FullPartTime" />
+                -->
+            <adapter
+              name="Relational.Compare.String"
+              InputKey="EmplId" RelationshipConnectorId="{0857EC4C-9916-47E7-89A7-BD797F9A0A85}"
+              RelationshipKey="EmplId"
+              PriorityKey="PerOrg">
+              <columnMappings>
+                <columnMapping TargetAttribute="Grade" SourceAttribute="Grade" />
+                <columnMapping TargetAttribute="SalAdminPlan" SourceAttribute="SalAdminPlan" />
+                <columnMapping TargetAttribute="SupervisorId" SourceAttribute="SupervisorId" />
+                <columnMapping TargetAttribute="DeptId" SourceAttribute="DeptId" />
+              </columnMappings>
+              <items>
+                <item>EMP</item>
+                <item>POI</item>
+              </items>
+            </adapter>
+            <adapter
+              name="Relational.dn"
+              InputKey="SupervisorId"
+              RelationshipConnectorId="{C5520333-987B-45D4-B1C1-24818DB8FAE9}"
+              RelationshipKey="EmplId">
+              <dn target="Manager">
+                <dnComponent name="Field" key="EmplId" attributeType="CN" />
+                <dnComponent name="Constant" value="People" attributeType="OU" />
+              </dn>
+            </adapter>
+            <adapter
+              name="Relation.Group.dn"
+              InputKey="EmplId"
+              RelationshipConnectorId="{0857EC4C-9916-47E7-89A7-BD797F9A0A85}"
+              RelationKey="EmplId"
+              RelationReference="DeptId"
+              GroupTarget="Departments"
+              local="True">
+              <dn>
+                <dnComponent name="Field" key="DeptId" attributeType="CN" />
+                <dnComponent name="Constant" value="Departments" attributeType="OU" />
+              </dn>
+            </adapter>
+            <adapter
+              name="Relational.Composite"
+              RelationshipConnectorId="{2030B82B-BCE1-40DD-A1EE-09C9F0DC66C6}" >
+              <Relationships>
+                <Relationship InputKey="SalAdminPlan" RelationshipKey="SalAdminPlan" />
+                <Relationship InputKey="Grade" RelationshipKey="Grade" />
+              </Relationships>
+              <dn target="Grades">
+                <dnComponent name="Field" key="Grade" attributeType="CN" />
+                <dnComponent name="Constant" value="Grades" attributeType="OU" />
+                <dnComponent name="Field" key="SalAdminPlan" attributeType="CN" />
+                <dnComponent name="Constant" value="Plans" attributeType="OU" />
+              </dn>
+            </adapter>
+            <!--
+            -->
+            <!-- Ryan ... have used BigDate (constant) for now ... will need to use new connector property EffTodt(???) when we are advised what it is -->
+            <adapter
+              name="DateRelational.Compare.String"
+              InputKey="EmplId"
+              RelationshipConnectorId="{0857EC4C-9916-47E7-89A7-BD797F9A0A85}"
+              RelationshipKey="EmplId"
+              PriorityKey="HrStatus"
+              RangeStartKey="Effdt"
+              RangeEndKey="BigDate"
+              local="True">
+              <columnMappings>
+                <columnMapping TargetAttribute="HrStatus" SourceAttribute="HrStatus" />
+              </columnMappings>
+              <items>
+                <item>A</item>
+                <item>I</item>
+              </items>
+            </adapter>
+          </adapterEntityTransformationFactory>
+          <image>iVBORw0KGgoAAAANSUhEUgAAAAsAAAAVCAIAAAAfEoOaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAA3SURBVChT7dCpDQAgAMDA7j8hEonDEBIIn0aVAThdVYIhGpIhG4qhGYZhGbb5xX3o4cc0dEM1B8ZVn5iOazRwAAAAAElFTkSuQmCC</image>
+        </AdapterConfiguration>
+        <!-- 002 Person.Email -->
+        <AdapterConfiguration BaseConnectorId="{F80FD592-3EB2-4734-992E-2A28955AD3A7}"
+              AdapterId="{0DC87CAB-5D52-4933-B19A-CB8DB61C82A5}"
+              AdapterName="Person Email Adapter"
+              class="personEmail" >
+          <dn>
+            <dnComponent name="Field" key="EmailType" attributeType="CN" />
+            <dnComponent name="Field" key="EmplId" attributeType="CN" />
+            <dnComponent name="Constant" value="People" attributeType="OU" />
+          </dn>
+          <adapterEntityTransformationFactory name="Move">
+            <columnMappings>
+              <columnMapping TargetAttribute="Class" SourceAttribute="EmailClass" />
+            </columnMappings>
+          </adapterEntityTransformationFactory>
+          <image>iVBORw0KGgoAAAANSUhEUgAAAAsAAAAVCAIAAAAfEoOaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAA3SURBVChT7dCpDQAgAMDA7j8hEonDEBIIn0aVAThdVYIhGpIhG4qhGYZhGbb5xX3o4cc0dEM1B8ZVn5iOazRwAAAAAElFTkSuQmCC</image>
+        
+      </AdapterConfiguration>
+        <!-- 003 Department -->
+        <AdapterConfiguration BaseConnectorId="{E2D6EAF0-A409-448D-A557-0131F8394AA7}"
+              AdapterId="{8B61E0C6-BBFD-42e0-B021-9CF56C09FC64}"
+              AdapterName="Department Adapter"
+              class="department" >
+          <dn>
+            <dnComponent name="Field" key="DeptId" attributeType="CN" />
+            <dnComponent name="Constant" value="Departments" attributeType="OU" />
+          </dn>
+          <image>iVBORw0KGgoAAAANSUhEUgAAAAsAAAAVCAIAAAAfEoOaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAA3SURBVChT7dCpDQAgAMDA7j8hEonDEBIIn0aVAThdVYIhGpIhG4qhGYZhGbb5xX3o4cc0dEM1B8ZVn5iOazRwAAAAAElFTkSuQmCC</image>
+        </AdapterConfiguration>
+        <!-- 004 Grade -->
+        <AdapterConfiguration BaseConnectorId="{2030B82B-BCE1-40DD-A1EE-09C9F0DC66C6}"
+              AdapterId="{487CA118-2BF9-4627-A10C-7A6CAE9C9EE8}"
+              AdapterName="Grade Adapter"
+              class="grade" >
+          <dn>
+            <dnComponent name="Field" key="Grade" attributeType="CN" />
+            <dnComponent name="Constant" value="Grades" attributeType="OU" />
+            <dnComponent name="Field" key="SalAdminPlan" attributeType="CN" />
+            <dnComponent name="Constant" value="Plans" attributeType="OU" />
+          </dn>
+          <image>iVBORw0KGgoAAAANSUhEUgAAAAsAAAAVCAIAAAAfEoOaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAA3SURBVChT7dCpDQAgAMDA7j8hEonDEBIIn0aVAThdVYIhGpIhG4qhGYZhGbb5xX3o4cc0dEM1B8ZVn5iOazRwAAAAAElFTkSuQmCC</image>
+        </AdapterConfiguration>
+        <!-- 005 Job -->
+        <AdapterConfiguration BaseConnectorId="{0857EC4C-9916-47E7-89A7-BD797F9A0A85}"
+              AdapterId="{8735934E-DAFB-4545-9F0D-37158D2EB9CB}"
+              AdapterName="Job Adapter"
+              class="job" >
+          <dn>
+            <dnComponent name="Field" key="EmplRcd" attributeType="CN" />
+            <dnComponent name="Constant" value="Job" attributeType="OU" />
+            <dnComponent name="Field" key="EmplId" attributeType="CN" />
+            <dnComponent name="Constant" value="People" attributeType="OU" />
+          </dn>
+          <adapterEntityTransformationFactory name="ChainList">
+            <adapter name="Move">
+              <columnMappings>
+                <columnMapping TargetAttribute="LastUpdDttm" SourceAttribute="JobLastUpdDttm" />
+              </columnMappings>
+            </adapter>
+            <adapter
+              name="Relational.dn"
+              InputKey="EmplId"
+              RelationshipConnectorId="{C5520333-987B-45D4-B1C1-24818DB8FAE9}"
+              RelationshipKey="EmplId">
+              <dn target="User">
+                <dnComponent name="Field" key="EmplId" attributeType="CN" />
+                <dnComponent name="Constant" value="People" attributeType="OU" />
+              </dn>
+            </adapter>
+            <adapter
+              name="Relational.dn"
+              InputKey="SupervisorId"
+              RelationshipConnectorId="{C5520333-987B-45D4-B1C1-24818DB8FAE9}"
+              RelationshipKey="EmplId">
+              <dn target="Manager">
+                <dnComponent name="Field" key="EmplId" attributeType="CN" />
+                <dnComponent name="Constant" value="People" attributeType="OU" />
+              </dn>
+            </adapter>
+            <adapter
+              name="Relational.dn"
+              InputKey="EmplId"
+              RelationshipConnectorId="{0857EC4C-9916-47E7-89A7-BD797F9A0A85}"
+              RelationshipKey="EmplId">
+              <dn target="Department">
+                <dnComponent name="Field" key="DeptId" attributeType="CN" />
+                <dnComponent name="Constant" value="Departments" attributeType="OU" />
+              </dn>
+            </adapter>
+            <adapter
+              name="Relational.Composite"
+              RelationshipConnectorId="{2030B82B-BCE1-40DD-A1EE-09C9F0DC66C6}" >
+              <Relationships>
+                <Relationship InputKey="SalAdminPlan" RelationshipKey="SalAdminPlan" />
+                <Relationship InputKey="Grade" RelationshipKey="Grade" />
+              </Relationships>
+              <dn target="JobGrade">
+                <dnComponent name="Field" key="Grade" attributeType="CN" />
+                <dnComponent name="Constant" value="Grades" attributeType="OU" />
+                <dnComponent name="Field" key="SalAdminPlan" attributeType="CN" />
+                <dnComponent name="Constant" value="Plans" attributeType="OU" />
+              </dn>
+            </adapter>
+          </adapterEntityTransformationFactory>
+          <image>iVBORw0KGgoAAAANSUhEUgAAAAsAAAAVCAIAAAAfEoOaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAA3SURBVChT7dCpDQAgAMDA7j8hEonDEBIIn0aVAThdVYIhGpIhG4qhGYZhGbb5xX3o4cc0dEM1B8ZVn5iOazRwAAAAAElFTkSuQmCC</image>
+        </AdapterConfiguration>
+      </AdapterEngineConfigurations>
+      <image>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</image>
+    </CompositeAdapterConfiguration>
+    <AdapterConfiguration
+        BaseConnectorId="{8E1154F8-3336-4641-9627-8455B0DC905F}"
+        AdapterId="{69C49870-11B2-49AA-A479-A1E3E4F3A548}"
+        AdapterName="SAS2IDM Adapter" >
+      <image>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</image>
+      <dn>
+        <dnComponent name="Field" key="UniversalIdentificationNumber" attributeType="UID" />
+      </dn>
+    </AdapterConfiguration>
+  </AdapterEngineConfigurations>
+</AdapterEngine>

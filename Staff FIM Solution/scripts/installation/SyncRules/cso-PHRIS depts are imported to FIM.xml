@@ -1,0 +1,7 @@
+<SynchronizationRule>
+    <ConnectedSystemScope />
+    <OutboundScope />
+    <RelationshipCriteria><conditions><condition><ilmAttribute>uid</ilmAttribute><csAttribute>DeptId</csAttribute></condition></conditions></RelationshipCriteria>
+    <InitialFlow />
+    <PersistentFlow><import-flow><src><attr>DeptId</attr></src><dest>uid</dest><scoping /></import-flow><import-flow><src><attr>Description</attr></src><dest>description</dest><scoping /></import-flow><import-flow><src><attr>DescriptionShort</attr></src><dest>displayName</dest><scoping /></import-flow><import-flow><src>PHRIS</src><dest>csoSourceSystem</dest><scoping /></import-flow></PersistentFlow>
+</SynchronizationRule>

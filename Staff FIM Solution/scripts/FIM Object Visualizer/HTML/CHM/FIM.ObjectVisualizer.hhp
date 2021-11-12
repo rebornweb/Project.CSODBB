@@ -1,0 +1,65 @@
+[OPTIONS]
+Auto Index=Yes
+Compatibility=1.1 or later
+Compiled file=FIM.chm
+Contents file=Table of Contents.hhc
+Default Font=Calibri,10,0
+Default Window=Configuration
+Default topic=..\Index.htm
+Display compile progress=Yes
+Error log file=FIM.log
+Full-text search=Yes
+Index file=Index.hhk
+Language=0xc09 English (Australia)
+Title=FIM Portal Configuration for CSODBB
+
+[WINDOWS]
+Configuration="FIM Portal Configuration","Table of Contents.hhc","Index.hhk","..\Index.htm",,,,,,0x23521,,0x3006,,,,,,,,0
+Test="Unused","Table of Contents.hhc",,"..\UNIFY.Schema.htm",,,,,,0x20,,0x0,[271,372,593,566],,,,,,,0
+
+
+[FILES]
+..\ActiveSchema.htm
+..\CSO.Entitlements.htm
+..\CSO.Groups.htm
+..\CSO.Roles.htm
+..\CSO.Users.htm
+..\EventBroker.Agents.htm
+..\EventBroker.Operations.htm
+..\EventBroker.Other.htm
+..\FIMMA.Schema.htm
+..\ManagementAgentAttributes.htm
+..\ManagementAgents.htm
+..\MetaverseSchema.htm
+..\ProvisioningPolicy.htm
+..\Replication.htm
+..\UNIFY.Configuration.htm
+..\UNIFY.EventBroker.htm
+..\UNIFY.Housekeeping.htm
+..\UNIFY.MPRs.htm
+..\UNIFY.Schema.htm
+..\UNIFY.SearchScopes.htm
+..\UNIFY.Sets.htm
+..\UNIFY.SyncRules.htm
+..\UNIFY.Workflow.htm
+..\Index.htm
+..\CAPS Payroll.htm
+..\CAPS.htm
+..\Contacts.htm
+..\CSO ADS.htm
+..\FIM Portal.htm
+..\metaverse.htm
+..\NASS.htm
+..\PHRIS.htm
+..\Replay FIM Portal.htm
+..\SAS2IDM.htm
+..\Site.htm
+..\Staff.htm
+..\Users and Groups.htm
+..\AdapterEngine.Extensibility.Config.htm
+..\ConnectorEngine.Extensibility.Config.htm
+..\Other.Extensibility.Config.htm
+..\IdentityBroker.Agents.htm
+
+[INFOTYPES]
+

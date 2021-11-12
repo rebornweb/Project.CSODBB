@@ -1,0 +1,136 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>DBB Possible Duplicate Identity Report</title>
+
+<style type="text/css">
+body      {background-color:wheat;}
+table     {width:100%;font-family:Tahoma; font-size:70%;background-color:lightgrey;}
+td.tbname {font-weight:bold; background-color:papayawhip;}
+td.head   {font-weight:bold; background-color:buttonface;}
+td.data   {background-color:cornsilk;}
+</style>
+
+<script type="text/vbscript">
+<!--
+Option Explicit
+
+Const AD_OPEN_FORWARD_ONLY = 0
+Const AD_OPEN_STATIC = 3
+Const AD_LOCK_READ_ONLY = 1
+Const AD_LOCK_OPTIMISTIC = 3
+Const AD_USE_CLIENT = 3
+
+'Customizable parameters:
+
+Const MAX_ROWS      = 100
+Const SQL_SERVER    = "localhost"
+Const DATABASE_NAME = "MicrosoftIdentityIntegrationServer"
+Const CONN_STRING = "Provider=SQLOLEDB.1;Persist Security Info=True;Integrated Security=SSPI;Initial Catalog=xxx1;Data Source=xxx2"
+
+'Add the names of the tables or views you want to display here:
+Dim tableNames
+tableNames = array("Newly Provisioned Groups Requiring RENAME")
+
+Sub Reload
+    Dim oData
+    Set oData = document.getElementById("DataArea")
+    oData.InnerHTML = "<table ID=""dataTable""></table>"
+    GetTableData()
+End Sub
+
+Sub GetTableData
+   Dim objConnection, strConnection
+   strConnection = Replace(Replace(CONN_STRING, "xxx2", SQL_SERVER), "xxx1", DATABASE_NAME)
+   Set objConnection = CreateObject("ADODB.Connection")
+   objConnection.Open strConnection
+   Dim objRecordset
+   Set objRecordset = CreateObject("ADODB.Recordset")
+   objRecordset.CursorLocation = AD_USE_CLIENT
+
+   Dim tableName, tableData, oTable, oRow, oTbNameCell, oCell
+   Set oTable = document.getElementById("dataTable")
+      
+   For Each tableName in tableNames
+      Set oRow              = oTable.insertRow()
+      Set oTbNameCell       = oRow.insertCell() 
+      oTbNameCell.ClassName = "tbname"
+      oTbNameCell.InnerText = tableName 
+      tableName = "( " & _
+      	"SELECT" & _
+		"	mv1.displayName as displayName, " & _
+		"	mv1.info as info, " & _
+		"	mv1.cn as cn1, " & _
+		"	mv1.sAMAccountName as sAMAccountName " & _
+		"From dbo.mms_metaverse mv1 with (nolock) " & _
+		"Where mv1.object_type = 'dbbGroup' " & _
+		"And mv1.info = mv1.displayName " & _
+		") X"
+      oTbNameCell.InnerText = tableName 
+     
+      objRecordset.Open "SELECT * FROM " & tableName & " order by displayName ", objConnection, _
+                        AD_OPEN_FORWARD_ONLY, AD_LOCK_READ_ONLY
+      
+      If Not objRecordset.eof Then
+         objRecordset.MoveFirst
+         Set oRow   = oTable.insertRow()
+         Dim curField
+         For each curField in objRecordset.fields
+            Set oCell  = oRow.insertCell() 
+            oCell.ClassName = "head"
+            oCell.InnerText =  Trim(curField.Name) 
+         Next
+        oTbNameCell.colSpan = objRecordset.fields.count
+      End If
+  
+      Dim rowCounter 
+      rowCounter = 0
+      Do While Not objRecordset.eof
+         Set oRow   = oTable.insertRow()
+         For each curField in objRecordset.fields
+            Set oCell  = oRow.insertCell() 
+            oCell.ClassName = "data"
+            oCell.InnerText =  Trim(curField) 
+         Next
+         objRecordset.MoveNext
+
+         rowCounter = rowCounter + 1
+         If rowCounter = MAX_ROWS Then
+            Exit Do
+         End If
+      Loop
+      objRecordset.Close
+   Next
+   objConnection.Close
+End Sub
+
+
+
+Sub Quitsub
+     self.close()
+End Sub
+
+-->
+</script>
+
+<HTA:APPLICATION ID="oMyApp"
+APPLICATIONNAME="SQLTableViewer"
+APPLICATION="yes"
+CAPTION="yes"
+SINGLEINSTANCE="yes"
+ICON="unifyico1.ico"
+SYSMENU="yes">
+</HTA:APPLICATION>
+</head>
+
+<body onLoad="GetTableData">
+<span id="DataArea">
+    <table ID="dataTable"></table>
+</span>
+<p>
+<input id="Refresh" type="button" value=" Refresh " name="Refresh"  onClick="Reload">
+<input id="Quitbutton" type="button" value="  Quit  " name="Quit_button"  onClick="QuitSub">
+<p>
+</body>
+</html>

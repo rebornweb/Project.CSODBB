@@ -1,0 +1,998 @@
+﻿version: 1
+
+dn: uid=00001,ou=Site,ou=Objects
+objectClass: site
+SiteID: 00001
+SiteName: Caroline Chisholm Centre
+physicalDeliveryOfficeName: OCCCP
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=01332,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01332
+SiteName: Mercy Catholic College (Chatswood)
+physicalDeliveryOfficeName: SMCCC
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01351,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01351
+SiteName: St Paul's Catholic College (Manly)
+physicalDeliveryOfficeName: SSPCM
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01359,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01359
+SiteName: Corpus Christi Catholic School (St Ives)
+physicalDeliveryOfficeName: SCCSI
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01396,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01396
+SiteName: Holy Family Catholic School (Lindfield)
+physicalDeliveryOfficeName: SHFPL
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01424,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01424
+SiteName: Maria Regina Catholic School (Avalon)
+physicalDeliveryOfficeName: SMRPA
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01450,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01450
+SiteName: Mater Maria Catholic College (Warriewood)
+physicalDeliveryOfficeName: SMMCW
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01460,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01460
+SiteName: Sacred Heart Catholic School (Pymble)
+physicalDeliveryOfficeName: SSHPP
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01476,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01476
+SiteName: Our Lady Help of Christians Catholic School (Epping)
+physicalDeliveryOfficeName: SOLHE
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01480,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01480
+SiteName: Our Lady of Dolours Catholic School (Chatswood)
+physicalDeliveryOfficeName: SOLDC
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01484,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01484
+SiteName: Our Lady of Good Counsel Catholic School (Forestville)
+physicalDeliveryOfficeName: SOLGF
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01501,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01501
+SiteName: Our Lady of Perpetual Succour Catholic School (West Pymble)
+physicalDeliveryOfficeName: SOLPW
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01509,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01509
+SiteName: Our Lady of the Rosary Catholic School (Shelly Beach)
+physicalDeliveryOfficeName: SOLRE
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01510,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01510
+SiteName: Our Lady of the Rosary Catholic School (Waitara)
+physicalDeliveryOfficeName: SOLWA
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01529,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01529
+SiteName: Prouille Catholic School (Wahroonga)
+physicalDeliveryOfficeName: SPCSW
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01548,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01548
+SiteName: Sacred Heart Catholic School (Mona Vale)
+physicalDeliveryOfficeName: SSHMV
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01556,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01556
+SiteName: St Agatha's Catholic School (Pennant Hills)
+physicalDeliveryOfficeName: SSAPH
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01593,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01593
+SiteName: St Bernard's Catholic School (Berowra Heights)
+physicalDeliveryOfficeName: SSBBH
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01616,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01616
+SiteName: St Cecilia's Catholic School (Balgowlah)
+physicalDeliveryOfficeName: SSCPB
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01617,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01617
+SiteName: St Cecilia's Catholic School (Wyong)
+physicalDeliveryOfficeName: SSCPW
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01621,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01621
+SiteName: St Philip Neri Catholic School (Northbridge)
+physicalDeliveryOfficeName: SSPNN
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01658,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01658
+SiteName: St Gerard's Catholic School (Carlingford)
+physicalDeliveryOfficeName: SSGPC
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01688,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01688
+SiteName: St John's Catholic School (Narraweena)
+physicalDeliveryOfficeName: SSJAN
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01691,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01691
+SiteName: St John the Baptist Catholic School (Harbord)
+physicalDeliveryOfficeName: SSJBH
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01692,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01692
+SiteName: St John the Baptist Catholic School (Woy Woy South)
+physicalDeliveryOfficeName: SSJWW
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01714,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01714
+SiteName: St Joseph's Catholic College (East Gosford)
+physicalDeliveryOfficeName: SSJGE
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01727,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01727
+SiteName: St Joseph's Catholic School (Narrabeen)
+physicalDeliveryOfficeName: SSJPN
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01805,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01805
+SiteName: St Kevin's Catholic School (Dee Why)
+physicalDeliveryOfficeName: SSKDW
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01807,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01807
+SiteName: St Kieran's Catholic School (Manly Vale)
+physicalDeliveryOfficeName: SSKMV
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01813,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01813
+SiteName: St Leo's Catholic College (Wahroonga)
+physicalDeliveryOfficeName: SSLCW
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01858,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01858
+SiteName: St Mary's Catholic School (Manly)
+physicalDeliveryOfficeName: SSMPM
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01903,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01903
+SiteName: St Patrick's Catholic School (Asquith)
+physicalDeliveryOfficeName: SSPPA
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01905,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01905
+SiteName: St Patrick's Catholic School (East Gosford)
+physicalDeliveryOfficeName: SSPGE
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=01983,ou=Site,ou=Objects
+objectClass: site
+SiteID: 01983
+SiteName: St Thomas' Catholic School (Willoughby)
+physicalDeliveryOfficeName: SSTPW
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=02117,ou=Site,ou=Objects
+objectClass: site
+SiteID: 02117
+SiteName: St Rose Catholic School (Collaroy Plateau)
+physicalDeliveryOfficeName: SSRCP
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=02220,ou=Site,ou=Objects
+objectClass: site
+SiteID: 02220
+SiteName: St Mary's Catholic School (Toukley)
+physicalDeliveryOfficeName: SSMPT
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=02346,ou=Site,ou=Objects
+objectClass: site
+SiteID: 02346
+SiteName: Our Lady Star of the Sea Catholic School (Terrigal)
+physicalDeliveryOfficeName: SOLST
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=02347,ou=Site,ou=Objects
+objectClass: site
+SiteID: 02347
+SiteName: St Martin's Catholic School Davidson (Davidson)
+physicalDeliveryOfficeName: SSMPD
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=02348,ou=Site,ou=Objects
+objectClass: site
+SiteID: 02348
+SiteName: Our Lady of the Rosary Catholic School (Wyoming)
+physicalDeliveryOfficeName: SOLWY
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=05001,ou=Site,ou=Objects
+objectClass: site
+SiteID: 05001
+SiteName: St Brendan's Catholic School (Lake Munmorah)
+physicalDeliveryOfficeName: SSBLM
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=05002,ou=Site,ou=Objects
+objectClass: site
+SiteID: 05002
+SiteName: Holy Cross Catholic School (Kincumber)
+physicalDeliveryOfficeName: SHCPK
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=05005,ou=Site,ou=Objects
+objectClass: site
+SiteID: 05005
+SiteName: St Peter's Catholic College (Tuggerah)
+physicalDeliveryOfficeName: SSPCT
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=05006,ou=Site,ou=Objects
+objectClass: site
+SiteID: 05006
+SiteName: MacKillop Catholic College (Warnervale)
+physicalDeliveryOfficeName: SMCCW
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=05978,ou=Site,ou=Objects
+objectClass: site
+SiteID: 05978
+SiteName: St John Fisher Catholic School (Tumbi Umbi)
+physicalDeliveryOfficeName: SSJTU
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local
+
+dn: uid=OCBRK,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCBRK
+SiteName: Centacare Brookvale
+physicalDeliveryOfficeName: OCBRK
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=OCCCW,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCCCW
+SiteName: Centacare Wyong
+physicalDeliveryOfficeName: OCCCW
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=OCENT,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCENT
+SiteName: Centacare The Entrance
+physicalDeliveryOfficeName: OCENT
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=OCGOS,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCGOS
+SiteName: Centacare Gosford
+physicalDeliveryOfficeName: OCGOS
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=OCHRS,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCHRS
+SiteName: Challenge Ranch
+physicalDeliveryOfficeName: OCHRS
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+
+dn: uid=OCKAN,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCKAN
+SiteName: Centacare OOHC Kangy Angy
+physicalDeliveryOfficeName: OCKAN
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=OCNAR,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCNAR
+SiteName: Centacare Naremburn
+physicalDeliveryOfficeName: OCNAR
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=OCNMH,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCNMH
+SiteName: Centacare OOHC Thanbarra
+physicalDeliveryOfficeName: OCNMH
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=OCPEG,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCPEG
+SiteName: PSU East Gosford
+physicalDeliveryOfficeName: OCPEG
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=OCPEN,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCPEN
+SiteName: PSU Entrance
+physicalDeliveryOfficeName: OCPEN
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=OCPHB,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCPHB
+SiteName: Centacare OOHC Sherbrook
+physicalDeliveryOfficeName: OCPHB
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=OCPHO,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCPHO
+SiteName: Centacare OOHC Grainger
+physicalDeliveryOfficeName: OCPHO
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=OCPMV,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCPMV
+SiteName: PSU Manly Vale
+physicalDeliveryOfficeName: OCPMV
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=OCPRM,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCPRM
+SiteName: PSU Resource Centrer (Manly Vale)
+physicalDeliveryOfficeName: OCPRM
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=OCPYM,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCPYM
+SiteName: Centacare Boohna
+physicalDeliveryOfficeName: OCPYM
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=OCW08,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCW08
+SiteName: Centacare Waitara Northern Sydney Day Service
+physicalDeliveryOfficeName: OCW08
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=OCW17,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCW17
+SiteName: Centacare Waitara Community Access Service
+physicalDeliveryOfficeName: OCW17
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=OCW24,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCW24
+SiteName: Centacare Waitara OOHC Office
+physicalDeliveryOfficeName: OCW24
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=OCW26,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCW26
+SiteName: Centacare Waitara Illoura
+physicalDeliveryOfficeName: OCW26
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=OCWAI,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCWAI
+SiteName: Centacare Waitara HO
+physicalDeliveryOfficeName: OCWAI
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=OCWMC,ou=Site,ou=Objects
+objectClass: site
+SiteID: OCWMC
+SiteName: Centacare Waitara Children's Centre
+physicalDeliveryOfficeName: OCWMC
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=OSFAS,ou=Site,ou=Objects
+objectClass: site
+SiteID: OSFAS
+SiteName: St Francis of Assisi Centre
+physicalDeliveryOfficeName: OSFAS
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: OSFAS
+
+dn: uid=OWRRA,ou=Site,ou=Objects
+objectClass: site
+SiteID: OWRRA
+SiteName: Bethany Centre (Warrawee)
+physicalDeliveryOfficeName: OWRRA
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+
+dn: uid=PARCA,ou=Site,ou=Objects
+objectClass: site
+SiteID: PARCA
+SiteName: ARCADIA Parish
+physicalDeliveryOfficeName: PARCA
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+
+dn: uid=PCCSI,ou=Site,ou=Objects
+objectClass: site
+SiteID: PCCSI
+SiteName: St Ives Parish
+physicalDeliveryOfficeName: PCCSI
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: SCCSI
+
+dn: uid=PEPPI,ou=Site,ou=Objects
+objectClass: site
+SiteID: PEPPI
+SiteName: EPPING and CARLINGFORD Parish
+physicalDeliveryOfficeName: PEPPI
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+
+dn: uid=PFREN,ou=Site,ou=Objects
+objectClass: site
+SiteID: PFREN
+SiteName: FRENCHS FOREST Parish
+physicalDeliveryOfficeName: PFREN
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+
+dn: uid=PHCPK,ou=Site,ou=Objects
+objectClass: site
+SiteID: PHCPK
+SiteName: KINCUMBER Parish
+physicalDeliveryOfficeName: PHCPK
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: SHCPK
+
+dn: uid=PKILL,ou=Site,ou=Objects
+objectClass: site
+SiteID: PKILL
+SiteName: KILLARA Parish
+physicalDeliveryOfficeName: PKILL
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+
+dn: uid=PKURI,ou=Site,ou=Objects
+objectClass: site
+SiteID: PKURI
+SiteName: KU-RING-GAI CHASE Parish
+physicalDeliveryOfficeName: PKURI
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+
+dn: uid=PLAKE,ou=Site,ou=Objects
+objectClass: site
+SiteID: PLAKE
+SiteName: THE LAKES Parish
+physicalDeliveryOfficeName: PLAKE
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+
+dn: uid=PLIND,ou=Site,ou=Objects
+objectClass: site
+SiteID: PLIND
+SiteName: Lindfield Parish
+physicalDeliveryOfficeName: PLIND
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 1
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: SHFPL
+
+dn: uid=PNARE,ou=Site,ou=Objects
+objectClass: site
+SiteID: PNARE
+SiteName: NAREMBURN Parish
+physicalDeliveryOfficeName: PNARE
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=PNARR,ou=Site,ou=Objects
+objectClass: site
+SiteID: PNARR
+SiteName: NARRAWEENA Parish
+physicalDeliveryOfficeName: PNARR
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=PNHAR,ou=Site,ou=Objects
+objectClass: site
+SiteID: PNHAR
+SiteName: NORTH HARBOUR Parish
+physicalDeliveryOfficeName: PNHAR
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=PNORM,ou=Site,ou=Objects
+objectClass: site
+SiteID: PNORM
+SiteName: NORMANHURST Parish
+physicalDeliveryOfficeName: PNORM
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=PODCH,ou=Site,ou=Objects
+objectClass: site
+SiteID: PODCH
+SiteName: CHATSWOOD Parish
+physicalDeliveryOfficeName: PODCH
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=POLRE,ou=Site,ou=Objects
+objectClass: site
+SiteID: POLRE
+SiteName: THE ENTRANCE Parish
+physicalDeliveryOfficeName: POLRE
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=POLST,ou=Site,ou=Objects
+objectClass: site
+SiteID: POLST
+SiteName: Terrigal Parish
+physicalDeliveryOfficeName: POLST
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=POLWY,ou=Site,ou=Objects
+objectClass: site
+SiteID: POLWY
+SiteName: Wyoming Parish
+physicalDeliveryOfficeName: POLWY
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=PPCSW,ou=Site,ou=Objects
+objectClass: site
+SiteID: PPCSW
+SiteName: Wahroonga Parish
+physicalDeliveryOfficeName: PPCSW
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=PPENN,ou=Site,ou=Objects
+objectClass: site
+SiteID: PPENN
+SiteName: PENNANT HILLS Parish
+physicalDeliveryOfficeName: PPENN
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=PPITT,ou=Site,ou=Objects
+objectClass: site
+SiteID: PPITT
+SiteName: PITTWATER Parish
+physicalDeliveryOfficeName: PPITT
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=PSCPW,ou=Site,ou=Objects
+objectClass: site
+SiteID: PSCPW
+SiteName: WYONG and TUMBI UMBI Parish
+physicalDeliveryOfficeName: PSCPW
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=PSHPP,ou=Site,ou=Objects
+objectClass: site
+SiteID: PSHPP
+SiteName: Pymble Parish
+physicalDeliveryOfficeName: PSHPP
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=PSJBH,ou=Site,ou=Objects
+objectClass: site
+SiteID: PSJBH
+SiteName: Freshwater Parish (Harbord)
+physicalDeliveryOfficeName: PSJBH
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=PSJWW,ou=Site,ou=Objects
+objectClass: site
+SiteID: PSJWW
+SiteName: Woy Woy Parish
+physicalDeliveryOfficeName: PSJWW
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=PSKDW,ou=Site,ou=Objects
+objectClass: site
+SiteID: PSKDW
+SiteName: Pittwater Parish (Dee Why)
+physicalDeliveryOfficeName: PSKDW
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=PSMPM,ou=Site,ou=Objects
+objectClass: site
+SiteID: PSMPM
+SiteName: Freshwater Parish (Manly)
+physicalDeliveryOfficeName: PSMPM
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=PSMPT,ou=Site,ou=Objects
+objectClass: site
+SiteID: PSMPT
+SiteName: Toukley Parish
+physicalDeliveryOfficeName: PSMPT
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=PSPGE,ou=Site,ou=Objects
+objectClass: site
+SiteID: PSPGE
+SiteName: GOSFORD Parish
+physicalDeliveryOfficeName: PSPGE
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=PSPNN,ou=Site,ou=Objects
+objectClass: site
+SiteID: PSPNN
+SiteName: Northbridge Parish
+physicalDeliveryOfficeName: PSPNN
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=PSTPW,ou=Site,ou=Objects
+objectClass: site
+SiteID: PSTPW
+SiteName: Willoughby Parish
+physicalDeliveryOfficeName: PSTPW
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=PTHIL,ou=Site,ou=Objects
+objectClass: site
+SiteID: PTHIL
+SiteName: TERRY HILLS Parish
+physicalDeliveryOfficeName: PTHIL
+IsSchool: 0
+IsActive: 0
+IsMOE: 0
+ProfilePathLoc: Local
+
+dn: uid=PWAIT,ou=Site,ou=Objects
+objectClass: site
+SiteID: PWAIT
+SiteName: Waitara Parish
+physicalDeliveryOfficeName: PWAIT
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: pwait
+
+dn: uid=PWARN,ou=Site,ou=Objects
+objectClass: site
+SiteID: PWARN
+SiteName: Warnervale Parish
+physicalDeliveryOfficeName: PWARN
+forwarderContainer: cn=Exchange 2003 Forwarders,ou=Waitara,o=Catholic Schools Office
+IsSchool: 0
+IsActive: 1
+IsMOE: 1
+ProfilePathLoc: Local

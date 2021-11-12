@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AgentEngine changeId="937bf847-f02c-4fd1-b20e-e655905a7e62" testConnections="PT5M">
+  <AgentConfigurations>
+    <Agent id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" name="FIM Agent" type="Unify.EventBroker.Agent.FIM">
+      <Extended xmlns="">
+        <FIMAgent serverName="" userName="" password="+sKaVeCfrnsyRkT+icBFww==" connectionString="4tAdEwfm2eqIp9RhpRlxjnZ1xc1dovPbZq9KDWfEjWW6PGxF4kjr8lqM6x5T+q2nXPHV/+t4bMeelSKT7upJL1Ah3smtMx3KvNsea7FeqStaQgz8E+f6cnQl5n9osfHn" useStandardView="true" successStatus="success;in-progress;completed-no-objects;completed-warnings;completed-sync-errors;completed-discovery-errors;completed-export-errors;completed-transient-objects;stopped-object-limit;no-start-ma-already-running" isLocalInstance="true" />
+      </Extended>
+    </Agent>
+    <Agent id="d3187109-fc0d-41f9-bd94-3a60a8757457" name="UNIFYFIM AD" type="Unify.EventBroker.Agent.AD">
+      <Extended xmlns="">
+        <AD Server="dbb.local" UserName="svcilm_ma_ad" Password="zO+2HKGPr1GfPz7l5Rrz1w==" Authentication="Secure" />
+      </Extended>
+    </Agent>
+    <Agent id="cf7a4d14-0f3e-4f41-bc4d-1837312c9552" name="NASS Db" type="Unify.EventBroker.Agent.SQLServer">
+      <Extended xmlns="">
+        <SQLServerAgent connectionString="QhH9lECRtVPkbS0AWYTaQX7jxZAgjcuL5jHXuQ1y9VzXkH0xeI3AIvBWHEtK9k9YSVJ4YHrTut9i6emame7yOT6x+e9ZZQ2FhCvJSNTtKMrVyfWRzk5U4mypJ0zpqYT2" useStandardView="true" />
+      </Extended>
+    </Agent>
+    <Agent id="18eb1d41-e527-40d5-8c7a-76d3e6ab63bd" name="Identity Broker" type="Unify.EventBroker.Agent.IdentityBroker">
+      <Extended xmlns="">
+        <IdentityBrokerAgent EndPointAddress="http://occcp-as034:59990/" ManagementStudioEndpointConfigurationName="IdentityBroker" ChangesEndpointConfigurationName="IdentityBroker" version="v41" />
+      </Extended>
+    </Agent>
+    <Agent id="1b0275fb-897a-4c35-8d98-130019353992" name="FIM Service" type="Unify.EventBroker.Agent.SQLServer">
+      <Extended xmlns="">
+        <SQLServerAgent connectionString="4tAdEwfm2eqIp9RhpRlxjnZ1xc1dovPbZq9KDWfEjWVi7aGuclWaL3uMl217n2a4DPJtCyvL3TNXa0FrnlYsXcWXvQEqBsxIAJrQTfMl6i0=" useStandardView="true" />
+      </Extended>
+    </Agent>
+    <Agent id="ee3509eb-3667-484b-a013-e933be28a050" name="CSODBB ADLDS" type="Unify.EventBroker.Agent.AD">
+      <Extended xmlns="">
+        <AD Server="OCCCP-AS218.dbb.local:50000" UserName="dbb\svcilm_ma_adlds" Password="IZUBnkJ0GY8wwFn2EN36Hg==" Authentication="Secure" />
+      </Extended>
+    </Agent>
+  </AgentConfigurations>
+</AgentEngine>

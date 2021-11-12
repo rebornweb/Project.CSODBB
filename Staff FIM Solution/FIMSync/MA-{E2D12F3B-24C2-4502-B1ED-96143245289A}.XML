@@ -1,0 +1,178 @@
+<saved-ma-configuration server='D-OCCCP-IM303' export-date='2017-11-10 05:14:44.721'>
+<!--WARNING>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+!! The contents of this file should not be edited.
+!! Any such modifications to this file may result in errors during import.
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+</WARNING-->
+<ma-data>
+ <format-version>1</format-version>
+ <id>{E2D12F3B-24C2-4502-B1ED-96143245289A}</id>
+ <name>CSO ADS</name>
+ <category>LDIF</category>
+ <subtype/>
+ <ma-listname/>
+ <ma-companyname/>
+ <creation-time>2012-02-27 14:18:02.397</creation-time>
+ <last-modification-time>2017-11-10 04:53:26.371</last-modification-time>
+ <version>1628</version>
+ <internal-version>0</internal-version>
+ <password-sync-allowed>0</password-sync-allowed>
+ <schema>
+  <dsml:dsml xmlns:dsml="http://www.dsml.org/DSML" xmlns:ms-dsml="http://www.microsoft.com/MMS/DSML"><dsml:directory-schema ms-dsml:no-objectclass-validation="true"><dsml:class id="adsCode" type="structural"><dsml:name>adsCode</dsml:name><dsml:attribute ref="#parentCode" required="false" /><dsml:attribute ref="#parentDn" required="false" /><dsml:attribute ref="#approver" required="false" /><dsml:attribute ref="#parentNameCanonical" required="false" /><dsml:attribute ref="#parentCodeCanonical" required="false" /><dsml:attribute ref="#rollUpDn" required="false" /><dsml:attribute ref="#code" required="true" /><dsml:attribute ref="#name" required="true" /><dsml:attribute ref="#siteDN" required="true" /><dsml:attribute ref="#site" required="true" /><dsml:attribute ref="#inheritOwner" required="true" /><dsml:attribute ref="#isActive" required="true" /><dsml:attribute ref="#isRollup" required="true" /><dsml:attribute ref="#level" required="true" /></dsml:class><dsml:class id="site" type="structural"><dsml:name>site</dsml:name><dsml:attribute ref="#code" required="false" /><dsml:attribute ref="#level" required="false" /><dsml:attribute ref="#name" required="false" /><dsml:attribute ref="#parentCode" required="false" /><dsml:attribute ref="#parentDn" required="false" /><dsml:attribute ref="#approver" required="false" /><dsml:attribute ref="#parentCodeCanonical" required="false" /><dsml:attribute ref="#parentNameCanonical" required="false" /><dsml:attribute ref="#rollUpDn" required="false" /><dsml:attribute ref="#siteDN" required="false" /><dsml:attribute ref="#site" required="true" /></dsml:class><dsml:attribute-type id="code" single-value="true"><dsml:name>code</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="level" single-value="true"><dsml:name>level</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.27</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="name" single-value="true"><dsml:name>name</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="parentCode" single-value="true"><dsml:name>parentCode</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="parentDn" single-value="true"><dsml:name>parentDn</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="approver" single-value="true"><dsml:name>approver</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="parentCodeCanonical" single-value="true"><dsml:name>parentCodeCanonical</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="parentNameCanonical" single-value="true"><dsml:name>parentNameCanonical</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="rollUpDn" single-value="false"><dsml:name>rollUpDn</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="site" single-value="true"><dsml:name>site</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="siteDN" single-value="true"><dsml:name>siteDN</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="isActive" single-value="true"><dsml:name>isActive</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.7</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="isRollup" single-value="true"><dsml:name>isRollup</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.7</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="inheritOwner" single-value="true"><dsml:name>inheritOwner</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.7</dsml:syntax></dsml:attribute-type></dsml:directory-schema></dsml:dsml>
+ </schema>
+ <attribute-inclusion><attribute>code</attribute><attribute>level</attribute><attribute>name</attribute><attribute>parentCode</attribute><attribute>parentDn</attribute><attribute>approver</attribute><attribute>parentCodeCanonical</attribute><attribute>parentNameCanonical</attribute><attribute>rollUpDn</attribute><attribute>site</attribute><attribute>siteDN</attribute><attribute>isActive</attribute><attribute>isRollup</attribute><attribute>inheritOwner</attribute></attribute-inclusion>
+ <stay-disconnector />
+ <join>
+ <join-profile cd-object-type="site">
+  <join-criterion join-cri-type="sync-rule" id="{5F938BCC-2221-4075-81D9-AA1D0C1BEFFA}" sync-rule-id="{E44F1D94-9616-E211-9FE1-0050568B4E65}">
+   <search mv-object-type="csoSite">
+    <attribute-mapping mv-attribute="uid">
+     <direct-mapping>
+      <src-attribute>site</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+ </join-profile>
+ <join-profile cd-object-type="adsCode">
+  <join-criterion join-cri-type="sync-rule" id="{CCDA88BD-E00C-4FA3-BFD5-B02B354355CB}" sync-rule-id="{E24F1D94-9616-E211-9FE1-0050568B4E65}">
+   <search mv-object-type="csoRole">
+    <attribute-mapping mv-attribute="csoADSCode">
+     <direct-mapping>
+      <src-attribute>code</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+ </join-profile>
+</join>
+
+ <projection>
+ <class-mapping cd-object-type="adsCode" type="sync-rule" id="{DA281C88-BEB9-476E-8E5A-F61BA37DCA75}" sync-rule-id="{E24F1D94-9616-E211-9FE1-0050568B4E65}">
+  <mv-object-type>csoRole</mv-object-type>
+ </class-mapping>
+</projection>
+
+ <export-attribute-flow>
+</export-attribute-flow>
+
+ <provisioning-cleanup type="declared"><action>make-normal-disconnector</action></provisioning-cleanup>
+ <extension />
+ <controller-configuration>
+ <application-protection>low</application-protection>
+ <application-architecture>process</application-architecture>
+</controller-configuration>
+
+ <description>CSO FIM V2: Migrated ADS data from Master Spreadsheet macro export</description>
+ <ma-ui-settings><account-joiner-queries><attributes><cs><attribute name="code" header="code" size="100" /><attribute name="name" header="name" size="100" /><attribute name="level" header="level" size="100" /></cs><mv></mv></attributes><filters max_mv_search_results=""></filters></account-joiner-queries></ma-ui-settings>
+ <private-configuration>
+  <MAConfig><ui-data><xmlwizard><properties><sample_file>F:\Development\CSODBB\csoADSData.ldif</sample_file><code_page_description>Unicode (UTF-8)</code_page_description></properties><partitions><partition cd_name="default" guid="{44D52CEB-B92F-490A-B1C4-BAE59D25ADE1}" version="31"><object_class>adsCode</object_class><object_class>site</object_class></partition></partitions><primary_class_mappings><mapping object_class="adsCode" primary_class="adsCode" user_define="0"><attribute>code</attribute><attribute>level</attribute><attribute>name</attribute><attribute>parentCode</attribute><attribute>parentDn</attribute><attribute>approver</attribute></mapping><mapping object_class="site" primary_class="site" user_define="-1"><attribute>code</attribute><attribute>level</attribute><attribute>name</attribute><attribute>parentCode</attribute><attribute>parentDn</attribute><attribute>approver</attribute><attribute>parentCodeCanonical</attribute><attribute>parentNameCanonical</attribute><attribute>rollUpDn</attribute><attribute>site</attribute><attribute>siteDN</attribute></mapping></primary_class_mappings><object_classes><object_class cd_name="adsCode" selected="-1" user_define="0" configured="-1" anchor="" dn_as_anchor="-1"><attribute mandatory="0">parentCode</attribute><attribute mandatory="0">parentDn</attribute><attribute mandatory="0">approver</attribute><attribute mandatory="0">parentNameCanonical</attribute><attribute mandatory="0">parentCodeCanonical</attribute><attribute mandatory="0">rollUpDn</attribute><attribute mandatory="-1">code</attribute><attribute mandatory="-1">name</attribute><attribute mandatory="-1">siteDN</attribute><attribute mandatory="-1">site</attribute><attribute mandatory="-1">inheritOwner</attribute><attribute mandatory="-1">isActive</attribute><attribute mandatory="-1">isRollup</attribute><attribute mandatory="-1">level</attribute></object_class><object_class cd_name="site" selected="-1" user_define="0" configured="-1" anchor="" dn_as_anchor="-1"><attribute mandatory="0">code</attribute><attribute mandatory="0">level</attribute><attribute mandatory="0">name</attribute><attribute mandatory="0">parentCode</attribute><attribute mandatory="0">parentDn</attribute><attribute mandatory="0">approver</attribute><attribute mandatory="0">parentCodeCanonical</attribute><attribute mandatory="0">parentNameCanonical</attribute><attribute mandatory="0">rollUpDn</attribute><attribute mandatory="0">siteDN</attribute><attribute mandatory="-1">site</attribute></object_class></object_classes><attributes><attribute cd_name="code" binary="0" sample_data="O200000" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="level" binary="0" sample_data="1" multi_valued="0" file_reference="0" selected="-1" type="Number" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="name" binary="0" sample_data="Catholic Schools Office" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="parentCode" binary="0" sample_data="O200000" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="parentDn" binary="0" sample_data="uid=O200000,ou=ADSCodes" multi_valued="0" file_reference="0" selected="-1" type="DN" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="approver" binary="0" sample_data="Candy Gosgriff" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="parentCodeCanonical" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="parentNameCanonical" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="rollUpDn" sample_data="" binary="0" multi_valued="-1" file_reference="0" selected="-1" type="DN" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="site" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="siteDN" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="DN" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="isActive" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="Bool" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="isRollup" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="Bool" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="inheritOwner" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="Bool" lower_bound="" upper_bound="" user_define="-1" /></attributes></xmlwizard></ui-data><importing><anchor><dn /></anchor><per-class-settings><class><name>adsCode</name><anchor><dn /></anchor></class><class><name>site</name><anchor><dn /></anchor></class></per-class-settings></importing><exporting></exporting><ldif_format><code_page>65001</code_page></ldif_format><primary_class_mappings><mapping><primary_class>adsCode</primary_class><oc-value>adsCode</oc-value></mapping><mapping><primary_class>site</primary_class><oc-value>site</oc-value></mapping></primary_class_mappings><enable-unapplied-merge>0</enable-unapplied-merge><password-extension-config><password-extension-enabled>0</password-extension-enabled><dll></dll><password-set-enabled></password-set-enabled><password-change-enabled></password-change-enabled><connection-info><connect-to></connect-to><user></user></connection-info><timeout></timeout></password-extension-config><case_normalize_dn_for_anchor>1</case_normalize_dn_for_anchor></MAConfig>
+ </private-configuration>
+ <SyncConfig-refresh-schema>0</SyncConfig-refresh-schema>
+ <ma-partition-data>
+ <partition>
+  <id>{44D52CEB-B92F-490A-B1C4-BAE59D25ADE1}</id>
+  <name>default</name>
+  <creation-time>2012-02-27 14:18:02.397</creation-time>
+  <last-modification-time>2012-12-13 07:59:09.167</last-modification-time>
+  <version>33</version>
+  <selected>1</selected>
+  <filter>
+   <object-classes>
+    <object-class>adsCode</object-class>
+    <object-class>site</object-class>
+   </object-classes>
+   <containers>
+    <exclusions/>
+    <inclusions>
+     <inclusion></inclusion>
+    </inclusions>
+   </containers>
+  </filter>
+  <allowed-operations>1610612766</allowed-operations>
+  <current>
+   <batch-number>1</batch-number>
+   <sequence-number>0</sequence-number>
+  </current>
+  <last-successful-batch>0</last-successful-batch>
+  <filter-hints>
+   <object-classes>
+    <object-class>
+     <name>adsCode</name>
+     <hierarchy>
+      <object-class>adsCode</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+    <object-class>
+     <name>site</name>
+     <hierarchy>
+      <object-class>site</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+   </object-classes>
+  </filter-hints>
+ </partition>
+</ma-partition-data>
+
+ <ma-run-data>
+ <run-configuration>
+  <id>{C25E1C10-915B-419A-87DE-B257302CA765}</id>
+  <name>FI</name>
+  <creation-time>2012-02-27 14:18:46.087</creation-time>
+  <version>5</version>
+  <last-modification-time>2012-10-15 00:15:54.117</last-modification-time>
+  <configuration><step><step-type type="full-import"><import-subtype>to-cs</import-subtype></step-type><threshold></threshold><partition>{44D52CEB-B92F-490A-B1C4-BAE59D25ADE1}</partition><custom-data><run-config><input-file>csoADSData.ldif</input-file></run-config></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{F9D77A9D-A8C5-4588-A1B7-D1BE114777A1}</id>
+  <name>FIFS</name>
+  <creation-time>2012-03-08 05:13:35.683</creation-time>
+  <version>4</version>
+  <last-modification-time>2012-10-15 00:15:54.140</last-modification-time>
+  <configuration><step><step-type type="full-import"><import-subtype>to-cs</import-subtype></step-type><threshold><batch-size>1</batch-size></threshold><partition>{44D52CEB-B92F-490A-B1C4-BAE59D25ADE1}</partition><custom-data><run-config><input-file>csoADSData.ldif</input-file></run-config></custom-data></step><step><step-type type="apply-rules"><apply-rules-subtype>reevaluate-flow-connectors</apply-rules-subtype></step-type><threshold><batch-size>1</batch-size></threshold><partition>{44D52CEB-B92F-490A-B1C4-BAE59D25ADE1}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{53634329-5DE9-478F-92DA-11A096E8FE25}</id>
+  <name>FIDS</name>
+  <creation-time>2012-03-08 05:13:35.683</creation-time>
+  <version>4</version>
+  <last-modification-time>2012-10-15 00:15:54.127</last-modification-time>
+  <configuration><step><step-type type="full-import"><import-subtype>to-cs</import-subtype></step-type><threshold><batch-size>1</batch-size></threshold><partition>{44D52CEB-B92F-490A-B1C4-BAE59D25ADE1}</partition><custom-data><run-config><input-file>csoADSData.ldif</input-file></run-config></custom-data></step><step><step-type type="apply-rules"><apply-rules-subtype>apply-pending</apply-rules-subtype></step-type><threshold><batch-size>1</batch-size></threshold><partition>{44D52CEB-B92F-490A-B1C4-BAE59D25ADE1}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{5B15C5A5-DFC7-4C7C-BC70-05DA9174AD5B}</id>
+  <name>FS</name>
+  <creation-time>2012-03-08 07:02:47.027</creation-time>
+  <version>4</version>
+  <last-modification-time>2012-10-15 00:15:54.147</last-modification-time>
+  <configuration><step><step-type type="apply-rules"><apply-rules-subtype>reevaluate-flow-connectors</apply-rules-subtype></step-type><threshold></threshold><partition>{44D52CEB-B92F-490A-B1C4-BAE59D25ADE1}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{B6509D61-62BE-4D66-AC50-E868CE9CA914}</id>
+  <name>DS</name>
+  <creation-time>2012-03-08 07:02:47.027</creation-time>
+  <version>4</version>
+  <last-modification-time>2012-10-15 00:15:54.077</last-modification-time>
+  <configuration><step><step-type type="apply-rules"><apply-rules-subtype>apply-pending</apply-rules-subtype></step-type><threshold></threshold><partition>{44D52CEB-B92F-490A-B1C4-BAE59D25ADE1}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+</ma-run-data>
+
+ <capabilities-mask>b870</capabilities-mask>
+ <export-type>2</export-type>
+ <dn-construction/>
+ <password-sync><maximum-retry-count>10</maximum-retry-count><retry-interval>60</retry-interval><allow-low-security>0</allow-low-security></password-sync>
+ <component_mappings />
+</ma-data>
+
+</saved-ma-configuration>

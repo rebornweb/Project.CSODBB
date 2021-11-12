@@ -1,0 +1,162 @@
+<saved-ma-configuration server='OCCCP-AS002' export-date='2009-09-10 05:35:07.713'>
+<!--WARNING>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+!! The contents of this file should not be edited.
+!! Any such modifications to this file may result in errors during import.
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+</WARNING-->
+<ma-data>
+ <format-version>1</format-version>
+ <id>{89EA2DE5-FEFC-466E-BD30-E71565B6C541}</id>
+ <name>DerivedADS.group</name>
+ <category>Extensible</category>
+ <subtype/>
+ <ma-listname/>
+ <ma-companyname/>
+ <creation-time>2009-08-17 03:11:18.150</creation-time>
+ <last-modification-time>2009-08-17 04:44:25.947</last-modification-time>
+ <version>9</version>
+ <internal-version>0</internal-version>
+ <password-sync-allowed>0</password-sync-allowed>
+ <schema>
+  <dsml:dsml xmlns:dsml="http://www.dsml.org/DSML" xmlns:ms-dsml="http://www.microsoft.com/MMS/DSML"><dsml:directory-schema ms-dsml:no-objectclass-validation="true"><dsml:class id="group" type="structural"><dsml:name>group</dsml:name><dsml:attribute ref="#BaseID" required="false" /><dsml:attribute ref="#sAMAccountName" required="false" /><dsml:attribute ref="#Name" required="false" /><dsml:attribute ref="#physicalDeliveryOfficeName" required="false" /><dsml:attribute ref="#GroupType" required="false" /><dsml:attribute ref="#groupCount" required="false" /><dsml:attribute ref="#member" required="false" /><dsml:attribute ref="#ID" required="true" /></dsml:class><dsml:class id="groupNested" type="structural"><dsml:name>groupNested</dsml:name><dsml:attribute ref="#BaseID" required="false" /><dsml:attribute ref="#sAMAccountName" required="false" /><dsml:attribute ref="#Name" required="false" /><dsml:attribute ref="#physicalDeliveryOfficeName" required="false" /><dsml:attribute ref="#GroupType" required="false" /><dsml:attribute ref="#groupCount" required="false" /><dsml:attribute ref="#member" required="false" /><dsml:attribute ref="#ID" required="true" /></dsml:class><dsml:class id="person" type="structural"><dsml:name>person</dsml:name><dsml:attribute ref="#BaseID" required="false" /><dsml:attribute ref="#sAMAccountName" required="false" /><dsml:attribute ref="#Name" required="false" /><dsml:attribute ref="#physicalDeliveryOfficeName" required="false" /><dsml:attribute ref="#managerID" required="false" /><dsml:attribute ref="#ID" required="true" /></dsml:class><dsml:attribute-type id="ID" single-value="true" ms-dsml:immutable="true"><dsml:name>ID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="BaseID" single-value="true"><dsml:name>BaseID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="sAMAccountName" single-value="true"><dsml:name>sAMAccountName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Name" single-value="true"><dsml:name>Name</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="physicalDeliveryOfficeName" single-value="true"><dsml:name>physicalDeliveryOfficeName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="GroupType" single-value="true"><dsml:name>GroupType</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="groupCount" single-value="true"><dsml:name>groupCount</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.27</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="managerID" single-value="true"><dsml:name>managerID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="member" single-value="false"><dsml:name>member</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type></dsml:directory-schema></dsml:dsml>
+ </schema>
+ <attribute-inclusion><attribute>ID</attribute><attribute>BaseID</attribute><attribute>sAMAccountName</attribute><attribute>Name</attribute><attribute>physicalDeliveryOfficeName</attribute><attribute>GroupType</attribute><attribute>groupCount</attribute><attribute>managerID</attribute><attribute>member</attribute></attribute-inclusion>
+ <stay-disconnector><filter-set cd-object-type="group" type="declared"><filter-alternative id="{520B1DC0-9F66-4FB1-96B5-F4132F5E02BD}"><condition cd-attribute="ID" operator="equality"><value>zzzzzz</value></condition></filter-alternative></filter-set></stay-disconnector>
+ <join><join-profile cd-object-type="group"><join-criterion id="{57FEF5AE-304F-4835-B9D1-2B50661DA949}"><search mv-object-type="dbbGroup"><attribute-mapping mv-attribute="dbbADSCode"><direct-mapping><src-attribute>BaseID</src-attribute></direct-mapping></attribute-mapping></search><resolution type="none"><script-context></script-context></resolution></join-criterion><join-criterion id="{F1211758-DC2F-4090-AC65-9BF5E7A7F2C6}"><search mv-object-type="dbbGroup"><attribute-mapping mv-attribute="sAMAccountName"><direct-mapping><src-attribute>sAMAccountName</src-attribute></direct-mapping></attribute-mapping></search><resolution type="none"><script-context></script-context></resolution></join-criterion></join-profile><join-profile cd-object-type="groupNested"><join-criterion id="{D704FA8E-6CD9-4B93-B31B-8BAD5CA475D7}"><search mv-object-type="dbbGroupNested"><attribute-mapping mv-attribute="sAMAccountName"><direct-mapping><src-attribute>sAMAccountName</src-attribute></direct-mapping></attribute-mapping></search><resolution type="none"><script-context></script-context></resolution></join-criterion></join-profile><join-profile cd-object-type="person"><join-criterion id="{11FE16DF-BB75-47DF-ABEA-33469FFCCF03}"><search mv-object-type="dbbStaff"><attribute-mapping mv-attribute="employeeID"><direct-mapping><src-attribute>ID</src-attribute></direct-mapping></attribute-mapping></search><resolution type="none"><script-context></script-context></resolution></join-criterion></join-profile></join>
+ <projection><class-mapping type="declared" id="{2749FE63-08C8-491C-8552-40E11A1C69B8}" cd-object-type="group"><mv-object-type>dbbGroup</mv-object-type></class-mapping></projection>
+ <export-attribute-flow />
+ <provisioning-cleanup type="declared"><action>make-normal-disconnector</action></provisioning-cleanup>
+ <extension><assembly-name>DerivedADS.groupExtension.dll</assembly-name><application-protection>low</application-protection></extension>
+ <controller-configuration>
+ <application-protection>low</application-protection>
+</controller-configuration>
+
+ <description>group object derived from ADSCodes ending in a 1</description>
+ <ma-ui-settings><account-joiner-queries><attributes><cs><attribute name="ID" header="ID" size="100" /><attribute name="ObjectType" header="ObjectType" size="100" /><attribute name="Name" header="Name" size="100" /></cs><mv></mv></attributes><filters max_mv_search_results=""></filters></account-joiner-queries></ma-ui-settings>
+ <private-configuration>
+  <MAConfig><ui-data><xmlwizard><properties><sample_file>F:\Install\futureSACE\extensions\SQLxMA\AllObjectsTemplate.avp</sample_file><code_page_description>Western European (Windows)</code_page_description></properties><partitions><partition cd_name="default" guid="{A2593B2E-ECAF-45AB-981F-E3AC2768F66B}" version="8"><object_class>group</object_class><object_class>groupNested</object_class><object_class>person</object_class></partition></partitions><primary_class_mappings><mapping object_class="group" primary_class="group" user_define="-1"><attribute>ID</attribute><attribute>ObjectType</attribute><attribute>changeIndicator</attribute><attribute>BaseID</attribute><attribute>sAMAccountName</attribute><attribute>Name</attribute><attribute>physicalDeliveryOfficeName</attribute><attribute>GroupType</attribute><attribute>groupCount</attribute><attribute>managerID</attribute><attribute>member</attribute></mapping><mapping object_class="groupNested" primary_class="groupNested" user_define="-1"><attribute>ID</attribute><attribute>ObjectType</attribute><attribute>changeIndicator</attribute><attribute>BaseID</attribute><attribute>sAMAccountName</attribute><attribute>Name</attribute><attribute>physicalDeliveryOfficeName</attribute><attribute>GroupType</attribute><attribute>groupCount</attribute><attribute>managerID</attribute><attribute>member</attribute></mapping><mapping object_class="person" primary_class="person" user_define="-1"><attribute>ID</attribute><attribute>ObjectType</attribute><attribute>changeIndicator</attribute><attribute>BaseID</attribute><attribute>sAMAccountName</attribute><attribute>Name</attribute><attribute>physicalDeliveryOfficeName</attribute><attribute>GroupType</attribute><attribute>groupCount</attribute><attribute>managerID</attribute><attribute>member</attribute></mapping></primary_class_mappings><object_classes><object_class cd_name="Teacher" selected="0" user_define="0" configured="-1" anchor="" dn_as_anchor="0"><attribute mandatory="-1">ID</attribute><attribute mandatory="-1">ObjectType</attribute></object_class><object_class cd_name="Student" selected="0" user_define="0" configured="-1" anchor="" dn_as_anchor="0"><attribute mandatory="-1">ID</attribute><attribute mandatory="-1">ObjectType</attribute></object_class><object_class cd_name="Class" selected="0" user_define="0" configured="-1" anchor="" dn_as_anchor="0"><attribute mandatory="-1">ID</attribute><attribute mandatory="-1">ObjectType</attribute></object_class><object_class cd_name="School" selected="0" user_define="0" configured="-1" anchor="" dn_as_anchor="0"><attribute mandatory="-1">ID</attribute><attribute mandatory="-1">ObjectType</attribute></object_class><object_class cd_name="group" selected="-1" user_define="0" configured="-1" anchor="" dn_as_anchor="0"><attribute mandatory="0">BaseID</attribute><attribute mandatory="0">sAMAccountName</attribute><attribute mandatory="0">Name</attribute><attribute mandatory="0">physicalDeliveryOfficeName</attribute><attribute mandatory="0">GroupType</attribute><attribute mandatory="0">groupCount</attribute><attribute mandatory="0">member</attribute><attribute mandatory="-1">ID</attribute><attribute mandatory="-1">ObjectType</attribute><attribute mandatory="-1">changeIndicator</attribute></object_class><object_class cd_name="groupNested" selected="-1" user_define="0" configured="-1" anchor="" dn_as_anchor="0"><attribute mandatory="0">BaseID</attribute><attribute mandatory="0">sAMAccountName</attribute><attribute mandatory="0">Name</attribute><attribute mandatory="0">physicalDeliveryOfficeName</attribute><attribute mandatory="0">GroupType</attribute><attribute mandatory="0">groupCount</attribute><attribute mandatory="0">member</attribute><attribute mandatory="-1">ID</attribute><attribute mandatory="-1">ObjectType</attribute><attribute mandatory="-1">changeIndicator</attribute></object_class><object_class cd_name="person" selected="-1" user_define="0" configured="-1" anchor="" dn_as_anchor="0"><attribute mandatory="0">BaseID</attribute><attribute mandatory="0">sAMAccountName</attribute><attribute mandatory="0">Name</attribute><attribute mandatory="0">physicalDeliveryOfficeName</attribute><attribute mandatory="0">managerID</attribute><attribute mandatory="-1">ID</attribute><attribute mandatory="-1">ObjectType</attribute><attribute mandatory="-1">changeIndicator</attribute></object_class></object_classes><attributes><attribute cd_name="ID" binary="0" sample_data="XXXXXXXXXXX" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="ObjectType" binary="0" sample_data="Teacher" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="changeIndicator" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="BaseID" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="sAMAccountName" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="Name" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="physicalDeliveryOfficeName" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="GroupType" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="groupCount" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="Number" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="managerID" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="DN" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="member" sample_data="" binary="0" multi_valued="-1" file_reference="0" selected="-1" type="DN" lower_bound="" upper_bound="" user_define="-1" /></attributes></xmlwizard></ui-data><importing><dn><attribute>ID</attribute></dn><anchor><attribute>ID</attribute></anchor><per-class-settings></per-class-settings><object_class_attribute>ObjectType</object_class_attribute></importing><exporting></exporting><ldap-dn>0</ldap-dn><change_type_attribute>changeIndicator</change_type_attribute><add_change_type_value>I</add_change_type_value><modify_change_type_value>U</modify_change_type_value><delete_change_type_value>D</delete_change_type_value><attribute_value_pair_format><code_page>1252</code_page></attribute_value_pair_format><primary_class_mappings><mapping><primary_class>group</primary_class><oc-value>group</oc-value></mapping><mapping><primary_class>groupNested</primary_class><oc-value>groupNested</oc-value></mapping><mapping><primary_class>person</primary_class><oc-value>person</oc-value></mapping></primary_class_mappings><password-extension-config><password-extension-enabled>0</password-extension-enabled><dll></dll><password-set-enabled></password-set-enabled><password-change-enabled></password-change-enabled><connection-info><connect-to></connect-to><user></user></connection-info><timeout></timeout></password-extension-config><extension-config><filename>UnifySQLMA.dll</filename><export-mode>file-based</export-mode><import-enabled>1</import-enabled><export-enabled>0</export-enabled><connection-info><connect-to>.</connect-to><user></user></connection-info><attributes><attribute name="Table">[dbo].[vw_idmObjectsByType]</attribute><attribute name="Database">IdM</attribute><attribute name="Timeout">300</attribute><attribute name="MVTable">[dbo].[vw_idmMultivalueObjects]</attribute><attribute name="DeltaView">[dbo].[vw_idmObjectsByTypeChanges]</attribute><attribute name="MVAttributeColumn">StringValue</attribute></attributes></extension-config><file-type>AVP</file-type><data_normalization><force-uppercase>0</force-uppercase><remove-accents>0</remove-accents></data_normalization></MAConfig>
+ </private-configuration>
+ <ma-partition-data>
+ <partition>
+  <id>{A2593B2E-ECAF-45AB-981F-E3AC2768F66B}</id>
+  <name>default</name>
+  <creation-time>2009-08-17 03:11:18.150</creation-time>
+  <last-modification-time>2009-08-17 04:44:25.930</last-modification-time>
+  <version>9</version>
+  <selected>1</selected>
+  <filter>
+   <object-classes>
+    <object-class>group</object-class>
+    <object-class>groupNested</object-class>
+    <object-class>person</object-class>
+   </object-classes>
+   <containers>
+    <exclusions/>
+    <inclusions>
+     <inclusion></inclusion>
+    </inclusions>
+   </containers>
+  </filter>
+  <allowed-operations>31</allowed-operations>
+  <current>
+   <batch-number>1</batch-number>
+   <sequence-number>0</sequence-number>
+  </current>
+  <last-successful-batch>0</last-successful-batch>
+  <filter-hints>
+   <object-classes>
+    <object-class>
+     <name>group</name>
+     <hierarchy>
+      <object-class>group</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+    <object-class>
+     <name>groupNested</name>
+     <hierarchy>
+      <object-class>groupNested</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+    <object-class>
+     <name>person</name>
+     <hierarchy>
+      <object-class>person</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+   </object-classes>
+  </filter-hints>
+ </partition>
+</ma-partition-data>
+
+ <ma-run-data>
+ <run-configuration>
+  <id>{5D3FDA52-27DF-4BF2-8465-088DC2A9300C}</id>
+  <name>Delta Import</name>
+  <creation-time>2009-08-17 03:11:18.243</creation-time>
+  <version>1</version>
+  <last-modification-time>2009-08-17 03:11:18.243</last-modification-time>
+  <configuration><step><step-type type="delta-import"><import-subtype>to-cs</import-subtype></step-type><threshold></threshold><partition>{A2593B2E-ECAF-45AB-981F-E3AC2768F66B}</partition><custom-data><run-config><input-file>DeltaObjects.avp</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{BAD00B2A-9A19-4DC0-B8F5-D0BEDF518DE3}</id>
+  <name>Delta Import Delta Synchronization</name>
+  <creation-time>2009-08-17 03:11:18.243</creation-time>
+  <version>1</version>
+  <last-modification-time>2009-08-17 03:11:18.243</last-modification-time>
+  <configuration><step><step-type type="delta-import"></step-type><threshold></threshold><partition>{A2593B2E-ECAF-45AB-981F-E3AC2768F66B}</partition><custom-data><run-config><input-file>DeltaObjects.avp</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{6B53C77B-962E-484B-B295-8208115E4777}</id>
+  <name>Delta Synchronization</name>
+  <creation-time>2009-08-17 03:11:18.243</creation-time>
+  <version>1</version>
+  <last-modification-time>2009-08-17 03:11:18.243</last-modification-time>
+  <configuration><step><step-type type="apply-rules"><apply-rules-subtype>apply-pending</apply-rules-subtype></step-type><threshold></threshold><partition>{A2593B2E-ECAF-45AB-981F-E3AC2768F66B}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{6DC9D7E8-6D16-4872-A373-61D62FA8B403}</id>
+  <name>Full Import</name>
+  <creation-time>2009-08-17 03:11:18.243</creation-time>
+  <version>1</version>
+  <last-modification-time>2009-08-17 03:11:18.243</last-modification-time>
+  <configuration><step><step-type type="full-import"><import-subtype>to-cs</import-subtype></step-type><threshold></threshold><partition>{A2593B2E-ECAF-45AB-981F-E3AC2768F66B}</partition><custom-data><run-config><input-file>AllObjects.avp</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{F04B9C13-FCC3-4D19-8EA7-9DB4813BC3DE}</id>
+  <name>Full Import Delta Synchronization</name>
+  <creation-time>2009-08-17 03:11:18.243</creation-time>
+  <version>1</version>
+  <last-modification-time>2009-08-17 03:11:18.243</last-modification-time>
+  <configuration><step><step-type type="full-import"></step-type><threshold></threshold><partition>{A2593B2E-ECAF-45AB-981F-E3AC2768F66B}</partition><custom-data><run-config><input-file>AllObjects.avp</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{4E65AE1A-A966-486F-B253-AA83AB5AAF3B}</id>
+  <name>Full Import Full Synchronization</name>
+  <creation-time>2009-08-17 03:11:18.243</creation-time>
+  <version>1</version>
+  <last-modification-time>2009-08-17 03:11:18.243</last-modification-time>
+  <configuration><step><step-type type="full-import-reevaluate-rules"></step-type><threshold></threshold><partition>{A2593B2E-ECAF-45AB-981F-E3AC2768F66B}</partition><custom-data><run-config><input-file>AllObjects.avp</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{CA09243A-71BE-43EE-9BA5-CDAA68096FF0}</id>
+  <name>Full Synchronization</name>
+  <creation-time>2009-08-17 03:11:18.243</creation-time>
+  <version>1</version>
+  <last-modification-time>2009-08-17 03:11:18.243</last-modification-time>
+  <configuration><step><step-type type="apply-rules"><apply-rules-subtype>reevaluate-flow-connectors</apply-rules-subtype></step-type><threshold></threshold><partition>{A2593B2E-ECAF-45AB-981F-E3AC2768F66B}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+</ma-run-data>
+
+ <capabilities-mask>4b800</capabilities-mask>
+ <export-type>3</export-type>
+ <dn-construction><attribute>ID</attribute></dn-construction>
+ <password-sync><maximum-retry-count>10</maximum-retry-count><retry-interval>60</retry-interval><allow-low-security>0</allow-low-security></password-sync>
+</ma-data>
+
+</saved-ma-configuration>

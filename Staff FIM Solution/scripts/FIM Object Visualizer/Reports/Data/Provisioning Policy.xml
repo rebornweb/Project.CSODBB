@@ -1,0 +1,564 @@
+<Configurations>
+  <Configuration>
+    <SRId>30521f41-bccc-483b-9d94-94b81e5d6190</SRId>
+    <SRName>cso-People: All active staff and students are provisioned to ADLDS</SRName>
+    <SRType>1</SRType>
+    <WFId>a0a8c4a4-c2fd-4ee4-a609-e143bc4ceb04</WFId>
+    <WFName>cso-Active people are provisioned to ADLDS</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>cso-All active people are provisioned to ADLDS</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>30521f41-bccc-483b-9d94-94b81e5d6190</SRId>
+    <SRName>cso-People: All active staff and students are provisioned to ADLDS</SRName>
+    <SRType>1</SRType>
+    <WFId>a0a8c4a4-c2fd-4ee4-a609-e143bc4ceb04</WFId>
+    <WFName>cso-Active people are provisioned to ADLDS</WFName>
+    <WFAction>Add</WFAction>
+    <MPRNames>cso-All active people are provisioned to ADLDS</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>30521f41-bccc-483b-9d94-94b81e5d6190</SRId>
+    <SRName>cso-People: All active staff and students are provisioned to ADLDS</SRName>
+    <SRType>1</SRType>
+    <WFId>9f35d27a-8272-4585-9d9e-71fe861cc201</WFId>
+    <WFName>cso-Inctive people are de-provisioned from ADLDS</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>cso-All inactive people are de-provisioned from ADLDS</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>6ddfb78e-8b96-4911-a08a-33ebd084379b</SRId>
+    <SRName>cso Staff Groups: provisioned and synchronised with AD</SRName>
+    <SRType>1</SRType>
+    <WFId>ea00ccfb-95ac-47ec-951a-81d45a06cb5c</WFId>
+    <WFName>cso-Maintain deleted role group</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>cso-Group management: Security Groups are moved for a deleted role</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>5619d3bb-de6d-428a-90a0-6a23186622cd</SRId>
+    <SRName>cso Staff Groups: moved to Deleted Role Groups OU</SRName>
+    <SRType>1</SRType>
+    <WFId>ea00ccfb-95ac-47ec-951a-81d45a06cb5c</WFId>
+    <WFName>cso-Maintain deleted role group</WFName>
+    <WFAction>Add</WFAction>
+    <MPRNames>cso-Group management: Security Groups are moved for a deleted role</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>891798fa-7e44-4c0d-9b1b-a404aaf83835</SRId>
+    <SRName>cso-PHRIS: FIM people attributes are exported to PHRIS</SRName>
+    <SRType>1</SRType>
+    <WFId>262c60b1-2efe-4a9a-87d8-b8f154e59648</WFId>
+    <WFName>cso-Remove employee business email address</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>cso-Synchronisation: Email is removed for staff no longer in PHRIS</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>6ddfb78e-8b96-4911-a08a-33ebd084379b</SRId>
+    <SRName>cso Staff Groups: provisioned and synchronised with AD</SRName>
+    <SRType>1</SRType>
+    <WFId>500b82f2-9a81-4eaa-b54d-2136050de04e</WFId>
+    <WFName>cso-Role groups are provisioned to AD</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>cso-Synchronization: Role groups are provisioned and synchronized to AD</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>6ddfb78e-8b96-4911-a08a-33ebd084379b</SRId>
+    <SRName>cso Staff Groups: provisioned and synchronised with AD</SRName>
+    <SRType>1</SRType>
+    <WFId>500b82f2-9a81-4eaa-b54d-2136050de04e</WFId>
+    <WFName>cso-Role groups are provisioned to AD</WFName>
+    <WFAction>Add</WFAction>
+    <MPRNames>cso-Synchronization: Role groups are provisioned and synchronized to AD</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>891798fa-7e44-4c0d-9b1b-a404aaf83835</SRId>
+    <SRName>cso-PHRIS: FIM people attributes are exported to PHRIS</SRName>
+    <SRType>1</SRType>
+    <WFId>02cf5e55-8217-4bb6-b3b0-fd668f92aafb</WFId>
+    <WFName>cso-Set employee business email address</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>cso-Synchronization: Email is set for staff in PHRIS</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>891798fa-7e44-4c0d-9b1b-a404aaf83835</SRId>
+    <SRName>cso-PHRIS: FIM people attributes are exported to PHRIS</SRName>
+    <SRType>1</SRType>
+    <WFId>02cf5e55-8217-4bb6-b3b0-fd668f92aafb</WFId>
+    <WFName>cso-Set employee business email address</WFName>
+    <WFAction>Add</WFAction>
+    <MPRNames>cso-Synchronization: Email is set for staff in PHRIS</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>6ddfb78e-8b96-4911-a08a-33ebd084379b</SRId>
+    <SRName>cso Staff Groups: provisioned and synchronised with AD</SRName>
+    <SRType>1</SRType>
+    <WFId>7e5f9832-df88-4ec3-b140-72cb7a792695</WFId>
+    <WFName>cso-Site groups are de-provisioned from AD</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>cso-Synchronization: Site groups are de-provisioned from AD</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>6ddfb78e-8b96-4911-a08a-33ebd084379b</SRId>
+    <SRName>cso Staff Groups: provisioned and synchronised with AD</SRName>
+    <SRType>1</SRType>
+    <WFId>25726467-b8bf-448f-b100-4d8f486b23b1</WFId>
+    <WFName>cso-Site groups are provisioned to AD</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>cso-Synchronization: Site groups are provisioned and synchronized to AD</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>6ddfb78e-8b96-4911-a08a-33ebd084379b</SRId>
+    <SRName>cso Staff Groups: provisioned and synchronised with AD</SRName>
+    <SRType>1</SRType>
+    <WFId>25726467-b8bf-448f-b100-4d8f486b23b1</WFId>
+    <WFName>cso-Site groups are provisioned to AD</WFName>
+    <WFAction>Add</WFAction>
+    <MPRNames>cso-Synchronization: Site groups are provisioned and synchronized to AD</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>c96a74b8-a348-4485-8d07-9636b5e75835</SRId>
+    <SRName>cso Staff: provisioned and synchronised with AD</SRName>
+    <SRType>1</SRType>
+    <WFId>6d963fe1-369d-40f0-b7f2-67374737549b</WFId>
+    <WFName>cso-Users are deprovisioned from AD</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>cso-Synchronization: Staff are deprovisioned from AD,cso-Synchronization: Vendors are deprovisioned from AD</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>bcabd516-8ef5-45f0-a46e-79c596c08850</SRId>
+    <SRName>cso Staff: User deprovisioning</SRName>
+    <SRType>1</SRType>
+    <WFId>6d963fe1-369d-40f0-b7f2-67374737549b</WFId>
+    <WFName>cso-Users are deprovisioned from AD</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>cso-Synchronization: Staff are deprovisioned from AD,cso-Synchronization: Vendors are deprovisioned from AD</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>bcabd516-8ef5-45f0-a46e-79c596c08850</SRId>
+    <SRName>cso Staff: User deprovisioning</SRName>
+    <SRType>1</SRType>
+    <WFId>6d963fe1-369d-40f0-b7f2-67374737549b</WFId>
+    <WFName>cso-Users are deprovisioned from AD</WFName>
+    <WFAction>Add</WFAction>
+    <MPRNames>cso-Synchronization: Staff are deprovisioned from AD,cso-Synchronization: Vendors are deprovisioned from AD</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>c96a74b8-a348-4485-8d07-9636b5e75835</SRId>
+    <SRName>cso Staff: provisioned and synchronised with AD</SRName>
+    <SRType>1</SRType>
+    <WFId>d029febf-a38a-4904-9030-41ee4fb3a638</WFId>
+    <WFName>cso-Users are provisioned to AD</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>cso-Synchronization: Generics are provisioned and synchronized to AD,cso-Synchronization: Users are provisioned and synchronized to AD,cso-Synchronization: Vendors are provisioned and synchronized to AD</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>bcabd516-8ef5-45f0-a46e-79c596c08850</SRId>
+    <SRName>cso Staff: User deprovisioning</SRName>
+    <SRType>1</SRType>
+    <WFId>d029febf-a38a-4904-9030-41ee4fb3a638</WFId>
+    <WFName>cso-Users are provisioned to AD</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>cso-Synchronization: Generics are provisioned and synchronized to AD,cso-Synchronization: Users are provisioned and synchronized to AD,cso-Synchronization: Vendors are provisioned and synchronized to AD</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>c96a74b8-a348-4485-8d07-9636b5e75835</SRId>
+    <SRName>cso Staff: provisioned and synchronised with AD</SRName>
+    <SRType>1</SRType>
+    <WFId>d029febf-a38a-4904-9030-41ee4fb3a638</WFId>
+    <WFName>cso-Users are provisioned to AD</WFName>
+    <WFAction>Add</WFAction>
+    <MPRNames>cso-Synchronization: Generics are provisioned and synchronized to AD,cso-Synchronization: Users are provisioned and synchronized to AD,cso-Synchronization: Vendors are provisioned and synchronized to AD</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>792ff1c3-fd65-4a14-b895-b0e1cf91134b</SRId>
+    <SRName>DBBCSO - Manage Student Groups in AD</SRName>
+    <SRType>2</SRType>
+    <WFId>d7b8b785-b4e0-4bdb-aed1-6f7b269a01e4</WFId>
+    <WFName>DBBCSO - Deprovision student groups</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>DBBCSO - Deprovision student groups from AD (SR)</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>18656168-5494-4fae-a37d-0dea8ff1f4b2</SRId>
+    <SRName>DBBCSO - Manage Former Students as AD Users</SRName>
+    <SRType>2</SRType>
+    <WFId>4da6dad6-a478-4e72-956e-dcb0bb688be3</WFId>
+    <WFName>DBBCSO - Manage Current Students as AD Users and Contacts</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>DBBCSO - Manage Current Students in AD (SR)</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>08f919bd-769c-4a85-8ea6-51a7eebd6cf0</SRId>
+    <SRName>DBBCSO - Manage Former Students as AD Contacts</SRName>
+    <SRType>1</SRType>
+    <WFId>4da6dad6-a478-4e72-956e-dcb0bb688be3</WFId>
+    <WFName>DBBCSO - Manage Current Students as AD Users and Contacts</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>DBBCSO - Manage Current Students in AD (SR)</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>2be38e3e-c9f4-43aa-ac33-5fc28648eed6</SRId>
+    <SRName>DBBCSO - Manage Current Students as AD Contacts</SRName>
+    <SRType>1</SRType>
+    <WFId>4da6dad6-a478-4e72-956e-dcb0bb688be3</WFId>
+    <WFName>DBBCSO - Manage Current Students as AD Users and Contacts</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>DBBCSO - Manage Current Students in AD (SR)</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>48d10288-a20e-42ff-97ee-8fd5fbbdf088</SRId>
+    <SRName>DBBCSO - Manage Current Students as AD Users</SRName>
+    <SRType>2</SRType>
+    <WFId>4da6dad6-a478-4e72-956e-dcb0bb688be3</WFId>
+    <WFName>DBBCSO - Manage Current Students as AD Users and Contacts</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>DBBCSO - Manage Current Students in AD (SR)</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>48d10288-a20e-42ff-97ee-8fd5fbbdf088</SRId>
+    <SRName>DBBCSO - Manage Current Students as AD Users</SRName>
+    <SRType>2</SRType>
+    <WFId>4da6dad6-a478-4e72-956e-dcb0bb688be3</WFId>
+    <WFName>DBBCSO - Manage Current Students as AD Users and Contacts</WFName>
+    <WFAction>Add</WFAction>
+    <MPRNames>DBBCSO - Manage Current Students in AD (SR)</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>2be38e3e-c9f4-43aa-ac33-5fc28648eed6</SRId>
+    <SRName>DBBCSO - Manage Current Students as AD Contacts</SRName>
+    <SRType>1</SRType>
+    <WFId>4da6dad6-a478-4e72-956e-dcb0bb688be3</WFId>
+    <WFName>DBBCSO - Manage Current Students as AD Users and Contacts</WFName>
+    <WFAction>Add</WFAction>
+    <MPRNames>DBBCSO - Manage Current Students in AD (SR)</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>48d10288-a20e-42ff-97ee-8fd5fbbdf088</SRId>
+    <SRName>DBBCSO - Manage Current Students as AD Users</SRName>
+    <SRType>2</SRType>
+    <WFId>e57dcdbf-22ec-45e5-858b-d83312e35668</WFId>
+    <WFName>DBBCSO - Manage Former Students as AD Users and Contacts</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>DBBCSO - Manage Former Students in AD (SR)</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>2be38e3e-c9f4-43aa-ac33-5fc28648eed6</SRId>
+    <SRName>DBBCSO - Manage Current Students as AD Contacts</SRName>
+    <SRType>1</SRType>
+    <WFId>e57dcdbf-22ec-45e5-858b-d83312e35668</WFId>
+    <WFName>DBBCSO - Manage Former Students as AD Users and Contacts</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>DBBCSO - Manage Former Students in AD (SR)</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>08f919bd-769c-4a85-8ea6-51a7eebd6cf0</SRId>
+    <SRName>DBBCSO - Manage Former Students as AD Contacts</SRName>
+    <SRType>1</SRType>
+    <WFId>e57dcdbf-22ec-45e5-858b-d83312e35668</WFId>
+    <WFName>DBBCSO - Manage Former Students as AD Users and Contacts</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>DBBCSO - Manage Former Students in AD (SR)</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>18656168-5494-4fae-a37d-0dea8ff1f4b2</SRId>
+    <SRName>DBBCSO - Manage Former Students as AD Users</SRName>
+    <SRType>2</SRType>
+    <WFId>e57dcdbf-22ec-45e5-858b-d83312e35668</WFId>
+    <WFName>DBBCSO - Manage Former Students as AD Users and Contacts</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>DBBCSO - Manage Former Students in AD (SR)</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>18656168-5494-4fae-a37d-0dea8ff1f4b2</SRId>
+    <SRName>DBBCSO - Manage Former Students as AD Users</SRName>
+    <SRType>2</SRType>
+    <WFId>e57dcdbf-22ec-45e5-858b-d83312e35668</WFId>
+    <WFName>DBBCSO - Manage Former Students as AD Users and Contacts</WFName>
+    <WFAction>Add</WFAction>
+    <MPRNames>DBBCSO - Manage Former Students in AD (SR)</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>492a69e0-3b91-48f3-b2ae-c64ba1378d9f</SRId>
+    <SRName>DBBCSO - Manage Student Google Groups as AD Contacts</SRName>
+    <SRType>1</SRType>
+    <WFId>a3610768-5dac-46af-9a5a-7c42178727fa</WFId>
+    <WFName>DBBCSO - Manage Student Google Groups as AD Contacts</WFName>
+    <WFAction>Add</WFAction>
+    <MPRNames>DBBCSO - Manage Student Google Groups in AD</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>492a69e0-3b91-48f3-b2ae-c64ba1378d9f</SRId>
+    <SRName>DBBCSO - Manage Student Google Groups as AD Contacts</SRName>
+    <SRType>1</SRType>
+    <WFId>a3610768-5dac-46af-9a5a-7c42178727fa</WFId>
+    <WFName>DBBCSO - Manage Student Google Groups as AD Contacts</WFName>
+    <WFAction>Add</WFAction>
+    <MPRNames>DBBCSO - Manage Student Google Groups in AD</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>792ff1c3-fd65-4a14-b895-b0e1cf91134b</SRId>
+    <SRName>DBBCSO - Manage Student Groups in AD</SRName>
+    <SRType>2</SRType>
+    <WFId>45192d3f-2555-4efb-946a-6f1ff0cf891e</WFId>
+    <WFName>DBBCSO - Manage Student Groups in AD</WFName>
+    <WFAction>Remove</WFAction>
+    <MPRNames>DBBCSO - Manage Student Groups in AD (SR)</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>792ff1c3-fd65-4a14-b895-b0e1cf91134b</SRId>
+    <SRName>DBBCSO - Manage Student Groups in AD</SRName>
+    <SRType>2</SRType>
+    <WFId>45192d3f-2555-4efb-946a-6f1ff0cf891e</WFId>
+    <WFName>DBBCSO - Manage Student Groups in AD</WFName>
+    <WFAction>Add</WFAction>
+    <MPRNames>DBBCSO - Manage Student Groups in AD (SR)</MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>f6fb4ad5-8c52-466c-bd08-1b4533b33bb1</SRId>
+    <SRName>cso Entitlements: CAPS ADS roles are imported to FIM</SRName>
+    <SRType>0</SRType>
+    <WFId>
+    </WFId>
+    <WFName>
+    </WFName>
+    <WFAction>
+    </WFAction>
+    <MPRNames>
+    </MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>169a4060-4d45-4706-92a0-2efe696f0acf</SRId>
+    <SRName>cso Entitlements: CAPS entitlements are imported to FIM</SRName>
+    <SRType>0</SRType>
+    <WFId>
+    </WFId>
+    <WFName>
+    </WFName>
+    <WFAction>
+    </WFAction>
+    <MPRNames>
+    </MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>abd0c2e4-efb8-4162-b7d0-0c2a13b752af</SRId>
+    <SRName>cso Entitlements: CAPS sites are imported to FIM</SRName>
+    <SRType>0</SRType>
+    <WFId>
+    </WFId>
+    <WFName>
+    </WFName>
+    <WFAction>
+    </WFAction>
+    <MPRNames>
+    </MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>d4761f9b-90ad-4435-ad09-aade0ec2da93</SRId>
+    <SRName>cso Entitlements: NASS ADS roles are imported to FIM</SRName>
+    <SRType>0</SRType>
+    <WFId>
+    </WFId>
+    <WFName>
+    </WFName>
+    <WFAction>
+    </WFAction>
+    <MPRNames>
+    </MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>63847e73-7387-467d-befe-f9d9b6a2f40a</SRId>
+    <SRName>cso Entitlements: NASS departments are imported to FIM</SRName>
+    <SRType>0</SRType>
+    <WFId>
+    </WFId>
+    <WFName>
+    </WFName>
+    <WFAction>
+    </WFAction>
+    <MPRNames>
+    </MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>893648e7-1ddc-4da3-be9c-75a103265770</SRId>
+    <SRName>cso Entitlements: NASS entitlements are imported to FIM</SRName>
+    <SRType>0</SRType>
+    <WFId>
+    </WFId>
+    <WFName>
+    </WFName>
+    <WFAction>
+    </WFAction>
+    <MPRNames>
+    </MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>059a02f5-5c8b-4e53-b10e-b9628430ebe6</SRId>
+    <SRName>cso Entitlements: NASS organisations are imported to FIM</SRName>
+    <SRType>0</SRType>
+    <WFId>
+    </WFId>
+    <WFName>
+    </WFName>
+    <WFAction>
+    </WFAction>
+    <MPRNames>
+    </MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>6e33a571-c13a-48c0-a034-99172c4a858c</SRId>
+    <SRName>cso Entitlements: NASS sites are imported to FIM</SRName>
+    <SRType>0</SRType>
+    <WFId>
+    </WFId>
+    <WFName>
+    </WFName>
+    <WFAction>
+    </WFAction>
+    <MPRNames>
+    </MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>b90fee53-5d47-4c53-8d15-c7c16f3c5641</SRId>
+    <SRName>cso Roles: ADS role attributes imported to FIM</SRName>
+    <SRType>0</SRType>
+    <WFId>
+    </WFId>
+    <WFName>
+    </WFName>
+    <WFAction>
+    </WFAction>
+    <MPRNames>
+    </MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>8f74ae89-8ed2-42ba-befc-7f0000d1eb21</SRId>
+    <SRName>cso Roles: ADS site attributes imported to FIM</SRName>
+    <SRType>0</SRType>
+    <WFId>
+    </WFId>
+    <WFName>
+    </WFName>
+    <WFAction>
+    </WFAction>
+    <MPRNames>
+    </MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>eedbc0f1-2777-422a-8a01-6a9de6670f02</SRId>
+    <SRName>cso Sites: Site attributes are imported to FIM</SRName>
+    <SRType>0</SRType>
+    <WFId>
+    </WFId>
+    <WFName>
+    </WFName>
+    <WFAction>
+    </WFAction>
+    <MPRNames>
+    </MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>cf9f5ecd-1f06-4df7-8955-42bdbf4ffcbd</SRId>
+    <SRName>cso Staff Groups: AD attributes are imported to FIM</SRName>
+    <SRType>0</SRType>
+    <WFId>
+    </WFId>
+    <WFName>
+    </WFName>
+    <WFAction>
+    </WFAction>
+    <MPRNames>
+    </MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>db50e3d1-f03c-4082-a146-ed25f209bbd6</SRId>
+    <SRName>cso Staff: AD attributes imported to FIM</SRName>
+    <SRType>0</SRType>
+    <WFId>
+    </WFId>
+    <WFName>
+    </WFName>
+    <WFAction>
+    </WFAction>
+    <MPRNames>
+    </MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>a130d0db-7d22-4204-92aa-64717b6b54a7</SRId>
+    <SRName>cso Staff: CAPS Users are imported to FIM</SRName>
+    <SRType>0</SRType>
+    <WFId>
+    </WFId>
+    <WFName>
+    </WFName>
+    <WFAction>
+    </WFAction>
+    <MPRNames>
+    </MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>8f405e4f-0d89-4b1a-b849-6e57bdae6a58</SRId>
+    <SRName>cso Staff: NASS Users are imported to FIM</SRName>
+    <SRType>0</SRType>
+    <WFId>
+    </WFId>
+    <WFName>
+    </WFName>
+    <WFAction>
+    </WFAction>
+    <MPRNames>
+    </MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>de5602b2-880c-4cab-9ae8-50ec39b0c7ca</SRId>
+    <SRName>cso-Other: AD attributes imported to FIM</SRName>
+    <SRType>0</SRType>
+    <WFId>
+    </WFId>
+    <WFName>
+    </WFName>
+    <WFAction>
+    </WFAction>
+    <MPRNames>
+    </MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>031bf1a5-9d51-40d7-babf-97aee2931985</SRId>
+    <SRName>cso-PHRIS grades are imported to FIM</SRName>
+    <SRType>0</SRType>
+    <WFId>
+    </WFId>
+    <WFName>
+    </WFName>
+    <WFAction>
+    </WFAction>
+    <MPRNames>
+    </MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>5f3a17e3-443e-4805-8889-4cff23c40563</SRId>
+    <SRName>cso-PHRIS jobs are imported to FIM</SRName>
+    <SRType>0</SRType>
+    <WFId>
+    </WFId>
+    <WFName>
+    </WFName>
+    <WFAction>
+    </WFAction>
+    <MPRNames>
+    </MPRNames>
+  </Configuration>
+  <Configuration>
+    <SRId>ec8f5855-d827-4231-926a-cfb7752f44fa</SRId>
+    <SRName>cso-PHRIS: people are imported to FIM</SRName>
+    <SRType>0</SRType>
+    <WFId>
+    </WFId>
+    <WFName>
+    </WFName>
+    <WFAction>
+    </WFAction>
+    <MPRNames>
+    </MPRNames>
+  </Configuration>
+</Configurations>

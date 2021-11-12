@@ -1,0 +1,7 @@
+<SynchronizationRule>
+    <ConnectedSystemScope />
+    <OutboundScope />
+    <RelationshipCriteria><conditions><condition><ilmAttribute>csoSiteCode</ilmAttribute><csAttribute>ID</csAttribute></condition></conditions></RelationshipCriteria>
+    <InitialFlow />
+    <PersistentFlow><import-flow><src><attr>ID</attr></src><dest>csoSiteCode</dest><scoping /></import-flow></PersistentFlow>
+</SynchronizationRule>

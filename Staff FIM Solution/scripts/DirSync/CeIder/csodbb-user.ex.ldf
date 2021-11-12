@@ -1,0 +1,65 @@
+#==================================================================
+#
+# This file contains user extensions for extended user/person ADAM schema.
+# It should be imported with the following command:
+#   ldifde -i -f CSODBB-User.ex.ldf -s server:port -b username domain password -k -j . -c "CN=Schema,CN=Configuration,DC=X" #schemaNamingContext
+#
+#==================================================================
+#
+# Attributes
+
+dn: CN=CSODBB-CeIder,CN=Schema,CN=Configuration,DC=X
+changetype: ntdsschemaadd
+objectClass: top
+objectClass: attributeSchema
+cn: CSODBB-CeIder
+distinguishedName: CN=CSODBB-CeIder,CN=Schema,CN=Configuration,DC=X
+instanceType: 4
+attributeID: 1.2.840.113556.1.8000.2554.45516.51826.14852.20474.36993.6715101.7319242.2.0010
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+showInAdvancedViewOnly: TRUE
+adminDisplayName: csodbbCeIder
+adminDescription: CSODBB Catholic education Identifier
+oMSyntax: 64
+rangeLower: 0
+rangeUpper: 10
+lDAPDisplayName: csodbbCeIder
+name: csodbbCeIder
+objectCategory: CN=Attribute-Schema,CN=Schema,CN=Configuration,DC=X
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+# Classes
+
+dn: CN=CSODBB-Organizational-Person,CN=Schema,CN=Configuration,DC=X
+changetype: ntdsschemamodify
+add: mayContain
+mayContain: csodbbCeIder
+-
+
+dn: CN=User,CN=Schema,CN=Configuration,DC=X
+changetype: ntdsschemamodify
+add: mayContain
+mayContain: csodbbCeIder
+mayContain: csodbbGUID
+mayContain: csodbbPersonType
+mayContain: csodbbHouseID
+mayContain: csodbbSiteID
+mayContain: csodbbClassID
+mayContain: csodbbDOB
+mayContain: csodbbDOBString
+mayContain: csodbbSex
+mayContain: csodbbYear
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+

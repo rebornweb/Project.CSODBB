@@ -1,0 +1,1381 @@
+<html>
+<head>
+<title>Active Metaverse Schema</title>
+</head>
+<body>
+
+
+
+<TABLE style="BORDER-BOTTOM: rgb(212,208,200) 1px solid; BORDER-LEFT: rgb(212,208,200) 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Tahoma; FONT-SIZE: 11px; BORDER-TOP: rgb(212,208,200) 1px solid; BORDER-RIGHT: rgb(212,208,200) 1px solid; PADDING-TOP: 0px" id=tdata xmlns:ms-dsml="http://www.microsoft.com/MMS/DSML" xmlns:dsml="http://www.dsml.org/DSML" xmlns:ms="urn:schemas-microsoft-com:xslt"><TBODY>
+<TR>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=5>Metaverse Active Schema Configuration</TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5>Metaverse object type: contact</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Metaverse Attribute</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Multi-valued</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Indexed</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Import-Flows</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">expectedRulesList</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csObjectID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">displayName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">uid</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">email</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">physicalDeliveryOfficeName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="BACKGROUND-COLOR: #ffffff; COLOR: #ffffff; BORDER-TOP: rgb(212,208,200) 1px solid" colSpan=5>&nbsp; </TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5>Metaverse object type: csoDepartment</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Metaverse Attribute</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Multi-valued</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Indexed</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Import-Flows</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">uid</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">displayName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="BACKGROUND-COLOR: #ffffff; COLOR: #ffffff; BORDER-TOP: rgb(212,208,200) 1px solid" colSpan=5>&nbsp; </TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5>Metaverse object type: csoEntitlement</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Metaverse Attribute</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Multi-valued</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Indexed</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Import-Flows</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoUserID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoRoles</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">description</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoLegacyEmployeeID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">uid</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">displayName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoStartDate</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoEndDate</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoADSCodes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="BACKGROUND-COLOR: #ffffff; COLOR: #ffffff; BORDER-TOP: rgb(212,208,200) 1px solid" colSpan=5>&nbsp; </TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5>Metaverse object type: csoGrade</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Metaverse Attribute</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Multi-valued</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Indexed</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Import-Flows</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoSalaryAdminPlan</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoGrade</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoEffectiveDate</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">displayName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">description</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csObjectID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">expectedRulesList</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="BACKGROUND-COLOR: #ffffff; COLOR: #ffffff; BORDER-TOP: rgb(212,208,200) 1px solid" colSpan=5>&nbsp; </TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5>Metaverse object type: csoJob</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Metaverse Attribute</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Multi-valued</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Indexed</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Import-Flows</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoUser</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoStdHours</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoSalaryAdminPlan</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoPositionNumber</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">description</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoEmploymentType</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">manager</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoLocationCode</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoJobGrade</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoHRStatus</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoFullPartTime</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoEmploymentRecord</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">displayName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">employeeID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoEffectiveDate</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoSite</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csObjectID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">expectedRulesList</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="BACKGROUND-COLOR: #ffffff; COLOR: #ffffff; BORDER-TOP: rgb(212,208,200) 1px solid" colSpan=5>&nbsp; </TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5>Metaverse object type: csoOrganisation</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Metaverse Attribute</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Multi-valued</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Indexed</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Import-Flows</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoAllowCustomEmployeeCode</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Boolean</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoEmployeeCodeLastValue</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Number</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoEmployeeCodeRangeFrom</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Number</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoEmployeeCodeRangeTill</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Number</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">uid</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">displayName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="BACKGROUND-COLOR: #ffffff; COLOR: #ffffff; BORDER-TOP: rgb(212,208,200) 1px solid" colSpan=5>&nbsp; </TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5>Metaverse object type: csoRole</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Metaverse Attribute</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Multi-valued</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Indexed</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Import-Flows</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoIsRollup</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Boolean</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoIsActive</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Boolean</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoADSCode</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">4</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csObjectID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">expectedRulesList</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">description</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">displayName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">4</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoCanonicalCode</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoParentRole</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoCanonicalName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoRollUpRole</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoSite</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoInheritOwner</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Boolean</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="BACKGROUND-COLOR: #ffffff; COLOR: #ffffff; BORDER-TOP: rgb(212,208,200) 1px solid" colSpan=5>&nbsp; </TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5>Metaverse object type: csoSite</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Metaverse Attribute</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Multi-valued</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Indexed</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Import-Flows</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">uid</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">3</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoForwarderContainer</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoProfilePathLoc</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoIsSchool</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Boolean</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoIsMOE</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Boolean</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoIsActive</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Boolean</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">description</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoSiteCode</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">3</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">displayName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">4</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csObjectID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">expectedRulesList</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoMappedSites</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="BACKGROUND-COLOR: #ffffff; COLOR: #ffffff; BORDER-TOP: rgb(212,208,200) 1px solid" colSpan=5>&nbsp; </TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5>Metaverse object type: detectedRuleEntry</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Metaverse Attribute</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Multi-valued</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Indexed</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Import-Flows</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csObjectID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="BACKGROUND-COLOR: #ffffff; COLOR: #ffffff; BORDER-TOP: rgb(212,208,200) 1px solid" colSpan=5>&nbsp; </TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5>Metaverse object type: expectedRuleEntry</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Metaverse Attribute</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Multi-valued</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Indexed</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Import-Flows</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">createdTime</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">expectedRuleEntryAction</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">synchronizationRuleData</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">synchronizationRuleID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">displayName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="BACKGROUND-COLOR: #ffffff; COLOR: #ffffff; BORDER-TOP: rgb(212,208,200) 1px solid" colSpan=5>&nbsp; </TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5>Metaverse object type: group</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Metaverse Attribute</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Multi-valued</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Indexed</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Import-Flows</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">info</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoADSCode</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">email</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">membershipLocked</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Boolean</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">domain</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">type</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">membershipAddWorkflow</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">scope</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">accountName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">displayName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">member</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csObjectID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">description</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">mailNickname</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">owner</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">expectedRulesList</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">displayedOwner</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">objectSid</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Binary (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">4</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">ou</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoExistsInAD</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Boolean</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoRole</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="BACKGROUND-COLOR: #ffffff; COLOR: #ffffff; BORDER-TOP: rgb(212,208,200) 1px solid" colSpan=5>&nbsp; </TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5>Metaverse object type: person</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Metaverse Attribute</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Multi-valued</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Indexed</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Import-Flows</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoJobs</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoHRStatus</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoGrades</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">title</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">street</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">st</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">manager</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">mailNickname</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">l</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">info</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">cn</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Archive</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">4</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">country</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">3</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoOrganisation</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoDepartment</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">personalTitle</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoSalarySchoolCode</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">jobTitle</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">3</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoOrganisationName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">3</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">freezeLevel</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">userAccountControl</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Number</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">3</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoAwardCode</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoClassificationCode</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">sex</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">4</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">employeeType</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">5</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoSites</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">4</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoBirthDate</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">4</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">employeeStatus</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">4</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">address</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">lastName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">6</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">initials</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">firstName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">6</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">mobilePhone</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">officeFax</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">officePhone</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoLegacyEmployeeID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">6</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PersonType</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">5</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">DOB</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">physicalDeliveryOfficeName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">6</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">email</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">3</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">objectSid</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Binary (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">4</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">domain</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">5</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">accountName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">8</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">displayName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">6</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csObjectID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">description</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">3</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">employeeID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">3</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">displayedOwnerOf</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">managerOf</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">memberOf</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">ownerOf</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">listOwnersOf</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">groupAdministratorsOf</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">expectedRulesList</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">employeeEndDate</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">employeeStartDate</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Class</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">EmployeeNumber</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">DateLeft</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">MailSuffix</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PreferredName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">StartDate</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">USIN</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Year</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">middleName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">3</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">AlumniType</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">CandidateNumber</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Deceased</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">FormerName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">HomeGroup</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">House</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">NName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PhoneFamily</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PhoneHome</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PhoneMobile</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PreEnrolment</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">ReasonLeft</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">SchoolID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">StartYear</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">SAS2IDMConnector</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Boolean</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">contactDisplayName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoRoles</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoEmailType</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="BACKGROUND-COLOR: #ffffff; COLOR: #ffffff; BORDER-TOP: rgb(212,208,200) 1px solid" colSpan=5>&nbsp; </TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5>Metaverse object type: personUnmanaged</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Metaverse Attribute</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Multi-valued</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Indexed</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Import-Flows</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">displayName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">uid</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">employeeID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">csoLegacyEmployeeID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">objectSid</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Binary (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">accountName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="BACKGROUND-COLOR: #ffffff; COLOR: #ffffff; BORDER-TOP: rgb(212,208,200) 1px solid" colSpan=5>&nbsp; </TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5>Metaverse object type: synchronizationRule</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Metaverse Attribute</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Type</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Multi-valued</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Indexed</TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Import-Flows</TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">connectedObjectType</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">connectedSystem</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">connectedSystemScope</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">createConnectedSystemObject</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Boolean</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">createILMObject</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Boolean</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">dependency</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Reference (DN)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">disconnectConnectedSystemObject</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Boolean</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">displayName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">existenceTest</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">flowType</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Number</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">ilmObjectType</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">initialFlow</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">persistentFlow</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">precedence</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Number</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">relationshipCriteria</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no </TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">synchronizationRuleParameters</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">String (non-indexable)</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">yes</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">no</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">1</TD></TR></TBODY></TABLE>
+
+</html>

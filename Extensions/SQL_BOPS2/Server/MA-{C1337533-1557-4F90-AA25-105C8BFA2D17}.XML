@@ -1,0 +1,118 @@
+<saved-ma-configuration server='OCCCP-AS002' export-date='2009-09-10 05:35:07.713'>
+<!--WARNING>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+!! The contents of this file should not be edited.
+!! Any such modifications to this file may result in errors during import.
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+</WARNING-->
+<ma-data>
+ <format-version>1</format-version>
+ <id>{C1337533-1557-4F90-AA25-105C8BFA2D17}</id>
+ <name>IdM.Site</name>
+ <category>MSSQL</category>
+ <subtype/>
+ <ma-listname/>
+ <ma-companyname/>
+ <creation-time>2008-12-24 04:02:53.920</creation-time>
+ <last-modification-time>2009-06-02 04:50:19.840</last-modification-time>
+ <version>12</version>
+ <internal-version>0</internal-version>
+ <password-sync-allowed>0</password-sync-allowed>
+ <schema>
+  <dsml:dsml xmlns:dsml="http://www.dsml.org/DSML" xmlns:ms-dsml="http://www.microsoft.com/MMS/DSML"><dsml:directory-schema ms-dsml:no-objectclass-validation="true"><dsml:class id="site" type="structural"><dsml:name>site</dsml:name><dsml:attribute ref="#SiteID" required="true" /><dsml:attribute ref="#SiteName" required="false" /><dsml:attribute ref="#physicalDeliveryOfficeName" required="true" /><dsml:attribute ref="#forwarderContainer" required="false" /><dsml:attribute ref="#IsSchool" required="true" /><dsml:attribute ref="#IsActive" required="true" /><dsml:attribute ref="#IsMOE" required="true" /><dsml:attribute ref="#ProfilePathLoc" required="false" /><dsml:attribute ref="#export_password" required="false" /></dsml:class><dsml:attribute-type id="SiteID" single-value="true" ms-dsml:immutable="true" ms-dsml:range-upper="5"><dsml:name>SiteID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="SiteName" single-value="true" ms-dsml:range-upper="100"><dsml:name>SiteName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="physicalDeliveryOfficeName" single-value="true" ms-dsml:range-upper="5"><dsml:name>physicalDeliveryOfficeName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="forwarderContainer" single-value="true" ms-dsml:range-upper="200"><dsml:name>forwarderContainer</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="IsSchool" single-value="true"><dsml:name>IsSchool</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.7</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="IsActive" single-value="true"><dsml:name>IsActive</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.7</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="IsMOE" single-value="true"><dsml:name>IsMOE</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.7</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ProfilePathLoc" single-value="true" ms-dsml:range-upper="5"><dsml:name>ProfilePathLoc</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="export_password" single-value="true" ms-dsml:encrypted="true" ms-dsml:export-only="true"><dsml:name>export_password</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type></dsml:directory-schema></dsml:dsml>
+ </schema>
+ <attribute-inclusion><attribute>SiteID</attribute><attribute>SiteName</attribute><attribute>physicalDeliveryOfficeName</attribute><attribute>forwarderContainer</attribute><attribute>IsSchool</attribute><attribute>IsActive</attribute><attribute>IsMOE</attribute><attribute>ProfilePathLoc</attribute><attribute>export_password</attribute></attribute-inclusion>
+ <stay-disconnector />
+ <join><join-profile cd-object-type="site"><join-criterion id="{293D037B-DD1C-4063-835A-CC54717DD9EB}"><search mv-object-type="dbbSite"><attribute-mapping mv-attribute="siteID"><direct-mapping><src-attribute>SiteID</src-attribute></direct-mapping></attribute-mapping></search><resolution type="none"><script-context></script-context></resolution></join-criterion></join-profile></join>
+ <projection><class-mapping type="declared" id="{47B402BE-4189-4707-97D6-D6199B02C34C}" cd-object-type="site"><mv-object-type>dbbSite</mv-object-type></class-mapping></projection>
+ <export-attribute-flow />
+ <provisioning-cleanup type="declared"><action>make-normal-disconnector</action></provisioning-cleanup>
+ <extension />
+ <controller-configuration>
+ <application-protection>low</application-protection>
+ <impersonation>
+  <domain>dbb</domain>
+  <user>svcma_sql</user>
+ </impersonation>
+</controller-configuration>
+
+ <description>Authoritative SQL source for dbbSite derived from POC config file</description>
+ <ma-ui-settings><account-joiner-queries><attributes><cs><attribute name="SiteID" header="SiteID" size="100" /><attribute name="physicalDeliveryOfficeName" header="physicalDeliveryOfficeName" size="100" /><attribute name="IsSchool" header="IsSchool" size="100" /></cs><mv></mv></attributes><filters max_mv_search_results=""></filters></account-joiner-queries></ma-ui-settings>
+ <private-configuration>
+  <oledbma-configuration><connection-info><authentication>integrated</authentication><provider>SQLOLEDB</provider><server>.</server><databasename>IdM</databasename><tablename>dbo.Site</tablename><user>svcma_sql</user><domain>dbb</domain></connection-info><mms-info><column-info><column><name>SiteID</name><data-type>DBTYPE_STR</data-type><length>5</length><isnullable>0</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>1</exp-conv-flag></column><column><name>SiteName</name><data-type>DBTYPE_STR</data-type><length>100</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>physicalDeliveryOfficeName</name><data-type>DBTYPE_STR</data-type><length>5</length><isnullable>0</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>1</exp-conv-flag></column><column><name>forwarderContainer</name><data-type>DBTYPE_STR</data-type><length>200</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><column><name>IsSchool</name><data-type>DBTYPE_BOOL</data-type><length>2</length><isnullable>0</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>Bool</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>1</exp-conv-flag></column><column><name>IsActive</name><data-type>DBTYPE_BOOL</data-type><length>2</length><isnullable>0</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>Bool</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>1</exp-conv-flag></column><column><name>IsMOE</name><data-type>DBTYPE_BOOL</data-type><length>2</length><isnullable>0</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>Bool</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>1</exp-conv-flag></column><column><name>ProfilePathLoc</name><data-type>DBTYPE_STR</data-type><length>5</length><isnullable>1</isnullable><isreadonly>0</isreadonly><islongcolumn>0</islongcolumn><mms-type>String</mms-type><imp-conv-flag>1</imp-conv-flag><exp-conv-flag>0</exp-conv-flag></column><primary-key><column-name>SiteID</column-name></primary-key></column-info><anchor><attribute>SiteID</attribute></anchor><object-type>site</object-type></mms-info><password-extension-config><password-extension-enabled>0</password-extension-enabled><dll></dll><password-set-enabled></password-set-enabled><password-change-enabled></password-change-enabled><connection-info><connect-to></connect-to><user></user></connection-info><timeout></timeout></password-extension-config></oledbma-configuration>
+ </private-configuration>
+ <ma-partition-data>
+ <partition>
+  <id>{DF4F7C7C-10F5-4026-9EE8-ED9264884905}</id>
+  <name>default</name>
+  <creation-time>2008-12-24 04:02:53.920</creation-time>
+  <last-modification-time>2009-06-02 04:50:19.840</last-modification-time>
+  <version>17</version>
+  <selected>1</selected>
+  <filter>
+   <object-classes>
+    <object-class>site</object-class>
+   </object-classes>
+   <containers>
+    <exclusions/>
+    <inclusions>
+     <inclusion></inclusion>
+    </inclusions>
+   </containers>
+  </filter>
+  <allowed-operations>7</allowed-operations>
+  <current>
+   <batch-number>1</batch-number>
+   <sequence-number>0</sequence-number>
+  </current>
+  <last-successful-batch>0</last-successful-batch>
+  <filter-hints>
+   <object-classes>
+    <object-class>
+     <name>site</name>
+     <hierarchy>
+      <object-class>site</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+   </object-classes>
+  </filter-hints>
+ </partition>
+</ma-partition-data>
+
+ <ma-run-data>
+ <run-configuration>
+  <id>{EB477B72-3684-48E7-B05D-456D0BAF8469}</id>
+  <name>Full Import Delta Sync</name>
+  <creation-time>2008-12-24 06:10:24.643</creation-time>
+  <version>2</version>
+  <last-modification-time>2009-03-13 05:27:08.963</last-modification-time>
+  <configuration><step><step-type type="full-import"></step-type><threshold></threshold><partition>{DF4F7C7C-10F5-4026-9EE8-ED9264884905}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{512DB6C6-442E-4693-B99B-DB89CB9FE14B}</id>
+  <name>Full Import Full Sync</name>
+  <creation-time>2008-12-24 04:06:37.123</creation-time>
+  <version>2</version>
+  <last-modification-time>2009-03-13 05:27:08.963</last-modification-time>
+  <configuration><step><step-type type="full-import-reevaluate-rules"></step-type><threshold></threshold><partition>{DF4F7C7C-10F5-4026-9EE8-ED9264884905}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{F3905A84-E4F7-4E26-A8E2-1AA82EF57BD2}</id>
+  <name>Full Sync</name>
+  <creation-time>2009-01-07 06:25:40.360</creation-time>
+  <version>2</version>
+  <last-modification-time>2009-03-13 05:27:08.980</last-modification-time>
+  <configuration><step><step-type type="apply-rules"><apply-rules-subtype>reevaluate-flow-connectors</apply-rules-subtype></step-type><threshold></threshold><partition>{DF4F7C7C-10F5-4026-9EE8-ED9264884905}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+</ma-run-data>
+
+ <capabilities-mask>ac05</capabilities-mask>
+ <export-type>2</export-type>
+ <dn-construction><attribute>SiteID</attribute></dn-construction>
+ <password-sync><maximum-retry-count>10</maximum-retry-count><retry-interval>60</retry-interval><allow-low-security>0</allow-low-security></password-sync>
+</ma-data>
+
+</saved-ma-configuration>

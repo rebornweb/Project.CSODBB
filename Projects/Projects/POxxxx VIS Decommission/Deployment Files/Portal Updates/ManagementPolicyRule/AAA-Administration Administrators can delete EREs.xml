@@ -1,0 +1,21 @@
+<Resource>
+  <ActionParameter>*</ActionParameter>
+  <ActionType>Delete</ActionType>
+  <CreatedTime>2012-07-28T02:52:18</CreatedTime>
+  <Creator Control="Lookup" ObjectType="Person" LookupAttribute="DisplayName">administrator</Creator>
+  <DeletedTime />
+  <Description>Administrators can delete EREs</Description>
+  <Disabled>False</Disabled>
+  <DisplayName>AAA-Administration: Administrators can delete EREs</DisplayName>
+  <ExpirationTime />
+  <GrantRight>True</GrantRight>
+  <Locale />
+  <ManagementPolicyRuleType>Request</ManagementPolicyRuleType>
+  <MVObjectID />
+  <ObjectType>ManagementPolicyRule</ObjectType>
+  <PrincipalRelativeToResource />
+  <PrincipalSet Control="Lookup" ObjectType="Set" LookupAttribute="DisplayName">Administrators</PrincipalSet>
+  <ResourceCurrentSet Control="Lookup" ObjectType="Set" LookupAttribute="DisplayName">All expected rule resources</ResourceCurrentSet>
+  <ResourceFinalSet />
+  <ResourceTime />
+</Resource>

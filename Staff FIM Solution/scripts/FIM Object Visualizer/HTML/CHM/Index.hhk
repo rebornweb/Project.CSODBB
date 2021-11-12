@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="entitlement">
+		<param name="Name" value="Entitlements Policy">
+		<param name="Local" value="..\CSO.Entitlements.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Event Broker">
+		<param name="Name" value="Event Broker Configuration - Agents">
+		<param name="Local" value="..\EventBroker.Agents.htm">
+		<param name="Name" value="Event Broker Configuration - Operations">
+		<param name="Local" value="..\EventBroker.Operations.htm">
+		<param name="Name" value="Event Broker Configuration - Other">
+		<param name="Local" value="..\EventBroker.Other.htm">
+		<param name="Name" value="Event Broker Policy">
+		<param name="Local" value="..\UNIFY.EventBroker.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="group">
+		<param name="Name" value="Groups Policy">
+		<param name="Local" value="..\CSO.Groups.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Housekeeping">
+		<param name="Name" value="Housekeeping Policy">
+		<param name="Local" value="..\UNIFY.Housekeeping.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="management agent">
+		<param name="Name" value="FIM MA">
+		<param name="Local" value="..\FIMMA.Schema.htm">
+		<param name="Name" value="MA Attributes">
+		<param name="Local" value="..\ManagementAgentAttributes.htm">
+		<param name="Name" value="MA Attributes">
+		<param name="Local" value="..\ManagementAgentAttributes.htm">
+		<param name="Name" value="MAs">
+		<param name="Local" value="..\ManagementAgents.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="synchronisation">
+		<param name="Name" value="FIM Sync Rules">
+		<param name="Local" value="..\UNIFY.SyncRules.htm">
+		<param name="Name" value="Provisioning Policy">
+		<param name="Local" value="..\ProvisioningPolicy.htm">
+		<param name="Name" value="Replication">
+		<param name="Local" value="..\Replication.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="management policy rules">
+		<param name="Name" value="Management Policy Rules (MPRs)">
+		<param name="Local" value="..\UNIFY.MPRs.htm">
+		<param name="Name" value="Sets">
+		<param name="Local" value="..\UNIFY.Sets.htm">
+		<param name="Name" value="Workflows">
+		<param name="Local" value="..\UNIFY.Workflow.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="role">
+		<param name="Name" value="Roles Policy">
+		<param name="Local" value="..\CSO.Roles.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="schema">
+		<param name="Name" value="Active Metaverse Schema">
+		<param name="Local" value="..\ActiveSchema.htm">
+		<param name="Name" value="FIM Schema">
+		<param name="Local" value="..\UNIFY.Schema.htm">
+		<param name="Name" value="Metaverse Schema">
+		<param name="Local" value="..\MetaverseSchema.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="user">
+		<param name="Name" value="Users Policy">
+		<param name="Local" value="..\CSO.Users.htm">
+		</OBJECT>
+</UL>
+</BODY></HTML>

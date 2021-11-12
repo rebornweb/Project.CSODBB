@@ -1,0 +1,619 @@
+<saved-mv-configuration server='OCCCP-AS033' export-date='2012-04-16 00:17:05.152'>
+<!--WARNING>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+!! The contents of this file should not be edited.
+!! Any such modifications to this file may result in errors during import.
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+</WARNING-->
+<mv-data>
+ <format-version>1</format-version>
+ <version>733</version>
+ <schema>
+  <dsml:dsml xmlns:dsml="http://www.dsml.org/DSML" xmlns:ms-dsml="http://www.microsoft.com/MMS/DSML"><dsml:directory-schema><dsml:class id="function" type="structural"><dsml:name>function</dsml:name><dsml:attribute ref="#assembly" required="true" /><dsml:attribute ref="#csObjectID" required="true" /><dsml:attribute ref="#description" required="false" /><dsml:attribute ref="#displayName" required="true" /><dsml:attribute ref="#functionName" required="true" /><dsml:attribute ref="#functionParameters" required="true" /><dsml:attribute ref="#namespace" required="true" /><dsml:attribute ref="#objectID" required="true" /><dsml:attribute ref="#objectType" required="true" /><dsml:attribute ref="#returnType" required="true" /></dsml:class><dsml:class id="synchronizationRule" type="structural"><dsml:name>synchronizationRule</dsml:name><dsml:attribute ref="#connectedObjectType" required="true" /><dsml:attribute ref="#connectedSystem" required="true" /><dsml:attribute ref="#connectedSystemScope" required="false" /><dsml:attribute ref="#createConnectedSystemObject" required="false" /><dsml:attribute ref="#createILMObject" required="false" /><dsml:attribute ref="#csObjectID" required="true" /><dsml:attribute ref="#disconnectConnectedSystemObject" required="true" /><dsml:attribute ref="#dependency" required="false" /><dsml:attribute ref="#description" required="false" /><dsml:attribute ref="#displayName" required="true" /><dsml:attribute ref="#existenceTest" required="false" /><dsml:attribute ref="#flowType" required="true" /><dsml:attribute ref="#initialFlow" required="false" /><dsml:attribute ref="#objectID" required="true" /><dsml:attribute ref="#ilmObjectType" required="true" /><dsml:attribute ref="#persistentFlow" required="false" /><dsml:attribute ref="#precedence" required="false" /><dsml:attribute ref="#relationshipCriteria" required="false" /><dsml:attribute ref="#synchronizationRuleParameters" required="false" /></dsml:class><dsml:class id="expectedRuleEntry" type="structural"><dsml:name>expectedRuleEntry</dsml:name><dsml:attribute ref="#createdTime" required="true" /><dsml:attribute ref="#csObjectID" required="true" /><dsml:attribute ref="#displayName" required="true" /><dsml:attribute ref="#objectID" required="true" /><dsml:attribute ref="#expectedRuleEntryAction" required="false" /><dsml:attribute ref="#resourceParent" required="false" /><dsml:attribute ref="#synchronizationRuleData" required="false" /><dsml:attribute ref="#synchronizationRuleID" required="true" /><dsml:attribute ref="#statusError" required="false" /><dsml:attribute ref="#status" required="false" /></dsml:class><dsml:class id="detectedRuleEntry" type="structural"><dsml:name>detectedRuleEntry</dsml:name><dsml:attribute ref="#connector" required="false" /><dsml:attribute ref="#csObjectID" required="true" /><dsml:attribute ref="#displayName" required="true" /><dsml:attribute ref="#objectID" required="true" /><dsml:attribute ref="#objectType" required="true" /><dsml:attribute ref="#resourceParent" required="false" /><dsml:attribute ref="#synchronizationRuleID" required="true" /></dsml:class><dsml:class id="person" type="structural"><dsml:name>person</dsml:name><dsml:attribute ref="#accountName" required="true" /><dsml:attribute ref="#ad_UserCannotChangePassword" required="false" /><dsml:attribute ref="#address" required="false" /><dsml:attribute ref="#Address1" required="false" /><dsml:attribute ref="#Address2" required="false" /><dsml:attribute ref="#Address3" required="false" /><dsml:attribute ref="#AddressID" required="false" /><dsml:attribute ref="#AlumniType" required="false" /><dsml:attribute ref="#Archive" required="false" /><dsml:attribute ref="#assistant" required="false" /><dsml:attribute ref="#authNWFLockedOut" required="false" /><dsml:attribute ref="#authNWFRegistered" required="false" /><dsml:attribute ref="#c" required="false" /><dsml:attribute ref="#CandidateNumber" required="false" /><dsml:attribute ref="#city" required="false" /><dsml:attribute ref="#Class" required="false" /><dsml:attribute ref="#cn" required="false" /><dsml:attribute ref="#co" required="false" /><dsml:attribute ref="#Code" required="false" /><dsml:attribute ref="#comment" required="false" /><dsml:attribute ref="#company" required="false" /><dsml:attribute ref="#costCenter" required="false" /><dsml:attribute ref="#costCenterName" required="false" /><dsml:attribute ref="#country" required="false" /><dsml:attribute ref="#creator" required="true" /><dsml:attribute ref="#DateLeft" required="false" /><dsml:attribute ref="#Deceased" required="false" /><dsml:attribute ref="#deleteTime" required="true" /><dsml:attribute ref="#department" required="false" /><dsml:attribute ref="#description" required="false" /><dsml:attribute ref="#displayName" required="false" /><dsml:attribute ref="#division" required="false" /><dsml:attribute ref="#DOB" required="false" /><dsml:attribute ref="#domain" required="false" /><dsml:attribute ref="#email" required="false" /><dsml:attribute ref="#employeeEndDate" required="false" /><dsml:attribute ref="#EmployeeNumber" required="false" /><dsml:attribute ref="#employeeStartDate" required="false" /><dsml:attribute ref="#expirationTime" required="false" /><dsml:attribute ref="#employeeID" required="false" /><dsml:attribute ref="#employeeStatus" required="false" /><dsml:attribute ref="#employeeType" required="false" /><dsml:attribute ref="#facsimileTelephoneNumber" required="false" /><dsml:attribute ref="#firstName" required="false" /><dsml:attribute ref="#FormerName" required="false" /><dsml:attribute ref="#freezeCount" required="false" /><dsml:attribute ref="#freezeLevel" required="false" /><dsml:attribute ref="#generationQualifier" required="false" /><dsml:attribute ref="#HomeGroup" required="false" /><dsml:attribute ref="#homePhone" required="false" /><dsml:attribute ref="#House" required="false" /><dsml:attribute ref="#info" required="false" /><dsml:attribute ref="#initials" required="false" /><dsml:attribute ref="#jobTitle" required="false" /><dsml:attribute ref="#l" required="false" /><dsml:attribute ref="#lastName" required="false" /><dsml:attribute ref="#lastResetAttemptTime" required="false" /><dsml:attribute ref="#location" required="false" /><dsml:attribute ref="#loginName" required="false" /><dsml:attribute ref="#MailSuffix" required="false" /><dsml:attribute ref="#manager" required="false" /><dsml:attribute ref="#mobilePhone" required="false" /><dsml:attribute ref="#mail" required="false" /><dsml:attribute ref="#mailNickname" required="false" /><dsml:attribute ref="#middleName" required="false" /><dsml:attribute ref="#mobile" required="false" /><dsml:attribute ref="#NName" required="false" /><dsml:attribute ref="#o" required="false" /><dsml:attribute ref="#objectID" required="true" /><dsml:attribute ref="#objectSid" required="true" /><dsml:attribute ref="#objectType" required="true" /><dsml:attribute ref="#officeFax" required="false" /><dsml:attribute ref="#officeLocation" required="false" /><dsml:attribute ref="#officePhone" required="false" /><dsml:attribute ref="#otherMailbox" required="false" /><dsml:attribute ref="#ou" required="false" /><dsml:attribute ref="#pager" required="false" /><dsml:attribute ref="#personalTitle" required="false" /><dsml:attribute ref="#PersonType" required="false" /><dsml:attribute ref="#PhoneFamily" required="false" /><dsml:attribute ref="#PhoneHome" required="false" /><dsml:attribute ref="#PhoneMobile" required="false" /><dsml:attribute ref="#photo" required="false" /><dsml:attribute ref="#physicalDeliveryOfficeName" required="false" /><dsml:attribute ref="#postOfficeBox" required="false" /><dsml:attribute ref="#postalAddress" required="false" /><dsml:attribute ref="#postalCode" required="false" /><dsml:attribute ref="#PreEnrolment" required="false" /><dsml:attribute ref="#PreferredName" required="false" /><dsml:attribute ref="#profilePath" required="false" /><dsml:attribute ref="#proxyAddressCollection" required="true" /><dsml:attribute ref="#ReasonLeft" required="false" /><dsml:attribute ref="#register" required="false" /><dsml:attribute ref="#registrationRequired" required="false" /><dsml:attribute ref="#resetPassword" required="false" /><dsml:attribute ref="#SAS2IDMConnector" required="false" /><dsml:attribute ref="#SchoolCode" required="false" /><dsml:attribute ref="#SchoolID" required="false" /><dsml:attribute ref="#secretary" required="false" /><dsml:attribute ref="#seeAlso" required="false" /><dsml:attribute ref="#Sex" required="false" /><dsml:attribute ref="#sIDHistory" required="false" /><dsml:attribute ref="#sn" required="false" /><dsml:attribute ref="#st" required="false" /><dsml:attribute ref="#StartDate" required="false" /><dsml:attribute ref="#StartYear" required="false" /><dsml:attribute ref="#street" required="false" /><dsml:attribute ref="#telephoneNumber" required="false" /><dsml:attribute ref="#title" required="false" /><dsml:attribute ref="#uid" required="false" /><dsml:attribute ref="#userCertificate" required="false" /><dsml:attribute ref="#userSMIMECertificate" required="false" /><dsml:attribute ref="#givenName" required="false" /><dsml:attribute ref="#expectedRulesList" required="false" /><dsml:attribute ref="#detectedRulesList" required="false" /><dsml:attribute ref="#csObjectID" required="true" /><dsml:attribute ref="#USIN" required="false" /><dsml:attribute ref="#Year" required="false" /></dsml:class><dsml:class id="organizationalUnit" type="structural"><dsml:name>organizationalUnit</dsml:name><dsml:attribute ref="#company" required="false" /><dsml:attribute ref="#description" required="false" /><dsml:attribute ref="#displayName" required="false" /><dsml:attribute ref="#facsimileTelephoneNumber" required="false" /><dsml:attribute ref="#l" required="false" /><dsml:attribute ref="#ou" required="false" /><dsml:attribute ref="#physicalDeliveryOfficeName" required="false" /><dsml:attribute ref="#postOfficeBox" required="false" /><dsml:attribute ref="#postalAddress" required="false" /><dsml:attribute ref="#postalCode" required="false" /><dsml:attribute ref="#seeAlso" required="false" /><dsml:attribute ref="#st" required="false" /><dsml:attribute ref="#street" required="false" /><dsml:attribute ref="#telephoneNumber" required="false" /></dsml:class><dsml:class id="organization" type="structural"><dsml:name>organization</dsml:name><dsml:attribute ref="#company" required="false" /><dsml:attribute ref="#description" required="false" /><dsml:attribute ref="#displayName" required="false" /><dsml:attribute ref="#facsimileTelephoneNumber" required="false" /><dsml:attribute ref="#l" required="false" /><dsml:attribute ref="#o" required="false" /><dsml:attribute ref="#physicalDeliveryOfficeName" required="false" /><dsml:attribute ref="#postOfficeBox" required="false" /><dsml:attribute ref="#postalAddress" required="false" /><dsml:attribute ref="#postalCode" required="false" /><dsml:attribute ref="#seeAlso" required="false" /><dsml:attribute ref="#st" required="false" /><dsml:attribute ref="#street" required="false" /><dsml:attribute ref="#telephoneNumber" required="false" /></dsml:class><dsml:class id="locality" type="structural"><dsml:name>locality</dsml:name><dsml:attribute ref="#description" required="false" /><dsml:attribute ref="#displayName" required="false" /><dsml:attribute ref="#l" required="false" /><dsml:attribute ref="#seeAlso" required="false" /><dsml:attribute ref="#st" required="false" /><dsml:attribute ref="#street" required="false" /></dsml:class><dsml:class id="domain" type="structural"><dsml:name>domain</dsml:name><dsml:attribute ref="#company" required="false" /><dsml:attribute ref="#dc" required="false" /><dsml:attribute ref="#description" required="false" /><dsml:attribute ref="#displayName" required="false" /><dsml:attribute ref="#facsimileTelephoneNumber" required="false" /><dsml:attribute ref="#l" required="false" /><dsml:attribute ref="#o" required="false" /><dsml:attribute ref="#physicalDeliveryOfficeName" required="false" /><dsml:attribute ref="#postOfficeBox" required="false" /><dsml:attribute ref="#postalAddress" required="false" /><dsml:attribute ref="#postalCode" required="false" /><dsml:attribute ref="#seeAlso" required="false" /><dsml:attribute ref="#st" required="false" /><dsml:attribute ref="#street" required="false" /><dsml:attribute ref="#telephoneNumber" required="false" /></dsml:class><dsml:class id="computer" type="structural"><dsml:name>computer</dsml:name><dsml:attribute ref="#cn" required="false" /><dsml:attribute ref="#description" required="false" /><dsml:attribute ref="#displayName" required="false" /><dsml:attribute ref="#l" required="false" /><dsml:attribute ref="#location" required="false" /><dsml:attribute ref="#manager" required="false" /><dsml:attribute ref="#o" required="false" /><dsml:attribute ref="#ou" required="false" /><dsml:attribute ref="#seeAlso" required="false" /></dsml:class><dsml:class id="printer" type="structural"><dsml:name>printer</dsml:name><dsml:attribute ref="#cn" required="false" /><dsml:attribute ref="#description" required="false" /><dsml:attribute ref="#displayName" required="false" /><dsml:attribute ref="#l" required="false" /><dsml:attribute ref="#location" required="false" /><dsml:attribute ref="#manager" required="false" /><dsml:attribute ref="#o" required="false" /><dsml:attribute ref="#ou" required="false" /><dsml:attribute ref="#seeAlso" required="false" /></dsml:class><dsml:class id="group" type="structural"><dsml:name>group</dsml:name><dsml:attribute ref="#accountName" required="false" /><dsml:attribute ref="#cn" required="false" /><dsml:attribute ref="#creator" required="true" /><dsml:attribute ref="#csObjectID" required="true" /><dsml:attribute ref="#deleteTime" required="true" /><dsml:attribute ref="#description" required="false" /><dsml:attribute ref="#displayedOwner" required="false" /><dsml:attribute ref="#displayName" required="false" /><dsml:attribute ref="#domain" required="true" /><dsml:attribute ref="#email" required="false" /><dsml:attribute ref="#expirationTime" required="false" /><dsml:attribute ref="#filter" required="false" /><dsml:attribute ref="#mail" required="false" /><dsml:attribute ref="#mailNickname" required="false" /><dsml:attribute ref="#manager" required="false" /><dsml:attribute ref="#member" required="false" /><dsml:attribute ref="#memberFilter" required="false" /><dsml:attribute ref="#membershipAddWorkflow" required="true" /><dsml:attribute ref="#membershipLocked" required="true" /><dsml:attribute ref="#o" required="false" /><dsml:attribute ref="#objectID" required="true" /><dsml:attribute ref="#objectType" required="true" /><dsml:attribute ref="#ou" required="false" /><dsml:attribute ref="#ou1" required="false" /><dsml:attribute ref="#ou2" required="false" /><dsml:attribute ref="#ou3" required="false" /><dsml:attribute ref="#ou4" required="false" /><dsml:attribute ref="#ou5" required="false" /><dsml:attribute ref="#ou6" required="false" /><dsml:attribute ref="#ou7" required="false" /><dsml:attribute ref="#owner" required="false" /><dsml:attribute ref="#seeAlso" required="false" /><dsml:attribute ref="#scope" required="true" /><dsml:attribute ref="#temporal" required="false" /><dsml:attribute ref="#type" required="true" /><dsml:attribute ref="#uid" required="false" /><dsml:attribute ref="#expectedRulesList" required="false" /><dsml:attribute ref="#detectedRulesList" required="false" /><dsml:attribute ref="#objectSid" required="true" /><dsml:attribute ref="#sIDHistory" required="false" /></dsml:class><dsml:class id="role" type="structural"><dsml:name>role</dsml:name><dsml:attribute ref="#company" required="false" /><dsml:attribute ref="#description" required="false" /><dsml:attribute ref="#displayName" required="false" /><dsml:attribute ref="#facsimileTelephoneNumber" required="false" /><dsml:attribute ref="#l" required="false" /><dsml:attribute ref="#member" required="false" /><dsml:attribute ref="#ou" required="false" /><dsml:attribute ref="#physicalDeliveryOfficeName" required="false" /><dsml:attribute ref="#postOfficeBox" required="false" /><dsml:attribute ref="#postalAddress" required="false" /><dsml:attribute ref="#postalCode" required="false" /><dsml:attribute ref="#seeAlso" required="false" /><dsml:attribute ref="#st" required="false" /><dsml:attribute ref="#street" required="false" /><dsml:attribute ref="#telephoneNumber" required="false" /></dsml:class><dsml:attribute-type id="assistant" single-value="true"><dsml:name>assistant</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="c" single-value="true" ms-dsml:indexable="true"><dsml:name>c</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="cn" single-value="true" ms-dsml:indexable="true"><dsml:name>cn</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="co" single-value="true" ms-dsml:indexable="true"><dsml:name>co</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="comment" single-value="true" ms-dsml:indexable="true"><dsml:name>comment</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="company" single-value="true" ms-dsml:indexable="true"><dsml:name>company</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="dc" single-value="true" ms-dsml:indexable="true"><dsml:name>dc</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="department" single-value="true" ms-dsml:indexable="true"><dsml:name>department</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="description" single-value="true" ms-dsml:indexable="true"><dsml:name>description</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="displayName" single-value="true" ms-dsml:indexable="true"><dsml:name>displayName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="division" single-value="true" ms-dsml:indexable="true"><dsml:name>division</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="employeeID" single-value="true" ms-dsml:indexable="true"><dsml:name>employeeID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="employeeStatus" single-value="true" ms-dsml:indexable="true"><dsml:name>employeeStatus</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="employeeType" single-value="true" ms-dsml:indexable="true"><dsml:name>employeeType</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="facsimileTelephoneNumber" single-value="true" ms-dsml:indexable="true"><dsml:name>facsimileTelephoneNumber</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="generationQualifier" single-value="true" ms-dsml:indexable="true"><dsml:name>generationQualifier</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="firstName" single-value="true" ms-dsml:indexable="true"><dsml:name>firstName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="homePhone" single-value="true" ms-dsml:indexable="true"><dsml:name>homePhone</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="info" single-value="true" ms-dsml:indexable="true"><dsml:name>info</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="initials" single-value="true" ms-dsml:indexable="true"><dsml:name>initials</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="l" single-value="true" ms-dsml:indexable="true"><dsml:name>l</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="location" single-value="true" ms-dsml:indexable="true"><dsml:name>location</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="mail" single-value="true" ms-dsml:indexable="true"><dsml:name>mail</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="mailNickname" single-value="true" ms-dsml:indexable="true"><dsml:name>mailNickname</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="manager" single-value="true"><dsml:name>manager</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="member"><dsml:name>member</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="middleName" single-value="true" ms-dsml:indexable="true"><dsml:name>middleName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="mobile" single-value="true" ms-dsml:indexable="true"><dsml:name>mobile</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="o" single-value="true" ms-dsml:indexable="true"><dsml:name>o</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="otherMailbox" ms-dsml:indexable="true" ms-dsml:indexed="true"><dsml:name>otherMailbox</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ou" single-value="true" ms-dsml:indexable="true"><dsml:name>ou</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="pager" single-value="true" ms-dsml:indexable="true"><dsml:name>pager</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="personalTitle" single-value="true" ms-dsml:indexable="true"><dsml:name>personalTitle</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="physicalDeliveryOfficeName" single-value="true" ms-dsml:indexable="true"><dsml:name>physicalDeliveryOfficeName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="postOfficeBox" single-value="true" ms-dsml:indexable="true"><dsml:name>postOfficeBox</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="postalAddress" single-value="true" ms-dsml:indexable="true"><dsml:name>postalAddress</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="postalCode" single-value="true" ms-dsml:indexable="true"><dsml:name>postalCode</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="secretary" single-value="true"><dsml:name>secretary</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="seeAlso" single-value="true"><dsml:name>seeAlso</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="sn" single-value="true" ms-dsml:indexable="true"><dsml:name>sn</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="st" single-value="true" ms-dsml:indexable="true"><dsml:name>st</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="street" single-value="true" ms-dsml:indexable="true"><dsml:name>street</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="telephoneNumber" single-value="true" ms-dsml:indexable="true"><dsml:name>telephoneNumber</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="title" single-value="true" ms-dsml:indexable="true"><dsml:name>title</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="uid" single-value="true" ms-dsml:indexable="true"><dsml:name>uid</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="userCertificate"><dsml:name>userCertificate</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.5</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="userSMIMECertificate"><dsml:name>userSMIMECertificate</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.5</dsml:syntax></dsml:attribute-type><!-- Additions for ILM2 --><dsml:attribute-type id="accountName" single-value="true" ms-dsml:indexable="true"><dsml:name>accountName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="jobTitle" single-value="true" ms-dsml:indexable="true"><dsml:name>jobTitle</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="photo" single-value="true"><dsml:name>photo</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.5</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="officeLocation" single-value="true" ms-dsml:indexable="true"><dsml:name>officeLocation</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="address" single-value="true" ms-dsml:indexable="true"><dsml:name>address</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="country" single-value="true" ms-dsml:indexable="true"><dsml:name>country</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="lastName" single-value="true" ms-dsml:indexable="true"><dsml:name>lastName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="email" single-value="true" ms-dsml:indexable="true"><dsml:name>email</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="officePhone" single-value="true" ms-dsml:indexable="true"><dsml:name>officePhone</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="officeFax" single-value="true" ms-dsml:indexable="true"><dsml:name>officeFax</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="domain" single-value="true" ms-dsml:indexable="true"><dsml:name>domain</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="mobilePhone" single-value="true" ms-dsml:indexable="true"><dsml:name>mobilePhone</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="city" single-value="true" ms-dsml:indexable="true"><dsml:name>city</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="costCenter" single-value="true" ms-dsml:indexable="true"><dsml:name>costCenter</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="costCenterName" single-value="true" ms-dsml:indexable="true"><dsml:name>costCenterName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="employeeStartDate" single-value="true" ms-dsml:indexable="true"><dsml:name>employeeStartDate</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="employeeEndDate" single-value="true" ms-dsml:indexable="true"><dsml:name>employeeEndDate</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="owner" single-value="false"><dsml:name>owner</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="type" single-value="true" ms-dsml:indexable="true"><dsml:name>type</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="scope" single-value="true" ms-dsml:indexable="true"><dsml:name>scope</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="membershipLocked" single-value="true"><dsml:name>membershipLocked</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.7</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="givenName" single-value="true" ms-dsml:indexable="true"><dsml:name>givenName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="loginName" single-value="true" ms-dsml:indexable="true"><dsml:name>loginName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="creator" single-value="true"><dsml:name>creator</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="deleteTime" single-value="true" ms-dsml:indexable="true"><dsml:name>deleteTime</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="expirationTime" single-value="true" ms-dsml:indexable="true"><dsml:name>expirationTime</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="memberFilter" single-value="true" ms-dsml:indexable="false"><dsml:name>memberFilter</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="membershipAddWorkflow" single-value="true" ms-dsml:indexable="true"><dsml:name>membershipAddWorkflow</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="temporal" single-value="true"><dsml:name>temporal</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.7</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="objectID" single-value="true"><dsml:name>objectID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="objectType" single-value="true" ms-dsml:indexable="true"><dsml:name>objectType</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ad_UserCannotChangePassword" single-value="true"><dsml:name>ad_UserCannotChangePassword</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.7</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="authNWFLockedOut"><dsml:name>authNWFLockedOut</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="authNWFRegistered"><dsml:name>authNWFRegistered</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="freezeCount" single-value="true"><dsml:name>freezeCount</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.27</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="freezeLevel" single-value="true" ms-dsml:indexable="true"><dsml:name>freezeLevel</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="lastResetAttemptTime" single-value="true" ms-dsml:indexable="true"><dsml:name>lastResetAttemptTime</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="proxyAddressCollection" ms-dsml:indexed="true" ms-dsml:indexable="true"><dsml:name>proxyAddressCollection</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="register" single-value="true"><dsml:name>register</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.7</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="registrationRequired" single-value="true"><dsml:name>registrationRequired</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.7</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="resetPassword" single-value="true" ms-dsml:indexable="true"><dsml:name>resetPassword</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="createdTime" single-value="true" ms-dsml:indexable="true"><dsml:name>createdTime</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="csObjectID" single-value="true" ms-dsml:indexable="true"><dsml:name>csObjectID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="assembly" single-value="true"><dsml:name>assembly</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="connectedObjectType" single-value="true"><dsml:name>connectedObjectType</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="connectedSystem" single-value="true"><dsml:name>connectedSystem</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="connectedSystemScope" single-value="true"><dsml:name>connectedSystemScope</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="createConnectedSystemObject" single-value="true"><dsml:name>createConnectedSystemObject</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.7</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="createILMObject" single-value="true"><dsml:name>createILMObject</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.7</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="disconnectConnectedSystemObject" single-value="true"><dsml:name>disconnectConnectedSystemObject</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.7</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="dependency" single-value="true"><dsml:name>dependency</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="detectedRulesList" single-value="false"><dsml:name>detectedRulesList</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="existenceTest" single-value="false"><dsml:name>existenceTest</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="expectedRulesList" single-value="false"><dsml:name>expectedRulesList</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="expectedRuleEntryAction" single-value="true"><dsml:name>expectedRuleEntryAction</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="flowType" single-value="true"><dsml:name>flowType</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.27</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="functionName" single-value="true"><dsml:name>functionName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="functionParameters" single-value="true"><dsml:name>functionParameters</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ilmObjectType" single-value="true"><dsml:name>ilmObjectType</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="initialFlow" single-value="false"><dsml:name>initialFlow</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="namespace" single-value="true"><dsml:name>namespace</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="persistentFlow" single-value="false"><dsml:name>persistentFlow</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="precedence" single-value="true"><dsml:name>precedence</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.27</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="relationshipCriteria" single-value="true"><dsml:name>relationshipCriteria</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="returnType" single-value="true"><dsml:name>returnType</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="synchronizationRuleData" single-value="false"><dsml:name>synchronizationRuleData</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="synchronizationRuleID" single-value="true"><dsml:name>synchronizationRuleID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="status" ms-dsml:indexable="true" single-value="true"><dsml:name>status</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="statusError" single-value="true"><dsml:name>statusError</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="synchronizationRuleParameters" single-value="false"><dsml:name>synchronizationRuleParameters</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="displayedOwner" single-value="true"><dsml:name>displayedOwner</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="connector" single-value="true"><dsml:name>connector</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="resourceParent" single-value="true"><dsml:name>resourceParent</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="objectSid" single-value="true" ms-dsml:indexable="true"><dsml:name>objectSid</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.5</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="sIDHistory" single-value="false" ms-dsml:indexable="false"><dsml:name>sIDHistory</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.5</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="SchoolID" single-value="true"><dsml:name>SchoolID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.27</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PhoneFamily" single-value="true" ms-dsml:indexable="true"><dsml:name>PhoneFamily</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PhoneHome" single-value="true" ms-dsml:indexable="true"><dsml:name>PhoneHome</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PhoneMobile" single-value="true" ms-dsml:indexable="true"><dsml:name>PhoneMobile</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="StartYear" single-value="true" ms-dsml:indexable="true"><dsml:name>StartYear</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="StartDate" single-value="true" ms-dsml:indexable="true"><dsml:name>StartDate</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Deceased" single-value="true" ms-dsml:indexable="true"><dsml:name>Deceased</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="DateLeft" single-value="true" ms-dsml:indexable="true"><dsml:name>DateLeft</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ReasonLeft" single-value="true" ms-dsml:indexable="true"><dsml:name>ReasonLeft</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="USIN" single-value="true" ms-dsml:indexable="true"><dsml:name>USIN</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="AlumniType" single-value="true" ms-dsml:indexable="true"><dsml:name>AlumniType</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PreEnrolment" single-value="true" ms-dsml:indexable="true"><dsml:name>PreEnrolment</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Archive" single-value="true" ms-dsml:indexable="true"><dsml:name>Archive</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PreferredName" single-value="true" ms-dsml:indexable="true"><dsml:name>PreferredName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="NName" single-value="true" ms-dsml:indexable="true"><dsml:name>NName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="FormerName" single-value="true" ms-dsml:indexable="true"><dsml:name>FormerName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Sex" single-value="true" ms-dsml:indexable="true"><dsml:name>Sex</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="DOB" single-value="true" ms-dsml:indexable="true"><dsml:name>DOB</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Year" single-value="true" ms-dsml:indexable="true"><dsml:name>Year</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Class" single-value="true" ms-dsml:indexable="true"><dsml:name>Class</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="HomeGroup" single-value="true" ms-dsml:indexable="true"><dsml:name>HomeGroup</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="House" single-value="true" ms-dsml:indexable="true"><dsml:name>House</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="AddressID" single-value="true"><dsml:name>AddressID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.27</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Address1" single-value="true" ms-dsml:indexable="true"><dsml:name>Address1</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Address2" single-value="true" ms-dsml:indexable="true"><dsml:name>Address2</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Address3" single-value="true" ms-dsml:indexable="true"><dsml:name>Address3</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Code" single-value="true" ms-dsml:indexable="true"><dsml:name>Code</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PersonType" single-value="true" ms-dsml:indexable="true"><dsml:name>PersonType</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="CandidateNumber" single-value="true" ms-dsml:indexable="true"><dsml:name>CandidateNumber</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EmployeeNumber" single-value="true" ms-dsml:indexable="true"><dsml:name>EmployeeNumber</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="SAS2IDMConnector" single-value="true"><dsml:name>SAS2IDMConnector</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.7</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="MailSuffix" single-value="true" ms-dsml:indexable="true"><dsml:name>MailSuffix</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="SchoolCode" single-value="true" ms-dsml:indexable="true"><dsml:name>SchoolCode</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="filter" single-value="true" ms-dsml:indexable="true"><dsml:name>filter</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ou1" single-value="true" ms-dsml:indexable="true"><dsml:name>ou1</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ou2" single-value="true" ms-dsml:indexable="true"><dsml:name>ou2</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ou3" single-value="true" ms-dsml:indexable="true"><dsml:name>ou3</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ou4" single-value="true" ms-dsml:indexable="true"><dsml:name>ou4</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ou5" single-value="true" ms-dsml:indexable="true"><dsml:name>ou5</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ou6" single-value="true" ms-dsml:indexable="true"><dsml:name>ou6</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ou7" single-value="true" ms-dsml:indexable="true"><dsml:name>ou7</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="profilePath" single-value="true" ms-dsml:indexable="true"><dsml:name>profilePath</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type></dsml:directory-schema></dsml:dsml>
+ </schema>
+ <import-attribute-flow>
+ <import-flow-set mv-object-type="group">
+  <import-flows mv-attribute="description" type="equal">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Group" id="{D29C1F3D-49FE-44F1-A19B-C079F8BFD2EB}">
+    <direct-mapping>
+     <src-attribute>Description</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="accountName" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Group" id="{3897A938-2EB1-428B-8808-08A0AAE221A6}">
+    <direct-mapping>
+     <src-attribute>AccountName</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="expectedRulesList" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Group" id="{FC72FF6C-E95C-4C22-9B80-0A20140EDF87}">
+    <direct-mapping>
+     <src-attribute>ExpectedRulesList</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="csObjectID" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Group" id="{244C75D2-8B54-485B-AD19-50A157FBEF2E}">
+    <direct-mapping>
+     <src-attribute intrinsic="true">dn</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="member" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Group" id="{176FA3E5-FD25-4BE1-AA0F-8F7265478BDF}">
+    <direct-mapping>
+     <src-attribute>Member</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="ou" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Group" id="{71C69CBF-6967-4605-89F0-B70D332B8B46}">
+    <direct-mapping>
+     <src-attribute>OU</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+ </import-flow-set>
+ <import-flow-set mv-object-type="person">
+  <import-flows mv-attribute="SAS2IDMConnector" type="ranked">
+   <import-flow src-ma="{5339513E-6047-401E-AB66-A0F738F85AFB}" cd-object-type="person" id="{0E8962A1-8F50-4286-9800-55F5F6C42801}">
+    <sync-rule-mapping mapping-type="constant" sync-rule-id="{FCC54B34-FE88-49CA-9509-F2386FFAF051}" sync-rule-mapping-id="{FFAC9528-72A1-4B4F-87CE-5FA448C9CCE0}" initial-flow-only="false" is-existence-test="false">
+     <sync-rule-value>1</sync-rule-value>
+    </sync-rule-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="givenName" type="ranked">
+   <import-flow src-ma="{5339513E-6047-401E-AB66-A0F738F85AFB}" cd-object-type="person" id="{8E4E45B3-87F1-4456-A02C-A834DE4DC0F0}">
+    <sync-rule-mapping mapping-type="direct" sync-rule-id="{FCC54B34-FE88-49CA-9509-F2386FFAF051}" sync-rule-mapping-id="{67157430-D5EC-4848-9660-E06EFEE85AC3}" initial-flow-only="false" is-existence-test="false">
+     <src-attribute>FirstName</src-attribute>
+    </sync-rule-mapping>
+   </import-flow>
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Person" id="{C48D6D8E-334A-4839-A6B4-90F30699F52D}">
+    <direct-mapping>
+     <src-attribute>FirstName</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="description" type="ranked">
+   <import-flow src-ma="{5339513E-6047-401E-AB66-A0F738F85AFB}" cd-object-type="person" id="{DDDB1DF5-E1EE-450C-8D5D-40EECB080668}">
+    <sync-rule-mapping mapping-type="direct" sync-rule-id="{FCC54B34-FE88-49CA-9509-F2386FFAF051}" sync-rule-mapping-id="{EB3075CF-669B-4063-8961-1881E4CCFE75}" initial-flow-only="false" is-existence-test="false">
+     <src-attribute>Class</src-attribute>
+    </sync-rule-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="middleName" type="ranked">
+   <import-flow src-ma="{5339513E-6047-401E-AB66-A0F738F85AFB}" cd-object-type="person" id="{4C9205B3-FA4E-43F6-9B19-E022B014303C}">
+    <sync-rule-mapping mapping-type="direct" sync-rule-id="{FCC54B34-FE88-49CA-9509-F2386FFAF051}" sync-rule-mapping-id="{78E7D5CC-4679-4BE3-8266-0D7699E3F0D4}" initial-flow-only="false" is-existence-test="false">
+     <src-attribute>MiddleName</src-attribute>
+    </sync-rule-mapping>
+   </import-flow>
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Person" id="{F0B347BB-6DF9-4F56-86A6-9EC87F1CF541}">
+    <direct-mapping>
+     <src-attribute>MiddleName</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="expectedRulesList" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Person" id="{0A044312-67D5-4591-9899-38457B54BF7B}">
+    <direct-mapping>
+     <src-attribute>ExpectedRulesList</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="csObjectID" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Person" id="{CC78C01A-A634-4A60-B3D5-D61FD74CB364}">
+    <direct-mapping>
+     <src-attribute intrinsic="true">dn</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="accountName" type="ranked">
+   <import-flow src-ma="{CB613D75-1D62-41AE-8C1A-090D77B898B6}" cd-object-type="user" id="{C0671E14-8C90-46F6-B91E-2625AF8C62FB}">
+    <sync-rule-mapping mapping-type="direct" sync-rule-id="{3E039730-29A5-4A6A-B318-A8658455F0CC}" sync-rule-mapping-id="{58B0536A-B102-4FF4-B17C-4004D0463B06}" initial-flow-only="false" is-existence-test="false">
+     <src-attribute>sAMAccountName</src-attribute>
+    </sync-rule-mapping>
+   </import-flow>
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Person" id="{6E9D4DCC-2B1E-4109-8F41-31DA3E293DBD}">
+    <direct-mapping>
+     <src-attribute>AccountName</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="USIN" type="ranked">
+   <import-flow src-ma="{5339513E-6047-401E-AB66-A0F738F85AFB}" cd-object-type="person" id="{AC87F31D-A917-448D-BF7F-5C318255D222}">
+    <sync-rule-mapping mapping-type="direct" sync-rule-id="{FCC54B34-FE88-49CA-9509-F2386FFAF051}" sync-rule-mapping-id="{E01CD26E-8985-4CAC-9168-09CC9F706ED0}" initial-flow-only="false" is-existence-test="false">
+     <src-attribute>UniversalIdentificationNumber</src-attribute>
+    </sync-rule-mapping>
+   </import-flow>
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Person" id="{B7DEBB6C-C507-4735-9C96-B9DCAE238801}">
+    <direct-mapping>
+     <src-attribute>USIN</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="MailSuffix" type="ranked">
+   <import-flow src-ma="{5339513E-6047-401E-AB66-A0F738F85AFB}" cd-object-type="person" id="{6422A542-FAB5-4E59-B819-5361FD38AF13}">
+    <sync-rule-mapping mapping-type="direct" sync-rule-id="{FCC54B34-FE88-49CA-9509-F2386FFAF051}" sync-rule-mapping-id="{F1DFF7AB-AF8F-4918-9604-2BD6E4F86670}" initial-flow-only="false" is-existence-test="false">
+     <src-attribute>Mailsuffix</src-attribute>
+    </sync-rule-mapping>
+   </import-flow>
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Person" id="{F6864B78-FFF1-430A-8A4A-7448FABB0675}">
+    <direct-mapping>
+     <src-attribute>Mailsuffix</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="physicalDeliveryOfficeName" type="ranked">
+   <import-flow src-ma="{5339513E-6047-401E-AB66-A0F738F85AFB}" cd-object-type="person" id="{3E36B14B-762C-4F41-8065-1F470BC4CDEC}">
+    <sync-rule-mapping mapping-type="direct" sync-rule-id="{FCC54B34-FE88-49CA-9509-F2386FFAF051}" sync-rule-mapping-id="{F810443F-61BD-4C46-AA5C-EB86D4809E62}" initial-flow-only="false" is-existence-test="false">
+     <src-attribute>PhysicaldeliveryOfficeName</src-attribute>
+    </sync-rule-mapping>
+   </import-flow>
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Person" id="{3B55A8F0-4D07-4D73-AED4-8E254A1A1E1F}">
+    <direct-mapping>
+     <src-attribute>OfficeLocation</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="PersonType" type="ranked">
+   <import-flow src-ma="{CB613D75-1D62-41AE-8C1A-090D77B898B6}" cd-object-type="user" id="{22A7EB9A-30F2-4F92-863B-B6FF34E1C8E5}">
+    <sync-rule-mapping mapping-type="constant" sync-rule-id="{3E039730-29A5-4A6A-B318-A8658455F0CC}" sync-rule-mapping-id="{E17E6023-6C7C-43DD-A50A-3D5F735D725B}" initial-flow-only="false" is-existence-test="false">
+     <sync-rule-value>Staff</sync-rule-value>
+    </sync-rule-mapping>
+   </import-flow>
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Person" id="{3BFA2EF3-0BEF-4CF3-9C81-520D7B073340}">
+    <direct-mapping>
+     <src-attribute>PersonType</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="EmployeeNumber" type="ranked">
+   <import-flow src-ma="{5339513E-6047-401E-AB66-A0F738F85AFB}" cd-object-type="person" id="{B13C00F2-ADED-4289-ABE6-C5ED3B0CDF1B}">
+    <sync-rule-mapping mapping-type="direct" sync-rule-id="{FCC54B34-FE88-49CA-9509-F2386FFAF051}" sync-rule-mapping-id="{85C293CF-43AD-471B-A02D-AFDD4308D872}" initial-flow-only="false" is-existence-test="false">
+     <src-attribute>Code</src-attribute>
+    </sync-rule-mapping>
+   </import-flow>
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Person" id="{4F043D64-3559-4BAC-B29A-26BCAA71FF44}">
+    <direct-mapping>
+     <src-attribute>EmployeeNumber</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="Class" type="ranked">
+   <import-flow src-ma="{5339513E-6047-401E-AB66-A0F738F85AFB}" cd-object-type="person" id="{B008FEA1-D066-4F91-A4A7-486ED8BE0E66}">
+    <sync-rule-mapping mapping-type="direct" sync-rule-id="{FCC54B34-FE88-49CA-9509-F2386FFAF051}" sync-rule-mapping-id="{ED14934F-9D4F-4CB1-80C0-2FCEF22CD92A}" initial-flow-only="false" is-existence-test="false">
+     <src-attribute>Class</src-attribute>
+    </sync-rule-mapping>
+   </import-flow>
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Person" id="{C76F5B16-398E-4609-BC00-D16D2F99C0F5}">
+    <direct-mapping>
+     <src-attribute>Class</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="lastName" type="ranked">
+   <import-flow src-ma="{5339513E-6047-401E-AB66-A0F738F85AFB}" cd-object-type="person" id="{8632E3D9-024A-4786-8B41-908BFA7461B7}">
+    <sync-rule-mapping mapping-type="direct" sync-rule-id="{FCC54B34-FE88-49CA-9509-F2386FFAF051}" sync-rule-mapping-id="{253CFFBD-9F68-40A1-AC40-8B7D570D2D6B}" initial-flow-only="false" is-existence-test="false">
+     <src-attribute>LastName</src-attribute>
+    </sync-rule-mapping>
+   </import-flow>
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Person" id="{6888E033-141D-4CE7-935A-A13A4A198859}">
+    <direct-mapping>
+     <src-attribute>LastName</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="Year" type="ranked">
+   <import-flow src-ma="{5339513E-6047-401E-AB66-A0F738F85AFB}" cd-object-type="person" id="{0265C85F-9CA2-47E7-AD40-5E29A7C132ED}">
+    <sync-rule-mapping mapping-type="direct" sync-rule-id="{FCC54B34-FE88-49CA-9509-F2386FFAF051}" sync-rule-mapping-id="{D3C9C552-F11B-4176-AD59-004AE9C91BE3}" initial-flow-only="false" is-existence-test="false">
+     <src-attribute>Year</src-attribute>
+    </sync-rule-mapping>
+   </import-flow>
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Person" id="{5E7D144A-E30C-4D53-B2E5-7F0C520A021A}">
+    <direct-mapping>
+     <src-attribute>Year</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="DOB" type="ranked">
+   <import-flow src-ma="{5339513E-6047-401E-AB66-A0F738F85AFB}" cd-object-type="person" id="{E2ABB55B-BC8D-48C8-B08A-D091EA102FF3}">
+    <sync-rule-mapping mapping-type="expression" sync-rule-id="{FCC54B34-FE88-49CA-9509-F2386FFAF051}" sync-rule-mapping-id="{7CBEAC3B-225E-4DE1-AB37-0E22CACAB6BD}" initial-flow-only="false" is-existence-test="false">
+     <src-attribute>DOB</src-attribute>
+     <sync-rule-value>
+      <import-flow>
+       <src>
+        <attr>DOB</attr>
+       </src>
+       <dest>DOB</dest>
+       <scoping>
+       </scoping>
+       <fn id="IIF" isCustomExpression="true">
+        <arg>
+         <fn id="IsPresent" isCustomExpression="false">
+          <arg>DOB</arg>
+         </fn>
+        </arg>
+        <arg>
+         <fn id="DateTimeFormat" isCustomExpression="false">
+          <arg>DOB</arg>
+          <arg>&quot;yyyy-MM-ddTHH:mm:ss.000&quot;</arg>
+         </fn>
+        </arg>
+        <arg>
+         <fn id="Null" isCustomExpression="false">
+         </fn>
+        </arg>
+       </fn>
+      </import-flow>
+     </sync-rule-value>
+    </sync-rule-mapping>
+   </import-flow>
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Person" id="{1BAF76AE-7708-4F01-A1A9-5D694AC3D3DB}">
+    <direct-mapping>
+     <src-attribute>DOB</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="DateLeft" type="ranked">
+   <import-flow src-ma="{5339513E-6047-401E-AB66-A0F738F85AFB}" cd-object-type="person" id="{25FD21AE-3466-4F34-BA3A-461705A29824}">
+    <sync-rule-mapping mapping-type="expression" sync-rule-id="{FCC54B34-FE88-49CA-9509-F2386FFAF051}" sync-rule-mapping-id="{0FCDAA47-80CC-44BF-B61E-5529B7928469}" initial-flow-only="false" is-existence-test="false">
+     <src-attribute>DateLeft</src-attribute>
+     <sync-rule-value>
+      <import-flow>
+       <src>
+        <attr>DateLeft</attr>
+       </src>
+       <dest>DateLeft</dest>
+       <scoping>
+       </scoping>
+       <fn id="IIF" isCustomExpression="true">
+        <arg>
+         <fn id="IsPresent" isCustomExpression="false">
+          <arg>DateLeft</arg>
+         </fn>
+        </arg>
+        <arg>
+         <fn id="DateTimeFormat" isCustomExpression="false">
+          <arg>DateLeft</arg>
+          <arg>&quot;yyyy-MM-ddTHH:mm:ss.000&quot;</arg>
+         </fn>
+        </arg>
+        <arg>
+         <fn id="Null" isCustomExpression="false">
+         </fn>
+        </arg>
+       </fn>
+      </import-flow>
+     </sync-rule-value>
+    </sync-rule-mapping>
+   </import-flow>
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Person" id="{56308893-822D-4FA1-86F2-C6AD5354064F}">
+    <direct-mapping>
+     <src-attribute>DateLeft</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="PreferredName" type="ranked">
+   <import-flow src-ma="{5339513E-6047-401E-AB66-A0F738F85AFB}" cd-object-type="person" id="{3015EC14-6777-4B0D-9484-BFB597C68EB3}">
+    <sync-rule-mapping mapping-type="expression" sync-rule-id="{FCC54B34-FE88-49CA-9509-F2386FFAF051}" sync-rule-mapping-id="{29229A6C-1273-4047-9C73-1E4B9C1C89C6}" initial-flow-only="false" is-existence-test="false">
+     <src-attribute>PreferredName</src-attribute>
+     <src-attribute>FirstName</src-attribute>
+     <sync-rule-value>
+      <import-flow>
+       <src>
+        <attr>PreferredName</attr>
+        <attr>FirstName</attr>
+       </src>
+       <dest>PreferredName</dest>
+       <scoping>
+       </scoping>
+       <fn id="IIF" isCustomExpression="true">
+        <arg>
+         <fn id="IsPresent" isCustomExpression="false">
+          <arg>PreferredName</arg>
+         </fn>
+        </arg>
+        <arg>PreferredName</arg>
+        <arg>FirstName</arg>
+       </fn>
+      </import-flow>
+     </sync-rule-value>
+    </sync-rule-mapping>
+   </import-flow>
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Person" id="{7F541746-4543-4AC1-9246-270257A229BD}">
+    <direct-mapping>
+     <src-attribute>PreferredName</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="displayName" type="ranked">
+   <import-flow src-ma="{5339513E-6047-401E-AB66-A0F738F85AFB}" cd-object-type="person" id="{D9512C4E-3900-439E-A941-674BB5CD59B4}">
+    <sync-rule-mapping mapping-type="expression" sync-rule-id="{FCC54B34-FE88-49CA-9509-F2386FFAF051}" sync-rule-mapping-id="{ECD55842-A371-4B28-9835-5DB00A6D32FF}" initial-flow-only="false" is-existence-test="false">
+     <src-attribute>PreferredName</src-attribute>
+     <src-attribute>FirstName</src-attribute>
+     <src-attribute>LastName</src-attribute>
+     <src-attribute>PhysicaldeliveryOfficeName</src-attribute>
+     <sync-rule-value>
+      <import-flow>
+       <src>
+        <attr>PreferredName</attr>
+        <attr>FirstName</attr>
+        <attr>LastName</attr>
+        <attr>PhysicaldeliveryOfficeName</attr>
+       </src>
+       <dest>displayName</dest>
+       <scoping>
+       </scoping>
+       <fn id="+" isCustomExpression="true">
+        <arg>
+         <fn id="IIF" isCustomExpression="false">
+          <arg>
+           <fn id="IsPresent" isCustomExpression="false">
+            <arg>PreferredName</arg>
+           </fn>
+          </arg>
+          <arg>PreferredName</arg>
+          <arg>FirstName</arg>
+         </fn>
+        </arg>
+        <arg>&quot; &quot;</arg>
+        <arg>LastName</arg>
+        <arg>&quot; (&quot;</arg>
+        <arg>PhysicaldeliveryOfficeName</arg>
+        <arg>&quot;)&quot;</arg>
+       </fn>
+      </import-flow>
+     </sync-rule-value>
+    </sync-rule-mapping>
+   </import-flow>
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Person" id="{B0AB002A-F1B2-4DD1-8868-F86B2B347A1D}">
+    <direct-mapping>
+     <src-attribute>DisplayName</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="StartDate" type="ranked">
+   <import-flow src-ma="{5339513E-6047-401E-AB66-A0F738F85AFB}" cd-object-type="person" id="{991391CE-53D4-4E6B-9F06-14D391E4EB3E}">
+    <sync-rule-mapping mapping-type="expression" sync-rule-id="{FCC54B34-FE88-49CA-9509-F2386FFAF051}" sync-rule-mapping-id="{1D4770BD-068B-4F15-88F9-0C15585B411A}" initial-flow-only="false" is-existence-test="false">
+     <src-attribute>StartDate</src-attribute>
+     <sync-rule-value>
+      <import-flow>
+       <src>
+        <attr>StartDate</attr>
+       </src>
+       <dest>StartDate</dest>
+       <scoping>
+       </scoping>
+       <fn id="IIF" isCustomExpression="true">
+        <arg>
+         <fn id="IsPresent" isCustomExpression="false">
+          <arg>StartDate</arg>
+         </fn>
+        </arg>
+        <arg>
+         <fn id="DateTimeFormat" isCustomExpression="false">
+          <arg>StartDate</arg>
+          <arg>&quot;yyyy-MM-ddTHH:mm:ss.000&quot;</arg>
+         </fn>
+        </arg>
+        <arg>
+         <fn id="Null" isCustomExpression="false">
+         </fn>
+        </arg>
+       </fn>
+      </import-flow>
+     </sync-rule-value>
+    </sync-rule-mapping>
+   </import-flow>
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="Person" id="{CE9C487F-FA12-4483-A488-EF97654FDE66}">
+    <direct-mapping>
+     <src-attribute>StartDate</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="freezeLevel" type="ranked">
+   <import-flow src-ma="{DCC43A0A-0D95-42E7-B9BC-9355E3D86451}" cd-object-type="user" id="{DB43C175-6466-43CD-8A9C-CA70F1F67A7E}">
+    <sync-rule-mapping mapping-type="direct" sync-rule-id="{5733CBD7-E377-4D6F-9554-53C3E162981A}" sync-rule-mapping-id="{C2F1DEC1-8429-46EB-B385-1265F3DE97A1}" initial-flow-only="false" is-existence-test="false">
+     <src-attribute>extensionAttribute8</src-attribute>
+    </sync-rule-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="Archive" type="ranked">
+   <import-flow src-ma="{CB613D75-1D62-41AE-8C1A-090D77B898B6}" cd-object-type="user" id="{DBC35F5B-7760-441F-A195-C1D996E76570}">
+    <sync-rule-mapping mapping-type="constant" sync-rule-id="{3E039730-29A5-4A6A-B318-A8658455F0CC}" sync-rule-mapping-id="{A580E615-EA40-4908-B38B-D39460E48C69}" initial-flow-only="false" is-existence-test="false">
+     <sync-rule-value>No</sync-rule-value>
+    </sync-rule-mapping>
+   </import-flow>
+  </import-flows>
+ </import-flow-set>
+ <import-flow-set mv-object-type="detectedRuleEntry">
+  <import-flows mv-attribute="csObjectID" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="DetectedRuleEntry" id="{29B18DE1-CB2A-4444-BE57-A4640212D686}">
+    <direct-mapping>
+     <src-attribute intrinsic="true">dn</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+ </import-flow-set>
+ <import-flow-set mv-object-type="synchronizationRule">
+  <import-flows mv-attribute="synchronizationRuleParameters" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="SynchronizationRule" id="{7DA6FA5D-3826-4F0F-A77A-B1A6815DEE02}">
+    <direct-mapping>
+     <src-attribute>SynchronizationRuleParameters</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="relationshipCriteria" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="SynchronizationRule" id="{4E88BC67-B27E-4DE8-87B7-E476EABF85E6}">
+    <direct-mapping>
+     <src-attribute>RelationshipCriteria</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="precedence" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="SynchronizationRule" id="{E0957A7F-9802-49FA-98C4-C8D523E67215}">
+    <direct-mapping>
+     <src-attribute>Precedence</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="persistentFlow" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="SynchronizationRule" id="{2B2B90D6-BD2A-401A-9945-A25CF7902B41}">
+    <direct-mapping>
+     <src-attribute>PersistentFlow</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="initialFlow" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="SynchronizationRule" id="{B25B93E9-5E15-4496-82ED-BBF0D626B159}">
+    <direct-mapping>
+     <src-attribute>InitialFlow</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="ilmObjectType" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="SynchronizationRule" id="{1ED4599D-731B-480B-9402-7422F471C529}">
+    <direct-mapping>
+     <src-attribute>ILMObjectType</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="flowType" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="SynchronizationRule" id="{6C56EA28-B3B6-4B8D-AA83-E59BB00F5AD9}">
+    <direct-mapping>
+     <src-attribute>FlowType</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="existenceTest" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="SynchronizationRule" id="{652FF157-CA80-49D3-B20B-A03ADAD7DDCE}">
+    <direct-mapping>
+     <src-attribute>ExistenceTest</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="displayName" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="SynchronizationRule" id="{CC85BD5B-E712-41ED-8CA1-55F9F88A54B4}">
+    <direct-mapping>
+     <src-attribute>DisplayName</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="disconnectConnectedSystemObject" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="SynchronizationRule" id="{B9317418-A81C-4E0C-BFEF-3B4D80759FFC}">
+    <direct-mapping>
+     <src-attribute>DisconnectConnectedSystemObject</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="dependency" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="SynchronizationRule" id="{8A318E25-290F-4DF5-9F92-4197CB27E12B}">
+    <direct-mapping>
+     <src-attribute>Dependency</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="createILMObject" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="SynchronizationRule" id="{3C5E3980-17D9-4B5B-8D03-C146A97C7C43}">
+    <direct-mapping>
+     <src-attribute>CreateILMObject</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="createConnectedSystemObject" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="SynchronizationRule" id="{C9F70FDB-77E9-4D92-86F7-39EA7E01C04A}">
+    <direct-mapping>
+     <src-attribute>CreateConnectedSystemObject</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="connectedSystemScope" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="SynchronizationRule" id="{FB09861E-C8F0-420B-AF22-545D12292FCE}">
+    <direct-mapping>
+     <src-attribute>ConnectedSystemScope</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="connectedSystem" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="SynchronizationRule" id="{A275D672-30E9-4310-8FC8-83D1EBA2E310}">
+    <direct-mapping>
+     <src-attribute>ConnectedSystem</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="connectedObjectType" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="SynchronizationRule" id="{91D9C1E2-9698-4144-9B36-89C39A9C8389}">
+    <direct-mapping>
+     <src-attribute>ConnectedObjectType</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+ </import-flow-set>
+ <import-flow-set mv-object-type="expectedRuleEntry">
+  <import-flows mv-attribute="displayName" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="ExpectedRuleEntry" id="{1B8DBA61-6FF4-48E6-964E-CAA272AF0840}">
+    <direct-mapping>
+     <src-attribute>DisplayName</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="synchronizationRuleID" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="ExpectedRuleEntry" id="{0A4A4D6A-0EE9-4295-98AE-862CD40F62B1}">
+    <direct-mapping>
+     <src-attribute>SynchronizationRuleID</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="synchronizationRuleData" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="ExpectedRuleEntry" id="{6E61BFBB-4BF0-4B01-A53B-5CC88AD689D6}">
+    <direct-mapping>
+     <src-attribute>SynchronizationRuleData</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="expectedRuleEntryAction" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="ExpectedRuleEntry" id="{0C4CA9A8-56D9-42F1-8984-C13633B1F913}">
+    <direct-mapping>
+     <src-attribute>ExpectedRuleEntryAction</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+  <import-flows mv-attribute="createdTime" type="ranked">
+   <import-flow src-ma="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}" cd-object-type="ExpectedRuleEntry" id="{FE0213B4-DE21-4CD3-8A4C-05F9745C9E74}">
+    <direct-mapping>
+     <src-attribute>CreatedTime</src-attribute>
+    </direct-mapping>
+   </import-flow>
+  </import-flows>
+ </import-flow-set>
+ <per-ma-options>
+  <ma-options ma-id="{DCC43A0A-0D95-42E7-B9BC-9355E3D86451}">
+   <enable-recall>true</enable-recall>
+  </ma-options>
+  <ma-options ma-id="{990D2767-C0CB-4B8C-8BF3-16D090D18C91}">
+   <enable-recall>true</enable-recall>
+  </ma-options>
+  <ma-options ma-id="{CDF02640-02E3-4F9F-AB7E-CCFE42BD13AA}">
+   <enable-recall>true</enable-recall>
+  </ma-options>
+  <ma-options ma-id="{5339513E-6047-401E-AB66-A0F738F85AFB}">
+   <enable-recall>true</enable-recall>
+  </ma-options>
+  <ma-options ma-id="{CB613D75-1D62-41AE-8C1A-090D77B898B6}">
+   <enable-recall>true</enable-recall>
+  </ma-options>
+ </per-ma-options>
+</import-attribute-flow>
+
+ <provisioning type="sync-rule" />
+ <mv-deletion><mv-deletion-rule mv-object-type="function" id="{A44C0CC4-AF25-44BF-A0D2-CA25A979B970}" type="declared-any"><src-ma>{5339513E-6047-401E-AB66-A0F738F85AFB}</src-ma></mv-deletion-rule></mv-deletion>
+ <extension></extension>
+ <password-change-history-size>24</password-change-history-size>
+ <password-sync><password-sync-enabled>0</password-sync-enabled></password-sync>
+</mv-data>
+
+</saved-mv-configuration>

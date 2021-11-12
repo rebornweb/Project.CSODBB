@@ -1,0 +1,10 @@
+﻿body      {background-color:white;}
+table     {width:100%;font-family:Tahoma; font-size:70%;background-color:lightgrey;}
+td.tbname {font-weight:bold; background-color:papayawhip;font-size:200%;}
+td.tbhelp {font-weight:normal; background-color:papayawhip;}
+td.head   {font-weight:bold; background-color:buttonface;}
+td.data   {background-color:cornsilk;}
+textarea  {font-size:70%;background-color:lightgrey;}
+th { background: #0046c3; color: #fff; max-width: 400px; padding: 5px 10px; }
+tr:nth-child(even) { background: #dae5f4; }
+tr:nth-child(odd) { background: #b8d1f3; }

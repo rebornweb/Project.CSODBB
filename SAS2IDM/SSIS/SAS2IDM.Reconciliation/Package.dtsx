@@ -1,0 +1,1759 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/15/2021 3:58:04 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="OCCCP-DB222"
+  DTS:CreatorName="DBB\bob.bradley.tst"
+  DTS:Description="Generate a full set of SAS2IDM student changes records for one or more SAS schools based on supplied school parameter/mask"
+  DTS:DTSID="{A0728094-1640-4072-825D-C279CA6DAEFB}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="3081"
+  DTS:ObjectName="Generate SAS2IDM full student reload for supplied school(s)"
+  DTS:PackageType="5"
+  DTS:VersionBuild="162"
+  DTS:VersionGUID="{1BAB24AE-943D-4C6A-AED5-A321AA1E7F2A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SAS SQL DB connection]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:Description="SQL ADO connection for all SAS databases"
+      DTS:DTSID="{946FE5FC-7D35-4760-A9B2-F0BDE4C42654}"
+      DTS:ObjectName="SAS SQL DB connection">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::vDB_NameInContext]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::pvSSIS_Server_Name]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Retain="True"
+          DTS:ConnectionString="Data Source=OCCCP-DB222;Initial Catalog=SAS2000_LIVE_SHCPK;Integrated Security=True;Application Name=SSIS-Package-{946FE5FC-7D35-4760-A9B2-F0BDE4C42654}OCCCP-DB222.SAS2IDM_SAS2IDM_LIVE;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SAS2IDM log connection]"
+      DTS:CreationName="FILE"
+      DTS:Description="File log connection for SAS2IDM full reconcilation SSIS package execution"
+      DTS:DTSID="{A7FA3677-3EC4-4D8E-9F8F-9C85594698E1}"
+      DTS:ObjectName="SAS2IDM log connection">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::pvLogfile_Path]+"\\"+@[User::pvLogfile_Name]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="E:\SSIS\Logs\SAS2IDM.Reconciliation.log" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SMTP connection for email notifications]"
+      DTS:CreationName="SMTP"
+      DTS:Description="SMTP gateway connection for email notifications"
+      DTS:DTSID="{5F9F9CCD-FC73-4BC7-905D-7C93FA2DA716}"
+      DTS:ObjectName="SMTP connection for email notifications">
+      <DTS:PropertyExpression
+        DTS:Name="SmtpServer">@[User::pvSMTP_Server_Name]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <SmtpConnectionManager
+          ConnectionString="SmtpServer=10.19.229.16;UseWindowsAuthentication=True;EnableSsl=False;"
+          ConnectByProxy="False" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="SAS2IDM log connection"
+      DTS:CreationName="DTS.LogProviderTextFile.3"
+      DTS:Description="Writes log entries for events to a CSV file"
+      DTS:DTSID="{17D10B52-80CC-443B-9F5F-D63C304365A0}"
+      DTS:ObjectName="SSIS log provider for Text files">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{11D568B8-F045-40BF-8B89-348576B502AA}"
+      DTS:ObjectName="PvDB_Filter"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">SMMCX</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{583DEB85-821C-4855-A822-5880FC6D8B2E}"
+      DTS:ObjectName="PvEmail_Recipient"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">csodbbsupport@unifysolutions.net;robert.broadley@dbb.catholic.edu.au</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{5F0ABF8A-F6A7-467C-9EF8-2A08E8FDBE81}"
+      DTS:ObjectName="PvEmail_Sender"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">svcFIM_Service@dbb.org.au</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{0D3D11CE-6454-4C7B-8D0A-2682BE4060A5}"
+      DTS:ObjectName="PvLogfile_Name"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">SAS2IDM.Reconciliation.log</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{2A11180D-5E5E-42BB-980D-775EE479BEBB}"
+      DTS:ObjectName="PvLogfile_Path"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">E:\SSIS\Logs</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{8F63F5C1-8CCE-459E-9184-1281F3E4990D}"
+      DTS:ObjectName="PvSMTP_Server_Name"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">10.19.229.16</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{F756BF8C-0AB5-446D-83E4-C9811AA45BED}"
+      DTS:ObjectName="PvSSIS_Server_Name"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">OCCCP-DB222</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{15CC5BB4-D72B-4E11-836A-912831D70729}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::PvDB_Filter]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="pvDB_Filter">
+      <DTS:VariableValue
+        DTS:DataType="8">SMMCX</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{579D3E22-BB09-4D75-A640-2F3F9A56B20B}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::PvEmail_Recipient]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="pvEmail_Recipient">
+      <DTS:VariableValue
+        DTS:DataType="8">csodbbsupport@unifysolutions.net;robert.broadley@dbb.catholic.edu.au</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9FA98641-6FAA-498F-8D08-36B5DAFA31F0}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::PvEmail_Sender]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="pvEmail_Sender">
+      <DTS:VariableValue
+        DTS:DataType="8">svcFIM_Service@dbb.org.au</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{459C6C40-171B-4172-9C58-FC1EA83823A7}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::PvLogfile_Name]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="pvLogfile_Name">
+      <DTS:VariableValue
+        DTS:DataType="8">SAS2IDM.Reconciliation.log</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{928447E2-B533-45F1-A1F4-85B833BBAAC6}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::PvLogfile_Path]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="pvLogfile_Path">
+      <DTS:VariableValue
+        DTS:DataType="8">E:\SSIS\Logs</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D475F098-BECE-487E-A27E-5ECD102C2F98}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::PvSMTP_Server_Name]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="pvSMTP_Server_Name">
+      <DTS:VariableValue
+        DTS:DataType="8">10.19.229.16</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{91EE4FBC-76CB-4021-9C06-D143332B3853}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::PvSSIS_Server_Name]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="pvSSIS_Server_Name">
+      <DTS:VariableValue
+        DTS:DataType="8">OCCCP-DB222</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BC195567-446B-4002-82E5-259B873BB503}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vDB_ListResults">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:Description="SQL Connection to SAS Host server for all SAS2000_LIVE_* databases"
+      DTS:DTSID="{F2C8BD43-33B1-4E4F-A63B-9B33341935A9}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="vDB_NameInContext"
+      DTS:RaiseChangedEvent="True">
+      <DTS:VariableValue
+        DTS:DataType="8">SAS2000_LIVE_SHCPK</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A1D3A12F-3DC6-4E88-9690-CF669DABA235}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vDB_SchoolCount"
+      DTS:RaiseChangedEvent="True">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">3,7,OnError,12,OnTaskFailed,9,OnWarning</DTS:Property>
+    <DTS:Property
+      DTS:EventName="Diagnostic"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="DiagnosticEx"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnExecStatusChanged"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnInformation"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPostExecute"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPostValidate"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPreExecute"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPreValidate"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnProgress"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnQueryCancel"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnTaskFailed"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnVariableValueChanged"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnWarning"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{17D10B52-80CC-443B-9F5F-D63C304365A0}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Fail package when invalid school filter"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Fail package when invalid school filter specified"
+      DTS:DTSID="{113E0996-8D4C-4052-A002-97A4113A11FB}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:FailPackageOnFailure="True"
+      DTS:ForceExecutionResult="1"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Fail package when invalid school filter"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:SelectedLogProviders>
+          <DTS:SelectedLogProvider
+            DTS:InstanceID="{17D10B52-80CC-443B-9F5F-D63C304365A0}" />
+        </DTS:SelectedLogProviders>
+      </DTS:LoggingOptions>
+      <DTS:ObjectData>
+        <ExpressionTask
+          Expression="&quot;0&quot;==&quot;1&quot;" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Foreach SAS School DB"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Loop through all SAS school databases in scope"
+      DTS:DTSID="{89FE9315-73B3-4932-BBBB-4D97E4EC9177}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach SAS School DB">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.SqlServer.Dts.Runtime.Enumerators.ADO.ForEachADOEnumerator, Microsoft.SqlServer.ForEachADOEnumerator, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+        DTS:DTSID="{87ED1820-9919-403B-84EA-2202C5DCFFD0}"
+        DTS:ObjectName="{87ED1820-9919-403B-84EA-2202C5DCFFD0}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::vDB_ListResults" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{DB6F7784-144C-410E-9CE7-47E5EA87E3F7}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="vDB_SchoolAdds"
+          DTS:RaiseChangedEvent="True">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{7DB76701-9484-4C60-AFBD-877A40B606F3}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="vDB_SchoolDeletes"
+          DTS:RaiseChangedEvent="True">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{A8318260-BF4B-40C2-8447-B1F415F1B1A3}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="vDB_SchoolProcessingStatus"
+          DTS:RaiseChangedEvent="True">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{C8606322-66B7-4A12-AE5A-4D4DBABDC7E9}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="vDB_SchoolTotal">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{5E334795-50AD-4112-B81A-1DED3A85DE12}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="vEmailBody_DataIssues">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{9EA3F0B6-3923-4AEA-8640-9218EBC73A3D}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="vUSINs_duplicated"
+          DTS:RaiseChangedEvent="True">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{7C7A5313-9F35-4BD1-836B-6AF442CE357F}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="vUSINs_with_CRLF"
+          DTS:RaiseChangedEvent="True">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{04C3E537-36EF-45A0-A45E-2180D760981C}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="vUSINs_with_GT50"
+          DTS:RaiseChangedEvent="True">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach SAS School DB\Add 1 to school count"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Expression Task"
+          DTS:DTSID="{4C4F76BD-189E-47FA-9795-1E011343FBF8}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Add 1 to school count"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::vDB_SchoolCount]  = @[User::vDB_SchoolCount]  + 1" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach SAS School DB\Check for duplicate USINs"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Query SAS change table for duplicate USINs and fail school load if detected"
+          DTS:DTSID="{999aa018-faec-4911-94a1-884a6fa46fdd}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Check for duplicate USINs"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"USE ["+@[User::vDB_NameInContext]+"];
+declare @errs varchar(max);
+Set @errs = null;
+Select @errs = COALESCE(@errs +  '; ' + UniversalIdentificationNumber, UniversalIdentificationNumber)
+From dbo.SAS2IDMStudentDioces
+Where UniversalIdentificationNumber is not NULL
+--And UniversalIdentificationNumber &lt;&gt; '0'
+Group by UniversalIdentificationNumber
+Having Count(*) &gt; 1
+Select 'DUPs: ' + @errs;
+if @errs is not null
+begin
+	truncate table SAS2IDMStudentDioces;
+end"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{946FE5FC-7D35-4760-A9B2-F0BDE4C42654}"
+              SQLTask:SqlStatementSource="USE [SAS2000_LIVE_SHCPK];&#xA;declare @errs varchar(max);&#xA;Set @errs = null;&#xA;Select @errs = COALESCE(@errs +  '; ' + UniversalIdentificationNumber, UniversalIdentificationNumber)&#xA;From dbo.SAS2IDMStudentDioces&#xA;Where UniversalIdentificationNumber is not NULL&#xA;--And UniversalIdentificationNumber &lt;&gt; '0'&#xA;Group by UniversalIdentificationNumber&#xA;Having Count(*) &gt; 1&#xA;Select 'DUPs: ' + @errs;&#xA;if @errs is not null&#xA;begin&#xA;&#x9;truncate table SAS2IDMStudentDioces;&#xA;end"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::vUSINs_duplicated" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach SAS School DB\Fetch all Student records into the sas2IDMStudentDioces table from this school"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{F0E2D465-6A04-41D5-8092-ADD166BC6B65}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Fetch all Student records into the sas2IDMStudentDioces table from this school"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,24,ExecuteSQLExecutingQuery</DTS:Property>
+            <DTS:Property
+              DTS:EventName="ExecuteSQLExecutingQuery"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"USE ["+@[User::vDB_NameInContext]+"];
+
+exec [dbo].[procSAS2IDM_StudentDioces_TOTUpdate];
+Select 'Success'"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{946FE5FC-7D35-4760-A9B2-F0BDE4C42654}"
+              SQLTask:SqlStatementSource="USE [SAS2000_LIVE_SHCPK];&#xA;&#xA;exec [dbo].[procSAS2IDM_StudentDioces_TOTUpdate];&#xA;Select 'Success'"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::vDB_SchoolProcessingStatus" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach SAS School DB\Get change record count"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Save the total count of school change records to a variable"
+          DTS:DTSID="{0c7aed86-91e4-4bf8-bc41-640bde40b284}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:FailParentOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Get change record count"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,24,ExecuteSQLExecutingQuery</DTS:Property>
+            <DTS:Property
+              DTS:EventName="ExecuteSQLExecutingQuery"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+            <DTS:SelectedLogProviders>
+              <DTS:SelectedLogProvider
+                DTS:InstanceID="{17D10B52-80CC-443B-9F5F-D63C304365A0}" />
+            </DTS:SelectedLogProviders>
+          </DTS:LoggingOptions>
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"USE ["+@[User::vDB_NameInContext]+"];
+Select Count(*) as [ChangeCount]
+From dbo.SAS2IDMStudentDioces"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{946FE5FC-7D35-4760-A9B2-F0BDE4C42654}"
+              SQLTask:SqlStatementSource="USE [SAS2000_LIVE_SHCPK];&#xA;Select Count(*) as [ChangeCount]&#xA;From dbo.SAS2IDMStudentDioces"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::vDB_SchoolTotal" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach SAS School DB\Handle invalid Address data length"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Truncate Address1 to first 50 chars where it exceeds max lenght of 50"
+          DTS:DTSID="{73185CAA-44B2-470D-933E-730F35A80E30}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Handle invalid Address data length"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"USE ["+@[User::vDB_NameInContext]+"];
+
+declare @errs varchar(max);
+Set @errs = null;
+Select @errs = COALESCE(@errs +  '; ' + UniversalIdentificationNumber, UniversalIdentificationNumber)
+From dbo.SAS2IDMStudentDioces
+Where LEN(Address1) &gt; 50
+And UniversalIdentificationNumber is not NULL;
+Update dbo.SAS2IDMStudentDioces set Address1 = LEFT(Address1,50)
+Where LEN(Address1) &gt; 50
+Select 'GT50: ' + @errs;"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{946FE5FC-7D35-4760-A9B2-F0BDE4C42654}"
+              SQLTask:SqlStatementSource="USE [SAS2000_LIVE_SHCPK];&#xA;&#xA;declare @errs varchar(max);&#xA;Set @errs = null;&#xA;Select @errs = COALESCE(@errs +  '; ' + UniversalIdentificationNumber, UniversalIdentificationNumber)&#xA;From dbo.SAS2IDMStudentDioces&#xA;Where LEN(Address1) &gt; 50&#xA;And UniversalIdentificationNumber is not NULL;&#xA;Update dbo.SAS2IDMStudentDioces set Address1 = LEFT(Address1,50)&#xA;Where LEN(Address1) &gt; 50&#xA;Select 'GT50: ' + @errs;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::vUSINs_with_GT50" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach SAS School DB\Handle invalid multiline Address data"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Replace CRLF in Address1 where these occur"
+          DTS:DTSID="{113E29BE-F5EF-4AEA-83F2-C33B34FC23C8}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Handle invalid multiline Address data"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,24,ExecuteSQLExecutingQuery</DTS:Property>
+            <DTS:Property
+              DTS:EventName="ExecuteSQLExecutingQuery"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"USE ["+@[User::vDB_NameInContext]+"];
+
+declare @errs varchar(max);
+Set @errs = null;
+Select @errs = COALESCE(@errs +  '; ' + UniversalIdentificationNumber, UniversalIdentificationNumber)
+From dbo.SAS2IDMStudentDioces
+Where Address1 like '%' + CHAR(13) + '%'
+And UniversalIdentificationNumber is not NULL;
+Update dbo.SAS2IDMStudentDioces set Address1 = REPLACE(REPLACE(Address1, CHAR(13), ','), CHAR(10), '')
+Where Address1 like '%' + CHAR(13) + '%'
+Select 'CRLFs: ' + @errs;"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{946FE5FC-7D35-4760-A9B2-F0BDE4C42654}"
+              SQLTask:SqlStatementSource="USE [SAS2000_LIVE_SHCPK];&#xA;&#xA;declare @errs varchar(max);&#xA;Set @errs = null;&#xA;Select @errs = COALESCE(@errs +  '; ' + UniversalIdentificationNumber, UniversalIdentificationNumber)&#xA;From dbo.SAS2IDMStudentDioces&#xA;Where Address1 like '%' + CHAR(13) + '%'&#xA;And UniversalIdentificationNumber is not NULL;&#xA;Update dbo.SAS2IDMStudentDioces set Address1 = REPLACE(REPLACE(Address1, CHAR(13), ','), CHAR(10), '')&#xA;Where Address1 like '%' + CHAR(13) + '%'&#xA;Select 'CRLFs: ' + @errs;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::vUSINs_with_CRLF" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach SAS School DB\Mark all changes without a USIN as a Delete"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Mark all SAS2IDMStudentDioces records with no USIN as record type D"
+          DTS:DTSID="{53005fc6-1cb9-400c-9d66-45186dcfc56b}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Mark all changes without a USIN as a Delete"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"USE ["+@[User::vDB_NameInContext]+"];
+Update [dbo].[SAS2IDMStudentDioces]
+Set RecordType = 'D'
+Where (UniversalIdentificationNumber is null);
+select @@ROWCOUNT;"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{946FE5FC-7D35-4760-A9B2-F0BDE4C42654}"
+              SQLTask:SqlStatementSource="USE [SAS2000_LIVE_SHCPK];&#xA;Update [dbo].[SAS2IDMStudentDioces]&#xA;Set RecordType = 'D'&#xA;Where (UniversalIdentificationNumber is null);&#xA;select @@ROWCOUNT;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::vDB_SchoolDeletes" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach SAS School DB\Send summary notification"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.SendMailTask.SendMailTask, Microsoft.SqlServer.SendMailTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Send SAS school processing summary email"
+          DTS:DTSID="{59E94B01-9627-4F99-9C32-369115E94C7F}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.SendMailTask.SendMailTask, Microsoft.SqlServer.SendMailTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Send summary notification"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">3,17,SendMailTaskBegin,15,SendMailTaskEnd,16,SendMailTaskInfo</DTS:Property>
+            <DTS:Property
+              DTS:EventName="SendMailTaskBegin"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+            <DTS:Property
+              DTS:EventName="SendMailTaskEnd"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+            <DTS:Property
+              DTS:EventName="SendMailTaskInfo"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+            <DTS:SelectedLogProviders>
+              <DTS:SelectedLogProvider
+                DTS:InstanceID="{17D10B52-80CC-443B-9F5F-D63C304365A0}" />
+            </DTS:SelectedLogProviders>
+          </DTS:LoggingOptions>
+          <DTS:PropertyExpression
+            DTS:Name="FromLine">@[User::pvEmail_Sender]</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="MessageSource">"SSIS Server: "+ @[System::MachineName] +"
+SSIS Package: "+ @[System::PackageName] +"
+School Code: ("+ REPLACE( @[User::vDB_NameInContext], "SAS2000_LIVE_", "") +")
+Run Status: "+ @[User::vDB_SchoolProcessingStatus] +"
+
+# Inserts for Synchronisation: "+ @[User::vDB_SchoolAdds] +"
+# Deletes for Synchronisation: "+ @[User::vDB_SchoolDeletes] +"
+# Total Records for Synchronisation: "+ @[User::vDB_SchoolTotal] +"
+
+# Duplicate USINs: "+ @[User::vUSINs_duplicated] +"
+# Address1 Records with CRLF: "+ @[User::vUSINs_with_CRLF] +"
+# Address1 Records &gt;50 chars: " +  @[User::vUSINs_with_GT50] +"
+"</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="Subject">"SAS2IDM School Reload Notification for school ["+ REPLACE( @[User::vDB_NameInContext], "SAS2000_LIVE_", "") +"]"</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="ToLine">@[User::pvEmail_Recipient]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SendMailTask:SendMailTaskData
+              SendMailTask:SMTPServer="{5F9F9CCD-FC73-4BC7-905D-7C93FA2DA716}"
+              SendMailTask:From="svcFIM_Service@dbb.org.au"
+              SendMailTask:To="csodbbsupport@unifysolutions.net;robert.broadley@dbb.catholic.edu.au"
+              SendMailTask:Subject="SAS2IDM School Reload Notification for school [SHCPK]"
+              SendMailTask:MessageSource="SSIS Server: OCCCP-DB222&#xA;SSIS Package: Generate SAS2IDM full student reload for supplied school(s)&#xA;School Code: (SHCPK)&#xA;Run Status: &#xA;&#xA;# Inserts for Synchronisation: &#xA;# Deletes for Synchronisation: &#xA;# Total Records for Synchronisation: &#xA;&#xA;# Duplicate USINs: &#xA;# Address1 Records with CRLF: &#xA;# Address1 Records &gt;50 chars: &#xA;" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach SAS School DB\Set execution status for SAS school"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Expression Task"
+          DTS:DTSID="{A46B7146-FF53-4CB5-A216-D57656B9C875}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExpressionTask.ExpressionTask, Microsoft.SqlServer.ExpressionTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Set execution status for SAS school"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::vDB_SchoolProcessingStatus] = (LEN(@[User::vUSINs_duplicated]) == 0  ?  &quot;Success&quot; : &quot;Failure&quot;)" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach SAS School DB\Set the polling flag for all SAS school changes"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:DelayValidation="True"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{fcfba050-8142-41ad-9dd3-f23facf4a91b}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Set the polling flag for all SAS school changes"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"USE ["+@[User::vDB_NameInContext]+"];
+exec [dbo].[procSAS2IDM_StudentDioces_Update]"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{946FE5FC-7D35-4760-A9B2-F0BDE4C42654}"
+              SQLTask:SqlStatementSource="USE [SAS2000_LIVE_SHCPK];&#xA;exec [dbo].[procSAS2IDM_StudentDioces_Update]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach SAS School DB\Update USINs"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Update USINs on all school change records, as these are not yet present initially"
+          DTS:DTSID="{94b76b54-3a26-47a6-9f4f-0f2878d68c34}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update USINs"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:PropertyExpression
+            DTS:Name="SqlStatementSource">"USE ["+@[User::vDB_NameInContext]+"];
+Update [dbo].[SAS2IDMStudentDioces]
+Set SAS2IDMStudentDioces.UniversalIdentificationNumber = Student.UniversalIdentificationNumber,
+SAS2IDMStudentDioces.PreEnrolment = case SAS2IDMStudentDioces.PreEnrolment when 'Y' then 1 else 0 end,
+SAS2IDMStudentDioces.Deceased = case SAS2IDMStudentDioces.Deceased when 'Y' then 1 else 0 end
+from [dbo].[Student]
+Where Student.ID = SAS2IDMStudentDioces.StudentID
+And Student.UniversalIdentificationNumber &lt;&gt; '0';
+select @@ROWCOUNT;"</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{946FE5FC-7D35-4760-A9B2-F0BDE4C42654}"
+              SQLTask:SqlStatementSource="USE [SAS2000_LIVE_SHCPK];&#xA;Update [dbo].[SAS2IDMStudentDioces]&#xA;Set SAS2IDMStudentDioces.UniversalIdentificationNumber = Student.UniversalIdentificationNumber,&#xA;SAS2IDMStudentDioces.PreEnrolment = case SAS2IDMStudentDioces.PreEnrolment when 'Y' then 1 else 0 end,&#xA;SAS2IDMStudentDioces.Deceased = case SAS2IDMStudentDioces.Deceased when 'Y' then 1 else 0 end&#xA;from [dbo].[Student]&#xA;Where Student.ID = SAS2IDMStudentDioces.StudentID&#xA;And Student.UniversalIdentificationNumber &lt;&gt; '0';&#xA;select @@ROWCOUNT;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::vDB_SchoolAdds" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{30A68E05-3EA6-4B5F-897F-2940D7D6095E}"
+          DTS:From="Package\Foreach SAS School DB\Fetch all Student records into the sas2IDMStudentDioces table from this school"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach SAS School DB\Update USINs" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{58B8DC33-446C-4CB5-94D0-5330AB055BCB}"
+          DTS:From="Package\Foreach SAS School DB\Handle invalid Address data length"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Foreach SAS School DB\Check for duplicate USINs" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{68E4D664-2505-4829-917C-41DC05DD1A55}"
+          DTS:From="Package\Foreach SAS School DB\Mark all changes without a USIN as a Delete"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Foreach SAS School DB\Handle invalid multiline Address data" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{256E4FBC-79EB-493C-8917-36ED1B7AB8BD}"
+          DTS:From="Package\Foreach SAS School DB\Handle invalid multiline Address data"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Foreach SAS School DB\Handle invalid Address data length" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{9E0A965A-83EC-4967-9DA8-210503888B0A}"
+          DTS:From="Package\Foreach SAS School DB\Update USINs"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Foreach SAS School DB\Mark all changes without a USIN as a Delete" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{0F615B8B-E065-42ED-9F51-C55975929133}"
+          DTS:From="Package\Foreach SAS School DB\Set the polling flag for all SAS school changes"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\Foreach SAS School DB\Get change record count" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{36B39BC9-E987-4A29-A194-A0E7D7CCEC3D}"
+          DTS:From="Package\Foreach SAS School DB\Set execution status for SAS school"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 6"
+          DTS:To="Package\Foreach SAS School DB\Set the polling flag for all SAS school changes" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 7]"
+          DTS:CreationName=""
+          DTS:DTSID="{1E80250E-0799-439F-8935-0CD87E6069A3}"
+          DTS:From="Package\Foreach SAS School DB\Check for duplicate USINs"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 7"
+          DTS:To="Package\Foreach SAS School DB\Set execution status for SAS school" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 8]"
+          DTS:CreationName=""
+          DTS:DTSID="{23ACDE6B-EF82-4481-AC66-A7E1998B1AAB}"
+          DTS:From="Package\Foreach SAS School DB\Get change record count"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 8"
+          DTS:To="Package\Foreach SAS School DB\Send summary notification" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 9]"
+          DTS:CreationName=""
+          DTS:DTSID="{C2E04B37-B8F8-4034-9A29-12A075BB3359}"
+          DTS:From="Package\Foreach SAS School DB\Send summary notification"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 9"
+          DTS:To="Package\Foreach SAS School DB\Add 1 to school count" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{85DB9263-F943-4EAA-B5C1-8E0B57CBAD92}"
+          DTS:ObjectName="{85DB9263-F943-4EAA-B5C1-8E0B57CBAD92}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::vDB_NameInContext" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get SAS DB Names"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Apply the supplied school code mask to get a list of school database names to process"
+      DTS:DTSID="{76203b99-1f27-49e1-a7e9-af2e4b274688}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get SAS DB Names"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:PropertyExpression
+        DTS:Name="SqlStatementSource">"SELECT name FROM sys.databases WHERE name like 'SAS2000_LIVE_"+ @[User::pvDB_Filter] +"'"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{946FE5FC-7D35-4760-A9B2-F0BDE4C42654}"
+          SQLTask:SqlStatementSource="SELECT name FROM sys.databases WHERE name like 'SAS2000_LIVE_SMMCX'"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::vDB_ListResults" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Send Notification when invalid school"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.SendMailTask.SendMailTask, Microsoft.SqlServer.SendMailTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Send SAS school processing error email with supplied invalid filter"
+      DTS:DTSID="{0877d21c-aa75-48fe-9a5e-253ad4cb6fab}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.SendMailTask.SendMailTask, Microsoft.SqlServer.SendMailTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Send Notification when invalid school"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">3,17,SendMailTaskBegin,15,SendMailTaskEnd,16,SendMailTaskInfo</DTS:Property>
+        <DTS:Property
+          DTS:EventName="SendMailTaskBegin"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="SendMailTaskEnd"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="SendMailTaskInfo"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:SelectedLogProviders>
+          <DTS:SelectedLogProvider
+            DTS:InstanceID="{17D10B52-80CC-443B-9F5F-D63C304365A0}" />
+        </DTS:SelectedLogProviders>
+      </DTS:LoggingOptions>
+      <DTS:PropertyExpression
+        DTS:Name="FromLine">@[User::pvEmail_Sender]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="MessageSource">"SSIS Server: "+ @[System::MachineName] +"
+SSIS Package: "+ @[System::PackageName] +"
+School Filter (invalid): ("+ @[User::pvDB_Filter]  +")
+Run Status: Failed"</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Subject">"SAS2IDM School Reload Error: invalid school filter ["+ @[User::pvDB_Filter] +"]"</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ToLine">@[User::pvEmail_Recipient]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{5F9F9CCD-FC73-4BC7-905D-7C93FA2DA716}"
+          SendMailTask:From="svcFIM_Service@dbb.org.au"
+          SendMailTask:To="csodbbsupport@unifysolutions.net;robert.broadley@dbb.catholic.edu.au"
+          SendMailTask:Subject="SAS2IDM School Reload Error: invalid school filter [SMMCX]"
+          SendMailTask:MessageSource="SSIS Server: OCCCP-DB222&#xA;SSIS Package: Generate SAS2IDM full student reload for supplied school(s)&#xA;School Filter (invalid): (SMMCX)&#xA;Run Status: Failed" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{A2E34F50-C4EC-4AC6-859C-ABB0C41F1606}"
+      DTS:EvalOp="1"
+      DTS:Expression="@[User::vDB_SchoolCount] == 0"
+      DTS:From="Package\Foreach SAS School DB"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Send Notification when invalid school" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{715A6CBD-B655-4B22-A776-80B0BF4E2020}"
+      DTS:From="Package\Send Notification when invalid school"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Fail package when invalid school filter" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{10AC9C63-BFB3-47DF-98B5-CD057360BAE1}"
+      DTS:From="Package\Get SAS DB Names"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\Foreach SAS School DB" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="263,42"
+          Id="Package\Fail package when invalid school filter"
+          TopLeft="112,1435.5" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Foreach SAS School DB\Add 1 to school count"
+          TopLeft="146,1025.5" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\Foreach SAS School DB\Check for duplicate USINs"
+          TopLeft="134,515.5" />
+        <NodeLayout
+          Size="465,42"
+          Id="Package\Foreach SAS School DB\Fetch all Student records into the sas2IDMStudentDioces table from this school"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="234,42"
+          Id="Package\Foreach SAS School DB\Get change record count"
+          TopLeft="121,821.5" />
+        <NodeLayout
+          Size="250,42"
+          Id="Package\Foreach SAS School DB\Handle invalid Address data length"
+          TopLeft="113,413.5" />
+        <NodeLayout
+          Size="305,42"
+          Id="Package\Foreach SAS School DB\Handle invalid multiline Address data"
+          TopLeft="85.5000000000001,311.5" />
+        <NodeLayout
+          Size="430,42"
+          Id="Package\Foreach SAS School DB\Mark all changes without a USIN as a Delete"
+          TopLeft="23,209.5" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Foreach SAS School DB\Send summary notification"
+          TopLeft="160.5,923.5" />
+        <NodeLayout
+          Size="253,42"
+          Id="Package\Foreach SAS School DB\Set execution status for SAS school"
+          TopLeft="111.5,617.5" />
+        <NodeLayout
+          Size="303,42"
+          Id="Package\Foreach SAS School DB\Set the polling flag for all SAS school changes"
+          TopLeft="86.5000000000001,719.5" />
+        <NodeLayout
+          Size="415,42"
+          Id="Package\Foreach SAS School DB\Update USINs"
+          TopLeft="30.5,107.5" />
+        <EdgeLayout
+          Id="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint]"
+          TopLeft="238,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 1]"
+          TopLeft="238,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 2]"
+          TopLeft="238,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 3]"
+          TopLeft="238,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 4]"
+          TopLeft="238,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 5]"
+          TopLeft="238,761.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 6]"
+          TopLeft="238,659.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 7]"
+          TopLeft="238,557.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 8]"
+          TopLeft="238,863.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 9]"
+          TopLeft="238,965.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="476,1123"
+          Size="476,1166"
+          Id="Package\Foreach SAS School DB"
+          TopLeft="5.50000000000017,107.5" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\Get SAS DB Names"
+          TopLeft="154.5,5.5" />
+        <NodeLayout
+          Size="261,42"
+          Id="Package\Send Notification when invalid school"
+          TopLeft="113,1333.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="243.5,1273.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,18.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="243.5,1375.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="243.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

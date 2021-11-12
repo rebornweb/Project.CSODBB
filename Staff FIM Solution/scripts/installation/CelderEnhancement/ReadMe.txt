@@ -1,0 +1,1 @@
+Don't forget to replace the SAS2IDM adapter guid to match the correct adapter!

@@ -1,0 +1,7 @@
+<SynchronizationRule>
+    <ConnectedSystemScope />
+    <OutboundScope />
+    <RelationshipCriteria><conditions><condition><ilmAttribute>csoGrade</ilmAttribute><csAttribute>Grade</csAttribute></condition><condition><ilmAttribute>csoSalaryAdminPlan</ilmAttribute><csAttribute>SalAdminPlan</csAttribute></condition><condition><ilmAttribute>csoEffectiveDate</ilmAttribute><csAttribute>Effdt</csAttribute></condition></conditions></RelationshipCriteria>
+    <InitialFlow />
+    <PersistentFlow><import-flow><src><attr>Description</attr></src><dest>description</dest><scoping /></import-flow><import-flow><src><attr>DescriptionShort</attr></src><dest>displayName</dest><scoping /></import-flow><import-flow><src><attr>Effdt</attr></src><dest>csoEffectiveDate</dest><scoping /></import-flow><import-flow><src><attr>Grade</attr></src><dest>csoGrade</dest><scoping /></import-flow><import-flow><src><attr>SalAdminPlan</attr></src><dest>csoSalaryAdminPlan</dest><scoping /></import-flow></PersistentFlow>
+</SynchronizationRule>

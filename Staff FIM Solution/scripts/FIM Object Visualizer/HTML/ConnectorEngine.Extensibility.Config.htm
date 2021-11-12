@@ -1,0 +1,1068 @@
+<html>
+<head>
+<title>Identity Broker - Connectors</title>
+</head>
+<body>
+
+
+<TABLE style="BORDER-BOTTOM: rgb(212,208,200) 1px solid; BORDER-LEFT: rgb(212,208,200) 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-COLLAPSE: collapse; FONT-FAMILY: Tahoma; FONT-SIZE: 11px; BORDER-TOP: rgb(212,208,200) 1px solid; BORDER-RIGHT: rgb(212,208,200) 1px solid; PADDING-TOP: 0px" id=tdata xmlns:ms="urn:schemas-microsoft-com:xslt" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:dsml="http://www.dsml.org/DSML" xmlns:xs="http://www.w3.org/2001/XMLSchema"><TBODY>
+<TR>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6><A name=top></A>Identity Broker 3.0 - Connector Definitions</TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Data connection</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=5>repository</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Repository</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" colSpan=5>Unify.IdentityBroker</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>
+<UL>
+<LI><A href="#Connector:PeopleSoft Employee Connector">PeopleSoft Employee Connector</A></LI>
+<LI><A href="#Connector:PeopleSoft EmployeeNid Connector">PeopleSoft EmployeeNid Connector</A></LI>
+<LI><A href="#Connector:PeopleSoft Email Connector">PeopleSoft Email Connector</A></LI>
+<LI><A href="#Connector:PeopleSoft Grade Connector">PeopleSoft Grade Connector</A></LI>
+<LI><A href="#Connector:PeopleSoft Job Connector">PeopleSoft Job Connector</A></LI>
+<LI><A href="#Connector:PeopleSoft Department Connector">PeopleSoft Department Connector</A></LI>
+<LI><A href="#Connector:SAS2IDM Broker">SAS2IDM Broker</A></LI>
+<LI><A href="#Connector:SAS2IDM Google Contacts">SAS2IDM Google Contacts</A></LI>
+<LI><A href="#Connector:PeopleSoft User CSV">PeopleSoft User CSV</A></LI></UL></TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=6><A name="Connector:PeopleSoft Employee Connector"></A>PeopleSoft.Employee Connector : PeopleSoft Employee Connector</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Entity Schema</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Validator </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Read only </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Required </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Key </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">BirthDate</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">date</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Class</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">CountryCode</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">EmplId</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>true</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">FirstName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">LastName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">MiddleName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">NullValue</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PreferredName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PrefFirstName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Sex</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Agent</TD></TR>
+<TR vAlign=top>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PeopleSoft</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PeopleSoft</TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Enabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">true</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Audit Level</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">None</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Queue Missed</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">false</TH></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=7>Schedule</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Days to exclude </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Start </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">End </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Day of Week </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Offset/Value </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Use local </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">getAllEntities:DailyExclusion</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">polling:DailyExclusion</TD></TR>
+<TR>
+<TD style="COLOR: #f7fbfa" colSpan=2>-</TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=6><A name="Connector:PeopleSoft EmployeeNid Connector"></A>PeopleSoft.EmployeeNid Connector : PeopleSoft EmployeeNid Connector</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Entity Schema</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Validator </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Read only </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Required </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Key </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Class</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Country</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">EmplId</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>true</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">LastUpDoPrid</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">NationalId</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">NationalIdType</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Agent</TD></TR>
+<TR vAlign=top>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PeopleSoft</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PeopleSoft</TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Enabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>true</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Audit Level</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>None</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Queue Missed</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>false</TH></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=7>Schedule</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Days to exclude </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Start </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">End </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Day of Week </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Offset/Value </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Use local </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">getAllEntities:DailyExclusion</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">polling:DailyExclusion</TD></TR>
+<TR>
+<TD style="COLOR: #f7fbfa" colSpan=2>-</TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=6><A name="Connector:PeopleSoft Email Connector"></A>PeopleSoft.Email Connector : PeopleSoft Email Connector</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Entity Schema</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Validator </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Read only </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Required </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Key </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Class</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">EmailId</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">EmailType</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>true</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">EmplId</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>true</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Agent</TD></TR>
+<TR vAlign=top>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PeopleSoft</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PeopleSoft</TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Enabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">true</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Audit Level</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">None</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Queue Missed</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">false</TH></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=7>Schedule</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Days to exclude </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Start </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">End </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Day of Week </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Offset/Value </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Use local </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">getAllEntities:DailyExclusion</TD></TR>
+<TR>
+<TD style="COLOR: #f7fbfa" colSpan=2>-</TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=6><A name="Connector:PeopleSoft Grade Connector"></A>PeopleSoft.Grade Connector : PeopleSoft Grade Connector</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Entity Schema</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Validator </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Read only </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Required </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Key </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Class</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Description</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">DescriptionShort</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Effdt</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">date</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Grade</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">KeyHash</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">int</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>true</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">SalAdminPlan</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">SetId</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Agent</TD></TR>
+<TR vAlign=top>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PeopleSoft</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PeopleSoft</TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Enabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>true</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Audit Level</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>None</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Queue Missed</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>false</TH></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=7>Schedule</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Days to exclude </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Start </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">End </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Day of Week </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Offset/Value </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Use local </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">getAllEntities:DailyExclusion</TD></TR>
+<TR>
+<TD style="COLOR: #f7fbfa" colSpan=2>-</TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=6><A name="Connector:PeopleSoft Job Connector"></A>PeopleSoft.Job Connector : PeopleSoft Job Connector</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Entity Schema</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Validator </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Read only </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Required </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Key </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">ApptType</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Class</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">DeptId</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Descr</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Effdt</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">date</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">EffSeq</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">EmplId</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">EmplRcd</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">ExpectedEndDate</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">date</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">FullPartTime</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Grade</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">HrStatus</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">JobIndicator</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">KeyHash</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">int</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>true</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">LastUpDoPrid</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Location</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PerOrg</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PositionNbr</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">SalAdminPlan</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">StdHours</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">decimal</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">SupervisorId</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Agent</TD></TR>
+<TR vAlign=top>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PeopleSoft</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PeopleSoft</TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Enabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">true</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Audit Level</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">None</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Queue Missed</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">false</TH></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=7>Schedule</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Days to exclude </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Start </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">End </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Day of Week </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Offset/Value </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Use local </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">getAllEntities:DailyExclusion</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">polling:DailyExclusion</TD></TR>
+<TR>
+<TD style="COLOR: #f7fbfa" colSpan=2>-</TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=6><A name="Connector:PeopleSoft Department Connector"></A>PeopleSoft.Department Connector : PeopleSoft Department Connector</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Entity Schema</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Validator </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Read only </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Required </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Key </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Class</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">DeptId</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Description</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">DescriptionShort</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Effdt</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">date</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">KeyHash</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">int</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>true</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">SetId</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Agent</TD></TR>
+<TR vAlign=top>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PeopleSoft</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PeopleSoft</TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Enabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>true</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Audit Level</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>None</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Queue Missed</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>false</TH></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=7>Schedule</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Days to exclude </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Start </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">End </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Day of Week </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Offset/Value </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Use local </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">getAllEntities:DailyExclusion</TD></TR>
+<TR>
+<TD style="COLOR: #f7fbfa" colSpan=2>-</TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=6><A name="Connector:SAS2IDM Broker"></A>Direct Connector : SAS2IDM Broker</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Entity Schema</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Validator </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Read only </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Required </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Key </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Address1</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Address2</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Address3</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">AddressID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">int</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">AlumniType</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Archive</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">CandidateNumber</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Class</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Code</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Country</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">DateLeft</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">timestamp</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Deceased</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">DOB</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">timestamp</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Email</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">FirstName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">FormerName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">HomeGroup</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">House</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">LastName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Mailsuffix</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">MiddleName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">NName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PhoneFamily</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PhoneHome</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PhoneMobile</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PhysicaldeliveryOfficeName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PostCode</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PreEnrolment</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PreferredName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">ReasonLeft</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">SchoolID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>true</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Sex</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">StartDate</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">timestamp</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">StartYear</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">StudentID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">int</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>true</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">StudentType</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">UniversalIdentificationNumber</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">Year</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Agent</TD></TR>
+<TR vAlign=top>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">DatabaseAgent</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">SAS2IDM SQL</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Implemented Methods - Direct</TD></TR>
+<TR>
+<TH>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Owner</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">dbo</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Table</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">AllSAS2IDMStudents</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Read Threshold</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">1000</TH></TR></TH></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=7>Schedule</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Days to exclude </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Start </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">End </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Day of Week </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Offset/Value </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Use local </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">getAllEntities:RecurringTimespanStandardTime</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal"></TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2015-09-28T15:19:38Z</TD>
+<TD colSpan=2></TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PT3H30M</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD></TR>
+<TR>
+<TD style="COLOR: #f7fbfa" colSpan=2>-</TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=6><A name="Connector:SAS2IDM Google Contacts"></A>Direct Connector : SAS2IDM Google Contacts</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Entity Schema</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Validator </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Read only </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Required </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Key </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">contactCount</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">int</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">contactEmailStaff</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">contactID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>true</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">contactName</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">SchoolID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Agent</TD></TR>
+<TR vAlign=top>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">DatabaseAgent</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">SAS2IDM SQL</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Implemented Methods - Direct</TD></TR>
+<TR>
+<TH>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Owner</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">dbo</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Table</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">GoogleGroupContacts</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Read Threshold</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">1000</TH></TR></TH></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=7>Schedule</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Days to exclude </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Start </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">End </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Day of Week </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Offset/Value </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Use local </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">getAllEntities:RecurringTimespanStandardTime</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal"></TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2015-09-28T15:43:26Z</TD>
+<TD colSpan=2></TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PT1H</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD></TR>
+<TR>
+<TD style="COLOR: #f7fbfa" colSpan=2>-</TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=6><A name="Connector:PeopleSoft User CSV"></A>CSV Connector : PeopleSoft User CSV</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Entity Schema</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Validator </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Read only </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Required </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid" colSpan=2>Key </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">BIRTHDATE</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">date</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">EMPLID</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>true</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">FIRST_NAME</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">LAST_NAME</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PREF_FIRST_NAME</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR bgColor=#f5f5dc>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">SEX</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">string</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">false</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal" colSpan=2>false</TD></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Implemented Methods - CSV</TD></TR>
+<TR>
+<TH>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">File</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">C:\Install\IdB.UpgradeTo4\PHRIS UAT 02OCT2015.csv</TH></TR></TH></TR>
+<TR>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #cccccc">Section</TH>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=7>Schedule</TD></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Name </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Days to exclude </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Start </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">End </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Day of Week </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Offset/Value </TH>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Use local </TH></TR>
+<TR>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">getAllEntities:Daily</TD>
+<TD></TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">2015-10-06T19:00:00Z</TD>
+<TD></TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal"></TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">PT19H</TD>
+<TD style="TEXT-ALIGN: center; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; FONT-WEIGHT: normal">true</TD></TR></TBODY></TABLE>
+
+</body>
+</html>

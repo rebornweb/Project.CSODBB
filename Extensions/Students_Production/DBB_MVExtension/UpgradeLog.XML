@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="DBB_MVExtension">
+</Property><Property Name="Solution File" Value="D:\CSO prod code copy\DBB_MVExtension\DBB_MVExtension.sln">
+</Property><Property Name="Date" Value="Tuesday, 22 March 2011">
+</Property><Property Name="Time" Value="17:52 PM">
+</Property></Properties><Event ErrorLevel="0" Project="DBB_MVExtension" Source="DBB_MVExtension\DBB_MVExtension.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="DBB_MVExtension" Source="DBB_MVExtension\DBB_MVExtension.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="DBB_MVExtension.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="DBB_MVExtension.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="DBB_MVExtension" Source="DBB_MVExtension\DBB_MVExtension.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

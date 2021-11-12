@@ -1,0 +1,1043 @@
+<html>
+<head>
+<title>Event Broker Policy</title>
+</head>
+<body>
+
+
+<TABLE style="BORDER-BOTTOM: rgb(212,208,200) 1px solid; BORDER-LEFT: rgb(212,208,200) 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-COLLAPSE: collapse; FONT-FAMILY: Tahoma; FONT-SIZE: 11px; BORDER-TOP: rgb(212,208,200) 1px solid; BORDER-RIGHT: rgb(212,208,200) 1px solid; PADDING-TOP: 0px" id=tdata xmlns:xd="http://schemas.microsoft.com/office/infopath/2003" xmlns:my="http://schemas.microsoft.com/2006/11/ResourceManagement" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:dsml="http://www.dsml.org/DSML" xmlns:ms="urn:schemas-microsoft-com:xslt"><TBODY>
+<TR>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6><A name=top></A>FIM Event Broker Policy</TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=6>Resource Type: ManagementPolicyRule</TD></TR>
+<TR>
+<TD colSpan=6>
+<OL>
+<LI><A href="#bb62154f-9bba-438a-81bd-552461fdc654">cso-Synchronisation: Event Broker is invoked when contacts change</A></LI>
+<LI><A href="#defb4fd9-fa4a-4e06-ac66-2fe9c70cb5ff">cso-Synchronisation: Event Broker is invoked when grades change</A></LI>
+<LI><A href="#df654452-9155-4093-a963-4d5f31413885">cso-Synchronisation: Event Broker is invoked when jobs change</A></LI>
+<LI><A href="#8c8ca432-ca90-4bcf-94bd-0e81b71de323">cso-Synchronisation: Event Broker is invoked when people change</A></LI>
+<LI><A href="#bb3c0643-a58f-4908-9add-15f9abde41c9">cso-Synchronization: Event Broker is notified when entitlement resources are modified</A></LI>
+<LI><A href="#cf8ec1c2-1ca4-47b6-aeb6-31cd0f23b8fa">cso-Synchronization: Event Broker is notified when ERE resources are modified or deleted</A></LI>
+<LI><A href="#04bc7234-dea2-497f-b48d-4f07917ad118">cso-Synchronization: Event Broker is notified when role resources are modified</A></LI>
+<LI><A href="#58437d00-38da-421c-bd5b-7caa77b44802">cso-Synchronization: Event Broker is notified when site resources are modified</A></LI>
+<LI><A href="#7a8a2eeb-3e32-4422-be78-fcacf57fe9f7">cso-Synchronization: Event Broker is notified when sync rule resources are modified</A></LI>
+<LI><A href="#6fe0d379-6bcc-4e26-9609-860d1ef66f9b">cso-Synchronization: Event Broker is notified when user or group resources are modified</A></LI>
+<LI><A href="#261cda62-82d1-459b-a47d-1abaa7acb201">DBBCSO - Administration: Event Broker is notified when any CRUD for any SR</A></LI>
+<LI><A href="#6dc678b4-4e11-4523-8d95-1b4bb768fcfa">DBBCSO - Administration: Notify Event Broker when Data changes ERE's</A></LI>
+<LI><A href="#ee9f1758-fed3-4910-b328-7ad44677e391">DBBCSO - Administration: Notify Event Broker when Data changes Staff</A></LI>
+<LI><A href="#0e5f1d94-4371-4e88-9f34-7d495cbf59b2">DBBCSO - Administration: Notify Event Broker when Data changes Student Groups</A></LI>
+<LI><A href="#8b73edbf-a5fc-4a0b-b5b2-43d3bf892c0c">DBBCSO - Administration: Notify Event Broker when Data changes Students</A></LI></OL></TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=6>Resource Type: Set</TD></TR>
+<TR>
+<TD colSpan=6>
+<OL>
+<LI><A href="#ea2d3cc6-de3a-4c67-aad7-d7f930eb7378">All expected rule resources</A></LI>
+<LI><A href="#7c866fd3-cf65-46cf-a198-4ea2f84980ec">All Objects</A></LI>
+<LI><A href="#8887df8e-6e84-49f2-a794-f9e9802077e0">All People</A></LI>
+<LI><A href="#915c0d8b-5da1-4597-b915-2874055415cc">All Synchronization Rule Resources</A></LI>
+<LI><A href="#47883536-cef0-4759-bd58-296788a4548c">All Users and Groups</A></LI>
+<LI><A href="#73e6479e-8d00-4524-b380-4042ef920868">cso-All contacts</A></LI>
+<LI><A href="#3199e94e-2e63-4589-8a82-96000fd1fc91">cso-All Entitlements</A></LI>
+<LI><A href="#5aaeffe1-43af-4f8b-a4a2-72201c095d54">cso-All grades</A></LI>
+<LI><A href="#3b5c27dc-65d7-49f7-add5-0b39efcc0405">cso-All jobs</A></LI>
+<LI><A href="#df0b02dc-ee67-419a-8fe3-b8bcc4ddf8c4">cso-All Roles</A></LI>
+<LI><A href="#e05e8b52-c345-4822-83f0-af5e1feed19e">cso-All sites</A></LI>
+<LI><A href="#e93d8aa6-b0a1-4e31-ac46-c66769298df0">cso-All synchronised resource modifiers</A></LI>
+<LI><A href="#c3988d62-0758-4653-beb7-a4853eaa411f">DBBCSO - All People and FIM Service Account Set</A></LI>
+<LI><A href="#5ebc6ac1-26ad-4cd3-bf98-41c6cc4d4a32">DBBCSO - All Students</A></LI>
+<LI><A href="#f004d922-67ca-4c00-b347-0d27a693c907">DBBCSO - Student Groups</A></LI>
+<LI><A href="#ffd1473e-ce23-4a87-8f85-f5d020a19138">Staff</A></LI>
+<LI><A href="#b8844ed1-6b22-4d8b-9a6e-3c02dfed9431">Synchronization Engine</A></LI></OL></TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=6>Resource Type: WorkflowDefinition</TD></TR>
+<TR>
+<TD colSpan=6>
+<OL>
+<LI><A href="#2e449334-be88-42f6-8dc5-bd5a75b2cb16">cso-Invoke Event Broker on data changes</A></LI>
+<LI><A href="#0a44bd53-60ae-4a8c-b84e-cb72333f23af">cso-Invoke Event Broker on rule changes</A></LI></OL></TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Resource Type: ManagementPolicyRule</TD></TR>
+<TR>
+<TD colSpan=6>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#bb62154f-9bba-438a-81bd-552461fdc654></A>1. cso-Synchronisation: Event Broker is invoked when contacts change</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionParameter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI>*</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">
+<UL>
+<LI>Create</LI>
+<LI>Delete</LI>
+<LI>Modify</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionWorkflowDefinition</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI><A href="#2e449334-be88-42f6-8dc5-bd5a75b2cb16">cso-Invoke Event Broker on data changes</A></LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Event Broker is invoked when contacts change</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Disabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">cso-Synchronisation: Event Broker is invoked when contacts change</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">GrantRight</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">PrincipalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#7c866fd3-cf65-46cf-a198-4ea2f84980ec">All Objects</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceCurrentSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal"><A href="#73e6479e-8d00-4524-b380-4042ef920868">cso-All contacts</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceFinalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#73e6479e-8d00-4524-b380-4042ef920868">cso-All contacts</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ManagementPolicyRuleType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Request</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#defb4fd9-fa4a-4e06-ac66-2fe9c70cb5ff></A>2. cso-Synchronisation: Event Broker is invoked when grades change</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionParameter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI>*</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">
+<UL>
+<LI>Create</LI>
+<LI>Delete</LI>
+<LI>Modify</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionWorkflowDefinition</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI><A href="#2e449334-be88-42f6-8dc5-bd5a75b2cb16">cso-Invoke Event Broker on data changes</A></LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Event Broker is invoked when grades change</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Disabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">cso-Synchronisation: Event Broker is invoked when grades change</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">GrantRight</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">PrincipalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#7c866fd3-cf65-46cf-a198-4ea2f84980ec">All Objects</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceCurrentSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal"><A href="#5aaeffe1-43af-4f8b-a4a2-72201c095d54">cso-All grades</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceFinalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#5aaeffe1-43af-4f8b-a4a2-72201c095d54">cso-All grades</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ManagementPolicyRuleType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Request</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#df654452-9155-4093-a963-4d5f31413885></A>3. cso-Synchronisation: Event Broker is invoked when jobs change</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionParameter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI>*</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">
+<UL>
+<LI>Add</LI>
+<LI>Create</LI>
+<LI>Delete</LI>
+<LI>Modify</LI>
+<LI>Remove</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionWorkflowDefinition</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI><A href="#2e449334-be88-42f6-8dc5-bd5a75b2cb16">cso-Invoke Event Broker on data changes</A></LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Event Broker is invoked when jobs change</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Disabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">cso-Synchronisation: Event Broker is invoked when jobs change</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">GrantRight</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">PrincipalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#7c866fd3-cf65-46cf-a198-4ea2f84980ec">All Objects</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceCurrentSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal"><A href="#3b5c27dc-65d7-49f7-add5-0b39efcc0405">cso-All jobs</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceFinalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#3b5c27dc-65d7-49f7-add5-0b39efcc0405">cso-All jobs</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ManagementPolicyRuleType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Request</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#8c8ca432-ca90-4bcf-94bd-0e81b71de323></A>4. cso-Synchronisation: Event Broker is invoked when people change</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionParameter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI>*</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">
+<UL>
+<LI>Add</LI>
+<LI>Create</LI>
+<LI>Delete</LI>
+<LI>Modify</LI>
+<LI>Remove</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionWorkflowDefinition</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI><A href="#2e449334-be88-42f6-8dc5-bd5a75b2cb16">cso-Invoke Event Broker on data changes</A></LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Event Broker is invoked when people change</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Disabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>True</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">cso-Synchronisation: Event Broker is invoked when people change</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">GrantRight</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">PrincipalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#7c866fd3-cf65-46cf-a198-4ea2f84980ec">All Objects</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceCurrentSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal"><A href="#8887df8e-6e84-49f2-a794-f9e9802077e0">All People</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceFinalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#8887df8e-6e84-49f2-a794-f9e9802077e0">All People</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ManagementPolicyRuleType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Request</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#bb3c0643-a58f-4908-9add-15f9abde41c9></A>5. cso-Synchronization: Event Broker is notified when entitlement resources are modified</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionParameter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI>*</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">
+<UL>
+<LI>Add</LI>
+<LI>Create</LI>
+<LI>Delete</LI>
+<LI>Modify</LI>
+<LI>Remove</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionWorkflowDefinition</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI><A href="#2e449334-be88-42f6-8dc5-bd5a75b2cb16">cso-Invoke Event Broker on data changes</A></LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Event Broker is notified when entitlement resources are modified</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Disabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>True</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">cso-Synchronization: Event Broker is notified when entitlement resources are modified</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">GrantRight</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">PrincipalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#e93d8aa6-b0a1-4e31-ac46-c66769298df0">cso-All synchronised resource modifiers</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceCurrentSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal"><A href="#3199e94e-2e63-4589-8a82-96000fd1fc91">cso-All Entitlements</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceFinalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#3199e94e-2e63-4589-8a82-96000fd1fc91">cso-All Entitlements</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ManagementPolicyRuleType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Request</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#cf8ec1c2-1ca4-47b6-aeb6-31cd0f23b8fa></A>6. cso-Synchronization: Event Broker is notified when ERE resources are modified or deleted</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionParameter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI>*</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">
+<UL>
+<LI>Delete</LI>
+<LI>Modify</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionWorkflowDefinition</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI><A href="#2e449334-be88-42f6-8dc5-bd5a75b2cb16">cso-Invoke Event Broker on data changes</A></LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Event Broker is notified when ERE resources are modified or deleted</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Disabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">cso-Synchronization: Event Broker is notified when ERE resources are modified or deleted</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">GrantRight</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">PrincipalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#b8844ed1-6b22-4d8b-9a6e-3c02dfed9431">Synchronization Engine</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceCurrentSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal"><A href="#ea2d3cc6-de3a-4c67-aad7-d7f930eb7378">All expected rule resources</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceFinalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#ea2d3cc6-de3a-4c67-aad7-d7f930eb7378">All expected rule resources</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ManagementPolicyRuleType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Request</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#04bc7234-dea2-497f-b48d-4f07917ad118></A>7. cso-Synchronization: Event Broker is notified when role resources are modified</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionParameter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI>*</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">
+<UL>
+<LI>Add</LI>
+<LI>Create</LI>
+<LI>Delete</LI>
+<LI>Modify</LI>
+<LI>Remove</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionWorkflowDefinition</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI><A href="#2e449334-be88-42f6-8dc5-bd5a75b2cb16">cso-Invoke Event Broker on data changes</A></LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Event Broker is notified when role resources are modified</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Disabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">cso-Synchronization: Event Broker is notified when role resources are modified</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">GrantRight</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">PrincipalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#e93d8aa6-b0a1-4e31-ac46-c66769298df0">cso-All synchronised resource modifiers</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceCurrentSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal"><A href="#df0b02dc-ee67-419a-8fe3-b8bcc4ddf8c4">cso-All Roles</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceFinalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#df0b02dc-ee67-419a-8fe3-b8bcc4ddf8c4">cso-All Roles</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ManagementPolicyRuleType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Request</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#58437d00-38da-421c-bd5b-7caa77b44802></A>8. cso-Synchronization: Event Broker is notified when site resources are modified</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionParameter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI>*</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">
+<UL>
+<LI>Create</LI>
+<LI>Delete</LI>
+<LI>Modify</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionWorkflowDefinition</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI><A href="#2e449334-be88-42f6-8dc5-bd5a75b2cb16">cso-Invoke Event Broker on data changes</A></LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">cso-Synchronization: Event Broker is notified when site resources are modified</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Disabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">cso-Synchronization: Event Broker is notified when site resources are modified</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">GrantRight</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">PrincipalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#7c866fd3-cf65-46cf-a198-4ea2f84980ec">All Objects</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceCurrentSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal"><A href="#e05e8b52-c345-4822-83f0-af5e1feed19e">cso-All sites</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceFinalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#e05e8b52-c345-4822-83f0-af5e1feed19e">cso-All sites</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ManagementPolicyRuleType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Request</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#7a8a2eeb-3e32-4422-be78-fcacf57fe9f7></A>9. cso-Synchronization: Event Broker is notified when sync rule resources are modified</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionParameter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI>*</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">
+<UL>
+<LI>Add</LI>
+<LI>Create</LI>
+<LI>Delete</LI>
+<LI>Modify</LI>
+<LI>Remove</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionWorkflowDefinition</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI><A href="#0a44bd53-60ae-4a8c-b84e-cb72333f23af">cso-Invoke Event Broker on rule changes</A></LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Event Broker is notified when sync rule resources are modified (where a re-baseline is required)</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Disabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">cso-Synchronization: Event Broker is notified when sync rule resources are modified</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">GrantRight</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">PrincipalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#e93d8aa6-b0a1-4e31-ac46-c66769298df0">cso-All synchronised resource modifiers</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceCurrentSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal"><A href="#915c0d8b-5da1-4597-b915-2874055415cc">All Synchronization Rule Resources</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceFinalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#915c0d8b-5da1-4597-b915-2874055415cc">All Synchronization Rule Resources</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ManagementPolicyRuleType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Request</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#6fe0d379-6bcc-4e26-9609-860d1ef66f9b></A>10. cso-Synchronization: Event Broker is notified when user or group resources are modified</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionParameter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI>*</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">
+<UL>
+<LI>Add</LI>
+<LI>Create</LI>
+<LI>Delete</LI>
+<LI>Modify</LI>
+<LI>Remove</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionWorkflowDefinition</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI><A href="#2e449334-be88-42f6-8dc5-bd5a75b2cb16">cso-Invoke Event Broker on data changes</A></LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Event Broker is notified when user or group resources are modified</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Disabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">cso-Synchronization: Event Broker is notified when user or group resources are modified</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">GrantRight</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">PrincipalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#e93d8aa6-b0a1-4e31-ac46-c66769298df0">cso-All synchronised resource modifiers</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceCurrentSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal"><A href="#47883536-cef0-4759-bd58-296788a4548c">All Users and Groups</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceFinalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#47883536-cef0-4759-bd58-296788a4548c">All Users and Groups</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ManagementPolicyRuleType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Request</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#261cda62-82d1-459b-a47d-1abaa7acb201></A>11. DBBCSO - Administration: Event Broker is notified when any CRUD for any SR</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionParameter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI>*</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">
+<UL>
+<LI>Add</LI>
+<LI>Create</LI>
+<LI>Delete</LI>
+<LI>Modify</LI>
+<LI>Remove</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionWorkflowDefinition</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI><A href="#0a44bd53-60ae-4a8c-b84e-cb72333f23af">cso-Invoke Event Broker on rule changes</A></LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Disabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">True</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>DBBCSO - Administration: Event Broker is notified when any CRUD for any SR</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">GrantRight</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">PrincipalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal"><A href="#8887df8e-6e84-49f2-a794-f9e9802077e0">All People</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceCurrentSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#915c0d8b-5da1-4597-b915-2874055415cc">All Synchronization Rule Resources</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceFinalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal"><A href="#915c0d8b-5da1-4597-b915-2874055415cc">All Synchronization Rule Resources</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ManagementPolicyRuleType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>Request</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#6dc678b4-4e11-4523-8d95-1b4bb768fcfa></A>12. DBBCSO - Administration: Notify Event Broker when Data changes ERE's</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionParameter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI>*</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">
+<UL>
+<LI>Add</LI>
+<LI>Create</LI>
+<LI>Delete</LI>
+<LI>Modify</LI>
+<LI>Remove</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionWorkflowDefinition</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI><A href="#2e449334-be88-42f6-8dc5-bd5a75b2cb16">cso-Invoke Event Broker on data changes</A></LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Changes to any ERE's will require a FIM MA DI DS to clear FIM Sync Pipeline</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Disabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>True</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">DBBCSO - Administration: Notify Event Broker when Data changes ERE's</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">GrantRight</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">PrincipalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#c3988d62-0758-4653-beb7-a4853eaa411f">DBBCSO - All People and FIM Service Account Set</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceCurrentSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal"><A href="#ea2d3cc6-de3a-4c67-aad7-d7f930eb7378">All expected rule resources</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceFinalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#ea2d3cc6-de3a-4c67-aad7-d7f930eb7378">All expected rule resources</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ManagementPolicyRuleType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Request</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#ee9f1758-fed3-4910-b328-7ad44677e391></A>13. DBBCSO - Administration: Notify Event Broker when Data changes Staff</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionParameter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI>*</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">
+<UL>
+<LI>Add</LI>
+<LI>Create</LI>
+<LI>Delete</LI>
+<LI>Modify</LI>
+<LI>Remove</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionWorkflowDefinition</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI><A href="#2e449334-be88-42f6-8dc5-bd5a75b2cb16">cso-Invoke Event Broker on data changes</A></LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">exports to FIM require a confirming FIM DI DS to clear pipelin in FIM Sync</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Disabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>True</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">DBBCSO - Administration: Notify Event Broker when Data changes Staff</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">GrantRight</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">PrincipalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#c3988d62-0758-4653-beb7-a4853eaa411f">DBBCSO - All People and FIM Service Account Set</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceCurrentSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal"><A href="#ffd1473e-ce23-4a87-8f85-f5d020a19138">Staff</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceFinalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#ffd1473e-ce23-4a87-8f85-f5d020a19138">Staff</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ManagementPolicyRuleType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Request</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#0e5f1d94-4371-4e88-9f34-7d495cbf59b2></A>14. DBBCSO - Administration: Notify Event Broker when Data changes Student Groups</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionParameter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI>*</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">
+<UL>
+<LI>Add</LI>
+<LI>Create</LI>
+<LI>Delete</LI>
+<LI>Modify</LI>
+<LI>Remove</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionWorkflowDefinition</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI><A href="#2e449334-be88-42f6-8dc5-bd5a75b2cb16">cso-Invoke Event Broker on data changes</A></LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Changes to any student group attributes will require a FIM MA DI DS</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Disabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>True</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">DBBCSO - Administration: Notify Event Broker when Data changes Student Groups</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">GrantRight</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">PrincipalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#c3988d62-0758-4653-beb7-a4853eaa411f">DBBCSO - All People and FIM Service Account Set</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceCurrentSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal"><A href="#f004d922-67ca-4c00-b347-0d27a693c907">DBBCSO - Student Groups</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceFinalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#f004d922-67ca-4c00-b347-0d27a693c907">DBBCSO - Student Groups</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ManagementPolicyRuleType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Request</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#8b73edbf-a5fc-4a0b-b5b2-43d3bf892c0c></A>15. DBBCSO - Administration: Notify Event Broker when Data changes Students</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionParameter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI>*</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">
+<UL>
+<LI>Add</LI>
+<LI>Create</LI>
+<LI>Delete</LI>
+<LI>Modify</LI>
+<LI>Remove</LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ActionWorkflowDefinition</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>
+<UL>
+<LI><A href="#2e449334-be88-42f6-8dc5-bd5a75b2cb16">cso-Invoke Event Broker on data changes</A></LI></UL></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Changes to Student AccountName, ERL </TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Disabled</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>True</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">DBBCSO - Administration: Notify Event Broker when Data changes Students</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">GrantRight</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">PrincipalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#c3988d62-0758-4653-beb7-a4853eaa411f">DBBCSO - All People and FIM Service Account Set</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceCurrentSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal"><A href="#5ebc6ac1-26ad-4cd3-bf98-41c6cc4d4a32">DBBCSO - All Students</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ResourceFinalSet</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc><A href="#5ebc6ac1-26ad-4cd3-bf98-41c6cc4d4a32">DBBCSO - All Students</A></TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ManagementPolicyRuleType</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Request</TH></TR></TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Resource Type: Set</TD></TR>
+<TR>
+<TD colSpan=6>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#7c866fd3-cf65-46cf-a198-4ea2f84980ec></A>1. All Objects</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">All Objects</TH></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Filter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>/*</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#73e6479e-8d00-4524-b380-4042ef920868></A>2. cso-All contacts</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>All contacts</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">cso-All contacts</TH></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Filter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>/Contact</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Temporal</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#5aaeffe1-43af-4f8b-a4a2-72201c095d54></A>3. cso-All grades</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>All grades</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">cso-All grades</TH></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Filter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>/csoGrade</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Temporal</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#3b5c27dc-65d7-49f7-add5-0b39efcc0405></A>4. cso-All jobs</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>All jobs</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">cso-All jobs</TH></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Filter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>/csoJob</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Temporal</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#8887df8e-6e84-49f2-a794-f9e9802077e0></A>5. All People</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">All People</TH></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Filter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>/Person</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#e93d8aa6-b0a1-4e31-ac46-c66769298df0></A>6. cso-All synchronised resource modifiers</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>All synchronised resource modifiers</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">cso-All synchronised resource modifiers</TH></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Filter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>/*[(ObjectID = 'fb89aefa-5ea1-47f1-8890-abe7797d6497') or (ObjectID = /Set[ObjectID = '47883536-cef0-4759-bd58-296788a4548c']/ComputedMember) or (ObjectID = 'e05d1f1b-3d5e-4014-baa6-94dee7d68c89')]</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Temporal</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#3199e94e-2e63-4589-8a82-96000fd1fc91></A>7. cso-All Entitlements</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>All CSO Entitlements</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">cso-All Entitlements</TH></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Filter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>/csoEntitlement</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Temporal</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#b8844ed1-6b22-4d8b-9a6e-3c02dfed9431></A>8. Synchronization Engine</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Synchronization Engine</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">ExplicitMember</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>*** various ***</TH></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Filter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">/Person[ObjectID='FB89AEFA-5EA1-47F1-8890-ABE7797D6497']</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#ea2d3cc6-de3a-4c67-aad7-d7f930eb7378></A>9. All expected rule resources</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">All expected rule resources</TH></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Filter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>/ExpectedRuleEntry</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#df0b02dc-ee67-419a-8fe3-b8bcc4ddf8c4></A>10. cso-All Roles</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>All CSO ADS Roles</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">cso-All Roles</TH></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Filter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>/csoRole</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Temporal</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#e05e8b52-c345-4822-83f0-af5e1feed19e></A>11. cso-All sites</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>All CSO sites</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">cso-All sites</TH></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Filter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>/csoSite</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Temporal</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#915c0d8b-5da1-4597-b915-2874055415cc></A>12. All Synchronization Rule Resources</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">All Synchronization Rule Resources</TH></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Filter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>/SynchronizationRule</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#47883536-cef0-4759-bd58-296788a4548c></A>13. All Users and Groups</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">All Users and Groups</TH></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Filter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>/*[ObjectType='Person' or ObjectType='Group']</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#c3988d62-0758-4653-beb7-a4853eaa411f></A>14. DBBCSO - All People and FIM Service Account Set</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>Set to contain FIM Service account as Best practices not to use "all objects " set. All people does not contain FIM Service account</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">DBBCSO - All People and FIM Service Account Set</TH></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Filter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>/*[(ObjectID = 'e05d1f1b-3d5e-4014-baa6-94dee7d68c89') or (ObjectID = /Set[ObjectID = '8887df8e-6e84-49f2-a794-f9e9802077e0']/ComputedMember)]</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Temporal</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#ffd1473e-ce23-4a87-8f85-f5d020a19138></A>15. Staff</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>All Portal Users with PersonType=staff</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Staff</TH></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Filter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>/Person[PersonType = 'Staff']</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Temporal</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#f004d922-67ca-4c00-b347-0d27a693c907></A>16. DBBCSO - Student Groups</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>Set contains all student groups</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">DBBCSO - Student Groups</TH></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Filter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>/Group[(Type = 'Security') and (csoRoleID = /Set[ObjectID = 'e05e8b52-c345-4822-83f0-af5e1feed19e']/ComputedMember) and (starts-with(Description, 'Student'))]</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Temporal</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#5ebc6ac1-26ad-4cd3-bf98-41c6cc4d4a32></A>17. DBBCSO - All Students</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>DBBCSO - All Current and Former Students</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">DBBCSO - All Students</TH></TR>
+<TR>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Filter</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>/Person[PersonType = 'Student']</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Temporal</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR></TD></TR>
+<TR>
+<TD style="BORDER-BOTTOM: rgb(120,172,255) 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(234,242,255); FONT-WEIGHT: bold; PADDING-TOP: 10px" colSpan=6>Resource Type: WorkflowDefinition</TD></TR>
+<TR>
+<TD colSpan=6>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#2e449334-be88-42f6-8dc5-bd5a75b2cb16></A>1. cso-Invoke Event Broker on data changes</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>Invoke Event Broker on data changes</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">cso-Invoke Event Broker on data changes</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">RequestPhase</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Action</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">RunOnPolicyUpdate</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Workflow Activity #1</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">
+<TABLE style="BORDER-BOTTOM: rgb(212,208,200) 1px solid; BORDER-LEFT: rgb(212,208,200) 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-COLLAPSE: collapse; FONT-FAMILY: Tahoma; FONT-SIZE: 11px; BORDER-TOP: rgb(212,208,200) 1px solid; BORDER-RIGHT: rgb(212,208,200) 1px solid; PADDING-TOP: 0px" id=tdata width="100%">
+<TBODY>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5>EventBrokerChangesActivity</TD></TR>
+<TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">EndPointAddress</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">http://occcp-as033:59990/EventBroker/EventBrokerManagementStudio.svc</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">EndPointConfigurationName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>ServerNotifications</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">OperationListGuid</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">6613ecf6-a2bb-4a26-bb8b-9913549bb9aa</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>Invokes a specified Event Broker operation list. This activity should only be used to specify either an incoming operation list for the FIM Portal MA, or to point at a baselining operation list.</TH></TR></TR></TBODY></TABLE></TH></TR>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5><A name=#0a44bd53-60ae-4a8c-b84e-cb72333f23af></A>2. cso-Invoke Event Broker on rule changes</TD>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px"><A href="#top">^Top</A></TD></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>Invoke Event Broker on rule changes</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">DisplayName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">cso-Invoke Event Broker on rule changes</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">RequestPhase</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">Action</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">RunOnPolicyUpdate</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>False</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Workflow Activity #1</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">
+<TABLE style="BORDER-BOTTOM: rgb(212,208,200) 1px solid; BORDER-LEFT: rgb(212,208,200) 1px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-COLLAPSE: collapse; FONT-FAMILY: Tahoma; FONT-SIZE: 11px; BORDER-TOP: rgb(212,208,200) 1px solid; BORDER-RIGHT: rgb(212,208,200) 1px solid; PADDING-TOP: 0px" id=tdata width="100%">
+<TBODY>
+<TR>
+<TD style="BORDER-BOTTOM: green 1px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #e9ffcb; FONT-WEIGHT: bold; PADDING-TOP: 5px" colSpan=5>EventBrokerChangesActivity</TD></TR>
+<TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">EndPointAddress</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">http://occcp-as033:59990/EventBroker/EventBrokerManagementStudio.svc</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">EndPointConfigurationName</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>ServerNotifications</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">OperationListGuid</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal">6613ecf6-a2bb-4a26-bb8b-9913549bb9aa</TH></TR>
+<TR vAlign=top>
+<TH style="BORDER-BOTTOM: #666666 1px solid; TEXT-ALIGN: right; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; WHITE-SPACE: nowrap; BACKGROUND: #cccccc; FONT-WEIGHT: normal; BORDER-RIGHT: #666666 1px solid">Description</TH>
+<TH style="TEXT-ALIGN: left; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-WEIGHT: normal" bgColor=#f5f5dc>Invokes a specified Event Broker operation list. This activity should only be used to specify either an incoming operation list for the FIM Portal MA, or to point at a baselining operation list.</TH></TR></TR></TBODY></TABLE></TH></TR></TD></TR></TBODY></TABLE>
+</body>
+</html>

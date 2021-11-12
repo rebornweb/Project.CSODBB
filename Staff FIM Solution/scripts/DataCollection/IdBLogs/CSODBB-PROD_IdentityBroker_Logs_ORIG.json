@@ -1,0 +1,2011 @@
+{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:47:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft Employee Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:47:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft Employee Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:47:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft Employee Connector reported 0 changes. Duration: 00:00:00.2188308"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:47:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft Employee Connector returned 0 possible changes. Duration: 00:00:00.2344484"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:47:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft EmployeeNid Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:47:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft EmployeeNid Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:47:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft Job Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:47:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft Job Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:47:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft EmployeeNid Connector reported 0 changes. Duration: 00:00:00.1250003"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:47:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft EmployeeNid Connector returned 0 possible changes. Duration: 00:00:00.1406164"
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:47:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft Job Connector reported 0 changes. Duration: 00:00:00.3593820"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:47:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft Job Connector returned 0 possible changes. Duration: 00:00:00.3750001"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:48:09",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import all items started.\r\nChange detection engine import all items for connector SAS2IDM Student Ex started."
+}{
+    "Type":  "Information",
+    "Object":  "GetAllEntities",
+    "Impact":  "Normal",
+    "Time":  "06:48:09",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Started successfully."
+}{
+    "Type":  "Information",
+    "Object":  "GetAllEntities",
+    "Impact":  "Normal",
+    "Time":  "06:48:09",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Completed successfully after [00:00:00.1875062] duration."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:48:09",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import all entities from connector.\r\nRequest to import all entities from connector SAS2IDM Student Ex."
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:09",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 1)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:10",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n0 entites in cumulative total. Current processing of page 1 for connector SAS2IDM Student Ex processed 1000 entities, finding 0 differences. Duration: 00:00:00.9528312. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:10",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 2)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:12",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n1000 entites in cumulative total. Current processing of page 2 for connector SAS2IDM Student Ex processed 2000 entities, finding 0 differences. Duration: 00:00:01.8916321. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:12",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 3)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:14",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n3000 entites in cumulative total. Current processing of page 3 for connector SAS2IDM Student Ex processed 1500 entities, finding 0 differences. Duration: 00:00:01.8281385. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:14",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 4)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:15",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n4500 entites in cumulative total. Current processing of page 4 for connector SAS2IDM Student Ex processed 1250 entities, finding 0 differences. Duration: 00:00:01.5965071. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:15",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 5)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:17",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n5750 entites in cumulative total. Current processing of page 5 for connector SAS2IDM Student Ex processed 1125 entities, finding 0 differences. Duration: 00:00:01.5781378. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:17",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 6)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:19",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n6875 entites in cumulative total. Current processing of page 6 for connector SAS2IDM Student Ex processed 1250 entities, finding 0 differences. Duration: 00:00:01.8125086. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:19",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 7)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:20",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n8125 entites in cumulative total. Current processing of page 7 for connector SAS2IDM Student Ex processed 1375 entities, finding 0 differences. Duration: 00:00:01.3593913. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:20",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 8)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:21",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n9500 entites in cumulative total. Current processing of page 8 for connector SAS2IDM Student Ex processed 1275 entities, finding 0 differences. Duration: 00:00:01.2656382. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:21",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 9)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:22",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n10775 entites in cumulative total. Current processing of page 9 for connector SAS2IDM Student Ex processed 1375 entities, finding 0 differences. Duration: 00:00:01.0781173. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:22",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 10)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:24",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n12150 entites in cumulative total. Current processing of page 10 for connector SAS2IDM Student Ex processed 1475 entities, finding 0 differences. Duration: 00:00:01.3750208. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:24",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 11)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:26",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n13625 entites in cumulative total. Current processing of page 11 for connector SAS2IDM Student Ex processed 1575 entities, finding 0 differences. Duration: 00:00:01.6875024. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:26",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 12)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:48:26",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import all entities from connector completed.\r\nImport all entities from connector SAS2IDM Student Ex return 17207 entities. Duration: 00:00:16.7219377"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:26",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n15200 entites in cumulative total. Current processing of page 12 for connector SAS2IDM Student Ex processed 1475 entities, finding 0 differences. Duration: 00:00:00.7968678. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:26",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 13)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:48:27",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n16675 entites in cumulative total. Current processing of page 13 for connector SAS2IDM Student Ex processed 532 entities, finding 0 differences. Duration: 00:00:00.6250095. "
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:48:28",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import all items completed.\r\nChange detection engine import all items for connector SAS2IDM Student Ex completed. Duration: 00:00:18.8156950"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:48:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft Employee Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:48:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft Employee Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:48:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft Employee Connector reported 0 changes. Duration: 00:00:00.1874948"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:48:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft Employee Connector returned 0 possible changes. Duration: 00:00:00.1874948"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:48:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft EmployeeNid Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:48:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft EmployeeNid Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:48:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft Job Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:48:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft Job Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:48:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft EmployeeNid Connector reported 0 changes. Duration: 00:00:00.1562303"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:48:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft EmployeeNid Connector returned 0 possible changes. Duration: 00:00:00.1562303"
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:48:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft Job Connector reported 0 changes. Duration: 00:00:00.4062849"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:48:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft Job Connector returned 0 possible changes. Duration: 00:00:00.4218985"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:49:38",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import all items started.\r\nChange detection engine import all items for connector SAS2IDM Broker started."
+}{
+    "Type":  "Information",
+    "Object":  "GetAllEntities",
+    "Impact":  "Normal",
+    "Time":  "06:49:38",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Started successfully."
+}{
+    "Type":  "Information",
+    "Object":  "GetAllEntities",
+    "Impact":  "Normal",
+    "Time":  "06:49:39",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Completed successfully after [00:00:00.8592244] duration."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:49:39",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import all entities from connector.\r\nRequest to import all entities from connector SAS2IDM Broker."
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:49:39",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Broker (page 1)"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:49:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft Employee Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:49:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft Employee Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:49:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft Employee Connector reported 0 changes. Duration: 00:00:00.2343614"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:49:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft Employee Connector returned 0 possible changes. Duration: 00:00:00.2499743"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:49:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft EmployeeNid Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:49:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft EmployeeNid Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:49:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft Job Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:49:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft Job Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:49:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft EmployeeNid Connector reported 0 changes. Duration: 00:00:00.1249823"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:49:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft EmployeeNid Connector returned 0 possible changes. Duration: 00:00:00.1406016"
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:49:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft Job Connector reported 0 changes. Duration: 00:00:00.4218991"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:49:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft Job Connector returned 0 possible changes. Duration: 00:00:00.4375206"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:50:37",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n0 entites in cumulative total. Current processing of page 1 for connector SAS2IDM Broker processed 1000 entities, finding 0 differences. Duration: 00:00:58.4675159. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:50:37",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Broker (page 2)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:50:47",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n1000 entites in cumulative total. Current processing of page 2 for connector SAS2IDM Broker processed 2000 entities, finding 0 differences. Duration: 00:00:09.4262418. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:50:47",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Broker (page 3)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:50:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n3000 entites in cumulative total. Current processing of page 3 for connector SAS2IDM Broker processed 1500 entities, finding 0 differences. Duration: 00:00:08.0156470. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:50:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Broker (page 4)"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:50:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft Employee Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:50:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft Employee Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:50:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft Employee Connector reported 0 changes. Duration: 00:00:00.2319064"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:50:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft Employee Connector returned 0 possible changes. Duration: 00:00:00.2475290"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:50:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft EmployeeNid Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:50:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft EmployeeNid Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:50:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft Job Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:50:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft Job Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:50:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft EmployeeNid Connector reported 0 changes. Duration: 00:00:00.1562395"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:50:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft EmployeeNid Connector returned 0 possible changes. Duration: 00:00:00.1718666"
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:50:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft Job Connector reported 0 changes. Duration: 00:00:00.4531296"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:50:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft Job Connector returned 0 possible changes. Duration: 00:00:00.4687431"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:51:06",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n4500 entites in cumulative total. Current processing of page 4 for connector SAS2IDM Broker processed 2000 entities, finding 0 differences. Duration: 00:00:11.0675903. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:51:06",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Broker (page 5)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:51:18",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n6500 entites in cumulative total. Current processing of page 5 for connector SAS2IDM Broker processed 2500 entities, finding 0 differences. Duration: 00:00:12.0949361. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:51:18",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Broker (page 6)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:51:27",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n9000 entites in cumulative total. Current processing of page 6 for connector SAS2IDM Broker processed 2250 entities, finding 0 differences. Duration: 00:00:09.5580328. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:51:27",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Broker (page 7)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:51:38",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n11250 entites in cumulative total. Current processing of page 7 for connector SAS2IDM Broker processed 2125 entities, finding 0 differences. Duration: 00:00:10.7504154. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:51:38",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Broker (page 8)"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:51:39",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import all items started.\r\nChange detection engine import all items for connector SAS2IDM Student Ex started."
+}{
+    "Type":  "Information",
+    "Object":  "GetAllEntities",
+    "Impact":  "Normal",
+    "Time":  "06:51:39",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Started successfully."
+}{
+    "Type":  "Information",
+    "Object":  "GetAllEntities",
+    "Impact":  "Normal",
+    "Time":  "06:51:39",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Completed successfully after [00:00:00.1406285] duration."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:51:39",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import all entities from connector.\r\nRequest to import all entities from connector SAS2IDM Student Ex."
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:51:39",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 1)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:51:49",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n0 entites in cumulative total. Current processing of page 1 for connector SAS2IDM Student Ex processed 1000 entities, finding 0 differences. Duration: 00:00:10.3124744. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:51:49",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 2)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:51:51",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n13375 entites in cumulative total. Current processing of page 8 for connector SAS2IDM Broker processed 2250 entities, finding 0 differences. Duration: 00:00:12.6405721. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:51:51",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Broker (page 9)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:51:51",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import all entities from connector completed.\r\nImport all entities from connector SAS2IDM Broker return 18052 entities. Duration: 00:02:12.2394516"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:51:51",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n1000 entites in cumulative total. Current processing of page 2 for connector SAS2IDM Student Ex processed 2000 entities, finding 0 differences. Duration: 00:00:01.7499847. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:51:51",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 3)"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:51:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft Employee Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:51:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft Employee Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:51:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft Employee Connector reported 0 changes. Duration: 00:00:00.1874967"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:51:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft Employee Connector returned 0 possible changes. Duration: 00:00:00.2187284"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:51:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft EmployeeNid Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:51:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft EmployeeNid Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:51:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft Job Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:51:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft Job Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:51:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft EmployeeNid Connector reported 0 changes. Duration: 00:00:00.1249933"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:51:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft EmployeeNid Connector returned 0 possible changes. Duration: 00:00:00.1406199"
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:51:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft Job Connector reported 0 changes. Duration: 00:00:00.4687457"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:51:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft Job Connector returned 0 possible changes. Duration: 00:00:00.4687457"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:52:01",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n3000 entites in cumulative total. Current processing of page 3 for connector SAS2IDM Student Ex processed 1500 entities, finding 0 differences. Duration: 00:00:10.2346027. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:52:01",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 4)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:52:01",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n15625 entites in cumulative total. Current processing of page 9 for connector SAS2IDM Broker processed 2150 entities, finding 0 differences. Duration: 00:00:10.3439716. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:52:01",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Broker (page 10)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:52:20",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n4500 entites in cumulative total. Current processing of page 4 for connector SAS2IDM Student Ex processed 2000 entities, finding 0 differences. Duration: 00:00:18.3970593. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:52:20",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 5)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:52:20",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n17775 entites in cumulative total. Current processing of page 10 for connector SAS2IDM Broker processed 277 entities, finding 0 differences. Duration: 00:00:18.3501505. "
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:52:20",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import all items completed.\r\nChange detection engine import all items for connector SAS2IDM Broker completed. Duration: 00:02:42.2928111"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:52:21",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n6500 entites in cumulative total. Current processing of page 5 for connector SAS2IDM Student Ex processed 1750 entities, finding 0 differences. Duration: 00:00:01.7655848. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:52:21",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 6)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:52:23",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n8250 entites in cumulative total. Current processing of page 6 for connector SAS2IDM Student Ex processed 1625 entities, finding 0 differences. Duration: 00:00:01.4687483. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:52:23",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 7)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:52:24",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n9875 entites in cumulative total. Current processing of page 7 for connector SAS2IDM Student Ex processed 1750 entities, finding 0 differences. Duration: 00:00:01.5937292. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:52:24",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 8)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:52:26",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n11625 entites in cumulative total. Current processing of page 8 for connector SAS2IDM Student Ex processed 1875 entities, finding 0 differences. Duration: 00:00:01.6249871. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:52:26",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 9)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:52:28",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n13500 entites in cumulative total. Current processing of page 9 for connector SAS2IDM Student Ex processed 1775 entities, finding 0 differences. Duration: 00:00:01.8281230. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:52:28",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 10)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:52:28",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import all entities from connector completed.\r\nImport all entities from connector SAS2IDM Student Ex return 17207 entities. Duration: 00:00:49.1784198"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:52:30",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n15275 entites in cumulative total. Current processing of page 10 for connector SAS2IDM Student Ex processed 1675 entities, finding 0 differences. Duration: 00:00:01.8750098. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:52:30",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 11)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:52:30",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n16950 entites in cumulative total. Current processing of page 11 for connector SAS2IDM Student Ex processed 257 entities, finding 0 differences. Duration: 00:00:00.4999593. "
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:52:31",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import all items completed.\r\nChange detection engine import all items for connector SAS2IDM Student Ex completed. Duration: 00:00:52.0533899"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:52:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft Employee Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:52:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft Employee Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:52:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft Employee Connector reported 0 changes. Duration: 00:00:00.2030976"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:52:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft Employee Connector returned 0 possible changes. Duration: 00:00:00.2343682"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:52:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft EmployeeNid Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:52:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft EmployeeNid Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:52:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft Job Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:52:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft Job Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:52:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft EmployeeNid Connector reported 0 changes. Duration: 00:00:00.1406157"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:52:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft EmployeeNid Connector returned 0 possible changes. Duration: 00:00:00.1406157"
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:52:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft Job Connector reported 0 changes. Duration: 00:00:00.3766893"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:52:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft Job Connector returned 0 possible changes. Duration: 00:00:00.3766893"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:53:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft Employee Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:53:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft Employee Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:53:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft Employee Connector reported 0 changes. Duration: 00:00:00.2499921"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:53:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft Employee Connector returned 0 possible changes. Duration: 00:00:00.2499921"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:53:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft EmployeeNid Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:53:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft EmployeeNid Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:53:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft Job Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:53:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft Job Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:53:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft EmployeeNid Connector reported 0 changes. Duration: 00:00:00.1874929"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:53:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft EmployeeNid Connector returned 0 possible changes. Duration: 00:00:00.1874929"
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:53:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft Job Connector reported 0 changes. Duration: 00:00:00.4843714"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:53:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft Job Connector returned 0 possible changes. Duration: 00:00:00.4999959"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:54:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft Employee Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:54:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft Employee Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:54:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft Employee Connector reported 0 changes. Duration: 00:00:00.2187504"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:54:55",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft Employee Connector returned 0 possible changes. Duration: 00:00:00.2343657"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:54:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft EmployeeNid Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:54:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft EmployeeNid Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:54:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes started.\r\nChange detection engine import changes for connector PeopleSoft Job Connector started."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:54:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import changes from connector.\r\nRequest to import changes from connector PeopleSoft Job Connector."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:54:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft EmployeeNid Connector reported 0 changes. Duration: 00:00:00.1405916"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:54:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft EmployeeNid Connector returned 0 possible changes. Duration: 00:00:00.1405916"
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:54:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Import changes from connector completed.\r\nImport changes from connector PeopleSoft Job Connector reported 0 changes. Duration: 00:00:00.4531257"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:54:56",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import changes completed.\r\nChange detection engine import changes for connector PeopleSoft Job Connector returned 0 possible changes. Duration: 00:00:00.4531257"
+}{
+    "Type":  "Information",
+    "Object":  "Change detection engine",
+    "Impact":  "Normal",
+    "Time":  "06:55:09",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Change detection engine import all items started.\r\nChange detection engine import all items for connector SAS2IDM Student Ex started."
+}{
+    "Type":  "Information",
+    "Object":  "GetAllEntities",
+    "Impact":  "Normal",
+    "Time":  "06:55:09",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Started successfully."
+}{
+    "Type":  "Information",
+    "Object":  "GetAllEntities",
+    "Impact":  "Normal",
+    "Time":  "06:55:09",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Completed successfully after [00:00:00.1249866] duration."
+}{
+    "Type":  "Information",
+    "Object":  "Connector",
+    "Impact":  "Normal",
+    "Time":  "06:55:09",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Request to import all entities from connector.\r\nRequest to import all entities from connector SAS2IDM Student Ex."
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:55:09",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 1)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:55:10",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n0 entites in cumulative total. Current processing of page 1 for connector SAS2IDM Student Ex processed 1000 entities, finding 0 differences. Duration: 00:00:00.9531331. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:55:10",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 2)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:55:11",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n1000 entites in cumulative total. Current processing of page 2 for connector SAS2IDM Student Ex processed 2000 entities, finding 0 differences. Duration: 00:00:01.3437311. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:55:11",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 3)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:55:13",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n3000 entites in cumulative total. Current processing of page 3 for connector SAS2IDM Student Ex processed 1500 entities, finding 0 differences. Duration: 00:00:01.5781283. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:55:13",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 4)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:55:14",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n4500 entites in cumulative total. Current processing of page 4 for connector SAS2IDM Student Ex processed 1250 entities, finding 0 differences. Duration: 00:00:01.5781235. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:55:14",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 5)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:55:16",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n5750 entites in cumulative total. Current processing of page 5 for connector SAS2IDM Student Ex processed 1125 entities, finding 0 differences. Duration: 00:00:01.2499990. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:55:16",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 6)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:55:17",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n6875 entites in cumulative total. Current processing of page 6 for connector SAS2IDM Student Ex processed 1025 entities, finding 0 differences. Duration: 00:00:01.2656133. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:55:17",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 7)"
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:55:18",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector processing success.\r\n7900 entites in cumulative total. Current processing of page 7 for connector SAS2IDM Student Ex processed 1125 entities, finding 0 differences. Duration: 00:00:01.2812352. "
+}{
+    "Type":  "Information",
+    "Object":  "Connector Processor",
+    "Impact":  "Normal",
+    "Time":  "06:55:18",
+    "Date":  "20170809",
+    "System":  "UNIFY Identity Broker",
+    "HCRecordType":  "IdentityBroker_Log",
+    "_time":  "2017-08-09T06:55:22",
+    "Detail":  "Connector Processing started.\r\nConnector Processing started for connector SAS2IDM Student Ex (page 8)"
+}

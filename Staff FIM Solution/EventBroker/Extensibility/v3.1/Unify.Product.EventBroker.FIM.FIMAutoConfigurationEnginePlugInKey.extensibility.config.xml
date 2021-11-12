@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FIMAutoConfigurationEngine>
+  <FIMAgent id="1088cdf5-f53a-4152-bf70-d9274ad8efe6">
+    <ManagementAgent id="025151a4-c5de-4f2c-9ec8-01b5d8fc2962">
+      <OperationList id="6613ecf6-a2bb-4a26-bb8b-9913549bb9aa" type="Incoming" />
+      <OperationList id="bf9264a9-1525-4d39-8398-24f8c3283600" type="Outgoing" />
+    </ManagementAgent>
+    <ManagementAgent id="7309bcb6-0670-4d5e-b1ef-f871ac7f812c">
+      <OperationList id="091bfe48-404e-49aa-bdd0-74cd4d240afd" type="Incoming" />
+      <OperationList id="62f66e30-0f54-4557-ab72-ff9b09484715" type="Outgoing" />
+    </ManagementAgent>
+    <ManagementAgent id="85e98678-dc1d-4b1f-8d08-64131861fd15">
+      <OperationList id="6808d4d2-10e7-4cad-9e0a-2d6835629921" type="Incoming" />
+      <OperationList id="60a8cb5e-665a-4600-b9f9-722ca32dc3d4" type="Outgoing" />
+      <OperationList id="bedb5cdb-83c8-41d3-be8d-75933f2daf3f" type="Synchronization" />
+    </ManagementAgent>
+    <ManagementAgent id="8c2f5d5b-74e9-4235-90d6-5d0ed72a0fcb">
+      <OperationList id="926d73c7-2643-4c2b-90c5-6375bd8125ff" type="Incoming" />
+      <OperationList id="44d5df18-14a9-4a63-8c28-d8e81573677b" type="Outgoing" />
+    </ManagementAgent>
+    <ManagementAgent id="924ecf71-b7b1-4807-8579-1280dc96355b">
+      <OperationList id="9713e644-8d6b-4313-b16f-e85c2d6cd3a5" type="Incoming" />
+    </ManagementAgent>
+    <ManagementAgent id="a8b67fa1-f2cf-419a-af56-bde6144ec5d4">
+      <OperationList id="dc81a96f-1bfa-4eec-b536-448c6db35245" type="Incoming" />
+    </ManagementAgent>
+    <ManagementAgent id="c2732513-a302-4ff6-a6bf-f02a43dc7c2e">
+      <OperationList id="51a5cde2-681b-4329-8da8-d9a0e2b4fceb" type="Incoming" />
+      <OperationList id="0b9ea6f2-f6ca-43aa-ba8d-8785b4d1346e" type="Outgoing" />
+    </ManagementAgent>
+    <ManagementAgent id="c3824017-cba6-4f97-94a9-84c122d79445">
+      <OperationList id="afa4d46b-f240-404e-b6fb-04587fa77e5c" type="Incoming" />
+    </ManagementAgent>
+    <OperationList id="bad897f9-c699-4236-a166-1c759ef746a9" type="BaseLine" />
+    <OperationList id="06ea7d04-9df1-4831-b79e-850284a61629" type="HistoryClearance" />
+  </FIMAgent>
+</FIMAutoConfigurationEngine>

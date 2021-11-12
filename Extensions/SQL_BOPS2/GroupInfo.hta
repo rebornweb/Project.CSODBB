@@ -1,0 +1,268 @@
+<html>
+	<head>
+		<title>info</title>
+		<HTA:APPLICATION 
+		     ID="info" 
+		     APPLICATIONNAME="info""
+		     SCROLL="yes"
+		     SINGLEINSTANCE="yes"
+		>
+	</head>
+
+
+<SCRIPT LANGUAGE="VBScript">
+
+Dim strDistinguishedName
+Dim Strinfo, strCN
+Dim displayline
+Dim objConnection, objCommand
+
+
+' To re-configure this HTA for a different domain, change the following constant:
+
+CONST strLDAPRoot = "LDAP://dc=dbb,dc=local"
+
+Sub window_onload
+End sub    
+
+Sub printline(linetoprint)
+	' called for messages displaying outcomes
+	Dim saveline
+    saveline = DataArea.InnerHTML
+    displayline = "<font color='White' >"  & _
+        saveline & "<br>" & FormatDateTime(Now(),3) & " " & linetoprint
+    DataArea.InnerHTML =  displayline 
+    saveline = displayline
+End sub  
+     
+Sub CheckGroup
+	' taking a logon, check a/d for the distinguished name of the Group, load the Group id
+	' tec box with the current id If present
+	Const ADS_SCOPE_SUBTREE = 2
+	Dim strGroupName
+	
+	strGroupName = Groupname.value
+	dtStart = TimeValue(Now())
+	
+	Set objConnection = CreateObject("ADODB.Connection")
+	Set objCommand =   CreateObject("ADODB.Command")
+	objConnection.Provider = "ADsDSOObject"
+	objConnection.Open "Active Directory Provider"
+	Set objCommand.ActiveConnection = objConnection
+	
+	'objCommand.Properties("Cache Results") = False
+	objCommand.Properties("Page Size") = 1000
+	objCommand.Properties("Searchscope") = ADS_SCOPE_SUBTREE 
+	
+	objCommand.CommandText = _
+	    "SELECT distinguishedName, info, sAMAccountName, cn, member FROM '" & strLDAPRoot & "' WHERE objectCategory='group' " & _
+	        "AND sAMAccountName='" & strGroupName & "'"
+	Set objRecordSet = objCommand.Execute
+	 
+	If objRecordset.RecordCount  = 0 Then
+	    printline "AccountName: " & strGroupName & " does not exist."
+	Else
+	   Do Until objRecordSet.EOF 
+	          printline "DN: " & objRecordSet.Fields("distinguishedName").Value & _
+	          " ID: <" & objRecordSet.Fields("info").Value & ">" & _
+	          " sAMAccountName: [" & objRecordSet.Fields("sAMAccountName").Value & "]"
+	   strDistinguishedName = objRecordSet.Fields("distinguishedName").Value
+	   Strinfo = objRecordSet.Fields("info").Value
+	   sinfo.Value =  Strinfo
+	   sCN.Value =  Replace(objRecordSet.Fields("cn").Value, "\,", ",")
+	   objRecordset.MoveNext
+	   Loop 
+	End If
+	 
+	objConnection.Close
+	Set objCommand = Nothing
+	Set objConnection = Nothing
+	
+End Sub
+
+Sub CheckCN
+
+	Const ADS_SCOPE_SUBTREE = 2
+	strCN = Replace(sCN.value, ",", "\,")
+	
+	Set objConnection = CreateObject("ADODB.Connection")
+	Set objCommand =   CreateObject("ADODB.Command")
+	objConnection.Provider = "ADsDSOObject"
+	objConnection.Open "Active Directory Provider"
+	Set objCommand.ActiveConnection = objConnection
+	
+	'objCommand.Properties("Cache Results") = False
+	objCommand.Properties("Page Size") = 1000
+	objCommand.Properties("Searchscope") = ADS_SCOPE_SUBTREE 
+	
+	objCommand.CommandText = _
+	    "SELECT distinguishedName, info, sAMAccountName, cn, member FROM '" & strLDAPRoot & "' WHERE objectCategory='group' " & _
+	        "AND cn='" & strCN & "'"
+	Set objRecordSet = objCommand.Execute
+	 
+	If objRecordset.RecordCount  = 0 Then
+	    printline "CN: " & strCN & " does not exist."
+	Else
+	   Do Until objRecordSet.EOF 
+	          printline "DN: " & objRecordSet.Fields("distinguishedName").Value & _
+	          " ID: <" & objRecordSet.Fields("info").Value & ">" & _
+	          " sAMAccountName: [" & objRecordSet.Fields("sAMAccountName").Value & "]"
+	   strDistinguishedName = objRecordSet.Fields("distinguishedName").Value
+	   Strinfo = objRecordSet.Fields("info").Value
+	   strCN = Replace(objRecordSet.Fields("cn").Value, "\,", ",")
+	   sinfo.Value =  Strinfo
+	   Groupname.value = objRecordSet.Fields("sAMAccountName").Value
+	   sCN.Value =  strCN
+	   objRecordset.MoveNext
+	   Loop 
+	End If
+	 
+	objConnection.Close
+	Set objCommand = Nothing
+	Set objConnection = Nothing
+
+End Sub
+
+Sub CheckID
+	' taking a logon, check a/d for the info of the Group, 
+	' Since multiples can return, we will let the loop drop out with the last, 
+	' the operator can go figure
+	'
+
+	Const ADS_SCOPE_SUBTREE = 2
+	Strinfo = sinfo.value
+	
+	Set objConnection = CreateObject("ADODB.Connection")
+	Set objCommand =   CreateObject("ADODB.Command")
+	objConnection.Provider = "ADsDSOObject"
+	objConnection.Open "Active Directory Provider"
+	Set objCommand.ActiveConnection = objConnection
+	
+	'objCommand.Properties("Cache Results") = False
+	objCommand.Properties("Timeout") = 30
+	objCommand.Properties("Page Size") = 1000
+	objCommand.Properties("Searchscope") = ADS_SCOPE_SUBTREE 
+	
+	objCommand.CommandText = _
+	    "SELECT distinguishedName, info, sAMAccountName, cn, member FROM '" & strLDAPRoot & "' WHERE objectCategory='group' " & _
+	        "AND info='" & Strinfo & "'"
+	Set objRecordSet = objCommand.Execute
+	 
+	If objRecordset.RecordCount  = 0 Then
+	    printline "Group id: " & Strinfo & " does not exist."
+	Else
+	   Do Until objRecordSet.EOF 
+		PrintRecord (objRecordSet)
+'	          printline "DN: " & objRecordSet.Fields("distinguishedName").Value & _
+'	          " ID: <" & objRecordSet.Fields("info").Value & ">" & _
+'	          " sAMAccountName: [" & objRecordSet.Fields("sAMAccountName").Value & "]"
+	   	strDistinguishedName = objRecordSet.Fields("distinguishedName").Value
+	  	Strinfo = objRecordSet.Fields("info").Value
+	   	sinfo.Value =  objRecordSet.Fields("info").Value
+	   	Groupname.value = objRecordSet.Fields("sAMAccountName").Value
+	   	sCN.Value =  Replace(objRecordSet.Fields("cn").Value, "\,", ",")
+	   	objRecordset.MoveNext
+	   Loop 
+	End If
+	 
+	objConnection.Close
+	Set objCommand = Nothing
+	Set objConnection = Nothing
+	
+End Sub
+
+Sub PrintRecord(ByVal objRecordSet)
+	Dim i, j, strPrint
+	strPrint = ""
+	For i = 0 To objRecordset.Fields.Count - 1
+	    If Len(strPrint) > 0 then
+		    strPrint = strPrint & ", "  
+	    End If
+	    If Not objRecordset.Fields(i) is nothing then
+	        strPrint = strPrint & objRecordset.Fields(i).Name & ": " 
+	        ' For Multi Value attribute
+	        If objRecordset.Fields(i).Type = adVariant And Not (IsNull(objRecordset.Fields(i).Value)) Then
+
+	            For j = LBound(objRecordset.Fields(i).Value) To UBound(objRecordset.Fields(i).Value)
+				    strPrint = strPrint & objRecordset.Fields(i).Value(j)
+	            Next 'j
+	        Else
+	            If Not (IsNull(objRecordset.Fields(i).Value)) Then
+	                ' For Single Value attribute.
+	                If Not Len(objRecordset.Fields(i).Value) = 0 then
+		                strPrint = strPrint & CStr( objRecordset.Fields(i).Value )
+		            End If
+		        End If
+	        End If
+	    End If
+	Next 'i
+	printline strPrint
+End Sub
+
+
+Sub Setinfo
+	'Update the current Group name with the info from the textbox
+	
+	CONST vbOKOnly = 0
+	CONST vbOKCancel = 1
+	CONST vbOK = 1
+	CONST vbCancel = 2
+
+
+	If MsgBox("Updating info to " & sinfo.value & ".  Press OK to continue", vbOKCancel) = vbOK Then
+		Group = Groupname.value
+		Strinfo = sinfo.value
+		strldap = "LDAP://" & strDistinguishedName 
+		Set objGroup = GetObject (strldap)
+		objGroup.Put "info",Strinfo
+		objGroup.SetInfo   
+		set oSession = nothing
+		printline "DONE!"
+	End If
+End Sub 
+
+Sub Quitsub
+     self.close()
+End Sub
+
+Sub ResetAll
+     Groupname.Value = ""
+     sinfo.Value = ""
+     sCN.Value = ""
+     DataArea.InnerHTML = ""
+End Sub
+
+</SCRIPT>
+
+<!-- ' PUT THE HTML TAGS HERE -->
+	<body STYLE="font:10pt arial; color:white;
+	 filter:progid:DXImageTransform.Microsoft.Gradient
+	(GradientType=1, StartColorStr='#3399FF', EndColorStr='#0066CC')">
+	
+		<p>This HTA is to overwrite the info attribute for an existing AD Group.</p>
+		<p>It will</p>
+		<ul>
+			<li> Retrieive the group And info from Group name</li>
+			<li> Or, Retrieve the last Group With a given info, listing all as it goes</li>
+			<li> Then Allow you To Set the info for that Group</li>
+		</ul>
+		<p>
+			<b><font color='red' face='Arial'>You need update rights to the target Group to run this procedure</font></b>
+		</p>
+		<p>
+			Enter AD Groupname: <input type="text" name="Groupname" size = "30" />
+			<input id=CheckGroup  type="button" value="Find By sAMAccountName" name="Find By sAMAccountName"  onClick="CheckGroup" />
+		<p>
+			info: <input type="text" name="sinfo" size = "10" />
+			<input id=btnCheckGrouplid  type="button" value="Find by info" name="Find by info"  onClick="Checkid" />
+			<input id=btnSetinfo type="button" value="  Set info" name="Set info"  onClick="Setinfo" />
+		<p>
+		<p>
+			CN: <input type="text" name="sCN" size = "30" />
+			<input id=btnCheckGrouplCN  type="button" value="Find by CN" name="Find by CN"  onClick="CheckCN" />
+		<p>
+		<input id="btnResetAll"  type="button" value="  Reset  " name="Reset"  onClick="ResetAll" />
+		<input id=btnQuitbutton type="button" value="  Quit  " name="Quit_button"  onClick="QuitSub" />
+		<span id="DataArea"></span>
+	</body>
+</html>

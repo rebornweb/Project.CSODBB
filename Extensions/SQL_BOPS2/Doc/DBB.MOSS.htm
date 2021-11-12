@@ -1,0 +1,1311 @@
+﻿<HTML xmlns:user="http://www.myserver.com/user" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+  <HEAD>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <TITLE>MAConfigurationViewer 1.0 - </TITLE>
+    <STYLE type="text/css">
+       @page FullPage{margin-left:1.0in;margin-right:0.5in}
+
+        h1,h3{margin: 0px; padding: 0px;}
+        #S1 {width: 300px;}
+        h1 {color: #AAAAAA; font-size: 500%;}
+        h3 {color: #AAAAAA; font-size: 500%;}
+        
+        table{page:FullPage;width:575px;}
+        .tableClass1{page:FullPage; width:300px; border: medium ;}
+        .trtableClass1{width:375px;}
+        .tdtableClass1{width:165px;}
+
+        .tableMain{page:FullPage; width:540px;  FONT-FAMILY:Verdana; FONT-SIZE: 70%;}
+
+        .thTitle{background-color:#666666; color: #FFFFFF; FONT-SIZE: 70%;}
+        .thAttributeFlow{background-color:#bbbbbb;  FONT-SIZE: 70%;}
+        .thAttributeFlow1{background-color:#dddddd; FONT-SIZE: 70%;}
+        .thAttributeFlow2{background-color:#dddddd; FONT-SIZE: 70%; width:50px}
+
+        .tableMenu{FONT-SIZE: 300%; FONT-FAMILY: Verdana;  width:575px}
+        .tdMenu{border-right: 1px solid #999999;text-align:center;}
+        .trMenu{background-color:#ffffff;}
+
+        .tableClass2{cellspacing:'0' cellpadding:'0'; border='1'; width:100% FONT-SIZE: 80%; FONT-FAMILY: Verdana;  border-color: #eeeeee; border-style:solid; PADDING: .25em;}
+        .tableClass3{width:50px;}
+        .tableClass4{width:575px;vertical-align:left}
+        .tableClass5{vertical-align:middle; width:375px}
+        .tdLeftSection{background-color:#eeeeee; FONT-SIZE: 70%;}
+        
+
+        A{color:#0000FF; text-decoration: none;}
+        a:active {text-decoration: underline;}
+        a:hover {text-decoration: underline;}
+        img {border: none; }
+        .imgbanner {border: none; width:10px;}
+        .my .ct p {padding: 0px 0px 3px 0px;}
+        #btnsearch {border: none; margin-left: 95px; margin-top: -25px;}
+        body,div,span,p,ul,td,th,input,select,textarea,button {font-family: Arial, sans-serif; font-size: 70%;}
+        td{font-size: 70%;word-wrap:break-word;}
+
+
+        .tdClass1{font-size: 70%; width:400px; word-wrap:break-word;}
+        .tdClass2{font-size: 70%; width:350px; word-wrap:break-word;}
+        .tdClass3{font-size: 70%; width:175px; word-wrap:break-word;}
+        .tdClass4{font-size: 70%; width:20px; word-wrap:break-word;}
+        .tdClass5{font-size: 70%; width:350px; word-wrap:break-word;}
+        .tdClass6{font-family: Symbol;font-size: 70%; color:blue; text-align:center; width:8%;}
+        .tdClass7{font-size: 70%; word-wrap:break-word; width:350px;}
+
+        body {page:FullPage;}
+        br.clear, .clrbth {clear: both;}
+        hr {height: 1px; padding: 0px; border:1px solid; color:#BBBBBB; }
+        ol {list-style-position: outside; margin: -2px 0px 0px 23px;}
+        li {list-style-position: outside; margin: -2px 0px 0px 12px; padding: 0; margin-left: 20px;}
+
+        
+
+       </STYLE>
+  </HEAD>
+  <BODY><script>
+//scrolling TOP Link to navigate...
+var displayed="<nobr><b>[Top]</b></nobr>"
+var logolink='javascript:window.scrollTo(0,0)'
+var ie4 =document.all
+
+if (ie4)
+document.write('<span id="logo" style="position:absolute;top:-300;z-index:100">'+displayed+'</span>')
+
+function staticit()
+{
+crosslogo.style.left=document.body.scrollLeft+document.body.clientWidth-crosslogo.offsetWidth-10
+crosslogo.style.top=document.body.scrollTop+document.body.clientHeight-crosslogo.offsetHeight-10
+}
+
+function inserttext()
+{ 
+    if (ie4)
+    crosslogo=document.all.logo
+    if (ie4)
+    window.onscroll=staticit
+
+    crosslogo.innerHTML='<a href="'+logolink+'">'+displayed+'</a>'
+    crosslogo.style.left=document.body.clientWidth-crosslogo.offsetWidth-10
+    crosslogo.style.top=document.body.clientHeight-crosslogo.offsetHeight-10
+
+}
+
+if(ie4)
+{
+    window.onload=inserttext
+    window.onresize=new Function("window.location.reload()")
+}
+
+</script><TABLE cellpadding="0" cellspacing="0" class="tableMain">
+      <TR>
+        <TD>
+          <H1>MAConfigurationViewer 1.0 </H1>
+        </TD>
+      </TR>
+      <TR>
+        <TD>
+          <TABLE class="tableMenu">
+            <Tr class="trMenu">
+              <Td class="tdMenu"><b><A href="#properties"> Properties </A></b></Td>
+              <Td class="tdMenu"><b><A href="#ExtensibleInformation">Extensible Information</A></b></Td>
+              <Td class="tdMenu"><b><A href="#connectorfilters"> Connector Filters </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Joinandprojection"> Join and Projection Rules </A></b></Td>
+              <Td class="tdMenu"><b><A href="#AttributeFlow"> Attribute Flow </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Deprovisioning"> Deprovisioning </A></b></Td>
+              <Td class="tdMenu"><b><A href="#MAExDLL"> MA Extensions </A></b></Td>
+              <Td class="tdMenu"><b><A href="#RSofMA"> Run Profiles</A></b></Td>
+            </Tr>
+          </TABLE>
+        </TD>
+      </TR>
+      <TR>
+        <TD>
+          <h3>DBB.MOSS Management Agent </h3>
+          <hr>
+        </TD>
+      </TR>
+      <TR>
+        <TD Align="center"></TD>
+      </TR>
+      <TR>
+        <TD>
+          <TABLE cellspacing="0" cellpadding="0" border="1" bordercolordark="#ffffff" class="tableClass2">
+            <TR>
+              <TH class="thTitle" colspan="2">
+                        Management Agent's Properties
+                </TH>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Properties</b></TD>
+              <TD align="left"><a NAME="#properties"></a><table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <td><b>MA Type: </b></td>
+                    <td> Extensible Connectivity </td>
+                  </tr>
+                  <tr>
+                    <td><b>Description: </b></td>
+                    <td class="tdClass3">MOSS User Profile management for notifications</td>
+                  </tr>
+                  <tr>
+                    <td><b>Subtype: </b></td>
+                    <td class="tdClass3">UNIFY SharePoint Broker (DBB MOSS User Profiles)</td>
+                  </tr>
+                  <tr>
+                    <td><b>List Name: </b></td>
+                    <td class="tdClass3">UNIFY SharePoint Broker (DBB MOSS User Profiles)</td>
+                  </tr>
+                  <tr>
+                    <td><b>Company: </b></td>
+                    <td class="tdClass3">UNIFY Solutions</td>
+                  </tr>
+                  <tr>
+                    <td><b>Creation Time: </b></td>
+                    <td>2009-02-23 03:58:43.107</td>
+                  </tr>
+                  <tr>
+                    <td><b>Last Modification Time: </b></td>
+                    <td>2009-04-02 01:55:35.540</td>
+                  </tr>
+                  <tr>
+                    <td><b> Run in Separate Process:</b></td>
+                    <td> No </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Extensible Information </b></TD>
+              <TD align="left"><a NAME="#ExtensibleInformation"></a><Table>
+                  <tr>
+                    <td>
+                      <table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                        <tr>
+                          <th colspan="2" class="thAttributeFlow"><b>Connection Information</b></th>
+                        </tr>
+                        <tr>
+                          <td>Step Types supported:</td>
+                          <td>Import and Export</td>
+                        </tr>
+                        <tr>
+                          <td>Export mode supported:</td>
+                          <td>call-based</td>
+                        </tr>
+                        <tr>
+                          <td>Connected data source extension name:</td>
+                          <td>Unify.Miis.MossXMA.dll</td>
+                        </tr>
+                        <tr>
+                          <td>Connect To:</td>
+                          <td>http://litwaredemo</td>
+                        </tr>
+                        <tr>
+                          <td>User:</td>
+                          <td>litwareinc\administrator</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                        <tr>
+                          <th colspan="3" class="thAttributeFlow"><b>Additional Parameters</b></th>
+                        </tr>
+                        <tr>
+                          <th class="thAttributeFlow1">Name</th>
+                          <th class="thAttributeFlow1">Value</th>
+                          <th class="thAttributeFlow1">Encrypted</th>
+                        </tr>
+                        <tr></tr>
+                      </table>
+                    </td>
+                  </tr>
+                </Table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Selected Attributes </b></TD>
+              <TD align="left"><a NAME="#Attri"></a><TABLE align="left">
+                  <TR>
+                    <TD>
+                      <table border="1" cellpadding="0" cellspacing="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                        <tr>
+                          <td class="thAttributeFlow1"><b>Attribute Name </b></td>
+                          <td class="thAttributeFlow1"><b>Type </b></td>
+                          <td class="thAttributeFlow1"><b>MultiValued </b></td>
+                          <td class="thAttributeFlow1"><b>Min Length</b></td>
+                          <td class="thAttributeFlow1"><b>Max Length</b></td>
+                        </tr>
+                        <tr>
+                          <td>UserProfile_GUID</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>AccountName</td>
+                          <td> Reference (DN) </td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>FirstName</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>LastName</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>PreferredName</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>WorkPhone</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Office</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Department</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Title</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Manager</td>
+                          <td> Reference (DN) </td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>AboutMe</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>PersonalSpace</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>PictureURL</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>UserName</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>QuickLinks</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>WebSite</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>PublicSiteRedirect</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-Dotted-line</td>
+                          <td> Reference (DN) </td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-Peers</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-Responsibility</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-Skills</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-PastProjects</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-Interests</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-School</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-SipAddress</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-MySiteUpgrade</td>
+                          <td> Boolean </td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-DontSuggestList</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-ProxyAddresses</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-HireDate</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-LastColleagueAdded</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-OWAUrl</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-ResourceAccountName</td>
+                          <td> Reference (DN) </td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-MasterAccountName</td>
+                          <td> Reference (DN) </td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Assistant</td>
+                          <td> Reference (DN) </td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>WorkEmail</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>CellPhone</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Fax</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>HomePhone</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>employeeNumber</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>adsCodes</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>hasEmailAccess</td>
+                          <td> Boolean </td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>gender</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>OrganisationName</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>employeeStatus</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td>10</td>
+                        </tr>
+                        <tr>
+                          <td>SPS-Birthday</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                      </table>
+                    </TD>
+                  </TR>
+                  <TR>
+                    <TD>
+                      <table border="1" cellpadding="0" cellspacing="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                        <tr>
+                          <td><b>Anchor Attribute(s): </b></td>
+                          <td> dn </td>
+                        </tr>
+                        <tr>
+                          <td><b>Input file contains LDAP distinguished name: </b></td>
+                          <td> 
+                                            No
+                                        </td>
+                        </tr>
+                        <tr>
+                          <td><b>Code Page: </b></td>
+                          <td>65001
+                                                                        - Unicode</td>
+                        </tr>
+                      </table>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Map Object Types </b></TD>
+              <TD align="left"><a NAME="#Map"></a><table border="1" bordercolordark="#ffffff" cellpadding="0" cellspacing="0" align="left" class="tableClass4">
+                  <tr>
+                    <td class="thAttributeFlow1"><b> Object Class </b></td>
+                    <td class="thAttributeFlow1"><b> Object Type </b></td>
+                  </tr>
+                  <tr>
+                    <td>person</td>
+                    <td>person</td>
+                  </tr>
+                  <tr>
+                    <td>domain</td>
+                    <td>domain</td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Define Object Types </b></TD>
+              <TD align="left"><a NAME="#DefineObjectTypes"></a><table align="left" class="tableClass4">
+                  <tr>
+                    <td><b> Object Type: </b></td>
+                    <td>person</td>
+                  </tr>
+                  <tr>
+                    <td><b>Use distinguished name as anchor attribute: </b></td>
+                    <td> Yes </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <table border="1" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" class="tableClass4">
+                        <tr>
+                          <td class="thAttributeFlow1"><b> Attribute Name </b></td>
+                          <td class="thAttributeFlow1"><b> Must Have </b></td>
+                        </tr>
+                        <tr>
+                          <td>FirstName</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>LastName</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>PreferredName</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>WorkPhone</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Office</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Department</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Title</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Manager</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>AboutMe</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>PersonalSpace</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>PictureURL</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>UserName</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>QuickLinks</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>WebSite</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>PublicSiteRedirect</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-Dotted-line</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-Peers</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-Responsibility</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-Skills</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-PastProjects</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-Interests</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-School</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-SipAddress</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-MySiteUpgrade</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-DontSuggestList</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-ProxyAddresses</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-HireDate</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-LastColleagueAdded</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-OWAUrl</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-ResourceAccountName</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-MasterAccountName</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Assistant</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>WorkEmail</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>CellPhone</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Fax</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>HomePhone</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>employeeNumber</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>adsCodes</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>hasEmailAccess</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>employeeStatus</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>OrganisationName</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>gender</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SPS-Birthday</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>UserProfile_GUID</td>
+                          <td>
+                                        Yes
+                                    </td>
+                        </tr>
+                        <tr>
+                          <td>AccountName</td>
+                          <td>
+                                        Yes
+                                    </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><b> Object Type: </b></td>
+                    <td>domain</td>
+                  </tr>
+                  <tr>
+                    <td><b>Use distinguished name as anchor attribute: </b></td>
+                    <td> Yes </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <table border="1" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" class="tableClass4">
+                        <tr>
+                          <td class="thAttributeFlow1"><b> Attribute Name </b></td>
+                          <td class="thAttributeFlow1"><b> Must Have </b></td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Partitions Configured </b></TD>
+              <TD align="left"><a NAME="#Partition"></a><table border="1" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                  <tr>
+                    <td align="center" class="thAttributeFlow1"><b> Object Type </b></td>
+                    <td align="center" class="thAttributeFlow1"><b> Partition Name </b></td>
+                  </tr>
+                  <tr>
+                    <td>person</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td>domain</td>
+                    <td>default</td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Connector Filters </b></TD>
+              <TD align="left"><a NAME="#connectorfilters"></a><table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                  <tr>
+                    <th class="thAttributeFlow1">Data Source Object Type</th>
+                    <th class="thAttributeFlow1">Filter Type</th>
+                    <th class="thAttributeFlow1">Filter </th>
+                  </tr>
+                  <tr>
+                    <td class="tdClass3">person</td>
+                    <td class="tdClass3">declared</td>
+                    <td>
+                      <table align="center" cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" class="tableClass5">
+                        <tr>
+                          <th class="thAttributeFlow1">Attribute</th>
+                          <th class="thAttributeFlow1">Operator</th>
+                          <th class="thAttributeFlow1">Value</th>
+                        </tr>
+                        <tr>
+                          <td class="tdClass3">dn</td>
+                          <td class="tdClass3">substring-any</td>
+                          <td class="tdClass3">administrator</td>
+                        </tr>
+                      </table>
+                      <table align="center" cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" class="tableClass5">
+                        <tr>
+                          <th class="thAttributeFlow1">Attribute</th>
+                          <th class="thAttributeFlow1">Operator</th>
+                          <th class="thAttributeFlow1">Value</th>
+                        </tr>
+                        <tr>
+                          <td class="tdClass3">dn</td>
+                          <td class="tdClass3">substring-any</td>
+                          <td class="tdClass3">service</td>
+                        </tr>
+                      </table>
+                      <table align="center" cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" class="tableClass5">
+                        <tr>
+                          <th class="thAttributeFlow1">Attribute</th>
+                          <th class="thAttributeFlow1">Operator</th>
+                          <th class="thAttributeFlow1">Value</th>
+                        </tr>
+                        <tr>
+                          <td class="tdClass3">dn</td>
+                          <td class="tdClass3">substring-end</td>
+                          <td class="tdClass3">LITWAREINC</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Join and Projection Rules </b></TD>
+              <TD align="left"><a NAME="#Joinandprojection"></a><br><TABLE align="left" class="tableClass4">
+                  <TR>
+                    <TD>
+                      <table cellpadding="0" cellspacing="0" width="100%" align="left" class="tableClass4">
+                        <tr>
+                          <td colspan="3"><b>Join Rules: </b></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" width="100%" align="center">
+                              <tr>
+                                <th class="thAttributeFlow1" align="center">Data Source Object</th>
+                                <th class="thAttributeFlow1" align="center">Mapping</th>
+                                <th class="thAttributeFlow1" align="center">Metaverse Object</th>
+                                <th class="thAttributeFlow1" align="center">Join Resolution Extension</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>person</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>dbbStaff</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">AccountName</td>
+                                <td class="tdClass3">Rules Extension - cd.person#1:AccountName-&gt;sAMAccountName</td>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table><br></TD>
+                  </TR>
+                  <TR>
+                    <TD>
+                      <table width="100%" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                        <tr>
+                          <td><b>Projection Rules:</b></td>
+                        </tr>
+                        <tr>
+                          <TD> None </TD>
+                        </tr>
+                      </table>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Attribute Flow</b></TD>
+              <TD align="left"><a NAME="#AttributeFlow"></a><br><TABLE align="left" class="tableClass4">
+                  <TR>
+                    <TD>
+                      <TABLE cellspacing="0" cellpadding="0" border="1" bordercolorlight="#ffffff" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                        <TR>
+                          <TH class="thAttributeFlow" colspan="4"><b>Export Attribute Flow </b></TH>
+                        </TR>
+                        <TR>
+                          <TD>
+                            <table cellspacing="0" cellpadding="0" border="1" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                              <tr>
+                                <th class="thAttributeFlow1">Data Source Attribute</th>
+                                <th class="thAttributeFlow1">To </th>
+                                <th class="thAttributeFlow1">Metaverse Attribute</th>
+                                <th class="thAttributeFlow1">Mapping Type</th>
+                                <th class="thAttributeFlow1">Allow Nulls</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>person</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>dbbStaff</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">employeeNumber</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">employeeID</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">adsCodes</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">dbbADSCodes</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Department</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">department</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">FirstName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">givenName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">CellPhone</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">mobile</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Title</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">title</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Office</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">physicalDeliveryOfficeName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">LastName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">sn</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">WorkPhone</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">telephoneNumber</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Manager</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">manager</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">employeeStatus</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">employeeStatus</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">gender</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">gender</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">hasEmailAccess</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">hasEmailAccess</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">OrganisationName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">OrganisationName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">SPS-Birthday</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">dateOfBirth</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                            </table>
+                          </TD>
+                        </TR>
+                      </TABLE>
+                    </TD>
+                  </TR>
+                  <TR>
+                    <TD><br><TABLE cellspacing="0" border="1" cellpadding="0" bordercolorlight="#ffffff" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                        <TR>
+                          <TH class="thAttributeFlow" colspan="4"><b>Import Attribute Flow </b></TH>
+                        </TR>
+                        <TR>
+                          <TD>
+                            <table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" class="tableClass4">
+                              <tr>
+                                <th class="thAttributeFlow1">Data Source Attribute</th>
+                                <th class="thAttributeFlow1">To </th>
+                                <th class="thAttributeFlow1">Metaverse Attribute</th>
+                                <th class="thAttributeFlow1">Mapping Type</th>
+                                <th class="thAttributeFlow1">Precedence Order</th>
+                              </tr>
+                            </table>
+                          </TD>
+                        </TR>
+                      </TABLE>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Deprovisioning </b></TD>
+              <TD align="left"><a NAME="#Deprovisioning"></a><table cellpadding="0" cellspacing="0" bordercolordark="#ffffff" align="left" border="1" class="tableClass4">
+                  <tr>
+                    <td><b> Deprovision option: </b></td>
+                    <td> Make them disconnectors </td>
+                  </tr>
+                  <tr>
+                    <td><b> Do not recall attributes contributed by an object from this MA when it is disconnected:</b></td>
+                    <td> No </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>MA Extensions  </b></TD>
+              <TD align="left"><a NAME="#MAExDLL"></a><table cellpadding="0" cellspacing="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <td width="50%"><b>DLL:</b></td>
+                    <td width="50%">DBB.MOSSExtension.dll</td>
+                  </tr>
+                  <tr>
+                    <td width="50%"><b>Run in Separate Process: </b></td>
+                    <td width="50%"> No </td>
+                  </tr>
+                  <tr>
+                    <td width="50%"><b> Enable Password Management:</b></td>
+                    <td width="50%"> No </td>
+                  </tr>
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2">Partitions</th>
+                  </tr>
+                  <tr>
+                    <th class="thAttributeFlow1"><b>Partition Name </b></th>
+                    <th class="thAttributeFlow1"><b>Display Name</b></th>
+                  </tr>
+                  <tr>
+                    <td>default</td>
+                    <td>None</td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Run Profiles</b></TD>
+              <td class="tdClass2" align="left"><a NAME="#RSofMA"></a><table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Delta import</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Input File Name: </td>
+                    <td>UNIFYDelta.txt</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Delta import and delta synchronization</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Import and Delta Synchronization</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Input File Name: </td>
+                    <td>UNIFYDelta.txt</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Delta synchronization</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Export</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Export </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Input File Name: </td>
+                    <td>None</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Full import</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Input File Name: </td>
+                    <td>UNIFYFull.txt</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Full import and delta synchronization</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import and Delta Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Input File Name: </td>
+                    <td>UNIFYFull.txt</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Full import and full synchronization</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import and Full Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Input File Name: </td>
+                    <td>UNIFYFull.txt</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Full synchronization</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                </table>
+              </td>
+            </TR>
+          </TABLE>
+        </TD>
+      </TR>
+    </TABLE>
+  </BODY>
+</HTML>

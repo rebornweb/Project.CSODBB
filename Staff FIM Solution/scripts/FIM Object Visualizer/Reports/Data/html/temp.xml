@@ -1,0 +1,1 @@
+<RequestStatusDetail xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" DetailLevel="Error" EntryTime="2011-09-12T01:31:30.7033846Z">AttributeFailureCode: 'ValueViolatesUniqueness', AttributeName: 'ObjectSID', </RequestStatusDetail>

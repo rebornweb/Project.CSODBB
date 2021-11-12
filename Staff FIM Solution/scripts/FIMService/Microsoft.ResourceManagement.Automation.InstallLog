@@ -1,0 +1,56 @@
+﻿Installing assembly 'D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.dll'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.dll
+   logfile = D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.InstallLog
+Rolling back assembly 'D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.dll'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.dll
+   logfile = D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.InstallLog
+An exception occurred during the Rollback phase of the Microsoft.ResourceManagement.Automation.ConfigMigrationSnapIn installer.
+System.UnauthorizedAccessException: Access to the registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\PowerShell\1\PowerShellSnapIns' is denied.
+An exception occurred during the Rollback phase of the installation. This exception will be ignored and the rollback will continue. However, the machine might not fully revert to its initial state after the rollback is complete.
+Installing assembly 'D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.dll'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.dll
+   logfile = D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.InstallLog
+Rolling back assembly 'D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.dll'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.dll
+   logfile = D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.InstallLog
+An exception occurred during the Rollback phase of the Microsoft.ResourceManagement.Automation.ConfigMigrationSnapIn installer.
+System.UnauthorizedAccessException: Access to the registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\PowerShell\1\PowerShellSnapIns' is denied.
+An exception occurred during the Rollback phase of the installation. This exception will be ignored and the rollback will continue. However, the machine might not fully revert to its initial state after the rollback is complete.
+Installing assembly 'D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.dll'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.dll
+   logfile = D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.InstallLog
+Committing assembly 'D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.dll'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.dll
+   logfile = D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.InstallLog
+Installing assembly 'D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.dll'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.dll
+   logfile = D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.InstallLog
+Committing assembly 'D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.dll'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.dll
+   logfile = D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.InstallLog
+Installing assembly 'D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.dll'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.dll
+   logfile = D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.InstallLog
+Committing assembly 'D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.dll'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.dll
+   logfile = D:\Scripts\FIMService\Microsoft.ResourceManagement.Automation.InstallLog

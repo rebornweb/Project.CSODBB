@@ -1,0 +1,2003 @@
+﻿<HTML xmlns:user="http://www.myserver.com/user" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+  <HEAD>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <TITLE>MAConfigurationViewer 1.0 - </TITLE>
+    <STYLE type="text/css">
+       @page FullPage{margin-left:1.0in;margin-right:0.5in}
+
+        h1,h3{margin: 0px; padding: 0px;}
+        #S1 {width: 300px;}
+        h1 {color: #AAAAAA; font-size: 500%;}
+        h3 {color: #AAAAAA; font-size: 500%;}
+        
+        table{page:FullPage;width:575px;}
+        .tableClass1{page:FullPage; width:300px; border: medium ;}
+        .trtableClass1{width:375px;}
+        .tdtableClass1{width:165px;}
+
+        .tableMain{page:FullPage; width:540px;  FONT-FAMILY:Verdana; FONT-SIZE: 70%;}
+
+        .thTitle{background-color:#666666; color: #FFFFFF; FONT-SIZE: 70%;}
+        .thAttributeFlow{background-color:#bbbbbb;  FONT-SIZE: 70%;}
+        .thAttributeFlow1{background-color:#dddddd; FONT-SIZE: 70%;}
+        .thAttributeFlow2{background-color:#dddddd; FONT-SIZE: 70%; width:50px}
+
+        .tableMenu{FONT-SIZE: 300%; FONT-FAMILY: Verdana;  width:575px}
+        .tdMenu{border-right: 1px solid #999999;text-align:center;}
+        .trMenu{background-color:#ffffff;}
+
+        .tableClass2{cellspacing:'0' cellpadding:'0'; border='1'; width:100% FONT-SIZE: 80%; FONT-FAMILY: Verdana;  border-color: #eeeeee; border-style:solid; PADDING: .25em;}
+        .tableClass3{width:50px;}
+        .tableClass4{width:575px;vertical-align:left}
+        .tableClass5{vertical-align:middle; width:375px}
+        .tdLeftSection{background-color:#eeeeee; FONT-SIZE: 70%;}
+        
+
+        A{color:#0000FF; text-decoration: none;}
+        a:active {text-decoration: underline;}
+        a:hover {text-decoration: underline;}
+        img {border: none; }
+        .imgbanner {border: none; width:10px;}
+        .my .ct p {padding: 0px 0px 3px 0px;}
+        #btnsearch {border: none; margin-left: 95px; margin-top: -25px;}
+        body,div,span,p,ul,td,th,input,select,textarea,button {font-family: Arial, sans-serif; font-size: 70%;}
+        td{font-size: 70%;word-wrap:break-word;}
+
+
+        .tdClass1{font-size: 70%; width:400px; word-wrap:break-word;}
+        .tdClass2{font-size: 70%; width:350px; word-wrap:break-word;}
+        .tdClass3{font-size: 70%; width:175px; word-wrap:break-word;}
+        .tdClass4{font-size: 70%; width:20px; word-wrap:break-word;}
+        .tdClass5{font-size: 70%; width:350px; word-wrap:break-word;}
+        .tdClass6{font-family: Symbol;font-size: 70%; color:blue; text-align:center; width:8%;}
+        .tdClass7{font-size: 70%; word-wrap:break-word; width:350px;}
+
+        body {page:FullPage;}
+        br.clear, .clrbth {clear: both;}
+        hr {height: 1px; padding: 0px; border:1px solid; color:#BBBBBB; }
+        ol {list-style-position: outside; margin: -2px 0px 0px 23px;}
+        li {list-style-position: outside; margin: -2px 0px 0px 12px; padding: 0; margin-left: 20px;}
+
+        
+
+       </STYLE>
+  </HEAD>
+  <BODY><script>
+//scrolling TOP Link to navigate...
+var displayed="<nobr><b>[Top]</b></nobr>"
+var logolink='javascript:window.scrollTo(0,0)'
+var ie4 =document.all
+
+if (ie4)
+document.write('<span id="logo" style="position:absolute;top:-300;z-index:100">'+displayed+'</span>')
+
+function staticit()
+{
+crosslogo.style.left=document.body.scrollLeft+document.body.clientWidth-crosslogo.offsetWidth-10
+crosslogo.style.top=document.body.scrollTop+document.body.clientHeight-crosslogo.offsetHeight-10
+}
+
+function inserttext()
+{ 
+    if (ie4)
+    crosslogo=document.all.logo
+    if (ie4)
+    window.onscroll=staticit
+
+    crosslogo.innerHTML='<a href="'+logolink+'">'+displayed+'</a>'
+    crosslogo.style.left=document.body.clientWidth-crosslogo.offsetWidth-10
+    crosslogo.style.top=document.body.clientHeight-crosslogo.offsetHeight-10
+
+}
+
+if(ie4)
+{
+    window.onload=inserttext
+    window.onresize=new Function("window.location.reload()")
+}
+
+</script><TABLE cellpadding="0" cellspacing="0" class="tableMain">
+      <TR>
+        <TD>
+          <H1>MAConfigurationViewer 1.0 </H1>
+        </TD>
+      </TR>
+      <TR>
+        <TD>
+          <TABLE class="tableMenu">
+            <Tr class="trMenu">
+              <Td class="tdMenu"><b><A href="#properties"> Properties </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Attri"> Selected Attributes </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Map"> Map Object Types </A></b></Td>
+              <Td class="tdMenu"><b><A href="#DefineObjectTypes"> Define Object Types </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Partition"> Partitions Configured </A></b></Td>
+              <Td class="tdMenu"><b><A href="#connectorfilters"> Connector Filters </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Joinandprojection"> Join and Projection Rules </A></b></Td>
+              <Td class="tdMenu"><b><A href="#AttributeFlow"> Attribute Flow </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Deprovisioning"> Deprovisioning </A></b></Td>
+              <Td class="tdMenu"><b><A href="#MAExDLL"> MA Extensions </A></b></Td>
+              <Td class="tdMenu"><b><A href="#RSofMA"> Run Profiles</A></b></Td>
+            </Tr>
+          </TABLE>
+        </TD>
+      </TR>
+      <TR>
+        <TD>
+          <h3>Replay FIM Portal Management Agent </h3>
+          <hr>
+        </TD>
+      </TR>
+      <TR>
+        <TD Align="center"></TD>
+      </TR>
+      <TR>
+        <TD>
+          <TABLE cellspacing="0" cellpadding="0" border="1" bordercolordark="#ffffff" class="tableClass2">
+            <TR>
+              <TH class="thTitle" colspan="2">
+                        Management Agent's Properties
+                </TH>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Properties</b></TD>
+              <TD align="left"><a NAME="#properties"></a><table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <td><b>MA Type: </b></td>
+                    <td> LDAP Data Interchange Format (LDIF) </td>
+                  </tr>
+                  <tr>
+                    <td><b>Description: </b></td>
+                    <td class="tdClass3">CSO FIM V2: Transformed FIM MA import audit drop file providing a secondary source of FIM Portal objects and attributes (to support precedence rules)</td>
+                  </tr>
+                  <tr>
+                    <td><b>Creation Time: </b></td>
+                    <td>2012-03-01 10:35:28.003</td>
+                  </tr>
+                  <tr>
+                    <td><b>Last Modification Time: </b></td>
+                    <td>2015-09-29 03:42:43.243</td>
+                  </tr>
+                  <tr>
+                    <td><b> Run in Separate Process:</b></td>
+                    <td> No </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Selected Attributes </b></TD>
+              <TD align="left"><a NAME="#Attri"></a><TABLE align="left">
+                  <TR>
+                    <TD>
+                      <table border="1" cellpadding="0" cellspacing="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                        <tr>
+                          <td class="thAttributeFlow1"><b>Attribute Name </b></td>
+                          <td class="thAttributeFlow1"><b>Type </b></td>
+                          <td class="thAttributeFlow1"><b>MultiValued </b></td>
+                          <td class="thAttributeFlow1"><b>Min Length</b></td>
+                          <td class="thAttributeFlow1"><b>Max Length</b></td>
+                        </tr>
+                        <tr>
+                          <td>AccountName</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>CreatedTime</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Creator</td>
+                          <td> Reference (DN) </td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>DeletedTime</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Description</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>DetectedRulesList</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>DisplayName</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>DisplayedOwner</td>
+                          <td> Reference (DN) </td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Domain</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>DomainConfiguration</td>
+                          <td> Reference (DN) </td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Email</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>ExpectedRulesList</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>ExpirationTime</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Filter</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>ListOwners</td>
+                          <td> Reference (DN) </td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Locale</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>MVObjectID</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>MailNickname</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Member</td>
+                          <td> Reference (DN) </td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>MembershipAddWorkflow</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>MembershipLocked</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>ObjectID</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>ObjectSID</td>
+                          <td>Binary</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>ObjectType</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Owner</td>
+                          <td> Reference (DN) </td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>ResourceTime</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>RetentionPeriod</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>SIDHistory</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Scope</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Temporal</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Type</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>cso-adsParentRoleID</td>
+                          <td> Reference (DN) </td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>cso-adsRoleID</td>
+                          <td> Reference (DN) </td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>groupAdministrators</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>AD_UserCannotChangePassword</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Address</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Assistant</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>AuthNLockoutRegistrationID</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>AuthNWFLockedOut</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>AuthNWFRegistered</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>City</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Company</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>CostCenter</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>CostCenterName</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Country</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Department</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>EmployeeEndDate</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>EmployeeID</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>EmployeeStartDate</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>EmployeeType</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>FirstName</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>FreezeCount</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>FreezeLevel</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>IsRASEnabled</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>JobTitle</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>LastName</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>LastResetAttemptTime</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>LoginName</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Manager</td>
+                          <td> Reference (DN) </td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>MiddleName</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>MobilePhone</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>OfficeFax</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>OfficeLocation</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>OfficePhone</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Photo</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>PostalCode</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Protocom-SSO-Auth-Data</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Protocom-SSO-Entries</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Protocom-SSO-Entries-Checksum</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Protocom-SSO-Profile</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Protocom-SSO-SecurityPrefs</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>ProxyAddressCollection</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Register</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>RegistrationRequired</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>ResetPassword</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>TimeZone</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>idmAppRoleXML</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>idmEntitlementXML</td>
+                          <td>String</td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>idmUserAccountID</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>initials</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>ManagerOf</td>
+                          <td> Reference (DN) </td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>MemberOf</td>
+                          <td> Reference (DN) </td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>OwnerOf</td>
+                          <td> Reference (DN) </td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>DisplayedOwnerOf</td>
+                          <td> Reference (DN) </td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>ListOwnersOf</td>
+                          <td> Reference (DN) </td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>groupAdministratorsOf</td>
+                          <td> Reference (DN) </td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>PreferredName</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>DOB</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>csoLegacyEmployeeID</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>csoSites</td>
+                          <td> Reference (DN) </td>
+                          <td> Yes </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>csoBirthDate</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>csoEmployeeStatus</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>csoAssignedSiteCode</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                        <tr>
+                          <td>Sex</td>
+                          <td>String</td>
+                          <td> No </td>
+                          <td> - </td>
+                          <td> - </td>
+                        </tr>
+                      </table>
+                    </TD>
+                  </TR>
+                  <TR>
+                    <TD>
+                      <table border="1" cellpadding="0" cellspacing="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                        <tr>
+                          <td><b>Anchor Attribute(s): </b></td>
+                          <td> dn </td>
+                        </tr>
+                        <tr>
+                          <td><b>Code Page: </b></td>
+                          <td>1252
+                                                                        - Western European (Windows)</td>
+                        </tr>
+                      </table>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Map Object Types </b></TD>
+              <TD align="left"><a NAME="#Map"></a><table border="1" bordercolordark="#ffffff" cellpadding="0" cellspacing="0" align="left" class="tableClass4">
+                  <tr>
+                    <td class="thAttributeFlow1"><b> Object Class </b></td>
+                    <td class="thAttributeFlow1"><b> Object Type </b></td>
+                  </tr>
+                  <tr>
+                    <td>Group</td>
+                    <td>Group</td>
+                  </tr>
+                  <tr>
+                    <td>Person</td>
+                    <td>Person</td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Define Object Types </b></TD>
+              <TD align="left"><a NAME="#DefineObjectTypes"></a><table align="left" class="tableClass4">
+                  <tr>
+                    <td><b> Object Type: </b></td>
+                    <td>Group</td>
+                  </tr>
+                  <tr>
+                    <td><b>Use distinguished name as anchor attribute: </b></td>
+                    <td> Yes </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <table border="1" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" class="tableClass4">
+                        <tr>
+                          <td class="thAttributeFlow1"><b> Attribute Name </b></td>
+                          <td class="thAttributeFlow1"><b> Must Have </b></td>
+                        </tr>
+                        <tr>
+                          <td>AccountName</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>CreatedTime</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Creator</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>DeletedTime</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Description</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>DetectedRulesList</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>DisplayName</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>DisplayedOwner</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Domain</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>DomainConfiguration</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Email</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>ExpectedRulesList</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>ExpirationTime</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Filter</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>ListOwners</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Locale</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>MVObjectID</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>MailNickname</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Member</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>MembershipAddWorkflow</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>MembershipLocked</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>ObjectID</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>ObjectSID</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>ObjectType</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Owner</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>ResourceTime</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>RetentionPeriod</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SIDHistory</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Scope</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Temporal</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Type</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>cso-adsParentRoleID</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>cso-adsRoleID</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>groupAdministrators</td>
+                          <td> No </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><b> Object Type: </b></td>
+                    <td>Person</td>
+                  </tr>
+                  <tr>
+                    <td><b>Use distinguished name as anchor attribute: </b></td>
+                    <td> Yes </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <table border="1" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" class="tableClass4">
+                        <tr>
+                          <td class="thAttributeFlow1"><b> Attribute Name </b></td>
+                          <td class="thAttributeFlow1"><b> Must Have </b></td>
+                        </tr>
+                        <tr>
+                          <td>AD_UserCannotChangePassword</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>AccountName</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Address</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Assistant</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>AuthNLockoutRegistrationID</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>AuthNWFLockedOut</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>AuthNWFRegistered</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>City</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Company</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>CostCenter</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>CostCenterName</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Country</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>CreatedTime</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Creator</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>DeletedTime</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Department</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Description</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>DetectedRulesList</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>DisplayName</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Domain</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>DomainConfiguration</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Email</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>EmployeeEndDate</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>EmployeeID</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>EmployeeStartDate</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>EmployeeType</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>ExpectedRulesList</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>ExpirationTime</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>FirstName</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>FreezeCount</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>FreezeLevel</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>IsRASEnabled</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>JobTitle</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>LastName</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>LastResetAttemptTime</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Locale</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>LoginName</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>MVObjectID</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>MailNickname</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Manager</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>MiddleName</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>MobilePhone</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>ObjectID</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>ObjectSID</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>ObjectType</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>OfficeFax</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>OfficeLocation</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>OfficePhone</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Photo</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>PostalCode</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Protocom-SSO-Auth-Data</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Protocom-SSO-Entries</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Protocom-SSO-Entries-Checksum</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Protocom-SSO-Profile</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Protocom-SSO-SecurityPrefs</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>ProxyAddressCollection</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Register</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>RegistrationRequired</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>ResetPassword</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>ResourceTime</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>SIDHistory</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>TimeZone</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>cso-adsRoleID</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>idmAppRoleXML</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>idmEntitlementXML</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>idmUserAccountID</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>initials</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>DisplayedOwnerOf</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>OwnerOf</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>MemberOf</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>ManagerOf</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>groupAdministratorsOf</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>ListOwnersOf</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>PreferredName</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>DOB</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>csoLegacyEmployeeID</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>csoSites</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>csoEmployeeStatus</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>csoBirthDate</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>csoAssignedSiteCode</td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td>Sex</td>
+                          <td> No </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Partitions Configured </b></TD>
+              <TD align="left"><a NAME="#Partition"></a><table border="1" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                  <tr>
+                    <td align="center" class="thAttributeFlow1"><b> Object Type </b></td>
+                    <td align="center" class="thAttributeFlow1"><b> Partition Name </b></td>
+                  </tr>
+                  <tr>
+                    <td>Group</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td>Person</td>
+                    <td>default</td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Connector Filters </b></TD>
+              <TD align="left"><a NAME="#connectorfilters"></a> None </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Join and Projection Rules </b></TD>
+              <TD align="left"><a NAME="#Joinandprojection"></a><br><TABLE align="left" class="tableClass4">
+                  <TR>
+                    <TD>
+                      <table cellpadding="0" cellspacing="0" width="100%" align="left" class="tableClass4">
+                        <tr>
+                          <td colspan="3"><b>Join Rules: </b></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" width="100%" align="center">
+                              <tr>
+                                <th class="thAttributeFlow1" align="center">Data Source Object</th>
+                                <th class="thAttributeFlow1" align="center">Mapping</th>
+                                <th class="thAttributeFlow1" align="center">Metaverse Object</th>
+                                <th class="thAttributeFlow1" align="center">Join Resolution Extension</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>Group</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>group</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>Person</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>person</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>Person</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>person</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">ObjectID</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table><br></TD>
+                  </TR>
+                  <TR>
+                    <TD>
+                      <table width="100%" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                        <tr>
+                          <td><b>Projection Rules:</b></td>
+                        </tr>
+                        <tr>
+                          <TD> None </TD>
+                        </tr>
+                      </table>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Attribute Flow</b></TD>
+              <TD align="left"><a NAME="#AttributeFlow"></a><br><TABLE align="left" class="tableClass4">
+                  <TR>
+                    <TD>
+                      <TABLE cellspacing="0" cellpadding="0" border="1" bordercolorlight="#ffffff" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                        <TR>
+                          <TH class="thAttributeFlow" colspan="4"><b>Export Attribute Flow </b></TH>
+                        </TR>
+                        <TR>
+                          <TD> None </TD>
+                        </TR>
+                      </TABLE>
+                    </TD>
+                  </TR>
+                  <TR>
+                    <TD><br><TABLE cellspacing="0" border="1" cellpadding="0" bordercolorlight="#ffffff" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                        <TR>
+                          <TH class="thAttributeFlow" colspan="4"><b>Import Attribute Flow </b></TH>
+                        </TR>
+                        <TR>
+                          <TD>
+                            <table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" class="tableClass4">
+                              <tr>
+                                <th class="thAttributeFlow1" style="display:none;">MV Key</th>
+                                <th class="thAttributeFlow1">Data Source Attribute</th>
+                                <th class="thAttributeFlow1">To </th>
+                                <th class="thAttributeFlow1">Metaverse Attribute</th>
+                                <th class="thAttributeFlow1">Mapping Type</th>
+                                <th class="thAttributeFlow1">Precedence Order</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;"><b>group</b></td>
+                                <td class="tdClass3"><b>Group</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>group</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">email</td>
+                                <td class="tdClass3">Email</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">email</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">objectSid</td>
+                                <td class="tdClass3">ObjectSID</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">4 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;"><b>person</b></td>
+                                <td class="tdClass3"><b>Person</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>person</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">sex</td>
+                                <td class="tdClass3">Sex</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">sex</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">4 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">employeeType</td>
+                                <td class="tdClass3">EmployeeType</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">employeeType</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">4 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoSites</td>
+                                <td class="tdClass3">csoSites</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoSites</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">4 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoBirthDate</td>
+                                <td class="tdClass3">csoBirthDate</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoBirthDate</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">4 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">employeeStatus</td>
+                                <td class="tdClass3">csoEmployeeStatus</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">employeeStatus</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">4 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">lastName</td>
+                                <td class="tdClass3">LastName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">lastName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">5 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">initials</td>
+                                <td class="tdClass3">initials</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">initials</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">firstName</td>
+                                <td class="tdClass3">FirstName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">firstName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">5 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoLegacyEmployeeID</td>
+                                <td class="tdClass3">csoLegacyEmployeeID</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoLegacyEmployeeID</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">4 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">DOB</td>
+                                <td class="tdClass3">DOB</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">DOB</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">physicalDeliveryOfficeName</td>
+                                <td class="tdClass3">csoAssignedSiteCode</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">physicalDeliveryOfficeName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">email</td>
+                                <td class="tdClass3">Email</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">email</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">objectSid</td>
+                                <td class="tdClass3">ObjectSID</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">4 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">domain</td>
+                                <td class="tdClass3">Domain</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">domain</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">5 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">accountName</td>
+                                <td class="tdClass3">AccountName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">accountName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">displayName</td>
+                                <td class="tdClass3">DisplayName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">description</td>
+                                <td class="tdClass3">Description</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">description</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">employeeID</td>
+                                <td class="tdClass3">EmployeeID</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">employeeID</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">displayedOwnerOf</td>
+                                <td class="tdClass3">DisplayedOwnerOf</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">displayedOwnerOf</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">managerOf</td>
+                                <td class="tdClass3">ManagerOf</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">managerOf</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">memberOf</td>
+                                <td class="tdClass3">MemberOf</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">memberOf</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">ownerOf</td>
+                                <td class="tdClass3">OwnerOf</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">ownerOf</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">listOwnersOf</td>
+                                <td class="tdClass3">ListOwnersOf</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">listOwnersOf</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">groupAdministratorsOf</td>
+                                <td class="tdClass3">groupAdministratorsOf</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">groupAdministratorsOf</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">PreferredName</td>
+                                <td class="tdClass3">PreferredName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">PreferredName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">middleName</td>
+                                <td class="tdClass3">MiddleName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">middleName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">3 </td>
+                              </tr>
+                            </table>
+                          </TD>
+                        </TR>
+                      </TABLE>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Deprovisioning </b></TD>
+              <TD align="left"><a NAME="#Deprovisioning"></a><table cellpadding="0" cellspacing="0" bordercolordark="#ffffff" align="left" border="1" class="tableClass4">
+                  <tr>
+                    <td><b> Deprovision option: </b></td>
+                    <td> Make them disconnectors </td>
+                  </tr>
+                  <tr>
+                    <td><b> Do not recall attributes contributed by an object from this MA when it is disconnected:</b></td>
+                    <td> No </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>MA Extensions  </b></TD>
+              <TD align="left"><a NAME="#MAExDLL"></a><table cellpadding="0" cellspacing="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <td width="50%"><b>DLL:</b></td>
+                    <td width="50%"> None </td>
+                  </tr>
+                  <tr>
+                    <td width="50%"><b> Enable Password Management:</b></td>
+                    <td width="50%"> No </td>
+                  </tr>
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2">Partitions</th>
+                  </tr>
+                  <tr>
+                    <th class="thAttributeFlow1"><b>Partition Name </b></th>
+                    <th class="thAttributeFlow1"><b>Display Name</b></th>
+                  </tr>
+                  <tr>
+                    <td>default</td>
+                    <td>None</td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Run Profiles</b></TD>
+              <td class="tdClass2" align="left"><a NAME="#RSofMA"></a><table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">FI</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Input File Name: </td>
+                    <td>full.ldif</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">DI</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Input File Name: </td>
+                    <td>delta.ldif</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">FS</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">FIFS</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Input File Name: </td>
+                    <td>full.ldif</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 2</b>  Full Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">DIDS</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Input File Name: </td>
+                    <td>delta.ldif</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 2</b>  Delta Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">FIDS</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Input File Name: </td>
+                    <td>full.ldif</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 2</b>  Delta Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">DS</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                </table>
+              </td>
+            </TR>
+          </TABLE>
+        </TD>
+      </TR>
+    </TABLE>
+  </BODY>
+</HTML>

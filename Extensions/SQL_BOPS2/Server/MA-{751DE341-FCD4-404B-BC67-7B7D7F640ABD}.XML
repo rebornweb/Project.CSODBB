@@ -1,0 +1,138 @@
+<saved-ma-configuration server='OCCCP-AS002' export-date='2009-09-10 05:35:07.713'>
+<!--WARNING>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+!! The contents of this file should not be edited.
+!! Any such modifications to this file may result in errors during import.
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+</WARNING-->
+<ma-data>
+ <format-version>1</format-version>
+ <id>{751DE341-FCD4-404B-BC67-7B7D7F640ABD}</id>
+ <name>CAPS Payroll</name>
+ <category>Extensible</category>
+ <subtype/>
+ <ma-listname/>
+ <ma-companyname/>
+ <creation-time>2009-01-13 00:19:18.277</creation-time>
+ <last-modification-time>2009-08-12 01:00:48.213</last-modification-time>
+ <version>45</version>
+ <internal-version>0</internal-version>
+ <password-sync-allowed>0</password-sync-allowed>
+ <schema>
+  <dsml:dsml xmlns:dsml="http://www.dsml.org/DSML" xmlns:ms-dsml="http://www.microsoft.com/MMS/DSML"><dsml:directory-schema ms-dsml:no-objectclass-validation="true"><dsml:class id="person" type="structural"><dsml:name>person</dsml:name><dsml:attribute ref="#CLAS.AWARD" required="false" /><dsml:attribute ref="#PERS.DOB" required="false" /><dsml:attribute ref="#PERS.FTE.HRS" required="false" /><dsml:attribute ref="#PERS.NAMES" required="false" /><dsml:attribute ref="#PERS.PREF.NAME" required="false" /><dsml:attribute ref="#PERS.SURNAME" required="false" /><dsml:attribute ref="#SAL.SCHOOL" required="false" /><dsml:attribute ref="#CLAS.CLASSN.CD" required="false" /><dsml:attribute ref="#CLAS.CLASSN.DESC" required="false" /><dsml:attribute ref="#ADS.ACTIVE" required="false" /><dsml:attribute ref="#ADS.CODE" required="false" /><dsml:attribute ref="#ADS.START" required="false" /><dsml:attribute ref="#ADS.END" required="false" /><dsml:attribute ref="#PERS.PIN" required="false" /><dsml:attribute ref="#ID" required="true" /></dsml:class><dsml:class id="group" type="structural"><dsml:name>group</dsml:name><dsml:attribute ref="#PERS.PINS" required="false" /><dsml:attribute ref="#DESC" required="false" /><dsml:attribute ref="#ID" required="true" /></dsml:class><dsml:attribute-type id="CLAS.AWARD" single-value="true"><dsml:name>CLAS.AWARD</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PERS.DOB" single-value="true"><dsml:name>PERS.DOB</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PERS.FTE.HRS" single-value="true"><dsml:name>PERS.FTE.HRS</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PERS.NAMES" single-value="false"><dsml:name>PERS.NAMES</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PERS.PIN" single-value="true"><dsml:name>PERS.PIN</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PERS.PREF.NAME" single-value="true"><dsml:name>PERS.PREF.NAME</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PERS.SURNAME" single-value="true"><dsml:name>PERS.SURNAME</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="SAL.SCHOOL" single-value="true"><dsml:name>SAL.SCHOOL</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="CLAS.CLASSN.CD" single-value="true"><dsml:name>CLAS.CLASSN.CD</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="CLAS.CLASSN.DESC" single-value="true"><dsml:name>CLAS.CLASSN.DESC</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ADS.ACTIVE" single-value="true"><dsml:name>ADS.ACTIVE</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ADS.CODE" single-value="false"><dsml:name>ADS.CODE</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ADS.START" single-value="false"><dsml:name>ADS.START</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ADS.END" single-value="false"><dsml:name>ADS.END</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ID" single-value="true" ms-dsml:immutable="true" ms-dsml:range-lower="6" ms-dsml:range-upper="7"><dsml:name>ID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PERS.PINS" single-value="false"><dsml:name>PERS.PINS</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="DESC" single-value="true"><dsml:name>DESC</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type></dsml:directory-schema></dsml:dsml>
+ </schema>
+ <attribute-inclusion><attribute>CLAS.AWARD</attribute><attribute>PERS.DOB</attribute><attribute>PERS.FTE.HRS</attribute><attribute>PERS.NAMES</attribute><attribute>PERS.PIN</attribute><attribute>PERS.PREF.NAME</attribute><attribute>PERS.SURNAME</attribute><attribute>SAL.SCHOOL</attribute><attribute>CLAS.CLASSN.CD</attribute><attribute>CLAS.CLASSN.DESC</attribute><attribute>ADS.ACTIVE</attribute><attribute>ADS.CODE</attribute><attribute>ADS.START</attribute><attribute>ADS.END</attribute><attribute>ID</attribute><attribute>PERS.PINS</attribute><attribute>DESC</attribute></attribute-inclusion>
+ <stay-disconnector><filter-set cd-object-type="group" type="declared"><filter-alternative id="{4B94DC2D-FC9F-4C57-87FE-E388C361EB16}"><condition cd-attribute="ID" operator="not-substring-start"><value>O</value></condition></filter-alternative></filter-set><filter-set cd-object-type="person" type="declared"><filter-alternative id="{BCE04E2E-5722-4872-983A-0713D36A18AD}"><condition cd-attribute="CLAS.AWARD" operator="equality"><value>02</value></condition></filter-alternative><filter-alternative id="{47E1AA29-6A4E-4029-95D6-06178BA47B99}"><condition cd-attribute="CLAS.AWARD" operator="equality"><value>03</value></condition></filter-alternative><filter-alternative id="{462B17E8-0539-4131-84C1-5C23CD11B6A9}"><condition cd-attribute="CLAS.AWARD" operator="equality"><value>04</value></condition></filter-alternative><filter-alternative id="{ADC30B10-1EFD-492F-AB6A-ADE459972B19}"><condition cd-attribute="CLAS.AWARD" operator="equality"><value>05</value></condition></filter-alternative><filter-alternative id="{94096F9D-8677-45EF-BE9E-06B276534A9B}"><condition cd-attribute="CLAS.AWARD" operator="equality"><value>06</value></condition></filter-alternative><filter-alternative id="{547EC12E-9F03-44EE-9457-641721BFBB1A}"><condition cd-attribute="CLAS.AWARD" operator="equality"><value>07</value></condition></filter-alternative><filter-alternative id="{DCAFD670-4B74-456F-9A8C-1456053D68B2}"><condition cd-attribute="CLAS.AWARD" operator="equality"><value>08</value></condition></filter-alternative><filter-alternative id="{C6025CFD-7114-43C6-95BB-1AF5446E0FEC}"><condition cd-attribute="CLAS.AWARD" operator="equality"><value>13</value></condition></filter-alternative><filter-alternative id="{16499F96-4DE6-40C5-9A73-789790DD2880}"><condition cd-attribute="CLAS.AWARD" operator="equality"><value>15</value></condition></filter-alternative><filter-alternative id="{9A7B51FE-10DE-47A0-8BC8-413CFF2D4F51}"><condition cd-attribute="CLAS.AWARD" operator="equality"><value>24</value></condition></filter-alternative><filter-alternative id="{3FF745B5-ECEE-4783-8F4B-8A15B7C0AEC9}"><condition cd-attribute="CLAS.AWARD" operator="equality"><value>31</value></condition></filter-alternative></filter-set></stay-disconnector>
+ <join><join-profile cd-object-type="group"><join-criterion id="{2CC5088F-5705-4E85-9BCA-35EF92B72E5C}"><search mv-object-type="dbbGroup"><attribute-mapping mv-attribute="dbbADSCode"><direct-mapping><src-attribute>ID</src-attribute></direct-mapping></attribute-mapping></search><resolution type="none"><script-context></script-context></resolution></join-criterion></join-profile><join-profile cd-object-type="person"><join-criterion id="{2577A93C-333F-4CDD-95E7-2A4266088E21}"><search mv-object-type="dbbStaff"><attribute-mapping mv-attribute="capsID"><scripted-mapping><script-context>cd.person#3:ADS.ACTIVE,PERS.FTE.HRS,PERS.PIN-&gt;capsID</script-context><src-attribute>ADS.ACTIVE</src-attribute><src-attribute>PERS.FTE.HRS</src-attribute><src-attribute>PERS.PIN</src-attribute></scripted-mapping></attribute-mapping></search><resolution type="none"><script-context></script-context></resolution></join-criterion><join-criterion id="{3CD1BCC5-78C0-4130-B4D0-564898819665}"><search mv-object-type="dbbStaff"><attribute-mapping mv-attribute="employeeID"><scripted-mapping><script-context>cd.person#3:ADS.ACTIVE,PERS.FTE.HRS,PERS.PIN-&gt;employeeID</script-context><src-attribute>ADS.ACTIVE</src-attribute><src-attribute>PERS.FTE.HRS</src-attribute><src-attribute>PERS.PIN</src-attribute></scripted-mapping></attribute-mapping></search><resolution type="none"><script-context></script-context></resolution></join-criterion></join-profile></join>
+ <projection><class-mapping type="declared" id="{1A2C6358-6540-425F-8DE0-849AFF144F14}" cd-object-type="group"><mv-object-type>dbbGroup</mv-object-type></class-mapping><class-mapping type="scripted" id="{3BA19B20-39AD-47E6-9FE1-32589F00219D}" cd-object-type="person"></class-mapping></projection>
+ <export-attribute-flow />
+ <provisioning-cleanup type="declared"><action>make-normal-disconnector</action></provisioning-cleanup>
+ <extension><assembly-name>CAPSPayrollRE.dll</assembly-name><application-protection>low</application-protection></extension>
+ <controller-configuration>
+ <application-protection>low</application-protection>
+</controller-configuration>
+
+ <description>CAPS Payroll Source of Truth (CSO Legacy Payroll system) - Version 2</description>
+ <ma-ui-settings><account-joiner-queries><attributes><cs><attribute name="PERS.PIN" header="PERS.PIN" size="100" /><attribute name="CLAS.AWARD" header="CLAS.AWARD" size="100" /><attribute name="PERS.DOB" header="PERS.DOB" size="100" /><attribute name="PERS.SURNAME" header="PERS.SURNAME" size="100" /></cs><mv><attribute name="displayName" header="displayName" size="100" /><attribute name="employeeNumber" header="employeeNumber" size="100" /></mv></attributes><filters max_mv_search_results=""><filter name="testcaps" collation="Latin1_General_CI_AS" searchscope=""><element cdattribute="PERS.PIN" mvattribute="employeeNumber" mvtextflag="false" elementoperator="Equals" /></filter></filters></account-joiner-queries></ma-ui-settings>
+ <private-configuration>
+  <MAConfig><ui-data><xmlwizard><properties><sample_file>C:\Documents and Settings\Administrator.TESTLAB\My Documents\Visual Studio Projects\CSOPayrollMA\MATemplate.txt</sample_file><code_page_description>Unicode</code_page_description></properties><partitions><partition cd_name="default" guid="{E22504E8-AC44-4920-9038-D88A8524FBED}" version="53"><object_class>person</object_class><object_class>group</object_class></partition></partitions><primary_class_mappings><mapping object_class="person" primary_class="person" user_define="-1"><attribute>CLAS.AWARD</attribute><attribute>PERS.DOB</attribute><attribute>PERS.FTE.HRS</attribute><attribute>PERS.NAMES</attribute><attribute>PERS.PIN</attribute><attribute>PERS.PREF.NAME</attribute><attribute>PERS.SURNAME</attribute><attribute>SAL.SCHOOL</attribute></mapping><mapping object_class="group" primary_class="group" user_define="-1"><attribute>CLAS.AWARD</attribute><attribute>PERS.DOB</attribute><attribute>PERS.FTE.HRS</attribute><attribute>PERS.NAMES</attribute><attribute>PERS.PIN</attribute><attribute>PERS.PREF.NAME</attribute><attribute>PERS.SURNAME</attribute><attribute>SAL.SCHOOL</attribute><attribute>CLAS.CLASSN.CD</attribute><attribute>CLAS.CLASSN.DESC</attribute><attribute>ADS.ACTIVE</attribute><attribute>ADS.CODE</attribute><attribute>ADS.START</attribute><attribute>ADS.END</attribute><attribute>ID</attribute><attribute>ObjectType</attribute></mapping></primary_class_mappings><object_classes><object_class cd_name="person" selected="-1" user_define="-1" configured="-1" anchor="" dn_as_anchor="0"><attribute mandatory="0">CLAS.AWARD</attribute><attribute mandatory="0">PERS.DOB</attribute><attribute mandatory="0">PERS.FTE.HRS</attribute><attribute mandatory="0">PERS.NAMES</attribute><attribute mandatory="0">PERS.PREF.NAME</attribute><attribute mandatory="0">PERS.SURNAME</attribute><attribute mandatory="0">SAL.SCHOOL</attribute><attribute mandatory="0">CLAS.CLASSN.CD</attribute><attribute mandatory="0">CLAS.CLASSN.DESC</attribute><attribute mandatory="0">ADS.ACTIVE</attribute><attribute mandatory="0">ADS.CODE</attribute><attribute mandatory="0">ADS.START</attribute><attribute mandatory="0">ADS.END</attribute><attribute mandatory="0">PERS.PIN</attribute><attribute mandatory="-1">ID</attribute><attribute mandatory="-1">ObjectType</attribute></object_class><object_class cd_name="group" selected="-1" user_define="0" configured="-1" anchor="" dn_as_anchor="0"><attribute mandatory="0">PERS.PINS</attribute><attribute mandatory="0">DESC</attribute><attribute mandatory="-1">ID</attribute><attribute mandatory="-1">ObjectType</attribute></object_class></object_classes><attributes><attribute cd_name="CLAS.AWARD" binary="-1" sample_data="" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="PERS.DOB" binary="-1" sample_data="" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="PERS.FTE.HRS" binary="-1" sample_data="" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="PERS.NAMES" binary="-1" sample_data="" multi_valued="-1" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="PERS.PIN" binary="-1" sample_data="" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="PERS.PREF.NAME" binary="-1" sample_data="" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="PERS.SURNAME" binary="-1" sample_data="" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="SAL.SCHOOL" binary="-1" sample_data="" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="0" /><attribute cd_name="CLAS.CLASSN.CD" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="CLAS.CLASSN.DESC" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="ADS.ACTIVE" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="ADS.CODE" sample_data="" binary="0" multi_valued="-1" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="ADS.START" sample_data="" binary="0" multi_valued="-1" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="ADS.END" sample_data="" binary="0" multi_valued="-1" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="ID" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="6" upper_bound="7" user_define="-1" /><attribute cd_name="ObjectType" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="1" upper_bound="10" user_define="-1" /><attribute cd_name="PERS.PINS" sample_data="" binary="0" multi_valued="-1" file_reference="0" selected="-1" type="DN" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="DESC" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /></attributes></xmlwizard></ui-data><importing><dn><attribute>ID</attribute></dn><anchor><attribute>ID</attribute></anchor><per-class-settings></per-class-settings><object_class_attribute>ObjectType</object_class_attribute></importing><exporting></exporting><ldap-dn>0</ldap-dn><attribute_value_pair_format><code_page>1200</code_page></attribute_value_pair_format><primary_class_mappings><mapping><primary_class>person</primary_class><oc-value>person</oc-value></mapping><mapping><primary_class>group</primary_class><oc-value>group</oc-value></mapping></primary_class_mappings><password-extension-config><password-extension-enabled>0</password-extension-enabled><dll></dll><password-set-enabled></password-set-enabled><password-change-enabled></password-change-enabled><connection-info><connect-to></connect-to><user></user></connection-info><timeout></timeout></password-extension-config><extension-config><filename>CAPSPayrollMA.dll</filename><export-mode>file-based</export-mode><import-enabled>1</import-enabled><export-enabled>0</export-enabled><connection-info><connect-to>ocsowpy2.dbb.local</connect-to><user>svcidm</user></connection-info><attributes><attribute name="reload file path">C:\Program Files\Microsoft Identity Integration Server\MaData\CAPS Payroll\ImportCopy.txt</attribute><attribute name="account">CSOBB</attribute><attribute name="service">uvcs</attribute><attribute name="personTable">PAPERSONAL</attribute><attribute name="adsTable">PAADSCODES</attribute><attribute name="payrollTitlesTable">PACLASSN</attribute></attributes></extension-config><file-type>AVP</file-type><data_normalization><force-uppercase>0</force-uppercase><remove-accents>0</remove-accents></data_normalization></MAConfig>
+ </private-configuration>
+ <ma-partition-data>
+ <partition>
+  <id>{E22504E8-AC44-4920-9038-D88A8524FBED}</id>
+  <name>default</name>
+  <creation-time>2009-01-13 00:19:18.277</creation-time>
+  <last-modification-time>2009-08-12 01:00:48.197</last-modification-time>
+  <version>54</version>
+  <selected>1</selected>
+  <filter>
+   <object-classes>
+    <object-class>person</object-class>
+    <object-class>group</object-class>
+   </object-classes>
+   <containers>
+    <exclusions/>
+    <inclusions>
+     <inclusion></inclusion>
+    </inclusions>
+   </containers>
+  </filter>
+  <allowed-operations>7</allowed-operations>
+  <current>
+   <batch-number>1</batch-number>
+   <sequence-number>0</sequence-number>
+  </current>
+  <last-successful-batch>0</last-successful-batch>
+  <filter-hints>
+   <object-classes>
+    <object-class>
+     <name>person</name>
+     <hierarchy>
+      <object-class>person</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+    <object-class>
+     <name>group</name>
+     <hierarchy>
+      <object-class>group</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+   </object-classes>
+  </filter-hints>
+ </partition>
+</ma-partition-data>
+
+ <ma-run-data>
+ <run-configuration>
+  <id>{7EF3F68F-A90B-42CF-9CD5-8DDD0BC0C348}</id>
+  <name>Delta Synchronisation</name>
+  <creation-time>2009-01-14 23:06:09.720</creation-time>
+  <version>3</version>
+  <last-modification-time>2009-03-13 05:27:04.947</last-modification-time>
+  <configuration><step><step-type type="apply-rules"><apply-rules-subtype>apply-pending</apply-rules-subtype></step-type><threshold></threshold><partition>{E22504E8-AC44-4920-9038-D88A8524FBED}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{25805D81-D049-4A47-8E2E-7C8A5924CD33}</id>
+  <name>Full Import</name>
+  <creation-time>2009-01-13 00:19:18.370</creation-time>
+  <version>3</version>
+  <last-modification-time>2009-03-13 05:27:04.963</last-modification-time>
+  <configuration><step><step-type type="full-import"><import-subtype>to-cs</import-subtype></step-type><threshold></threshold><partition>{E22504E8-AC44-4920-9038-D88A8524FBED}</partition><custom-data><run-config><input-file>import.txt</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{82FFAC6C-9F80-47F1-94AB-7F8B6D4766CA}</id>
+  <name>Full Import and Delta Synchronization</name>
+  <creation-time>2009-01-13 00:19:18.383</creation-time>
+  <version>3</version>
+  <last-modification-time>2009-03-13 05:27:04.963</last-modification-time>
+  <configuration><step><step-type type="full-import"></step-type><threshold></threshold><partition>{E22504E8-AC44-4920-9038-D88A8524FBED}</partition><custom-data><run-config><input-file>import.txt</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{24A080C3-61DF-44CF-8AD1-BA843FDCFCE6}</id>
+  <name>Full Import and Full Synchronization</name>
+  <creation-time>2009-01-13 00:19:18.383</creation-time>
+  <version>3</version>
+  <last-modification-time>2009-03-13 05:27:04.963</last-modification-time>
+  <configuration><step><step-type type="full-import-reevaluate-rules"></step-type><threshold></threshold><partition>{E22504E8-AC44-4920-9038-D88A8524FBED}</partition><custom-data><run-config><input-file>import.txt</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{DC53F288-2DC7-4BD2-A145-594174E866DE}</id>
+  <name>Full Synchronization</name>
+  <creation-time>2009-01-13 00:19:18.383</creation-time>
+  <version>3</version>
+  <last-modification-time>2009-03-13 05:27:04.963</last-modification-time>
+  <configuration><step><step-type type="apply-rules"><apply-rules-subtype>reevaluate-flow-connectors</apply-rules-subtype></step-type><threshold></threshold><partition>{E22504E8-AC44-4920-9038-D88A8524FBED}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+</ma-run-data>
+
+ <capabilities-mask>4b800</capabilities-mask>
+ <export-type>3</export-type>
+ <dn-construction><attribute>ID</attribute></dn-construction>
+ <password-sync><maximum-retry-count>10</maximum-retry-count><retry-interval>60</retry-interval><allow-low-security>0</allow-low-security></password-sync>
+</ma-data>
+
+</saved-ma-configuration>

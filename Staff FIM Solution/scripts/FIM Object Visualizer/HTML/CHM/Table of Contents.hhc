@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="Window Styles" value="0x800225">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Welcome">
+		<param name="Local" value="..\Index.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="FIM Portal">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="FIM Schema">
+			<param name="Local" value="..\UNIFY.Schema.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="FIM General Policy">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Configuration">
+				<param name="Local" value="..\UNIFY.Configuration.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Search Scopes">
+				<param name="Local" value="..\UNIFY.SearchScopes.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Workflows">
+				<param name="Local" value="..\UNIFY.Workflow.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Sets">
+				<param name="Local" value="..\UNIFY.Sets.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="MPRs">
+				<param name="Local" value="..\UNIFY.MPRs.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Housekeeping">
+				<param name="Local" value="..\UNIFY.Housekeeping.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Event Broker">
+				<param name="Local" value="..\UNIFY.EventBroker.htm">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Agents">
+					<param name="Local" value="..\EventBroker.Agents.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Operations">
+					<param name="Local" value="..\EventBroker.Operations.htm">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Other">
+					<param name="Local" value="..\EventBroker.Other.htm">
+					</OBJECT>
+			</UL>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="FIM CSO Policy">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Entitlements">
+				<param name="Local" value="..\CSO.Entitlements.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Groups">
+				<param name="Local" value="..\CSO.Groups.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Roles">
+				<param name="Local" value="..\CSO.Roles.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Users">
+				<param name="Local" value="..\CSO.Users.htm">
+				</OBJECT>
+		</UL>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="FIM Synchronisation">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Metaverse Schema">
+			<param name="Local" value="..\MetaverseSchema.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Metaverse Schema Detail">
+			<param name="Local" value="..\metaverse.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="MA Attributes">
+			<param name="Local" value="..\ManagementAgentAttributes.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Active Schema">
+			<param name="Local" value="..\ActiveSchema.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="MAs">
+			<param name="Local" value="..\ManagementAgents.htm">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="FIM MA Schema">
+				<param name="Local" value="..\FIMMA.Schema.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="FIM MA Detail">
+				<param name="Local" value="..\FIM Portal.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="FIM Replay MA Detail">
+				<param name="Local" value="..\Replay FIM Portal.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="CAPS MA Detail">
+				<param name="Local" value="..\CAPS.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="CAPS Payroll (ECMA)">
+				<param name="Local" value="..\CAPS Payroll.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Contacts (Students)">
+				<param name="Local" value="..\Contacts.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Users and Groups (Students)">
+				<param name="Local" value="..\Users and Groups.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="NASS MA Detail">
+				<param name="Local" value="..\NASS.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="PHRIS MA Detail">
+				<param name="Local" value="..\PHRIS.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Staff AD MA Detail">
+				<param name="Local" value="..\Staff.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ADS Spreadsheet MA Detail (Legacy)">
+				<param name="Local" value="..\CSO ADS.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Site MA Detail (Legacy)">
+				<param name="Local" value="..\Site.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ADLDS MA Detail">
+				<param name="Local" value="..\CSODBB LDS.htm">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Identity Broker">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Adapters">
+				<param name="Local" value="..\AdapterEngine.Extensibility.Config.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Connectors">
+				<param name="Local" value="..\ConnectorEngine.Extensibility.Config.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Agents">
+				<param name="Local" value="..\IdentityBroker.Agents.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Other">
+				<param name="Local" value="..\Other.Extensibility.Config.htm">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Declarative Rules">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Provisioning Policy">
+				<param name="Local" value="..\ProvisioningPolicy.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Replication">
+				<param name="Local" value="..\Replication.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Sync Rules">
+				<param name="Local" value="..\UNIFY.SyncRules.htm">
+				</OBJECT>
+		</UL>
+	</UL>
+</UL>
+</BODY></HTML>

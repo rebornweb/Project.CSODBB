@@ -1,0 +1,21 @@
+<SynchronizationRule>
+    <ConnectedSystemScope><scoping><scope><csAttribute>csodbbPersonType</csAttribute><csOperator>EQUAL</csOperator><csValue>Student</csValue></scope></scoping></ConnectedSystemScope>
+    <OutboundScope />
+    <RelationshipCriteria><conditions><condition><ilmAttribute>accountName</ilmAttribute><csAttribute>name</csAttribute></condition></conditions></RelationshipCriteria>
+    <InitialFlow />
+    <PersistentFlow><import-flow><src><attr>csodbbCeIder</attr></src><dest>csoCeIder</dest><scoping /></import-flow></PersistentFlow>
+</SynchronizationRule>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

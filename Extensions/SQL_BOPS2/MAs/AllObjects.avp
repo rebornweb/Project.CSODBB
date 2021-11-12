@@ -1,0 +1,21 @@
+ObjectType:person
+ID:S980350
+physicalDeliveryOfficeName:OCCCP
+Name:Karen Stephenson
+BaseID:S980350
+
+ObjectType:person
+ID:S030074
+physicalDeliveryOfficeName:OCCCP
+Name:Sallyanne Butel
+BaseID:S030074
+
+ObjectType:group
+ID:O220002
+person:S030074
+person:S980350
+physicalDeliveryOfficeName:
+Name:Mission Services Administration Assistant-G
+GroupType:base
+BaseID:O220002
+

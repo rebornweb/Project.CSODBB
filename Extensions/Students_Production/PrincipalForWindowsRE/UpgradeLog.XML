@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="PrincipalForWindowsRE">
+</Property><Property Name="Solution File" Value="D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\PrincipalForWindowsRE\PrincipalForWindowsRE.sln">
+</Property><Property Name="User Options File" Value="D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\PrincipalForWindowsRE\PrincipalForWindowsRE.suo">
+</Property><Property Name="Date" Value="Wednesday, 13 July 2011">
+</Property><Property Name="Time" Value="15:53 PM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="PrincipalForWindowsRE.sln" Description="File successfully backed up as D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\PrincipalForWindowsRE\Backup\PrincipalForWindowsRE.sln">
+</Event><Event ErrorLevel="0" Project="" Source="PrincipalForWindowsRE.suo" Description="File successfully backed up as D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\PrincipalForWindowsRE\Backup\PrincipalForWindowsRE.suo">
+</Event><Event ErrorLevel="0" Project="PrincipalForWindowsRE" Source="PrincipalForWindowsRE.csproj" Description="Project file successfully backed up as D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\PrincipalForWindowsRE\Backup\PrincipalForWindowsRE.csproj">
+</Event><Event ErrorLevel="0" Project="PrincipalForWindowsRE" Source="PrincipalForWindowsRE.csproj.user" Description="Project user file successfully backed up as D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\PrincipalForWindowsRE\Backup\PrincipalForWindowsRE.csproj.user">
+</Event><Event ErrorLevel="0" Project="PrincipalForWindowsRE" Source="AssemblyInfo.cs" Description="File successfully backed up as D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\PrincipalForWindowsRE\Backup\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="PrincipalForWindowsRE" Source="PrincipalForWindowsRE.cs" Description="File successfully backed up as D:\UNIFY\UNIFY Consulting\DBB CSO\Human Edge Migration\software\CSO prod code copy\PrincipalForWindowsRE\Backup\PrincipalForWindowsRE.cs">
+</Event><Event ErrorLevel="0" Project="PrincipalForWindowsRE" Source="PrincipalForWindowsRE.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="PrincipalForWindowsRE" Source="PrincipalForWindowsRE.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="PrincipalForWindowsRE.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="PrincipalForWindowsRE.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="PrincipalForWindowsRE" Source="PrincipalForWindowsRE.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

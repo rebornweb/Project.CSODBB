@@ -1,0 +1,677 @@
+﻿<HTML xmlns:user="http://www.myserver.com/user" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+  <HEAD>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <TITLE>MAConfigurationViewer 1.0 - </TITLE>
+    <STYLE type="text/css">
+       @page FullPage{margin-left:1.0in;margin-right:0.5in}
+
+        h1,h3{margin: 0px; padding: 0px;}
+        #S1 {width: 300px;}
+        h1 {color: #AAAAAA; font-size: 500%;}
+        h3 {color: #AAAAAA; font-size: 500%;}
+        
+        table{page:FullPage;width:575px;}
+        .tableClass1{page:FullPage; width:300px; border: medium ;}
+        .trtableClass1{width:375px;}
+        .tdtableClass1{width:165px;}
+
+        .tableMain{page:FullPage; width:540px;  FONT-FAMILY:Verdana; FONT-SIZE: 70%;}
+
+        .thTitle{background-color:#666666; color: #FFFFFF; FONT-SIZE: 70%;}
+        .thAttributeFlow{background-color:#bbbbbb;  FONT-SIZE: 70%;}
+        .thAttributeFlow1{background-color:#dddddd; FONT-SIZE: 70%;}
+        .thAttributeFlow2{background-color:#dddddd; FONT-SIZE: 70%; width:50px}
+
+        .tableMenu{FONT-SIZE: 300%; FONT-FAMILY: Verdana;  width:575px}
+        .tdMenu{border-right: 1px solid #999999;text-align:center;}
+        .trMenu{background-color:#ffffff;}
+
+        .tableClass2{cellspacing:'0' cellpadding:'0'; border='1'; width:100% FONT-SIZE: 80%; FONT-FAMILY: Verdana;  border-color: #eeeeee; border-style:solid; PADDING: .25em;}
+        .tableClass3{width:50px;}
+        .tableClass4{width:575px;vertical-align:left}
+        .tableClass5{vertical-align:middle; width:375px}
+        .tdLeftSection{background-color:#eeeeee; FONT-SIZE: 70%;}
+        
+
+        A{color:#0000FF; text-decoration: none;}
+        a:active {text-decoration: underline;}
+        a:hover {text-decoration: underline;}
+        img {border: none; }
+        .imgbanner {border: none; width:10px;}
+        .my .ct p {padding: 0px 0px 3px 0px;}
+        #btnsearch {border: none; margin-left: 95px; margin-top: -25px;}
+        body,div,span,p,ul,td,th,input,select,textarea,button {font-family: Arial, sans-serif; font-size: 70%;}
+        td{font-size: 70%;word-wrap:break-word;}
+
+
+        .tdClass1{font-size: 70%; width:400px; word-wrap:break-word;}
+        .tdClass2{font-size: 70%; width:350px; word-wrap:break-word;}
+        .tdClass3{font-size: 70%; width:175px; word-wrap:break-word;}
+        .tdClass4{font-size: 70%; width:20px; word-wrap:break-word;}
+        .tdClass5{font-size: 70%; width:350px; word-wrap:break-word;}
+        .tdClass6{font-family: Symbol;font-size: 70%; color:blue; text-align:center; width:8%;}
+        .tdClass7{font-size: 70%; word-wrap:break-word; width:350px;}
+
+        body {page:FullPage;}
+        br.clear, .clrbth {clear: both;}
+        hr {height: 1px; padding: 0px; border:1px solid; color:#BBBBBB; }
+        ol {list-style-position: outside; margin: -2px 0px 0px 23px;}
+        li {list-style-position: outside; margin: -2px 0px 0px 12px; padding: 0; margin-left: 20px;}
+
+        
+
+       </STYLE>
+  </HEAD>
+  <BODY><script>
+//scrolling TOP Link to navigate...
+var displayed="<nobr><b>[Top]</b></nobr>"
+var logolink='javascript:window.scrollTo(0,0)'
+var ie4 =document.all
+
+if (ie4)
+document.write('<span id="logo" style="position:absolute;top:-300;z-index:100">'+displayed+'</span>')
+
+function staticit()
+{
+crosslogo.style.left=document.body.scrollLeft+document.body.clientWidth-crosslogo.offsetWidth-10
+crosslogo.style.top=document.body.scrollTop+document.body.clientHeight-crosslogo.offsetHeight-10
+}
+
+function inserttext()
+{ 
+    if (ie4)
+    crosslogo=document.all.logo
+    if (ie4)
+    window.onscroll=staticit
+
+    crosslogo.innerHTML='<a href="'+logolink+'">'+displayed+'</a>'
+    crosslogo.style.left=document.body.clientWidth-crosslogo.offsetWidth-10
+    crosslogo.style.top=document.body.clientHeight-crosslogo.offsetHeight-10
+
+}
+
+if(ie4)
+{
+    window.onload=inserttext
+    window.onresize=new Function("window.location.reload()")
+}
+
+</script><TABLE cellpadding="0" cellspacing="0" class="tableMain">
+      <TR>
+        <TD>
+          <H1>MAConfigurationViewer 1.0 </H1>
+        </TD>
+      </TR>
+      <TR>
+        <TD>
+          <TABLE class="tableMenu">
+            <Tr class="trMenu">
+              <Td class="tdMenu"><b><A href="#properties"> Properties </A></b></Td>
+              <Td class="tdMenu"><b><A href="#AdForest"> AD Forest Connection Information </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Part1"> Partition Information </A></b></Td>
+              <Td class="tdMenu"><b><A href="#SelObjects"> Selected Object Types </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Attri1"> Selected Attributes </A></b></Td>
+              <Td class="tdMenu"><b><A href="#connectorfilters"> Connector Filters </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Joinandprojection"> Join and Projection Rules </A></b></Td>
+              <Td class="tdMenu"><b><A href="#AttributeFlow"> Attribute Flow </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Deprovisioning"> Deprovisioning </A></b></Td>
+              <Td class="tdMenu"><b><A href="#MAExDLL"> MA Extensions </A></b></Td>
+              <Td class="tdMenu"><b><A href="#RSofMA"> Run Profiles</A></b></Td>
+            </Tr>
+          </TABLE>
+        </TD>
+      </TR>
+      <TR>
+        <TD>
+          <h3>Prod AD Refresh Management Agent </h3>
+          <hr>
+        </TD>
+      </TR>
+      <TR>
+        <TD Align="center"></TD>
+      </TR>
+      <TR>
+        <TD>
+          <TABLE cellspacing="0" cellpadding="0" border="1" bordercolordark="#ffffff" class="tableClass2">
+            <TR>
+              <TH class="thTitle" colspan="2">
+                        Management Agent's Properties
+                </TH>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Properties</b></TD>
+              <TD align="left"><a NAME="#properties"></a><table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <td><b>MA Type: </b></td>
+                    <td> Active Directory </td>
+                  </tr>
+                  <tr>
+                    <td><b>Description: </b></td>
+                    <td class="tdClass3">Test purposes only - update group.member, group.info and group.description from Production LDIF extract</td>
+                  </tr>
+                  <tr>
+                    <td><b>Creation Time: </b></td>
+                    <td>2012-09-10 08:04:47.437</td>
+                  </tr>
+                  <tr>
+                    <td><b>Last Modification Time: </b></td>
+                    <td>2012-10-15 00:03:35.017</td>
+                  </tr>
+                  <tr>
+                    <td><b> Run in Separate Process:</b></td>
+                    <td> No </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>AD Forest Connection Information </b></TD>
+              <TD align="left"><a NAME="#AdForest"></a><table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <th colspan="2" class="thAtrributeFlow1"><b>Forest Connection Information</b></th>
+                  </tr>
+                  <tr>
+                    <td>Forest name:</td>
+                    <td>DBB</td>
+                  </tr>
+                  <tr>
+                    <td>User name:</td>
+                    <td>svcFIM_MA</td>
+                  </tr>
+                  <tr>
+                    <td>Domain:</td>
+                    <td>DBB</td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Partition Information </b></TD>
+              <TD align="left"><a NAME="#Part1"></a><table border="1" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                  <tr>
+                    <td><b>Partition Name: </b>DC=dbb,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table class="tableClass4" id="1" border="1" cellspacing="0" bordercolordark="#ffffff">
+                        <tr>
+                          <td><b>Preferred Domain Controllers: </b></td>
+                          <td> None </td>
+                        </tr>
+                        <tr>
+                          <td><b>Last domain controller used: </b></td>
+                          <td> None </td>
+                        </tr>
+                        <tr>
+                          <td><b>Only use preferred domain controller: </b></td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td><b>Sign and encrypt LDAP traffic:</b></td>
+                          <td> Yes </td>
+                        </tr>
+                        <tr>
+                          <td><b> Use default credentials </b></td>
+                          <td> Yes </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                        <tr>
+                          <td colspan="2"><b> Selected Containers to Synchronize </b></td>
+                        </tr>
+                        <tr>
+                          <td><b> Include </b></td>
+                          <td><b> Container </b></td>
+                        </tr>
+                        <tr>
+                          <td> Exclude </td>
+                          <td>CN=Configuration,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Exclude </td>
+                          <td>DC=DomainDnsZones,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Exclude </td>
+                          <td>DC=ForestDnsZones,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Include </td>
+                          <td>OU=Diocese,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Include </td>
+                          <td>OU=Groups,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Include </td>
+                          <td>OU=Managed Groups,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Include </td>
+                          <td>CN=Managed Service Accounts,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Include </td>
+                          <td>OU=Managed User Accounts,DC=dbb,DC=local</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table class="tableClass4" id="1" border="1" cellspacing="0" bordercolordark="#ffffff">
+                        <tr>
+                          <th colspan="2">Password Synchronization</th>
+                        </tr>
+                        <tr>
+                          <td>Enable partition as a password synchronization source:</td>
+                          <td>No</td>
+                        </tr>
+                        <tr>
+                          <td>Maximum number of password changes for a 24 hour period</td>
+                          <td>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <td class="tdLeftSection"><b>Selected Object Types  </b></td>
+              <td align="left" class="tdClass5"><a NAME="#SelObjects"></a><li>container</li>
+                <li>domainDNS</li>
+                <li>group</li>
+                <li>organizationalUnit</li>
+                <li>user</li>
+              </td>
+            </TR>
+            <TR>
+              <TD align="left" class="tdLeftSection"><b>Selected Attributes </b></TD>
+              <td class="tdClass2"><a NAME="#Attri1"></a><b> Attribute(s) </b><br><br><li>description</li>
+                <li>displayName</li>
+                <li>info</li>
+                <li>mail</li>
+                <li>mailNickname</li>
+                <li>member</li>
+                <li>objectSid</li>
+                <li>sAMAccountName</li>
+              </td>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Connector Filters </b></TD>
+              <TD align="left"><a NAME="#connectorfilters"></a> None </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Join and Projection Rules </b></TD>
+              <TD align="left"><a NAME="#Joinandprojection"></a><br><TABLE align="left" class="tableClass4">
+                  <TR>
+                    <TD>
+                      <table cellpadding="0" cellspacing="0" width="100%" align="left" class="tableClass4">
+                        <tr>
+                          <td colspan="3"><b>Join Rules: </b></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" width="100%" align="center">
+                              <tr>
+                                <th class="thAttributeFlow1" align="center">Data Source Object</th>
+                                <th class="thAttributeFlow1" align="center">Mapping</th>
+                                <th class="thAttributeFlow1" align="center">Metaverse Object</th>
+                                <th class="thAttributeFlow1" align="center">Join Resolution Extension</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>group</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>groupReload</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">accountName</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>user</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>person</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">accountName</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table><br></TD>
+                  </TR>
+                  <TR>
+                    <TD>
+                      <table width="100%" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                        <tr>
+                          <td><b>Projection Rules:</b></td>
+                        </tr>
+                        <tr>
+                          <TD> None </TD>
+                        </tr>
+                      </table>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Attribute Flow</b></TD>
+              <TD align="left"><a NAME="#AttributeFlow"></a><br><TABLE align="left" class="tableClass4">
+                  <TR>
+                    <TD>
+                      <TABLE cellspacing="0" cellpadding="0" border="1" bordercolorlight="#ffffff" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                        <TR>
+                          <TH class="thAttributeFlow" colspan="4"><b>Export Attribute Flow </b></TH>
+                        </TR>
+                        <TR>
+                          <TD>
+                            <table cellspacing="0" cellpadding="0" border="1" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                              <tr>
+                                <th class="thAttributeFlow1">Data Source Attribute</th>
+                                <th class="thAttributeFlow1">To </th>
+                                <th class="thAttributeFlow1">Metaverse Attribute</th>
+                                <th class="thAttributeFlow1">Mapping Type</th>
+                                <th class="thAttributeFlow1">Allow Nulls</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>group</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>groupReload</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">member</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">member</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">description</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">description</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">info</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">info</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                            </table>
+                          </TD>
+                        </TR>
+                      </TABLE>
+                    </TD>
+                  </TR>
+                  <TR>
+                    <TD><br><TABLE cellspacing="0" border="1" cellpadding="0" bordercolorlight="#ffffff" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                        <TR>
+                          <TH class="thAttributeFlow" colspan="4"><b>Import Attribute Flow </b></TH>
+                        </TR>
+                        <TR>
+                          <TD>
+                            <table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" class="tableClass4">
+                              <tr>
+                                <th class="thAttributeFlow1">Data Source Attribute</th>
+                                <th class="thAttributeFlow1">To </th>
+                                <th class="thAttributeFlow1">Metaverse Attribute</th>
+                                <th class="thAttributeFlow1">Mapping Type</th>
+                                <th class="thAttributeFlow1">Precedence Order</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>group</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>groupReload</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                            </table>
+                          </TD>
+                        </TR>
+                      </TABLE>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Deprovisioning </b></TD>
+              <TD align="left"><a NAME="#Deprovisioning"></a><table cellpadding="0" cellspacing="0" bordercolordark="#ffffff" align="left" border="1" class="tableClass4">
+                  <tr>
+                    <td><b> Deprovision option: </b></td>
+                    <td> Make them disconnectors </td>
+                  </tr>
+                  <tr>
+                    <td><b> Do not recall attributes contributed by an object from this MA when it is disconnected:</b></td>
+                    <td> No </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>MA Extensions  </b></TD>
+              <TD align="left"><a NAME="#MAExDLL"></a><table cellpadding="0" cellspacing="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <td width="50%"><b>DLL:</b></td>
+                    <td width="50%"> None </td>
+                  </tr>
+                  <tr>
+                    <td width="50%"><b> Enable Password Management:</b></td>
+                    <td width="50%"> No </td>
+                  </tr>
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2">Partitions</th>
+                  </tr>
+                  <tr>
+                    <th class="thAttributeFlow1"><b>Partition Name </b></th>
+                    <th class="thAttributeFlow1"><b>Display Name</b></th>
+                  </tr>
+                  <tr>
+                    <td>DC=dbb,DC=local</td>
+                    <td>None</td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Run Profiles</b></TD>
+              <td class="tdClass2" align="left"><a NAME="#RSofMA"></a><table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Delta Import</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=dbb,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Delta Sync</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=dbb,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Export</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Export </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=dbb,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Full Import</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=dbb,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Full Sync</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=dbb,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+              </td>
+            </TR>
+          </TABLE>
+        </TD>
+      </TR>
+    </TABLE>
+  </BODY>
+</HTML>

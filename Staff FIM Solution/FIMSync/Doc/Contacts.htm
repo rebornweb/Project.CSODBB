@@ -1,0 +1,1456 @@
+﻿<HTML xmlns:user="http://www.myserver.com/user" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+  <HEAD>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <TITLE>MAConfigurationViewer 1.0 - </TITLE>
+    <STYLE type="text/css">
+       @page FullPage{margin-left:1.0in;margin-right:0.5in}
+
+        h1,h3{margin: 0px; padding: 0px;}
+        #S1 {width: 300px;}
+        h1 {color: #AAAAAA; font-size: 500%;}
+        h3 {color: #AAAAAA; font-size: 500%;}
+        
+        table{page:FullPage;width:575px;}
+        .tableClass1{page:FullPage; width:300px; border: medium ;}
+        .trtableClass1{width:375px;}
+        .tdtableClass1{width:165px;}
+
+        .tableMain{page:FullPage; width:540px;  FONT-FAMILY:Verdana; FONT-SIZE: 70%;}
+
+        .thTitle{background-color:#666666; color: #FFFFFF; FONT-SIZE: 70%;}
+        .thAttributeFlow{background-color:#bbbbbb;  FONT-SIZE: 70%;}
+        .thAttributeFlow1{background-color:#dddddd; FONT-SIZE: 70%;}
+        .thAttributeFlow2{background-color:#dddddd; FONT-SIZE: 70%; width:50px}
+
+        .tableMenu{FONT-SIZE: 300%; FONT-FAMILY: Verdana;  width:575px}
+        .tdMenu{border-right: 1px solid #999999;text-align:center;}
+        .trMenu{background-color:#ffffff;}
+
+        .tableClass2{cellspacing:'0' cellpadding:'0'; border='1'; width:100% FONT-SIZE: 80%; FONT-FAMILY: Verdana;  border-color: #eeeeee; border-style:solid; PADDING: .25em;}
+        .tableClass3{width:50px;}
+        .tableClass4{width:575px;vertical-align:left}
+        .tableClass5{vertical-align:middle; width:375px}
+        .tdLeftSection{background-color:#eeeeee; FONT-SIZE: 70%;}
+        
+
+        A{color:#0000FF; text-decoration: none;}
+        a:active {text-decoration: underline;}
+        a:hover {text-decoration: underline;}
+        img {border: none; }
+        .imgbanner {border: none; width:10px;}
+        .my .ct p {padding: 0px 0px 3px 0px;}
+        #btnsearch {border: none; margin-left: 95px; margin-top: -25px;}
+        body,div,span,p,ul,td,th,input,select,textarea,button {font-family: Arial, sans-serif; font-size: 70%;}
+        td{font-size: 70%;word-wrap:break-word;}
+
+
+        .tdClass1{font-size: 70%; width:400px; word-wrap:break-word;}
+        .tdClass2{font-size: 70%; width:350px; word-wrap:break-word;}
+        .tdClass3{font-size: 70%; width:175px; word-wrap:break-word;}
+        .tdClass4{font-size: 70%; width:20px; word-wrap:break-word;}
+        .tdClass5{font-size: 70%; width:350px; word-wrap:break-word;}
+        .tdClass6{font-family: Symbol;font-size: 70%; color:blue; text-align:center; width:8%;}
+        .tdClass7{font-size: 70%; word-wrap:break-word; width:350px;}
+
+        body {page:FullPage;}
+        br.clear, .clrbth {clear: both;}
+        hr {height: 1px; padding: 0px; border:1px solid; color:#BBBBBB; }
+        ol {list-style-position: outside; margin: -2px 0px 0px 23px;}
+        li {list-style-position: outside; margin: -2px 0px 0px 12px; padding: 0; margin-left: 20px;}
+
+        
+
+       </STYLE>
+  </HEAD>
+  <BODY><script>
+//scrolling TOP Link to navigate...
+var displayed="<nobr><b>[Top]</b></nobr>"
+var logolink='javascript:window.scrollTo(0,0)'
+var ie4 =document.all
+
+if (ie4)
+document.write('<span id="logo" style="position:absolute;top:-300;z-index:100">'+displayed+'</span>')
+
+function staticit()
+{
+crosslogo.style.left=document.body.scrollLeft+document.body.clientWidth-crosslogo.offsetWidth-10
+crosslogo.style.top=document.body.scrollTop+document.body.clientHeight-crosslogo.offsetHeight-10
+}
+
+function inserttext()
+{ 
+    if (ie4)
+    crosslogo=document.all.logo
+    if (ie4)
+    window.onscroll=staticit
+
+    crosslogo.innerHTML='<a href="'+logolink+'">'+displayed+'</a>'
+    crosslogo.style.left=document.body.clientWidth-crosslogo.offsetWidth-10
+    crosslogo.style.top=document.body.clientHeight-crosslogo.offsetHeight-10
+
+}
+
+if(ie4)
+{
+    window.onload=inserttext
+    window.onresize=new Function("window.location.reload()")
+}
+
+</script><TABLE cellpadding="0" cellspacing="0" class="tableMain">
+      <TR>
+        <TD>
+          <H1>MAConfigurationViewer 1.0 </H1>
+        </TD>
+      </TR>
+      <TR>
+        <TD>
+          <TABLE class="tableMenu">
+            <Tr class="trMenu">
+              <Td class="tdMenu"><b><A href="#properties"> Properties </A></b></Td>
+              <Td class="tdMenu"><b><A href="#AdForest"> AD Forest Connection Information </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Part1"> Partition Information </A></b></Td>
+              <Td class="tdMenu"><b><A href="#SelObjects"> Selected Object Types </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Attri1"> Selected Attributes </A></b></Td>
+              <Td class="tdMenu"><b><A href="#connectorfilters"> Connector Filters </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Joinandprojection"> Join and Projection Rules </A></b></Td>
+              <Td class="tdMenu"><b><A href="#AttributeFlow"> Attribute Flow </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Deprovisioning"> Deprovisioning </A></b></Td>
+              <Td class="tdMenu"><b><A href="#MAExDLL"> MA Extensions </A></b></Td>
+              <Td class="tdMenu"><b><A href="#RSofMA"> Run Profiles</A></b></Td>
+            </Tr>
+          </TABLE>
+        </TD>
+      </TR>
+      <TR>
+        <TD>
+          <h3>Contacts Management Agent </h3>
+          <hr>
+        </TD>
+      </TR>
+      <TR>
+        <TD Align="center"></TD>
+      </TR>
+      <TR>
+        <TD>
+          <TABLE cellspacing="0" cellpadding="0" border="1" bordercolordark="#ffffff" class="tableClass2">
+            <TR>
+              <TH class="thTitle" colspan="2">
+                        Management Agent's Properties
+                </TH>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Properties</b></TD>
+              <TD align="left"><a NAME="#properties"></a><table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <td><b>MA Type: </b></td>
+                    <td> Active Directory </td>
+                  </tr>
+                  <tr>
+                    <td><b>Description: </b></td>
+                    <td class="tdClass3">CSO FIM V2: AD managemenet for contacts and all other users (excl. staff and students)</td>
+                  </tr>
+                  <tr>
+                    <td><b>Creation Time: </b></td>
+                    <td>2012-07-27 06:28:00.863</td>
+                  </tr>
+                  <tr>
+                    <td><b>Last Modification Time: </b></td>
+                    <td>2017-04-21 01:46:14.822</td>
+                  </tr>
+                  <tr>
+                    <td><b> Run in Separate Process:</b></td>
+                    <td> No </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>AD Forest Connection Information </b></TD>
+              <TD align="left"><a NAME="#AdForest"></a><table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <th colspan="2" class="thAtrributeFlow1"><b>Forest Connection Information</b></th>
+                  </tr>
+                  <tr>
+                    <td>Forest name:</td>
+                    <td>UNIFYFIM</td>
+                  </tr>
+                  <tr>
+                    <td>User name:</td>
+                    <td>adsync</td>
+                  </tr>
+                  <tr>
+                    <td>Domain:</td>
+                    <td>UNIFYFIM</td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Partition Information </b></TD>
+              <TD align="left"><a NAME="#Part1"></a><table border="1" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                  <tr>
+                    <td><b>Partition Name: </b>DC=unifyfim,DC=unifytest,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table class="tableClass4" id="1" border="1" cellspacing="0" bordercolordark="#ffffff">
+                        <tr>
+                          <td><b>Preferred Domain Controllers: </b></td>
+                          <td> None </td>
+                        </tr>
+                        <tr>
+                          <td><b>Last domain controller used: </b></td>
+                          <td>CENTRELINK-FIM.unifyfim.unifytest.local</td>
+                        </tr>
+                        <tr>
+                          <td><b>Only use preferred domain controller: </b></td>
+                          <td> No </td>
+                        </tr>
+                        <tr>
+                          <td><b>Sign and encrypt LDAP traffic:</b></td>
+                          <td> Yes </td>
+                        </tr>
+                        <tr>
+                          <td><b> Use default credentials </b></td>
+                          <td> Yes </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                        <tr>
+                          <td colspan="2"><b> Selected Containers to Synchronize </b></td>
+                        </tr>
+                        <tr>
+                          <td><b> Include </b></td>
+                          <td><b> Container </b></td>
+                        </tr>
+                        <tr>
+                          <td> Exclude </td>
+                          <td>OU=Bishops Legacy Exchange 2003,OU=Contacts,DC=unifyfim,DC=unifytest,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Exclude </td>
+                          <td>OU=Centacare,OU=Contacts,DC=unifyfim,DC=unifytest,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Exclude </td>
+                          <td>OU=Email Forwarders,OU=Contacts,DC=unifyfim,DC=unifytest,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Exclude </td>
+                          <td>OU=Legacy Exchange 5.5,OU=Contacts,DC=unifyfim,DC=unifytest,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Exclude </td>
+                          <td>OU=MiMail,OU=Contacts,DC=unifyfim,DC=unifytest,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Exclude </td>
+                          <td>OU=MyMail Old,OU=Contacts,DC=unifyfim,DC=unifytest,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Exclude </td>
+                          <td>OU=Test,OU=Contacts,DC=unifyfim,DC=unifytest,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Exclude </td>
+                          <td>DC=DomainDnsZones,DC=unifyfim,DC=unifytest,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Exclude </td>
+                          <td>DC=ForestDnsZones,DC=unifyfim,DC=unifytest,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Include </td>
+                          <td>OU=Contacts,DC=unifyfim,DC=unifytest,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Include </td>
+                          <td>OU=Staff,OU=Disabled User Accounts,OU=Global Accounts,DC=unifyfim,DC=unifytest,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Include </td>
+                          <td>OU=Staff,OU=Users,OU=Diocese,DC=unifyfim,DC=unifytest,DC=local</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table class="tableClass4" id="1" border="1" cellspacing="0" bordercolordark="#ffffff">
+                        <tr>
+                          <th colspan="2">Password Synchronization</th>
+                        </tr>
+                        <tr>
+                          <td>Enable partition as a password synchronization source:</td>
+                          <td>No</td>
+                        </tr>
+                        <tr>
+                          <td>Maximum number of password changes for a 24 hour period</td>
+                          <td>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <td class="tdLeftSection"><b>Selected Object Types  </b></td>
+              <td align="left" class="tdClass5"><a NAME="#SelObjects"></a><li>contact</li>
+                <li>container</li>
+                <li>domainDNS</li>
+                <li>organizationalUnit</li>
+                <li>user</li>
+              </td>
+            </TR>
+            <TR>
+              <TD align="left" class="tdLeftSection"><b>Selected Attributes </b></TD>
+              <td class="tdClass2"><a NAME="#Attri1"></a><b> Attribute(s) </b><br><br><li>cn</li>
+                <li>department</li>
+                <li>description</li>
+                <li>displayName</li>
+                <li>employeeID</li>
+                <li>employeeNumber</li>
+                <li>extensionAttribute1</li>
+                <li>extensionAttribute10</li>
+                <li>extensionAttribute11</li>
+                <li>extensionAttribute13</li>
+                <li>extensionAttribute15</li>
+                <li>extensionAttribute9</li>
+                <li>givenName</li>
+                <li>info</li>
+                <li>initials</li>
+                <li>mail</li>
+                <li>mailNickname</li>
+                <li>msExchHideFromAddressLists</li>
+                <li>msExchPoliciesIncluded</li>
+                <li>objectSid</li>
+                <li>physicalDeliveryOfficeName</li>
+                <li>sAMAccountName</li>
+                <li>showInAddressBook</li>
+                <li>sn</li>
+                <li>st</li>
+                <li>street</li>
+                <li>streetAddress</li>
+                <li>targetAddress</li>
+                <li>title</li>
+              </td>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Connector Filters </b></TD>
+              <TD align="left"><a NAME="#connectorfilters"></a><table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                  <tr>
+                    <th class="thAttributeFlow1">Data Source Object Type</th>
+                    <th class="thAttributeFlow1">Filter Type</th>
+                    <th class="thAttributeFlow1">Filter </th>
+                  </tr>
+                  <tr>
+                    <td class="tdClass3">user</td>
+                    <td class="tdClass3">declared</td>
+                    <td>
+                      <table align="center" cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" class="tableClass5">
+                        <tr>
+                          <th class="thAttributeFlow1">Attribute</th>
+                          <th class="thAttributeFlow1">Operator</th>
+                          <th class="thAttributeFlow1">Value</th>
+                        </tr>
+                        <tr>
+                          <td class="tdClass3">employeeNumber</td>
+                          <td class="tdClass3">substring-start</td>
+                          <td class="tdClass3">B</td>
+                        </tr>
+                      </table>
+                      <table align="center" cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" class="tableClass5">
+                        <tr>
+                          <th class="thAttributeFlow1">Attribute</th>
+                          <th class="thAttributeFlow1">Operator</th>
+                          <th class="thAttributeFlow1">Value</th>
+                        </tr>
+                        <tr>
+                          <td class="tdClass3">employeeNumber</td>
+                          <td class="tdClass3">substring-start</td>
+                          <td class="tdClass3">S</td>
+                        </tr>
+                      </table>
+                      <table align="center" cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" class="tableClass5">
+                        <tr>
+                          <th class="thAttributeFlow1">Attribute</th>
+                          <th class="thAttributeFlow1">Operator</th>
+                          <th class="thAttributeFlow1">Value</th>
+                        </tr>
+                        <tr>
+                          <td class="tdClass3">employeeID</td>
+                          <td class="tdClass3">present</td>
+                          <td class="tdClass3">
+                                                                -
+                                                            </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Join and Projection Rules </b></TD>
+              <TD align="left"><a NAME="#Joinandprojection"></a><br><TABLE align="left" class="tableClass4">
+                  <TR>
+                    <TD>
+                      <table cellpadding="0" cellspacing="0" width="100%" align="left" class="tableClass4">
+                        <tr>
+                          <td colspan="3"><b>Join Rules: </b></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" width="100%" align="center">
+                              <tr>
+                                <th class="thAttributeFlow1" align="center">Data Source Object</th>
+                                <th class="thAttributeFlow1" align="center">Mapping</th>
+                                <th class="thAttributeFlow1" align="center">Metaverse Object</th>
+                                <th class="thAttributeFlow1" align="center">Join Resolution Extension</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>user</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>personUnmanaged</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table><br></TD>
+                  </TR>
+                  <TR>
+                    <TD>
+                      <table width="100%" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                        <tr>
+                          <td><b>Projection Rules:</b></td>
+                        </tr>
+                        <tr>
+                          <TD>
+                            <table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" width="100%">
+                              <tr>
+                                <th class="thAttributeFlow1">Data Source Object</th>
+                                <th class="thAttributeFlow1">Mapping</th>
+                                <th class="thAttributeFlow1">Metaverse Object</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">user</td>
+                                <td> Declared </td>
+                              </tr>
+                            </table>
+                          </TD>
+                        </tr>
+                      </table>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Attribute Flow</b></TD>
+              <TD align="left"><a NAME="#AttributeFlow"></a><br><TABLE align="left" class="tableClass4">
+                  <TR>
+                    <TD>
+                      <TABLE cellspacing="0" cellpadding="0" border="1" bordercolorlight="#ffffff" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                        <TR>
+                          <TH class="thAttributeFlow" colspan="4"><b>Export Attribute Flow </b></TH>
+                        </TR>
+                        <TR>
+                          <TD>
+                            <table cellspacing="0" cellpadding="0" border="1" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                              <tr>
+                                <th class="thAttributeFlow1">Data Source Attribute</th>
+                                <th class="thAttributeFlow1">To </th>
+                                <th class="thAttributeFlow1">Metaverse Attribute</th>
+                                <th class="thAttributeFlow1">Mapping Type</th>
+                                <th class="thAttributeFlow1">Allow Nulls</th>
+                                <th class="thAttributeFlow1">Initial Flow Only</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>contact</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>person</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>+(</strong>"CN=",contactDisplayName,",OU=MyMail,OU=Contacts,DC=unifyfim,DC=unifytest,DC=local"<strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3">Allow</td>
+                                <td class="tdClass3">true</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">targetAddress</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>+(</strong>"SMTP:",accountName,"@",MailSuffix<strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3">Allow</td>
+                                <td class="tdClass3">true</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">mail</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>+(</strong>accountName,"@",MailSuffix<strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3">Allow</td>
+                                <td class="tdClass3">true</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">mailNickname</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">accountName</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3">Allow</td>
+                                <td class="tdClass3">true</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">msExchHideFromAddressLists</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+												[0]
+											</td>
+                                <td class="tdClass3">
+												SR Constant 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">physicalDeliveryOfficeName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">physicalDeliveryOfficeName</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>+(</strong>lastName,", ",PreferredName," (",Year,")"<strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">sn</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">lastName</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>+(</strong>"CN=",contactDisplayName,",OU=MyMail,OU=Contacts,DC=unifyfim,DC=unifytest,DC=local"<strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">targetAddress</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>+(</strong>"SMTP:",accountName,"@dbbstu.catholic.edu.au"<strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">mailNickname</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">accountName</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">mail</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>+(</strong>accountName,"@dbbstu.catholic.edu.au"<strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">title</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>+(</strong>"Year ",Year," Student"<strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">department</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">Year</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">employeeID</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">USIN</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">givenName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">PreferredName</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">employeeNumber</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">EmployeeNumber</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">extensionAttribute10</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">Class</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">msExchHideFromAddressLists</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+												[1]
+											</td>
+                                <td class="tdClass3">
+												SR Constant 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>+(</strong>lastName,", ",PreferredName," (",Year,")"<strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">sn</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">lastName</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>+(</strong>"CN=",displayName,",OU=MyMail,OU=contacts,DC=unifyfim,DC=unifytest,DC=local"<strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">targetAddress</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>+(</strong>"SMTP:",accountName,"@",MailSuffix<strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">mail</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>+(</strong>accountName,"@",MailSuffix<strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">mailNickname</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">accountName</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">givenName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">PreferredName</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">extensionAttribute10</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">Class</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>contact</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>contact</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">msExchPoliciesIncluded</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+												[{26491cfc-9e50-4857-861b-0cb8df22b5d7}]
+											</td>
+                                <td class="tdClass3">
+												SR Constant 
+											</td>
+                                <td class="tdClass3">Allow</td>
+                                <td class="tdClass3">true</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">mailNickname</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">uid</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3">Allow</td>
+                                <td class="tdClass3">true</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">targetAddress</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>+(</strong>"SMTP:",email<strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3">Allow</td>
+                                <td class="tdClass3">true</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">mail</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">email</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3">Allow</td>
+                                <td class="tdClass3">true</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>+(</strong>"CN=",displayName,",OU=Google,OU=Contacts,DC=unifyfim,DC=unifytest,DC=local"<strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3">Allow</td>
+                                <td class="tdClass3">true</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">physicalDeliveryOfficeName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">physicalDeliveryOfficeName</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3">Allow</td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">msExchHideFromAddressLists</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+												[0]
+											</td>
+                                <td class="tdClass3">
+												SR Constant 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">mailNickname</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">uid</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">targetAddress</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>+(</strong>"SMTP:",email<strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">mail</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">email</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>+(</strong>"CN=",displayName,",OU=Google,OU=Contacts,DC=unifyfim,DC=unifytest,DC=local"<strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">false</td>
+                              </tr>
+                            </table>
+                          </TD>
+                        </TR>
+                      </TABLE>
+                    </TD>
+                  </TR>
+                  <TR>
+                    <TD><br><TABLE cellspacing="0" border="1" cellpadding="0" bordercolorlight="#ffffff" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                        <TR>
+                          <TH class="thAttributeFlow" colspan="4"><b>Import Attribute Flow </b></TH>
+                        </TR>
+                        <TR>
+                          <TD>
+                            <table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" class="tableClass4">
+                              <tr>
+                                <th class="thAttributeFlow1" style="display:none;">MV Key</th>
+                                <th class="thAttributeFlow1">Data Source Attribute</th>
+                                <th class="thAttributeFlow1">To </th>
+                                <th class="thAttributeFlow1">Metaverse Attribute</th>
+                                <th class="thAttributeFlow1">Mapping Type</th>
+                                <th class="thAttributeFlow1">Precedence Order</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;"><b>personUnmanaged</b></td>
+                                <td class="tdClass3"><b>user</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>personUnmanaged</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">accountName</td>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">accountName</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">objectSid</td>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoLegacyEmployeeID</td>
+                                <td class="tdClass3">employeeNumber</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoLegacyEmployeeID</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">employeeID</td>
+                                <td class="tdClass3">employeeID</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">employeeID</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">uid</td>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">uid</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">displayName</td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3">
+												SR Direct 
+											</td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                            </table>
+                          </TD>
+                        </TR>
+                      </TABLE>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Deprovisioning </b></TD>
+              <TD align="left"><a NAME="#Deprovisioning"></a><table cellpadding="0" cellspacing="0" bordercolordark="#ffffff" align="left" border="1" class="tableClass4">
+                  <tr>
+                    <td><b> Deprovision option: </b></td>
+                    <td> Stage a delete on the object for the next export run </td>
+                  </tr>
+                  <tr>
+                    <td><b> Do not recall attributes contributed by an object from this MA when it is disconnected:</b></td>
+                    <td> No </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>MA Extensions  </b></TD>
+              <TD align="left"><a NAME="#MAExDLL"></a><table cellpadding="0" cellspacing="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <td width="50%"><b>DLL:</b></td>
+                    <td width="50%"> None </td>
+                  </tr>
+                  <tr>
+                    <td width="50%"><b> Enable Password Management:</b></td>
+                    <td width="50%"> No </td>
+                  </tr>
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2">Partitions</th>
+                  </tr>
+                  <tr>
+                    <th class="thAttributeFlow1"><b>Partition Name </b></th>
+                    <th class="thAttributeFlow1"><b>Display Name</b></th>
+                  </tr>
+                  <tr>
+                    <td>DC=unifyfim,DC=unifytest,DC=local</td>
+                    <td>None</td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Run Profiles</b></TD>
+              <td class="tdClass2" align="left"><a NAME="#RSofMA"></a><table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">FI</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=unifyfim,DC=unifytest,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">DI DS Single Step</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Import and Delta Synchronization</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=unifyfim,DC=unifytest,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">FS</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=unifyfim,DC=unifytest,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">FI FS</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=unifyfim,DC=unifytest,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 2</b>  Full Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=unifyfim,DC=unifytest,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">EXPORT DI DS</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Export </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=unifyfim,DC=unifytest,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 2</b>  Delta Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=unifyfim,DC=unifytest,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 3</b>  Delta Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=unifyfim,DC=unifytest,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Export</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Export </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=unifyfim,DC=unifytest,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">DI DS</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=unifyfim,DC=unifytest,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 2</b>  Delta Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=unifyfim,DC=unifytest,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Export to Drop File and Stop Run</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Export </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td>AD Contacts Export  Drop File</td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=unifyfim,DC=unifytest,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">DI</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=unifyfim,DC=unifytest,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">DS</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=unifyfim,DC=unifytest,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+              </td>
+            </TR>
+          </TABLE>
+        </TD>
+      </TR>
+    </TABLE>
+  </BODY>
+</HTML>

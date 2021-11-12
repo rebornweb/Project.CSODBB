@@ -1,0 +1,3063 @@
+﻿<HTML xmlns:user="http://www.myserver.com/user" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+  <HEAD>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <TITLE>MAConfigurationViewer 1.0 - </TITLE>
+    <STYLE type="text/css">
+       @page FullPage{margin-left:1.0in;margin-right:0.5in}
+
+        h1,h3{margin: 0px; padding: 0px;}
+        #S1 {width: 300px;}
+        h1 {color: #AAAAAA; font-size: 500%;}
+        h3 {color: #AAAAAA; font-size: 500%;}
+        
+        table{page:FullPage;width:575px;}
+        .tableClass1{page:FullPage; width:300px; border: medium ;}
+        .trtableClass1{width:375px;}
+        .tdtableClass1{width:165px;}
+
+        .tableMain{page:FullPage; width:540px;  FONT-FAMILY:Verdana; FONT-SIZE: 70%;}
+
+        .thTitle{background-color:#666666; color: #FFFFFF; FONT-SIZE: 70%;}
+        .thAttributeFlow{background-color:#bbbbbb;  FONT-SIZE: 70%;}
+        .thAttributeFlow1{background-color:#dddddd; FONT-SIZE: 70%;}
+        .thAttributeFlow2{background-color:#dddddd; FONT-SIZE: 70%; width:50px}
+
+        .tableMenu{FONT-SIZE: 300%; FONT-FAMILY: Verdana;  width:575px}
+        .tdMenu{border-right: 1px solid #999999;text-align:center;}
+        .trMenu{background-color:#ffffff;}
+
+        .tableClass2{cellspacing:'0' cellpadding:'0'; border='1'; width:100% FONT-SIZE: 80%; FONT-FAMILY: Verdana;  border-color: #eeeeee; border-style:solid; PADDING: .25em;}
+        .tableClass3{width:50px;}
+        .tableClass4{width:575px;vertical-align:left}
+        .tableClass5{vertical-align:middle; width:375px}
+        .tdLeftSection{background-color:#eeeeee; FONT-SIZE: 70%;}
+        
+
+        A{color:#0000FF; text-decoration: none;}
+        a:active {text-decoration: underline;}
+        a:hover {text-decoration: underline;}
+        img {border: none; }
+        .imgbanner {border: none; width:10px;}
+        .my .ct p {padding: 0px 0px 3px 0px;}
+        #btnsearch {border: none; margin-left: 95px; margin-top: -25px;}
+        body,div,span,p,ul,td,th,input,select,textarea,button {font-family: Arial, sans-serif; font-size: 70%;}
+        td{font-size: 70%;word-wrap:break-word;}
+
+
+        .tdClass1{font-size: 70%; width:400px; word-wrap:break-word;}
+        .tdClass2{font-size: 70%; width:350px; word-wrap:break-word;}
+        .tdClass3{font-size: 70%; width:175px; word-wrap:break-word;}
+        .tdClass4{font-size: 70%; width:20px; word-wrap:break-word;}
+        .tdClass5{font-size: 70%; width:350px; word-wrap:break-word;}
+        .tdClass6{font-family: Symbol;font-size: 70%; color:blue; text-align:center; width:8%;}
+        .tdClass7{font-size: 70%; word-wrap:break-word; width:350px;}
+
+        body {page:FullPage;}
+        br.clear, .clrbth {clear: both;}
+        hr {height: 1px; padding: 0px; border:1px solid; color:#BBBBBB; }
+        ol {list-style-position: outside; margin: -2px 0px 0px 23px;}
+        li {list-style-position: outside; margin: -2px 0px 0px 12px; padding: 0; margin-left: 20px;}
+
+        
+
+       </STYLE>
+  </HEAD>
+  <BODY><script>
+//scrolling TOP Link to navigate...
+var displayed="<nobr><b>[Top]</b></nobr>"
+var logolink='javascript:window.scrollTo(0,0)'
+var ie4 =document.all
+
+if (ie4)
+document.write('<span id="logo" style="position:absolute;top:-300;z-index:100">'+displayed+'</span>')
+
+function staticit()
+{
+crosslogo.style.left=document.body.scrollLeft+document.body.clientWidth-crosslogo.offsetWidth-10
+crosslogo.style.top=document.body.scrollTop+document.body.clientHeight-crosslogo.offsetHeight-10
+}
+
+function inserttext()
+{ 
+    if (ie4)
+    crosslogo=document.all.logo
+    if (ie4)
+    window.onscroll=staticit
+
+    crosslogo.innerHTML='<a href="'+logolink+'">'+displayed+'</a>'
+    crosslogo.style.left=document.body.clientWidth-crosslogo.offsetWidth-10
+    crosslogo.style.top=document.body.clientHeight-crosslogo.offsetHeight-10
+
+}
+
+if(ie4)
+{
+    window.onload=inserttext
+    window.onresize=new Function("window.location.reload()")
+}
+
+</script><TABLE cellpadding="0" cellspacing="0" class="tableMain">
+      <TR>
+        <TD>
+          <H1>MAConfigurationViewer 1.0 </H1>
+        </TD>
+      </TR>
+      <TR>
+        <TD>
+          <TABLE class="tableMenu">
+            <Tr class="trMenu">
+              <Td class="tdMenu"><b><A href="#properties"> Properties </A></b></Td>
+              <Td class="tdMenu"><b><A href="#FIMInformation">Connection Information</A></b></Td>
+              <Td class="tdMenu"><b><A href="#SelObjects"> Selected Object Types </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Attri1"> Selected Attributes </A></b></Td>
+              <Td class="tdMenu"><b><A href="#connectorfilters"> Connector Filters </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Joinandprojection"> Join and Projection Rules </A></b></Td>
+              <Td class="tdMenu"><b><A href="#AttributeFlow"> Attribute Flow </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Deprovisioning"> Deprovisioning </A></b></Td>
+              <Td class="tdMenu"><b><A href="#MAExDLL"> MA Extensions </A></b></Td>
+              <Td class="tdMenu"><b><A href="#RSofMA"> Run Profiles</A></b></Td>
+            </Tr>
+          </TABLE>
+        </TD>
+      </TR>
+      <TR>
+        <TD>
+          <h3>FIM Portal Management Agent </h3>
+          <hr>
+        </TD>
+      </TR>
+      <TR>
+        <TD Align="center"></TD>
+      </TR>
+      <TR>
+        <TD>
+          <TABLE cellspacing="0" cellpadding="0" border="1" bordercolordark="#ffffff" class="tableClass2">
+            <TR>
+              <TH class="thTitle" colspan="2">
+                        Management Agent's Properties
+                </TH>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Properties</b></TD>
+              <TD align="left"><a NAME="#properties"></a><table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <td><b>MA Type: </b></td>
+                    <td>FIM</td>
+                  </tr>
+                  <tr>
+                    <td><b>Description: </b></td>
+                    <td class="tdClass3">CSO FIM V2: portal user and group management for staff and students</td>
+                  </tr>
+                  <tr>
+                    <td><b>Creation Time: </b></td>
+                    <td>2010-06-16 02:07:36.713</td>
+                  </tr>
+                  <tr>
+                    <td><b>Last Modification Time: </b></td>
+                    <td>2017-04-21 05:57:59.415</td>
+                  </tr>
+                  <tr>
+                    <td><b> Run in Separate Process:</b></td>
+                    <td> No </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Connection Information </b></TD>
+              <TD align="left"><a NAME="#FIMInformation"></a><Table>
+                  <tr>
+                    <td>
+                      <table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                        <tr>
+                          <th colspan="2" class="thAttributeFlow"><b>Connection Information</b></th>
+                        </tr>
+                        <tr>
+                          <td>Server:</td>
+                          <td>localhost</td>
+                        </tr>
+                        <tr>
+                          <td>Database:</td>
+                          <td>FIMService</td>
+                        </tr>
+                        <tr>
+                          <td>FIM Service base address:</td>
+                          <td>http://localhost:5725/</td>
+                        </tr>
+                        <tr>
+                          <td>User (Integrated):</td>
+                          <td>fimmanagementagent</td>
+                        </tr>
+                        <tr>
+                          <td>Domain:</td>
+                          <td>UNIFYFIM</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </Table>
+              </TD>
+            </TR>
+            <TR>
+              <td class="tdLeftSection"><b>Selected Object Types  </b></td>
+              <td align="left" class="tdClass5"><a NAME="#SelObjects"></a><li>Contact</li>
+                <li>csoDepartment</li>
+                <li>csoGrade</li>
+                <li>csoJob</li>
+                <li>csoRole</li>
+                <li>csoSite</li>
+                <li>DetectedRuleEntry</li>
+                <li>ExpectedRuleEntry</li>
+                <li>Group</li>
+                <li>Person</li>
+                <li>SynchronizationRule</li>
+              </td>
+            </TR>
+            <TR>
+              <TD align="left" class="tdLeftSection"><b>Selected Attributes </b></TD>
+              <td class="tdClass2"><a NAME="#Attri1"></a><b> Attribute(s) </b><br><br><li>AccountName</li>
+                <li>Address1</li>
+                <li>Address2</li>
+                <li>Address3</li>
+                <li>AddressID</li>
+                <li>AlumniType</li>
+                <li>Archive</li>
+                <li>CandidateNumber</li>
+                <li>Class</li>
+                <li>ConnectedObjectType</li>
+                <li>ConnectedSystem</li>
+                <li>ConnectedSystemScope</li>
+                <li>Connector</li>
+                <li>Country</li>
+                <li>CreateConnectedSystemObject</li>
+                <li>CreatedTime</li>
+                <li>CreateILMObject</li>
+                <li>Creator</li>
+                <li>csoADSCode</li>
+                <li>csoAssignedSiteCode</li>
+                <li>csoBirthDate</li>
+                <li>csoCanonicalCode</li>
+                <li>csoCanonicalName</li>
+                <li>csoCeIder</li>
+                <li>csoDepartment</li>
+                <li>csoDeptID</li>
+                <li>csoEffectiveDate</li>
+                <li>csoEffectiveToDate</li>
+                <li>csoEmployeeStatus</li>
+                <li>csoEmploymentType</li>
+                <li>csoExistsInAD</li>
+                <li>csoFullPartTime</li>
+                <li>csoGrade</li>
+                <li>csoGrades</li>
+                <li>csoHRStatus</li>
+                <li>csoInheritOwner</li>
+                <li>csoIsActive</li>
+                <li>csoIsRollup</li>
+                <li>csoJobGrade</li>
+                <li>csoJobs</li>
+                <li>csoLegacyEmployeeID</li>
+                <li>csoLocationCode</li>
+                <li>csoMappedSites</li>
+                <li>csoParentRoleID</li>
+                <li>csoPositionNumber</li>
+                <li>csoRoleID</li>
+                <li>csoRoles</li>
+                <li>csoRollUpRole</li>
+                <li>csoSalaryAdminPlan</li>
+                <li>csoSalarySchoolCode</li>
+                <li>csoSite</li>
+                <li>csoSiteCode</li>
+                <li>csoSites</li>
+                <li>csoSourceSystem</li>
+                <li>csoStdHours</li>
+                <li>csoUpnSuffix</li>
+                <li>DateLeft</li>
+                <li>Deceased</li>
+                <li>DeletedTime</li>
+                <li>Department</li>
+                <li>Dependency</li>
+                <li>Description</li>
+                <li>DetectedRulesList</li>
+                <li>DisconnectConnectedSystemObject</li>
+                <li>DisplayedOwner</li>
+                <li>DisplayName</li>
+                <li>DOB</li>
+                <li>Domain</li>
+                <li>Email</li>
+                <li>EmployeeEndDate</li>
+                <li>EmployeeID</li>
+                <li>EmployeeNumber</li>
+                <li>EmployeeStartDate</li>
+                <li>EmployeeType</li>
+                <li>ExistenceTest</li>
+                <li>ExpectedRuleEntryAction</li>
+                <li>ExpectedRulesList</li>
+                <li>ExpirationTime</li>
+                <li>FirstName</li>
+                <li>FlowType</li>
+                <li>FormerName</li>
+                <li>HomeGroup</li>
+                <li>House</li>
+                <li>ILMObjectType</li>
+                <li>InitialFlow</li>
+                <li>initials</li>
+                <li>JobTitle</li>
+                <li>LastName</li>
+                <li>Locale</li>
+                <li>MailNickname</li>
+                <li>Mailsuffix</li>
+                <li>ManagementAgentID</li>
+                <li>Manager</li>
+                <li>managerOf</li>
+                <li>Member</li>
+                <li>memberOf</li>
+                <li>MembershipAddWorkflow</li>
+                <li>MembershipLocked</li>
+                <li>MiddleName</li>
+                <li>MobilePhone</li>
+                <li>MVObjectID</li>
+                <li>NName</li>
+                <li>ObjectID</li>
+                <li>ObjectSID</li>
+                <li>ObjectType</li>
+                <li>OfficeFax</li>
+                <li>OfficeLocation</li>
+                <li>OfficePhone</li>
+                <li>OU</li>
+                <li>Owner</li>
+                <li>PersistentFlow</li>
+                <li>PersonType</li>
+                <li>PhoneFamily</li>
+                <li>PhoneHome</li>
+                <li>PhoneMobile</li>
+                <li>PostalCode</li>
+                <li>Precedence</li>
+                <li>PreEnrolment</li>
+                <li>PreferredName</li>
+                <li>ReasonLeft</li>
+                <li>RelationshipCriteria</li>
+                <li>ResourceParent</li>
+                <li>ResourceTime</li>
+                <li>SAS2IDMConnector</li>
+                <li>Scope</li>
+                <li>Sex</li>
+                <li>StartDate</li>
+                <li>StartYear</li>
+                <li>StatusError</li>
+                <li>SynchronizationRuleData</li>
+                <li>SynchronizationRuleID</li>
+                <li>SynchronizationRuleName</li>
+                <li>SynchronizationRuleParameters</li>
+                <li>SynchronizationRuleStatus</li>
+                <li>Type</li>
+                <li>UserID</li>
+                <li>USIN</li>
+                <li>Year</li>
+              </td>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Connector Filters </b></TD>
+              <TD align="left"><a NAME="#connectorfilters"></a><table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                  <tr>
+                    <th class="thAttributeFlow1">Data Source Object Type</th>
+                    <th class="thAttributeFlow1">Filter Type</th>
+                    <th class="thAttributeFlow1">Filter </th>
+                  </tr>
+                  <tr>
+                    <td class="tdClass3">Person</td>
+                    <td class="tdClass3">declared</td>
+                    <td>
+                      <table align="center" cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" class="tableClass5">
+                        <tr>
+                          <th class="thAttributeFlow1">Attribute</th>
+                          <th class="thAttributeFlow1">Operator</th>
+                          <th class="thAttributeFlow1">Value</th>
+                        </tr>
+                        <tr>
+                          <td class="tdClass3">AccountName</td>
+                          <td class="tdClass3">equality</td>
+                          <td class="tdClass3">administrator</td>
+                        </tr>
+                      </table>
+                      <table align="center" cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" class="tableClass5">
+                        <tr>
+                          <th class="thAttributeFlow1">Attribute</th>
+                          <th class="thAttributeFlow1">Operator</th>
+                          <th class="thAttributeFlow1">Value</th>
+                        </tr>
+                        <tr>
+                          <td class="tdClass3">AccountName</td>
+                          <td class="tdClass3">substring-start</td>
+                          <td class="tdClass3">fim</td>
+                        </tr>
+                      </table>
+                      <table align="center" cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" class="tableClass5">
+                        <tr>
+                          <th class="thAttributeFlow1">Attribute</th>
+                          <th class="thAttributeFlow1">Operator</th>
+                          <th class="thAttributeFlow1">Value</th>
+                        </tr>
+                        <tr>
+                          <td class="tdClass3">AccountName</td>
+                          <td class="tdClass3">substring-start</td>
+                          <td class="tdClass3">sql</td>
+                        </tr>
+                      </table>
+                      <table align="center" cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" class="tableClass5">
+                        <tr>
+                          <th class="thAttributeFlow1">Attribute</th>
+                          <th class="thAttributeFlow1">Operator</th>
+                          <th class="thAttributeFlow1">Value</th>
+                        </tr>
+                        <tr>
+                          <td class="tdClass3">AccountName</td>
+                          <td class="tdClass3">equality</td>
+                          <td class="tdClass3">unify</td>
+                        </tr>
+                      </table>
+                      <table align="center" cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" class="tableClass5">
+                        <tr>
+                          <th class="thAttributeFlow1">Attribute</th>
+                          <th class="thAttributeFlow1">Operator</th>
+                          <th class="thAttributeFlow1">Value</th>
+                        </tr>
+                        <tr>
+                          <td class="tdClass3">AccountName</td>
+                          <td class="tdClass3">equality</td>
+                          <td class="tdClass3">evbsvc</td>
+                        </tr>
+                      </table>
+                      <table align="center" cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" class="tableClass5">
+                        <tr>
+                          <th class="thAttributeFlow1">Attribute</th>
+                          <th class="thAttributeFlow1">Operator</th>
+                          <th class="thAttributeFlow1">Value</th>
+                        </tr>
+                        <tr>
+                          <td class="tdClass3">AccountName</td>
+                          <td class="tdClass3">equality</td>
+                          <td class="tdClass3">ryan.crossingham</td>
+                        </tr>
+                      </table>
+                      <table align="center" cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" class="tableClass5">
+                        <tr>
+                          <th class="thAttributeFlow1">Attribute</th>
+                          <th class="thAttributeFlow1">Operator</th>
+                          <th class="thAttributeFlow1">Value</th>
+                        </tr>
+                        <tr>
+                          <td class="tdClass3">AccountName</td>
+                          <td class="tdClass3">equality</td>
+                          <td class="tdClass3">csodbb</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Join and Projection Rules </b></TD>
+              <TD align="left"><a NAME="#Joinandprojection"></a><br><TABLE align="left" class="tableClass4">
+                  <TR>
+                    <TD>
+                      <table cellpadding="0" cellspacing="0" width="100%" align="left" class="tableClass4">
+                        <tr>
+                          <td colspan="3"><b>Join Rules: </b></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" width="100%" align="center">
+                              <tr>
+                                <th class="thAttributeFlow1" align="center">Data Source Object</th>
+                                <th class="thAttributeFlow1" align="center">Mapping</th>
+                                <th class="thAttributeFlow1" align="center">Metaverse Object</th>
+                                <th class="thAttributeFlow1" align="center">Join Resolution Extension</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>Contact</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>contact</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>Contact</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>contact</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>csoDepartment</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>csoDepartment</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>csoDepartment</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>csoDepartment</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>csoGrade</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>csoGrade</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>csoGrade</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>csoGrade</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>csoJob</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>csoJob</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>csoJob</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>csoJob</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>csoRole</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>csoRole</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>csoRole</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>csoRole</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>csoSite</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>csoSite</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>csoSite</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>csoSite</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>DetectedRuleEntry</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>detectedRuleEntry</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>DetectedRuleEntry</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>detectedRuleEntry</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>ExpectedRuleEntry</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>expectedRuleEntry</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>ExpectedRuleEntry</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>expectedRuleEntry</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>Group</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>group</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>Group</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>group</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>Person</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>person</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>Person</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>person</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>SynchronizationRule</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>synchronizationRule</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>SynchronizationRule</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>synchronizationRule</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table><br></TD>
+                  </TR>
+                  <TR>
+                    <TD>
+                      <table width="100%" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                        <tr>
+                          <td><b>Projection Rules:</b></td>
+                        </tr>
+                        <tr>
+                          <TD>
+                            <table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" width="100%">
+                              <tr>
+                                <th class="thAttributeFlow1">Data Source Object</th>
+                                <th class="thAttributeFlow1">Mapping</th>
+                                <th class="thAttributeFlow1">Metaverse Object</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Contact</td>
+                                <td> Declared </td>
+                                <td class="tdClass3">contact</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoDepartment</td>
+                                <td> Declared </td>
+                                <td class="tdClass3">csoDepartment</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoGrade</td>
+                                <td> Declared </td>
+                                <td class="tdClass3">csoGrade</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoJob</td>
+                                <td> Declared </td>
+                                <td class="tdClass3">csoJob</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoRole</td>
+                                <td> Declared </td>
+                                <td class="tdClass3">csoRole</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoSite</td>
+                                <td> Declared </td>
+                                <td class="tdClass3">csoSite</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">DetectedRuleEntry</td>
+                                <td> Declared </td>
+                                <td class="tdClass3">detectedRuleEntry</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">ExpectedRuleEntry</td>
+                                <td> Declared </td>
+                                <td class="tdClass3">expectedRuleEntry</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Group</td>
+                                <td> Declared </td>
+                                <td class="tdClass3">group</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Person</td>
+                                <td> Declared </td>
+                                <td class="tdClass3">person</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">SynchronizationRule</td>
+                                <td> Declared </td>
+                                <td class="tdClass3">synchronizationRule</td>
+                              </tr>
+                            </table>
+                          </TD>
+                        </tr>
+                      </table>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Attribute Flow</b></TD>
+              <TD align="left"><a NAME="#AttributeFlow"></a><br><TABLE align="left" class="tableClass4">
+                  <TR>
+                    <TD>
+                      <TABLE cellspacing="0" cellpadding="0" border="1" bordercolorlight="#ffffff" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                        <TR>
+                          <TH class="thAttributeFlow" colspan="4"><b>Export Attribute Flow </b></TH>
+                        </TR>
+                        <TR>
+                          <TD>
+                            <table cellspacing="0" cellpadding="0" border="1" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                              <tr>
+                                <th class="thAttributeFlow1">Data Source Attribute</th>
+                                <th class="thAttributeFlow1">To </th>
+                                <th class="thAttributeFlow1">Metaverse Attribute</th>
+                                <th class="thAttributeFlow1">Mapping Type</th>
+                                <th class="thAttributeFlow1">Allow Nulls</th>
+                                <th class="thAttributeFlow1">Initial Flow Only</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>DetectedRuleEntry</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>detectedRuleEntry</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">SynchronizationRuleID</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">synchronizationRuleID</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">DisplayName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Connector</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">connector</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">ResourceParent</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">resourceParent</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>Guid(</strong><strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">true</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>ExpectedRuleEntry</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>expectedRuleEntry</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">StatusError</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">statusError</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">SynchronizationRuleStatus</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">status</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>Group</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>group</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>Guid(</strong><strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">true</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Description</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">description</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">DisplayName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">AccountName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">accountName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Domain</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">domain</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Email</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">email</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MailNickname</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">mailNickname</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MembershipAddWorkflow</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">membershipAddWorkflow</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MembershipLocked</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">membershipLocked</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Scope</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">scope</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Type</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">type</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">ObjectSID</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">DetectedRulesList</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">detectedRulesList</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoExistsInAD</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoExistsInAD</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>Person</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>person</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>Guid(</strong><strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">true</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Description</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">description</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">DisplayName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">AccountName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">accountName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Domain</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">domain</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Email</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">email</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">EmployeeID</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">employeeID</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">FirstName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">firstName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">LastName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">lastName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Manager</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">manager</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">ObjectSID</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">DetectedRulesList</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">detectedRulesList</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">managerOf</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">managerOf</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">memberOf</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">memberOf</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">EmployeeType</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">employeeType</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">JobTitle</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">jobTitle</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoEmployeeStatus</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">employeeStatus</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoBirthDate</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoBirthDate</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoLegacyEmployeeID</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoLegacyEmployeeID</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MiddleName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">middleName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">PostalCode</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">postalCode</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Country</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">country</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">OfficeLocation</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">physicalDeliveryOfficeName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoJobs</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoJobs</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoGrades</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoGrades</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">DOB</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">DOB</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">PersonType</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">PersonType</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">PhoneFamily</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">PhoneFamily</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">PhoneHome</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">PhoneHome</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">EmployeeNumber</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">EmployeeNumber</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">DateLeft</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">DateLeft</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Deceased</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">Deceased</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">FormerName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">FormerName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">HomeGroup</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">HomeGroup</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">House</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">House</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Address1</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">Address1</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Address2</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">Address2</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Address3</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">Address3</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">AlumniType</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">AlumniType</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Archive</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">Archive</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">CandidateNumber</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">CandidateNumber</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Class</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">Class</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">initials</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">initials</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">PreEnrolment</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">PreEnrolment</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">PreferredName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">PreferredName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">ReasonLeft</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">ReasonLeft</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">StartDate</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">StartDate</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">USIN</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">USIN</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Year</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">Year</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">SAS2IDMConnector</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">SAS2IDMConnector</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">StartYear</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">StartYear</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">NName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">NName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoHRStatus</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoHRStatus</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">OfficeFax</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">officeFax</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">OfficePhone</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">officePhone</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoSites</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoSites</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoSalarySchoolCode</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoSalarySchoolCode</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Sex</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">sex</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoDepartment</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoDepartment</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoCeIder</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoCeIder</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>csoRole</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>csoRole</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>Guid(</strong><strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">true</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">DetectedRulesList</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">detectedRulesList</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>csoSite</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>csoSite</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>Guid(</strong><strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">true</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">DetectedRulesList</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">detectedRulesList</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>csoGrade</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>csoGrade</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>Guid(</strong><strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">true</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">DetectedRulesList</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">detectedRulesList</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoGrade</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoGrade</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoSalaryAdminPlan</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoSalaryAdminPlan</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Description</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">description</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">DisplayName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>csoJob</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>csoJob</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>Guid(</strong><strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">true</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">DetectedRulesList</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">detectedRulesList</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">DisplayName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Description</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">description</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoStdHours</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoStdHours</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoSite</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoSite</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoSalaryAdminPlan</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoSalaryAdminPlan</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoPositionNumber</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoPositionNumber</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoLocationCode</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoLocationCode</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoJobGrade</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoJobGrade</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoHRStatus</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoHRStatus</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoFullPartTime</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoFullPartTime</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoEmploymentType</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoEmploymentType</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">UserID</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoUser</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoEffectiveDate</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoEffectiveDate</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoEffectiveToDate</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoEffectiveToDate</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>Contact</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>contact</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>Guid(</strong><strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">true</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">DetectedRulesList</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">detectedRulesList</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">DisplayName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Email</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">email</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Description</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">uid</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">OfficeLocation</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">physicalDeliveryOfficeName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>csoDepartment</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>csoDepartment</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">
+													[<strong>Guid(</strong><strong>)</strong>]
+												</td>
+                                <td class="tdClass3">
+												SR Expression 
+											</td>
+                                <td class="tdClass3"> -  </td>
+                                <td class="tdClass3">true</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">MVObjectID</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">object-id</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">DetectedRulesList</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">detectedRulesList</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">DisplayName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Description</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">description</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoDeptID</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">uid</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">csoSourceSystem</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">csoSourceSystem</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                            </table>
+                          </TD>
+                        </TR>
+                      </TABLE>
+                    </TD>
+                  </TR>
+                  <TR>
+                    <TD><br><TABLE cellspacing="0" border="1" cellpadding="0" bordercolorlight="#ffffff" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                        <TR>
+                          <TH class="thAttributeFlow" colspan="4"><b>Import Attribute Flow </b></TH>
+                        </TR>
+                        <TR>
+                          <TD>
+                            <table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" class="tableClass4">
+                              <tr>
+                                <th class="thAttributeFlow1" style="display:none;">MV Key</th>
+                                <th class="thAttributeFlow1">Data Source Attribute</th>
+                                <th class="thAttributeFlow1">To </th>
+                                <th class="thAttributeFlow1">Metaverse Attribute</th>
+                                <th class="thAttributeFlow1">Mapping Type</th>
+                                <th class="thAttributeFlow1">Precedence Order</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;"><b>expectedRuleEntry</b></td>
+                                <td class="tdClass3"><b>ExpectedRuleEntry</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>expectedRuleEntry</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">createdTime</td>
+                                <td class="tdClass3">CreatedTime</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">createdTime</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">expectedRuleEntryAction</td>
+                                <td class="tdClass3">ExpectedRuleEntryAction</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">expectedRuleEntryAction</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">synchronizationRuleData</td>
+                                <td class="tdClass3">SynchronizationRuleData</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">synchronizationRuleData</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">synchronizationRuleID</td>
+                                <td class="tdClass3">SynchronizationRuleID</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">synchronizationRuleID</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">displayName</td>
+                                <td class="tdClass3">DisplayName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;"><b>synchronizationRule</b></td>
+                                <td class="tdClass3"><b>SynchronizationRule</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>synchronizationRule</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">connectedObjectType</td>
+                                <td class="tdClass3">ConnectedObjectType</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">connectedObjectType</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">connectedSystem</td>
+                                <td class="tdClass3">ConnectedSystem</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">connectedSystem</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">connectedSystemScope</td>
+                                <td class="tdClass3">ConnectedSystemScope</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">connectedSystemScope</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">createConnectedSystemObject</td>
+                                <td class="tdClass3">CreateConnectedSystemObject</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">createConnectedSystemObject</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">createILMObject</td>
+                                <td class="tdClass3">CreateILMObject</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">createILMObject</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">dependency</td>
+                                <td class="tdClass3">Dependency</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">dependency</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">disconnectConnectedSystemObject</td>
+                                <td class="tdClass3">DisconnectConnectedSystemObject</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">disconnectConnectedSystemObject</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">displayName</td>
+                                <td class="tdClass3">DisplayName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">existenceTest</td>
+                                <td class="tdClass3">ExistenceTest</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">existenceTest</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">flowType</td>
+                                <td class="tdClass3">FlowType</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">flowType</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">ilmObjectType</td>
+                                <td class="tdClass3">ILMObjectType</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">ilmObjectType</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">initialFlow</td>
+                                <td class="tdClass3">InitialFlow</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">initialFlow</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">persistentFlow</td>
+                                <td class="tdClass3">PersistentFlow</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">persistentFlow</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">precedence</td>
+                                <td class="tdClass3">Precedence</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">precedence</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">relationshipCriteria</td>
+                                <td class="tdClass3">RelationshipCriteria</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">relationshipCriteria</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">synchronizationRuleParameters</td>
+                                <td class="tdClass3">SynchronizationRuleParameters</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">synchronizationRuleParameters</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;"><b>detectedRuleEntry</b></td>
+                                <td class="tdClass3"><b>DetectedRuleEntry</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>detectedRuleEntry</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csObjectID</td>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;"><b>group</b></td>
+                                <td class="tdClass3"><b>Group</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>group</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoADSCode</td>
+                                <td class="tdClass3">csoADSCode</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoADSCode</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">membershipLocked</td>
+                                <td class="tdClass3">MembershipLocked</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">membershipLocked</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">domain</td>
+                                <td class="tdClass3">Domain</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">domain</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">type</td>
+                                <td class="tdClass3">Type</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">type</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">membershipAddWorkflow</td>
+                                <td class="tdClass3">MembershipAddWorkflow</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">membershipAddWorkflow</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">scope</td>
+                                <td class="tdClass3">Scope</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">scope</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">accountName</td>
+                                <td class="tdClass3">AccountName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">accountName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">displayName</td>
+                                <td class="tdClass3">DisplayName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">member</td>
+                                <td class="tdClass3">Member</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">member</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csObjectID</td>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">description</td>
+                                <td class="tdClass3">Description</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">description</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">mailNickname</td>
+                                <td class="tdClass3">MailNickname</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">mailNickname</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">owner</td>
+                                <td class="tdClass3">Owner</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">owner</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">expectedRulesList</td>
+                                <td class="tdClass3">ExpectedRulesList</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">expectedRulesList</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">displayedOwner</td>
+                                <td class="tdClass3">DisplayedOwner</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">displayedOwner</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">objectSid</td>
+                                <td class="tdClass3">ObjectSID</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">3 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">ou</td>
+                                <td class="tdClass3">OU</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">ou</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoRole</td>
+                                <td class="tdClass3">csoRoleID</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoRole</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;"><b>person</b></td>
+                                <td class="tdClass3"><b>Person</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>person</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">department</td>
+                                <td class="tdClass3">Department</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">department</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoUpnSuffix</td>
+                                <td class="tdClass3">csoUpnSuffix</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoUpnSuffix</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">employeeType</td>
+                                <td class="tdClass3">EmployeeType</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">employeeType</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">5 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">mobilePhone</td>
+                                <td class="tdClass3">MobilePhone</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">mobilePhone</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">officeFax</td>
+                                <td class="tdClass3">OfficeFax</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">officeFax</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">officePhone</td>
+                                <td class="tdClass3">OfficePhone</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">officePhone</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoLegacyEmployeeID</td>
+                                <td class="tdClass3">csoLegacyEmployeeID</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoLegacyEmployeeID</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">5 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">PersonType</td>
+                                <td class="tdClass3">PersonType</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">PersonType</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">4 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">objectSid</td>
+                                <td class="tdClass3">ObjectSID</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">3 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">accountName</td>
+                                <td class="tdClass3">AccountName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">accountName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">8 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csObjectID</td>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">expectedRulesList</td>
+                                <td class="tdClass3">ExpectedRulesList</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">expectedRulesList</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">employeeEndDate</td>
+                                <td class="tdClass3">EmployeeEndDate</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">employeeEndDate</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">employeeStartDate</td>
+                                <td class="tdClass3">EmployeeStartDate</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">employeeStartDate</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">Class</td>
+                                <td class="tdClass3">Class</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">Class</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">EmployeeNumber</td>
+                                <td class="tdClass3">EmployeeNumber</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">EmployeeNumber</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">DateLeft</td>
+                                <td class="tdClass3">DateLeft</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">DateLeft</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">MailSuffix</td>
+                                <td class="tdClass3">Mailsuffix</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">MailSuffix</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">StartDate</td>
+                                <td class="tdClass3">StartDate</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">StartDate</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">USIN</td>
+                                <td class="tdClass3">USIN</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">USIN</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">Year</td>
+                                <td class="tdClass3">Year</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">Year</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoRoles</td>
+                                <td class="tdClass3">csoRoles</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoRoles</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;"><b>csoRole</b></td>
+                                <td class="tdClass3"><b>csoRole</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>csoRole</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoIsRollup</td>
+                                <td class="tdClass3">csoIsRollup</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoIsRollup</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoIsActive</td>
+                                <td class="tdClass3">csoIsActive</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoIsActive</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoADSCode</td>
+                                <td class="tdClass3">csoADSCode</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoADSCode</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csObjectID</td>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">expectedRulesList</td>
+                                <td class="tdClass3">ExpectedRulesList</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">expectedRulesList</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">description</td>
+                                <td class="tdClass3">Description</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">description</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">displayName</td>
+                                <td class="tdClass3">DisplayName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoCanonicalCode</td>
+                                <td class="tdClass3">csoCanonicalCode</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoCanonicalCode</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoParentRole</td>
+                                <td class="tdClass3">csoParentRoleID</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoParentRole</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoCanonicalName</td>
+                                <td class="tdClass3">csoCanonicalName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoCanonicalName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoRollUpRole</td>
+                                <td class="tdClass3">csoRollUpRole</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoRollUpRole</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoSite</td>
+                                <td class="tdClass3">csoSite</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoSite</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoInheritOwner</td>
+                                <td class="tdClass3">csoInheritOwner</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoInheritOwner</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;"><b>csoSite</b></td>
+                                <td class="tdClass3"><b>csoSite</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>csoSite</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">description</td>
+                                <td class="tdClass3">Description</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">description</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoSiteCode</td>
+                                <td class="tdClass3">csoSiteCode</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoSiteCode</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">displayName</td>
+                                <td class="tdClass3">DisplayName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csObjectID</td>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">expectedRulesList</td>
+                                <td class="tdClass3">ExpectedRulesList</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">expectedRulesList</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoMappedSites</td>
+                                <td class="tdClass3">csoMappedSites</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoMappedSites</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;"><b>csoGrade</b></td>
+                                <td class="tdClass3"><b>csoGrade</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>csoGrade</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csObjectID</td>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">expectedRulesList</td>
+                                <td class="tdClass3">ExpectedRulesList</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">expectedRulesList</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;"><b>csoJob</b></td>
+                                <td class="tdClass3"><b>csoJob</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>csoJob</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csObjectID</td>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">expectedRulesList</td>
+                                <td class="tdClass3">ExpectedRulesList</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">expectedRulesList</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;"><b>csoDepartment</b></td>
+                                <td class="tdClass3"><b>csoDepartment</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>csoDepartment</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csObjectID</td>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">expectedRulesList</td>
+                                <td class="tdClass3">ExpectedRulesList</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">expectedRulesList</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csoUpnSuffix</td>
+                                <td class="tdClass3">csoUpnSuffix</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csoUpnSuffix</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;"><b>contact</b></td>
+                                <td class="tdClass3"><b>Contact</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>contact</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">expectedRulesList</td>
+                                <td class="tdClass3">ExpectedRulesList</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">expectedRulesList</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3" style="display:none;">csObjectID</td>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">csObjectID</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                            </table>
+                          </TD>
+                        </TR>
+                      </TABLE>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Deprovisioning </b></TD>
+              <TD align="left"><a NAME="#Deprovisioning"></a><table cellpadding="0" cellspacing="0" bordercolordark="#ffffff" align="left" border="1" class="tableClass4">
+                  <tr>
+                    <td><b> Deprovision option: </b></td>
+                    <td> Stage a delete on the object for the next export run </td>
+                  </tr>
+                  <tr>
+                    <td><b> Do not recall attributes contributed by an object from this MA when it is disconnected:</b></td>
+                    <td> No </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>MA Extensions  </b></TD>
+              <TD align="left"><a NAME="#MAExDLL"></a><table cellpadding="0" cellspacing="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <td width="50%"><b>DLL:</b></td>
+                    <td width="50%"> None </td>
+                  </tr>
+                  <tr>
+                    <td width="50%"><b> Enable Password Management:</b></td>
+                    <td width="50%"> No </td>
+                  </tr>
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2">Partitions</th>
+                  </tr>
+                  <tr>
+                    <th class="thAttributeFlow1"><b>Partition Name </b></th>
+                    <th class="thAttributeFlow1"><b>Display Name</b></th>
+                  </tr>
+                  <tr>
+                    <td>default</td>
+                    <td>None</td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Run Profiles</b></TD>
+              <td class="tdClass2" align="left"><a NAME="#RSofMA"></a><table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Full Import Full Synchronization</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td>FIMMA.FullImport.xml</td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 2</b>  Full Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Delta Import Delta Synchronization</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td>FIMMA.DeltaImport.xml</td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 2</b>  Delta Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Export</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Export </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Full Synchronization</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Full Import Delta Synchronization</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td>FIMMA.FullImport.xml</td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 2</b>  Delta Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Delta Import</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td>FIMMA.DeltaImport.xml</td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Delta Synchronization</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Full Import</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td>FIMMA.FullImport.xml</td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">EDIDS</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Export </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 2</b>  Delta Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 3</b>  Delta Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Delta Import Full Synchronization</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td>FIMMA.DeltaImport.xml</td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 2</b>  Full Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Export Audit Only</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Export </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td>FIM.Export.xml</td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </TR>
+          </TABLE>
+        </TD>
+      </TR>
+    </TABLE>
+  </BODY>
+</HTML>

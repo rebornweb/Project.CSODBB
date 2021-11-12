@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LoggingEngine filePrefix="UnifyLog" logDaysKeep="5" minimumLoggingLevel="Normal">
+  <LogWriter xmlns="" name="LogWriterFilterDecorator" id="e0ac769f-7805-475b-b08a-e6bb2a694f85" enabled="false" displayName="UNIFY Support Email">
+    <LogWriter name="LogWriterFilterDecorator">
+      <LogWriter name="Email" fromAddress="svcFIM_Service@dbb.local" replyToAddress="rene.pisani@dbb.org.au" senderAddress="svcFIM_Service@dbb.local" smtpHost="smtp.dbb.local" subjectPrefix="CSODBB MIM (PROD): " toAddress="csodbbsupport@unifysolutions.net" />
+      <logFilter name="MinimumLoggingLevel" loggingLevel="Verbose" />
+    </LogWriter>
+    <logFilter name="MinimumSeverityLevel" severity="Error" />
+  </LogWriter>
+  <LogWriter xmlns="" name="LogWriterFilterDecorator" id="40c028fb-1875-4224-9b1b-bebf9c086b0f" enabled="false" displayName="CSODBB Support Email">
+    <LogWriter name="LogWriterFilterDecorator">
+      <LogWriter name="Email" fromAddress="svcFIM_Service@dbb.local" replyToAddress="csodbbsupport@unifysolutions.net" senderAddress="svcFIM_Service@dbb.local" smtpHost="smtp.dbb.local" subjectPrefix="MIM (PROD OCCCP-IM301): " toAddress="rene.pisani@dbb.org.au" />
+      <logFilter name="MinimumLoggingLevel" loggingLevel="Verbose" />
+    </LogWriter>
+    <logFilter name="MinimumSeverityLevel" severity="Error" />
+  </LogWriter>
+  <ScheduledLogTasks />
+</LoggingEngine>

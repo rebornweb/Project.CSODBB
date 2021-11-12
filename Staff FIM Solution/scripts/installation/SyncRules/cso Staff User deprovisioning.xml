@@ -1,0 +1,7 @@
+<SynchronizationRule>
+    <ConnectedSystemScope />
+    <OutboundScope />
+    <RelationshipCriteria><conditions><condition><ilmAttribute>objectSid</ilmAttribute><csAttribute>objectSid</csAttribute></condition></conditions></RelationshipCriteria>
+    <InitialFlow />
+    <PersistentFlow><export-flow allows-null="false"><src>true</src><dest>msExchHideFromAddressLists</dest><scoping /></export-flow><export-flow allows-null="false"><src><attr>userAccountControl</attr></src><dest>userAccountControl</dest><scoping /><fn id="IIF" isCustomExpression="false"><arg><fn id="IsPresent" isCustomExpression="true"><arg>userAccountControl</arg></fn></arg><arg><fn id="BitOr" isCustomExpression="true"><arg>2</arg><arg>userAccountControl</arg></fn></arg><arg>514</arg></fn></export-flow><export-flow allows-null="false"><src><attr>accountName</attr></src><dest>dn</dest><scoping /><fn id="+" isCustomExpression="false"><arg><fn id="EscapeDNComponent" isCustomExpression="false"><arg><fn id="+" isCustomExpression="true"><arg>"CN="</arg><arg>accountName</arg></fn></arg></fn></arg><arg>$TerminatedUsersOU</arg></fn></export-flow></PersistentFlow>
+</SynchronizationRule>

@@ -1,0 +1,7 @@
+<SynchronizationRule>
+    <ConnectedSystemScope />
+    <OutboundScope />
+    <RelationshipCriteria><conditions><condition><ilmAttribute>csoADSCode</ilmAttribute><csAttribute>ID</csAttribute></condition></conditions></RelationshipCriteria>
+    <InitialFlow />
+    <PersistentFlow><import-flow><src><attr>ADSDescription</attr></src><dest>displayName</dest><scoping /></import-flow><import-flow><src><attr>ID</attr></src><dest>csoADSCode</dest><scoping /></import-flow></PersistentFlow>
+</SynchronizationRule>

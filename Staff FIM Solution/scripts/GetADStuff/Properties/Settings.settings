@@ -1,0 +1,28 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GetADStuff.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Mode" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">XML</Value>
+    </Setting>
+    <Setting Name="FilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\\Users\\bob.bradley.tst\\Documents\\Visual Studio 2008\\Projects\\GetADStuff\\Groups.</Value>
+    </Setting>
+    <Setting Name="LdapRoot" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">LDAP://dbb.local/OU=Groups,DC=dbb,DC=local</Value>
+    </Setting>
+    <Setting Name="LdapQuery" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">(&amp;(objectCategory=group)(objectClass=group))</Value>
+    </Setting>
+    <Setting Name="LdapProperties" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;info&lt;/string&gt;
+  &lt;string&gt;description&lt;/string&gt;
+  &lt;string&gt;cn&lt;/string&gt;
+  &lt;string&gt;sAMAccountName&lt;/string&gt;
+  &lt;string&gt;distinguishedName&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

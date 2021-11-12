@@ -1,0 +1,277 @@
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="en-us">
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>SQL Table Viewer</title>
+    <style type="text/css">
+body      {background-color:wheat;}
+table     {width:100%;font-family:Tahoma; font-size:70%;background-color:lightgrey;}
+td.tbname {font-weight:bold; background-color:papayawhip;}
+td.head   {font-weight:bold; background-color:buttonface;}
+td.data   {background-color:cornsilk;}
+</style>
+
+    <script type="text/vbscript">
+<!--
+Option Explicit
+
+Const AD_OPEN_STATIC = 3
+Const AD_LOCK_OPTIMISTIC = 3
+Const AD_USE_CLIENT = 3
+Const DEBUG_ME = False
+
+'Customizable parameters:
+
+Const MAX_ROWS      = 100
+Const SQL_SERVER    = "localhost"
+Const EXCLUDE_COLS  = ""
+
+'Add the names of the tables or views you want to display here:
+Dim tableNames, databaseNames, keyColNames, IX
+tableNames = array("[dbo].[Site]") ',"[dbo].[ObjectsByType]")
+databaseNames = array("IdM")
+keyColNames = array("SiteID") ',"ID")
+IX = 0
+
+Sub Reload
+    Dim oData
+    Set oData = document.getElementById("DataArea")
+    oData.InnerHTML = "<table ID=""dataTable""></table>"
+    GetTableData()
+End Sub
+
+Sub DebugMsg ( ByVal txtMsg )
+    If DEBUG_ME Then
+        MsgBox (txtMsg)
+    End If
+End Sub
+
+Sub GetTableData
+    Dim objConnection
+    Set objConnection = CreateObject("ADODB.Connection")
+    objConnection.Open "Provider=SQLOLEDB;Data Source=" & SQL_SERVER & ";" & _ 
+                      "Trusted_Connection=Yes;Initial Catalog=" & databaseNames(IX) & ";" 
+    Dim objRecordset
+    Set objRecordset = CreateObject("ADODB.Recordset")
+    objRecordset.CursorLocation = AD_USE_CLIENT
+
+    Dim tableName, tableData, oTable, oRow, oTbNameCell, oCell, oSelect, oOption, rowCounter
+    Set oTable = document.getElementById("dataTable")
+
+    Set oSelect = document.getElementById("TableID")
+    oSelect.InnerHTML = ""
+    rowCounter = 0
+    For each tableName in tableNames
+        Set oOption = document.createElement("option")
+        oOption.text=tableName
+        oOption.value=rowCounter 
+        DebugMsg (":" & TableID.value & ":" & oOption.value & ":")
+        If TableID.value = oOption.value Then
+            oOption.selected="true"
+        End If
+        oSelect.add(oOption)
+        rowCounter = rowCounter + 1
+    Next
+
+    Set oSelect = document.getElementById("ModCol")
+    oSelect.InnerHTML = ""
+      
+    tableName = tableNames(IX)
+    'For Each tableName in tableNames
+        Set oRow              = oTable.insertRow()
+        Set oTbNameCell       = oRow.insertCell() 
+        oTbNameCell.ClassName = "tbname"
+        oTbNameCell.InnerText = tableName 
+
+        objRecordset.Open "SELECT * FROM " & tableName & _
+            " order by 1 desc " , objConnection, _
+                        AD_OPEN_STATIC, AD_LOCK_OPTIMISTIC
+
+        If Not objRecordset.eof Then
+            objRecordset.MoveFirst
+            Set oRow   = oTable.insertRow()
+            Dim curField
+            For each curField in objRecordset.fields
+                If InStr(EXCLUDE_COLS, curField.Name) = 0 Then 
+                    Set oCell  = oRow.insertCell() 
+                    oCell.ClassName = "head"
+                    oCell.InnerText =  Trim(curField.Name) 
+
+                    Set oOption = document.createElement("option")
+                    oOption.text=Trim(curField.Name) 
+                    oOption.value=Trim(curField.Name) 
+                    If SelectedCol.value = oOption.value Then
+                        oOption.selected="true"
+                    End If
+                    oSelect.add(oOption)
+                End If
+            Next
+            oTbNameCell.colSpan = objRecordset.fields.count
+        End If
+
+        Set oSelect = document.getElementById("ModID")
+        oSelect.InnerHTML = ""
+        rowCounter = 0
+        Do While Not objRecordset.eof
+            Set oRow   = oTable.insertRow()
+            For each curField in objRecordset.fields
+                If InStr(EXCLUDE_COLS, curField.Name) = 0 Then 
+                    Set oCell  = oRow.insertCell() 
+                    oCell.ClassName = "data"
+                    oCell.InnerText =  Trim(curField)
+
+                    If curField.Name = keyColNames(IX) Then
+                        Set oOption = document.createElement("option")
+                        oOption.text=Trim(curField) 
+                        oOption.value=Trim(curField) 
+                        If SelectedID.value = oOption.value Then
+                            oOption.selected="true"
+                        End If
+                        oSelect.add(oOption)
+                    End If
+                End If
+            Next
+            objRecordset.MoveNext
+
+            rowCounter = rowCounter + 1
+            If rowCounter = MAX_ROWS Then
+                Exit Do
+            End If
+        Loop
+        objRecordset.Close
+    'Next
+    objConnection.Close
+
+    GetCellValue()
+
+End Sub
+
+Sub SetTableValue()
+    IX = TableID.Value
+    Reload()
+End Sub
+
+Sub GetCellValue
+
+    Dim cmdText, i
+    Dim keyColName
+    keyColName = keyColNames(IX)
+    cmdText  = "SELECT " & ModCol.Value & _
+        " FROM " & tableNames(IX)
+    If InStr(keyColName,",") >= 0 Then
+        i = 0
+        For each keyColName In Split(keyColNames(IX),",")
+            If i = 0 Then
+                cmdText = cmdText & " WHERE " & keyColName & "='" & ModID.Value & "'"
+            Else
+                cmdText = cmdText & " AND " & keyColName & "='" & ModID.Value & "'"
+            End If
+            i = i + 1
+        Next
+    Else
+        cmdText = cmdText & " WHERE " & keyColNames(IX) & "='" & ModID.Value & "'"
+    End If
+    DebugMsg (cmdText)
+
+    'Save for refresh
+    SelectedID.value = ModID.Value
+    SelectedCol.value = ModCol.Value
+    TableID.Value = IX
+    'TableID.text = tableNames(IX)
+
+    Dim objConnection
+    Set objConnection = CreateObject("ADODB.Connection")
+    objConnection.Open "Provider=SQLOLEDB;Data Source=" & SQL_SERVER & ";" & _ 
+                      "Trusted_Connection=Yes;Initial Catalog=" & databaseNames(IX) & ";" 
+    Dim objRecordset
+    Set objRecordset = CreateObject("ADODB.Recordset")
+
+    objRecordset.Open cmdText, objConnection, AD_OPEN_STATIC, AD_LOCK_OPTIMISTIC
+
+    If Not objRecordset.eof Then
+         objRecordset.MoveFirst
+         Dim curField
+         For each curField in objRecordset.fields
+            NewVal.value = Trim(curField)
+            Exit For
+         Next
+    End If
+    
+    objRecordset.Close
+    objConnection.Close
+
+End Sub
+
+Sub Delete1Row
+    Dim cmdText
+    cmdText  = "DELETE FROM " & tableNames(IX) & _
+                " WHERE " & keyColNames(IX) & " = '" & ModID.Value & "'"
+    ExecSQLCommand(cmdText)
+End Sub
+
+Sub Change1Row
+    Dim cmdText
+    cmdText  = "UPDATE " & tableNames(IX) & " SET " & ModCol.Value & "='" & NewVal.Value & "' " & _
+                "WHERE " & keyColNames(IX) & " = '" & ModID.Value & "'"
+    ExecSQLCommand(cmdText)
+End Sub
+
+Sub ExecSQLCommand (byval vstrCommand)
+
+    Dim objConnection 
+    Set objConnection = CreateObject("ADODB.Connection")
+
+    Dim objCmd
+    Set objCmd = CreateObject("ADODB.Command")
+    objConnection.Open "Provider=SQLOLEDB;Data Source=" & SQL_SERVER & ";" & _ 
+                       "Trusted_Connection=Yes;Initial Catalog=" & databaseNames(IX) & ";" 
+    objCmd.ActiveConnection = objConnection
+    DebugMsg (vstrCommand)
+    objCmd.CommandText = vstrCommand 
+    objCmd.Execute
+
+    objConnection.Close
+    'SelectedTable.value = ModTableName.Value
+    Reload()
+
+End Sub
+
+Sub Quitsub
+     self.close()
+End Sub
+
+-->
+    </script>
+
+    <hta:application id="oMyApp" applicationname="SQLTableViewer" application="yes" caption="yes"
+        singleinstance="yes" icon="unifyico1.ico" sysmenu="yes">
+</hta:application>
+</head>
+<body onload="GetTableData">
+    <span id="DataArea" style="height: 350; width: 900; overflow: scroll;">
+        <table id="dataTable">
+        </table>
+    </span>
+    <p>
+        Table:
+        <select id="TableID" name="TableID" size="1" onchange="SetTableValue">
+        </select>
+        <br />
+        Apply Changes to cell ...<br />
+        ID :
+        <select id="ModID" name="ModID" size="1" onchange="GetCellValue">
+        </select>
+        Col:
+        <select id="ModCol" name="ModCol" size="1" onchange="GetCellValue">
+        </select>
+        Val:
+        <input id="NewVal" type="text" value="" name="NewVal" size="30"><br />
+        <input id="SelectedID" name="SelectedID" type="hidden" value="" />
+        <input id="SelectedCol" name="SelectedCol" type="hidden" value="" />
+        <input id="Update" type="button" value="  Update  " name="Update" onclick="Change1Row">
+        <input id="Delete" type="button" value="  Delete  " name="Delete" onclick="Delete1Row">
+        <input id="Refresh" type="button" value=" Refresh " name="Refresh" onclick="Reload">
+        <input id="Quitbutton" type="button" value="  Quit  " name="Quit_button" onclick="QuitSub">
+        <p>
+</body>
+</html>

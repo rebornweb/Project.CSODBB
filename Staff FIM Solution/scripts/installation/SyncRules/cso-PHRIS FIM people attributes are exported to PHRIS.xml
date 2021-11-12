@@ -1,0 +1,7 @@
+<SynchronizationRule>
+    <ConnectedSystemScope />
+    <OutboundScope />
+    <RelationshipCriteria><conditions><condition><ilmAttribute>employeeID</ilmAttribute><csAttribute>EmplId</csAttribute></condition></conditions></RelationshipCriteria>
+    <InitialFlow><export-flow allows-null="false"><src><attr>employeeID</attr></src><dest>dn</dest><scoping /><fn id="+" isCustomExpression="false"><arg>"CN=BUS,CN="</arg><arg>employeeID</arg><arg>",OU=People"</arg></fn></export-flow></InitialFlow>
+    <PersistentFlow><export-flow allows-null="false"><src><attr>csoEmailType</attr></src><dest>EmailType</dest><scoping /></export-flow><export-flow allows-null="false"><src><attr>employeeID</attr></src><dest>EmplId</dest><scoping /></export-flow><export-flow allows-null="false"><src>R</src><dest>EmailClass</dest><scoping /></export-flow><export-flow allows-null="false"><src><attr>email</attr></src><dest>EmailId</dest><scoping /><fn id="IIF" isCustomExpression="false"><arg><fn id="Eq" isCustomExpression="true"><arg><fn id="UpperCase" isCustomExpression="false"><arg><fn id="Trim" isCustomExpression="false"><arg>$EmailOverride</arg></fn></arg></fn></arg><arg>"NONE"</arg></fn></arg><arg>email</arg><arg>$EmailOverride</arg></fn></export-flow></PersistentFlow>
+</SynchronizationRule>

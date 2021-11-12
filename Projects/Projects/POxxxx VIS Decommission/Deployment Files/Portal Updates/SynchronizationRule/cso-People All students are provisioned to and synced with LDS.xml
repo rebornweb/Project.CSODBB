@@ -1,0 +1,49 @@
+<Resource>
+  <ConnectedObjectType>user</ConnectedObjectType>
+  <ConnectedSystem Control="Lookup" ObjectType="ma-data" LookupAttribute="DisplayName">CSODBB LDS</ConnectedSystem>
+  <ConnectedSystemScope />
+  <CreateConnectedSystemObject>True</CreateConnectedSystemObject>
+  <CreatedTime>2019-11-15T16:27:41</CreatedTime>
+  <CreateILMObject>False</CreateILMObject>
+  <Creator Control="Lookup" ObjectType="Person" LookupAttribute="DisplayName">administrator</Creator>
+  <DeletedTime />
+  <Dependency />
+  <Description>Manage students in LDS</Description>
+  <DisconnectConnectedSystemObject>False</DisconnectConnectedSystemObject>
+  <DisplayName>cso-People: All students are provisioned to and synced with LDS</DisplayName>
+  <ExpirationTime />
+  <FlowType>1</FlowType>
+  <ILMObjectType>person</ILMObjectType>
+  <InitialFlow>&lt;export-flow allows-null="false"&gt;&lt;src&gt;&lt;attr&gt;accountName&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;dn&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;fn id="+" isCustomExpression="false"&gt;&lt;arg&gt;&lt;fn id="EscapeDNComponent" isCustomExpression="false"&gt;&lt;arg&gt;&lt;fn id="+" isCustomExpression="true"&gt;&lt;arg&gt;"CN="&lt;/arg&gt;&lt;arg&gt;accountName&lt;/arg&gt;&lt;/fn&gt;&lt;/arg&gt;&lt;/fn&gt;&lt;/arg&gt;&lt;arg&gt;",CN=Users,DC=CSODBB"&lt;/arg&gt;&lt;/fn&gt;&lt;/export-flow&gt;</InitialFlow>
+  <Locale />
+  <ManagementAgentID Control="Lookup" ObjectType="ma-data" LookupAttribute="DisplayName">CSODBB LDS</ManagementAgentID>
+  <msidmOutboundIsFilterBased>True</msidmOutboundIsFilterBased>
+  <msidmOutboundScopingFilters>&lt;scoping&gt;&lt;scope&gt;&lt;csAttribute&gt;PersonType&lt;/csAttribute&gt;&lt;csOperator&gt;EQUAL&lt;/csOperator&gt;&lt;csValue&gt;Student&lt;/csValue&gt;&lt;/scope&gt;&lt;/scoping&gt;</msidmOutboundScopingFilters>
+  <MVObjectID />
+  <ObjectType>SynchronizationRule</ObjectType>
+  <PersistentFlow>&lt;export-flow allows-null="false"&gt;&lt;src&gt;&lt;attr&gt;accountName&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;uid&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="false"&gt;&lt;src&gt;&lt;attr&gt;displayName&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;displayName&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="false"&gt;&lt;src&gt;&lt;attr&gt;EmployeeNumber&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;employeeNumber&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="false"&gt;&lt;src&gt;&lt;attr&gt;lastName&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;sn&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="true"&gt;&lt;src&gt;&lt;attr&gt;accountName&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;userPrincipalName&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="true"&gt;&lt;src&gt;&lt;attr&gt;accountName&lt;/attr&gt;&lt;attr&gt;MailSuffix&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;mail&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;fn id="+" isCustomExpression="false"&gt;&lt;arg&gt;accountName&lt;/arg&gt;&lt;arg&gt;"@"&lt;/arg&gt;&lt;arg&gt;MailSuffix&lt;/arg&gt;&lt;/fn&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="true"&gt;&lt;src&gt;&lt;attr&gt;Class&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;csodbbClassID&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="true"&gt;&lt;src&gt;&lt;attr&gt;physicalDeliveryOfficeName&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;physicalDeliveryOfficeName&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="true"&gt;&lt;src&gt;&lt;attr&gt;PreferredName&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;givenName&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="true"&gt;&lt;src&gt;&lt;attr&gt;USIN&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;employeeID&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="true"&gt;&lt;src&gt;&lt;attr&gt;Year&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;department&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="true"&gt;&lt;src&gt;&lt;attr&gt;Year&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;title&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="false"&gt;&lt;src&gt;&lt;attr&gt;PersonType&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;csodbbPersonType&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="false"&gt;&lt;src&gt;&lt;attr&gt;sex&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;csodbbSex&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="true"&gt;&lt;src&gt;&lt;attr&gt;DOB&lt;/attr&gt;&lt;attr&gt;csoBirthDate&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;csodbbDOBString&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;fn id="IIF" isCustomExpression="false"&gt;&lt;arg&gt;&lt;fn id="IsPresent" isCustomExpression="true"&gt;&lt;arg&gt;DOB&lt;/arg&gt;&lt;/fn&gt;&lt;/arg&gt;&lt;arg&gt;&lt;fn id="DateTimeFormat" isCustomExpression="true"&gt;&lt;arg&gt;DOB&lt;/arg&gt;&lt;arg&gt;"dd/MM/yyyy"&lt;/arg&gt;&lt;/fn&gt;&lt;/arg&gt;&lt;arg&gt;&lt;fn id="IIF" isCustomExpression="true"&gt;&lt;arg&gt;&lt;fn id="IsPresent" isCustomExpression="false"&gt;&lt;arg&gt;csoBirthDate&lt;/arg&gt;&lt;/fn&gt;&lt;/arg&gt;&lt;arg&gt;&lt;fn id="DateTimeFormat" isCustomExpression="false"&gt;&lt;arg&gt;csoBirthDate&lt;/arg&gt;&lt;arg&gt;"dd/MM/yyyy"&lt;/arg&gt;&lt;/fn&gt;&lt;/arg&gt;&lt;arg&gt;&lt;fn id="Null" isCustomExpression="false" /&gt;&lt;/arg&gt;&lt;/fn&gt;&lt;/arg&gt;&lt;/fn&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="true"&gt;&lt;src&gt;&lt;attr&gt;physicalDeliveryOfficeName&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;csodbbSiteID&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="true"&gt;&lt;src&gt;&lt;attr&gt;House&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;csodbbHouseID&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="true"&gt;&lt;src&gt;&lt;attr&gt;Year&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;csodbbYear&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="true"&gt;&lt;src&gt;&lt;attr&gt;DOB&lt;/attr&gt;&lt;attr&gt;csoBirthDate&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;csodbbDOB&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;fn id="IIF" isCustomExpression="false"&gt;&lt;arg&gt;&lt;fn id="IsPresent" isCustomExpression="true"&gt;&lt;arg&gt;DOB&lt;/arg&gt;&lt;/fn&gt;&lt;/arg&gt;&lt;arg&gt;&lt;fn id="+" isCustomExpression="true"&gt;&lt;arg&gt;&lt;fn id="DateTimeFormat" isCustomExpression="false"&gt;&lt;arg&gt;DOB&lt;/arg&gt;&lt;arg&gt;"yyyyMMdd"&lt;/arg&gt;&lt;/fn&gt;&lt;/arg&gt;&lt;arg&gt;"000000.0Z"&lt;/arg&gt;&lt;/fn&gt;&lt;/arg&gt;&lt;arg&gt;&lt;fn id="IIF" isCustomExpression="true"&gt;&lt;arg&gt;&lt;fn id="IsPresent" isCustomExpression="false"&gt;&lt;arg&gt;csoBirthDate&lt;/arg&gt;&lt;/fn&gt;&lt;/arg&gt;&lt;arg&gt;&lt;fn id="+" isCustomExpression="false"&gt;&lt;arg&gt;&lt;fn id="DateTimeFormat" isCustomExpression="false"&gt;&lt;arg&gt;csoBirthDate&lt;/arg&gt;&lt;arg&gt;"yyyyMMdd"&lt;/arg&gt;&lt;/fn&gt;&lt;/arg&gt;&lt;arg&gt;"000000.0Z"&lt;/arg&gt;&lt;/fn&gt;&lt;/arg&gt;&lt;arg&gt;&lt;fn id="Null" isCustomExpression="false" /&gt;&lt;/arg&gt;&lt;/fn&gt;&lt;/arg&gt;&lt;/fn&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="false"&gt;&lt;src&gt;&lt;attr&gt;accountName&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;dn&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;fn id="+" isCustomExpression="false"&gt;&lt;arg&gt;&lt;fn id="EscapeDNComponent" isCustomExpression="false"&gt;&lt;arg&gt;&lt;fn id="+" isCustomExpression="true"&gt;&lt;arg&gt;"CN="&lt;/arg&gt;&lt;arg&gt;accountName&lt;/arg&gt;&lt;/fn&gt;&lt;/arg&gt;&lt;/fn&gt;&lt;/arg&gt;&lt;arg&gt;",CN=Users,DC=CSODBB"&lt;/arg&gt;&lt;/fn&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="true"&gt;&lt;src&gt;&lt;attr&gt;description&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;description&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <PersistentFlow>&lt;export-flow allows-null="true"&gt;&lt;src&gt;&lt;attr&gt;SAS2IDMConnector&lt;/attr&gt;&lt;/src&gt;&lt;dest&gt;csodbbIsLoginDisabled&lt;/dest&gt;&lt;scoping&gt;&lt;/scoping&gt;&lt;fn id="IIF" isCustomExpression="false"&gt;&lt;arg&gt;&lt;fn id="IsPresent" isCustomExpression="true"&gt;&lt;arg&gt;SAS2IDMConnector&lt;/arg&gt;&lt;/fn&gt;&lt;/arg&gt;&lt;arg&gt;"false"&lt;/arg&gt;&lt;arg&gt;"true"&lt;/arg&gt;&lt;/fn&gt;&lt;/export-flow&gt;</PersistentFlow>
+  <Precedence>3</Precedence>
+  <RelationshipCriteria>&lt;conditions/&gt;</RelationshipCriteria>
+  <ResourceTime />
+</Resource>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SAS2IDM.Reconciliation", "SAS2IDM.Reconciliation\SAS2IDM.Reconciliation.dtproj", "{A3325729-2865-4CA0-8DB1-98DCE0D3206B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+		TEST Deploy|Default = TEST Deploy|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A3325729-2865-4CA0-8DB1-98DCE0D3206B}.Development|Default.ActiveCfg = Development
+		{A3325729-2865-4CA0-8DB1-98DCE0D3206B}.Development|Default.Build.0 = Development
+		{A3325729-2865-4CA0-8DB1-98DCE0D3206B}.TEST Deploy|Default.ActiveCfg = TEST Deploy
+		{A3325729-2865-4CA0-8DB1-98DCE0D3206B}.TEST Deploy|Default.Build.0 = TEST Deploy
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ADBC159E-E2C8-4913-AA08-445A5863045A}
+	EndGlobalSection
+EndGlobal

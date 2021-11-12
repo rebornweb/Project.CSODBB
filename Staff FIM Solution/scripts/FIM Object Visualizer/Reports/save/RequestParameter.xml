@@ -1,0 +1,86 @@
+<Request>
+  <RequestParameter xmlns:q1="http://microsoft.com/wsdl/types/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CreateRequestParameter">
+    <Target>0c959ebe-3f1d-4171-93d6-d302234adf08</Target>
+    <Calculated>false</Calculated>
+    <PropertyName>Description</PropertyName>
+    <Value xsi:type="xsd:string">Jeff Test 3 01092011</Value>
+    <Operation>Create</Operation>
+  </RequestParameter>
+  <RequestParameter xmlns:q1="http://microsoft.com/wsdl/types/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CreateRequestParameter">
+    <Target>0c959ebe-3f1d-4171-93d6-d302234adf08</Target>
+    <Calculated>false</Calculated>
+    <PropertyName>DisplayName</PropertyName>
+    <Value xsi:type="xsd:string">Jeff Test 3 01092011</Value>
+    <Operation>Create</Operation>
+  </RequestParameter>
+  <RequestParameter xmlns:q1="http://microsoft.com/wsdl/types/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CreateRequestParameter">
+    <Target>0c959ebe-3f1d-4171-93d6-d302234adf08</Target>
+    <Calculated>false</Calculated>
+    <PropertyName>ObjectType</PropertyName>
+    <Value xsi:type="xsd:string">DEEWR-esg-roleTemplate</Value>
+    <Operation>Create</Operation>
+  </RequestParameter>
+  <RequestParameter xmlns:q1="http://microsoft.com/wsdl/types/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CreateRequestParameter">
+    <Target>0c959ebe-3f1d-4171-93d6-d302234adf08</Target>
+    <Calculated>false</Calculated>
+    <PropertyName>DEEWR-esg-generalRoleID</PropertyName>
+    <Value xsi:type="q1:guid">5b68c64b-bf6e-4167-915f-444b410054c4</Value>
+    <Operation>Create</Operation>
+  </RequestParameter>
+  <RequestParameter xmlns:q1="http://microsoft.com/wsdl/types/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CreateRequestParameter">
+    <Target>0c959ebe-3f1d-4171-93d6-d302234adf08</Target>
+    <Calculated>false</Calculated>
+    <PropertyName>DEEWR-esg-generalRoleID</PropertyName>
+    <Value xsi:type="q1:guid">b23a815e-97a5-4ec9-8d2e-08f52f7f9d14</Value>
+    <Operation>Create</Operation>
+  </RequestParameter>
+  <RequestParameter xmlns:q1="http://microsoft.com/wsdl/types/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CreateRequestParameter">
+    <Target>0c959ebe-3f1d-4171-93d6-d302234adf08</Target>
+    <Calculated>false</Calculated>
+    <PropertyName>DEEWR-esg-generalRoleID</PropertyName>
+    <Value xsi:type="q1:guid">87c05eea-bf18-45d3-befc-a178592869ad</Value>
+    <Operation>Create</Operation>
+  </RequestParameter>
+  <RequestParameter xmlns:q1="http://microsoft.com/wsdl/types/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CreateRequestParameter">
+    <Target>0c959ebe-3f1d-4171-93d6-d302234adf08</Target>
+    <Calculated>false</Calculated>
+    <PropertyName>DEEWR-esg-reportingRoleID</PropertyName>
+    <Value xsi:type="q1:guid">f700da6a-9ea3-47b0-a2bb-98212bbd236e</Value>
+    <Operation>Create</Operation>
+  </RequestParameter>
+  <RequestParameter xmlns:q1="http://microsoft.com/wsdl/types/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CreateRequestParameter">
+    <Target>0c959ebe-3f1d-4171-93d6-d302234adf08</Target>
+    <Calculated>false</Calculated>
+    <PropertyName>DEEWR-esg-reportingRoleID</PropertyName>
+    <Value xsi:type="q1:guid">39352710-959d-46f7-ba6d-97f06e29e4ed</Value>
+    <Operation>Create</Operation>
+  </RequestParameter>
+  <RequestParameter xmlns:q1="http://microsoft.com/wsdl/types/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CreateRequestParameter">
+    <Target>0c959ebe-3f1d-4171-93d6-d302234adf08</Target>
+    <Calculated>false</Calculated>
+    <PropertyName>DEEWR-esg-baseRoleID</PropertyName>
+    <Value xsi:type="q1:guid">91e609ad-e086-4b6d-a38f-62fca2d264d0</Value>
+    <Operation>Create</Operation>
+  </RequestParameter>
+  <RequestParameter xmlns:q1="http://microsoft.com/wsdl/types/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CreateRequestParameter">
+    <Target>0c959ebe-3f1d-4171-93d6-d302234adf08</Target>
+    <Calculated>false</Calculated>
+    <PropertyName>DEEWR-esg-orgID</PropertyName>
+    <Value xsi:type="q1:guid">28e7518b-73a2-42bb-b8aa-05b2215ef0e7</Value>
+    <Operation>Create</Operation>
+  </RequestParameter>
+  <RequestParameter xmlns:q1="http://microsoft.com/wsdl/types/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CreateRequestParameter">
+    <Target>0c959ebe-3f1d-4171-93d6-d302234adf08</Target>
+    <Calculated>true</Calculated>
+    <PropertyName>ObjectID</PropertyName>
+    <Value xsi:type="q1:guid">0c959ebe-3f1d-4171-93d6-d302234adf08</Value>
+    <Operation>Create</Operation>
+  </RequestParameter>
+  <RequestParameter xmlns:q1="http://microsoft.com/wsdl/types/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CreateRequestParameter">
+    <Target>0c959ebe-3f1d-4171-93d6-d302234adf08</Target>
+    <Calculated>true</Calculated>
+    <PropertyName>Creator</PropertyName>
+    <Value xsi:type="q1:guid">09639c0b-4482-41f5-a2a7-fab4b7efbb6e</Value>
+    <Operation>Create</Operation>
+  </RequestParameter>
+</Request>

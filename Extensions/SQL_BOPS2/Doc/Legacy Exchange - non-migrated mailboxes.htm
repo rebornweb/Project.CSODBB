@@ -1,0 +1,710 @@
+﻿<HTML xmlns:user="http://www.myserver.com/user" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+  <HEAD>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <TITLE>MAConfigurationViewer 1.0 - </TITLE>
+    <STYLE type="text/css">
+       @page FullPage{margin-left:1.0in;margin-right:0.5in}
+
+        h1,h3{margin: 0px; padding: 0px;}
+        #S1 {width: 300px;}
+        h1 {color: #AAAAAA; font-size: 500%;}
+        h3 {color: #AAAAAA; font-size: 500%;}
+        
+        table{page:FullPage;width:575px;}
+        .tableClass1{page:FullPage; width:300px; border: medium ;}
+        .trtableClass1{width:375px;}
+        .tdtableClass1{width:165px;}
+
+        .tableMain{page:FullPage; width:540px;  FONT-FAMILY:Verdana; FONT-SIZE: 70%;}
+
+        .thTitle{background-color:#666666; color: #FFFFFF; FONT-SIZE: 70%;}
+        .thAttributeFlow{background-color:#bbbbbb;  FONT-SIZE: 70%;}
+        .thAttributeFlow1{background-color:#dddddd; FONT-SIZE: 70%;}
+        .thAttributeFlow2{background-color:#dddddd; FONT-SIZE: 70%; width:50px}
+
+        .tableMenu{FONT-SIZE: 300%; FONT-FAMILY: Verdana;  width:575px}
+        .tdMenu{border-right: 1px solid #999999;text-align:center;}
+        .trMenu{background-color:#ffffff;}
+
+        .tableClass2{cellspacing:'0' cellpadding:'0'; border='1'; width:100% FONT-SIZE: 80%; FONT-FAMILY: Verdana;  border-color: #eeeeee; border-style:solid; PADDING: .25em;}
+        .tableClass3{width:50px;}
+        .tableClass4{width:575px;vertical-align:left}
+        .tableClass5{vertical-align:middle; width:375px}
+        .tdLeftSection{background-color:#eeeeee; FONT-SIZE: 70%;}
+        
+
+        A{color:#0000FF; text-decoration: none;}
+        a:active {text-decoration: underline;}
+        a:hover {text-decoration: underline;}
+        img {border: none; }
+        .imgbanner {border: none; width:10px;}
+        .my .ct p {padding: 0px 0px 3px 0px;}
+        #btnsearch {border: none; margin-left: 95px; margin-top: -25px;}
+        body,div,span,p,ul,td,th,input,select,textarea,button {font-family: Arial, sans-serif; font-size: 70%;}
+        td{font-size: 70%;word-wrap:break-word;}
+
+
+        .tdClass1{font-size: 70%; width:400px; word-wrap:break-word;}
+        .tdClass2{font-size: 70%; width:350px; word-wrap:break-word;}
+        .tdClass3{font-size: 70%; width:175px; word-wrap:break-word;}
+        .tdClass4{font-size: 70%; width:20px; word-wrap:break-word;}
+        .tdClass5{font-size: 70%; width:350px; word-wrap:break-word;}
+        .tdClass6{font-family: Symbol;font-size: 70%; color:blue; text-align:center; width:8%;}
+        .tdClass7{font-size: 70%; word-wrap:break-word; width:350px;}
+
+        body {page:FullPage;}
+        br.clear, .clrbth {clear: both;}
+        hr {height: 1px; padding: 0px; border:1px solid; color:#BBBBBB; }
+        ol {list-style-position: outside; margin: -2px 0px 0px 23px;}
+        li {list-style-position: outside; margin: -2px 0px 0px 12px; padding: 0; margin-left: 20px;}
+
+        
+
+       </STYLE>
+  </HEAD>
+  <BODY><script>
+//scrolling TOP Link to navigate...
+var displayed="<nobr><b>[Top]</b></nobr>"
+var logolink='javascript:window.scrollTo(0,0)'
+var ie4 =document.all
+
+if (ie4)
+document.write('<span id="logo" style="position:absolute;top:-300;z-index:100">'+displayed+'</span>')
+
+function staticit()
+{
+crosslogo.style.left=document.body.scrollLeft+document.body.clientWidth-crosslogo.offsetWidth-10
+crosslogo.style.top=document.body.scrollTop+document.body.clientHeight-crosslogo.offsetHeight-10
+}
+
+function inserttext()
+{ 
+    if (ie4)
+    crosslogo=document.all.logo
+    if (ie4)
+    window.onscroll=staticit
+
+    crosslogo.innerHTML='<a href="'+logolink+'">'+displayed+'</a>'
+    crosslogo.style.left=document.body.clientWidth-crosslogo.offsetWidth-10
+    crosslogo.style.top=document.body.clientHeight-crosslogo.offsetHeight-10
+
+}
+
+if(ie4)
+{
+    window.onload=inserttext
+    window.onresize=new Function("window.location.reload()")
+}
+
+</script><TABLE cellpadding="0" cellspacing="0" class="tableMain">
+      <TR>
+        <TD>
+          <H1>MAConfigurationViewer 1.0 </H1>
+        </TD>
+      </TR>
+      <TR>
+        <TD>
+          <TABLE class="tableMenu">
+            <Tr class="trMenu">
+              <Td class="tdMenu"><b><A href="#properties"> Properties </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Exchange1"> Organization Connection Information </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Exchange2"> Sites Configuration  </A></b></Td>
+              <Td class="tdMenu"><b><A href="#SelObjects"> Selected Object Types </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Attri1"> Selected Attributes </A></b></Td>
+              <Td class="tdMenu"><b><A href="#connectorfilters"> Connector Filters </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Joinandprojection"> Join and Projection Rules </A></b></Td>
+              <Td class="tdMenu"><b><A href="#AttributeFlow"> Attribute Flow </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Deprovisioning"> Deprovisioning </A></b></Td>
+              <Td class="tdMenu"><b><A href="#MAExDLL"> MA Extensions </A></b></Td>
+              <Td class="tdMenu"><b><A href="#RSofMA"> Run Profiles</A></b></Td>
+            </Tr>
+          </TABLE>
+        </TD>
+      </TR>
+      <TR>
+        <TD>
+          <h3>Legacy Exchange - non-migrated mailboxes Management Agent </h3>
+          <hr>
+        </TD>
+      </TR>
+      <TR>
+        <TD Align="center"></TD>
+      </TR>
+      <TR>
+        <TD>
+          <TABLE cellspacing="0" cellpadding="0" border="1" bordercolordark="#ffffff" class="tableClass2">
+            <TR>
+              <TH class="thTitle" colspan="2">
+                        Management Agent's Properties
+                </TH>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Properties</b></TD>
+              <TD align="left"><a NAME="#properties"></a><table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <td><b>MA Type: </b></td>
+                    <td> Exchange Server 5.5 (bridgehead server) </td>
+                  </tr>
+                  <tr>
+                    <td><b>Description: </b></td>
+                    <td class="tdClass3">Connection the to legacy Exchange 5.5 organisation remote sites. This Management Agent is to be decommissioned when the Exchange 5.5 organisation has been migrated to Exchange 2003 in its entirity.</td>
+                  </tr>
+                  <tr>
+                    <td><b>Creation Time: </b></td>
+                    <td>2009-02-09 00:42:47.110</td>
+                  </tr>
+                  <tr>
+                    <td><b>Last Modification Time: </b></td>
+                    <td>2009-03-13 05:26:35.480</td>
+                  </tr>
+                  <tr>
+                    <td><b> Run in Separate Process:</b></td>
+                    <td> No </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Organization Connection Information </b></TD>
+              <TD align="left"><a NAME="#Exchange1"></a><table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <th colspan="2" class="thAttributeFlow"><b>Organization Connection Information </b></th>
+                  </tr>
+                  <tr>
+                    <td> Server name:</td>
+                    <td>sarah</td>
+                  </tr>
+                  <tr>
+                    <td> Port:</td>
+                    <td>389</td>
+                  </tr>
+                  <tr>
+                    <td> User name:</td>
+                    <td>administrator</td>
+                  </tr>
+                  <tr>
+                    <td> Domain:</td>
+                    <td>BBNET</td>
+                  </tr>
+                  <tr>
+                    <td>Enable Secure Sockets Layer (SSL) for communications:</td>
+                    <td>
+                                            No
+                                        </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Sites Configuration </b></TD>
+              <TD align="left"><a NAME="#Exchange2"></a><table border="1" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                  <tr>
+                    <td><b>Site Name: </b>o=Catholic Schools Office</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table>
+                        <tr>
+                          <td>
+                            <table border="1" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                              <tr>
+                                <td><b> Preferred Servers: </b></td>
+                                <td> None </td>
+                              </tr>
+                              <tr>
+                                <td><b> Last server used :</b></td>
+                                <td>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><b>Only use preferred servers</b></td>
+                                <td> No </td>
+                              </tr>
+                              <tr>
+                                <td><b>Use SSL</b></td>
+                                <td> No </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <table>
+                              <tr>
+                                <td>
+                                  <table cellspacing="0" cellpadding="0" border="1" bordercolordark="#ffffff" width="100%">
+                                    <tr>
+                                      <td colspan="2"><b> Containers to synchronize </b></td>
+                                    </tr>
+                                    <tr>
+                                      <td><b> Include </b></td>
+                                      <td><b> Container </b></td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=CorpusStIves,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=ENTRANCE,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=HOLLYCROSS,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=HolyFamilyLdfld,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=LKEMUNMORAH,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=MariaReginaAvln,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=MercyChtswd,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=MtrMariaWariwd,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=MtStBrdPymble,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=OLGCFrstvle,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=OLHCEpping,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=OLPSWPymb,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=OurLadyChtswd,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=ProuilleWhrnga,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=SacredHrtMnaVle,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=StAgathaPentHls,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=StBernardBerowra,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=StCeciliaBalg,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=StGerardCrlgfd,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=StJohnHarbord,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=StJohnNrwena,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=STJOSEPHGSFRDE,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=StJosephNrbeen,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=StKevinDeeWhy,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=StKieranMnlyVle,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=StLeoWhrnga,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=StMartinDvdsn,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=StMaryManly,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=StPatrickAsqth,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=STPATSGSFRDE,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=StPaulManly,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=StPhilipNthbdg,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=StPhillipNthbdg,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=StRoseCollaroy,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=StThomasWlghby,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=TERRIGAL,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=TOUKLEY,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=TUGGERAH,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=TUMIUMBI,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=WOYWOYSOUTH,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=WYOMING,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>cn=Configuration,ou=WYONG,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Exclude </td>
+                                      <td>ou=Waitara,o=Catholic Schools Office</td>
+                                    </tr>
+                                    <tr>
+                                      <td> Include </td>
+                                      <td>o=Catholic Schools Office</td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <td class="tdLeftSection"><b>Selected Object Types  </b></td>
+              <td align="left" class="tdClass5"><a NAME="#SelObjects"></a><li>organizationalPerson</li>
+              </td>
+            </TR>
+            <TR>
+              <TD align="left" class="tdLeftSection"><b>Selected Attributes </b></TD>
+              <td class="tdClass2"><a NAME="#Attri1"></a><b> Attribute(s) </b><br><br><li>description</li>
+                <li>employeeNumber</li>
+                <li>Extension-Attribute-5</li>
+                <li>givenName</li>
+                <li>mail</li>
+                <li>manager</li>
+                <li>mobile</li>
+                <li>rdn</li>
+                <li>sn</li>
+                <li>telephoneNumber</li>
+                <li>title</li>
+                <li>uid</li>
+              </td>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Connector Filters </b></TD>
+              <TD align="left"><a NAME="#connectorfilters"></a><table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                  <tr>
+                    <th class="thAttributeFlow1">Data Source Object Type</th>
+                    <th class="thAttributeFlow1">Filter Type</th>
+                    <th class="thAttributeFlow1">Filter </th>
+                  </tr>
+                  <tr>
+                    <td class="tdClass3">organizationalPerson</td>
+                    <td class="tdClass3">scripted</td>
+                    <td> Rules Extension </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Join and Projection Rules </b></TD>
+              <TD align="left"><a NAME="#Joinandprojection"></a><br><TABLE align="left" class="tableClass4">
+                  <TR>
+                    <TD>
+                      <table cellpadding="0" cellspacing="0" width="100%" align="left" class="tableClass4">
+                        <tr>
+                          <td colspan="3"><b>Join Rules: </b></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" width="100%" align="center">
+                              <tr>
+                                <th class="thAttributeFlow1" align="center">Data Source Object</th>
+                                <th class="thAttributeFlow1" align="center">Mapping</th>
+                                <th class="thAttributeFlow1" align="center">Metaverse Object</th>
+                                <th class="thAttributeFlow1" align="center">Join Resolution Extension</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>organizationalPerson</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>dbbStaff</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">Extension-Attribute-5</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">employeeID</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table><br></TD>
+                  </TR>
+                  <TR>
+                    <TD>
+                      <table width="100%" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                        <tr>
+                          <td><b>Projection Rules:</b></td>
+                        </tr>
+                        <tr>
+                          <TD> None </TD>
+                        </tr>
+                      </table>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Attribute Flow</b></TD>
+              <TD align="left"><a NAME="#AttributeFlow"></a><br><TABLE align="left" class="tableClass4">
+                  <TR>
+                    <TD>
+                      <TABLE cellspacing="0" cellpadding="0" border="1" bordercolorlight="#ffffff" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                        <TR>
+                          <TH class="thAttributeFlow" colspan="4"><b>Export Attribute Flow </b></TH>
+                        </TR>
+                        <TR>
+                          <TD> None </TD>
+                        </TR>
+                      </TABLE>
+                    </TD>
+                  </TR>
+                  <TR>
+                    <TD><br><TABLE cellspacing="0" border="1" cellpadding="0" bordercolorlight="#ffffff" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                        <TR>
+                          <TH class="thAttributeFlow" colspan="4"><b>Import Attribute Flow </b></TH>
+                        </TR>
+                        <TR>
+                          <TD>
+                            <table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" class="tableClass4">
+                              <tr>
+                                <th class="thAttributeFlow1">Data Source Attribute</th>
+                                <th class="thAttributeFlow1">To </th>
+                                <th class="thAttributeFlow1">Metaverse Attribute</th>
+                                <th class="thAttributeFlow1">Mapping Type</th>
+                                <th class="thAttributeFlow1">Precedence Order</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>organizationalPerson</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>dbbStaff</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">mail</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">otherMailbox</td>
+                                <td class="tdClass3">Rules Extension - cd.organizationalPerson:mail-&gt;mv.dbbStaff:otherMailbox</td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">mail</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">altRecipient</td>
+                                <td class="tdClass3">Rules Extension - cd.organizationalPerson:mail-&gt;mv.dbbStaff:altRecipient</td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                            </table>
+                          </TD>
+                        </TR>
+                      </TABLE>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Deprovisioning </b></TD>
+              <TD align="left"><a NAME="#Deprovisioning"></a><table cellpadding="0" cellspacing="0" bordercolordark="#ffffff" align="left" border="1" class="tableClass4">
+                  <tr>
+                    <td><b> Deprovision option: </b></td>
+                    <td> Make them disconnectors </td>
+                  </tr>
+                  <tr>
+                    <td><b> Do not recall attributes contributed by an object from this MA when it is disconnected:</b></td>
+                    <td> No </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>MA Extensions  </b></TD>
+              <TD align="left"><a NAME="#MAExDLL"></a><table cellpadding="0" cellspacing="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <td width="50%"><b>DLL:</b></td>
+                    <td width="50%">LegacyExchangeNonMigratedMailboxesRE.dll</td>
+                  </tr>
+                  <tr>
+                    <td width="50%"><b>Run in Separate Process: </b></td>
+                    <td width="50%"> No </td>
+                  </tr>
+                  <tr>
+                    <td width="50%"><b> Enable Password Management:</b></td>
+                    <td width="50%"> No </td>
+                  </tr>
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2">Partitions</th>
+                  </tr>
+                  <tr>
+                    <th class="thAttributeFlow1"><b>Partition Name </b></th>
+                    <th class="thAttributeFlow1"><b>Display Name</b></th>
+                  </tr>
+                  <tr>
+                    <td>o=Catholic Schools Office</td>
+                    <td>None</td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Run Profiles</b></TD>
+              <td class="tdClass2" align="left"><a NAME="#RSofMA"></a><table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Delta Import and Delta Synchronization</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Import and Delta Synchronization</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>o=Catholic Schools Office</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Delta Synchronization</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>o=Catholic Schools Office</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Full Import</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>o=Catholic Schools Office</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Full Import and Full Synchronization</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import and Full Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>o=Catholic Schools Office</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Full Synchronization</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>o=Catholic Schools Office</td>
+                  </tr>
+                </table>
+              </td>
+            </TR>
+          </TABLE>
+        </TD>
+      </TR>
+    </TABLE>
+  </BODY>
+</HTML>

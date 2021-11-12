@@ -1,0 +1,100 @@
+DEPTID,PHRIS NAME RESOLUTION,AD DEPT VALUE,UPN SUFFIX
+10000,Director of Schools Office,Director of Schools Office,@dbb.catholic.edu.au
+100000,Catholic Schools Office,Catholic Schools Office,@dbb.catholic.edu.au
+10013,Office of the Director,Office of the Director,@dbb.catholic.edu.au
+100015,CSO BB Off Dir School Review,Office of the Director School Review,@dbb.catholic.edu.au
+100008,CSO BB Office of Director,Office of the Director,@dbb.catholic.edu.au
+100009,CSO BB Risk Management,Office of the Director Risk Management,@dbb.catholic.edu.au
+100010,CSO BB Knowledge Management,Office of the Director Knowledge Management,@dbb.catholic.edu.au
+100033,CSO BB Strategic Support,Office of the Director Strategic Support,@dbb.catholic.edu.au
+10001,Administration,Administration,@dbb.org.au
+10004,ICLT,ICLT,@dbb.org.au
+100023,CSO BB ICLT Administration,ICLT Administration,@dbb.org.au
+100024,CSO BB ICLT Infrastructure,ICLT Infrastructure,@dbb.org.au
+100025,CSO BB ICLT Data Centre,ICLT Data Centre,@dbb.org.au
+100026,CSO BB ICLT Service Desk,ICLT Service Desk,@dbb.org.au
+100027,CSO BB ICLT Projects,ICLT Projects,@dbb.org.au
+100028,CSO BB ICLT Field Staff,ICLT Field Staff,@dbb.org.au
+10005,Human Resource Services,Human Resource Services,@dbb.catholic.edu.au
+100040,CSO BB HR Workforce Administration,HR Workforce Administration,@dbb.catholic.edu.au
+100039,CSO BB HR PHRIS,HR PHRIS,@dbb.catholic.edu.au
+100001,CSO BB Human Resources,Human Resources,@dbb.catholic.edu.au
+100030,CSO BB HR Payroll,HR Payroll,@dbb.catholic.edu.au
+100002,CSO BB HR OHS & Injury Management,HR OHS & Injury Management,@dbb.catholic.edu.au
+100003,CSO BB HR Industrial Retains,HR Industrial Retains,@dbb.catholic.edu.au
+100004,CSO BB HR Perfromance Management,HR Perfromance Management,@dbb.catholic.edu.au
+100005,CSO BB HR Child Protection,HR Child Protection,@dbb.catholic.edu.au
+100006,CSO BB HR Recruitment,HR Recruitment,@dbb.catholic.edu.au
+100007,CSO BB HR NSW IT,HR NSW IT,@dbb.catholic.edu.au
+10006,Financial Services,Financial Services,@dbb.catholic.edu.au
+100029,CSO BB Financial Serv Admin,Financial Services Admin,@dbb.catholic.edu.au
+100031,CSO BB Fin Services SAT,Financial Services SAT,@dbb.catholic.edu.au
+100032,CSO BB Fin Services Facilities,Financial Services Facilities,@dbb.catholic.edu.au
+10002,School Improvement,School Improvement,@dbb.catholic.edu.au
+10007,Consultant Central Coast,Consultant Central Coast,@dbb.catholic.edu.au
+02220,TOUKLEY St Marys K-6,TOUKLEY St Marys K-6,@dbb.catholic.edu.au
+01617,WYONG St Cecilias K-6,WYONG St Cecilias K-6,@dbb.catholic.edu.au
+13415,KINCUMBER Holy Cross K-6,KINCUMBER Holy Cross K-6,@dbb.catholic.edu.au
+01905,EGOSFORD St Patricks K-6,EAST GOSFORD St Patricks K-6,@dbb.catholic.edu.au
+01509,THE ENTRANCE OLOR K-6,THE ENTRANCE OLOR K-6,@dbb.catholic.edu.au
+13345,LMUNMORAH St Brendans K-6,LAKE MUNMORAH St Brendans K-6,@dbb.catholic.edu.au
+08790,TUMBI St John Fisher K-6,TUMBI UMBI St John Fisher K-6,@dbb.catholic.edu.au
+01692,WOY WOY St John Baptist K-6,WOY WOY St John Baptist K-6,@dbb.catholic.edu.au
+02348,WYOMING OLOR K-6,WYOMING OLOR K-6,@dbb.catholic.edu.au
+02346,TERRIGAL OLSS K-5,TERRIGAL OLSS K-5,@dbb.catholic.edu.au
+17384,WARNERVALE MacKillop College,WARNERVALE MacKillop College,@dbb.catholic.edu.au
+10008,Consultant North Shore,Consultant North Shore,@dbb.catholic.edu.au
+01510,WAITARA OLOR K-6,WAITARA OLOR K-6,@dbb.catholic.edu.au
+01480,CHATSWOOD OLOD K-6,CHATSWOOD OLOD K-6,@dbb.catholic.edu.au
+01983,WILLOUGHBY St Thomas K-6,WILLOUGHBY St Thomas K-6,@dbb.catholic.edu.au
+01359,ST IVES Corpus Christi K-6,ST IVES Corpus Christi K-6,@dbb.catholic.edu.au
+01658,CARLINGFORD St Geraards K-6,CARLINGFORD St Geraards K-6,@dbb.catholic.edu.au
+01501,WEST PYMBLE OLPS K-6,WEST PYMBLE OLPS K-6,@dbb.catholic.edu.au
+01529,WAHROONGA Prouille K-6,WAHROONGA Prouille K-6,@dbb.catholic.edu.au
+01621,NORTHBRIDGE St Philip Neri K-6,NORTHBRIDGE St Philip Neri K-6,@dbb.catholic.edu.au
+01476,EPPING OLHC K-6,EPPING OLHC K-6,@dbb.catholic.edu.au
+01593,BEROWRA St Bernards K-6,BEROWRA St Bernards K-6,@dbb.catholic.edu.au
+01903,ASQUITH St Patricks K-6,ASQUITH St Patricks K-6,@dbb.catholic.edu.au
+01460,PYMBLE Sacred Heart K-6,PYMBLE Sacred Heart K-6,@dbb.catholic.edu.au
+01556,PENNANT HILLS St Agathas K-6,PENNANT HILLS St Agathas K-6,@dbb.catholic.edu.au
+01396,LINDFIELD Holy Family K-6,LINDFIELD Holy Family K-6,@dbb.catholic.edu.au
+10009,Consultant Peninsula,Consultant Peninsula,@dbb.catholic.edu.au
+02117,COLLAROY St Rose K-6,COLLAROY St Rose K-6,@dbb.catholic.edu.au
+01858,Manly St Marys K-6,MANLY St Marys K-6,@dbb.catholic.edu.au
+01805,DEE WHY St Kevins K-6,DEE WHY St Kevins K-6,@dbb.catholic.edu.au
+01688,NARRAWEENA St Johns K-6,NARRAWEENA St Johns K-6,@dbb.catholic.edu.au
+01727,NARRABEEN St Josephs K-6,NARRABEEN St Josephs K-6,@dbb.catholic.edu.au
+01548,MONA VALE Sacred Heart K-6,MONA VALE Sacred Heart K-6,@dbb.catholic.edu.au
+01691,FRESHWATER St John Baptist K-6,FRESHWATER St John Baptist K-6,@dbb.catholic.edu.au
+01616,BALGOWLAH St Cecilias K-6,BALGOWLAH St Cecilias K-6,@dbb.catholic.edu.au
+01484,FORESTVILLE OLGC K-6,FORESTVILLE OLGC K-6,@dbb.catholic.edu.au
+02347,DAVIDSON St Martins K-6,DAVIDSON St Martins K-6,@dbb.catholic.edu.au
+01807,MANLY VALE St Kierans K-6,MANLY VALE St Kierans K-6,@dbb.catholic.edu.au
+01424,AVALON Maria Regina K-6,AVALON Maria Regina K-6,@dbb.catholic.edu.au
+10010,Consultanat Secondary 1,Consultanat Secondary 1,@dbb.catholic.edu.au
+29897,LMUNMORAH St Brigids,LAKE MUNMORAH St Brigids College,@dbb.catholic.edu.au
+01714,EGOSFORD St Josephs,EAST GOSFORD St Josephs College,@dbb.catholic.edu.au
+01450,WARRIEWOOD Mater Maria,WARRIEWOOD Mater Maria College,@dbb.catholic.edu.au
+01813,WAHROONGA St Leos,WAHROONGA St Leos College,@dbb.catholic.edu.au
+01332,CHATSWOOD Mercy,CHATSWOOD Mercy College,@dbb.catholic.edu.au
+01351,MANLY St Pauls,MANLY St Pauls College,@dbb.catholic.edu.au
+16973,TUGGERAH St Peters,TUGGERAH St Peters College,@dbb.catholic.edu.au
+10011,Educational Services,Educational Services,@dbb.catholic.edu.au
+100011,CSO BB Ed Services Admin,Ed Services Admin,@dbb.catholic.edu.au
+100012,CSO BB Ed Services Curriculum,Ed Services Curriculum,@dbb.catholic.edu.au
+100013,CSO BB Ed Services Student Welfare,Ed Services Student Welfare,@dbb.catholic.edu.au
+100014,CSO BB Ed Services Learning Tech,Ed Services Learning Tech,@dbb.catholic.edu.au
+100016,CSO BB Ed Services Behaviour Management,Ed Services Behaviour Management,@dbb.catholic.edu.au
+100017,CSO BB Ed Services Pastoral Care,Ed Services Pastoral Care,@dbb.catholic.edu.au
+100018,CSO BB Ed Services Parent Liaison,Ed Services Parent Liaison,@dbb.catholic.edu.au
+100019,CSO BB Ed Services Preferred Learning,Ed Services Preferred Learning,@dbb.catholic.edu.au
+10003,Mission,Mission,@dbb.catholic.edu.au
+10012,Mission Services,Mission Services,@dbb.catholic.edu.au
+100020,CSO BB Mission Services Admin,Mission Services Admin,@dbb.catholic.edu.au
+100021,CSO BB Mission Services Faith Formation,Mission Services Faith Formation,@dbb.catholic.edu.au
+100022,CSO BB Mission Services Outreach,Mission Services Outreach,@dbb.catholic.edu.au
+BBI,N/A,BBI,@bbi.catholic.edu.au
+ICLT,N/A,ICLT,@dbb.org.au
+Finance,N/A,Finance,@dbb.org.au
+PSU,N/A,PSU,@dbb.org.au
+Human Resources,N/A,HR,@dbb.org.au

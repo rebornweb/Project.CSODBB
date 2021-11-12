@@ -1,0 +1,90 @@
+[2017/08/09 16:25:17.339+10:00] >>>>>>>>>>>>>>>>
+[2017/08/09 16:25:17.354+10:00][VERBOSE] 5.0.0 : AzCopy /Source:E:\install\Scripts\Data Collection Script\Data\UPLOAD\JSON /Dest:https://unifyhealthcheck.file.core.windows.net/csodbb/PROD/JSON /DestSAS:****** /V:E:\install\Scripts\Data Collection Script\AzCopy\AzCopy.log /Z:E:\install\Scripts\Data Collection Script\AzCopy /XO /S /Y
+[2017/08/09 16:25:20.074+10:00][VERBOSE] Start transfer: 09-08-2017-12-21.zip => 09-08-2017-12-21.zip
+[2017/08/09 16:25:20.512+10:00][VERBOSE] Start transfer: 09-08-2017-12-49.zip => 09-08-2017-12-49.zip
+[2017/08/09 16:25:20.512+10:00][VERBOSE] Start transfer: 09-08-2017-14-06.zip => 09-08-2017-14-06.zip
+[2017/08/09 16:25:20.512+10:00][VERBOSE] Start transfer: 09-08-2017-14-35.zip => 09-08-2017-14-35.zip
+[2017/08/09 16:25:20.543+10:00][VERBOSE] Start transfer: 09-08-2017-14-51.zip => 09-08-2017-14-51.zip
+[2017/08/09 16:25:20.543+10:00][VERBOSE] Start transfer: 09-08-2017-15-36.zip => 09-08-2017-15-36.zip
+[2017/08/09 16:25:20.543+10:00][VERBOSE] Start transfer: 09-08-2017-15-41.zip => 09-08-2017-15-41.zip
+[2017/08/09 16:25:20.543+10:00][VERBOSE] Start transfer: 09-08-2017-15-48.zip => 09-08-2017-15-48.zip
+[2017/08/09 16:25:20.543+10:00][VERBOSE] Start transfer: 09-08-2017-15-52.zip => 09-08-2017-15-52.zip
+[2017/08/09 16:25:20.543+10:00][VERBOSE] Start transfer: 09-08-2017-16-25.zip => 09-08-2017-16-25.zip
+[2017/08/09 16:25:21.402+10:00][VERBOSE] Finished transfer: 09-08-2017-14-06.zip => 09-08-2017-14-06.zip
+[2017/08/09 16:25:21.402+10:00][VERBOSE] Finished transfer: 09-08-2017-12-49.zip => 09-08-2017-12-49.zip
+[2017/08/09 16:25:21.402+10:00][VERBOSE] Finished transfer: 09-08-2017-15-36.zip => 09-08-2017-15-36.zip
+[2017/08/09 16:25:21.418+10:00][VERBOSE] Finished transfer: 09-08-2017-16-25.zip => 09-08-2017-16-25.zip
+[2017/08/09 16:25:21.418+10:00][VERBOSE] Finished transfer: 09-08-2017-15-52.zip => 09-08-2017-15-52.zip
+[2017/08/09 16:25:21.418+10:00][VERBOSE] Finished transfer: 09-08-2017-15-41.zip => 09-08-2017-15-41.zip
+[2017/08/09 16:25:21.449+10:00][VERBOSE] Finished transfer: 09-08-2017-14-35.zip => 09-08-2017-14-35.zip
+[2017/08/09 16:25:21.449+10:00][VERBOSE] Finished transfer: 09-08-2017-15-48.zip => 09-08-2017-15-48.zip
+[2017/08/09 16:25:21.496+10:00][VERBOSE] Finished transfer: 09-08-2017-14-51.zip => 09-08-2017-14-51.zip
+[2017/08/09 16:25:21.543+10:00][VERBOSE] Finished transfer: 09-08-2017-12-21.zip => 09-08-2017-12-21.zip
+[2017/08/09 16:25:21.543+10:00] Transfer summary:
+-----------------
+Total files transferred: 10
+Transfer successfully:   10
+Transfer skipped:        0
+Transfer failed:         0
+Elapsed time:            00.00:00:04
+[2017/08/09 16:25:22.402+10:00] >>>>>>>>>>>>>>>>
+[2017/08/09 16:25:22.418+10:00][VERBOSE] 5.0.0 : AzCopy /Source:E:\install\Scripts\Data Collection Script\Data\UPLOAD\ANY /Dest:https://unifyhealthcheck.file.core.windows.net/csodbb/PROD/ANY /DestSAS:****** /V:E:\install\Scripts\Data Collection Script\AzCopy\AzCopy.log /Z:E:\install\Scripts\Data Collection Script\AzCopy /XO /S /Y
+[2017/08/09 16:25:23.136+10:00][VERBOSE] Start transfer: 09-08-2017-15-41_Run-HealthCheck.log => 09-08-2017-15-41_Run-HealthCheck.log
+[2017/08/09 16:25:23.308+10:00][VERBOSE] Start transfer: 09-08-2017-15-48_Run-HealthCheck.log => 09-08-2017-15-48_Run-HealthCheck.log
+[2017/08/09 16:25:23.324+10:00][VERBOSE] Start transfer: 09-08-2017-15-52_Run-HealthCheck.log => 09-08-2017-15-52_Run-HealthCheck.log
+[2017/08/09 16:25:23.324+10:00][VERBOSE] Start transfer: 09-08-2017-16-25_Run-HealthCheck.log => 09-08-2017-16-25_Run-HealthCheck.log
+[2017/08/09 16:25:23.777+10:00][VERBOSE] Finished transfer: 09-08-2017-16-25_Run-HealthCheck.log => 09-08-2017-16-25_Run-HealthCheck.log
+[2017/08/09 16:25:23.777+10:00][VERBOSE] Finished transfer: 09-08-2017-15-52_Run-HealthCheck.log => 09-08-2017-15-52_Run-HealthCheck.log
+[2017/08/09 16:25:23.777+10:00][VERBOSE] Finished transfer: 09-08-2017-15-41_Run-HealthCheck.log => 09-08-2017-15-41_Run-HealthCheck.log
+[2017/08/09 16:25:23.808+10:00][VERBOSE] Finished transfer: 09-08-2017-15-48_Run-HealthCheck.log => 09-08-2017-15-48_Run-HealthCheck.log
+[2017/08/09 16:25:23.824+10:00] Transfer summary:
+-----------------
+Total files transferred: 4
+Transfer successfully:   4
+Transfer skipped:        0
+Transfer failed:         0
+Elapsed time:            00.00:00:01
+[2017/08/09 16:49:42.672+10:00] >>>>>>>>>>>>>>>>
+[2017/08/09 16:49:42.687+10:00][VERBOSE] 5.0.0 : AzCopy /Source:E:\install\Scripts\Data Collection Script\Data\UPLOAD\JSON /Dest:https://unifyhealthcheck.file.core.windows.net/csodbb/PROD/JSON /DestSAS:****** /V:E:\install\Scripts\Data Collection Script\AzCopy\AzCopy.log /Z:E:\install\Scripts\Data Collection Script\AzCopy /XO /S /Y
+[2017/08/09 16:49:43.359+10:00][VERBOSE] Start transfer: 09-08-2017-16-47.zip => 09-08-2017-16-47.zip
+[2017/08/09 16:49:43.765+10:00][VERBOSE] Finished transfer: 09-08-2017-16-47.zip => 09-08-2017-16-47.zip
+[2017/08/09 16:49:43.765+10:00] Transfer summary:
+-----------------
+Total files transferred: 1
+Transfer successfully:   1
+Transfer skipped:        0
+Transfer failed:         0
+Elapsed time:            00.00:00:01
+[2017/08/09 16:49:44.046+10:00] >>>>>>>>>>>>>>>>
+[2017/08/09 16:49:44.046+10:00][VERBOSE] 5.0.0 : AzCopy /Source:E:\install\Scripts\Data Collection Script\Data\UPLOAD\ANY /Dest:https://unifyhealthcheck.file.core.windows.net/csodbb/PROD/ANY /DestSAS:****** /V:E:\install\Scripts\Data Collection Script\AzCopy\AzCopy.log /Z:E:\install\Scripts\Data Collection Script\AzCopy /XO /S /Y
+[2017/08/09 16:49:44.906+10:00][VERBOSE] Start transfer: 09-08-2017-16-47_Run-HealthCheck.log => 09-08-2017-16-47_Run-HealthCheck.log
+[2017/08/09 16:49:45.609+10:00][VERBOSE] Finished transfer: 09-08-2017-16-47_Run-HealthCheck.log => 09-08-2017-16-47_Run-HealthCheck.log
+[2017/08/09 16:49:45.624+10:00] Transfer summary:
+-----------------
+Total files transferred: 1
+Transfer successfully:   1
+Transfer skipped:        0
+Transfer failed:         0
+Elapsed time:            00.00:00:01
+[2017/08/09 16:55:36.149+10:00] >>>>>>>>>>>>>>>>
+[2017/08/09 16:55:36.149+10:00][VERBOSE] 5.0.0 : AzCopy /Source:E:\install\Scripts\Data Collection Script\Data\UPLOAD\JSON /Dest:https://unifyhealthcheck.file.core.windows.net/csodbb/PROD/JSON /DestSAS:****** /V:E:\install\Scripts\Data Collection Script\AzCopy\AzCopy.log /Z:E:\install\Scripts\Data Collection Script\AzCopy /XO /S /Y
+[2017/08/09 16:55:37.008+10:00][VERBOSE] Start transfer: 09-08-2017-16-53.zip => 09-08-2017-16-53.zip
+[2017/08/09 16:55:37.664+10:00][VERBOSE] Finished transfer: 09-08-2017-16-53.zip => 09-08-2017-16-53.zip
+[2017/08/09 16:55:37.680+10:00] Transfer summary:
+-----------------
+Total files transferred: 1
+Transfer successfully:   1
+Transfer skipped:        0
+Transfer failed:         0
+Elapsed time:            00.00:00:01
+[2017/08/09 16:55:37.977+10:00] >>>>>>>>>>>>>>>>
+[2017/08/09 16:55:37.977+10:00][VERBOSE] 5.0.0 : AzCopy /Source:E:\install\Scripts\Data Collection Script\Data\UPLOAD\ANY /Dest:https://unifyhealthcheck.file.core.windows.net/csodbb/PROD/ANY /DestSAS:****** /V:E:\install\Scripts\Data Collection Script\AzCopy\AzCopy.log /Z:E:\install\Scripts\Data Collection Script\AzCopy /XO /S /Y
+[2017/08/09 16:55:38.586+10:00][VERBOSE] Start transfer: 09-08-2017-16-53_Run-HealthCheck.log => 09-08-2017-16-53_Run-HealthCheck.log
+[2017/08/09 16:55:39.086+10:00][VERBOSE] Finished transfer: 09-08-2017-16-53_Run-HealthCheck.log => 09-08-2017-16-53_Run-HealthCheck.log
+[2017/08/09 16:55:39.102+10:00] Transfer summary:
+-----------------
+Total files transferred: 1
+Transfer successfully:   1
+Transfer skipped:        0
+Transfer failed:         0
+Elapsed time:            00.00:00:01

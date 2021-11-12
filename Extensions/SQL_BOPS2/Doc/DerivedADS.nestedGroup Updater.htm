@@ -1,0 +1,826 @@
+﻿<HTML xmlns:user="http://www.myserver.com/user" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+  <HEAD>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <TITLE>MAConfigurationViewer 1.0 - </TITLE>
+    <STYLE type="text/css">
+       @page FullPage{margin-left:1.0in;margin-right:0.5in}
+
+        h1,h3{margin: 0px; padding: 0px;}
+        #S1 {width: 300px;}
+        h1 {color: #AAAAAA; font-size: 500%;}
+        h3 {color: #AAAAAA; font-size: 500%;}
+        
+        table{page:FullPage;width:575px;}
+        .tableClass1{page:FullPage; width:300px; border: medium ;}
+        .trtableClass1{width:375px;}
+        .tdtableClass1{width:165px;}
+
+        .tableMain{page:FullPage; width:540px;  FONT-FAMILY:Verdana; FONT-SIZE: 70%;}
+
+        .thTitle{background-color:#666666; color: #FFFFFF; FONT-SIZE: 70%;}
+        .thAttributeFlow{background-color:#bbbbbb;  FONT-SIZE: 70%;}
+        .thAttributeFlow1{background-color:#dddddd; FONT-SIZE: 70%;}
+        .thAttributeFlow2{background-color:#dddddd; FONT-SIZE: 70%; width:50px}
+
+        .tableMenu{FONT-SIZE: 300%; FONT-FAMILY: Verdana;  width:575px}
+        .tdMenu{border-right: 1px solid #999999;text-align:center;}
+        .trMenu{background-color:#ffffff;}
+
+        .tableClass2{cellspacing:'0' cellpadding:'0'; border='1'; width:100% FONT-SIZE: 80%; FONT-FAMILY: Verdana;  border-color: #eeeeee; border-style:solid; PADDING: .25em;}
+        .tableClass3{width:50px;}
+        .tableClass4{width:575px;vertical-align:left}
+        .tableClass5{vertical-align:middle; width:375px}
+        .tdLeftSection{background-color:#eeeeee; FONT-SIZE: 70%;}
+        
+
+        A{color:#0000FF; text-decoration: none;}
+        a:active {text-decoration: underline;}
+        a:hover {text-decoration: underline;}
+        img {border: none; }
+        .imgbanner {border: none; width:10px;}
+        .my .ct p {padding: 0px 0px 3px 0px;}
+        #btnsearch {border: none; margin-left: 95px; margin-top: -25px;}
+        body,div,span,p,ul,td,th,input,select,textarea,button {font-family: Arial, sans-serif; font-size: 70%;}
+        td{font-size: 70%;word-wrap:break-word;}
+
+
+        .tdClass1{font-size: 70%; width:400px; word-wrap:break-word;}
+        .tdClass2{font-size: 70%; width:350px; word-wrap:break-word;}
+        .tdClass3{font-size: 70%; width:175px; word-wrap:break-word;}
+        .tdClass4{font-size: 70%; width:20px; word-wrap:break-word;}
+        .tdClass5{font-size: 70%; width:350px; word-wrap:break-word;}
+        .tdClass6{font-family: Symbol;font-size: 70%; color:blue; text-align:center; width:8%;}
+        .tdClass7{font-size: 70%; word-wrap:break-word; width:350px;}
+
+        body {page:FullPage;}
+        br.clear, .clrbth {clear: both;}
+        hr {height: 1px; padding: 0px; border:1px solid; color:#BBBBBB; }
+        ol {list-style-position: outside; margin: -2px 0px 0px 23px;}
+        li {list-style-position: outside; margin: -2px 0px 0px 12px; padding: 0; margin-left: 20px;}
+
+        
+
+       </STYLE>
+  </HEAD>
+  <BODY><script>
+//scrolling TOP Link to navigate...
+var displayed="<nobr><b>[Top]</b></nobr>"
+var logolink='javascript:window.scrollTo(0,0)'
+var ie4 =document.all
+
+if (ie4)
+document.write('<span id="logo" style="position:absolute;top:-300;z-index:100">'+displayed+'</span>')
+
+function staticit()
+{
+crosslogo.style.left=document.body.scrollLeft+document.body.clientWidth-crosslogo.offsetWidth-10
+crosslogo.style.top=document.body.scrollTop+document.body.clientHeight-crosslogo.offsetHeight-10
+}
+
+function inserttext()
+{ 
+    if (ie4)
+    crosslogo=document.all.logo
+    if (ie4)
+    window.onscroll=staticit
+
+    crosslogo.innerHTML='<a href="'+logolink+'">'+displayed+'</a>'
+    crosslogo.style.left=document.body.clientWidth-crosslogo.offsetWidth-10
+    crosslogo.style.top=document.body.clientHeight-crosslogo.offsetHeight-10
+
+}
+
+if(ie4)
+{
+    window.onload=inserttext
+    window.onresize=new Function("window.location.reload()")
+}
+
+</script><TABLE cellpadding="0" cellspacing="0" class="tableMain">
+      <TR>
+        <TD>
+          <H1>MAConfigurationViewer 1.0 </H1>
+        </TD>
+      </TR>
+      <TR>
+        <TD>
+          <TABLE class="tableMenu">
+            <Tr class="trMenu">
+              <Td class="tdMenu"><b><A href="#properties"> Properties </A></b></Td>
+              <Td class="tdMenu"><b><A href="#DBConf"> Database Configuration </A></b></Td>
+              <Td class="tdMenu"><b><A href="#ColsConf"> Columns Configured </A></b></Td>
+              <Td class="tdMenu"><b><A href="#connectorfilters"> Connector Filters </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Joinandprojection"> Join and Projection Rules </A></b></Td>
+              <Td class="tdMenu"><b><A href="#AttributeFlow"> Attribute Flow </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Deprovisioning"> Deprovisioning </A></b></Td>
+              <Td class="tdMenu"><b><A href="#MAExDLL"> MA Extensions </A></b></Td>
+              <Td class="tdMenu"><b><A href="#RSofMA"> Run Profiles</A></b></Td>
+            </Tr>
+          </TABLE>
+        </TD>
+      </TR>
+      <TR>
+        <TD>
+          <h3>DerivedADS.nestedGroup Updater Management Agent </h3>
+          <hr>
+        </TD>
+      </TR>
+      <TR>
+        <TD Align="center"></TD>
+      </TR>
+      <TR>
+        <TD>
+          <TABLE cellspacing="0" cellpadding="0" border="1" bordercolordark="#ffffff" class="tableClass2">
+            <TR>
+              <TH class="thTitle" colspan="2">
+                        Management Agent's Properties
+                </TH>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Properties</b></TD>
+              <TD align="left"><a NAME="#properties"></a><table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <td><b>MA Type: </b></td>
+                    <td> SQL Server 7.0 or 2000 </td>
+                  </tr>
+                  <tr>
+                    <td><b>Description: </b></td>
+                    <td class="tdClass3">group object derived from nested groups in AD</td>
+                  </tr>
+                  <tr>
+                    <td><b>Creation Time: </b></td>
+                    <td>2009-08-03 13:54:54.227</td>
+                  </tr>
+                  <tr>
+                    <td><b>Last Modification Time: </b></td>
+                    <td>2009-08-16 12:26:11.510</td>
+                  </tr>
+                  <tr>
+                    <td><b> Run in Separate Process:</b></td>
+                    <td> No </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Database Configuration </b></TD>
+              <TD align="left"><a NAME="#DBConf"></a><table border="1" cellpadding="0" cellspacing="0" bordercolordark="#ffffff">
+                  <tr>
+                    <th colspan="2" class="thAttributeFlow1"><b>SQL Server connection Information</b></th>
+                  </tr>
+                  <tr>
+                    <td><b>Server Name:</b></td>
+                    <td>.</td>
+                  </tr>
+                  <tr>
+                    <td><b>Database:</b></td>
+                    <td>IdM</td>
+                  </tr>
+                  <tr>
+                    <td><b>Table/View:</b></td>
+                    <td>[dbo].[vw_idmNestedObjectsByType]</td>
+                  </tr>
+                  <tr>
+                    <td><b>Delta table/view:</b></td>
+                    <td>[dbo].[vw_idmNestedObjectsByTypeChanges]</td>
+                  </tr>
+                  <tr>
+                    <td><b>Multivalued table:</b></td>
+                    <td>[dbo].[vw_idmNestedMultivalueObjects]</td>
+                  </tr>
+                  <tr>
+                    <td><b>Authentication:</b></td>
+                    <td> Windows integrated authentication </td>
+                  </tr>
+                  <tr>
+                    <td><b>User name:</b></td>
+                    <td>svcma_sql</td>
+                  </tr>
+                  <tr>
+                    <td><b>Domain:</b></td>
+                    <td>dbb</td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Columns Configured </b></TD>
+              <TD align="left"><a NAME="#ColsConf"></a><table>
+                  <tr>
+                    <td>
+                      <table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" align="left" class="tableClass4">
+                        <tr>
+                          <th class="thAttributeFlow1"><b>Name</b></th>
+                          <th class="thAttributeFlow1"><b>Database type</b></th>
+                          <th class="thAttributeFlow1"><b>Length</b></th>
+                          <th class="thAttributeFlow1"><b>Nullable</b></th>
+                          <th class="thAttributeFlow1"><b>Type</b></th>
+                        </tr>
+                        <tr>
+                          <td>ObjectType</td>
+                          <td>DBTYPE_STR</td>
+                          <td align="right">20</td>
+                          <td align="center"> No </td>
+                          <td>String</td>
+                        </tr>
+                        <tr>
+                          <td>ID</td>
+                          <td>DBTYPE_WSTR</td>
+                          <td align="right">100</td>
+                          <td align="center"> No </td>
+                          <td>String</td>
+                        </tr>
+                        <tr>
+                          <td>BaseID</td>
+                          <td>DBTYPE_WSTR</td>
+                          <td align="right">100</td>
+                          <td align="center"> Yes </td>
+                          <td>String</td>
+                        </tr>
+                        <tr>
+                          <td>sAMAccountName</td>
+                          <td>DBTYPE_WSTR</td>
+                          <td align="right">100</td>
+                          <td align="center"> Yes </td>
+                          <td>String</td>
+                        </tr>
+                        <tr>
+                          <td>Name</td>
+                          <td>DBTYPE_WSTR</td>
+                          <td align="right">100</td>
+                          <td align="center"> Yes </td>
+                          <td>String</td>
+                        </tr>
+                        <tr>
+                          <td>physicalDeliveryOfficeName</td>
+                          <td>DBTYPE_WSTR</td>
+                          <td align="right">50</td>
+                          <td align="center"> Yes </td>
+                          <td>String</td>
+                        </tr>
+                        <tr>
+                          <td>isCommon</td>
+                          <td>DBTYPE_BOOL</td>
+                          <td align="right">2</td>
+                          <td align="center"> No </td>
+                          <td>Bool</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" align="left" class="tableClass4">
+                        <tr>
+                          <td colspan="2"><u><b>Special Attributes</b></u></td>
+                        </tr>
+                        <tr>
+                          <td><b> Anchor: </b></td>
+                          <td>ID</td>
+                        </tr>
+                        <tr>
+                          <td><b>Object Type:</b></td>
+                          <td>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2"><b><u>Delta Configuration</u></b></td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">
+                            <table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" align="center" class="tableClass4">
+                              <tr>
+                                <td><b> Change type attribute: </b></td>
+                                <td>changeIndicator</td>
+                              </tr>
+                              <tr>
+                                <td><b> Modify:</b></td>
+                                <td>U</td>
+                              </tr>
+                              <tr>
+                                <td><b> Add:</b></td>
+                                <td>I</td>
+                              </tr>
+                              <tr>
+                                <td><b> Delete:</b></td>
+                                <td>D</td>
+                              </tr>
+                              <tr>
+                                <td><b> Attribute modify:</b></td>
+                                <td>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><b> Attribute Level Synchronization Column:</b></td>
+                                <td>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2"><b><u>Multivalued Configuration</u></b></td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">
+                            <table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" align="center" class="tableClass4">
+                              <tr>
+                                <td><b> Attribute name column:</b></td>
+                                <td>ObjectType</td>
+                              </tr>
+                              <tr>
+                                <td><b> String attribute column: </b></td>
+                                <td>StringValue</td>
+                              </tr>
+                              <tr>
+                                <td><b> Large String attribute column: </b></td>
+                                <td>-</td>
+                              </tr>
+                              <tr>
+                                <td><b> Binary attribute column: </b></td>
+                                <td>-</td>
+                              </tr>
+                              <tr>
+                                <td><b> Large Binary attribute column: </b></td>
+                                <td>-</td>
+                              </tr>
+                              <tr>
+                                <td><b> Numeric attribute column: </b></td>
+                                <td>-</td>
+                              </tr>
+                              <tr>
+                                <td colspan="2">
+                                  <table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" align="left" class="tableClass4">
+                                    <tr>
+                                      <th class="thAttributeFlow1"><b>Attribute name</b></th>
+                                      <th class="thAttributeFlow1"><b>Attribute type</b></th>
+                                    </tr>
+                                    <tr>
+                                      <td>group</td>
+                                      <td>String</td>
+                                    </tr>
+                                    <tr>
+                                      <td>groupNested</td>
+                                      <td>String</td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2"><b><u>Object Type Configuration</u></b></td>
+                        </tr>
+                        <tr>
+                          <td>Column:</td>
+                          <td>ObjectType</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Connector Filters </b></TD>
+              <TD align="left"><a NAME="#connectorfilters"></a><table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                  <tr>
+                    <th class="thAttributeFlow1">Data Source Object Type</th>
+                    <th class="thAttributeFlow1">Filter Type</th>
+                    <th class="thAttributeFlow1">Filter </th>
+                  </tr>
+                  <tr>
+                    <td class="tdClass3">group</td>
+                    <td class="tdClass3">declared</td>
+                    <td>
+                      <table align="center" cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" class="tableClass5">
+                        <tr>
+                          <th class="thAttributeFlow1">Attribute</th>
+                          <th class="thAttributeFlow1">Operator</th>
+                          <th class="thAttributeFlow1">Value</th>
+                        </tr>
+                        <tr>
+                          <td class="tdClass3">ID</td>
+                          <td class="tdClass3">equality</td>
+                          <td class="tdClass3">zzzzzz</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass3">groupNested</td>
+                    <td class="tdClass3">declared</td>
+                    <td>
+                      <table align="center" cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" class="tableClass5">
+                        <tr>
+                          <th class="thAttributeFlow1">Attribute</th>
+                          <th class="thAttributeFlow1">Operator</th>
+                          <th class="thAttributeFlow1">Value</th>
+                        </tr>
+                        <tr>
+                          <td class="tdClass3">ID</td>
+                          <td class="tdClass3">equality</td>
+                          <td class="tdClass3">zzzzzz</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Join and Projection Rules </b></TD>
+              <TD align="left"><a NAME="#Joinandprojection"></a><br><TABLE align="left" class="tableClass4">
+                  <TR>
+                    <TD>
+                      <table cellpadding="0" cellspacing="0" width="100%" align="left" class="tableClass4">
+                        <tr>
+                          <td colspan="3"><b>Join Rules: </b></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" width="100%" align="center">
+                              <tr>
+                                <th class="thAttributeFlow1" align="center">Data Source Object</th>
+                                <th class="thAttributeFlow1" align="center">Mapping</th>
+                                <th class="thAttributeFlow1" align="center">Metaverse Object</th>
+                                <th class="thAttributeFlow1" align="center">Join Resolution Extension</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>group</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>dbbGroup</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">BaseID</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">dbbADSCode</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>group</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>dbbGroup</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>groupNested</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>dbbGroupNested</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table><br></TD>
+                  </TR>
+                  <TR>
+                    <TD>
+                      <table width="100%" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                        <tr>
+                          <td><b>Projection Rules:</b></td>
+                        </tr>
+                        <tr>
+                          <TD>
+                            <table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" width="100%">
+                              <tr>
+                                <th class="thAttributeFlow1">Data Source Object</th>
+                                <th class="thAttributeFlow1">Mapping</th>
+                                <th class="thAttributeFlow1">Metaverse Object</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">group</td>
+                                <td> Declared </td>
+                                <td class="tdClass3">dbbGroup</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">groupNested</td>
+                                <td> Declared </td>
+                                <td class="tdClass3">dbbGroupNested</td>
+                              </tr>
+                            </table>
+                          </TD>
+                        </tr>
+                      </table>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Attribute Flow</b></TD>
+              <TD align="left"><a NAME="#AttributeFlow"></a><br><TABLE align="left" class="tableClass4">
+                  <TR>
+                    <TD>
+                      <TABLE cellspacing="0" cellpadding="0" border="1" bordercolorlight="#ffffff" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                        <TR>
+                          <TH class="thAttributeFlow" colspan="4"><b>Export Attribute Flow </b></TH>
+                        </TR>
+                        <TR>
+                          <TD>
+                            <table cellspacing="0" cellpadding="0" border="1" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                              <tr>
+                                <th class="thAttributeFlow1">Data Source Attribute</th>
+                                <th class="thAttributeFlow1">To </th>
+                                <th class="thAttributeFlow1">Metaverse Attribute</th>
+                                <th class="thAttributeFlow1">Mapping Type</th>
+                                <th class="thAttributeFlow1">Allow Nulls</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>group</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>dbbGroup</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">groupNested</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">memberNested</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">BaseID</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">dbbADSCode</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>groupNested</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>dbbGroupNested</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                            </table>
+                          </TD>
+                        </TR>
+                      </TABLE>
+                    </TD>
+                  </TR>
+                  <TR>
+                    <TD><br><TABLE cellspacing="0" border="1" cellpadding="0" bordercolorlight="#ffffff" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                        <TR>
+                          <TH class="thAttributeFlow" colspan="4"><b>Import Attribute Flow </b></TH>
+                        </TR>
+                        <TR>
+                          <TD>
+                            <table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" class="tableClass4">
+                              <tr>
+                                <th class="thAttributeFlow1">Data Source Attribute</th>
+                                <th class="thAttributeFlow1">To </th>
+                                <th class="thAttributeFlow1">Metaverse Attribute</th>
+                                <th class="thAttributeFlow1">Mapping Type</th>
+                                <th class="thAttributeFlow1">Precedence Order</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>group</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>dbbGroup</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">BaseID</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">dbbADSCode</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">6 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">4 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>groupNested</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>dbbGroupNested</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">3 </td>
+                              </tr>
+                            </table>
+                          </TD>
+                        </TR>
+                      </TABLE>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Deprovisioning </b></TD>
+              <TD align="left"><a NAME="#Deprovisioning"></a><table cellpadding="0" cellspacing="0" bordercolordark="#ffffff" align="left" border="1" class="tableClass4">
+                  <tr>
+                    <td><b> Deprovision option: </b></td>
+                    <td> Stage a delete on the object for the next export run </td>
+                  </tr>
+                  <tr>
+                    <td><b> Do not recall attributes contributed by an object from this MA when it is disconnected:</b></td>
+                    <td> No </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>MA Extensions  </b></TD>
+              <TD align="left"><a NAME="#MAExDLL"></a><table cellpadding="0" cellspacing="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <td width="50%"><b>DLL:</b></td>
+                    <td width="50%"> None </td>
+                  </tr>
+                  <tr>
+                    <td width="50%"><b> Enable Password Management:</b></td>
+                    <td width="50%"> No </td>
+                  </tr>
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2">Partitions</th>
+                  </tr>
+                  <tr>
+                    <th class="thAttributeFlow1"><b>Partition Name </b></th>
+                    <th class="thAttributeFlow1"><b>Display Name</b></th>
+                  </tr>
+                  <tr>
+                    <td>default</td>
+                    <td>None</td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Run Profiles</b></TD>
+              <td class="tdClass2" align="left"><a NAME="#RSofMA"></a><table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Delta Import</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Delta Import Delta Sync</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Import and Delta Synchronization</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Delta Sync</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Export</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Export </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Full Import</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Full Import Delta Sync</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import and Delta Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Full Import Sync</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import and Full Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Full Sync</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>default</td>
+                  </tr>
+                </table>
+              </td>
+            </TR>
+          </TABLE>
+        </TD>
+      </TR>
+    </TABLE>
+  </BODY>
+</HTML>

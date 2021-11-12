@@ -1,0 +1,1452 @@
+﻿<HTML xmlns:user="http://www.myserver.com/user" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+  <HEAD>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <TITLE>MAConfigurationViewer 1.0 - </TITLE>
+    <STYLE type="text/css">
+       @page FullPage{margin-left:1.0in;margin-right:0.5in}
+
+        h1,h3{margin: 0px; padding: 0px;}
+        #S1 {width: 300px;}
+        h1 {color: #AAAAAA; font-size: 500%;}
+        h3 {color: #AAAAAA; font-size: 500%;}
+        
+        table{page:FullPage;width:575px;}
+        .tableClass1{page:FullPage; width:300px; border: medium ;}
+        .trtableClass1{width:375px;}
+        .tdtableClass1{width:165px;}
+
+        .tableMain{page:FullPage; width:540px;  FONT-FAMILY:Verdana; FONT-SIZE: 70%;}
+
+        .thTitle{background-color:#666666; color: #FFFFFF; FONT-SIZE: 70%;}
+        .thAttributeFlow{background-color:#bbbbbb;  FONT-SIZE: 70%;}
+        .thAttributeFlow1{background-color:#dddddd; FONT-SIZE: 70%;}
+        .thAttributeFlow2{background-color:#dddddd; FONT-SIZE: 70%; width:50px}
+
+        .tableMenu{FONT-SIZE: 300%; FONT-FAMILY: Verdana;  width:575px}
+        .tdMenu{border-right: 1px solid #999999;text-align:center;}
+        .trMenu{background-color:#ffffff;}
+
+        .tableClass2{cellspacing:'0' cellpadding:'0'; border='1'; width:100% FONT-SIZE: 80%; FONT-FAMILY: Verdana;  border-color: #eeeeee; border-style:solid; PADDING: .25em;}
+        .tableClass3{width:50px;}
+        .tableClass4{width:575px;vertical-align:left}
+        .tableClass5{vertical-align:middle; width:375px}
+        .tdLeftSection{background-color:#eeeeee; FONT-SIZE: 70%;}
+        
+
+        A{color:#0000FF; text-decoration: none;}
+        a:active {text-decoration: underline;}
+        a:hover {text-decoration: underline;}
+        img {border: none; }
+        .imgbanner {border: none; width:10px;}
+        .my .ct p {padding: 0px 0px 3px 0px;}
+        #btnsearch {border: none; margin-left: 95px; margin-top: -25px;}
+        body,div,span,p,ul,td,th,input,select,textarea,button {font-family: Arial, sans-serif; font-size: 70%;}
+        td{font-size: 70%;word-wrap:break-word;}
+
+
+        .tdClass1{font-size: 70%; width:400px; word-wrap:break-word;}
+        .tdClass2{font-size: 70%; width:350px; word-wrap:break-word;}
+        .tdClass3{font-size: 70%; width:175px; word-wrap:break-word;}
+        .tdClass4{font-size: 70%; width:20px; word-wrap:break-word;}
+        .tdClass5{font-size: 70%; width:350px; word-wrap:break-word;}
+        .tdClass6{font-family: Symbol;font-size: 70%; color:blue; text-align:center; width:8%;}
+        .tdClass7{font-size: 70%; word-wrap:break-word; width:350px;}
+
+        body {page:FullPage;}
+        br.clear, .clrbth {clear: both;}
+        hr {height: 1px; padding: 0px; border:1px solid; color:#BBBBBB; }
+        ol {list-style-position: outside; margin: -2px 0px 0px 23px;}
+        li {list-style-position: outside; margin: -2px 0px 0px 12px; padding: 0; margin-left: 20px;}
+
+        
+
+       </STYLE>
+  </HEAD>
+  <BODY><script>
+//scrolling TOP Link to navigate...
+var displayed="<nobr><b>[Top]</b></nobr>"
+var logolink='javascript:window.scrollTo(0,0)'
+var ie4 =document.all
+
+if (ie4)
+document.write('<span id="logo" style="position:absolute;top:-300;z-index:100">'+displayed+'</span>')
+
+function staticit()
+{
+crosslogo.style.left=document.body.scrollLeft+document.body.clientWidth-crosslogo.offsetWidth-10
+crosslogo.style.top=document.body.scrollTop+document.body.clientHeight-crosslogo.offsetHeight-10
+}
+
+function inserttext()
+{ 
+    if (ie4)
+    crosslogo=document.all.logo
+    if (ie4)
+    window.onscroll=staticit
+
+    crosslogo.innerHTML='<a href="'+logolink+'">'+displayed+'</a>'
+    crosslogo.style.left=document.body.clientWidth-crosslogo.offsetWidth-10
+    crosslogo.style.top=document.body.clientHeight-crosslogo.offsetHeight-10
+
+}
+
+if(ie4)
+{
+    window.onload=inserttext
+    window.onresize=new Function("window.location.reload()")
+}
+
+</script><TABLE cellpadding="0" cellspacing="0" class="tableMain">
+      <TR>
+        <TD>
+          <H1>MAConfigurationViewer 1.0 </H1>
+        </TD>
+      </TR>
+      <TR>
+        <TD>
+          <TABLE class="tableMenu">
+            <Tr class="trMenu">
+              <Td class="tdMenu"><b><A href="#properties"> Properties </A></b></Td>
+              <Td class="tdMenu"><b><A href="#AdForest"> AD Forest Connection Information </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Part1"> Partition Information </A></b></Td>
+              <Td class="tdMenu"><b><A href="#SelObjects"> Selected Object Types </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Attri1"> Selected Attributes </A></b></Td>
+              <Td class="tdMenu"><b><A href="#connectorfilters"> Connector Filters </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Joinandprojection"> Join and Projection Rules </A></b></Td>
+              <Td class="tdMenu"><b><A href="#AttributeFlow"> Attribute Flow </A></b></Td>
+              <Td class="tdMenu"><b><A href="#Deprovisioning"> Deprovisioning </A></b></Td>
+              <Td class="tdMenu"><b><A href="#MAExDLL"> MA Extensions </A></b></Td>
+              <Td class="tdMenu"><b><A href="#RSofMA"> Run Profiles</A></b></Td>
+            </Tr>
+          </TABLE>
+        </TD>
+      </TR>
+      <TR>
+        <TD>
+          <h3>DBB Management Agent </h3>
+          <hr>
+        </TD>
+      </TR>
+      <TR>
+        <TD Align="center"></TD>
+      </TR>
+      <TR>
+        <TD>
+          <TABLE cellspacing="0" cellpadding="0" border="1" bordercolordark="#ffffff" class="tableClass2">
+            <TR>
+              <TH class="thTitle" colspan="2">
+                        Management Agent's Properties
+                </TH>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Properties</b></TD>
+              <TD align="left"><a NAME="#properties"></a><table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <td><b>MA Type: </b></td>
+                    <td> Active Directory </td>
+                  </tr>
+                  <tr>
+                    <td><b>Description: </b></td>
+                    <td class="tdClass3">Connection to the Diocese of Broken Bay's main Active Directory environment.</td>
+                  </tr>
+                  <tr>
+                    <td><b>Creation Time: </b></td>
+                    <td>2008-12-23 11:14:36.793</td>
+                  </tr>
+                  <tr>
+                    <td><b>Last Modification Time: </b></td>
+                    <td>2009-08-12 11:59:37.450</td>
+                  </tr>
+                  <tr>
+                    <td><b> Run in Separate Process:</b></td>
+                    <td> No </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>AD Forest Connection Information </b></TD>
+              <TD align="left"><a NAME="#AdForest"></a><table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <th colspan="2" class="thAtrributeFlow1"><b>Forest Connection Information</b></th>
+                  </tr>
+                  <tr>
+                    <td>Forest name:</td>
+                    <td>dbb</td>
+                  </tr>
+                  <tr>
+                    <td>User name:</td>
+                    <td>svcidm_ad</td>
+                  </tr>
+                  <tr>
+                    <td>Domain:</td>
+                    <td>dbb</td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Partition Information </b></TD>
+              <TD align="left"><a NAME="#Part1"></a><table border="1" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                  <tr>
+                    <td><b>Partition Name: </b>DC=dbb,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table class="tableClass4" id="1" border="1" cellspacing="0" bordercolordark="#ffffff">
+                        <tr>
+                          <td><b>Preferred Domain Controllers: </b></td>
+                          <td>
+                            <li>occcp-dc001.dbb.local</li>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><b>Last domain controller used: </b></td>
+                          <td>occcp-dc001.dbb.local</td>
+                        </tr>
+                        <tr>
+                          <td><b>Only use preferred domain controller: </b></td>
+                          <td> Yes </td>
+                        </tr>
+                        <tr>
+                          <td><b>Sign and encrypt LDAP traffic:</b></td>
+                          <td> Yes </td>
+                        </tr>
+                        <tr>
+                          <td><b> Use default credentials </b></td>
+                          <td> Yes </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                        <tr>
+                          <td colspan="2"><b> Selected Containers to Synchronize </b></td>
+                        </tr>
+                        <tr>
+                          <td><b> Include </b></td>
+                          <td><b> Container </b></td>
+                        </tr>
+                        <tr>
+                          <td> Exclude </td>
+                          <td>OU=Computers,OU=Diocese,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Exclude </td>
+                          <td>CN=Configuration,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Exclude </td>
+                          <td>DC=DomainDnsZones,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Exclude </td>
+                          <td>DC=ForestDnsZones,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Include </td>
+                          <td>OU=Contacts,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Include </td>
+                          <td>OU=Diocese,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Include </td>
+                          <td>OU=Groups,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Include </td>
+                          <td>OU=Admin Accounts,OU=Global Accounts,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Include </td>
+                          <td>OU=Disabled User Accounts,OU=Global Accounts,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Include </td>
+                          <td>OU=ICLT Facilitators - Temp SandBox Accounts,OU=Global Accounts,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Include </td>
+                          <td>OU=Kiosk,OU=Global Accounts,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Include </td>
+                          <td>OU=POD User Accounts,OU=Global Accounts,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Include </td>
+                          <td>OU=Resource Mailbox Accounts,OU=Global Accounts,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Include </td>
+                          <td>OU=SharePoint Accounts,OU=Global Accounts,DC=dbb,DC=local</td>
+                        </tr>
+                        <tr>
+                          <td> Include </td>
+                          <td>OU=Vendor Accounts,OU=Global Accounts,DC=dbb,DC=local</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table class="tableClass4" id="1" border="1" cellspacing="0" bordercolordark="#ffffff">
+                        <tr>
+                          <th colspan="2">Password Synchronization</th>
+                        </tr>
+                        <tr>
+                          <td>Enable partition as a password synchronization source:</td>
+                          <td>No</td>
+                        </tr>
+                        <tr>
+                          <td>Maximum number of password changes for a 24 hour period</td>
+                          <td>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <td class="tdLeftSection"><b>Selected Object Types  </b></td>
+              <td align="left" class="tdClass5"><a NAME="#SelObjects"></a><li>container</li>
+                <li>domainDNS</li>
+                <li>group</li>
+                <li>organizationalUnit</li>
+                <li>user</li>
+              </td>
+            </TR>
+            <TR>
+              <TD align="left" class="tdLeftSection"><b>Selected Attributes </b></TD>
+              <td class="tdClass2"><a NAME="#Attri1"></a><b> Attribute(s) </b><br><br><li>altRecipient</li>
+                <li>cn</li>
+                <li>description</li>
+                <li>displayName</li>
+                <li>employeeID</li>
+                <li>employeeNumber</li>
+                <li>employeeType</li>
+                <li>extensionAttribute14</li>
+                <li>extensionAttribute6</li>
+                <li>extensionAttribute9</li>
+                <li>givenName</li>
+                <li>groupType</li>
+                <li>homeMDB</li>
+                <li>info</li>
+                <li>initials</li>
+                <li>l</li>
+                <li>mail</li>
+                <li>mailNickname</li>
+                <li>manager</li>
+                <li>mDBUseDefaults</li>
+                <li>member</li>
+                <li>mobile</li>
+                <li>msExchMailboxSecurityDescriptor</li>
+                <li>name</li>
+                <li>objectSid</li>
+                <li>ou</li>
+                <li>personalTitle</li>
+                <li>physicalDeliveryOfficeName</li>
+                <li>profilePath</li>
+                <li>pwdLastSet</li>
+                <li>sAMAccountName</li>
+                <li>sn</li>
+                <li>targetAddress</li>
+                <li>telephoneNumber</li>
+                <li>title</li>
+                <li>unicodePwd</li>
+                <li>userAccountControl</li>
+                <li>userPrincipalName</li>
+              </td>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Connector Filters </b></TD>
+              <TD align="left"><a NAME="#connectorfilters"></a><table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                  <tr>
+                    <th class="thAttributeFlow1">Data Source Object Type</th>
+                    <th class="thAttributeFlow1">Filter Type</th>
+                    <th class="thAttributeFlow1">Filter </th>
+                  </tr>
+                  <tr>
+                    <td class="tdClass3">group</td>
+                    <td class="tdClass3">declared</td>
+                    <td>
+                      <table align="center" cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" class="tableClass5">
+                        <tr>
+                          <th class="thAttributeFlow1">Attribute</th>
+                          <th class="thAttributeFlow1">Operator</th>
+                          <th class="thAttributeFlow1">Value</th>
+                        </tr>
+                        <tr>
+                          <td class="tdClass3">info</td>
+                          <td class="tdClass3">substring-start</td>
+                          <td class="tdClass3">X</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass3">user</td>
+                    <td class="tdClass3">declared</td>
+                    <td>
+                      <table align="center" cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" class="tableClass5">
+                        <tr>
+                          <th class="thAttributeFlow1">Attribute</th>
+                          <th class="thAttributeFlow1">Operator</th>
+                          <th class="thAttributeFlow1">Value</th>
+                        </tr>
+                        <tr>
+                          <td class="tdClass3">name</td>
+                          <td class="tdClass3">substring-start</td>
+                          <td class="tdClass3">zzz-</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Join and Projection Rules </b></TD>
+              <TD align="left"><a NAME="#Joinandprojection"></a><br><TABLE align="left" class="tableClass4">
+                  <TR>
+                    <TD>
+                      <table cellpadding="0" cellspacing="0" width="100%" align="left" class="tableClass4">
+                        <tr>
+                          <td colspan="3"><b>Join Rules: </b></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" width="100%" align="center">
+                              <tr>
+                                <th class="thAttributeFlow1" align="center">Data Source Object</th>
+                                <th class="thAttributeFlow1" align="center">Mapping</th>
+                                <th class="thAttributeFlow1" align="center">Metaverse Object</th>
+                                <th class="thAttributeFlow1" align="center">Join Resolution Extension</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>group</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>dbbGroup</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">info</td>
+                                <td class="tdClass3">Rules Extension - cd.group#3:info-&gt;dbbADSCode</td>
+                                <td class="tdClass3">dbbADSCode</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>group</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>dbbGroup</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">info<br>sAMAccountName</td>
+                                <td class="tdClass3">Rules Extension - cd.group#3:info,sAMAccountName-&gt;sAMAccountName</td>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>group</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>dbbGroup</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>group</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>dbbGroupNested</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>organizationalUnit</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>organizationalUnit</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">ou</td>
+                                <td class="tdClass3">Rules Extension - cd.organizationalUnit#2:ou-&gt;ou</td>
+                                <td class="tdClass3">ou</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>user</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>dbbStaff</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">employeeNumber</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">employeeID</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>user</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>dbbStudent</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">employeeNumber<br>physicalDeliveryOfficeName</td>
+                                <td class="tdClass3">Rules Extension - cd.user#3:employeeNumber,physicalDeliveryOfficeName-&gt;employeeID</td>
+                                <td class="tdClass3">employeeID</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">physicalDeliveryOfficeName</td>
+                                <td class="tdClass3">Direct</td>
+                                <td class="tdClass3">physicalDeliveryOfficeName</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>user</b></td>
+                                <td align="center" class="tdClass2"> - </td>
+                                <td><b>dbbOther</b></td>
+                                <td align="center" class="tdClass3"> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">employeeNumber<br>sAMAccountName</td>
+                                <td class="tdClass3">Rules Extension - cd.user#3:employeeNumber,sAMAccountName-&gt;sAMAccountName</td>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass3"> None </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table><br></TD>
+                  </TR>
+                  <TR>
+                    <TD>
+                      <table width="100%" cellspacing="0" cellpadding="0" bordercolordark="#ffffff" align="left" class="tableClass4">
+                        <tr>
+                          <td><b>Projection Rules:</b></td>
+                        </tr>
+                        <tr>
+                          <TD>
+                            <table cellpadding="0" cellspacing="0" border="1" bordercolordark="#ffffff" width="100%">
+                              <tr>
+                                <th class="thAttributeFlow1">Data Source Object</th>
+                                <th class="thAttributeFlow1">Mapping</th>
+                                <th class="thAttributeFlow1">Metaverse Object</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">group</td>
+                                <td> Rules Extension </td>
+                                <td align="center"> ANY </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">organizationalUnit</td>
+                                <td> Rules Extension </td>
+                                <td align="center"> ANY </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">user</td>
+                                <td> Rules Extension </td>
+                                <td align="center"> ANY </td>
+                              </tr>
+                            </table>
+                          </TD>
+                        </tr>
+                      </table>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Attribute Flow</b></TD>
+              <TD align="left"><a NAME="#AttributeFlow"></a><br><TABLE align="left" class="tableClass4">
+                  <TR>
+                    <TD>
+                      <TABLE cellspacing="0" cellpadding="0" border="1" bordercolorlight="#ffffff" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                        <TR>
+                          <TH class="thAttributeFlow" colspan="4"><b>Export Attribute Flow </b></TH>
+                        </TR>
+                        <TR>
+                          <TD>
+                            <table cellspacing="0" cellpadding="0" border="1" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                              <tr>
+                                <th class="thAttributeFlow1">Data Source Attribute</th>
+                                <th class="thAttributeFlow1">To </th>
+                                <th class="thAttributeFlow1">Metaverse Attribute</th>
+                                <th class="thAttributeFlow1">Mapping Type</th>
+                                <th class="thAttributeFlow1">Allow Nulls</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>group</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>dbbGroup</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">info</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">info</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">member</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">member</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>user</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>dbbStaff</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">givenName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">givenName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">title</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">title</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">sn</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">sn</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">employeeNumber</td>
+                                <td class="tdClass6"><b>&lt;--</b></td>
+                                <td class="tdClass3">dbbObjectClass<br>employeeID</td>
+                                <td class="tdClass3">Rules Extension - cd.user:employeeNumber&lt;-mv.dbbStaff:dbbObjectClass,employeeID</td>
+                                <td> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">description</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">description</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">employeeType</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">employeeType</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">initials</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">initials</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">mobile</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">mobile</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">telephoneNumber</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">telephoneNumber</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">userAccountControl</td>
+                                <td class="tdClass6"><b>&lt;--</b></td>
+                                <td class="tdClass3">employeeStatus</td>
+                                <td class="tdClass3">Rules Extension - cd.user:userAccountControl&lt;-mv.dbbStaff:employeeStatus</td>
+                                <td> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">extensionAttribute9</td>
+                                <td class="tdClass6"><b>&lt;--</b></td>
+                                <td class="tdClass3">physicalDeliveryOfficeName<br>sAMAccountName</td>
+                                <td class="tdClass3">Rules Extension - cd.user:extensionAttribute9&lt;-mv.dbbStaff:physicalDeliveryOfficeName,sAMAccountName</td>
+                                <td>Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">extensionAttribute14</td>
+                                <td class="tdClass6"><b>&lt;--</b></td>
+                                <td class="tdClass3">dbbADSCodes</td>
+                                <td class="tdClass3">Rules Extension - cd.user:extensionAttribute14&lt;-mv.dbbStaff:dbbADSCodes</td>
+                                <td>Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">physicalDeliveryOfficeName</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">physicalDeliveryOfficeName</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3"> -  </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">profilePath</td>
+                                <td class="tdClass6"><b>&lt;--</b></td>
+                                <td class="tdClass3">physicalDeliveryOfficeName<br>sAMAccountName</td>
+                                <td class="tdClass3">Rules Extension - cd.user:profilePath&lt;-mv.dbbStaff:physicalDeliveryOfficeName,sAMAccountName</td>
+                                <td>Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">altRecipient</td>
+                                <td class="tdClass6"><b>&lt;--</b></td>
+                                <td class="tdClass3">altRecipient<br>employeeStatus<br>physicalDeliveryOfficeName</td>
+                                <td class="tdClass3">Rules Extension - cd.user:altRecipient&lt;-mv.dbbStaff:altRecipient,employeeStatus,physicalDeliveryOfficeName</td>
+                                <td>Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">extensionAttribute6</td>
+                                <td class="tdClass6"><b>&lt;--</b></td>
+                                <td class="tdClass3">altRecipient<br>employeeStatus<br>physicalDeliveryOfficeName</td>
+                                <td class="tdClass3">Rules Extension - cd.user:extensionAttribute6&lt;-mv.dbbStaff:altRecipient,employeeStatus,physicalDeliveryOfficeName</td>
+                                <td>Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">personalTitle</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">personalTitle</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">manager</td>
+                                <td class="tdClass6"><b>&lt;-- </b></td>
+                                <td class="tdClass3">manager</td>
+                                <td class="tdClass3"> Direct </td>
+                                <td class="tdClass3">Allow</td>
+                              </tr>
+                            </table>
+                          </TD>
+                        </TR>
+                      </TABLE>
+                    </TD>
+                  </TR>
+                  <TR>
+                    <TD><br><TABLE cellspacing="0" border="1" cellpadding="0" bordercolorlight="#ffffff" bordercolordark="#ffffff" width="100%" align="left" class="tableClass4">
+                        <TR>
+                          <TH class="thAttributeFlow" colspan="4"><b>Import Attribute Flow </b></TH>
+                        </TR>
+                        <TR>
+                          <TD>
+                            <table cellspacing="0" cellpadding="0" bordercolordark="#ffffff" border="1" class="tableClass4">
+                              <tr>
+                                <th class="thAttributeFlow1">Data Source Attribute</th>
+                                <th class="thAttributeFlow1">To </th>
+                                <th class="thAttributeFlow1">Metaverse Attribute</th>
+                                <th class="thAttributeFlow1">Mapping Type</th>
+                                <th class="thAttributeFlow1">Precedence Order</th>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>user</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>dbbStaff</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">userAccountControl</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">employeeStatus</td>
+                                <td class="tdClass3">Rules Extension - cd.user:userAccountControl-&gt;mv.dbbStaff:employeeStatus</td>
+                                <td class="tdClass3">3 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">givenName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">givenName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">3 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">title</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">title</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">3 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">sn</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">sn</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">3 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">employeeNumber</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">employeeID</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">4 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">cn</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">cn</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">description</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">description</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">employeeType</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">employeeType</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">initials</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">initials</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">mail</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">mail</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">mobile</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">mobile</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">telephoneNumber</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">telephoneNumber</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">employeeNumber</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">dbbObjectClass</td>
+                                <td class="tdClass3">Rules Extension - cd.user:employeeNumber-&gt;mv.dbbStaff:dbbObjectClass</td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">profilePath</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">profilePath</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">altRecipient</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">altRecipient</td>
+                                <td class="tdClass3">Rules Extension - cd.user:altRecipient-&gt;mv.dbbStaff:altRecipient</td>
+                                <td class="tdClass3">2 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">personalTitle</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">personalTitle</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>group</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>dbbGroup</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">info</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">dbbADSCode</td>
+                                <td class="tdClass3">Rules Extension - cd.group:info-&gt;mv.dbbGroup:dbbADSCode</td>
+                                <td class="tdClass3">5 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">cn</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">cn</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">info</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">info</td>
+                                <td class="tdClass3">Rules Extension - cd.group:info-&gt;mv.dbbGroup:info</td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">info</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">uid</td>
+                                <td class="tdClass3">Rules Extension - cd.group:info-&gt;mv.dbbGroup:uid</td>
+                                <td class="tdClass3">3 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>organizationalUnit</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>organizationalUnit</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">ou</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">ou</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">name</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">dn</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">parentOU</td>
+                                <td class="tdClass3">Rules Extension - cd.organizationalUnit:&lt;dn&gt;-&gt;mv.organizationalUnit:parentOU</td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>user</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>dbbStudent</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">employeeNumber</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">employeeID</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">givenName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">givenName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">title</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">title</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">sn</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">sn</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">cn</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">cn</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">description</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">description</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">initials</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">initials</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">mail</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">mail</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">mobile</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">mobile</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">telephoneNumber</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">telephoneNumber</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">objectSid</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">employeeNumber</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">dbbObjectClass</td>
+                                <td class="tdClass3">Rules Extension - cd.user:employeeNumber-&gt;mv.dbbStudent:dbbObjectClass</td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">profilePath</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">profilePath</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3"><b>user</b></td>
+                                <td> - </td>
+                                <td class="tdClass3"><b>dbbOther</b></td>
+                                <td> - </td>
+                                <td> - </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">employeeNumber</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">employeeID</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">displayName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">sAMAccountName</td>
+                                <td class="tdClass3">Direct </td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                              <tr>
+                                <td class="tdClass3">employeeNumber</td>
+                                <td class="tdClass6"><b>--&gt;</b></td>
+                                <td class="tdClass3">dbbObjectClass</td>
+                                <td class="tdClass3">Rules Extension - cd.user:employeeNumber-&gt;mv.dbbOther:dbbObjectClass</td>
+                                <td class="tdClass3">1 </td>
+                              </tr>
+                            </table>
+                          </TD>
+                        </TR>
+                      </TABLE>
+                    </TD>
+                  </TR>
+                </TABLE>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b> Deprovisioning </b></TD>
+              <TD align="left"><a NAME="#Deprovisioning"></a><table cellpadding="0" cellspacing="0" bordercolordark="#ffffff" align="left" border="1" class="tableClass4">
+                  <tr>
+                    <td><b> Deprovision option: </b></td>
+                    <td> Make them disconnectors </td>
+                  </tr>
+                  <tr>
+                    <td><b> Do not recall attributes contributed by an object from this MA when it is disconnected:</b></td>
+                    <td> No </td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>MA Extensions  </b></TD>
+              <TD align="left"><a NAME="#MAExDLL"></a><table cellpadding="0" cellspacing="0" bordercolordark="#ffffff" border="1" align="left" class="tableClass4">
+                  <tr>
+                    <td width="50%"><b>DLL:</b></td>
+                    <td width="50%">DBBRE.dll</td>
+                  </tr>
+                  <tr>
+                    <td width="50%"><b>Run in Separate Process: </b></td>
+                    <td width="50%"> No </td>
+                  </tr>
+                  <tr>
+                    <td width="50%"><b> Enable Password Management:</b></td>
+                    <td width="50%"> No </td>
+                  </tr>
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2">Partitions</th>
+                  </tr>
+                  <tr>
+                    <th class="thAttributeFlow1"><b>Partition Name </b></th>
+                    <th class="thAttributeFlow1"><b>Display Name</b></th>
+                  </tr>
+                  <tr>
+                    <td>DC=dbb,DC=local</td>
+                    <td>None</td>
+                  </tr>
+                </table>
+              </TD>
+            </TR>
+            <TR>
+              <TD class="tdLeftSection"><b>Run Profiles</b></TD>
+              <td class="tdClass2" align="left"><a NAME="#RSofMA"></a><table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Delta Import</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Import (Stage Only)</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=dbb,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Delta Import Delta Sync</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Import and Delta Synchronization</td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=dbb,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Delta Sync</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Delta Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=dbb,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Export</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Export </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td>ExportChanges.xml</td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=dbb,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Export 100</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Export </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=dbb,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Number of objects </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Full Import Delta Sync</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import and Delta Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=dbb,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Full Import Full Sync</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Import and Full Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=dbb,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" border="1" width="100%" bordercolordark="#ffffff">
+                  <tr>
+                    <th class="thAttributeFlow" colspan="2" align="left">Full Sync</th>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><b>step 1</b>  Full Synchronization </td>
+                  </tr>
+                  <tr>
+                    <td>Log filename</td>
+                    <td> None </td>
+                  </tr>
+                  <tr>
+                    <td>Partition Name</td>
+                    <td>DC=dbb,DC=local</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Batch-size (Objects): </td>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">Page-size (Objects): </td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td class="tdClass2">TimeOut (in sec's): </td>
+                    <td>120</td>
+                  </tr>
+                </table>
+              </td>
+            </TR>
+          </TABLE>
+        </TD>
+      </TR>
+    </TABLE>
+  </BODY>
+</HTML>

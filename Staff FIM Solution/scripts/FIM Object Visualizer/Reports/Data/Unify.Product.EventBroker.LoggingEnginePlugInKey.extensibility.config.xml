@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<LoggingEngine changeId="{916DF3E6-7752-409F-9C21-7B4D855EE744}" logDaysKeep="5" filePrefix="UnifyLog">
+	<LogWriter name="AsyncLogWriterComposite">
+		<LogWriter name="Console" />
+	</LogWriter>
+</LoggingEngine>

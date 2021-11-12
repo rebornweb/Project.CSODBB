@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AgentEngine>
+  <Agents>
+    <Agent name="SAS2IDM SQL" id="d5165a48-75c6-4f6a-b60a-a7306967f9c5" type="Unify.Agent.SqlServerDatabase" description="SQL database adapter for SAS2IDM">
+      <Extended xmlns="">
+        <communicator connectionString="aaaNsCJoxVLfOb4iuL+9N1j3jjklDMYnqo2oFmP4KuQjgqdlMEPJaAfpyFCcQrhIWMWbyF4LBUJNMruAkdc9OZ0+cpMNQgevift9AdFsWHIHY4K8rRvrmNgxXbQSrVwNo1vl3kEEdHcCTEygLjKAQg==" />
+      </Extended>
+    </Agent>
+    <Agent name="PeopleSoft" id="d63ed5cf-d1d7-4d59-9bf6-8ddcbc37ff7d" type="Unify.Agent.PeopleSoft" description="">
+      <Extended xmlns="">
+        <communicator endpointTokenImpersonationLevel="None" endpointAddress="https://int.phris.org.au/PSIGW/PeopleSoftServiceListeningConnector" endpointConfiguration="FimService_Port" endpointSecurePassword="VGgo263i+tt+m7YVY1duaQ==" endpointUsername="CEOFIMSVC" />
+        <idmCommunicator endpointTokenImpersonationLevel="None" endpointAddress="https://int.phris.org.au/PSIGW/PeopleSoftServiceListeningConnector" endpointConfiguration="IdmService_Port" endpointSecurePassword="VGgo263i+tt+m7YVY1duaQ==" endpointUsername="CEOFIMSVC" />
+      </Extended>
+    </Agent>
+  </Agents>
+</AgentEngine>

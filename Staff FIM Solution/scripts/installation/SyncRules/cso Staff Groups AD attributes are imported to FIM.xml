@@ -1,0 +1,7 @@
+<SynchronizationRule>
+    <ConnectedSystemScope />
+    <OutboundScope />
+    <RelationshipCriteria><conditions><condition><ilmAttribute>objectSid</ilmAttribute><csAttribute>objectSid</csAttribute></condition></conditions></RelationshipCriteria>
+    <InitialFlow />
+    <PersistentFlow><import-flow><src><attr>dn</attr></src><dest>csObjectID</dest><scoping /></import-flow><import-flow><src><attr>objectSid</attr></src><dest>objectSid</dest><scoping /></import-flow><import-flow><src><attr>sAMAccountName</attr></src><dest>accountName</dest><scoping /></import-flow><import-flow><src>Security</src><dest>type</dest><scoping /></import-flow><import-flow><src>true</src><dest>membershipLocked</dest><scoping /></import-flow><import-flow><src>Global</src><dest>scope</dest><scoping /></import-flow><import-flow><src>None</src><dest>membershipAddWorkflow</dest><scoping /></import-flow><import-flow><src><attr>description</attr></src><dest>description</dest><scoping /></import-flow><import-flow><src><attr>displayName</attr></src><dest>displayName</dest><scoping /></import-flow><import-flow><src><attr>info</attr></src><dest>info</dest><scoping /></import-flow><import-flow><src><attr>mail</attr></src><dest>email</dest><scoping /></import-flow><import-flow><src>UNIFYFIM</src><dest>domain</dest><scoping /></import-flow></PersistentFlow>
+</SynchronizationRule>

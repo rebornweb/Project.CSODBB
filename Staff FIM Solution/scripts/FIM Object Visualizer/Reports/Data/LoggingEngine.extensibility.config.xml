@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LogWriter name="AsyncLogWriterComposite">
+  <!--<LogWriter name="CSV" prefix="UnifyLog" directory="F:\Unify.Logs" />-->
+  <LogWriter name="CustomEventLog" customEventLog="UNIFY.IdB.PeopleSoft" />
+</LogWriter>

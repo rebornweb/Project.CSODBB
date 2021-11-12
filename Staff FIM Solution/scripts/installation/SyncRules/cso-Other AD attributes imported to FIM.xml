@@ -1,0 +1,7 @@
+<SynchronizationRule>
+    <ConnectedSystemScope />
+    <OutboundScope />
+    <RelationshipCriteria><conditions><condition><ilmAttribute>objectSid</ilmAttribute><csAttribute>objectSid</csAttribute></condition></conditions></RelationshipCriteria>
+    <InitialFlow />
+    <PersistentFlow><import-flow><src><attr>displayName</attr></src><dest>displayName</dest><scoping /></import-flow><import-flow><src><attr>dn</attr></src><dest>uid</dest><scoping /></import-flow><import-flow><src><attr>objectSid</attr></src><dest>objectSid</dest><scoping /></import-flow><import-flow><src><attr>sAMAccountName</attr></src><dest>accountName</dest><scoping /></import-flow><import-flow><src><attr>employeeID</attr></src><dest>employeeID</dest><scoping /></import-flow><import-flow><src><attr>employeeNumber</attr></src><dest>csoLegacyEmployeeID</dest><scoping /></import-flow></PersistentFlow>
+</SynchronizationRule>

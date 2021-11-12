@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<groupEngine changeId="4de8d068-6d8f-4540-a2f3-96742227785b">
+  <GroupConfigurations>
+    <Group name="FIM Agent FIM Portal Operations" exclusionGroup="true" id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+    <Group name="Baseline" exclusionGroup="true" id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+    <Group name="FIM Agent NASS Operations" exclusionGroup="true" id="9bf22628-6626-4c35-937a-5d59afbcfcf7" />
+    <Group name="AD Updates" exclusionGroup="true" id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+    <Group name="All Outbound" exclusionGroup="false" id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+    <Group name="Identity Broker Operations" exclusionGroup="false" id="100d0bd7-c3f8-4f89-a642-cd565b37b207" />
+  </GroupConfigurations>
+</groupEngine>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<DTSConfiguration>
+  <DTSConfigurationHeading>
+    <DTSConfigurationFileInfo GeneratedBy="DBB\bob.bradley.tst" GeneratedFromPackageName="Generate SAS2IDM full student reload for supplied school(s)" GeneratedFromPackageID="{A0728094-1640-4072-825D-C279CA6DAEFB}" GeneratedDate="28/10/2021 6:25:04 PM"/>
+  </DTSConfigurationHeading>
+  <Configuration ConfiguredType="Property" Path="\Package.Variables[User::pvDB_Filter].Properties[Value]" ValueType="String">
+    <ConfiguredValue>SSBLX</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Variables[User::pvEmail_Recipient].Properties[Value]" ValueType="String">
+    <ConfiguredValue>csodbbsupport@unifysolutions.net;robert.broadley@dbb.catholic.edu.au</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Variables[User::pvEmail_Sender].Properties[Value]" ValueType="String">
+    <ConfiguredValue>svcFIM_Service@dbb.org.au</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Variables[User::pvLogfile_Name].Properties[Value]" ValueType="String">
+    <ConfiguredValue>SAS2IDM.Reconciliation.log</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Variables[User::pvLogfile_Path].Properties[Value]" ValueType="String">
+    <ConfiguredValue>E:\SSIS\Logs</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Variables[User::pvSMTP_Server_Name].Properties[Value]" ValueType="String">
+    <ConfiguredValue>10.19.229.16</ConfiguredValue>
+  </Configuration>
+  <Configuration ConfiguredType="Property" Path="\Package.Variables[User::pvSSIS_Server_Name].Properties[Value]" ValueType="String">
+    <ConfiguredValue>OCCCP-DB222</ConfiguredValue>
+  </Configuration>
+</DTSConfiguration>

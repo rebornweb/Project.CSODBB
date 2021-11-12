@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegacyExchangeMigratedMailboxesRE", "LegacyExchangeMigratedMailboxesRE.csproj", "{DAEA0E26-3D1A-4514-9C3C-1800BFA0138D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAEA0E26-3D1A-4514-9C3C-1800BFA0138D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAEA0E26-3D1A-4514-9C3C-1800BFA0138D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAEA0E26-3D1A-4514-9C3C-1800BFA0138D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAEA0E26-3D1A-4514-9C3C-1800BFA0138D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
