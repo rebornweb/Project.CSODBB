@@ -1,0 +1,378 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Find all students with no USIN for a selected SAS school (Version 1.0)</title>
+<style type="text/css">
+body      {background-color:wheat;}
+table     {width:50%;font-family:Tahoma; font-size:85%;background-color:lightgrey;}
+table.data     {width:90%;font-family:Tahoma; font-size:80%;background-color:lightgrey;}
+td.tbname {font-weight:bold; background-color:papayawhip;font-size:200%;}
+td.tbhelp {font-weight:normal; background-color:papayawhip;}
+td.head   {font-weight:bold; background-color:buttonface;}
+td.data   {background-color:cornsilk;}
+td.bold   {font-weight:bold; background-color:cornsilk;}
+td.boldred   {font-weight:bold; color:red; background-color:cornsilk;}
+textarea  {font-size:80%;background-color:lightgrey;}
+textarea.hide  {display:none;}
+textarea.sqlrows  {font-size:90%;background-color:papayawhip;}
+textarea.select  {font-size:80%;background-color:lightgrey;}
+textarea.update  {font-size:80%;background-color:papayawhip;}
+</style>
+<Script Language="VBScript">
+<!--
+Option Explicit
+
+'https://bytes.com/topic/sql-server/answers/83654-can-i-return-output-stored-procedure-into-hta-display-browser
+
+Const DATA_SOURCE = "OCCCP-DB222"
+Const DB_PREFIX = "SAS2000_LIVE_"
+Const DEBUG_FLAG = False
+Const UPD_TITLE = "Assign new USINs in SAS"
+Const UPD_CONFIRMATION = "Click OK to proceed to assign ALL students at XXXXX the generated 'NewUSIN' value."
+
+Dim oConnection
+Set oConnection = CreateObject("ADODB.Connection")
+oConnection.Open "Provider=SQLOLEDB;Data Source=" & DATA_SOURCE & ";Integrated Security=SSPI"
+
+Sub printline(linetoprint)
+	' called for messages displaying outcomes
+	Dim saveline, displayline
+    saveline = DataArea.InnerHTML
+    displayline = "<font color='Navy' >"  & _
+        saveline & "<br>" & FormatDateTime(Now(),3) & " " & linetoprint
+    DataArea.InnerHTML =  displayline 
+    saveline = displayline
+End Sub
+
+Sub GetSchoolData()
+
+	Dim SQL_SEL, oRecordSet, oSchoolDatabase, schoolDatabaseName, optionElt, optionName, textNode, oUpdateButton
+
+
+	' construct school code combo box
+	SQL_SEL = "SELECT name FROM sys.databases WHERE name LIKE '" & DB_PREFIX & "%'"
+
+	Set oSchoolDatabase = document.getElementById("SchoolDatabaseName")
+	Set oUpdateButton = document.getElementById("btnUpdateStudents")
+	oUpdateButton.disabled = "disabled"
+
+	Set oRecordSet = oConnection.Execute(SQL_SEL)
+	Set optionElt = document.createElement("option")
+	optionElt.setAttribute "selected", "selected"
+	optionElt.setAttribute "value", ""
+	Set textNode = document.createTextNode("Select school ...")
+	optionElt.appendChild textNode
+	oSchoolDatabase.appendChild optionElt
+
+	Do While Not oRecordSet.EOF
+		optionName = Replace(oRecordSet.Fields(0).Value, DB_PREFIX, "")
+		Set optionElt = document.createElement("option")
+		optionElt.setAttribute "value", optionName
+		Set textNode = document.createTextNode(optionName)
+		optionElt.appendChild textNode
+		oSchoolDatabase.appendChild optionElt
+		oRecordSet.MoveNext
+	Loop	
+	oRecordSet.Close
+
+End Sub
+
+Sub GetSchoolInfo()
+
+	Dim SQL_SEL, strValue, oRecordSet, oSchoolDatabase, schoolDatabaseName, schoolResultTable, i, rowCount
+
+	' get school code from combo box selection
+	Set oSchoolDatabase = document.getElementById("SchoolDatabaseName")
+	schoolDatabaseName = oSchoolDatabase.Value
+
+	If schoolDatabaseName = "" Then
+		Exit Sub
+	End If
+
+	SQL_SEL = "SELECT Code, SchoolName "  & vbNewLine & _
+		"FROM [SAS2IDM_SAS2IDM_LIVE].[dbo].[SAS2IDMSchool] " & vbNewLine & _
+		"WHERE SchoolID = '" & schoolDatabaseName & "'" & vbNewLine & _
+		"AND Archived = 'N'"
+
+	If DEBUG_FLAG Then
+		document.getElementById("SQLSelectCommand").Value = SQL_SEL
+		document.getElementById("SQLSelectCommand").rows = 14
+	'Else
+	'	document.getElementById("SQLSelectCommand").Class = "hide"
+	End If
+	Set oRecordSet = oConnection.Execute(SQL_SEL)
+	
+	schoolResultTable = "<table border=""0"">"
+	schoolResultTable = schoolResultTable & "<thead><tr>"
+	For i = 0 To oRecordSet.Fields.Count - 1
+		schoolResultTable = schoolResultTable & _
+		"<td class=""head"">" & _
+		oRecordSet.Fields(i).Name & _
+		"</td>"
+	Next
+	schoolResultTable = schoolResultTable & "</tr></thead><tbody>"
+
+	If oRecordSet.EOF Then
+	    printline "No school details found for School ID: " & schoolDatabaseName & ". Please select another school."
+	Else
+
+		rowCount = 0
+		Do While Not oRecordSet.EOF
+			rowCount = rowCount + 1
+			schoolResultTable = schoolResultTable & "<tr>"
+			For i = 0 To oRecordSet.Fields.Count - 1
+				strValue = "&nbsp;"
+				If (Len(oRecordSet.Fields(i).Value) > 0) Then
+					strValue = oRecordSet.Fields(i).Value
+				End If
+				schoolResultTable = schoolResultTable & _
+				"<td class='data'>" & strValue & "</td>"	
+			Next
+			schoolResultTable = schoolResultTable & "</tr>"
+			oRecordSet.MoveNext
+		Loop	
+		schoolResultTable = schoolResultTable & "</tbody></table>"
+
+	End If
+	
+	oRecordSet.Close
+
+	SchoolInfo.innerHTML = schoolResultTable
+	
+End Sub
+
+Sub GetTableData()
+
+	Dim SQL_SEL, strValue, oRecordSet, oSchoolDatabase, schoolDatabaseName, studentResultTable, i, rowCount, oUpdateButton, tdClass, isFormerStudent
+
+	' get school code from combo box selection
+	Set oSchoolDatabase = document.getElementById("SchoolDatabaseName")
+	schoolDatabaseName = oSchoolDatabase.Value
+	Set oUpdateButton = document.getElementById("btnUpdateStudents")
+	oUpdateButton.disabled = "disabled"
+	If schoolDatabaseName = "" Then
+		document.getElementById("SQLUpdateCommand").Value = ""
+		Exit Sub
+	Else
+		GetSchoolInfo
+	End If
+
+	SQL_SEL = "SELECT "  & vbNewLine & _
+		"    CONCAT('281',(Select REPLACE(Value,'281_','') AS [DET] from [" & DB_PREFIX & schoolDatabaseName & "].[dbo].[Control] where Code = 'NSWDETSchoolCode'),Student.Code) As [NewUSIN], " & vbNewLine & _
+		"    SAS2IDMStudent.UniversalIdentificationNumber AS [FormerUSIN?], SAS2IDMStudentEx.CeIder, " & vbNewLine & _
+		"    CASE WHEN SAS2IDMStudent.Email like '%.%@%' THEN SUBSTRING(SAS2IDMStudent.Email, 1, CHARINDEX('@',SAS2IDMStudent.Email)-1) ELSE Null END AS [EmailPrefix], " & vbNewLine & _
+		"	 Student.Code, Student.CandidateNumber, Student.LockerNumber, Student.FirstName, Student.LastName, Student.PreferredName, Student.DOB, Student.Year, Student.UniversalIdentificationNumber As [USIN], School.Name As [Previous School], School.Location As [Previous Location], Student.DateLeft, Student.ReasonLeft, Student.TransferCode, Student.UpdatedWhen " & vbNewLine & _
+		"FROM [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
+		"LEFT JOIN [" & DB_PREFIX & schoolDatabaseName & "].[dbo].School on School.ID = Student.PrevSchoolID " & vbNewLine & _
+		"LEFT JOIN [SAS2IDM_SAS2IDM_LIVE].[dbo].SAS2IDMStudent on SAS2IDMStudent.SchoolID = School.SchoolNumber " & vbNewLine & _
+		"    AND SAS2IDMStudent.FirstName = Student.FirstName " & vbNewLine & _
+		"    AND SAS2IDMStudent.LastName = Student.LastName " & vbNewLine & _
+		"    AND ISNULL(SAS2IDMStudent.DOB,GETDATE()) = ISNULL(Student.DOB,GETDATE()) " & vbNewLine & _
+		"LEFT JOIN [SAS2IDM_SAS2IDM_LIVE].[dbo].SAS2IDMStudentEx on SAS2IDMStudentEx.SchoolID = SAS2IDMStudent.SchoolID " & vbNewLine & _
+		"    AND SAS2IDMStudentEx.StudentID = SAS2IDMStudent.StudentID " & vbNewLine & _
+		"WHERE ISNULL(Student.UniversalIdentificationNumber,'0') = '0' and Student.PreEnrolment='N'"
+
+	If DEBUG_FLAG Then
+		document.getElementById("SQLSelectCommand").Value = SQL_SEL
+		document.getElementById("SQLSelectCommand").rows = 14
+	'Else
+	'	document.getElementById("SQLSelectCommand").Class = "hide"
+	End If
+	Set oRecordSet = oConnection.Execute(SQL_SEL)
+	
+	studentResultTable = "<table class=""data"" border=""1"">"
+	studentResultTable = studentResultTable & "<thead><tr>"
+	For i = 0 To oRecordSet.Fields.Count - 1
+		studentResultTable = studentResultTable & _
+		"<th>" & _
+		oRecordSet.Fields(i).Name & _
+		"</th>"
+	Next
+	studentResultTable = studentResultTable & "</tr></thead><tbody>"
+
+	If oRecordSet.EOF Then
+		document.getElementById("SQLRows").Value = "No " & schoolDatabaseName & " students with no USIN."
+		document.getElementById("SQLUpdateCommand").Value = ""
+	    printline "No new students detected for school: " & schoolDatabaseName & ". Please select the next school."
+	Else
+	
+		
+		rowCount = 0
+		isFormerStudent = false
+		Do While Not oRecordSet.EOF
+			rowCount = rowCount + 1
+			studentResultTable = studentResultTable & "<tr>"
+			For i = 0 To oRecordSet.Fields.Count - 1
+				strValue = "&nbsp;"
+				tdClass = "data"
+				If (Len(oRecordSet.Fields(i).Value) > 0) Then
+					strValue = oRecordSet.Fields(i).Value
+				End If
+				If ((oRecordSet.Fields(i).Name = "FormerUSIN?") or (oRecordSet.Fields(i).Name = "CeIder") or (oRecordSet.Fields(i).Name = "EmailPrefix")) and (Len(oRecordSet.Fields(i).Value) > 0) Then
+					tdClass = "boldred"
+					isFormerStudent = true
+				ElseIf (oRecordSet.Fields(i).Name = "NewUSIN") Then
+					tdClass = "bold"
+				End If
+				studentResultTable = studentResultTable & _
+				"<td class='" & tdClass & "'>" & strValue & "</td>"	
+			Next
+			studentResultTable = studentResultTable & "</tr>"
+			oRecordSet.MoveNext
+		Loop	
+		studentResultTable = studentResultTable & "</tbody></table>"
+
+		If not isFormerStudent Then
+			oUpdateButton.disabled = ""
+		End If
+		document.getElementById("SQLRows").Value = "[" & rowCount & "] " & schoolDatabaseName & " students with no USIN!"
+	    printline "[" & rowCount & "] new students detected for school: " & schoolDatabaseName & ".  Please update students with missing USINs!"
+
+	End If
+	
+	oRecordSet.Close
+
+	Results.innerHTML = studentResultTable
+End Sub
+
+Sub btnUpdateStudents_OnClick()
+
+	Dim SQL_UPD, oSchoolDatabase, schoolDatabaseName, oRecordSet, doUpdate
+
+	' get school code from combo box selection
+	Set oSchoolDatabase = document.getElementById("SchoolDatabaseName")
+	schoolDatabaseName = oSchoolDatabase.Value
+
+	SQL_UPD = "UPDATE [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
+		"SET UniversalIdentificationNumber=CONCAT('281',(Select REPLACE(Value,'281_','') AS [DET] from [" & DB_PREFIX & schoolDatabaseName & "].[dbo].[Control] where Code = 'NSWDETSchoolCode'),Code) " & vbNewLine  & _
+		"WHERE ISNULL(UniversalIdentificationNumber,'0') = '0' and PreEnrolment='N' and 1=1 "
+
+	If DEBUG_FLAG Then
+		document.getElementById("SQLUpdateCommand").Value = SQL_UPD
+		document.getElementById("SQLUpdateCommand").rows = 3
+	'Else
+	'	document.getElementById("SQLUpdateCommand").Class = "hide"
+	End If
+
+	' get school code from combo box selection
+	Set oSchoolDatabase = document.getElementById("SchoolDatabaseName")
+	schoolDatabaseName = oSchoolDatabase.Value
+	If schoolDatabaseName = "" Then
+		Exit Sub
+	End If
+
+	doUpdate = MsgBox( Replace(UPD_CONFIRMATION,"XXXXX",schoolDatabaseName), vbOKCancel + vbApplicationModal + vbInformation, UPD_TITLE )
+	If doUpdate = vbOK Then
+		Set oRecordSet = oConnection.Execute(SQL_UPD)
+	End If
+
+	' Refresh table data
+	GetTableData
+	
+End Sub
+
+Sub CopyHTML()
+    Dim oTable
+    Set oTable = document.getelementbyid("Results") '("DataArea")
+    
+    If(oTable Is Nothing) then 
+       MsgBox "There is no data displayed", vbExclamation, oNewStudents.applicationName
+       Exit Sub
+    End If
+
+    window.clipboardData.SetData "text", oTable.outerHtml
+  
+    MsgBox "HMTL data copied to clipboard successfully", vbInformation, oNewStudents.applicationName
+
+ End Sub
+
+Sub Quitsub
+	oConnection.Close
+    self.close()
+End Sub
+
+-->
+</script>
+
+<HTA:APPLICATION ID="oNewStudents"
+	APPLICATIONNAME="SQLTableViewer"
+	APPLICATION="yes"
+	CAPTION="yes"
+	SINGLEINSTANCE="yes"
+	ICON="unifyico1.ico"
+	SYSMENU="yes">
+</HTA:APPLICATION>
+</head>
+<body onLoad="GetSchoolData">
+<table border="0">
+    <tbody>
+        <tr>
+			<td>
+
+				<table class="data" border="0">
+					<tbody>
+						<tr>
+							<td align="right">SchoolCode:</td>
+							<td colspan="100">
+								<select id="SchoolDatabaseName" name="SchoolDatabaseName"></select>
+							</td>
+						</tr>
+						<tr>
+							<td />
+							<td colspan="100">
+								<input id="btnGetStudents" type="button" value=" Search " name="Search" onClick="GetTableData">
+								<input id="Copy HTML" type="button" value=" Copy HTML " name="Copy HTML"  onClick="CopyHTML">
+								<input id="Quitbutton" type="button" value="  Quit  " name="Quit_button"  onClick="QuitSub">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+			<td/>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<nobr Id="SchoolInfo"></nobr>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<textarea class="sqlrows" name"SQLRows" id="SQLRows" readonly="readonly" rows="1" cols="50%"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<nobr Id="Results"></nobr>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table class="data" border="0"=>
+					<tbody>
+						<tr>
+							<td colspan="100">
+								<input type="button" id="btnUpdateStudents" value=" Update Students ">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+			<td/>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<textarea class="hide" name"SQLSelectCommand" id="SQLSelectCommand" readonly="readonly" rows="0" cols="180"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<textarea class="hide" name"SQLUpdateCommand" id="SQLUpdateCommand" readonly="readonly" rows="0" cols="180"></textarea>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<hr/>
+<span id="DataArea"></span>
+</body>
+</html>

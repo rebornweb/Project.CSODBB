@@ -12,8 +12,8 @@
   DTS:LocaleID="3081"
   DTS:ObjectName="Generate SAS2IDM full student reload for supplied school(s)"
   DTS:PackageType="5"
-  DTS:VersionBuild="162"
-  DTS:VersionGUID="{1BAB24AE-943D-4C6A-AED5-A321AA1E7F2A}">
+  DTS:VersionBuild="170"
+  DTS:VersionGUID="{8CC3A36D-E4B5-476D-941E-0E7A6BB32D60}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -57,7 +57,7 @@
         DTS:Name="SmtpServer">@[User::pvSMTP_Server_Name]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <SmtpConnectionManager
-          ConnectionString="SmtpServer=10.19.229.16;UseWindowsAuthentication=True;EnableSsl=False;"
+          ConnectionString="SmtpServer=;UseWindowsAuthentication=True;EnableSsl=False;"
           ConnectByProxy="False" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -83,7 +83,7 @@
       DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">SMMCX</DTS:Property>
+        DTS:Name="ParameterValue">S%</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -129,11 +129,11 @@
       DTS:CreationName=""
       DTS:DataType="8"
       DTS:DTSID="{8F63F5C1-8CCE-459E-9184-1281F3E4990D}"
-      DTS:ObjectName="PvSMTP_Server_Name"
-      DTS:Required="True">
+      DTS:ObjectName="PvSMTP_Server_Name">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">10.19.229.16</DTS:Property>
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -156,7 +156,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="pvDB_Filter">
       <DTS:VariableValue
-        DTS:DataType="8">SMMCX</DTS:VariableValue>
+        DTS:DataType="8">S%</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -211,7 +211,8 @@
       DTS:Namespace="User"
       DTS:ObjectName="pvSMTP_Server_Name">
       <DTS:VariableValue
-        DTS:DataType="8">10.19.229.16</DTS:VariableValue>
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -726,12 +727,20 @@ Having Count(*) &gt; 1
 Select 'DUPs: ' + @errs;
 if @errs is not null
 begin
-	truncate table SAS2IDMStudentDioces;
+	-- Delete only those change records where there are duplicate USINs
+	Delete from dbo.SAS2IDMStudentDioces
+	Where UniversalIdentificationNumber in (
+		Select UniversalIdentificationNumber
+		From dbo.SAS2IDMStudentDioces
+		Where UniversalIdentificationNumber is not NULL
+		Group by UniversalIdentificationNumber
+		Having Count(*) &gt; 1
+	)
 end"</DTS:PropertyExpression>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{946FE5FC-7D35-4760-A9B2-F0BDE4C42654}"
-              SQLTask:SqlStatementSource="USE [SAS2000_LIVE_SHCPK];&#xA;declare @errs varchar(max);&#xA;Set @errs = null;&#xA;Select @errs = COALESCE(@errs +  '; ' + UniversalIdentificationNumber, UniversalIdentificationNumber)&#xA;From dbo.SAS2IDMStudentDioces&#xA;Where UniversalIdentificationNumber is not NULL&#xA;--And UniversalIdentificationNumber &lt;&gt; '0'&#xA;Group by UniversalIdentificationNumber&#xA;Having Count(*) &gt; 1&#xA;Select 'DUPs: ' + @errs;&#xA;if @errs is not null&#xA;begin&#xA;&#x9;truncate table SAS2IDMStudentDioces;&#xA;end"
+              SQLTask:SqlStatementSource="USE [SAS2000_LIVE_SHCPK];&#xA;declare @errs varchar(max);&#xA;Set @errs = null;&#xA;Select @errs = COALESCE(@errs +  '; ' + UniversalIdentificationNumber, UniversalIdentificationNumber)&#xA;From dbo.SAS2IDMStudentDioces&#xA;Where UniversalIdentificationNumber is not NULL&#xA;--And UniversalIdentificationNumber &lt;&gt; '0'&#xA;Group by UniversalIdentificationNumber&#xA;Having Count(*) &gt; 1&#xA;Select 'DUPs: ' + @errs;&#xA;if @errs is not null&#xA;begin&#xA;&#x9;-- Delete only those change records where there are duplicate USINs&#xA;&#x9;Delete from dbo.SAS2IDMStudentDioces&#xA;&#x9;Where UniversalIdentificationNumber in (&#xA;&#x9;&#x9;Select UniversalIdentificationNumber&#xA;&#x9;&#x9;From dbo.SAS2IDMStudentDioces&#xA;&#x9;&#x9;Where UniversalIdentificationNumber is not NULL&#xA;&#x9;&#x9;Group by UniversalIdentificationNumber&#xA;&#x9;&#x9;Having Count(*) &gt; 1&#xA;&#x9;)&#xA;end"
               SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ResultBinding
                 SQLTask:ResultName="0"
@@ -978,7 +987,7 @@ select @@ROWCOUNT;"</DTS:PropertyExpression>
           DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.SendMailTask.SendMailTask, Microsoft.SqlServer.SendMailTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
           DTS:LocaleID="-1"
           DTS:ObjectName="Send summary notification"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:LoggingOptions
             DTS:FilterKind="0"
@@ -1218,15 +1227,16 @@ select @@ROWCOUNT;"</DTS:PropertyExpression>
           DTS:refId="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 8]"
           DTS:CreationName=""
           DTS:DTSID="{23ACDE6B-EF82-4481-AC66-A7E1998B1AAB}"
+          DTS:EvalOp="1"
+          DTS:Expression="LEN(@[$Package::PvSMTP_Server_Name]) &gt; 0"
           DTS:From="Package\Foreach SAS School DB\Get change record count"
-          DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 8"
           DTS:To="Package\Foreach SAS School DB\Send summary notification" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 9]"
           DTS:CreationName=""
-          DTS:DTSID="{C2E04B37-B8F8-4034-9A29-12A075BB3359}"
-          DTS:From="Package\Foreach SAS School DB\Send summary notification"
+          DTS:DTSID="{6CA188AB-3F3A-4EB4-940F-C369AA5C2FAF}"
+          DTS:From="Package\Foreach SAS School DB\Get change record count"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 9"
           DTS:To="Package\Foreach SAS School DB\Add 1 to school count" />
@@ -1258,7 +1268,7 @@ select @@ROWCOUNT;"</DTS:PropertyExpression>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{946FE5FC-7D35-4760-A9B2-F0BDE4C42654}"
-          SQLTask:SqlStatementSource="SELECT name FROM sys.databases WHERE name like 'SAS2000_LIVE_SMMCX'"
+          SQLTask:SqlStatementSource="SELECT name FROM sys.databases WHERE name like 'SAS2000_LIVE_S%'"
           SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="0"
@@ -1274,7 +1284,7 @@ select @@ROWCOUNT;"</DTS:PropertyExpression>
       DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.SendMailTask.SendMailTask, Microsoft.SqlServer.SendMailTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
       DTS:LocaleID="-1"
       DTS:ObjectName="Send Notification when invalid school"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:LoggingOptions
         DTS:FilterKind="0"
@@ -1357,8 +1367,8 @@ Run Status: Failed"</DTS:PropertyExpression>
           SendMailTask:SMTPServer="{5F9F9CCD-FC73-4BC7-905D-7C93FA2DA716}"
           SendMailTask:From="svcFIM_Service@dbb.org.au"
           SendMailTask:To="csodbbsupport@unifysolutions.net;robert.broadley@dbb.catholic.edu.au"
-          SendMailTask:Subject="SAS2IDM School Reload Error: invalid school filter [SMMCX]"
-          SendMailTask:MessageSource="SSIS Server: OCCCP-DB222&#xA;SSIS Package: Generate SAS2IDM full student reload for supplied school(s)&#xA;School Filter (invalid): (SMMCX)&#xA;Run Status: Failed" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+          SendMailTask:Subject="SAS2IDM School Reload Error: invalid school filter [S%]"
+          SendMailTask:MessageSource="SSIS Server: OCCCP-DB222&#xA;SSIS Package: Generate SAS2IDM full student reload for supplied school(s)&#xA;School Filter (invalid): (S%)&#xA;Run Status: Failed" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -1368,16 +1378,17 @@ Run Status: Failed"</DTS:PropertyExpression>
       DTS:CreationName=""
       DTS:DTSID="{A2E34F50-C4EC-4AC6-859C-ABB0C41F1606}"
       DTS:EvalOp="1"
-      DTS:Expression="@[User::vDB_SchoolCount] == 0"
+      DTS:Expression="(@[User::vDB_SchoolCount] == 0) &amp;&amp; (LEN(@[$Package::PvSMTP_Server_Name]) &gt; 0)"
       DTS:From="Package\Foreach SAS School DB"
       DTS:ObjectName="Constraint"
       DTS:To="Package\Send Notification when invalid school" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{715A6CBD-B655-4B22-A776-80B0BF4E2020}"
-      DTS:From="Package\Send Notification when invalid school"
-      DTS:LogicalAnd="True"
+      DTS:DTSID="{5EDC3533-84A9-404D-87D6-9BAF99A05CA7}"
+      DTS:EvalOp="1"
+      DTS:Expression="(@[User::vDB_SchoolCount] == 0)"
+      DTS:From="Package\Foreach SAS School DB"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\Fail package when invalid school filter" />
     <DTS:PrecedenceConstraint
@@ -1404,54 +1415,54 @@ Run Status: Failed"</DTS:PropertyExpression>
         <NodeLayout
           Size="263,42"
           Id="Package\Fail package when invalid school filter"
-          TopLeft="112,1435.5" />
+          TopLeft="327.5,1231.5" />
         <NodeLayout
           Size="184,42"
           Id="Package\Foreach SAS School DB\Add 1 to school count"
-          TopLeft="146,1025.5" />
+          TopLeft="221,923.5" />
         <NodeLayout
           Size="208,42"
           Id="Package\Foreach SAS School DB\Check for duplicate USINs"
-          TopLeft="134,515.5" />
+          TopLeft="209,515.5" />
         <NodeLayout
           Size="465,42"
           Id="Package\Foreach SAS School DB\Fetch all Student records into the sas2IDMStudentDioces table from this school"
-          TopLeft="5.5,5.5" />
+          TopLeft="80.5,5.5" />
         <NodeLayout
           Size="234,42"
           Id="Package\Foreach SAS School DB\Get change record count"
-          TopLeft="121,821.5" />
+          TopLeft="196,821.5" />
         <NodeLayout
           Size="250,42"
           Id="Package\Foreach SAS School DB\Handle invalid Address data length"
-          TopLeft="113,413.5" />
+          TopLeft="188,413.5" />
         <NodeLayout
           Size="305,42"
           Id="Package\Foreach SAS School DB\Handle invalid multiline Address data"
-          TopLeft="85.5000000000001,311.5" />
+          TopLeft="160.5,311.5" />
         <NodeLayout
           Size="430,42"
           Id="Package\Foreach SAS School DB\Mark all changes without a USIN as a Delete"
-          TopLeft="23,209.5" />
+          TopLeft="98,209.5" />
         <NodeLayout
           Size="155,42"
           Id="Package\Foreach SAS School DB\Send summary notification"
-          TopLeft="160.5,923.5" />
+          TopLeft="5.50000000000011,923.5" />
         <NodeLayout
           Size="253,42"
           Id="Package\Foreach SAS School DB\Set execution status for SAS school"
-          TopLeft="111.5,617.5" />
+          TopLeft="186.5,617.5" />
         <NodeLayout
           Size="303,42"
           Id="Package\Foreach SAS School DB\Set the polling flag for all SAS school changes"
-          TopLeft="86.5000000000001,719.5" />
+          TopLeft="161.5,719.5" />
         <NodeLayout
           Size="415,42"
           Id="Package\Foreach SAS School DB\Update USINs"
-          TopLeft="30.5,107.5" />
+          TopLeft="105.5,107.5" />
         <EdgeLayout
           Id="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint]"
-          TopLeft="238,47.5">
+          TopLeft="313,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1473,7 +1484,7 @@ Run Status: Failed"</DTS:PropertyExpression>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 1]"
-          TopLeft="238,455.5">
+          TopLeft="313,455.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1495,7 +1506,7 @@ Run Status: Failed"</DTS:PropertyExpression>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 2]"
-          TopLeft="238,251.5">
+          TopLeft="313,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1517,7 +1528,7 @@ Run Status: Failed"</DTS:PropertyExpression>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 3]"
-          TopLeft="238,353.5">
+          TopLeft="313,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1539,7 +1550,7 @@ Run Status: Failed"</DTS:PropertyExpression>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 4]"
-          TopLeft="238,149.5">
+          TopLeft="313,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1561,7 +1572,7 @@ Run Status: Failed"</DTS:PropertyExpression>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 5]"
-          TopLeft="238,761.5">
+          TopLeft="313,761.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1583,7 +1594,7 @@ Run Status: Failed"</DTS:PropertyExpression>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 6]"
-          TopLeft="238,659.5">
+          TopLeft="313,659.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1605,7 +1616,7 @@ Run Status: Failed"</DTS:PropertyExpression>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 7]"
-          TopLeft="238,557.5">
+          TopLeft="313,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1627,40 +1638,66 @@ Run Status: Failed"</DTS:PropertyExpression>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 8]"
-          TopLeft="238,863.5">
+          TopLeft="275.333333333333,863.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="-192.333333333333,60"
               Start="0,0"
-              End="0,52.5">
+              End="-192.333333333333,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,20.2444821731749" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2444821731749"
+                    Point2="0,24.2444821731749"
+                    Point3="-4,24.2444821731749" />
+                  <mssgle:LineSegment
+                    End="-188.333333333333,24.2444821731749" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-188.333333333333,24.2444821731749"
+                    Point2="-192.333333333333,24.2444821731749"
+                    Point3="-192.333333333333,28.2444821731749" />
+                  <mssgle:LineSegment
+                    End="-192.333333333333,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-104.166666666667,29.2444821731749,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach SAS School DB.PrecedenceConstraints[Constraint 9]"
-          TopLeft="238,965.5">
+          TopLeft="350.666666666667,863.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="-37.6666666666666,60"
               Start="0,0"
-              End="0,52.5">
+              End="-37.6666666666666,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,20.2444821731749" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2444821731749"
+                    Point2="0,24.2444821731749"
+                    Point3="-4,24.2444821731749" />
+                  <mssgle:LineSegment
+                    End="-33.6666666666666,24.2444821731749" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-33.6666666666666,24.2444821731749"
+                    Point2="-37.6666666666666,24.2444821731749"
+                    Point3="-37.6666666666666,28.2444821731749" />
+                  <mssgle:LineSegment
+                    End="-37.6666666666666,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1672,45 +1709,57 @@ Run Status: Failed"</DTS:PropertyExpression>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="476,1123"
-          Size="476,1166"
+          PanelSize="551,1020"
+          Size="551,1064"
           Id="Package\Foreach SAS School DB"
-          TopLeft="5.50000000000017,107.5" />
+          TopLeft="183.5,107.5" />
         <NodeLayout
           Size="178,42"
           Id="Package\Get SAS DB Names"
-          TopLeft="154.5,5.5" />
+          TopLeft="370,5.5" />
         <NodeLayout
           Size="261,42"
           Id="Package\Send Notification when invalid school"
-          TopLeft="113,1333.5" />
+          TopLeft="5.50000000000017,1231.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="243.5,1273.5">
+          TopLeft="368.5,1171.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="-232.5,60"
               Start="0,0"
-              End="0,52.5">
+              End="-232.5,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,20.1042345276873" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.1042345276873"
+                    Point2="0,24.1042345276873"
+                    Point3="-4,24.1042345276873" />
+                  <mssgle:LineSegment
+                    End="-228.5,24.1042345276873" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-228.5,24.1042345276873"
+                    Point2="-232.5,24.1042345276873"
+                    Point3="-232.5,28.1042345276873" />
+                  <mssgle:LineSegment
+                    End="-232.5,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-8,18.25,16,16"
+              BoundingBox="-124.25,29.1042345276873,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="243.5,1375.5">
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="459,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1731,25 +1780,39 @@ Run Status: Failed"</DTS:PropertyExpression>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="243.5,47.5">
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="549.5,1171.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="-90.4999999999999,60"
               Start="0,0"
-              End="0,52.5">
+              End="-90.4999999999999,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,20.1042345276873" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.1042345276873"
+                    Point2="0,24.1042345276873"
+                    Point3="-4,24.1042345276873" />
+                  <mssgle:LineSegment
+                    End="-86.4999999999999,24.1042345276873" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-86.4999999999999,24.1042345276873"
+                    Point2="-90.4999999999999,24.1042345276873"
+                    Point3="-90.4999999999999,28.1042345276873" />
+                  <mssgle:LineSegment
+                    End="-90.4999999999999,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-53.25,29.1042345276873,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

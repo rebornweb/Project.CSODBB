@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">OCCCP-DB222</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAzHysHpHXD0CZffnCM4OnbwAAAAACAAAAAAADZgAAwAAAABAAAAAcTUuHAMNaMVh2mqim3iqrAAAAAASAAACgAAAAEAAAACxrq0HabuxJUoFLzryWuL6IAAAAEUAPmWZJAzlZt6qtBSAMx7imTOltzB/Uit6YMF/DdOJ7UIN2n91LjH7r55ZyPIK31FONxvDSFVcy2AOSo9GS3mkDKWdDN99MYjG/WUQfgXXOoQjtXNgPazA0RC6+8QkJxsyaiVUspCN6p8FnK0fnrDH92nQbiZgqOIPq1ybU4fzgdjLoadGBLBQAAAA8ORumfmSR3Ty2cm5NnShexva5VQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAzHysHpHXD0CZffnCM4OnbwAAAAACAAAAAAADZgAAwAAAABAAAAA289y0z5BKsJ/Dr7KDxmThAAAAAASAAACgAAAAEAAAAKizVUMh7uuSQjS6baMW3/+IAAAApqCVI+ChtslLd4M9chR0UbWzfuD4EQ8pCVB49+pn25zx9wYgp/8AXhU9+EjmIGKqJzte1NJscYtBq7VsxH2evKKMgKUXsJkbl+ZdPhzUEGgbawE7DaQTLJAaO7sMtbaiH1Ak/I0oK87W/cOb2Ufo1iZnjn52DoHNrgwY3iHCjCRfrS/DmcALWxQAAAA3zTfrm62F7Q3aN9hWuch3zHYSUA==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -42,10 +42,10 @@
                 <SSIS:Property SSIS:Name="Name">Generate SAS2IDM full student reload for supplied school(s)</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">155</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">167</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{3F4D5A60-AFDC-4F63-9AA3-3BB7434D758E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{601D725D-BBD0-43A6-B351-EFDD190BA1E7}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">6</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">Generate a full set of SAS2IDM student changes records for one or more SAS schools based on supplied school parameter/mask</SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
@@ -61,7 +61,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">1</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">SMMCX</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">S%</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -129,9 +129,10 @@
                     <SSIS:Property SSIS:Name="Description">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">1</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">10.19.229.16</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">
+                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -278,7 +279,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">SmtpServer=10.19.229.16;UseWindowsAuthentication=True;EnableSsl=False;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">SmtpServer=;UseWindowsAuthentication=True;EnableSsl=False;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
