@@ -2,34 +2,47 @@
 <head>
 <meta http-equiv="Content-Language" content="en-us">
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<title>Find all students with no USIN for a selected SAS school (Version 1.0)</title>
+<title>Student Missing SAS DATA for a selected school (Version 1.2)</title>
 <style type="text/css">
-body      {background-color:wheat;}
-table     {width:50%;font-family:Tahoma; font-size:85%;background-color:lightgrey;}
-table.data     {width:90%;font-family:Tahoma; font-size:80%;background-color:lightgrey;}
-td.tbname {font-weight:bold; background-color:papayawhip;font-size:200%;}
-td.tbhelp {font-weight:normal; background-color:papayawhip;}
-td.head   {font-weight:bold; background-color:buttonface;}
-td.data   {background-color:cornsilk;}
-td.bold   {font-weight:bold; background-color:cornsilk;}
-td.boldred   {font-weight:bold; color:red; background-color:cornsilk;}
-textarea  {font-size:80%;background-color:lightgrey;}
-textarea.hide  {display:none;}
-textarea.sqlrows  {font-size:90%;background-color:papayawhip;}
-textarea.select  {font-size:80%;background-color:lightgrey;}
-textarea.update  {font-size:80%;background-color:papayawhip;}
+	body      {background-color:wheat;}
+	table     {width:50%;font-family:Tahoma; font-size:85%;background-color:lightgrey;}
+	table.data     {width:90%;font-family:Tahoma; font-size:80%;background-color:lightgrey;}
+	td.tbname {font-weight:bold; background-color:papayawhip;font-size:200%;}
+	td.tbhelp {font-weight:normal; background-color:papayawhip;}
+	td.head   {font-weight:bold; background-color:buttonface;}
+	td.data   {background-color:cornsilk;}
+	td.bold   {font-weight:bold; background-color:cornsilk;}
+	td.boldred   {font-weight:bold; color:red; background-color:cornsilk;}
+	textarea  {font-size:80%;background-color:lightgrey;}
+	textarea.hide  {display:none;}
+	textarea.sqlrows  {font-size:90%;background-color:papayawhip;}
+	textarea.select  {font-size:80%;background-color:lightgrey;}
+	textarea.update  {font-size:80%;background-color:papayawhip;}
 </style>
 <Script Language="VBScript">
 <!--
 Option Explicit
 
-'https://bytes.com/topic/sql-server/answers/83654-can-i-return-output-stored-procedure-into-hta-display-browser
+' https://bytes.com/topic/sql-server/answers/83654-can-i-return-output-stored-procedure-into-hta-display-browser
 
 Const DATA_SOURCE = "OCCCP-DB222"
+' https://stackoverflow.com/questions/9393207/cannot-resolve-the-collation-conflict-between-sql-latin1-general-cp1-ci-as-and
 Const DB_PREFIX = "SAS2000_LIVE_"
-Const DEBUG_FLAG = False
-Const UPD_TITLE = "Assign new USINs in SAS"
-Const UPD_CONFIRMATION = "Click OK to proceed to assign ALL students at XXXXX the generated 'NewUSIN' value."
+Const DEBUG_FLAG = True
+Const UPD_TITLE = "Update student records in SAS"
+Const UPD_CONFIRMATION = "Click OK to proceed to YYYYY."
+Const EMAIL_SUFFIX = "@dbbstu.catholic.edu.au"
+Const DET_SCHOOLCODE = "NSWDETSchoolCode"
+' Report Names
+Const REPORT_MissingUSINs = "Missing USINs"
+Const REPORT_MissingCeiders = "Missing Ceiders (MIM)"
+Const REPORT_MissingCandidates = "Missing Candidates (SAS)"
+Const REPORT_MismatchingCeiders = "Mismatching Ceiders (SAS/MIM)"
+Const REPORT_MissingLockers = "Missing Lockers (SAS)"
+Const REPORT_MissingAccounts = "Missing Accounts (MIM)"
+Const REPORT_MismatchingLockers = "Mismatching Lockers (SAS/MIM)"
+Const REPORT_MissingEmails = "Missing Emails (SAS)"
+Const REPORT_MismatchingEmails = "Mismatching Emails (SAS/MIM)"
 
 Dim oConnection
 Set oConnection = CreateObject("ADODB.Connection")
@@ -47,17 +60,35 @@ End Sub
 
 Sub GetSchoolData()
 
-	Dim SQL_SEL, oRecordSet, oSchoolDatabase, schoolDatabaseName, optionElt, optionName, textNode, oUpdateButton
+	Dim strSQL, oRecordSet, oSchoolDatabase, schoolDatabaseName, optionElt, optionName, textNode, oUpdateButton, oReport, reportName, reportNames
 
+	Set oReport = document.getElementById("ReportName")
+	reportName = oReport.Value
+	reportNames = Array(REPORT_MissingUSINs, REPORT_MissingCeiders, REPORT_MissingCandidates, REPORT_MismatchingCeiders, REPORT_MissingLockers, REPORT_MissingAccounts, REPORT_MismatchingLockers, REPORT_MissingEmails, REPORT_MismatchingEmails)
+
+	' construct report combo box
+	Set optionElt = document.createElement("option")
+	optionElt.setAttribute "selected", "selected"
+	optionElt.setAttribute "value", ""
+	Set textNode = document.createTextNode("Select report ...")
+	optionElt.appendChild textNode
+	oReport.appendChild optionElt
+	For Each optionName in reportNames
+		Set optionElt = document.createElement("option")
+		optionElt.setAttribute "value", optionName
+		Set textNode = document.createTextNode(optionName)
+		optionElt.appendChild textNode
+		oReport.appendChild optionElt
+	Next 
 
 	' construct school code combo box
-	SQL_SEL = "SELECT name FROM sys.databases WHERE name LIKE '" & DB_PREFIX & "%'"
+	strSQL = "SELECT name FROM sys.databases WHERE name LIKE '" & DB_PREFIX & "%'"
 
 	Set oSchoolDatabase = document.getElementById("SchoolDatabaseName")
 	Set oUpdateButton = document.getElementById("btnUpdateStudents")
 	oUpdateButton.disabled = "disabled"
 
-	Set oRecordSet = oConnection.Execute(SQL_SEL)
+	Set oRecordSet = oConnection.Execute(strSQL)
 	Set optionElt = document.createElement("option")
 	optionElt.setAttribute "selected", "selected"
 	optionElt.setAttribute "value", ""
@@ -80,7 +111,7 @@ End Sub
 
 Sub GetSchoolInfo()
 
-	Dim SQL_SEL, strValue, oRecordSet, oSchoolDatabase, schoolDatabaseName, schoolResultTable, i, rowCount
+	Dim strSQL, strValue, oRecordSet, oSchoolDatabase, schoolDatabaseName, schoolResultTable, i, rowCount
 
 	' get school code from combo box selection
 	Set oSchoolDatabase = document.getElementById("SchoolDatabaseName")
@@ -90,21 +121,22 @@ Sub GetSchoolInfo()
 		Exit Sub
 	End If
 
-	SQL_SEL = "SELECT Code, SchoolName "  & vbNewLine & _
+	strSQL = "SELECT Code, SchoolName "  & vbNewLine & _
 		"FROM [SAS2IDM_SAS2IDM_LIVE].[dbo].[SAS2IDMSchool] " & vbNewLine & _
 		"WHERE SchoolID = '" & schoolDatabaseName & "'" & vbNewLine & _
 		"AND Archived = 'N'"
 
 	If DEBUG_FLAG Then
-		document.getElementById("SQLSelectCommand").Value = SQL_SEL
-		document.getElementById("SQLSelectCommand").rows = 14
+		document.getElementById("SQLSelectCommand").Value = strSQL
+		'document.getElementById("SQLSelectCommand").rows = 13
 	'Else
 	'	document.getElementById("SQLSelectCommand").Class = "hide"
 	End If
-	Set oRecordSet = oConnection.Execute(SQL_SEL)
+	Set oRecordSet = oConnection.Execute(strSQL)
 	
 	schoolResultTable = "<table border=""0"">"
 	schoolResultTable = schoolResultTable & "<thead><tr>"
+	schoolResultTable = schoolResultTable & "<td class=""head"">ReportName</td>"
 	For i = 0 To oRecordSet.Fields.Count - 1
 		schoolResultTable = schoolResultTable & _
 		"<td class=""head"">" & _
@@ -121,6 +153,7 @@ Sub GetSchoolInfo()
 		Do While Not oRecordSet.EOF
 			rowCount = rowCount + 1
 			schoolResultTable = schoolResultTable & "<tr>"
+			schoolResultTable = schoolResultTable & "<td class='head'>" & document.getElementById("ReportName").Value & "</td>"	
 			For i = 0 To oRecordSet.Fields.Count - 1
 				strValue = "&nbsp;"
 				If (Len(oRecordSet.Fields(i).Value) > 0) Then
@@ -142,9 +175,213 @@ Sub GetSchoolInfo()
 	
 End Sub
 
+Function GetReportSQL(byVal UpdateMode)
+
+	Dim strSQL, schoolDatabaseName, reportName, strSQL_USINMatching
+
+	schoolDatabaseName = document.getElementById("SchoolDatabaseName").Value
+	reportName = document.getElementById("ReportName").Value
+	
+	Select Case UpdateMode
+		Case REPORT_MissingEmails
+			strSQL_USINMatching = "SELECT SYSTEM_USER, Student.PersonID As [USIN], CONCAT([AllMIMStudents].[accountName],'" & EMAIL_SUFFIX & "') AS [MIM.Email] "  & vbNewLine & _
+				"FROM [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
+				"LEFT JOIN [" & DB_PREFIX & schoolDatabaseName & "].[dbo].School on School.ID = Student.PrevSchoolID " & vbNewLine & _
+				"LEFT JOIN [MIM.SyncReplica].[dbo].[AllMIMStudents] on AllMIMStudents.[USIN] = Student.UniversalIdentificationNumber "
+
+		Case REPORT_MissingLockers
+			strSQL_USINMatching = "SELECT SYSTEM_USER, Student.PersonID As [USIN], [AllMIMStudents].[accountName] "  & vbNewLine & _
+				"FROM [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
+				"LEFT JOIN [" & DB_PREFIX & schoolDatabaseName & "].[dbo].School on School.ID = Student.PrevSchoolID " & vbNewLine & _
+				"LEFT JOIN [MIM.SyncReplica].[dbo].[AllMIMStudents] on AllMIMStudents.[USIN] = Student.UniversalIdentificationNumber "
+
+		Case Else
+			strSQL_USINMatching = "SELECT Student.UniversalIdentificationNumber As [USIN], "  & vbNewLine & _
+				"    AllMIMStudents.csoCeIder AS [MIM.CeIder], FORMAT(CAST(AllMIMStudents.DOB AS Date),'d') AS [MIM.DOB], " & vbNewLine & _
+				"    [AllMIMStudents].[accountName] AS [MIM.EmailPrefix], " & vbNewLine & _
+				"    CONCAT([AllMIMStudents].[accountName],'" & EMAIL_SUFFIX & "') AS [MIM.Email], " & vbNewLine & _
+				"	 Student.Code, Student.CandidateNumber AS [Candidate Number], Student.LockerNumber AS [Locker Number], Student.Email, Student.FirstName, Student.LastName, Student.PreferredName AS [Preferred Name], " & vbNewLine & _
+				"    Student.DOB, Student.Year, School.Name As [Previous School], School.Location As [Previous Location], Student.DateLeft, Student.ReasonLeft AS [Reason Left], Student.UpdatedWhen AS [Updated When] " & vbNewLine & _
+				"FROM [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
+				"LEFT JOIN [" & DB_PREFIX & schoolDatabaseName & "].[dbo].School on School.ID = Student.PrevSchoolID " & vbNewLine & _
+				"LEFT JOIN [MIM.SyncReplica].[dbo].[AllMIMStudents] on AllMIMStudents.[USIN] = Student.UniversalIdentificationNumber "
+
+	End Select
+
+	Select Case reportName
+
+		Case REPORT_MissingUSINs
+			strSQL = "SELECT "  & vbNewLine & _
+				"    CONCAT('281',(Select REPLACE(Value,'281_','') AS [DET] from [" & DB_PREFIX & schoolDatabaseName & "].[dbo].[Control] where Code = '" & DET_SCHOOLCODE & "'),Student.Code) As [NewUSIN], " & vbNewLine & _
+				"    AllMIMStudents.SchoolID AS [MIM.SchoolID], AllMIMStudents.USIN AS [MIM.FormerUSIN?], AllMIMStudents.csoCeIder AS [MIM.CeIder], FORMAT(CAST(AllMIMStudents.DOB AS Date),'d') AS [MIM.DOB], " & vbNewLine & _
+				"    [AllMIMStudents].[accountName] AS [MIM.EmailPrefix], " & vbNewLine & _
+				"	 School.SchoolNumber AS [School Number], Student.Code, Student.CandidateNumber AS [Candidate Number], Student.LockerNumber AS [Locker Number], Student.FirstName, Student.LastName, " & vbNewLine & _
+				"	 Student.PreferredName AS [Preferred Name], Student.DOB, Student.Year, Student.UniversalIdentificationNumber As [USIN], School.Name As [Previous School], School.Location As [Previous Location], " & vbNewLine & _
+				"	 Student.DateLeft, Student.ReasonLeft AS [Reason Left], Student.TransferCode AS [Transfer Code], Student.UpdatedWhen AS [Updated When] " & vbNewLine & _
+				"FROM [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
+				"LEFT JOIN [" & DB_PREFIX & schoolDatabaseName & "].[dbo].School on School.ID = Student.PrevSchoolID AND School.Active = 'Y' " & vbNewLine & _
+				"LEFT JOIN [MIM.SyncReplica].[dbo].[AllMIMStudents] on 1=1 " & vbNewLine & _
+				"    AND AllMIMStudents.FirstName = Student.FirstName " & vbNewLine & _
+				"    AND AllMIMStudents.LastName = Student.LastName " & vbNewLine & _
+				"    AND ISNULL(FORMAT(CAST(AllMIMStudents.DOB AS Date),'d'),GETDATE()) = ISNULL(Student.DOB,GETDATE()) " & vbNewLine & _
+				"WHERE ISNULL(Student.UniversalIdentificationNumber,'0') = '0' and Student.PreEnrolment='N'"
+
+		Case REPORT_MissingCeiders
+			strSQL = strSQL_USINMatching & vbNewLine & _
+				"WHERE Student.UniversalIdentificationNumber IS NOT NULL AND Student.PreEnrolment='N'" & vbNewLine & _
+				"AND (ISNULL(AllMIMStudents.csoCeIder,'0') = '0')"
+
+		Case REPORT_MissingCandidates
+			strSQL = strSQL_USINMatching & vbNewLine & _
+				"WHERE Student.UniversalIdentificationNumber IS NOT NULL AND Student.PreEnrolment='N'" & vbNewLine & _
+				"AND (ISNULL(Student.CandidateNumber,'0') = '0')"
+
+		Case REPORT_MismatchingCeiders
+			strSQL = strSQL_USINMatching & vbNewLine & _
+				"WHERE Student.UniversalIdentificationNumber IS NOT NULL AND Student.PreEnrolment='N'" & vbNewLine & _
+				"AND (Student.CandidateNumber IS NOT NULL AND AllMIMStudents.csoCeIder IS NOT NULL AND Student.CandidateNumber <> AllMIMStudents.csoCeIder)"
+
+		Case REPORT_MissingLockers
+			strSQL = strSQL_USINMatching & vbNewLine & _
+				"WHERE Student.UniversalIdentificationNumber IS NOT NULL AND Student.PreEnrolment='N'" & vbNewLine & _
+				"AND (ISNULL(Student.LockerNumber,'0') = '0')"
+
+		Case REPORT_MissingAccounts
+			strSQL = strSQL_USINMatching & vbNewLine & _
+				"WHERE Student.UniversalIdentificationNumber IS NOT NULL AND Student.PreEnrolment='N'" & vbNewLine & _
+				"AND (ISNULL([AllMIMStudents].[accountName],'0') = '0')"
+
+		Case REPORT_MismatchingLockers
+			strSQL = strSQL_USINMatching & vbNewLine & _
+				"WHERE Student.UniversalIdentificationNumber IS NOT NULL AND Student.PreEnrolment='N'" & vbNewLine & _
+				"AND (Student.LockerNumber IS NOT NULL AND [AllMIMStudents].[accountName] IS NOT NULL AND Student.LockerNumber <> [AllMIMStudents].[accountName])"
+
+		Case REPORT_MissingEmails
+			strSQL = strSQL_USINMatching & vbNewLine & _
+				"WHERE Student.UniversalIdentificationNumber IS NOT NULL AND Student.PreEnrolment='N'" & vbNewLine & _
+				"AND (ISNULL(Student.Email,'0') = '0')"
+
+		Case REPORT_MismatchingEmails
+			strSQL = strSQL_USINMatching & vbNewLine & _
+				"WHERE Student.UniversalIdentificationNumber IS NOT NULL AND Student.PreEnrolment='N'" & vbNewLine & _
+				"AND (Student.Email IS NOT NULL AND [AllMIMStudents].[accountName] IS NOT NULL AND Student.Email <> CONCAT([AllMIMStudents].[accountName],'" & EMAIL_SUFFIX & "'))"
+
+		Case Else
+			strSQL = ""
+
+	End Select
+
+	GetReportSQL = strSQL
+
+End Function
+
+Function GetUpdateSQL()
+
+	Dim strSQL, schoolDatabaseName, reportName
+
+	schoolDatabaseName = document.getElementById("SchoolDatabaseName").Value
+	reportName = document.getElementById("ReportName").Value
+
+
+	' TODO: Need to change update statements so that they don't fail when the value they are updating is a NULL value ...
+
+
+	Select Case reportName
+		Case REPORT_MissingUSINs
+			strSQL = "UPDATE [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
+				"SET UniversalIdentificationNumber = CONCAT('281',(Select REPLACE(Value,'281_','') AS [DET] from [" & DB_PREFIX & schoolDatabaseName & "].[dbo].[Control] where Code = '" & DET_SCHOOLCODE & "'),Code) " & vbNewLine  & _
+				"WHERE ISNULL(UniversalIdentificationNumber,'0') = '0' AND PreEnrolment='N' AND 1=1 "
+
+		Case REPORT_MissingCeiders
+			strSQL = ""
+
+		Case REPORT_MissingCandidates
+			strSQL = "UPDATE [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
+				"SET CandidateNumber = AllMIMStudents.[csoCeIder] FROM [MIM.SyncReplica].[dbo].[AllMIMStudents] " & vbNewLine & _
+				"WHERE AllMIMStudents.[USIN] = Student.UniversalIdentificationNumber " & vbNewLine & _
+				"AND ISNULL(Student.CandidateNumber,'0') = '0' and Student.PreEnrolment='N' and 1=1 "
+
+		Case REPORT_MismatchingCeiders
+			strSQL = ""
+
+		Case REPORT_MissingLockers
+			strSQL = "DECLARE @this_user varchar(50), @this_personid int, @this_locker nvarchar(100) " & vbNewLine  & _
+				"DECLARE StudentsToUpdate CURSOR FOR " & vbNewLine
+			strSQL = strSQL + GetReportSQL(REPORT_MissingLockers) & vbNewLine
+			strSQL = strSQL + "OPEN StudentsToUpdate " & vbNewLine & _
+				"FETCH NEXT FROM StudentsToUpdate INTO @this_user, @this_personid, @this_locker " & vbNewLine & _
+				"WHILE (@@FETCH_STATUS=0 ) " & vbNewLine & _
+				"BEGIN " & vbNewLine & _
+				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.Locker_Update @ACTION='UPDATE', @PersonID=@this_personid, @UpdatedBy=@this_user, @LockerNumber=@this_locker " & vbNewLine & _
+				"	FETCH NEXT FROM StudentsToUpdate INTO @this_user, @this_personid, @this_locker " & vbNewLine & _
+				"END " & vbNewLine & _
+				"CLOSE StudentsToUpdate " & vbNewLine & _
+				"DEALLOCATE StudentsToUpdate "
+
+		Case REPORT_MissingAccounts
+			strSQL = ""
+
+		Case REPORT_MismatchingLockers
+			strSQL = ""
+
+		Case REPORT_MissingEmails
+			strSQL = "DECLARE @this_user varchar(50), @this_personid int, @this_email nvarchar(100) " & vbNewLine  & _
+				"DECLARE StudentsToUpdate CURSOR FOR " & vbNewLine
+			strSQL = strSQL + GetReportSQL(REPORT_MissingEmails) & vbNewLine
+			strSQL = strSQL + "OPEN StudentsToUpdate " & vbNewLine & _
+				"FETCH NEXT FROM StudentsToUpdate INTO @this_user, @this_personid, @this_email " & vbNewLine & _
+				"WHILE (@@FETCH_STATUS=0 ) " & vbNewLine & _
+				"BEGIN " & vbNewLine & _
+				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.PersonPhone_Update @ACTION='INSERT', @SortOrder=1, @ID=NULL, @Archived=NULL, @PersonID=@this_personid, @UpdatedBy=@this_user, @PhoneType='Email', @Number=@this_email " & vbNewLine & _
+				"	FETCH NEXT FROM StudentsToUpdate INTO @this_user, @this_personid, @this_email " & vbNewLine & _
+				"END " & vbNewLine & _
+				"CLOSE StudentsToUpdate " & vbNewLine & _
+				"DEALLOCATE StudentsToUpdate "
+
+		Case REPORT_MismatchingEmails
+			strSQL = ""
+
+		Case Else
+			strSQL = ""
+
+	End Select
+
+	GetUpdateSQL = strSQL
+
+End Function
+
+Function GetUpdateMessage()
+
+	Dim strMessage, schoolDatabaseName, reportName
+
+	schoolDatabaseName = document.getElementById("SchoolDatabaseName").Value
+	reportName = document.getElementById("ReportName").Value
+
+	Select Case reportName
+		Case REPORT_MissingUSINs
+			strMessage = Replace(UPD_CONFIRMATION, "YYYYY", "assign ALL students at " & schoolDatabaseName & " the generated 'NewUSIN' value")
+
+		Case REPORT_MissingCandidates
+			strMessage = Replace(UPD_CONFIRMATION, "YYYYY", "update ALL student Candidate Numbers at " & schoolDatabaseName & " with the MIM CeIder number for the matching USIN")
+
+		Case REPORT_MissingLockers
+			strMessage = Replace(UPD_CONFIRMATION, "YYYYY", "update ALL student Locker Numbers at " & schoolDatabaseName & " with the MIM AccountName for the matching USIN")
+
+		Case REPORT_MissingEmails
+			strMessage = Replace(UPD_CONFIRMATION, "YYYYY", "update ALL student Emails at " & schoolDatabaseName & " with the value derived from the MIM AccountName for the matching USIN")
+
+		Case Else
+			strMessage = ""
+
+	End Select
+
+	GetUpdateMessage = strMessage
+
+End Function
+
 Sub GetTableData()
 
-	Dim SQL_SEL, strValue, oRecordSet, oSchoolDatabase, schoolDatabaseName, studentResultTable, i, rowCount, oUpdateButton, tdClass, isFormerStudent
+	Dim strSQL, strValue, oRecordSet, oSchoolDatabase, schoolDatabaseName, studentResultTable, i, rowCount, oUpdateButton, tdClass, isFormerStudent, reportName
 
 	' get school code from combo box selection
 	Set oSchoolDatabase = document.getElementById("SchoolDatabaseName")
@@ -158,28 +395,26 @@ Sub GetTableData()
 		GetSchoolInfo
 	End If
 
-	SQL_SEL = "SELECT "  & vbNewLine & _
-		"    CONCAT('281',(Select REPLACE(Value,'281_','') AS [DET] from [" & DB_PREFIX & schoolDatabaseName & "].[dbo].[Control] where Code = 'NSWDETSchoolCode'),Student.Code) As [NewUSIN], " & vbNewLine & _
-		"    SAS2IDMStudent.UniversalIdentificationNumber AS [FormerUSIN?], SAS2IDMStudentEx.CeIder, " & vbNewLine & _
-		"    CASE WHEN SAS2IDMStudent.Email like '%.%@%' THEN SUBSTRING(SAS2IDMStudent.Email, 1, CHARINDEX('@',SAS2IDMStudent.Email)-1) ELSE Null END AS [EmailPrefix], " & vbNewLine & _
-		"	 Student.Code, Student.CandidateNumber, Student.LockerNumber, Student.FirstName, Student.LastName, Student.PreferredName, Student.DOB, Student.Year, Student.UniversalIdentificationNumber As [USIN], School.Name As [Previous School], School.Location As [Previous Location], Student.DateLeft, Student.ReasonLeft, Student.TransferCode, Student.UpdatedWhen " & vbNewLine & _
-		"FROM [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
-		"LEFT JOIN [" & DB_PREFIX & schoolDatabaseName & "].[dbo].School on School.ID = Student.PrevSchoolID " & vbNewLine & _
-		"LEFT JOIN [SAS2IDM_SAS2IDM_LIVE].[dbo].SAS2IDMStudent on SAS2IDMStudent.SchoolID = School.SchoolNumber " & vbNewLine & _
-		"    AND SAS2IDMStudent.FirstName = Student.FirstName " & vbNewLine & _
-		"    AND SAS2IDMStudent.LastName = Student.LastName " & vbNewLine & _
-		"    AND ISNULL(SAS2IDMStudent.DOB,GETDATE()) = ISNULL(Student.DOB,GETDATE()) " & vbNewLine & _
-		"LEFT JOIN [SAS2IDM_SAS2IDM_LIVE].[dbo].SAS2IDMStudentEx on SAS2IDMStudentEx.SchoolID = SAS2IDMStudent.SchoolID " & vbNewLine & _
-		"    AND SAS2IDMStudentEx.StudentID = SAS2IDMStudent.StudentID " & vbNewLine & _
-		"WHERE ISNULL(Student.UniversalIdentificationNumber,'0') = '0' and Student.PreEnrolment='N'"
+	strSQL = GetReportSQL("")
+
+	If strSQL = "" Then
+		document.getElementById("SQLUpdateCommand").Value = ""
+		document.getElementById("SQLSelectCommand").Value = ""
+		Results.innerHTML = ""
+		SchoolInfo.innerHTML = ""
+		document.getElementById("SQLRows").Value = ""
+		Exit Sub
+	End If
+
+	reportName = document.getElementById("ReportName").Value
 
 	If DEBUG_FLAG Then
-		document.getElementById("SQLSelectCommand").Value = SQL_SEL
-		document.getElementById("SQLSelectCommand").rows = 14
+		document.getElementById("SQLSelectCommand").Value = strSQL
+		'document.getElementById("SQLSelectCommand").rows = 13
 	'Else
 	'	document.getElementById("SQLSelectCommand").Class = "hide"
 	End If
-	Set oRecordSet = oConnection.Execute(SQL_SEL)
+	Set oRecordSet = oConnection.Execute(strSQL)
 	
 	studentResultTable = "<table class=""data"" border=""1"">"
 	studentResultTable = studentResultTable & "<thead><tr>"
@@ -192,11 +427,10 @@ Sub GetTableData()
 	studentResultTable = studentResultTable & "</tr></thead><tbody>"
 
 	If oRecordSet.EOF Then
-		document.getElementById("SQLRows").Value = "No " & schoolDatabaseName & " students with no USIN."
+		document.getElementById("SQLRows").Value = "No matching " & schoolDatabaseName & " students found."
 		document.getElementById("SQLUpdateCommand").Value = ""
-	    printline "No new students detected for school: " & schoolDatabaseName & ". Please select the next school."
+	    printline "No students with " & reportName & " detected for school: " & schoolDatabaseName & ". Please select the next school."
 	Else
-	
 		
 		rowCount = 0
 		isFormerStudent = false
@@ -209,9 +443,12 @@ Sub GetTableData()
 				If (Len(oRecordSet.Fields(i).Value) > 0) Then
 					strValue = oRecordSet.Fields(i).Value
 				End If
-				If ((oRecordSet.Fields(i).Name = "FormerUSIN?") or (oRecordSet.Fields(i).Name = "CeIder") or (oRecordSet.Fields(i).Name = "EmailPrefix")) and (Len(oRecordSet.Fields(i).Value) > 0) Then
+				If ((LEFT(oRecordSet.Fields(i).Name,4) = "MIM.")) _
+				and (Len(oRecordSet.Fields(i).Value) > 0) Then
 					tdClass = "boldred"
-					isFormerStudent = true
+					If reportName = REPORT_MissingUSINs Then
+						isFormerStudent = true
+					End If
 				ElseIf (oRecordSet.Fields(i).Name = "NewUSIN") Then
 					tdClass = "bold"
 				End If
@@ -223,11 +460,11 @@ Sub GetTableData()
 		Loop	
 		studentResultTable = studentResultTable & "</tbody></table>"
 
-		If not isFormerStudent Then
+		If (not isFormerStudent) And (GetUpdateSQL() <> "") Then
 			oUpdateButton.disabled = ""
 		End If
-		document.getElementById("SQLRows").Value = "[" & rowCount & "] " & schoolDatabaseName & " students with no USIN!"
-	    printline "[" & rowCount & "] new students detected for school: " & schoolDatabaseName & ".  Please update students with missing USINs!"
+		document.getElementById("SQLRows").Value = "[" & rowCount & "] " & schoolDatabaseName & " students found with " & reportName & "!"
+	    printline "[" & rowCount & "] students with " & reportName & " detected for school: " & schoolDatabaseName & ".  Please update students!"
 
 	End If
 	
@@ -238,22 +475,7 @@ End Sub
 
 Sub btnUpdateStudents_OnClick()
 
-	Dim SQL_UPD, oSchoolDatabase, schoolDatabaseName, oRecordSet, doUpdate
-
-	' get school code from combo box selection
-	Set oSchoolDatabase = document.getElementById("SchoolDatabaseName")
-	schoolDatabaseName = oSchoolDatabase.Value
-
-	SQL_UPD = "UPDATE [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
-		"SET UniversalIdentificationNumber=CONCAT('281',(Select REPLACE(Value,'281_','') AS [DET] from [" & DB_PREFIX & schoolDatabaseName & "].[dbo].[Control] where Code = 'NSWDETSchoolCode'),Code) " & vbNewLine  & _
-		"WHERE ISNULL(UniversalIdentificationNumber,'0') = '0' and PreEnrolment='N' and 1=1 "
-
-	If DEBUG_FLAG Then
-		document.getElementById("SQLUpdateCommand").Value = SQL_UPD
-		document.getElementById("SQLUpdateCommand").rows = 3
-	'Else
-	'	document.getElementById("SQLUpdateCommand").Class = "hide"
-	End If
+	Dim strSQL, oSchoolDatabase, schoolDatabaseName, oRecordSet, doUpdate, confirmationMessage
 
 	' get school code from combo box selection
 	Set oSchoolDatabase = document.getElementById("SchoolDatabaseName")
@@ -262,13 +484,29 @@ Sub btnUpdateStudents_OnClick()
 		Exit Sub
 	End If
 
-	doUpdate = MsgBox( Replace(UPD_CONFIRMATION,"XXXXX",schoolDatabaseName), vbOKCancel + vbApplicationModal + vbInformation, UPD_TITLE )
-	If doUpdate = vbOK Then
-		Set oRecordSet = oConnection.Execute(SQL_UPD)
+	strSQL = GetUpdateSQL()
+
+	If DEBUG_FLAG Then
+		document.getElementById("SQLUpdateCommand").Value = strSQL
+		'document.getElementById("SQLUpdateCommand").rows = 18
+	'Else
+	'	document.getElementById("SQLUpdateCommand").Class = "hide"
 	End If
 
-	' Refresh table data
-	GetTableData
+	' Check for coding inconsistency!
+	If strSQL = "" Then
+		Call MsgBox( "Error: No UPDATE support for selected report!", vbOKOnly, "Error" )
+		Exit Sub
+	End If
+
+	doUpdate = MsgBox( GetUpdateMessage(), vbOKCancel + vbApplicationModal + vbInformation, UPD_TITLE )
+	If doUpdate = vbOK Then
+		Set oRecordSet = oConnection.Execute(strSQL)
+
+		' Refresh table data
+		Call MsgBox( "Student(s) updated OK.  Press OK to continue ...", vbOKOnly, "Success" )
+		GetTableData
+	End If
 	
 End Sub
 
@@ -319,6 +557,12 @@ End Sub
 							</td>
 						</tr>
 						<tr>
+							<td align="right">Report:</td>
+							<td colspan="1">
+								<select id="ReportName" name="ReportName"></select>
+							</td>
+						</tr>
+						<tr>
 							<td />
 							<td colspan="100">
 								<input id="btnGetStudents" type="button" value=" Search " name="Search" onClick="GetTableData">
@@ -342,11 +586,6 @@ End Sub
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2">
-				<nobr Id="Results"></nobr>
-			</td>
-		</tr>
-		<tr>
 			<td>
 				<table class="data" border="0"=>
 					<tbody>
@@ -362,12 +601,17 @@ End Sub
 		</tr>
 		<tr>
 			<td colspan="2">
-				<textarea class="hide" name"SQLSelectCommand" id="SQLSelectCommand" readonly="readonly" rows="0" cols="180"></textarea>
+				<nobr Id="Results"></nobr>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2">
-				<textarea class="hide" name"SQLUpdateCommand" id="SQLUpdateCommand" readonly="readonly" rows="0" cols="180"></textarea>
+				<textarea class="hide" name"SQLSelectCommand" id="SQLSelectCommand" readonly="readonly" rows="13" cols="180"></textarea><!-- class="update" -->
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<textarea class="hide" name"SQLUpdateCommand" id="SQLUpdateCommand" readonly="readonly" rows="18" cols="180"></textarea><!-- class="select" -->
 			</td>
 		</tr>
 	</tbody>
