@@ -187,13 +187,13 @@ Function GetReportSQL(byVal UpdateMode)
 			strSQL_USINMatching = "SELECT SYSTEM_USER, Student.PersonID As [USIN], CONCAT([AllMIMStudents].[accountName],'" & EMAIL_SUFFIX & "') AS [MIM.Email] "  & vbNewLine & _
 				"FROM [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
 				"LEFT JOIN [" & DB_PREFIX & schoolDatabaseName & "].[dbo].School on School.ID = Student.PrevSchoolID " & vbNewLine & _
-				"LEFT JOIN [MIM.SyncReplica].[dbo].[AllMIMStudents] on AllMIMStudents.[USIN] = Student.UniversalIdentificationNumber "
+				"LEFT JOIN [MIM_SyncReplica].[dbo].[AllMIMStudents] on AllMIMStudents.[USIN] = Student.UniversalIdentificationNumber "
 
 		Case REPORT_MissingLockers
 			strSQL_USINMatching = "SELECT SYSTEM_USER, Student.PersonID As [USIN], [AllMIMStudents].[accountName] "  & vbNewLine & _
 				"FROM [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
 				"LEFT JOIN [" & DB_PREFIX & schoolDatabaseName & "].[dbo].School on School.ID = Student.PrevSchoolID " & vbNewLine & _
-				"LEFT JOIN [MIM.SyncReplica].[dbo].[AllMIMStudents] on AllMIMStudents.[USIN] = Student.UniversalIdentificationNumber "
+				"LEFT JOIN [MIM_SyncReplica].[dbo].[AllMIMStudents] on AllMIMStudents.[USIN] = Student.UniversalIdentificationNumber "
 
 		Case Else
 			strSQL_USINMatching = "SELECT Student.UniversalIdentificationNumber As [USIN], "  & vbNewLine & _
@@ -204,7 +204,7 @@ Function GetReportSQL(byVal UpdateMode)
 				"    Student.DOB, Student.Year, School.Name As [Previous School], School.Location As [Previous Location], Student.DateLeft, Student.ReasonLeft AS [Reason Left], Student.UpdatedWhen AS [Updated When] " & vbNewLine & _
 				"FROM [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
 				"LEFT JOIN [" & DB_PREFIX & schoolDatabaseName & "].[dbo].School on School.ID = Student.PrevSchoolID " & vbNewLine & _
-				"LEFT JOIN [MIM.SyncReplica].[dbo].[AllMIMStudents] on AllMIMStudents.[USIN] = Student.UniversalIdentificationNumber "
+				"LEFT JOIN [MIM_SyncReplica].[dbo].[AllMIMStudents] on AllMIMStudents.[USIN] = Student.UniversalIdentificationNumber "
 
 	End Select
 
@@ -220,7 +220,7 @@ Function GetReportSQL(byVal UpdateMode)
 				"	 Student.DateLeft, Student.ReasonLeft AS [Reason Left], Student.TransferCode AS [Transfer Code], Student.UpdatedWhen AS [Updated When] " & vbNewLine & _
 				"FROM [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
 				"LEFT JOIN [" & DB_PREFIX & schoolDatabaseName & "].[dbo].School on School.ID = Student.PrevSchoolID AND School.Active = 'Y' " & vbNewLine & _
-				"LEFT JOIN [MIM.SyncReplica].[dbo].[AllMIMStudents] on 1=1 " & vbNewLine & _
+				"LEFT JOIN [MIM_SyncReplica].[dbo].[AllMIMStudents] on 1=1 " & vbNewLine & _
 				"    AND AllMIMStudents.FirstName = Student.FirstName " & vbNewLine & _
 				"    AND AllMIMStudents.LastName = Student.LastName " & vbNewLine & _
 				"    AND ISNULL(FORMAT(CAST(AllMIMStudents.DOB AS Date),'d'),GETDATE()) = ISNULL(Student.DOB,GETDATE()) " & vbNewLine & _
@@ -297,7 +297,7 @@ Function GetUpdateSQL()
 
 		Case REPORT_MissingCandidates
 			strSQL = "UPDATE [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
-				"SET CandidateNumber = AllMIMStudents.[csoCeIder] FROM [MIM.SyncReplica].[dbo].[AllMIMStudents] " & vbNewLine & _
+				"SET CandidateNumber = AllMIMStudents.[csoCeIder] FROM [MIM_SyncReplica].[dbo].[AllMIMStudents] " & vbNewLine & _
 				"WHERE AllMIMStudents.[USIN] = Student.UniversalIdentificationNumber " & vbNewLine & _
 				"AND ISNULL(Student.CandidateNumber,'0') = '0' and Student.PreEnrolment='N' and 1=1 "
 

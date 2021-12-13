@@ -12,10 +12,12 @@ DECLARE @JobName VARCHAR(100) = N'Reload SAS2IDM MIM Data for All Schools',
 	@ISServer VARCHAR(100) = N'"\"\SSISDB\SAS2IDM\MIM.Replicate\Package.dtsx',
 	@Server VARCHAR(100) = N'"\".',
 	@Source_ServerName VARCHAR(500) = N'D-OCCCP-IM301',
-	@Target_ServerName VARCHAR(500) = N'OCCCP-DB222'
+	@Target_ServerName VARCHAR(500) = N'OCCCP-DB222',
+	@SourceDB_FIMSynchronizationService_InitialCatalog VARCHAR(500) = N'FIMSynchronizationService',
+	@TargetDB_MIMSyncReplica_InitialCatalog VARCHAR(500) = N'MIM_SyncReplica'
 
 DECLARE @Cmd VARCHAR(MAX)
-SET @Cmd = N'/ISSERVER ' + @ISServer + N'\"" /SERVER ' + @Server + N'\"" /Par "\"Source_ServerName\"";"\"' + @Source_ServerName + N'\"" /Par "\"Target_ServerName\"";"\"' + @Target_ServerName + N'\"" /Par "\"$ServerOption::LOGGING_LEVEL(Int16)\"";3 /Par "\"$ServerOption::SYNCHRONIZED(Boolean)\"";True /CALLERINFO SQLAGENT /REPORTING E';
+SET @Cmd = N'/ISSERVER ' + @ISServer + N'\"" /SERVER ' + @Server + N'\"" /Par "\"Source_ServerName\"";"\"' + @Source_ServerName + N'\"" /Par "\"Target_ServerName\"";"\"' + @Target_ServerName + N'\"" /Par "\"SourceDB_FIMSynchronizationService_InitialCatalog\"";"\"' + @SourceDB_FIMSynchronizationService_InitialCatalog + N'\"" /Par "\"TargetDB_MIMSyncReplica_InitialCatalog\"";"\"' + @TargetDB_MIMSyncReplica_InitialCatalog + N'\"" /Par "\"$ServerOption::LOGGING_LEVEL(Int16)\"";3 /Par "\"$ServerOption::SYNCHRONIZED(Boolean)\"";True /CALLERINFO SQLAGENT /REPORTING E';
 
 DECLARE @ReturnCode INT
 SELECT @ReturnCode = 0

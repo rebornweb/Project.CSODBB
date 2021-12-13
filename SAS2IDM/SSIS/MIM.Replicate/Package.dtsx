@@ -12,8 +12,8 @@
   DTS:LocaleID="3081"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{91682FB9-2A6C-40F6-8B1D-A2550CD672B0}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{A358A0F7-2F33-4111-AACC-EE8CE2053F0F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -22,6 +22,8 @@
       DTS:CreationName="OLEDB"
       DTS:DTSID="{5913A979-49EB-4FD0-B26C-9C3F6BEAE1B0}"
       DTS:ObjectName="SourceDB_FIMSynchronizationService">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[$Package::SourceDB_FIMSynchronizationService_InitialCatalog]</DTS:PropertyExpression>
       <DTS:PropertyExpression
         DTS:Name="ServerName">@[$Package::Source_ServerName]</DTS:PropertyExpression>
       <DTS:ObjectData>
@@ -37,16 +39,27 @@
       DTS:DTSID="{41E2EA5A-06CC-44BF-B35F-4A1C28B6BF27}"
       DTS:ObjectName="TargetDB_MIM.SyncReplica">
       <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[$Package::TargetDB_MIMSyncReplica_InitialCatalog]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
         DTS:Name="ServerName">@[$Package::Target_ServerName]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=OCCCP-DB222;Initial Catalog=MIM.SyncReplica;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=OCCCP-DB222;Initial Catalog=MIM_SyncReplica;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{6F3A77D7-A7AD-4918-B904-316F213DB178}"
+      DTS:ObjectName="SourceDB_FIMSynchronizationService_InitialCatalog">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">FIMSynchronizationService</DTS:Property>
+    </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
@@ -57,6 +70,15 @@
       <DTS:Property
         DTS:DataType="8"
         DTS:Name="ParameterValue">D-OCCCP-IM301</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{57FE7161-C1F7-4CB5-9B7D-0C2505B8CA8C}"
+      DTS:ObjectName="TargetDB_MIMSyncReplica_InitialCatalog">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">MIM_SyncReplica</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""

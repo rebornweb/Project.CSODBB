@@ -1,11 +1,11 @@
-USE [MIM.SyncReplica]
+USE [MIM_SyncReplica]
 GO
 
 /*
 see https://www.sqlservercentral.com/forums/topic/alternatives-to-linked-servers 
 ... after eliminating both linked server and OPENROWSET options, we were left with only SSIS to achieve the required outcome
 
-create new db MIM.SyncReplica (on OCCCP-DB222)
+create new db MIM_SyncReplica (on OCCCP-DB222)
 CREATE TABLE [SAS2IDM_SAS2IDM_LIVE].[dbo].[AllMIMStudents] on OCCCP-DB222
 Create new view [FIMSynchronizationService].dbo.AllMIMStudents on D-OCCCP-IM301
 Create and deploy SSIS package to replicate source MIM to replica data table
