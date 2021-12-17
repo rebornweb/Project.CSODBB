@@ -126,7 +126,8 @@ Process {
 	    $WUAURebootReq = $RegWUAURebootReq.sNames -contains "RebootRequired"
 						
 	    ## Query PendingFileRenameOperations from the registry
-	    $RegSubKeySM = $WMI_Reg.GetMultiStringValue($HKLM,"SYSTEM\CurrentControlSet\Control\Session Manager\","PendingFileRenameOperations")
+	    #$RegSubKeySM = $WMI_Reg.GetMultiStringValue($HKLM,"SYSTEM\CurrentControlSet\Control\Session Manager\","PendingFileRenameOperations")
+	    $RegSubKeySM = $WMI_Reg.GetMultiStringValue($HKLM,"SYSTEM\CurrentControlSet\Control\Session Manager\","FileRenameOperations")
 	    $RegValuePFRO = $RegSubKeySM.sValue
 
 	    ## Query JoinDomain key from the registry - These keys are present if pending a reboot from a domain join operation
