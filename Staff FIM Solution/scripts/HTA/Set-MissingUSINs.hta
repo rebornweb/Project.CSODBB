@@ -2,10 +2,10 @@
 <head>
 <meta http-equiv="Content-Language" content="en-us">
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<title>Student Missing SAS DATA for a selected school (Version 1.2)</title>
+<title>Student Missing SAS DATA for a selected school (Version 2.0)</title>
 <style type="text/css">
 	body      {background-color:wheat;}
-	table     {width:50%;font-family:Tahoma; font-size:85%;background-color:lightgrey;}
+	table     {width:100%;font-family:Tahoma; font-size:85%;background-color:lightgrey;}
 	table.data     {width:90%;font-family:Tahoma; font-size:80%;background-color:lightgrey;}
 	td.tbname {font-weight:bold; background-color:papayawhip;font-size:200%;}
 	td.tbhelp {font-weight:normal; background-color:papayawhip;}
@@ -109,6 +109,52 @@ Sub GetSchoolData()
 
 End Sub
 
+Function GetHelpMessage()
+
+	Dim strMessage, schoolDatabaseName, reportName
+	Const HELP_BASIC = "... YYYYY for the selected school."
+
+	schoolDatabaseName = document.getElementById("SchoolDatabaseName").Value
+	reportName = document.getElementById("ReportName").Value
+
+	Select Case reportName
+
+		Case REPORT_MissingUSINs
+			strMessage = Replace(HELP_BASIC, "YYYYY", "assign ALL SAS students with the generated 'NewUSIN' value")
+
+		Case REPORT_MissingCandidates
+			strMessage = Replace(HELP_BASIC, "YYYYY", "identify and update ALL missing SAS Candidate Numbers with the MIM-sourced CEnet CeIder number for the matching USIN")
+
+		Case REPORT_MissingLockers
+			strMessage = Replace(HELP_BASIC, "YYYYY", "identify and update ALL missing SAS Locker Numbers with the MIM-sourced Email alias for the matching USIN")
+
+		Case REPORT_MissingEmails
+			strMessage = Replace(HELP_BASIC, "YYYYY", "identify and update ALL missing SAS Locker Numbers with the MIM-sourced '" & EMAIL_SUFFIX & "' Email for the matching USIN")
+
+		Case REPORT_MissingCeiders
+			strMessage = Replace(HELP_BASIC, "YYYYY", "identify (ONLY) ALL SAS students with a missing MIM-sourced CEnet CeIder number for the matching USIN")
+
+		Case REPORT_MismatchingCeiders
+			strMessage = Replace(HELP_BASIC, "YYYYY", "identify (ONLY) ALL student Candidate Numbers which do not match the MIM-sourced CEnet CeIder number for the matching USIN")
+
+		Case REPORT_MissingAccounts
+			strMessage = Replace(HELP_BASIC, "YYYYY", "identify (ONLY) ALL SAS students with a missing MIM-sourced Email alias (AD account name) for the matching USIN")
+
+		Case REPORT_MismatchingLockers
+			strMessage = Replace(HELP_BASIC, "YYYYY", "identify (ONLY) ALL student Locker Numbers which do not match the MIM-sourced Email alias (AD account name) for the matching USIN")
+
+		Case REPORT_MismatchingEmails
+			strMessage = Replace(HELP_BASIC, "YYYYY", "identify (ONLY) ALL student Emails which do not match the MIM-sourced '" & EMAIL_SUFFIX & "' Email for the matching USIN")
+
+		Case Else
+			strMessage = ""
+
+	End Select
+
+	GetHelpMessage = strMessage
+
+End Function
+
 Sub GetSchoolInfo()
 
 	Dim strSQL, strValue, oRecordSet, oSchoolDatabase, schoolDatabaseName, schoolResultTable, i, rowCount
@@ -143,6 +189,7 @@ Sub GetSchoolInfo()
 		oRecordSet.Fields(i).Name & _
 		"</td>"
 	Next
+	schoolResultTable = schoolResultTable & "<td class=""head"">Use this report to ...</td>"
 	schoolResultTable = schoolResultTable & "</tr></thead><tbody>"
 
 	If oRecordSet.EOF Then
@@ -160,8 +207,9 @@ Sub GetSchoolInfo()
 					strValue = oRecordSet.Fields(i).Value
 				End If
 				schoolResultTable = schoolResultTable & _
-				"<td class='data'>" & strValue & "</td>"	
+				"<td class='tbhelp'>" & strValue & "</td>"	
 			Next
+			schoolResultTable = schoolResultTable & "<td class='tbhelp'>" & GetHelpMessage() & "</td>"	
 			schoolResultTable = schoolResultTable & "</tr>"
 			oRecordSet.MoveNext
 		Loop	
@@ -281,10 +329,6 @@ Function GetUpdateSQL()
 
 	schoolDatabaseName = document.getElementById("SchoolDatabaseName").Value
 	reportName = document.getElementById("ReportName").Value
-
-
-	' TODO: Need to change update statements so that they don't fail when the value they are updating is a NULL value ...
-
 
 	Select Case reportName
 		Case REPORT_MissingUSINs
@@ -547,12 +591,11 @@ End Sub
     <tbody>
         <tr>
 			<td>
-
 				<table class="data" border="0">
 					<tbody>
 						<tr>
 							<td align="right">SchoolCode:</td>
-							<td colspan="100">
+							<td colspan="1">
 								<select id="SchoolDatabaseName" name="SchoolDatabaseName"></select>
 							</td>
 						</tr>
@@ -564,7 +607,7 @@ End Sub
 						</tr>
 						<tr>
 							<td />
-							<td colspan="100">
+							<td colspan="1">
 								<input id="btnGetStudents" type="button" value=" Search " name="Search" onClick="GetTableData">
 								<input id="Copy HTML" type="button" value=" Copy HTML " name="Copy HTML"  onClick="CopyHTML">
 								<input id="Quitbutton" type="button" value="  Quit  " name="Quit_button"  onClick="QuitSub">
@@ -582,11 +625,11 @@ End Sub
 		</tr>
 		<tr>
 			<td colspan="2">
-				<textarea class="sqlrows" name"SQLRows" id="SQLRows" readonly="readonly" rows="1" cols="50%"></textarea>
+				<textarea class="sqlrows" name"SQLRows" id="SQLRows" readonly="readonly" rows="1" cols="100%"></textarea>
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td colspan="2">
 				<table class="data" border="0"=>
 					<tbody>
 						<tr>
@@ -597,7 +640,6 @@ End Sub
 					</tbody>
 				</table>
 			</td>
-			<td/>
 		</tr>
 		<tr>
 			<td colspan="2">
@@ -606,12 +648,12 @@ End Sub
 		</tr>
 		<tr>
 			<td colspan="2">
-				<textarea class="hide" name"SQLSelectCommand" id="SQLSelectCommand" readonly="readonly" rows="13" cols="180"></textarea><!-- class="update" -->
+				<textarea class="hide" name"SQLSelectCommand" id="SQLSelectCommand" readonly="readonly" rows="13" cols="100%"></textarea><!-- class="update" -->
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2">
-				<textarea class="hide" name"SQLUpdateCommand" id="SQLUpdateCommand" readonly="readonly" rows="18" cols="180"></textarea><!-- class="select" -->
+				<textarea class="hide" name"SQLUpdateCommand" id="SQLUpdateCommand" readonly="readonly" rows="18" cols="100%"></textarea><!-- class="select" -->
 			</td>
 		</tr>
 	</tbody>
