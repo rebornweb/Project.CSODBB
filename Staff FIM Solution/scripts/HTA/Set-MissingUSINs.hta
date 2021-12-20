@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="Content-Language" content="en-us">
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<title>Student Missing SAS DATA for a selected school (Version 2.0)</title>
+<title>Students Missing SAS DATA for a selected school (Version 2.0)</title>
 <style type="text/css">
 	body      {background-color:wheat;}
 	table     {width:100%;font-family:Tahoma; font-size:85%;background-color:lightgrey;}
@@ -33,9 +33,11 @@ Const UPD_TITLE = "Update student records in SAS"
 Const UPD_CONFIRMATION = "Click OK to proceed to YYYYY."
 Const EMAIL_SUFFIX = "@dbbstu.catholic.edu.au"
 Const DET_SCHOOLCODE = "NSWDETSchoolCode"
+Const PDF_HELP = "HTA Usage Guide (version 2.0).pdf"
+
 ' Report Names
 Const REPORT_MissingUSINs = "Missing USINs"
-Const REPORT_MissingCeiders = "Missing Ceiders (MIM)"
+Const REPORT_MissingCeiders = "Missing CeIders (MIM)"
 Const REPORT_MissingCandidates = "Missing Candidates (SAS)"
 Const REPORT_MismatchingCeiders = "Mismatching Ceiders (SAS/MIM)"
 Const REPORT_MissingLockers = "Missing Lockers (SAS)"
@@ -434,6 +436,7 @@ Sub GetTableData()
 	oUpdateButton.disabled = "disabled"
 	If schoolDatabaseName = "" Then
 		document.getElementById("SQLUpdateCommand").Value = ""
+		document.getElementById("SQLRows").Value = ""
 		Exit Sub
 	Else
 		GetSchoolInfo
@@ -569,6 +572,15 @@ Sub CopyHTML()
 
  End Sub
 
+Sub OpenHelpFile()
+   Dim Shex, FSO 'As Object
+   Dim tgtfile 'As String
+   Set FSO = CreateObject("Scripting.FileSystemObject")
+   Set Shex = CreateObject("Shell.Application")
+   tgtfile = "" & FSO.GetAbsolutePathName(".") & "\" & PDF_HELP
+   Shex.Open (tgtfile)
+End Sub
+
 Sub Quitsub
 	oConnection.Close
     self.close()
@@ -610,6 +622,7 @@ End Sub
 							<td colspan="1">
 								<input id="btnGetStudents" type="button" value=" Search " name="Search" onClick="GetTableData">
 								<input id="Copy HTML" type="button" value=" Copy HTML " name="Copy HTML"  onClick="CopyHTML">
+								<input id="Help" type="button" value=" HTA Help " name="HTA Help"  onClick="OpenHelpFile">
 								<input id="Quitbutton" type="button" value="  Quit  " name="Quit_button"  onClick="QuitSub">
 							</td>
 						</tr>
