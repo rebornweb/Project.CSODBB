@@ -8,12 +8,12 @@
   DTS:Description="Generate a full set of SAS2IDM student changes records for one or more SAS schools based on supplied school parameter/mask"
   DTS:DTSID="{A0728094-1640-4072-825D-C279CA6DAEFB}"
   DTS:ExecutableType="SSIS.Package.3"
-  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="3081"
   DTS:ObjectName="Generate SAS2IDM full student reload for supplied school(s)"
   DTS:PackageType="5"
-  DTS:VersionBuild="170"
-  DTS:VersionGUID="{8CC3A36D-E4B5-476D-941E-0E7A6BB32D60}">
+  DTS:VersionBuild="177"
+  DTS:VersionGUID="{5BC8690C-4EF1-49E8-9263-C0BE0605DBFC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -78,6 +78,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
+      DTS:Description="Wildcard school filter (e.g. S% or SMCCW)"
       DTS:DTSID="{11D568B8-F045-40BF-8B89-348576B502AA}"
       DTS:ObjectName="PvDB_Filter"
       DTS:Required="True">
@@ -88,6 +89,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
+      DTS:Description="SMTP notification recipient email(s)"
       DTS:DTSID="{583DEB85-821C-4855-A822-5880FC6D8B2E}"
       DTS:ObjectName="PvEmail_Recipient"
       DTS:Required="True">
@@ -98,6 +100,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
+      DTS:Description="SMTP notification sender email"
       DTS:DTSID="{5F0ABF8A-F6A7-467C-9EF8-2A08E8FDBE81}"
       DTS:ObjectName="PvEmail_Sender"
       DTS:Required="True">
@@ -107,7 +110,18 @@
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
+      DTS:DataType="11"
+      DTS:Description="Send summary email notification on error only"
+      DTS:DTSID="{C96CAF82-3FAB-4E27-B5CC-3C06335A4842}"
+      DTS:ObjectName="PvEmail_SummaryOnErrorOnly">
+      <DTS:Property
+        DTS:DataType="11"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
       DTS:DataType="8"
+      DTS:Description="Package logfile name"
       DTS:DTSID="{0D3D11CE-6454-4C7B-8D0A-2682BE4060A5}"
       DTS:ObjectName="PvLogfile_Name"
       DTS:Required="True">
@@ -118,6 +132,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
+      DTS:Description="Package logfile path, e.g. E:\SSIS\Logs"
       DTS:DTSID="{2A11180D-5E5E-42BB-980D-775EE479BEBB}"
       DTS:ObjectName="PvLogfile_Path"
       DTS:Required="True">
@@ -128,6 +143,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
+      DTS:Description="SMTP service server name"
       DTS:DTSID="{8F63F5C1-8CCE-459E-9184-1281F3E4990D}"
       DTS:ObjectName="PvSMTP_Server_Name">
       <DTS:Property
@@ -138,6 +154,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="8"
+      DTS:Description="SSIS host server name"
       DTS:DTSID="{F756BF8C-0AB5-446D-83E4-C9811AA45BED}"
       DTS:ObjectName="PvSSIS_Server_Name"
       DTS:Required="True">
@@ -179,6 +196,17 @@
       DTS:ObjectName="pvEmail_Sender">
       <DTS:VariableValue
         DTS:DataType="8">svcFIM_Service@dbb.org.au</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F28D612C-76F7-4672-850F-AAC794B5BB17}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::PvEmail_SummaryOnErrorOnly]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="pvEmail_SummaryOnErrorOnly">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -1228,8 +1256,9 @@ select @@ROWCOUNT;"</DTS:PropertyExpression>
           DTS:CreationName=""
           DTS:DTSID="{23ACDE6B-EF82-4481-AC66-A7E1998B1AAB}"
           DTS:EvalOp="1"
-          DTS:Expression="LEN(@[$Package::PvSMTP_Server_Name]) &gt; 0"
+          DTS:Expression="(LEN(@[$Package::PvSMTP_Server_Name]) &gt; 0) &amp;&amp;  !@[$Package::PvEmail_SummaryOnErrorOnly]"
           DTS:From="Package\Foreach SAS School DB\Get change record count"
+          DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 8"
           DTS:To="Package\Foreach SAS School DB\Send summary notification" />
         <DTS:PrecedenceConstraint
@@ -1709,7 +1738,7 @@ Run Status: Failed"</DTS:PropertyExpression>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="551,1020"
+          PanelSize="551,1021"
           Size="551,1064"
           Id="Package\Foreach SAS School DB"
           TopLeft="183.5,107.5" />
@@ -1758,6 +1787,42 @@ Run Status: Failed"</DTS:PropertyExpression>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="549.5,1171.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-90.5,60"
+              Start="0,0"
+              End="-90.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.1042345276873" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.1042345276873"
+                    Point2="0,24.1042345276873"
+                    Point3="-4,24.1042345276873" />
+                  <mssgle:LineSegment
+                    End="-86.5,24.1042345276873" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-86.5,24.1042345276873"
+                    Point2="-90.5,24.1042345276873"
+                    Point3="-90.5,28.1042345276873" />
+                  <mssgle:LineSegment
+                    End="-90.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-53.25,29.1042345276873,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
           TopLeft="459,47.5">
           <EdgeLayout.Curve>
@@ -1777,42 +1842,6 @@ Run Status: Failed"</DTS:PropertyExpression>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="549.5,1171.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-90.4999999999999,60"
-              Start="0,0"
-              End="-90.4999999999999,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.1042345276873" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.1042345276873"
-                    Point2="0,24.1042345276873"
-                    Point3="-4,24.1042345276873" />
-                  <mssgle:LineSegment
-                    End="-86.4999999999999,24.1042345276873" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-86.4999999999999,24.1042345276873"
-                    Point2="-90.4999999999999,24.1042345276873"
-                    Point3="-90.4999999999999,28.1042345276873" />
-                  <mssgle:LineSegment
-                    End="-90.4999999999999,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-53.25,29.1042345276873,16,16"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
