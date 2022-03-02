@@ -14,7 +14,7 @@
 # * Summary data to be sent via email as both HTML and CSV attachment
 #-------------------------------------------------------------------------------
 param(
-    [string]$mimServer = "OCCCP-DB301",
+    [string]$mimServer = "D-OCCCP-IM301",
     [string]$sasServer = "OCCCP-DB222",
     [string]$schoolCode = "%",
     [string]$logfile = "D:\Logs\Get-SAS2IDMMissingAndMismatching.log",
@@ -26,7 +26,7 @@ param(
     [string]$fromaddress = "MIMPROD@dbb.org.au", 
     [string[]]$toaddress = @("sat.support@dbb.org.au"),
     [string]$ccaddress = "csodbbsupport@unifysolutions.net",
-    [string]$smtpserver = "smtp.dbb.local",
+    [string]$smtpserver = "localhost", #smtp.dbb.local",
     [switch]$debug,
     [switch]$help
 )
