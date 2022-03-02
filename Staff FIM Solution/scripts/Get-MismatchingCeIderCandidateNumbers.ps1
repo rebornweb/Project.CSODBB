@@ -19,8 +19,8 @@ param(
     [string]$subject = "Mismatching SAS/ADLDS CeIder values",
     [string]$description = "Exception report to identify mismatching SAS/ADLDS CeIder values",
     [string]$fromaddress = "MIMPROD@dbb.org.au", 
-    [string[]]$toaddress = @("csodbbsupport@unifysolutions.net","sat.support@dbb.org.au"),
-    [string]$ccaddress = "bob.bradley@unifysolutions.net",
+    [string[]]$toaddress = @("sat.support@dbb.org.au"),
+    [string]$ccaddress = "csodbbsupport@unifysolutions.net",
     [string]$smtpserver = "smtp.dbb.local",
     [switch]$debug,
     [switch]$help
@@ -131,7 +131,7 @@ exec [dbo].[procSAS2IDM_GetLatestStudentData]
 
     if ($sqlQueryResult) {
         [int]$count = 0
-        $sqlQueryResult.Where({$_.UniversalIdentificationNumber -and ($_.Archive -eq 'N') -and ($_.PreEnrolment -eq 'N')}) | % { # -and ($_.AlumniType -eq 'S')
+        $sqlQueryResult.Where({$_.UniversalIdentificationNumber -and ($_.Archive -eq 'N') -and ($_.PreEnrolment -in @('0','N'))}) | % { # -and ($_.AlumniType -eq 'S')
             [string]$id = "{0}:{1}" -f $_.UniversalIdentificationNumber, $_.AlumniType 
             [string]$CandidateNumber = $_.CandidateNumber
             if (($id.Length -gt 1) -and ($CandidateNumber.Length -gt 1)) {
