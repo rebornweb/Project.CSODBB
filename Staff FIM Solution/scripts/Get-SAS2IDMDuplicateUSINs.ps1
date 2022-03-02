@@ -17,8 +17,8 @@ param(
     [string]$subject = "SAS Duplicate USINs - Same School",
     [string]$description = "Exception report to identify duplicate USINs within the SAME SCHOOL",
     [string]$fromaddress = "MIMPROD@dbb.org.au", 
-    [string[]]$toaddress = @("csodbbsupport@unifysolutions.net","sat.support@dbb.org.au"),
-    [string]$ccaddress = "bob.bradley@unifysolutions.net",
+    [string[]]$toaddress = @("sat.support@dbb.org.au"),
+    [string]$ccaddress = "csodbbsupport@unifysolutions.net",
     [string]$smtpserver = "smtp.dbb.local",
     [switch]$debug,
     [switch]$help
