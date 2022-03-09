@@ -237,13 +237,40 @@ Function GetReportSQL(byVal UpdateMode)
 			strSQL_USINMatching = "SELECT SYSTEM_USER, Student.PersonID As [USIN], CONCAT([AllMIMStudents].[accountName],'" & EMAIL_SUFFIX & "') AS [MIM.Email] "  & vbNewLine & _
 				"FROM [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
 				"LEFT JOIN [" & DB_PREFIX & schoolDatabaseName & "].[dbo].School on School.ID = Student.PrevSchoolID " & vbNewLine & _
-				"LEFT JOIN [MIM_SyncReplica].[dbo].[AllMIMStudents] on AllMIMStudents.[USIN] = Student.UniversalIdentificationNumber "
+				"LEFT JOIN [MIM_SyncReplica].[dbo].[AllMIMStudents] on AllMIMStudents.[USIN] = Student.UniversalIdentificationNumber " & vbNewLine & _
+				"	AND AllMIMStudents.physicalDeliveryOfficeName = '" & schoolDatabaseName & "'"
 
 		Case REPORT_MissingLockers
 			strSQL_USINMatching = "SELECT SYSTEM_USER, Student.PersonID As [USIN], [AllMIMStudents].[accountName] "  & vbNewLine & _
 				"FROM [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
 				"LEFT JOIN [" & DB_PREFIX & schoolDatabaseName & "].[dbo].School on School.ID = Student.PrevSchoolID " & vbNewLine & _
-				"LEFT JOIN [MIM_SyncReplica].[dbo].[AllMIMStudents] on AllMIMStudents.[USIN] = Student.UniversalIdentificationNumber "
+				"LEFT JOIN [MIM_SyncReplica].[dbo].[AllMIMStudents] on AllMIMStudents.[USIN] = Student.UniversalIdentificationNumber " & vbNewLine & _
+				"	AND AllMIMStudents.physicalDeliveryOfficeName = '" & schoolDatabaseName & "'"
+
+		Case REPORT_MissingCandidates
+			strSQL_USINMatching = "SELECT 'UPDATE',Student.[PersonID],Student.[UpdatedBy],[TransferCode],[NDOB],[House],[Form],[Distance],[StudentType] " & vbNewLine & _
+				"	,[HomeGroup],[Rank],[Youngest],[Oldest],[EntryYearLevel],[StartYear],[StartDate],[PrevSchoolID],[PrevLevel] " & vbNewLine & _
+				"	,[Maintenance],Student.[CentrelinkBenefits],[Austudy],[ScholarshipType],[LiveAtHome],[FeeFlag],[PreEnrolment] " & vbNewLine & _
+				"	,[CampusID],[LastLevel],[Repeat],[FirstAustYear],[FirstAustSchoolID],[DateLeft],[ReasonLeft],[Conveyance] " & vbNewLine & _
+				"	,[LowestLevel],[HighestLevel],[TransitionalPrep],[Inactive],[InactiveFrom],[InactiveTo],[InactiveReason] " & vbNewLine & _
+				"	,[AttendanceRecord],[LOTEBackgroundDescription],[LOTEDifferentThanInPrimary],[QsaLearnerID],[QsaYpetFlag] " & vbNewLine & _
+				"	,[QsaGoal],[QsaLearnerLoginPassword],[UniversalIdentificationNumber],[ReturningStatus],[Subject],Student.[Class],[NextClass] " & vbNewLine & _
+				"	,[LastClass],[StateAllowance],[StateAllowanceContactID],[StateStudentNumber],[RegistrationNumber],AllMIMStudents.[csoCeIder] as [CandidateNumber] " & vbNewLine & _
+				"	,[CardNumber],[LearningSupport],[IndividualLearningPlans],[AccessRestriction],[CategoryID],[ApplyForServicesFunding] " & vbNewLine & _
+				"	,[DetHomeSchoolLO],[NotifiedDHSLO],[NotifiedDHSLODate],[NotifiedDHSLOTime],[DUXAwardEligible],[ExcludeFromFeeGeneration] " & vbNewLine & _
+				"	,[AlumniClassOf],[AlumniStatus],[AlumniFamilyKey] " & vbNewLine & _
+				"	,[LeavingAddrID],[NewAddrID],[WithholdStudentReport] "  & vbNewLine & _
+				"FROM [" & DB_PREFIX & schoolDatabaseName & "].[Person].Student " & vbNewLine & _
+				"INNER JOIN ( " & vbNewLine & _
+				"	SELECT PersonId " & vbNewLine & _
+				"	FROM [" & DB_PREFIX & schoolDatabaseName & "].[Person].Student " & vbNewLine & _
+				"	WHERE UniversalIdentificationNumber IS NOT NULL " & vbNewLine & _
+				"	AND PreEnrolment = 0 " & vbNewLine & _
+				"	AND Archived = 0 " & vbNewLine & _
+				") stuv ON stuv.PersonId = Student.PersonId " & vbNewLine & _
+				"LEFT JOIN [" & DB_PREFIX & schoolDatabaseName & "].[dbo].School on School.ID = Student.PrevSchoolID AND School.Active = 'Y' " & vbNewLine & _
+				"INNER JOIN [MIM_SyncReplica].[dbo].[AllMIMStudents] on AllMIMStudents.[USIN] = Student.UniversalIdentificationNumber " & vbNewLine & _
+				"	AND AllMIMStudents.physicalDeliveryOfficeName = '" & schoolDatabaseName & "'"
 
 		Case Else
 			strSQL_USINMatching = "SELECT Student.UniversalIdentificationNumber As [USIN], "  & vbNewLine & _
@@ -282,9 +309,16 @@ Function GetReportSQL(byVal UpdateMode)
 				"AND (ISNULL(AllMIMStudents.csoCeIder,'0') = '0')"
 
 		Case REPORT_MissingCandidates
-			strSQL = strSQL_USINMatching & vbNewLine & _
-				"WHERE Student.UniversalIdentificationNumber IS NOT NULL AND Student.PreEnrolment='N'" & vbNewLine & _
-				"AND (ISNULL(Student.CandidateNumber,'0') = '0')"
+			If UpdateMode = REPORT_MissingCandidates Then
+				strSQL = strSQL_USINMatching & vbNewLine & _
+					"WHERE Student.UniversalIdentificationNumber IS NOT NULL AND Student.PreEnrolment=0 " & vbNewLine & _
+					"AND Student.Archived = 0 " & vbNewLine & _
+					"AND (ISNULL(Student.CandidateNumber,'0') = '0') "
+			Else
+				strSQL = strSQL_USINMatching & vbNewLine & _
+					"WHERE Student.UniversalIdentificationNumber IS NOT NULL AND Student.PreEnrolment='N' " & vbNewLine & _
+					"AND (ISNULL(Student.CandidateNumber,'0') = '0') "
+			End If
 
 		Case REPORT_MismatchingCeiders
 			strSQL = strSQL_USINMatching & vbNewLine & _
@@ -334,18 +368,146 @@ Function GetUpdateSQL()
 
 	Select Case reportName
 		Case REPORT_MissingUSINs
-			strSQL = "UPDATE [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
-				"SET UniversalIdentificationNumber = CONCAT('281',(Select REPLACE(Value,'281_','') AS [DET] from [" & DB_PREFIX & schoolDatabaseName & "].[dbo].[Control] where Code = '" & DET_SCHOOLCODE & "'),Code) " & vbNewLine  & _
-				"WHERE ISNULL(UniversalIdentificationNumber,'0') = '0' AND PreEnrolment='N' AND 1=1 "
+			strSQL = "UPDATE [" & DB_PREFIX & schoolDatabaseName & "].[Person].Student " & vbNewLine & _
+				"SET UniversalIdentificationNumber = CONCAT('281',(Select REPLACE(Value,'281_','') AS [DET], UpdatedWhen = GETDATE(), UpdatedBy = SUSER_NAME() from [" & DB_PREFIX & schoolDatabaseName & "].[dbo].[Control] where Code = '" & DET_SCHOOLCODE & "'),Code) " & vbNewLine  & _
+				"WHERE ISNULL(UniversalIdentificationNumber,'0') = '0' AND PreEnrolment=0 AND Archived=0 AND 1=1 "
 
 		Case REPORT_MissingCeiders
 			strSQL = ""
 
 		Case REPORT_MissingCandidates
-			strSQL = "UPDATE [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
-				"SET CandidateNumber = AllMIMStudents.[csoCeIder] FROM [MIM_SyncReplica].[dbo].[AllMIMStudents] " & vbNewLine & _
-				"WHERE AllMIMStudents.[USIN] = Student.UniversalIdentificationNumber " & vbNewLine & _
-				"AND ISNULL(Student.CandidateNumber,'0') = '0' and Student.PreEnrolment='N' and 1=1 "
+			strSQL = "DECLARE @ACTION	char (10) " & vbNewLine  & _
+				"		,@PersonID            			int 		= NULL " & vbNewLine  & _
+				"		,@UpdatedBy           			varchar(50) = NULL " & vbNewLine  & _
+				"		,@TransferCode                  varchar(20) = NULL " & vbNewLine  & _
+				"		,@NDOB                			nvarchar(50)= NULL " & vbNewLine  & _
+				"		,@House               			varchar(50) = NULL " & vbNewLine  & _
+				"		,@Form                			varchar(50) = NULL " & vbNewLine  & _
+				"		,@Distance            			float       = NULL " & vbNewLine  & _
+				"		,@StudentType    				varchar(50) = NULL " & vbNewLine  & _
+				"		,@HomeGroup    					varchar(50) = NULL " & vbNewLine  & _
+				"		,@Rank   						int         = NULL " & vbNewLine  & _
+				"		,@Youngest  					bit         = NULL " & vbNewLine  & _
+				"		,@Oldest    	   				bit         = NULL " & vbNewLine  & _
+				"		,@EntryYearLevel   				varchar(50) = NULL " & vbNewLine  & _
+				"		,@StartYear       				varchar(50) = NULL " & vbNewLine  & _
+				"		,@StartDate       				datetime    = NULL " & vbNewLine  & _
+				"		,@StartDate_passed              bit 		= NULL " & vbNewLine  & _
+				"		,@PrevSchoolID      			int         = NULL " & vbNewLine  & _
+				"		,@PrevLevel      				varchar(50) = NULL " & vbNewLine  & _
+				"		,@Maintenance  					bit         = NULL " & vbNewLine  & _
+				"		,@CentrelinkBenefits 			bit         = NULL " & vbNewLine  & _
+				"		,@Austudy  						bit         = NULL " & vbNewLine  & _
+				"		,@ScholarshipType  				varchar(50) = NULL " & vbNewLine  & _
+				"		,@LiveAtHome  					bit         = NULL " & vbNewLine  & _
+				"		,@FeeFlag 						varchar(50) = NULL " & vbNewLine  & _
+				"		,@PreEnrolment  				bit         = NULL " & vbNewLine  & _
+				"		,@CampusID  					int         = NULL " & vbNewLine  & _
+				"		,@LastLevel  					varchar(50) = NULL " & vbNewLine  & _
+				"		,@Repeat       					bit         = NULL " & vbNewLine  & _
+				"		,@FirstAustYear       			varchar(10) = NULL " & vbNewLine  & _
+				"		,@FirstAustSchoolID   			int         = NULL " & vbNewLine  & _
+				"		,@DateLeft 						datetime    = NULL " & vbNewLine  & _
+				"		,@DateLeft_passed               bit 		= NULL " & vbNewLine  & _
+				"		,@ReasonLeft 					varchar(50) = NULL " & vbNewLine  & _
+				"		,@Conveyance 					varchar(50) = NULL " & vbNewLine  & _
+				"		,@LowestLevel 					varchar(50) = NULL " & vbNewLine  & _
+				"		,@HighestLevel					varchar(50) = NULL " & vbNewLine  & _
+				"		,@TransitionalPrep  			bit         = NULL " & vbNewLine  & _
+				"		,@Inactive  					bit         = NULL " & vbNewLine  & _
+				"		,@InactiveFrom    				datetime    = NULL " & vbNewLine  & _
+				"		,@InactiveFrom_passed           bit 		= NULL " & vbNewLine  & _
+				"		,@InactiveTo 					datetime    = NULL " & vbNewLine  & _
+				"		,@InactiveReason 				varchar(200)= NULL " & vbNewLine  & _
+				"		,@AttendanceRecord 				varchar(50) = NULL " & vbNewLine  & _
+				"		,@LOTEBackgroundDescription 	varchar(50) = NULL " & vbNewLine  & _
+				"		,@LOTEDifferentThanInPrimary 	bit         = NULL " & vbNewLine  & _
+				"		,@QsaLearnerID 					varchar(20) = NULL " & vbNewLine  & _
+				"		,@QsaYpetFlag 					bit         = NULL " & vbNewLine  & _
+				"		,@QsaGoal                       varchar(50) = NULL " & vbNewLine  & _
+				"		,@QsaLearnerLoginPassword       varchar(50) = NULL " & vbNewLine  & _
+				"		,@UniversalIdentificationNumber varchar(20) = NULL " & vbNewLine  & _
+				"		,@ReturningStatus               varchar(50) = NULL " & vbNewLine  & _
+				"		,@Subject 						varchar(50) = NULL " & vbNewLine  & _
+				"		,@Class 						varchar(50) = NULL " & vbNewLine  & _
+				"		,@NextClass 					varchar(50) = NULL " & vbNewLine  & _
+				"		,@LastClass 					varchar(50) = NULL " & vbNewLine  & _
+				"		,@StateAllowance 				varchar(50) = NULL " & vbNewLine  & _
+				"		,@StateAllowanceContactID 		int         = NULL " & vbNewLine  & _
+				"		,@StateStudentNumber 			varchar(20) = NULL " & vbNewLine  & _
+				"		,@RegistrationNumber  			varchar(50) = NULL " & vbNewLine  & _
+				"		,@CandidateNumber 				varchar(50) = NULL " & vbNewLine  & _
+				"		,@CardNumber 					varchar(50) = NULL " & vbNewLine  & _
+				"		,@LearningSupport 				bit         = NULL " & vbNewLine  & _
+				"		,@IndividualLearningPlans 		bit         = NULL " & vbNewLine  & _
+				"		,@AccessRestriction 			bit         = NULL " & vbNewLine  & _
+				"		,@CategoryID 					int         = NULL " & vbNewLine  & _
+				"		,@ApplyForServicesFunding  		bit         = NULL " & vbNewLine  & _
+				"		,@DetHomeSchoolLO				bit         = NULL " & vbNewLine  & _
+				"		,@NotifiedDHSLO					varchar(255)= NULL " & vbNewLine  & _
+				"		,@NotifiedDHSLODate				datetime    = NULL " & vbNewLine  & _
+				"		,@NotifiedDHSLODate_passed      bit 		= NULL " & vbNewLine  & _
+				"		,@NotifiedDHSLOTime 			varchar(8)  = NULL " & vbNewLine  & _
+				"		,@DUXAwardEligible 				bit         = NULL " & vbNewLine  & _
+				"		,@ExcludeFromFeeGeneration      bit         = NULL " & vbNewLine  & _
+				"		,@AlumniClassOf                 int         = NULL " & vbNewLine  & _
+				"		,@AlumniStatus                  varchar(50) = NULL " & vbNewLine  & _
+				"		,@AlumniFamilyKey               varchar(50) = NULL " & vbNewLine  & _
+				"		,@LeavingAddrID                 int         = NULL " & vbNewLine  & _
+				"		,@NewAddrID                     int         = NULL " & vbNewLine  & _
+				"		,@WithholdStudentReport         bit         = NULL " & vbNewLine  & _
+				"		,@RowCount						int			= 0 " & vbNewLine  & _
+				"DECLARE StudentsToUpdate CURSOR FOR " & vbNewLine
+			strSQL = strSQL + GetReportSQL(REPORT_MissingCandidates) & vbNewLine
+			strSQL = strSQL + "OPEN StudentsToUpdate " & vbNewLine & _
+				"FETCH NEXT FROM StudentsToUpdate INTO @ACTION,@PersonID,@UpdatedBy,@TransferCode,@NDOB,@House,@Form,@Distance,@StudentType,@HomeGroup,@Rank,@Youngest,@Oldest " & vbNewLine & _
+				"	,@EntryYearLevel,@StartYear,@StartDate,@PrevSchoolID,@PrevLevel,@Maintenance,@CentrelinkBenefits,@Austudy " & vbNewLine & _
+				"	,@ScholarshipType,@LiveAtHome,@FeeFlag,@PreEnrolment,@CampusID,@LastLevel,@Repeat,@FirstAustYear,@FirstAustSchoolID,@DateLeft " & vbNewLine & _
+				"	,@ReasonLeft,@Conveyance,@LowestLevel,@HighestLevel,@TransitionalPrep,@Inactive,@InactiveFrom " & vbNewLine & _
+				"	,@InactiveTo,@InactiveReason,@AttendanceRecord,@LOTEBackgroundDescription,@LOTEDifferentThanInPrimary,@QsaLearnerID,@QsaYpetFlag " & vbNewLine & _
+				"	,@QsaGoal,@QsaLearnerLoginPassword,@UniversalIdentificationNumber,@ReturningStatus,@Subject,@Class,@NextClass,@LastClass " & vbNewLine & _
+				"	,@StateAllowance,@StateAllowanceContactID,@StateStudentNumber,@RegistrationNumber,@CandidateNumber,@CardNumber,@LearningSupport " & vbNewLine & _
+				"	,@IndividualLearningPlans,@AccessRestriction,@CategoryID,@ApplyForServicesFunding,@DetHomeSchoolLO,@NotifiedDHSLO,@NotifiedDHSLODate " & vbNewLine & _
+				"	,@NotifiedDHSLOTime,@DUXAwardEligible,@ExcludeFromFeeGeneration,@AlumniClassOf,@AlumniStatus,@AlumniFamilyKey " & vbNewLine & _
+				"	,@LeavingAddrID,@NewAddrID,@WithholdStudentReport " & vbNewLine & _
+				"WHILE (@@FETCH_STATUS=0 ) " & vbNewLine & _
+				"BEGIN " & vbNewLine & _
+				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.Student_Update @ACTION=@ACTION,@PersonID=@PersonID,@UpdatedBy=@UpdatedBy,@TransferCode=@TransferCode " & vbNewLine & _
+				"		,@NDOB=@NDOB,@House=@House,@Form=@Form,@Distance=@Distance,@StudentType=@StudentType,@HomeGroup=@HomeGroup,@Rank=@Rank,@Youngest=@Youngest,@Oldest=@Oldest " & vbNewLine & _
+				"		,@EntryYearLevel=@EntryYearLevel,@StartYear=@StartYear,@StartDate=@StartDate,@StartDate_passed=@StartDate_passed,@PrevSchoolID=@PrevSchoolID " & vbNewLine & _
+				"		,@PrevLevel=@PrevLevel,@Maintenance=@Maintenance,@CentrelinkBenefits=@CentrelinkBenefits,@Austudy=@Austudy " & vbNewLine & _
+				"		,@ScholarshipType=@ScholarshipType,@LiveAtHome=@LiveAtHome,@FeeFlag=@FeeFlag,@PreEnrolment=@PreEnrolment,@CampusID=@CampusID,@LastLevel=@LastLevel " & vbNewLine & _
+				"		,@Repeat=@Repeat,@FirstAustYear=@FirstAustYear,@FirstAustSchoolID=@FirstAustSchoolID,@DateLeft=@DateLeft " & vbNewLine & _
+				"		,@DateLeft_passed=@DateLeft_passed,@ReasonLeft=@ReasonLeft,@Conveyance=@Conveyance,@LowestLevel=@LowestLevel,@HighestLevel=@HighestLevel " & vbNewLine & _
+				"		,@TransitionalPrep=@TransitionalPrep,@Inactive=@Inactive,@InactiveFrom=@InactiveFrom,@InactiveFrom_passed=@InactiveFrom_passed " & vbNewLine & _
+				"		,@InactiveTo=@InactiveTo,@InactiveReason=@InactiveReason,@AttendanceRecord=@AttendanceRecord,@LOTEBackgroundDescription=@LOTEBackgroundDescription " & vbNewLine & _
+				"		,@LOTEDifferentThanInPrimary=@LOTEDifferentThanInPrimary,@QsaLearnerID=@QsaLearnerID,@QsaYpetFlag=@QsaYpetFlag " & vbNewLine & _
+				"		,@QsaGoal=@QsaGoal,@QsaLearnerLoginPassword=@QsaLearnerLoginPassword,@UniversalIdentificationNumber=@UniversalIdentificationNumber " & vbNewLine & _
+				"		,@ReturningStatus=@ReturningStatus,@Subject=@Subject,@Class=@Class,@NextClass=@NextClass,@LastClass=@LastClass " & vbNewLine & _
+				"		,@StateAllowance=@StateAllowance,@StateAllowanceContactID=@StateAllowanceContactID,@StateStudentNumber=@StateStudentNumber " & vbNewLine & _
+				"		,@RegistrationNumber=@RegistrationNumber,@CandidateNumber=@CandidateNumber,@CardNumber=@CardNumber,@LearningSupport=@LearningSupport " & vbNewLine & _
+				"		,@IndividualLearningPlans=@IndividualLearningPlans,@AccessRestriction=@AccessRestriction,@CategoryID=@CategoryID " & vbNewLine & _
+				"		,@ApplyForServicesFunding=@ApplyForServicesFunding,@DetHomeSchoolLO=@DetHomeSchoolLO,@NotifiedDHSLO=@NotifiedDHSLO,@NotifiedDHSLODate=@NotifiedDHSLODate " & vbNewLine & _
+				"		,@NotifiedDHSLODate_passed=@NotifiedDHSLODate_passed,@NotifiedDHSLOTime=@NotifiedDHSLOTime,@DUXAwardEligible=@DUXAwardEligible " & vbNewLine & _
+				"		,@ExcludeFromFeeGeneration=@ExcludeFromFeeGeneration,@AlumniClassOf=@AlumniClassOf,@AlumniStatus=@AlumniStatus,@AlumniFamilyKey=@AlumniFamilyKey " & vbNewLine & _
+				"		,@LeavingAddrID=@LeavingAddrID,@NewAddrID=@NewAddrID,@WithholdStudentReport=@WithholdStudentReport " & vbNewLine & _
+				"	FETCH NEXT FROM StudentsToUpdate INTO @ACTION,@PersonID,@UpdatedBy,@TransferCode,@NDOB,@House,@Form,@Distance,@StudentType,@HomeGroup,@Rank,@Youngest,@Oldest " & vbNewLine & _
+				"		,@EntryYearLevel,@StartYear,@StartDate,@PrevSchoolID,@PrevLevel,@Maintenance,@CentrelinkBenefits,@Austudy " & vbNewLine & _
+				"		,@ScholarshipType,@LiveAtHome,@FeeFlag,@PreEnrolment,@CampusID,@LastLevel,@Repeat,@FirstAustYear,@FirstAustSchoolID,@DateLeft " & vbNewLine & _
+				"		,@ReasonLeft,@Conveyance,@LowestLevel,@HighestLevel,@TransitionalPrep,@Inactive,@InactiveFrom " & vbNewLine & _
+				"		,@InactiveTo,@InactiveReason,@AttendanceRecord,@LOTEBackgroundDescription,@LOTEDifferentThanInPrimary,@QsaLearnerID,@QsaYpetFlag " & vbNewLine & _
+				"		,@QsaGoal,@QsaLearnerLoginPassword,@UniversalIdentificationNumber,@ReturningStatus,@Subject,@Class,@NextClass,@LastClass " & vbNewLine & _
+				"		,@StateAllowance,@StateAllowanceContactID,@StateStudentNumber,@RegistrationNumber,@CandidateNumber,@CardNumber,@LearningSupport " & vbNewLine & _
+				"		,@IndividualLearningPlans,@AccessRestriction,@CategoryID,@ApplyForServicesFunding,@DetHomeSchoolLO,@NotifiedDHSLO,@NotifiedDHSLODate " & vbNewLine & _
+				"		,@NotifiedDHSLOTime,@DUXAwardEligible,@ExcludeFromFeeGeneration,@AlumniClassOf,@AlumniStatus,@AlumniFamilyKey " & vbNewLine & _
+				"		,@LeavingAddrID,@NewAddrID,@WithholdStudentReport " & vbNewLine & _
+				"END " & vbNewLine & _
+				"CLOSE StudentsToUpdate " & vbNewLine & _
+				"DEALLOCATE StudentsToUpdate "
+'			strSQL = "UPDATE [" & DB_PREFIX & schoolDatabaseName & "].[Person].Student " & vbNewLine & _
+'				"SET CandidateNumber = AllMIMStudents.[csoCeIder], UpdatedWhen = GETDATE(), UpdatedBy = SUSER_NAME() FROM [MIM_SyncReplica].[dbo].[AllMIMStudents] " & vbNewLine & _
+'				"WHERE AllMIMStudents.[USIN] = Student.UniversalIdentificationNumber " & vbNewLine & _
+'				"AND ISNULL(Student.CandidateNumber,'0') = '0' and Student.PreEnrolment=0 AND Archived=0 and 1=1 "
 
 		Case REPORT_MismatchingCeiders
 			strSQL = ""
@@ -661,12 +823,12 @@ End Sub
 		</tr>
 		<tr>
 			<td colspan="2">
-				<textarea class="hide" name"SQLSelectCommand" id="SQLSelectCommand" readonly="readonly" rows="13" cols="100%"></textarea><!-- class="update" -->
+				<textarea class="select" name"SQLSelectCommand" id="SQLSelectCommand" readonly="readonly" rows="13" cols="100%"></textarea><!-- class="update" -->
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2">
-				<textarea class="hide" name"SQLUpdateCommand" id="SQLUpdateCommand" readonly="readonly" rows="18" cols="100%"></textarea><!-- class="select" -->
+				<textarea class="update" name"SQLUpdateCommand" id="SQLUpdateCommand" readonly="readonly" rows="18" cols="100%"></textarea><!-- class="select" -->
 			</td>
 		</tr>
 	</tbody>
