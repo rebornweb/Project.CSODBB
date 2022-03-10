@@ -234,14 +234,14 @@ Function GetReportSQL(byVal UpdateMode)
 	
 	Select Case UpdateMode
 		Case REPORT_MissingEmails
-			strSQL_USINMatching = "SELECT SYSTEM_USER, Student.PersonID As [USIN], CONCAT([AllMIMStudents].[accountName],'" & EMAIL_SUFFIX & "') AS [MIM.Email] "  & vbNewLine & _
+			strSQL_USINMatching = "SELECT SYSTEM_USER, Student.PersonID As [USIN], CONCAT([AllMIMStudents].[accountName],'" & EMAIL_SUFFIX & "') AS [MIM.Email], Student.[UpdatedWhen] "  & vbNewLine & _
 				"FROM [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
 				"LEFT JOIN [" & DB_PREFIX & schoolDatabaseName & "].[dbo].School on School.ID = Student.PrevSchoolID " & vbNewLine & _
 				"LEFT JOIN [MIM_SyncReplica].[dbo].[AllMIMStudents] on AllMIMStudents.[USIN] = Student.UniversalIdentificationNumber " & vbNewLine & _
 				"	AND AllMIMStudents.physicalDeliveryOfficeName = '" & schoolDatabaseName & "'"
 
 		Case REPORT_MissingLockers
-			strSQL_USINMatching = "SELECT SYSTEM_USER, Student.PersonID As [USIN], [AllMIMStudents].[accountName] "  & vbNewLine & _
+			strSQL_USINMatching = "SELECT SYSTEM_USER, Student.PersonID As [USIN], [AllMIMStudents].[accountName], Student.[UpdatedWhen] "  & vbNewLine & _
 				"FROM [" & DB_PREFIX & schoolDatabaseName & "].[dbo].Student " & vbNewLine & _
 				"LEFT JOIN [" & DB_PREFIX & schoolDatabaseName & "].[dbo].School on School.ID = Student.PrevSchoolID " & vbNewLine & _
 				"LEFT JOIN [MIM_SyncReplica].[dbo].[AllMIMStudents] on AllMIMStudents.[USIN] = Student.UniversalIdentificationNumber " & vbNewLine & _
@@ -359,9 +359,16 @@ Function GetReportSQL(byVal UpdateMode)
 				"AND (Student.CandidateNumber IS NOT NULL AND AllMIMStudents.csoCeIder IS NOT NULL AND Student.CandidateNumber <> AllMIMStudents.csoCeIder)"
 
 		Case REPORT_MissingLockers
-			strSQL = strSQL_USINMatching & vbNewLine & _
-				"WHERE Student.UniversalIdentificationNumber IS NOT NULL AND Student.PreEnrolment='N'" & vbNewLine & _
-				"AND (ISNULL(Student.LockerNumber,'0') = '0')"
+			If UpdateMode = REPORT_MissingLockers Then
+				strSQL = strSQL_USINMatching & vbNewLine & _
+					"WHERE Student.UniversalIdentificationNumber IS NOT NULL AND Student.PreEnrolment='N' " & vbNewLine & _
+					"AND [AllMIMStudents].[accountName] IS NOT NULL " & vbNewLine & _
+					"AND (ISNULL(Student.LockerNumber,'0') = '0')"
+			Else
+				strSQL = strSQL_USINMatching & vbNewLine & _
+					"WHERE Student.UniversalIdentificationNumber IS NOT NULL AND Student.PreEnrolment='N'" & vbNewLine & _
+					"AND (ISNULL(Student.LockerNumber,'0') = '0')"
+			End If
 
 		Case REPORT_MissingAccounts
 			strSQL = strSQL_USINMatching & vbNewLine & _
@@ -374,9 +381,16 @@ Function GetReportSQL(byVal UpdateMode)
 				"AND (Student.LockerNumber IS NOT NULL AND [AllMIMStudents].[accountName] IS NOT NULL AND Student.LockerNumber <> [AllMIMStudents].[accountName])"
 
 		Case REPORT_MissingEmails
-			strSQL = strSQL_USINMatching & vbNewLine & _
-				"WHERE Student.UniversalIdentificationNumber IS NOT NULL AND Student.PreEnrolment='N'" & vbNewLine & _
-				"AND (ISNULL(Student.Email,'0') = '0')"
+			If UpdateMode = REPORT_MissingEmails Then
+				strSQL = strSQL_USINMatching & vbNewLine & _
+					"WHERE Student.UniversalIdentificationNumber IS NOT NULL AND Student.PreEnrolment='N'" & vbNewLine & _
+					"AND [AllMIMStudents].[accountName] IS NOT NULL " & vbNewLine & _
+					"AND (ISNULL(Student.Email,'0') = '0')"
+			Else
+				strSQL = strSQL_USINMatching & vbNewLine & _
+					"WHERE Student.UniversalIdentificationNumber IS NOT NULL AND Student.PreEnrolment='N'" & vbNewLine & _
+					"AND (ISNULL(Student.Email,'0') = '0')"
+			End If
 
 		Case REPORT_MismatchingEmails
 			strSQL = strSQL_USINMatching & vbNewLine & _
@@ -684,15 +698,17 @@ Function GetUpdateSQL()
 			strSQL = ""
 
 		Case REPORT_MissingLockers
-			strSQL = "DECLARE @this_user varchar(50), @this_personid int, @this_locker nvarchar(100) " & vbNewLine  & _
+			strSQL = "DECLARE @this_user varchar(50) = NULL, @this_personid int = NULL, @this_locker nvarchar(100) = NULL, @UpdatedWhen datetime = NULL, @NewUpdatedWhen datetime = NULL " & vbNewLine  & _
 				"DECLARE StudentsToUpdate CURSOR FOR " & vbNewLine
 			strSQL = strSQL + GetReportSQL(REPORT_MissingLockers) & vbNewLine
 			strSQL = strSQL + "OPEN StudentsToUpdate " & vbNewLine & _
-				"FETCH NEXT FROM StudentsToUpdate INTO @this_user, @this_personid, @this_locker " & vbNewLine & _
+				"FETCH NEXT FROM StudentsToUpdate INTO @this_user, @this_personid, @this_locker, @UpdatedWhen " & vbNewLine & _
 				"WHILE (@@FETCH_STATUS=0 ) " & vbNewLine & _
 				"BEGIN " & vbNewLine & _
-				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.Locker_Update @ACTION='UPDATE', @PersonID=@this_personid, @UpdatedBy=@this_user, @LockerNumber=@this_locker " & vbNewLine & _
-				"	FETCH NEXT FROM StudentsToUpdate INTO @this_user, @this_personid, @this_locker " & vbNewLine & _
+				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.PersonID_update @pPersonID=@this_personid,@pUpdatedBy=@this_user,@pUpdatedWhen=@UpdatedWhen,@pNewUpdatedWhen=@NewUpdatedWhen output; " & vbNewLine & _
+				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.Locker_Update @ACTION='UPDATE', @PersonID=@this_personid, @UpdatedBy=@this_user, @LockerNumber=@this_locker; " & vbNewLine & _
+				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.VSRStudentUpdate @OrgUnitID=1,@PersonID=@this_personid,@TransferType='SS',@OrgUnitLinkUpdate='N',@DetailUpdate='N',@StudentUpdate='Y'; " & vbNewLine & _
+				"	FETCH NEXT FROM StudentsToUpdate INTO @this_user, @this_personid, @this_locker, @UpdatedWhen " & vbNewLine & _
 				"END " & vbNewLine & _
 				"CLOSE StudentsToUpdate " & vbNewLine & _
 				"DEALLOCATE StudentsToUpdate "
@@ -704,15 +720,17 @@ Function GetUpdateSQL()
 			strSQL = ""
 
 		Case REPORT_MissingEmails
-			strSQL = "DECLARE @this_user varchar(50), @this_personid int, @this_email nvarchar(100) " & vbNewLine  & _
+			strSQL = "DECLARE @this_user varchar(50) = NULL, @this_personid int = NULL, @this_email nvarchar(100) = NULL, @UpdatedWhen datetime = NULL, @NewUpdatedWhen datetime = NULL " & vbNewLine  & _
 				"DECLARE StudentsToUpdate CURSOR FOR " & vbNewLine
 			strSQL = strSQL + GetReportSQL(REPORT_MissingEmails) & vbNewLine
 			strSQL = strSQL + "OPEN StudentsToUpdate " & vbNewLine & _
-				"FETCH NEXT FROM StudentsToUpdate INTO @this_user, @this_personid, @this_email " & vbNewLine & _
+				"FETCH NEXT FROM StudentsToUpdate INTO @this_user, @this_personid, @this_email, @UpdatedWhen " & vbNewLine & _
 				"WHILE (@@FETCH_STATUS=0 ) " & vbNewLine & _
 				"BEGIN " & vbNewLine & _
+				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.PersonID_update @pPersonID=@this_personid,@pUpdatedBy=@this_user,@pUpdatedWhen=@UpdatedWhen,@pNewUpdatedWhen=@NewUpdatedWhen output; " & vbNewLine & _
 				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.PersonPhone_Update @ACTION='INSERT', @SortOrder=1, @ID=NULL, @Archived=NULL, @PersonID=@this_personid, @UpdatedBy=@this_user, @PhoneType='Email', @Number=@this_email " & vbNewLine & _
-				"	FETCH NEXT FROM StudentsToUpdate INTO @this_user, @this_personid, @this_email " & vbNewLine & _
+				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.VSRStudentUpdate @OrgUnitID=1,@PersonID=@this_personid,@TransferType='SS',@OrgUnitLinkUpdate='N',@DetailUpdate='N',@StudentUpdate='Y'; " & vbNewLine & _
+				"	FETCH NEXT FROM StudentsToUpdate INTO @this_user, @this_personid, @this_email, @UpdatedWhen " & vbNewLine & _
 				"END " & vbNewLine & _
 				"CLOSE StudentsToUpdate " & vbNewLine & _
 				"DEALLOCATE StudentsToUpdate "
