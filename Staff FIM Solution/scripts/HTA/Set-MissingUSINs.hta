@@ -514,8 +514,12 @@ Function GetUpdateSQL()
 				"	,@LeavingAddrID,@NewAddrID,@WithholdStudentReport,@UpdatedWhen " & vbNewLine & _
 				"WHILE (@@FETCH_STATUS=0 ) " & vbNewLine & _
 				"BEGIN " & vbNewLine & _
-				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.PersonID_update @pPersonID=@PersonID,@pUpdatedBy=@NewUpdatedBy,@pUpdatedWhen=@UpdatedWhen,@pNewUpdatedWhen=@NewUpdatedWhen output; " & vbNewLine & _
-				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.Student_Update @ACTION=@ACTION,@PersonID=@PersonID,@UpdatedBy=@NewUpdatedBy,@TransferCode=@TransferCode " & vbNewLine & _
+				"	Declare @returnVal int = 0 " & vbNewLine & _
+				"	BEGIN TRANSACTION Student_Update " & vbNewLine & _
+				"	EXEC @returnVal = [" & DB_PREFIX & schoolDatabaseName & "].Person.PersonID_update @pPersonID=@PersonID,@pUpdatedBy=@NewUpdatedBy,@pUpdatedWhen=@UpdatedWhen,@pNewUpdatedWhen=@NewUpdatedWhen output; " & vbNewLine & _
+				"	IF @returnVal = 0 " & vbNewLine & _
+				"	BEGIN " & vbNewLine & _
+				"		EXEC @returnVal = [" & DB_PREFIX & schoolDatabaseName & "].Person.Student_Update @ACTION=@ACTION,@PersonID=@PersonID,@UpdatedBy=@NewUpdatedBy,@TransferCode=@TransferCode " & vbNewLine & _
 				"		,@NDOB=@NDOB,@House=@House,@Form=@Form,@Distance=@Distance,@StudentType=@StudentType,@HomeGroup=@HomeGroup,@Rank=@Rank,@Youngest=@Youngest,@Oldest=@Oldest " & vbNewLine & _
 				"		,@EntryYearLevel=@EntryYearLevel,@StartYear=@StartYear,@StartDate=@StartDate,@StartDate_passed=@StartDate_passed,@PrevSchoolID=@PrevSchoolID " & vbNewLine & _
 				"		,@PrevLevel=@PrevLevel,@Maintenance=@Maintenance,@CentrelinkBenefits=@CentrelinkBenefits,@Austudy=@Austudy " & vbNewLine & _
@@ -534,7 +538,15 @@ Function GetUpdateSQL()
 				"		,@NotifiedDHSLODate_passed=@NotifiedDHSLODate_passed,@NotifiedDHSLOTime=@NotifiedDHSLOTime,@DUXAwardEligible=@DUXAwardEligible " & vbNewLine & _
 				"		,@ExcludeFromFeeGeneration=@ExcludeFromFeeGeneration,@AlumniClassOf=@AlumniClassOf,@AlumniStatus=@AlumniStatus,@AlumniFamilyKey=@AlumniFamilyKey " & vbNewLine & _
 				"		,@LeavingAddrID=@LeavingAddrID,@NewAddrID=@NewAddrID,@WithholdStudentReport=@WithholdStudentReport; " & vbNewLine & _
-				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.VSRStudentUpdate @OrgUnitID=1,@PersonID=@PersonID,@TransferType='SS',@OrgUnitLinkUpdate='N',@DetailUpdate='N',@StudentUpdate='Y'; " & vbNewLine & _
+				"	END " & vbNewLine & _
+				"	IF @returnVal > 0 " & vbNewLine & _
+				"	BEGIN " & vbNewLine & _
+				"		EXEC @returnVal = [" & DB_PREFIX & schoolDatabaseName & "].Person.VSRStudentUpdate @OrgUnitID=1,@PersonID=@PersonID,@TransferType='SS',@OrgUnitLinkUpdate='N',@DetailUpdate='N',@StudentUpdate='Y'; " & vbNewLine & _
+				"	END " & vbNewLine & _
+				"	IF @returnVal > 0 " & vbNewLine & _
+				"		COMMIT TRANSACTION Student_Update " & vbNewLine & _
+				"	ELSE " & vbNewLine & _
+				"		ROLLBACK TRANSACTION Student_Update " & vbNewLine & _
 				"	FETCH NEXT FROM StudentsToUpdate INTO @ACTION,@PersonID,@UpdatedBy,@TransferCode,@NDOB,@House,@Form,@Distance,@StudentType,@HomeGroup,@Rank,@Youngest,@Oldest " & vbNewLine & _
 				"		,@EntryYearLevel,@StartYear,@StartDate,@PrevSchoolID,@PrevLevel,@Maintenance,@CentrelinkBenefits,@Austudy " & vbNewLine & _
 				"		,@ScholarshipType,@LiveAtHome,@FeeFlag,@PreEnrolment,@CampusID,@LastLevel,@Repeat,@FirstAustYear,@FirstAustSchoolID,@DateLeft " & vbNewLine & _
@@ -655,8 +667,12 @@ Function GetUpdateSQL()
 				"	,@LeavingAddrID,@NewAddrID,@WithholdStudentReport,@UpdatedWhen " & vbNewLine & _
 				"WHILE (@@FETCH_STATUS=0 ) " & vbNewLine & _
 				"BEGIN " & vbNewLine & _
-				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.PersonID_update @pPersonID=@PersonID,@pUpdatedBy=@NewUpdatedBy,@pUpdatedWhen=@UpdatedWhen,@pNewUpdatedWhen=@NewUpdatedWhen output; " & vbNewLine & _
-				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.Student_Update @ACTION=@ACTION,@PersonID=@PersonID,@UpdatedBy=@NewUpdatedBy,@TransferCode=@TransferCode " & vbNewLine & _
+				"	Declare @returnVal int = 0 " & vbNewLine & _
+				"	BEGIN TRANSACTION Student_Update " & vbNewLine & _
+				"	EXEC @returnVal = [" & DB_PREFIX & schoolDatabaseName & "].Person.PersonID_update @pPersonID=@PersonID,@pUpdatedBy=@NewUpdatedBy,@pUpdatedWhen=@UpdatedWhen,@pNewUpdatedWhen=@NewUpdatedWhen output; " & vbNewLine & _
+				"	IF @returnVal = 0 " & vbNewLine & _
+				"	BEGIN " & vbNewLine & _
+				"		EXEC @returnVal = [" & DB_PREFIX & schoolDatabaseName & "].Person.Student_Update @ACTION=@ACTION,@PersonID=@PersonID,@UpdatedBy=@NewUpdatedBy,@TransferCode=@TransferCode " & vbNewLine & _
 				"		,@NDOB=@NDOB,@House=@House,@Form=@Form,@Distance=@Distance,@StudentType=@StudentType,@HomeGroup=@HomeGroup,@Rank=@Rank,@Youngest=@Youngest,@Oldest=@Oldest " & vbNewLine & _
 				"		,@EntryYearLevel=@EntryYearLevel,@StartYear=@StartYear,@StartDate=@StartDate,@StartDate_passed=@StartDate_passed,@PrevSchoolID=@PrevSchoolID " & vbNewLine & _
 				"		,@PrevLevel=@PrevLevel,@Maintenance=@Maintenance,@CentrelinkBenefits=@CentrelinkBenefits,@Austudy=@Austudy " & vbNewLine & _
@@ -675,7 +691,15 @@ Function GetUpdateSQL()
 				"		,@NotifiedDHSLODate_passed=@NotifiedDHSLODate_passed,@NotifiedDHSLOTime=@NotifiedDHSLOTime,@DUXAwardEligible=@DUXAwardEligible " & vbNewLine & _
 				"		,@ExcludeFromFeeGeneration=@ExcludeFromFeeGeneration,@AlumniClassOf=@AlumniClassOf,@AlumniStatus=@AlumniStatus,@AlumniFamilyKey=@AlumniFamilyKey " & vbNewLine & _
 				"		,@LeavingAddrID=@LeavingAddrID,@NewAddrID=@NewAddrID,@WithholdStudentReport=@WithholdStudentReport; " & vbNewLine & _
-				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.VSRStudentUpdate @OrgUnitID=1,@PersonID=@PersonID,@TransferType='SS',@OrgUnitLinkUpdate='N',@DetailUpdate='N',@StudentUpdate='Y'; " & vbNewLine & _
+				"	END " & vbNewLine & _
+				"	IF @returnVal = 0 " & vbNewLine & _
+				"	BEGIN " & vbNewLine & _
+				"		EXEC @returnVal = [" & DB_PREFIX & schoolDatabaseName & "].Person.VSRStudentUpdate @OrgUnitID=1,@PersonID=@PersonID,@TransferType='SS',@OrgUnitLinkUpdate='N',@DetailUpdate='N',@StudentUpdate='Y'; " & vbNewLine & _
+				"	END " & vbNewLine & _
+				"	IF @returnVal > 0 " & vbNewLine & _
+				"		COMMIT TRANSACTION Student_Update " & vbNewLine & _
+				"	ELSE " & vbNewLine & _
+				"		ROLLBACK TRANSACTION Student_Update " & vbNewLine & _
 				"	FETCH NEXT FROM StudentsToUpdate INTO @ACTION,@PersonID,@UpdatedBy,@TransferCode,@NDOB,@House,@Form,@Distance,@StudentType,@HomeGroup,@Rank,@Youngest,@Oldest " & vbNewLine & _
 				"		,@EntryYearLevel,@StartYear,@StartDate,@PrevSchoolID,@PrevLevel,@Maintenance,@CentrelinkBenefits,@Austudy " & vbNewLine & _
 				"		,@ScholarshipType,@LiveAtHome,@FeeFlag,@PreEnrolment,@CampusID,@LastLevel,@Repeat,@FirstAustYear,@FirstAustSchoolID,@DateLeft " & vbNewLine & _
@@ -705,9 +729,21 @@ Function GetUpdateSQL()
 				"FETCH NEXT FROM StudentsToUpdate INTO @this_user, @this_personid, @this_locker, @UpdatedWhen " & vbNewLine & _
 				"WHILE (@@FETCH_STATUS=0 ) " & vbNewLine & _
 				"BEGIN " & vbNewLine & _
-				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.PersonID_update @pPersonID=@this_personid,@pUpdatedBy=@this_user,@pUpdatedWhen=@UpdatedWhen,@pNewUpdatedWhen=@NewUpdatedWhen output; " & vbNewLine & _
-				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.Locker_Update @ACTION='UPDATE', @PersonID=@this_personid, @UpdatedBy=@this_user, @LockerNumber=@this_locker; " & vbNewLine & _
-				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.VSRStudentUpdate @OrgUnitID=1,@PersonID=@this_personid,@TransferType='SS',@OrgUnitLinkUpdate='N',@DetailUpdate='N',@StudentUpdate='Y'; " & vbNewLine & _
+				"	Declare @returnVal int = 0 " & vbNewLine & _
+				"	BEGIN TRANSACTION Locker_Update " & vbNewLine & _
+				"	EXEC @returnVal = [" & DB_PREFIX & schoolDatabaseName & "].Person.PersonID_update @pPersonID=@this_personid,@pUpdatedBy=@this_user,@pUpdatedWhen=@UpdatedWhen,@pNewUpdatedWhen=@NewUpdatedWhen output; " & vbNewLine & _
+				"	IF @returnVal = 0 " & vbNewLine & _
+				"	BEGIN " & vbNewLine & _
+				"		EXEC @returnVal = [" & DB_PREFIX & schoolDatabaseName & "].Person.Locker_Update @ACTION='UPDATE', @PersonID=@this_personid, @UpdatedBy=@this_user, @LockerNumber=@this_locker; " & vbNewLine & _
+				"	END " & vbNewLine & _
+				"	IF @returnVal > 0 " & vbNewLine & _
+				"	BEGIN " & vbNewLine & _
+				"		EXEC @returnVal = [" & DB_PREFIX & schoolDatabaseName & "].Person.VSRStudentUpdate @OrgUnitID=1,@PersonID=@this_personid,@TransferType='SS',@OrgUnitLinkUpdate='N',@DetailUpdate='N',@StudentUpdate='Y'; " & vbNewLine & _
+				"	END " & vbNewLine & _
+				"	IF @returnVal > 0 " & vbNewLine & _
+				"		COMMIT TRANSACTION Locker_Update " & vbNewLine & _
+				"	ELSE " & vbNewLine & _
+				"		ROLLBACK TRANSACTION Locker_Update " & vbNewLine & _
 				"	FETCH NEXT FROM StudentsToUpdate INTO @this_user, @this_personid, @this_locker, @UpdatedWhen " & vbNewLine & _
 				"END " & vbNewLine & _
 				"CLOSE StudentsToUpdate " & vbNewLine & _
@@ -727,9 +763,21 @@ Function GetUpdateSQL()
 				"FETCH NEXT FROM StudentsToUpdate INTO @this_user, @this_personid, @this_email, @UpdatedWhen " & vbNewLine & _
 				"WHILE (@@FETCH_STATUS=0 ) " & vbNewLine & _
 				"BEGIN " & vbNewLine & _
-				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.PersonID_update @pPersonID=@this_personid,@pUpdatedBy=@this_user,@pUpdatedWhen=@UpdatedWhen,@pNewUpdatedWhen=@NewUpdatedWhen output; " & vbNewLine & _
-				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.PersonPhone_Update @ACTION='INSERT', @SortOrder=1, @ID=NULL, @Archived=NULL, @PersonID=@this_personid, @UpdatedBy=@this_user, @PhoneType='Email', @Number=@this_email " & vbNewLine & _
-				"	EXEC [" & DB_PREFIX & schoolDatabaseName & "].Person.VSRStudentUpdate @OrgUnitID=1,@PersonID=@this_personid,@TransferType='SS',@OrgUnitLinkUpdate='N',@DetailUpdate='N',@StudentUpdate='Y'; " & vbNewLine & _
+				"	Declare @returnVal int = 0 " & vbNewLine & _
+				"	BEGIN TRANSACTION PersonPhone_Update " & vbNewLine & _
+				"	EXEC @returnVal = [" & DB_PREFIX & schoolDatabaseName & "].Person.PersonID_update @pPersonID=@this_personid,@pUpdatedBy=@this_user,@pUpdatedWhen=@UpdatedWhen,@pNewUpdatedWhen=@NewUpdatedWhen output; " & vbNewLine & _
+				"	IF @returnVal = 0 " & vbNewLine & _
+				"	BEGIN " & vbNewLine & _
+				"		EXEC @returnVal = [" & DB_PREFIX & schoolDatabaseName & "].Person.PersonPhone_Update @ACTION='INSERT', @SortOrder=1, @ID=NULL, @Archived=NULL, @PersonID=@this_personid, @UpdatedBy=@this_user, @PhoneType='Email', @Number=@this_email " & vbNewLine & _
+				"	END " & vbNewLine & _
+				"	IF @returnVal > 0 " & vbNewLine & _
+				"	BEGIN " & vbNewLine & _
+				"		EXEC @returnVal = [" & DB_PREFIX & schoolDatabaseName & "].Person.VSRStudentUpdate @OrgUnitID=1,@PersonID=@this_personid,@TransferType='SS',@OrgUnitLinkUpdate='N',@DetailUpdate='N',@StudentUpdate='Y'; " & vbNewLine & _
+				"	END " & vbNewLine & _
+				"	IF @returnVal > 0 " & vbNewLine & _
+				"		COMMIT TRANSACTION PersonPhone_Update " & vbNewLine & _
+				"	ELSE " & vbNewLine & _
+				"		ROLLBACK TRANSACTION PersonPhone_Update " & vbNewLine & _
 				"	FETCH NEXT FROM StudentsToUpdate INTO @this_user, @this_personid, @this_email, @UpdatedWhen " & vbNewLine & _
 				"END " & vbNewLine & _
 				"CLOSE StudentsToUpdate " & vbNewLine & _
