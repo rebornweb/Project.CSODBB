@@ -1,0 +1,331 @@
+﻿.navbar-brand {
+    padding: 5px 0 5px 15px;
+}
+.navbar-brand>img {
+    height: 100%;
+    width: auto;
+}
+
+.TextInput {
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Themes */
+
+.TitleHeadingNavigation {
+    background-color: #2677b4;
+}
+
+.ActiveTab {
+    background-color: #cccccc !important;
+}
+
+a {
+    color: #2677b4;
+}
+
+form input:focus, form textarea:focus {
+    background-color: #9CF;
+    border-color: #2677b4;
+}
+
+.hint {
+    background: #9CF url("forms/pointer.gif") no-repeat -10px 5px;
+    border-color: #03C;
+}
+
+    .hint .hint-pointer {
+        background: url("forms/pointer.gif") left top no-repeat;
+    }
+
+body, .TitleHeadingNavigation {
+    min-width: 680px;
+}
+
+/*
+
+*/
+
+.RightSpaced td {
+    padding-right: 10px;
+}
+
+.BottomSpaced td {
+    padding-bottom: 5px;
+}
+
+.VerticalAlignTable td {
+    vertical-align: text-top;
+}
+
+.LeftAlignTable td {
+    text-align: left;
+    padding-left: 5px;
+}
+ 
+.RightSpacedSmall td {
+    padding-right: 5px;
+}
+
+/* Operations
+-----------------------------------------------------------*/
+
+ul.Tree, ul.Tree ul {
+    list-style-type: none;
+    background: url("operations/vertical.png") repeat-y;
+    margin: 0;
+    padding: 0;
+}
+
+    ul.Tree ul {
+        margin-left: 2em;
+    }
+
+
+    ul.Tree li {
+        margin: 0;
+        padding: 0 1.2em;
+        line-height: 1.7em;
+        background: url("operations/node.png") no-repeat;
+    }
+
+.Running {
+    border: 1px solid #aaa;
+}
+
+.Stopped {
+}
+
+.OperationFailure {
+    background-color: #F66;
+}
+
+.OperationWarning {
+    background-color: #FF6;
+}
+
+.OperationSuccess {
+    background-color: #6F6;
+}
+
+img.OperationButton {
+    vertical-align: text-bottom;
+}
+
+.OperationRow {
+    vertical-align: sub;
+}
+
+.Statistics {
+    text-align: left;
+}
+
+ul.TimingList {
+    margin: 0;
+    padding-left: 2em;
+}
+
+    ul.TimingList li {
+        margin-left: 0;
+    }
+
+.OperationStatusText {
+    color: #999999;
+    font-style: italic;
+    margin-left: 5px;
+}
+
+/* Popup menus
+-----------------------------------------------------------*/
+
+#GroupsTable {
+    text-align: center;
+}
+
+    #GroupsTable td {
+        padding: 0 10px 0 10px;
+    }
+
+
+/* Popup menus
+-----------------------------------------------------------*/
+
+.NoTitle .ui-dialog-titlebar {
+    display: none;
+}
+
+.Borderless .ui-dialog-buttonpane {
+    display: none;
+}
+
+.Borderless .ui-dialog-titlebar {
+    display: none;
+}
+
+.ui-widget-overlay-hidden {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+table tbody tr td div {
+    margin: 0;
+}
+
+.CenteredContent, .CenteredContentBlind {
+    position: fixed;
+    padding: 1em;
+    overflow: auto;
+}
+
+.CenteredContent {
+    top: 15%;
+    left: 10%;
+    background-color: white;
+    height: 70%;
+    width: 80%;
+    overflow: auto;
+    text-align: center;
+}
+
+.CenteredContentBlind {
+    top: 0%;
+    left: 0%;
+    background-color: #000000;
+    opacity: 0.6;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+/* Chosen Select Lists */
+
+.chzn-container, .chzn-form-fieldset-container {
+    overflow: visible;
+    margin: 0px;
+}
+
+form fieldset div .chzn-select {
+    overflow: auto;
+}
+
+.chzn-single, .chzn-drop {
+    min-width: 220px;
+}
+
+.chzn-drop {
+    text-align: left;
+    margin: 0;
+    padding-left: 8px;
+}
+
+.chzn-search input {
+    min-width: 185px;
+}
+
+.chzn-select {
+    width: auto;
+}
+
+.WizardLeftContent, .WizardRightContent {
+    min-width: 50%;
+    max-width: 50%;
+    margin: 0;
+    padding: 0;
+}
+
+form .SettingsContainer label {
+    margin-right: 0px;
+    padding-right: 0px;
+    float: none;
+    text-align: left;
+}
+
+.SettingsContainer div .Enumerable {
+    max-height: 25em;
+    overflow: auto;
+}
+
+/* Autoconfiguration Styles */
+
+.AddComponentContainer {
+    border: solid 1px #CCC;
+    position: relative;
+    height: 18em;
+}
+
+.AddComponentForm {
+    position: absolute;
+    margin-left: 0em;
+    height: 18em;
+}
+
+.WiderButton {
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.ManagementAgent {
+    max-width: 25em;
+}
+
+.UnderText {
+    font-size: 0.7em;
+    padding-left: 2em;
+}
+
+.RedUnderText {
+    color: #E66;
+}
+
+.GreenUnderText {
+    color: #3A3;
+}
+
+.FormText {
+    padding: 1em;
+    padding-left: 2em;
+    border-left: #CCC 1px solid;
+    border-right: #CCC 1px solid;
+    background-color: #f7f7f7;
+    font-size: 0.8em;
+    width: auto;
+}
+
+.functionsMenuIcon {
+    margin-bottom: 0.5em;
+}
+
+.functionsMenuForm {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.OperationListsOperationsButton, .OperationListOperationsButton {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.OperationListsViewSection, .OperationListViewSection {
+    margin-bottom: 2em;
+}
+
+    .OperationListsViewSection .OperationListsViewSectionHeader, .OperationListViewSection .OperationListViewSectionHeader {
+        margin-bottom: 1.5em;
+    }
+
+.inlineHeader {
+    display: inline;
+}
+
+.ListedOperationList , .ContentOperationList{
+    margin-left: 2em;
+    margin-bottom: 1em;
+    zoom: 1;
+}

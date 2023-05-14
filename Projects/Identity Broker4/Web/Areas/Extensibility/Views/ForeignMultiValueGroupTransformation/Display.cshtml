@@ -1,0 +1,9 @@
+﻿@using Unify.Connect.Web
+@model ForeignMultiValueGroupTransformationViewInformation
+
+<div>
+    
+    WHERE [@Model.InputKey] IN [@Model.RelationKey]<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;DN:"@Model.Template" -> <span class="TransformationAddedField">[@Model.GroupTarget]</span>
+    
+</div>

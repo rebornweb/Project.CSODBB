@@ -1,0 +1,95 @@
+﻿@using System.Globalization
+@using Unify.Framework
+@using Unify.Framework.Web
+@model StatisticsJobViewInformationBase
+
+@{
+    string lastRun = Model.LastRunCompleted.HasValue
+        ? Model.LastRunCompleted.Value.ToLocalTime().ToString(LoggingControllerConstants.DateTimeFormatCSharpReadMode, CultureInfo.InvariantCulture)
+        : ConnectorControllerResources.LastRunNotFoundMessageText;
+
+    string lastRunDuration = Model.LastRunDuration.HasValue
+        ? Model.LastRunDuration.Value.ToString()
+        : ConnectorControllerResources.LastRunDurationNotFoundMessageText;
+
+    bool lastRunSucceeded = Model.LastRunSucceeeded.HasValue && Model.LastRunSucceeeded.Value;
+    string lastRunErrorMessage = Model.LastRunErrorMessage ?? ConnectorControllerResources.LastRunErrorMessageNotFoundMessageText;
+    string runningImageUrl = Url.Content("~/Content/Loader.gif");
+}
+
+@if (Model.LastRunStarted != null)
+{
+    <div>
+        @Html.LabelFor(model => model.LastRunStarted, ConnectorControllerResources.LastRunStartedLabel)
+        @Model.LastRunStarted.Value.ToLocalTime().ToString(LoggingControllerConstants.DateTimeFormatCSharpReadMode, CultureInfo.InvariantCulture)
+    </div>
+
+    <br />
+
+    if (!Model.Running)
+    {
+        <div>
+            @Html.LabelFor(model => model.LastRunCompleted, ConnectorControllerResources.LastRunCompletedLabel)
+            @lastRun
+        </div>
+
+        <br />
+
+        if (Model.LastRunDuration != null)
+        {
+            <div>
+                @Html.LabelFor(model => model.LastRunDuration, ConnectorControllerResources.LastRunDurationLabelText)
+                @lastRunDuration
+            </div>
+
+            <br />
+
+            if (!lastRunSucceeded)
+            {
+                string errorImageUrl = Url.WebIcon("exclamation.png");
+
+                <hr />
+                <div>
+                    <img src="@errorImageUrl" alt="@ConnectorControllerResources.LastRunErroredText" title="@ConnectorControllerResources.LastRunErroredText" />
+                    @lastRunErrorMessage
+                </div>
+
+                <br />
+            }
+        }
+    }
+    else
+    {
+        <div>
+            @ConnectorControllerResources.ConnectorStatisticsConfigurationCurrentlyRunningText
+            <img src="@runningImageUrl" alt="@ConnectorControllerResources.ConnectorStatisticsConfigurationCurrentlyRunningAlt" title="@ConnectorControllerResources.ConnectorStatisticsConfigurationCurrentlyRunningAlt" />
+        </div>
+
+        <br />
+    }
+}
+else
+{
+    <p>@ConnectorControllerResources.JobHasNotRunMessage</p>
+}
+
+@if (Model.LastRunHadWarning != null && Model.LastRunWarningTime != null && Model.LastRunStarted != null && Model.LastRunWarningTime > Model.LastRunStarted)
+{
+    string warningImageUrl = Url.WebIcon("error.png");
+
+    <hr />
+
+    <div>
+        @Html.LabelFor(model => model.LastRunWarningTime, @ConnectorControllerResources.ConnectorStatisticsConfigurationWarningRaisedText)
+        @Model.LastRunWarningTime.Value.ToLocalTime().ToString(LoggingControllerConstants.DateTimeFormatCSharpReadMode, CultureInfo.InvariantCulture)
+    </div>
+
+    <br />
+
+    <div>
+        <img src="@warningImageUrl" alt="@ConnectorControllerResources.LastRunHadWarningAltText" title="@ConnectorControllerResources.LastRunHadWarningAltText" />
+        @Model.LastRunWarningMessage
+    </div>
+
+    <br />
+}

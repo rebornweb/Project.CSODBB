@@ -1,0 +1,20 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+@model DefaultConnectorViewInformation
+
+
+<div>
+    <div class="FormText">
+        <p>
+            @ConnectorControllerResources.UnknownConnectorText
+            <ul>
+                @foreach (KeyValuePair<string, string> agent in Model.KnownConnectors)
+                {
+                    <li>@agent.Key (@agent.Value)</li>
+                }
+            </ul>
+        </p>
+    </div>
+</div>

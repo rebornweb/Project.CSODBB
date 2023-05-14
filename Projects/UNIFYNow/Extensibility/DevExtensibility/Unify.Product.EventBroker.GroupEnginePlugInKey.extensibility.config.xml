@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<groupEngine changeId="da5f0e6e-857f-446c-9335-bf7cb7929d2d">
+  <GroupConfigurations>
+    <Group name="Baseline" exclusionGroup="true" id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+    <Group name="All Outbound" exclusionGroup="false" id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+    <Group name="Identity Broker Operations" exclusionGroup="false" id="100d0bd7-c3f8-4f89-a642-cd565b37b207" />
+    <Group name="All Inbound" exclusionGroup="false" id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+  </GroupConfigurations>
+</groupEngine>

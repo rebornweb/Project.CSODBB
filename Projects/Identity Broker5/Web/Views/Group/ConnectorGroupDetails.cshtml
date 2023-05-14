@@ -1,0 +1,43 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model ConnectorGroupConfigurationViewInformationWithConnectors
+@{
+    ViewBag.Title = Html.Title(TitleResources.ConnectorGroupDetailsTitle);
+    
+    ConnectorGroupConfigurationViewInformation connectorGroupConfiguration = Model.Configuration;
+    Guid groupId = connectorGroupConfiguration.Id;
+    string connectorGroupComment = string.IsNullOrWhiteSpace(connectorGroupConfiguration.Comment) 
+                    ? GroupControllerResources.DefaultConnectorGroupComment
+                    : Html.Encode(connectorGroupConfiguration.Comment);
+}
+
+<h2>
+    @connectorGroupConfiguration.Name
+    @{ Html.RenderAction("ConnectorGroupFunctions", "Group", new { groupId });  } 
+</h2>
+
+<div>
+    <h3>@GroupControllerResources.ConnectorGroupCommentHeadingText</h3>
+    <label>@connectorGroupComment</label>
+</div>
+
+<div>
+    <h3>@GroupControllerResources.ConnectorsHeadingText</h3>
+    
+    @if (Model.Connectors.Any())
+    {
+        foreach (var connector in Model.Connectors)
+        {
+            Guid connectorId = connector.ConnectorId;
+            string displayName = connector.DisplayName;
+        
+            <a href="@Url.Action("ConnectorDetails", "Connector", new { connectorId })">@displayName</a>
+            <br />
+        }
+    }
+    else
+    { 
+        <label>@GroupControllerResources.NoConnectorsInGroupMessageText</label>
+    }
+</div>
+

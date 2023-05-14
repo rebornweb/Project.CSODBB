@@ -1,0 +1,217 @@
+﻿@using System.Web.Mvc.Html
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+
+@model ConnectorIndexModel
+           
+@{
+    ViewBag.Title = Html.Title(ConnectorControllerResources.ConnectorTitle);
+
+    string addGroupImageUrl = Url.WebIcon("group_add.png");
+    string clearAllConnectorsImageUrl = Url.WebIcon("database_delete.png");
+
+    string addConnectorImageUrl = Url.WebIcon("add.png");
+    string xsltImageUrl = Url.WebIcon("report.png");
+    
+    string clearConnectorImageUrl = Url.WebIcon("database_delete.png");
+    string deltaImportImageUrl = Url.WebIcon("table_relationship.png");
+    string fullImportImageUrl = Url.WebIcon("table_refresh.png");
+
+    string enableImageUrl = Url.WebIcon("control_play.png");
+    string disableImageUrl = Url.WebIcon("control_stop.png");
+
+    string deleteImageUrl = Url.WebIcon("delete.png");
+
+    const string formId = "ConnectorFunctionsForm";
+
+    const string deleteInputId = "ConnectorFunctionsDeleteButton";
+    string deleteInputMessageId = string.Concat(deleteInputId, "Message");
+    string deleteInputOkCancelScript = Unify.Framework.Web.RenderExtensions.SubmitOkCancelDialog(formId, deleteInputId, "Function");
+
+    const string clearInputId = "ConnectorFunctionsClearButton";
+    string clearInputMessageId = string.Concat(clearInputId, "Message");
+    string clearInputOkCancelScript = Unify.Framework.Web.RenderExtensions.SubmitOkCancelDialog(formId, clearInputId, "Function");
+
+    IUnifyBranding branding = ViewContext.GetCurrentBranding();
+
+    ViewBag.Title = Html.Title(TitleResources.ConnectorIndexTitle);
+
+    string addConnectorImageHtml =
+        string.Format("<img alt=\"{0}\"" +
+                      "title=\"{0}\"" +
+                      "src=\"{1}\"" +
+                      "id=\"AddConnectorButton\"/>", 
+                      ConnectorControllerResources.AddConnectorButtonAltText, 
+                      addConnectorImageUrl);
+}
+
+<h2>
+    @ConnectorControllerResources.ConnectorIndexHeadingText
+    
+    <a href="@Url.Action("Create", "Connector")">@Html.Raw(addConnectorImageHtml)</a>
+    @if (Model.ShowXslt)
+    {
+        <a href="@Url.Action("ConnectorTransformedConfiguration", "Connector")">
+            <img src="@xsltImageUrl"
+                 alt="@ConnectorControllerResources.ConnectorEngineXsltAltText"
+                 title="@ConnectorControllerResources.ConnectorEngineXsltAltText"/>
+        </a>
+    }
+</h2>
+
+@if (Model.ConnectorGroups.Any())
+{
+    using (Html.BeginForm("Index", "Connector", FormMethod.Get, new { id = "ConnectorGroupForm", @class = "IconForm" }))
+    {
+        @Html.DropDownList(
+            "groupId",
+            new SelectList(
+                new[] { new KeyValuePair<string, Guid?>("All", null) }.Concat(
+                Model
+                    .ConnectorGroups
+                    .Select(group => new KeyValuePair<string, Guid?>(group.Name, group.Key))),
+                "Value",
+                "Key"),
+            new { id = "ConnectorGroupSelector", @class = "chzn-select" })
+        <noscript>
+            <input type="submit" value="@ConnectorControllerResources.SelectGroupSubmitValue" alt="@ConnectorControllerResources.FilterVisibleConnectorsOnGroupAltText" title="@ConnectorControllerResources.FilterVisibleConnectorsOnGroupAltText"/>
+        </noscript>
+    }
+}
+
+<br/>
+
+<div>
+    <input type="checkbox" id="ConnectorsHeadingInput"/>
+    @ConnectorControllerResources.SelectDeselectAllMessage
+</div>
+
+<br/>
+
+<div>
+    <div id="@clearInputMessageId" style="display:none">
+        <div>@ConnectorControllerResources.ClearConnectorConfirmationWarningText</div><br/>
+        <div>@string.Format(ConnectorControllerResources.ClearConnectorDescriptionText, branding.ProductName) @WebStudioResources.ThisCannotBeUndoneText</div><br/>
+    </div>
+    <div id="@deleteInputMessageId" style="display:none">
+        <div>@ConnectorControllerResources.DeleteConnectorConfirmationWarningText</div><br/>
+        <div>@string.Format(ConnectorControllerResources.DeleteConnectorWarningDescriptionText, branding.ProductName)</div><br/>
+        <div>@ConnectorControllerResources.DeleteConnectorDescriptionText @WebStudioResources.ThisCannotBeUndoneText</div><br/>
+    </div>
+    @using (Html.BeginForm("ConnectorFunctions", "Connector", new { groupId = Model.SelectedGroup }, FormMethod.Post, new { style = "border:0px;margin:0px;padding:0px", id = formId }))
+    {
+        <div class="ListedComponentFunctions" id="ConnectorFunctions">    
+            <div>
+                <input type="submit" value="ImportAll" name="Function" style="background: url('@fullImportImageUrl') no-repeat;" 
+                       class="SubmitImageButton" title="@ConnectorControllerResources.IndexImportAllAltText"/>
+            </div>
+                        
+            <div>
+                <input type="submit" value="ImportChanges" name="Function" style="background: url('@deltaImportImageUrl') no-repeat;" 
+                       class="SubmitImageButton" title="@ConnectorControllerResources.IndexImportChangesAltText"/>
+            </div>
+                        
+            <div>
+                <input type="submit" value="Clear" name="Function" id="@clearInputId" style="background: url('@clearConnectorImageUrl') no-repeat;" 
+                       class="SubmitImageButton" title="@ConnectorControllerResources.IndexClearConnectorsAltText"/>
+            </div>
+                        
+            <div>
+                <input type="submit" value="Enable" name="Function" style="background: url('@enableImageUrl') no-repeat;" 
+                       class="SubmitImageButton" title="@ConnectorControllerResources.IndexEnableConnectorsAltText"/>
+            </div>
+                        
+            <div>
+                <input type="submit" value="Disable" name="Function" style="background: url('@disableImageUrl') no-repeat;" 
+                       class="SubmitImageButton" title="@ConnectorControllerResources.IndexDisableConnectorsAltText"/>
+            </div>
+                        
+            <div>
+                <input type="submit" value="Delete" name="Function" id="@deleteInputId" style="background: url('@deleteImageUrl') no-repeat;" 
+                       class="SubmitImageButton" title="@ConnectorControllerResources.IndexDeleteConnectorsAltText"/>
+            </div>
+        </div>
+        
+        <div class="ListedComponentContainer FaintBorder">
+            <div id="ConnectorsContainer">
+                @Html.ActionRefresh(
+                    Url, 
+                    "Connectors", 
+                    5000, 
+                    "Connectors", 
+                    "Connector",
+                    "function(cache) { $('.ActionRefreshListener').trigger('refreshStart', cache); }",
+                    "function(cache) { $('.ActionRefreshListener').trigger('refreshStop', cache); $('.scriptonly').show(); }")
+            </div>
+        </div>
+        
+        <div style="clear:both"></div>
+    }
+</div>
+
+<br/>
+
+<h3>
+    @GroupControllerResources.ConnectorGroupsHeadingText
+    <a href="@Url.Action("CreateConnectorGroup", "Group")"><img src="@addGroupImageUrl" alt="@GroupControllerResources.AddConnectorGroupAltText" /></a>
+</h3>
+
+@if (Model.ConnectorGroups.Any())
+{
+    foreach (var connectorGroup in Model.ConnectorGroups)
+    {
+        Guid groupId = connectorGroup.Key;
+        
+        <div style="padding:10px;">
+            <a href="@Url.Action("ConnectorGroupDetails", "Group", new { groupId })">@connectorGroup.Name</a>
+            @{ Html.RenderAction("ConnectorGroupFunctions", "Group", new { groupId }); }
+        </div>
+    }
+}
+else
+{ 
+    <label>@GroupControllerResources.NoConnectorGroupsMessageText</label>
+}
+
+<div id="AddConnectorContainer"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        $("#ConnectorsContainerFunctions").hide();
+        
+        $("#ConnectorGroupSelector").change(function() {
+            $.get("@Url.Action("Connectors", "Connector")",
+                $("#ConnectorGroupForm").serialize(),
+                function(data) {
+                    $("#ConnectorsContainer").html(data);
+                });
+        });
+
+        $("#ConnectorsHeadingInput").change(function() {
+            var checked = $(this).is(':checked');
+            $('.ConnectorSelections').each(function() {
+                $(this).prop('checked', checked);
+            });
+            
+            if (checked) {
+                $('.ListedConnector').each(function() {
+                    $(this).trigger('checkSelected');
+                });
+            } else {
+                $('.ListedConnector').each(function() {
+                    $(this).trigger('checkDeselected');
+                });
+            }
+            
+        });
+        
+
+    });
+    
+    @Html.Raw(clearInputOkCancelScript)
+    @Html.Raw(deleteInputOkCancelScript)
+</script>
+

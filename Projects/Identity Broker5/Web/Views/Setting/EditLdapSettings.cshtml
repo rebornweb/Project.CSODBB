@@ -1,0 +1,18 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model LdapSettingsViewInformation
+@using (
+    Html.DecorateForm(
+        () => Html.BeginForm("SaveLdapSettings", "Setting", null, FormMethod.Post, new {id = SettingControllerResources.LdapSettingsFormID}),
+        SettingControllerResources.LdapSettingsFormSubmitBtnText,
+        SettingControllerResources.LdapSettingsFormID,
+        SettingControllerResources.LdapSettingsFormHint))
+{
+    <fieldset>
+        @using (Html.MetaDataFor(model => model.EnforceSingleSchema, new {description = SettingControllerResources.LdapSettingsFormEnforceSingleSchemaHint}))
+        {
+            @Html.LabelFor(label => label.EnforceSingleSchema, SettingControllerResources.LdapSettingsFormEnforceSingleSchemaLabelText)
+            @Html.CheckBoxFor(text => text.EnforceSingleSchema)
+        }
+    </fieldset>
+}

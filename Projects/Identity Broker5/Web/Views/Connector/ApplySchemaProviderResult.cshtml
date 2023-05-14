@@ -1,0 +1,21 @@
+﻿@model SchemaProviderApplicationViewInformation
+@using Unify.Framework.Web
+
+@{
+    string schemaResultFormContainerId = string.Concat("SchemaResultFormSubmit", Model.ConnectorId);
+}
+
+<div>
+    @using (Html.DecorateForm(
+            () => Html.BeginForm("ApplySchemaProvider", "Connector", FormMethod.Post, new { id = schemaResultFormContainerId }),
+            ConnectorControllerResources.ContinueWithSchemaSubmitValue,
+            schemaResultFormContainerId,
+            ConnectorControllerResources.ContinueWithSchemaAltText))
+    { 
+        @Html.HiddenFor(model => model.ConnectorId)
+        @Html.HiddenFor(model => model.ProviderName)
+        @Html.HiddenFor(model => model.DisplayName)
+
+        @Html.DisplayFor(entitySchema => Model.MergedConnectorConfiguration, "EntityMergedSchemaRows")
+    }
+</div>

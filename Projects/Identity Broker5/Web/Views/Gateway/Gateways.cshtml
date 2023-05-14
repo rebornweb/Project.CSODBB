@@ -1,0 +1,35 @@
+﻿@using Unify.Connect.Web.Extensions
+@model GatewaysViewInformation
+@foreach (GatewayViewInformation gateway in Model.Gateways)
+{
+    string inputId = string.Concat(gateway.GatewayId, "Selector");
+    string containerId = string.Concat(gateway.GatewayId, "Container");
+    <div id="@containerId" class="ListedGateway ActionRefreshListener">
+        <div>
+            <input type="checkbox" id="@inputId" name="gateways" value="@gateway.GatewayId" class="GatewayCheckBox" />
+            &nbsp;
+            <a href="@Url.Action("Details", "Gateway", new {id = gateway.GatewayId})">
+                @gateway.DisplayName
+            </a>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#@containerId")
+                .bind('refreshStart',
+                    function(event, arg1) {
+                        arg1["@inputId"] = $("#@inputId").is(':checked');
+                }
+            ).bind('refreshStop',
+                function(event, arg1) {
+                    if (arg1["@inputId"]) $("#@inputId").attr('checked', 'checked');
+                }
+            );
+        });
+    </script>
+}
+@if (!Model.Gateways.Any())
+{
+    <p>@GatewayResources.NoGatewaysConfiguredText</p>
+}

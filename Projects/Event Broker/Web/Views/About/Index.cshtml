@@ -1,0 +1,130 @@
+﻿@using Unify.Framework
+@using Unify.Framework.Web
+@model EventBrokerLicenseSummary
+
+@{
+    ViewBag.Title = Html.Title(TitleResources.AboutPageTitle);
+
+    IEnumerable<LicensedProductDetailsExpositor> licensedProducts = new[]
+    {
+        new LicensedProductDetailsExpositor{
+            ProductName = AboutControllerResources.BootstrapHeading,
+            ProductLink = AboutControllerResources.BootstrapUrlText,
+            ProductLinkDescription = AboutControllerResources.BootstrapAddressText,
+            LicenseLink = AboutControllerResources.BootstrapLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.BootstrapLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.CassiniDevHeading,
+            ProductLink = AboutControllerResources.CassiniDevUrlText,
+            ProductLinkDescription = AboutControllerResources.CassiniDevAddressText,
+            LicenseLink = AboutControllerResources.CassiniDevLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.CassiniDevLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.DataTablesHeading,
+            ProductLink = AboutControllerResources.DataTablesUrlText,
+            ProductLinkDescription = AboutControllerResources.DataTablesAddressText,
+            LicenseLink = AboutControllerResources.DataTablesLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.DataTablesLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.JQueryHeading,
+            ProductLink = AboutControllerResources.JQueryUrlText,
+            ProductLinkDescription = AboutControllerResources.JQueryAddressText,
+            LicenseLink = AboutControllerResources.JQueryLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.JQueryLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.ModernButtonsHeading,
+            LicenseLink = AboutControllerResources.ModernButtonsLicenseUrlText,
+            LicenseType = AboutControllerResources.ModernButtonsLicenseTypeText,
+            ProductLink = AboutControllerResources.ModernButtonsUrlText,
+            ProductLinkDescription = AboutControllerResources.ModernButtonsAddressText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.NewtonsoftJsonHeading,
+            ProductLink = AboutControllerResources.NewtonsoftJsonUrlText,
+            ProductLinkDescription = AboutControllerResources.NewtonsoftJsonAddressText,
+            LicenseLink = AboutControllerResources.NewtonsoftJsonLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.NewtonsoftJsonLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.SilkIconsHeading,
+            ProductLink = AboutControllerResources.SilkIconsUrlText,
+            ProductLinkDescription = AboutControllerResources.SilkIconsAddressText,
+            LicenseLink = AboutControllerResources.SilkIconsLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.SilkIconsLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor{
+            ProductName = AboutControllerResources.SplunkHeading,
+            ProductLink = AboutControllerResources.SplunkUrlText,
+            ProductLinkDescription = AboutControllerResources.SplunkAddressText,
+            LicenseLink = AboutControllerResources.SplunkLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.SplunkLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.SubtlePatternsHeading,
+            LicenseLink = AboutControllerResources.SubtlePatternsLicenseUrlText,
+            LicenseType = AboutControllerResources.SubtlePatternsLicenseTypeText,
+            ProductLink = AboutControllerResources.SubtlePatternsUrlText,
+            ProductLinkDescription = AboutControllerResources.SubtlePatternsAddressText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.TimepickerHeading,
+            ProductLink = AboutControllerResources.TimepickerUrlText,
+            ProductLinkDescription = AboutControllerResources.TimepickerAddressText,
+            LicenseLink = AboutControllerResources.TimepickerLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.TimepickerLicenseTypeText
+        }
+    };
+}
+
+<h2>@AboutControllerResources.AboutPageHeading</h2>
+<br />
+<div class="FaintBorder">
+@{ 
+    // ReSharper disable Mvc.ActionNotResolved
+    Html.RenderAction("DisplayProductDetails", "About", new
+    {
+        expositor = new CompanyProductDetailsExpositor
+        {
+            ProductLinkDescription = ViewContext.CreateAboutMessage(null).ToString(),
+            CompanyName = EventBrokerBranding.Instance.CompanyAndProductName,
+            ProductName = EventBrokerBranding.Instance.ProductName,
+            ProductLink = EventBrokerBranding.Instance.LicensingInformation,
+            SupportEmailLink = EventBrokerBranding.Instance.SupportEmail,
+            SupportEmailName = EventBrokerBranding.Instance.SupportEmail
+        },
+        area = "Framework"
+    });
+    // ReSharper restore Mvc.ActionNotResolved
+}
+</div>
+
+<h3>@AboutControllerResources.LicenseHeading</h3>
+<div class="FaintBorder">
+    @Html.Action("LicenseSummary", new { licenseSummary = Model })
+</div>
+<br />
+
+<h3>@AboutControllerResources.AcknowledgementsHeading</h3>
+@foreach (var expositor in licensedProducts)
+{
+    <div class="FaintBorder" style="padding-top:0">
+        @{
+            // ReSharper disable Mvc.ActionNotResolved
+            Html.RenderAction("DisplayLicensedProductDetails", "About", new { area = "Framework", expositor });
+            // ReSharper restore Mvc.ActionNotResolved
+        }
+    </div>
+    <br />
+            }

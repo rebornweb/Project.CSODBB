@@ -1,0 +1,41 @@
+﻿@model SchedulerState
+@using Unify.Framework.Web
+
+<h2>
+    @HomeControllerResources.SchedulerHeading
+    @if (Html.IsInRole(UnifyRoles.Write))
+    {
+        if (Model == SchedulerState.Stopped)
+        {
+            <a href="@Url.Action("EnableScheduler")" class="m-btn mini mini-form">
+                @OperationControllerResources.SchedulerStartText
+            </a>
+        }
+        else
+        {
+            <a href="@Url.Action("DisableScheduler")" class="m-btn mini mini-form">
+                @OperationControllerResources.SchedulerStopText
+            </a>
+        }
+    } 
+</h2>
+
+@if (Model == SchedulerState.Stopped)
+{
+    <p>
+        @OperationControllerResources.SchedulerStoppedText
+    </p>
+}
+else if (Model == SchedulerState.Starting)
+{
+    <p>
+        @OperationControllerResources.SchedulerStartingText
+    </p>
+}
+else
+{
+    <p>
+        @OperationControllerResources.SchedulerStartedText
+    </p>
+}
+

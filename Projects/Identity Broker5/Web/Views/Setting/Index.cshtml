@@ -1,0 +1,16 @@
+﻿@using Unify.Connect.Web.Extensions
+@model SettingIndexViewInformation
+@{
+    ViewBag.Title = SettingControllerResources.SettingIndexTitle;
+}
+<h1>@ViewBag.Title</h1>
+
+@Html.DisplayFor(model => model.LdapSettings, "LdapSettingsDisplay")
+@Html.DisplayFor(model => model.LdapUsers, "LdapUserManagementDisplay")
+@Html.DisplayFor(model => model.CertificateRemotingConfiguration, "CertificateManagementDisplay")
+
+@{ 
+    // ReSharper disable once Mvc.ActionNotResolved
+    // ReSharper disable once Mvc.ControllerNotResolved
+    Html.RenderAction("ApiControllerDetails", "ApiConfiguration", new {area = "Framework"}); 
+}

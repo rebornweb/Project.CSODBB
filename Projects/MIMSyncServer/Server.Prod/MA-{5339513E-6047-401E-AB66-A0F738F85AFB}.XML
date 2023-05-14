@@ -1,0 +1,306 @@
+<saved-ma-configuration server='OCCCP-IM301' export-date='2023-05-12 03:38:42.273'>
+<!--WARNING>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+!! The contents of this file should not be edited.
+!! Any such modifications to this file may result in errors during import.
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+</WARNING-->
+<ma-data>
+ <format-version>1</format-version>
+ <id>{5339513E-6047-401E-AB66-A0F738F85AFB}</id>
+ <name>SAS2IDM</name>
+ <category>Extensible</category>
+ <subtype>Identity Broker for SAS2IDM Adapter (UNIFY Solutions)</subtype>
+ <ma-listname>UNIFY Identity Broker for SAS2IDM Adapter (UNIFY Solutions)</ma-listname>
+ <ma-companyname>UNIFY Solutions</ma-companyname>
+ <creation-time>2011-12-23 04:36:03.170</creation-time>
+ <last-modification-time>2023-05-06 20:32:13.719</last-modification-time>
+ <version>493</version>
+ <internal-version>1</internal-version>
+ <password-sync-allowed>0</password-sync-allowed>
+ <schema>
+  <dsml:dsml xmlns:dsml="http://www.dsml.org/DSML" xmlns:ms-dsml="http://www.microsoft.com/MMS/DSML"><dsml:directory-schema ms-dsml:no-objectclass-validation="true"><dsml:class id="container" type="structural"><dsml:name>container</dsml:name><dsml:attribute ref="#export_password" required="false" /></dsml:class><dsml:class id="person" type="structural"><dsml:name>person</dsml:name><dsml:attribute ref="#Code" required="false" /><dsml:attribute ref="#FirstName" required="false" /><dsml:attribute ref="#MiddleName" required="false" /><dsml:attribute ref="#LastName" required="false" /><dsml:attribute ref="#PreferredName" required="false" /><dsml:attribute ref="#NName" required="false" /><dsml:attribute ref="#FormerName" required="false" /><dsml:attribute ref="#Sex" required="false" /><dsml:attribute ref="#DOB" required="false" /><dsml:attribute ref="#Year" required="false" /><dsml:attribute ref="#Class" required="false" /><dsml:attribute ref="#HomeGroup" required="false" /><dsml:attribute ref="#House" required="false" /><dsml:attribute ref="#AddressID" required="false" /><dsml:attribute ref="#Address1" required="false" /><dsml:attribute ref="#Address2" required="false" /><dsml:attribute ref="#Address3" required="false" /><dsml:attribute ref="#PostCode" required="false" /><dsml:attribute ref="#Country" required="false" /><dsml:attribute ref="#Email" required="false" /><dsml:attribute ref="#PhoneFamily" required="false" /><dsml:attribute ref="#PhoneHome" required="false" /><dsml:attribute ref="#PhoneMobile" required="false" /><dsml:attribute ref="#StartYear" required="false" /><dsml:attribute ref="#StartDate" required="false" /><dsml:attribute ref="#Deceased" required="false" /><dsml:attribute ref="#StudentType" required="false" /><dsml:attribute ref="#DateLeft" required="false" /><dsml:attribute ref="#ReasonLeft" required="false" /><dsml:attribute ref="#CandidateNumber" required="false" /><dsml:attribute ref="#AlumniType" required="false" /><dsml:attribute ref="#PreEnrolment" required="false" /><dsml:attribute ref="#Archive" required="false" /><dsml:attribute ref="#Mailsuffix" required="false" /><dsml:attribute ref="#PhysicaldeliveryOfficeName" required="false" /><dsml:attribute ref="#CeIder" required="false" /><dsml:attribute ref="#IdBID" required="true" /><dsml:attribute ref="#SchoolID" required="true" /><dsml:attribute ref="#StudentID" required="true" /><dsml:attribute ref="#UniversalIdentificationNumber" required="true" /><dsml:attribute ref="#export_password" required="false" /></dsml:class><dsml:class id="contact" type="structural"><dsml:name>contact</dsml:name><dsml:attribute ref="#contactName" required="false" /><dsml:attribute ref="#contactEmailStaff" required="false" /><dsml:attribute ref="#contactCount" required="false" /><dsml:attribute ref="#SchoolID" required="false" /><dsml:attribute ref="#contactID" required="true" /><dsml:attribute ref="#IdBID" required="true" /><dsml:attribute ref="#export_password" required="false" /></dsml:class><dsml:class id="personEx" type="structural"><dsml:name>personEx</dsml:name><dsml:attribute ref="#UniversalIdentificationNumber" required="true" /><dsml:attribute ref="#CeIder" required="true" /><dsml:attribute ref="#SchoolID" required="true" /><dsml:attribute ref="#StudentID" required="true" /><dsml:attribute ref="#IdBID" required="true" /><dsml:attribute ref="#export_password" required="false" /></dsml:class><dsml:attribute-type id="IdBID" single-value="true"><dsml:name>IdBID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="SchoolID" single-value="true"><dsml:name>SchoolID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="StudentID" single-value="true"><dsml:name>StudentID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.27</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Code" single-value="true"><dsml:name>Code</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="FirstName" single-value="true"><dsml:name>FirstName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="MiddleName" single-value="true"><dsml:name>MiddleName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="LastName" single-value="true"><dsml:name>LastName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PreferredName" single-value="true"><dsml:name>PreferredName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="NName" single-value="true"><dsml:name>NName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="FormerName" single-value="true"><dsml:name>FormerName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Sex" single-value="true"><dsml:name>Sex</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="DOB" single-value="true"><dsml:name>DOB</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Year" single-value="true"><dsml:name>Year</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Class" single-value="true"><dsml:name>Class</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="HomeGroup" single-value="true"><dsml:name>HomeGroup</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="House" single-value="true"><dsml:name>House</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="AddressID" single-value="true"><dsml:name>AddressID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.27</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Address1" single-value="true"><dsml:name>Address1</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Address2" single-value="true"><dsml:name>Address2</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Address3" single-value="true"><dsml:name>Address3</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PostCode" single-value="true"><dsml:name>PostCode</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Country" single-value="true"><dsml:name>Country</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Email" single-value="true"><dsml:name>Email</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PhoneFamily" single-value="true"><dsml:name>PhoneFamily</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PhoneHome" single-value="true"><dsml:name>PhoneHome</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PhoneMobile" single-value="true"><dsml:name>PhoneMobile</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="StartYear" single-value="true"><dsml:name>StartYear</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="StartDate" single-value="true"><dsml:name>StartDate</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Deceased" single-value="true"><dsml:name>Deceased</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="StudentType" single-value="true"><dsml:name>StudentType</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="DateLeft" single-value="true"><dsml:name>DateLeft</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ReasonLeft" single-value="true"><dsml:name>ReasonLeft</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="CandidateNumber" single-value="true"><dsml:name>CandidateNumber</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="AlumniType" single-value="true"><dsml:name>AlumniType</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PreEnrolment" single-value="true"><dsml:name>PreEnrolment</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Archive" single-value="true"><dsml:name>Archive</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="UniversalIdentificationNumber" single-value="true" ms-dsml:immutable="true"><dsml:name>UniversalIdentificationNumber</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Mailsuffix" single-value="true"><dsml:name>Mailsuffix</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PhysicaldeliveryOfficeName" single-value="true"><dsml:name>PhysicaldeliveryOfficeName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="contactID" single-value="true"><dsml:name>contactID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="contactName" single-value="true"><dsml:name>contactName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="contactEmailStaff" single-value="true"><dsml:name>contactEmailStaff</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="contactCount" single-value="true"><dsml:name>contactCount</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.27</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="CeIder" single-value="true" ms-dsml:range-lower="0"><dsml:name>CeIder</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="export_password" single-value="true" ms-dsml:encrypted="true" ms-dsml:export-only="true"><dsml:name>export_password</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type></dsml:directory-schema></dsml:dsml>
+ </schema>
+ <attribute-inclusion><attribute>IdBID</attribute><attribute>SchoolID</attribute><attribute>StudentID</attribute><attribute>Code</attribute><attribute>FirstName</attribute><attribute>MiddleName</attribute><attribute>LastName</attribute><attribute>PreferredName</attribute><attribute>NName</attribute><attribute>FormerName</attribute><attribute>Sex</attribute><attribute>DOB</attribute><attribute>Year</attribute><attribute>Class</attribute><attribute>HomeGroup</attribute><attribute>House</attribute><attribute>AddressID</attribute><attribute>Address1</attribute><attribute>Address2</attribute><attribute>Address3</attribute><attribute>PostCode</attribute><attribute>Country</attribute><attribute>Email</attribute><attribute>PhoneFamily</attribute><attribute>PhoneHome</attribute><attribute>PhoneMobile</attribute><attribute>StartYear</attribute><attribute>StartDate</attribute><attribute>Deceased</attribute><attribute>StudentType</attribute><attribute>DateLeft</attribute><attribute>ReasonLeft</attribute><attribute>CandidateNumber</attribute><attribute>AlumniType</attribute><attribute>PreEnrolment</attribute><attribute>Archive</attribute><attribute>UniversalIdentificationNumber</attribute><attribute>Mailsuffix</attribute><attribute>PhysicaldeliveryOfficeName</attribute><attribute>contactID</attribute><attribute>contactName</attribute><attribute>contactEmailStaff</attribute><attribute>contactCount</attribute><attribute>CeIder</attribute><attribute>export_password</attribute></attribute-inclusion>
+ <stay-disconnector />
+ <join>
+ <join-profile cd-object-type="contact">
+  <join-criterion join-cri-type="none" id="{5F2E0DCF-152E-4903-B6A3-7A90C5843DC9}">
+   <search mv-object-type="contact">
+    <attribute-mapping mv-attribute="uid">
+     <direct-mapping>
+      <src-attribute>contactID</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+ </join-profile>
+ <join-profile cd-object-type="person">
+  <join-criterion join-cri-type="none" id="{22F9D528-0EB1-42C9-A4CE-722C64F613EE}">
+   <search mv-object-type="person">
+    <attribute-mapping mv-attribute="USIN">
+     <direct-mapping>
+      <src-attribute>UniversalIdentificationNumber</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+ </join-profile>
+ <join-profile cd-object-type="personEx">
+  <join-criterion join-cri-type="none" id="{A163A148-DF47-423D-8AD6-CD1E344E74B2}">
+   <search mv-object-type="person">
+    <attribute-mapping mv-attribute="USIN">
+     <direct-mapping>
+      <src-attribute>UniversalIdentificationNumber</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+ </join-profile>
+</join>
+
+ <projection>
+ <class-mapping cd-object-type="contact" type="declared" id="{6005DE0F-A8E0-4ADC-AA3D-8DD63AA348D6}">
+  <mv-object-type>contact</mv-object-type>
+ </class-mapping>
+ <class-mapping cd-object-type="person" type="declared" id="{49C717F7-EBC8-4BA3-8E6A-767EDA289887}">
+  <mv-object-type>person</mv-object-type>
+ </class-mapping>
+</projection>
+
+ <export-attribute-flow>
+ <export-flow-set cd-object-type="personEx" mv-object-type="person">
+  <export-flow cd-attribute="dn" id="{97BFABCF-981E-4455-A8D3-0C3F92CE3768}" suppress-deletions="false">
+   <sync-rule-mapping mapping-type="expression" sync-rule-id="{A348FE20-0342-E711-808A-005056947981}" sync-rule-mapping-id="{1B6D7FAA-5C8C-4610-99F9-321FB868B207}" initial-flow-only="true" is-existence-test="false">
+    <src-attribute>csoCeIder</src-attribute>
+    <sync-rule-value>
+     <export-flow allows-null="false"><src><attr>csoCeIder</attr></src><dest>dn</dest><scoping></scoping><fn id="+" isCustomExpression="false"><arg>"CN="</arg><arg>csoCeIder</arg><arg>",OU=People"</arg></fn></export-flow>
+    </sync-rule-value>
+   </sync-rule-mapping>
+  </export-flow>
+  <export-flow cd-attribute="CeIder" id="{F3C26110-1267-43EB-8F75-F57ECE3580F5}" suppress-deletions="false">
+   <sync-rule-mapping mapping-type="direct" sync-rule-id="{A348FE20-0342-E711-808A-005056947981}" sync-rule-mapping-id="{78346D62-D36F-4751-B511-358BCBF4BEDD}" initial-flow-only="true" is-existence-test="false">
+    <src-attribute>csoCeIder</src-attribute>
+   </sync-rule-mapping>
+  </export-flow>
+  <export-flow cd-attribute="dn" id="{D9EB2C44-53E4-462C-A93D-0E8DBB67381B}" suppress-deletions="true">
+   <sync-rule-mapping mapping-type="expression" sync-rule-id="{A348FE20-0342-E711-808A-005056947981}" sync-rule-mapping-id="{F6BFAFF6-1895-4F54-8FF1-6B4E96D6EF4D}" initial-flow-only="false" is-existence-test="false">
+    <src-attribute>csoCeIder</src-attribute>
+    <sync-rule-value>
+     <export-flow allows-null="false"><src><attr>csoCeIder</attr></src><dest>dn</dest><scoping></scoping><fn id="+" isCustomExpression="false"><arg>"CN="</arg><arg>csoCeIder</arg><arg>",OU=People"</arg></fn></export-flow>
+    </sync-rule-value>
+   </sync-rule-mapping>
+  </export-flow>
+  <export-flow cd-attribute="CeIder" id="{F01AD49A-50C8-41C9-AE02-02DA4B3055FA}" suppress-deletions="true">
+   <sync-rule-mapping mapping-type="direct" sync-rule-id="{A348FE20-0342-E711-808A-005056947981}" sync-rule-mapping-id="{FBA29E01-B486-4929-9962-67460969ED0C}" initial-flow-only="false" is-existence-test="false">
+    <src-attribute>csoCeIder</src-attribute>
+   </sync-rule-mapping>
+  </export-flow>
+  <export-flow cd-attribute="UniversalIdentificationNumber" id="{D1D7326E-3F02-476C-A6DA-B3742E8E6CEF}" suppress-deletions="true">
+   <sync-rule-mapping mapping-type="direct" sync-rule-id="{A348FE20-0342-E711-808A-005056947981}" sync-rule-mapping-id="{F60E5A15-D2A1-4D4E-8BFB-0EB137A3DCB2}" initial-flow-only="false" is-existence-test="false">
+    <src-attribute>USIN</src-attribute>
+   </sync-rule-mapping>
+  </export-flow>
+  <export-flow cd-attribute="StudentID" id="{7BF5EC2C-F5A1-4F0A-8F63-33483B2A4B7F}" suppress-deletions="true">
+   <sync-rule-mapping mapping-type="direct" sync-rule-id="{A348FE20-0342-E711-808A-005056947981}" sync-rule-mapping-id="{24441CD1-7CA3-4827-889F-AE80BD346D7E}" initial-flow-only="false" is-existence-test="false">
+    <src-attribute>StudentID</src-attribute>
+   </sync-rule-mapping>
+  </export-flow>
+  <export-flow cd-attribute="SchoolID" id="{097F54A3-495C-4940-B69E-AB35BCCE3BA5}" suppress-deletions="true">
+   <sync-rule-mapping mapping-type="direct" sync-rule-id="{A348FE20-0342-E711-808A-005056947981}" sync-rule-mapping-id="{943B6417-607B-4C59-AE1D-09D14B184AFA}" initial-flow-only="false" is-existence-test="false">
+    <src-attribute>SchoolID</src-attribute>
+   </sync-rule-mapping>
+  </export-flow>
+ </export-flow-set>
+</export-attribute-flow>
+
+ <provisioning-cleanup type="declared"><action>delete-object</action></provisioning-cleanup>
+ <extension><assembly-name>Unify.CodelessProvisioning.MiisSp2.MAExtension.dll</assembly-name><application-protection>low</application-protection></extension>
+ <controller-configuration>
+ <application-protection>low</application-protection>
+ <application-architecture>process</application-architecture>
+</controller-configuration>
+
+ <description>CSO FIM V2: SAS2IDM student data (incl. accountName calculation on import)
+
+IdB3: http://localhost:59990/IdentityBroker/RemoteXmlAdapter.svc
+IdB4: http://d-occcp-as002:59990/IdentityBroker/FIMLDIFAdapter.svc
+</description>
+ <ma-ui-settings><account-joiner-queries><attributes><cs><attribute name="UserID" header="UserID" size="100" /><attribute name="BusinessPhone" header="BusinessPhone" size="100" /><attribute name="CityOfOffice" header="CityOfOffice" size="100" /></cs><mv><attribute name="accountName" header="accountName" size="100" /></mv></attributes><filters max_mv_search_results=""><filter name="aaa" collation="Latin1_General_CI_AS" searchscope=""><element cdattribute="" mvattribute="accountName" mvtextflag="false" elementoperator="Is present" /></filter></filters></account-joiner-queries></ma-ui-settings>
+ <private-configuration>
+  <MAConfig><ui-data><xmlwizard><properties><sample_file>C:\Schema.txt</sample_file><code_page_description>Unicode</code_page_description></properties><partitions><partition cd_name="default" guid="{BDD48F56-2CCC-41DB-9FB0-7D4AFAF81FDD}" version="80"><object_class>container</object_class><object_class>person</object_class><object_class>contact</object_class><object_class>personEx</object_class></partition></partitions><primary_class_mappings><mapping user_define="-1" object_class="container" primary_class="container" /><mapping user_define="-1" object_class="person" primary_class="person"><attribute>IdBID</attribute><attribute>SchoolID</attribute><attribute>StudentID</attribute><attribute>Code</attribute><attribute>FirstName</attribute><attribute>MiddleName</attribute><attribute>LastName</attribute><attribute>PreferredName</attribute><attribute>NName</attribute><attribute>FormerName</attribute><attribute>Sex</attribute><attribute>DOB</attribute><attribute>Year</attribute><attribute>Class</attribute><attribute>HomeGroup</attribute><attribute>House</attribute><attribute>AddressID</attribute><attribute>Address1</attribute><attribute>Address2</attribute><attribute>Address3</attribute><attribute>PostCode</attribute><attribute>Country</attribute><attribute>Email</attribute><attribute>PhoneFamily</attribute><attribute>PhoneHome</attribute><attribute>PhoneMobile</attribute><attribute>StartYear</attribute><attribute>StartDate</attribute><attribute>Deceased</attribute><attribute>StudentType</attribute><attribute>DateLeft</attribute><attribute>ReasonLeft</attribute><attribute>CandidateNumber</attribute><attribute>AlumniType</attribute><attribute>PreEnrolment</attribute><attribute>Archive</attribute><attribute>UniversalIdentificationNumber</attribute><attribute>Mailsuffix</attribute><attribute>PhysicaldeliveryOfficeName</attribute></mapping><mapping object_class="contact" primary_class="contact" user_define="-1"><attribute>IdBID</attribute><attribute>SchoolID</attribute><attribute>StudentID</attribute><attribute>Code</attribute><attribute>FirstName</attribute><attribute>MiddleName</attribute><attribute>LastName</attribute><attribute>PreferredName</attribute><attribute>NName</attribute><attribute>FormerName</attribute><attribute>Sex</attribute><attribute>DOB</attribute><attribute>Year</attribute><attribute>Class</attribute><attribute>HomeGroup</attribute><attribute>House</attribute><attribute>AddressID</attribute><attribute>Address1</attribute><attribute>Address2</attribute><attribute>Address3</attribute><attribute>PostCode</attribute><attribute>Country</attribute><attribute>Email</attribute><attribute>PhoneFamily</attribute><attribute>PhoneHome</attribute><attribute>PhoneMobile</attribute><attribute>StartYear</attribute><attribute>StartDate</attribute><attribute>Deceased</attribute><attribute>StudentType</attribute><attribute>DateLeft</attribute><attribute>ReasonLeft</attribute><attribute>CandidateNumber</attribute><attribute>AlumniType</attribute><attribute>PreEnrolment</attribute><attribute>Archive</attribute><attribute>UniversalIdentificationNumber</attribute><attribute>Mailsuffix</attribute><attribute>PhysicaldeliveryOfficeName</attribute><attribute>contactID</attribute><attribute>contactName</attribute><attribute>contactEmailStaff</attribute><attribute>contactCount</attribute></mapping><mapping object_class="personEx" primary_class="personEx" user_define="-1"><attribute>IdBID</attribute><attribute>SchoolID</attribute><attribute>StudentID</attribute><attribute>Code</attribute><attribute>FirstName</attribute><attribute>MiddleName</attribute><attribute>LastName</attribute><attribute>PreferredName</attribute><attribute>NName</attribute><attribute>FormerName</attribute><attribute>Sex</attribute><attribute>DOB</attribute><attribute>Year</attribute><attribute>Class</attribute><attribute>HomeGroup</attribute><attribute>House</attribute><attribute>AddressID</attribute><attribute>Address1</attribute><attribute>Address2</attribute><attribute>Address3</attribute><attribute>PostCode</attribute><attribute>Country</attribute><attribute>Email</attribute><attribute>PhoneFamily</attribute><attribute>PhoneHome</attribute><attribute>PhoneMobile</attribute><attribute>StartYear</attribute><attribute>StartDate</attribute><attribute>Deceased</attribute><attribute>StudentType</attribute><attribute>DateLeft</attribute><attribute>ReasonLeft</attribute><attribute>CandidateNumber</attribute><attribute>AlumniType</attribute><attribute>PreEnrolment</attribute><attribute>Archive</attribute><attribute>UniversalIdentificationNumber</attribute><attribute>Mailsuffix</attribute><attribute>PhysicaldeliveryOfficeName</attribute><attribute>contactID</attribute><attribute>contactName</attribute><attribute>contactEmailStaff</attribute><attribute>contactCount</attribute></mapping></primary_class_mappings><object_classes><object_class selected="-1" user_define="-1" configured="-1" anchor="" cd_name="container" dn_as_anchor="-1" /><object_class selected="-1" user_define="-1" configured="-1" anchor="" cd_name="person" dn_as_anchor="-1"><attribute mandatory="0">Code</attribute><attribute mandatory="0">FirstName</attribute><attribute mandatory="0">MiddleName</attribute><attribute mandatory="0">LastName</attribute><attribute mandatory="0">PreferredName</attribute><attribute mandatory="0">NName</attribute><attribute mandatory="0">FormerName</attribute><attribute mandatory="0">Sex</attribute><attribute mandatory="0">DOB</attribute><attribute mandatory="0">Year</attribute><attribute mandatory="0">Class</attribute><attribute mandatory="0">HomeGroup</attribute><attribute mandatory="0">House</attribute><attribute mandatory="0">AddressID</attribute><attribute mandatory="0">Address1</attribute><attribute mandatory="0">Address2</attribute><attribute mandatory="0">Address3</attribute><attribute mandatory="0">PostCode</attribute><attribute mandatory="0">Country</attribute><attribute mandatory="0">Email</attribute><attribute mandatory="0">PhoneFamily</attribute><attribute mandatory="0">PhoneHome</attribute><attribute mandatory="0">PhoneMobile</attribute><attribute mandatory="0">StartYear</attribute><attribute mandatory="0">StartDate</attribute><attribute mandatory="0">Deceased</attribute><attribute mandatory="0">StudentType</attribute><attribute mandatory="0">DateLeft</attribute><attribute mandatory="0">ReasonLeft</attribute><attribute mandatory="0">CandidateNumber</attribute><attribute mandatory="0">AlumniType</attribute><attribute mandatory="0">PreEnrolment</attribute><attribute mandatory="0">Archive</attribute><attribute mandatory="0">Mailsuffix</attribute><attribute mandatory="0">PhysicaldeliveryOfficeName</attribute><attribute mandatory="0">CeIder</attribute><attribute mandatory="-1">IdBID</attribute><attribute mandatory="-1">SchoolID</attribute><attribute mandatory="-1">StudentID</attribute><attribute mandatory="-1">UniversalIdentificationNumber</attribute></object_class><object_class cd_name="contact" selected="-1" user_define="0" configured="-1" anchor="" dn_as_anchor="-1"><attribute mandatory="0">contactName</attribute><attribute mandatory="0">contactEmailStaff</attribute><attribute mandatory="0">contactCount</attribute><attribute mandatory="0">SchoolID</attribute><attribute mandatory="-1">contactID</attribute><attribute mandatory="-1">IdBID</attribute></object_class><object_class cd_name="personEx" selected="-1" user_define="0" configured="-1" anchor="" dn_as_anchor="-1"><attribute mandatory="-1">UniversalIdentificationNumber</attribute><attribute mandatory="-1">CeIder</attribute><attribute mandatory="-1">SchoolID</attribute><attribute mandatory="-1">StudentID</attribute><attribute mandatory="-1">IdBID</attribute></object_class></object_classes><attributes><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="IdBID" sample_data="IdBID" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="SchoolID" sample_data="SchoolID" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="StudentID" sample_data="StudentID" type="Number" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Code" sample_data="Code" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="FirstName" sample_data="FirstName" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="MiddleName" sample_data="MiddleName" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="LastName" sample_data="LastName" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="PreferredName" sample_data="PreferredName" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="NName" sample_data="NName" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="FormerName" sample_data="FormerName" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Sex" sample_data="Sex" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="DOB" sample_data="DOB" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Year" sample_data="Year" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Class" sample_data="Class" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="HomeGroup" sample_data="HomeGroup" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="House" sample_data="House" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="AddressID" sample_data="AddressID" type="Number" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Address1" sample_data="Address1" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Address2" sample_data="Address2" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Address3" sample_data="Address3" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="PostCode" sample_data="PostCode" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Country" sample_data="Country" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Email" sample_data="Email" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="PhoneFamily" sample_data="PhoneFamily" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="PhoneHome" sample_data="PhoneHome" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="PhoneMobile" sample_data="PhoneMobile" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="StartYear" sample_data="StartYear" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="StartDate" sample_data="StartDate" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Deceased" sample_data="Deceased" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="StudentType" sample_data="StudentType" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="DateLeft" sample_data="DateLeft" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="ReasonLeft" sample_data="ReasonLeft" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="CandidateNumber" sample_data="CandidateNumber" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="AlumniType" sample_data="AlumniType" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="PreEnrolment" sample_data="PreEnrolment" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Archive" sample_data="Archive" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="UniversalIdentificationNumber" sample_data="UniversalIdentificationNumber" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Mailsuffix" sample_data="Mailsuffix" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="PhysicaldeliveryOfficeName" sample_data="PhysicaldeliveryOfficeName" type="String" multi_valued="0" /><attribute cd_name="contactID" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="contactName" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="contactEmailStaff" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="contactCount" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="Number" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="CeIder" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="0" upper_bound="" user_define="-1" /></attributes></xmlwizard><ma-help-text>UNIFY Identity Broker for SAS2IDM Adapter (UNIFY Solutions)</ma-help-text></ui-data><importing><anchor><attribute>UniversalIdentificationNumber</attribute></anchor><per-class-settings><class><name>container</name><anchor><dn /></anchor></class><class><name>person</name><anchor><dn /></anchor></class><class><name>contact</name><anchor><dn /></anchor></class><class><name>personEx</name><anchor><dn /></anchor></class></per-class-settings></importing><exporting></exporting><ldif_format><code_page>65001</code_page></ldif_format><primary_class_mappings><mapping><primary_class>container</primary_class><oc-value>container</oc-value></mapping><mapping><primary_class>person</primary_class><oc-value>person</oc-value></mapping><mapping><primary_class>contact</primary_class><oc-value>contact</oc-value></mapping><mapping><primary_class>personEx</primary_class><oc-value>personEx</oc-value></mapping></primary_class_mappings><enable-unapplied-merge>1</enable-unapplied-merge><password-extension-config><password-extension-enabled>0</password-extension-enabled><dll data-owner="ISV" /><password-set-enabled /><password-change-enabled /><connection-info><connect-to /><user /></connection-info><timeout /></password-extension-config><file-type>LDIF</file-type><extension-config><filename data-owner="ISV">Unify.IdentityBroker.FIMAdapter.dll</filename><export-mode data-owner="ISV">call-based</export-mode><import-enabled data-owner="ISV">1</import-enabled><export-enabled data-owner="ISV">1</export-enabled><connection-info><connect-to>http://localhost:59990/IdentityBroker/FIMLDIFAdapter.svc</connect-to><user></user></connection-info><attributes><attribute data-owner="ISV" name="AdapterId">69c49870-11b2-49aa-a479-a1e3e4f3a548</attribute><attribute data-owner="ISV" name="ImportFileFormat">LDIF</attribute><attribute data-owner="ISV" name="EnableReplay">false</attribute></attributes></extension-config></MAConfig>
+ </private-configuration>
+ <SyncConfig-refresh-schema>0</SyncConfig-refresh-schema>
+ <ma-partition-data>
+ <partition>
+  <id>{BDD48F56-2CCC-41DB-9FB0-7D4AFAF81FDD}</id>
+  <name>default</name>
+  <creation-time>2011-12-23 04:36:03.187</creation-time>
+  <last-modification-time>2022-11-29 00:06:09.103</last-modification-time>
+  <version>81</version>
+  <selected>1</selected>
+  <filter>
+   <object-classes>
+    <object-class>container</object-class>
+    <object-class>person</object-class>
+    <object-class>contact</object-class>
+    <object-class>personEx</object-class>
+   </object-classes>
+   <containers>
+    <exclusions/>
+    <inclusions>
+     <inclusion></inclusion>
+    </inclusions>
+   </containers>
+  </filter>
+  <allowed-operations>27</allowed-operations>
+  <current>
+   <batch-number>5959</batch-number>
+   <sequence-number>298707</sequence-number>
+  </current>
+  <last-successful-batch>5958</last-successful-batch>
+  <filter-hints>
+   <object-classes>
+    <object-class>
+     <name>container</name>
+     <hierarchy>
+      <object-class>container</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+    <object-class>
+     <name>person</name>
+     <hierarchy>
+      <object-class>person</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+    <object-class>
+     <name>contact</name>
+     <hierarchy>
+      <object-class>contact</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+    <object-class>
+     <name>personEx</name>
+     <hierarchy>
+      <object-class>personEx</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+   </object-classes>
+  </filter-hints>
+ </partition>
+</ma-partition-data>
+
+ <ma-run-data>
+ <run-configuration>
+  <id>{F6A27396-01D2-48A0-85CA-F50A4FF56562}</id>
+  <name>Delta import</name>
+  <creation-time>2011-12-23 04:36:03.247</creation-time>
+  <version>29</version>
+  <last-modification-time>2022-11-28 23:43:04.620</last-modification-time>
+  <configuration><step><step-type type="delta-import"><import-subtype>to-file</import-subtype><import-subtype>resume-from-file</import-subtype><import-subtype>to-cs</import-subtype></step-type><dropfile-name>SAS2IDM.DI.xml</dropfile-name><threshold><batch-size>1</batch-size></threshold><partition>{BDD48F56-2CCC-41DB-9FB0-7D4AFAF81FDD}</partition><custom-data><run-config><input-file>UNIFYDelta.txt</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{A7A89046-DF36-4BAF-8CDE-076474A3F40A}</id>
+  <name>Delta import and delta synchronization</name>
+  <creation-time>2011-12-23 04:36:03.247</creation-time>
+  <version>28</version>
+  <last-modification-time>2022-11-28 23:43:04.620</last-modification-time>
+  <configuration><step><step-type type="delta-import"><import-subtype>to-file</import-subtype><import-subtype>resume-from-file</import-subtype><import-subtype>to-cs</import-subtype></step-type><dropfile-name>SAS2IDM.DI.xml</dropfile-name><threshold><batch-size>1</batch-size></threshold><partition>{BDD48F56-2CCC-41DB-9FB0-7D4AFAF81FDD}</partition><custom-data><run-config><input-file>UNIFYDelta.txt</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step><step><step-type type="apply-rules"><apply-rules-subtype>apply-pending</apply-rules-subtype></step-type><threshold><batch-size>1</batch-size></threshold><partition>{BDD48F56-2CCC-41DB-9FB0-7D4AFAF81FDD}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{7735C45B-F143-4B43-8024-FB2BA0CA215A}</id>
+  <name>Delta synchronization</name>
+  <creation-time>2011-12-23 04:36:03.247</creation-time>
+  <version>28</version>
+  <last-modification-time>2022-11-28 23:43:04.620</last-modification-time>
+  <configuration><step><step-type type="apply-rules"><apply-rules-subtype>apply-pending</apply-rules-subtype></step-type><threshold /><partition>{BDD48F56-2CCC-41DB-9FB0-7D4AFAF81FDD}</partition><custom-data /></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{10B077A2-2498-4CAF-AAD6-797C9AAB2943}</id>
+  <name>Export</name>
+  <creation-time>2011-12-23 04:36:03.247</creation-time>
+  <version>28</version>
+  <last-modification-time>2022-11-28 23:43:04.620</last-modification-time>
+  <configuration><step><step-type type="export"></step-type><threshold><batch-size>1</batch-size></threshold><partition>{BDD48F56-2CCC-41DB-9FB0-7D4AFAF81FDD}</partition><custom-data><run-config><timeout>0</timeout></run-config></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{C6C39602-891A-4F00-BD82-5413FFA48470}</id>
+  <name>Full import</name>
+  <creation-time>2011-12-23 04:36:03.247</creation-time>
+  <version>29</version>
+  <last-modification-time>2022-11-28 23:43:04.620</last-modification-time>
+  <configuration><step><step-type type="full-import"><import-subtype>to-file</import-subtype><import-subtype>resume-from-file</import-subtype><import-subtype>to-cs</import-subtype></step-type><dropfile-name>SAS2IDM.FI.xml</dropfile-name><threshold><batch-size>1</batch-size></threshold><partition>{BDD48F56-2CCC-41DB-9FB0-7D4AFAF81FDD}</partition><custom-data><run-config><input-file>UNIFYFull.txt</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{C418A508-FD0F-4260-B6AD-A896A730730F}</id>
+  <name>Full import and full synchronization</name>
+  <creation-time>2011-12-23 04:36:03.247</creation-time>
+  <version>28</version>
+  <last-modification-time>2022-11-28 23:43:04.620</last-modification-time>
+  <configuration><step><step-type type="full-import"><import-subtype>to-file</import-subtype><import-subtype>resume-from-file</import-subtype><import-subtype>to-cs</import-subtype></step-type><dropfile-name>SAS2IDM.FI.xml</dropfile-name><threshold><batch-size>1</batch-size></threshold><partition>{BDD48F56-2CCC-41DB-9FB0-7D4AFAF81FDD}</partition><custom-data><run-config><input-file>UNIFYFull.txt</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step><step><step-type type="apply-rules"><apply-rules-subtype>reevaluate-flow-connectors</apply-rules-subtype></step-type><threshold><batch-size>1</batch-size></threshold><partition>{BDD48F56-2CCC-41DB-9FB0-7D4AFAF81FDD}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{6869A434-EC96-4891-BF34-94280506BC01}</id>
+  <name>Full synchronization</name>
+  <creation-time>2011-12-23 04:36:03.247</creation-time>
+  <version>28</version>
+  <last-modification-time>2022-11-28 23:43:04.620</last-modification-time>
+  <configuration><step><step-type type="apply-rules"><apply-rules-subtype>reevaluate-flow-connectors</apply-rules-subtype></step-type><threshold /><partition>{BDD48F56-2CCC-41DB-9FB0-7D4AFAF81FDD}</partition><custom-data /></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{3FA3C909-79CF-40E9-90B7-4C2A22519D61}</id>
+  <name>Full import and delta synchronization</name>
+  <creation-time>2011-12-23 04:36:03.247</creation-time>
+  <version>28</version>
+  <last-modification-time>2022-11-28 23:43:04.620</last-modification-time>
+  <configuration><step><step-type type="full-import"><import-subtype>to-file</import-subtype><import-subtype>resume-from-file</import-subtype><import-subtype>to-cs</import-subtype></step-type><dropfile-name>SAS2IDM.FI.xml</dropfile-name><threshold><batch-size>1</batch-size></threshold><partition>{BDD48F56-2CCC-41DB-9FB0-7D4AFAF81FDD}</partition><custom-data><run-config><input-file>UNIFYFull.txt</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step><step><step-type type="apply-rules"><apply-rules-subtype>apply-pending</apply-rules-subtype></step-type><threshold><batch-size>1</batch-size></threshold><partition>{BDD48F56-2CCC-41DB-9FB0-7D4AFAF81FDD}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{A22204CF-FE98-4D3E-995E-6F1AA99E8AF0}</id>
+  <name>FI</name>
+  <creation-time>2022-11-28 23:43:04.130</creation-time>
+  <version>2</version>
+  <last-modification-time>2022-11-28 23:43:04.620</last-modification-time>
+  <configuration><step><step-type type="full-import"><import-subtype>to-cs</import-subtype></step-type><threshold><batch-size>1</batch-size></threshold><partition>{BDD48F56-2CCC-41DB-9FB0-7D4AFAF81FDD}</partition><custom-data><run-config><input-file>UNIFYFull.txt</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{1B7164F3-33E9-4309-ADE9-DF3F410F3314}</id>
+  <name>FS</name>
+  <creation-time>2022-11-28 23:43:04.130</creation-time>
+  <version>2</version>
+  <last-modification-time>2022-11-28 23:43:04.620</last-modification-time>
+  <configuration><step><step-type type="apply-rules"><apply-rules-subtype>reevaluate-flow-connectors</apply-rules-subtype></step-type><threshold><batch-size>1</batch-size></threshold><partition>{BDD48F56-2CCC-41DB-9FB0-7D4AFAF81FDD}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{7AF4D074-43FC-4BAC-A41C-1A67F16C2828}</id>
+  <name>FIDS</name>
+  <creation-time>2015-11-27 04:50:09.387</creation-time>
+  <version>15</version>
+  <last-modification-time>2022-11-28 23:43:04.620</last-modification-time>
+  <configuration><step><step-type type="full-import"></step-type><threshold><batch-size>1</batch-size></threshold><partition>{BDD48F56-2CCC-41DB-9FB0-7D4AFAF81FDD}</partition><custom-data><run-config><input-file>UNIFYFull.txt</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step></configuration>
+ </run-configuration>
+</ma-run-data>
+
+ <capabilities-mask>8079271</capabilities-mask>
+ <export-type>3</export-type>
+ <dn-construction/>
+ <password-sync><maximum-retry-count>10</maximum-retry-count><retry-interval>60</retry-interval><allow-low-security>0</allow-low-security></password-sync>
+ <component_mappings />
+</ma-data>
+
+</saved-ma-configuration>

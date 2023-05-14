@@ -1,0 +1,20 @@
+﻿@using Unify.Connect.Web
+@model CSVConnectorViewInformation
+
+<table class="RightSpaced BottomSpaced VerticalAlignTable">
+    @if (!Model.Local)
+    {
+        <tr>
+            <td>
+                @ConnectorControllerResources.CSVConnectorAgentIdLabel
+            </td>
+            <td>
+                @Html.AgentLinkFor(Model.AgentId)
+            </td>
+        </tr>
+    }
+    <tr>
+        <td>@ConnectorControllerResources.CSVConnectorPathLabel</td>
+        <td>@Model.FilePath</td>
+    </tr>
+</table>

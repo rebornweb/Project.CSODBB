@@ -1,0 +1,60 @@
+﻿@model Unify.EventBroker.Web.Models.IOperationListWithStatus
+@using Unify.Framework.Web
+
+
+@if (Model.ClientStatus.OperationEngineStatus.SchedulerState != SchedulerState.Stopped)
+{
+    if (Model.OperationLists.Any())
+    {
+    <table>
+        <tbody>
+            @foreach (var operationList in Model.OperationLists)
+            {
+                var status = Model.ClientStatus.OperationListStatuses[operationList.Id];
+
+                <tr>
+                    <td>
+                        @if (status.State == OperationListState.Running)
+                        {
+                            <img src="@Url.WebIcon("Loader.gif")" alt="@OperationControllerResources.RunningAlt" title="@OperationControllerResources.RunningAlt" />
+                        }
+                        else if (operationList.Enabled && Html.IsInRole(UnifyRoles.Write) &&
+                                 Model.ClientStatus.OperationEngineStatus.SchedulerState == SchedulerState.Started)
+                        {
+                            using (Html.BeginForm("Execute", "Operation", new { operationListId = operationList.Id, flags = RunOperationListFlags.SkipDelay }, FormMethod.Post, new { @class = "IconForm" }))
+                            {
+                                <input type="image"
+                                     src="@Url.WebIcon("bullet_go.png")" 
+                                     alt="@OperationControllerResources.ExecuteAlt" 
+                                     title="@OperationControllerResources.ExecuteAlt" />
+                            }
+                        }
+                    </td>
+
+                    <td>
+                        @if (Html.IsInRole(UnifyRoles.Write))
+                        {
+                            @Html.ActionLink(operationList.Name, "OperationList", new { id = operationList.Id })}
+                        else
+                        {
+                            @operationList.Name
+                        }
+                    </td>
+
+                    <td>
+                        <span class="OperationStatusText">@Html.FriendlyNextRun(Model.ClientStatus.OperationEngineStatus.SchedulerState, status)</span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    }
+    else
+    { 
+        <p>@OperationControllerResources.OperationListNoCurrentOperationLists</p>
+    }
+}
+else
+{
+    <p>@OperationControllerResources.SchedulerDisabledNoneDisplayed</p>
+}

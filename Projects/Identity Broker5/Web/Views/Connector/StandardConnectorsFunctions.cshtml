@@ -1,0 +1,155 @@
+﻿@using Unify.Framework
+@using Unify.Framework.Web
+@model Unify.Connect.Web.Models.Connector.StandardConnectorsFunctionsViewInformation
+@{
+    string addConnectorImageUrl = Url.WebIcon("add.png");
+    string xsltImageUrl = Url.WebIcon("report.png");
+    string clearConnectorImageUrl = Url.WebIcon("database_delete.png");
+    string deltaImportImageUrl = Url.WebIcon("table_relationship.png");
+    string fullImportImageUrl = Url.WebIcon("table_refresh.png");
+    string enableImageUrl = Url.WebIcon("control_play.png");
+    string disableImageUrl = Url.WebIcon("control_stop.png");
+    string deleteImageUrl = Url.WebIcon("delete.png");
+
+    const string formId = "ConnectorFunctionsForm";
+    const string deleteInputId = "ConnectorFunctionsDeleteButton";
+    const string deleteInputTextId = "ConnectorFunctionsDeleteTextButton";
+    const string clearInputId = "ConnectorFunctionsClearButton";
+    const string clearInputTextId = "ConnectorFunctionsClearTextButton";
+   
+    IUnifyBranding branding = ViewContext.GetCurrentBranding();
+    ViewBag.Title = Html.Title(TitleResources.ConnectorIndexTitle);
+    string addConnectorImageHtml = string.Format("<img alt=\"{0}\"" + "title=\"{0}\"" + "src=\"{1}\"" + "id=\"AddConnectorButton\"/> {0}", ConnectorControllerResources.AddConnectorButtonAltText, addConnectorImageUrl);
+    string connectorFunctionsUrl = Url.Action("ConnectorFunctions", "Connector");
+}
+
+<div class="functionsMenuIcon">
+    <a href="@Url.Action("Create", "Connector")">@Html.Raw(addConnectorImageHtml)</a>
+</div>
+<div>
+    @using (Html.BeginForm("ConnectorFunctions", "Connector", new { groupId = Model.SelectedGroup }, FormMethod.Post, new { @class = "functionsMenuForm", id = formId, style = "margin-left:-10px;" }))
+    {
+        <div class="scriptonly" id="ConnectorFunctions">
+            <div class="functionsMenuIcon">
+                <input type="submit" value="Enable" name="Function" style="background: url('@enableImageUrl') no-repeat;"
+                       class="SubmitImageButton ConnectorsFunctionsImageButton" title="@ConnectorControllerResources.IndexEnableConnectorsAltText" />
+                <input type="submit" value="Enable" name="Function" class="SubmitImageText ConnectorsFunctionsTextButton" alt="Enable" 
+                       title="@ConnectorControllerResources.IndexEnableConnectorsAltText" />
+            </div>
+
+            <div class="functionsMenuIcon">
+                <input type="submit" value="Disable" name="Function" style="background: url('@disableImageUrl') no-repeat;"
+                       class="SubmitImageButton ConnectorsFunctionsImageButton" title="@ConnectorControllerResources.IndexDisableConnectorsAltText" />
+                <input type="submit" value="Disable" name="Function" class="SubmitImageText ConnectorsFunctionsTextButton" alt="Disable" 
+                       title="@ConnectorControllerResources.IndexDisableConnectorsAltText" />
+            </div>
+
+            <div class="functionsMenuIcon">
+                <input type="submit" value="Delete" name="Function" id="@deleteInputId" style="background: url('@deleteImageUrl') no-repeat;"
+                       class="SubmitImageButton ConnectorsFunctionsImageButton" title="@ConnectorControllerResources.IndexDeleteConnectorsAltText" />
+                <input type="submit" value="Delete" name="Function" id="@deleteInputTextId" class="SubmitImageText ConnectorsFunctionsTextButton" alt="Delete" 
+                       title="@ConnectorControllerResources.IndexDeleteConnectorsAltText" />
+            </div>
+
+            <div class="functionsMenuIcon">
+                <input type="submit" value="ImportAll" name="Function" style="background: url('@fullImportImageUrl') no-repeat;"
+                       class="SubmitImageButton ConnectorsFunctionsImageButton" title="@ConnectorControllerResources.IndexImportAllAltText" />
+                <input type="submit" value="Import All" name="Function"  class="SubmitImageText ConnectorsFunctionsTextButton" alt="Import All" 
+                       title="@ConnectorControllerResources.IndexImportAllAltText" />
+            </div>
+
+            <div class="functionsMenuIcon">
+                <input type="submit" value="ImportChanges" name="Function" style="background: url('@deltaImportImageUrl') no-repeat;"
+                       class="SubmitImageButton ConnectorsFunctionsImageButton" title="@ConnectorControllerResources.IndexImportChangesAltText" />
+                <input type="submit" value="Import Changes" name="Function"  class="SubmitImageText ConnectorsFunctionsTextButton" alt="Import Changes" 
+                       title="@ConnectorControllerResources.IndexImportChangesAltText" />
+            </div>
+
+            <div class="functionsMenuIcon">
+                <input type="submit" value="Clear" name="Function" id="@clearInputId" style="background: url('@clearConnectorImageUrl') no-repeat;"
+                       class="SubmitImageButton ConnectorsFunctionsImageButton" title="@ConnectorControllerResources.IndexClearConnectorsAltText" />
+                <input type="submit" value="Clear" name="Function" id="@clearInputTextId" class="SubmitImageText ConnectorsFunctionsTextButton" alt="Clear" 
+                       title="@ConnectorControllerResources.IndexClearConnectorsAltText" />
+            </div>
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('.scriptonly').show();
+
+        function postConnectorFunctions(functionValue) {
+            var connectorsArr = new Array();
+            var maxIndex = 0;
+            $(".ConnectorSelections").each(function () {
+                if ($(this).prop("checked")) {
+                    connectorsArr[maxIndex] = $(this).val();
+                    maxIndex++;
+                }
+            });
+
+            var postData = { 'connectors': connectorsArr, 'function': functionValue, 'groupId': $("#ConnectorGroupSelector").val() };
+            $.ajaxSettings.traditional = true;
+
+            $.ajax({
+                type: "POST",
+                url: "@connectorFunctionsUrl",
+                data: postData,
+                success: function () {
+                    if ('@TempData["connectorFunctionDestination"]' == "/") {
+                        location.href = "/";
+                    } else {
+                        location.reload(true);
+                    }
+                }
+            });
+        }
+
+        // Block form submit.
+        $(".functionsMenuForm").on('submit', function (e) {
+            e.preventDefault();
+        });
+
+        $(".ConnectorsFunctionsImageButton").each(function () {
+            if ($(this).filter("[id]").length <= 0) {
+                $(this).on("click", function () {
+                    postConnectorFunctions($(this).val());
+                });
+            }
+        });
+
+        $(".ConnectorsFunctionsTextButton").each(function () {
+            if ($(this).filter("[id]").length <= 0) {
+                $(this).on("click", function () {
+                    postConnectorFunctions($(this).val().replace(/\s+/g, '')); // remove spaces
+                });
+            }
+        });
+
+        var deleteBtns = ["#@deleteInputId", "#@deleteInputTextId"];
+        for (var j = 0; j < deleteBtns.length; j++) {
+            $(deleteBtns[j]).jQueryUiDialogGenerator({
+                messageHtmlCodeStr: '<div>@ConnectorControllerResources.DeleteConnectorConfirmationWarningText</div><br /><div>@string.Format(ConnectorControllerResources.DeleteConnectorWarningDescriptionText, branding.ProductName)</div><br /><div>@ConnectorControllerResources.DeleteConnectorDescriptionText @WebStudioResources.ThisCannotBeUndoneText</div><br />',
+                boundElementName: "Function", // name attribute of the bound element
+                btnSourceType: sourceTypeEnumFunc().submitBtnSelfDefine, // btnSourceType == sourceTypeEnumFunc().actionLink   means btn is action link <a>, btnSourceType == sourceTypeEnumFunc().formInput    means the btn is <form><input>
+                submitBtnClick: function () {
+                    postConnectorFunctions($(deleteBtns[0]).val());
+                }
+            });
+        }
+        
+        // clear connectors btn confirmation dialog
+        var clearBtns = ["#@clearInputId", "#@clearInputTextId"];
+        for (var k = 0; k < clearBtns.length; k++) {
+            $(clearBtns[k]).jQueryUiDialogGenerator({
+                messageHtmlCodeStr: '<div>@ConnectorControllerResources.ClearConnectorConfirmationWarningText</div><br /><div>@string.Format(ConnectorControllerResources.ClearConnectorDescriptionText, branding.ProductName) @WebStudioResources.ThisCannotBeUndoneText</div><br />',
+                boundElementName: "Function", // name attribute of the bound element
+                btnSourceType: sourceTypeEnumFunc().submitBtnSelfDefine, // btnSourceType == sourceTypeEnumFunc().actionLink   means btn is action link <a>, btnSourceType == sourceTypeEnumFunc().formInput    means the btn is <form><input>
+                submitBtnClick: function () {
+                    postConnectorFunctions($(clearBtns[0]).val());
+                }
+            });
+        }
+    });
+</script>

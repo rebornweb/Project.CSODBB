@@ -1,0 +1,38 @@
+﻿@using Unify.Framework.Web
+@using Unify.Connect.Web
+@using Unify.Framework.Web
+
+@model IRelationshipsTransformation
+@{
+    string uniqueId = Guid.NewGuid().ToString("N");
+    string mappingStrHiddenID = string.Concat(uniqueId, "_mappingStrHiddenID");
+    string mappingStrWidgetID = string.Concat("mappingStrWidgetID_", uniqueId);
+
+    // joinMappingStrGenerator
+    string leftArr = Model.Relationships.LeftSchema.GroupedKeys.DataArrayString();
+    string rightArr = Model.Relationships.RightSchema.GroupedKeys.DataArrayString();
+    string inputjQueryMappingStr = string.IsNullOrEmpty(Model.Relationships.Text) ? string.Empty : Model.Relationships.Text.Replace(Environment.NewLine, "\\n");
+    var leftAndRightSeparatorStrDisplay = (Model.LeftAndRightSeparatorStrDisplay == "JoinTransformationViewInformation") ? "join on" : Model.LeftAndRightSeparatorStrDisplay;
+}
+@using (Html.MetaDataFor(model => model.Relationships, new { description = Model.RelationshipsDescription, hideRequired = true }, new { @class = "chzn-form-fieldset-container" }))
+{
+    @Html.TextAreaFor(model => model.Relationships.Text, new { id = @mappingStrHiddenID })
+    @Html.ValidationMessageFor(model => model.Relationships.Text)
+    <div id="@mappingStrWidgetID"></div>
+}
+<script type="text/javascript">
+    $(function () {
+        $("#@mappingStrHiddenID").hide();
+        $("#@mappingStrWidgetID").joinMappingStrGenerator({
+            columnMappingStr: "@inputjQueryMappingStr",
+            leftColumnDataArr: @Html.Raw(leftArr),
+            rightColumnDataArr: @Html.Raw(rightArr),
+            componentSeparatorStrDisplay: '<br/>',
+            leftAndRightSeparatorStrDisplay: ' @leftAndRightSeparatorStrDisplay ',
+            leftAndRightSeparatorStrDisplayInColumnMappingStrFieldDisplay: '  <span style="font-weight:bold; color:blue; font-size:14px;"> @leftAndRightSeparatorStrDisplay </span> ',
+            afterCommit: function (event, mappingStrDisplay, mappingStrReal) {
+                $("#@mappingStrHiddenID").val(mappingStrReal);
+            }
+        });
+    });
+</script>

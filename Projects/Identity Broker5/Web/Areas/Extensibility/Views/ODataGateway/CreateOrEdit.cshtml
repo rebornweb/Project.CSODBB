@@ -1,0 +1,64 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework
+@using Unify.Framework.Api
+@using Unify.Framework.Web
+@model ODataGatewayAgentViewInformation
+
+@using (Html.DecorateForm(
+    () => Html.BeginForm("CreateOrEdit", "ODataGateway", new {area = "Extensibility"}),
+    GatewayResources.SaveGatewaySubmit,
+    "SaveGatewayForm",
+    GatewayResources.SaveGatewayDescription))
+{
+    @Html.GatewayDetailsFor(model => model)
+
+    <fieldset>
+        <legend>@GatewayResources.SettingsLegendText</legend>
+
+        @using (Html.MetaDataFor(model => model.Address, new {description = GatewayResources.ODataSettingsFormAddressHint}))
+        {
+            @Html.LabelFor(model => model.Address, GatewayResources.ODataSettingsFormAddressLabelText)
+            @Html.TextBoxFor(model => model.Address)
+        }
+        @using (Html.MetaDataFor(model => model.AuthenticationType, new {description = GatewayResources.ODataSettingsFormAuthenticationTypeHint}))
+        {
+            @Html.LabelFor(model => model.AuthenticationType, GatewayResources.ODataSettingsFormAuthenticationTypeLabelText)
+            @Html.EnumDropDownList(model => model.AuthenticationType, new {id = "AuthenticationTypeDropdown"})
+        }
+        <div id="BearerAuthSection">
+            @using (Html.MetaDataFor(model => model.Tenant, new {description = GatewayResources.ODataSettingsFormTenantHint}))
+            {
+                @Html.LabelFor(model => model.Tenant, GatewayResources.ODataSettingsFormTenantLabelText)
+                @Html.TextBoxFor(model => model.Tenant)
+            }
+            @using (Html.MetaDataFor(model => model.Audience, new {description = GatewayResources.ODataSettingsFormAudienceHint}))
+            {
+                @Html.LabelFor(model => model.Audience, GatewayResources.ODataSettingsFormAudienceLabelText)
+                @Html.TextBoxFor(model => model.Audience)
+            }
+        </div>
+    </fieldset>
+}
+
+<script type="text/javascript" language="javascript">
+    var authenticationTypeDropdown = $('#AuthenticationTypeDropdown');
+    var bearerAuthSection = $('#BearerAuthSection');
+
+    function AuthChanged() {
+        var value = authenticationTypeDropdown.val();
+        if (value === "@UnifyAuthenticationType.AzureActiveDirectoryBearer.ToString()") {
+            bearerAuthSection.show();
+        } else {
+            bearerAuthSection.hide();
+        }
+    }
+
+    $(document).ready(function () {
+        authenticationTypeDropdown.on("change",
+            function() {
+                AuthChanged();
+            });
+        AuthChanged();
+    });
+</script>

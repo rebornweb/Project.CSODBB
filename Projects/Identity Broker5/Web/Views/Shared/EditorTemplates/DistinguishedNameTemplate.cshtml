@@ -1,0 +1,45 @@
+﻿@using Unify.Framework.Web
+@model DistinguishedNameTemplateViewInformation
+@{
+    string uniqueId = Guid.NewGuid().ToString("N");
+    string templateId = string.Concat(uniqueId, "_template");
+    string dnWidgetComboBox = string.Concat("DNWidgetComboBox_", uniqueId);
+
+    // dnStrGenerator
+    string leftArray = Model.AvailableAttributes.Concat(Model.AvailableFullSelections).DataArrayString();
+    string rightArray = Model.AvailableValues.Except(Model.AvailableFullSelections).DataArrayString();
+    string dnTemplate = string.IsNullOrWhiteSpace(Model.DistinguishedNameTemplate) ? string.Empty : Model.DistinguishedNameTemplate.Replace(new string(new[] { '\\' }), new string(new[] { '\\', '\\' }));
+}
+<div class="DnComponents">
+    @Html.HiddenShortName("template", @dnTemplate, new { id = @templateId })
+    @if (Model.Adapters != null)
+    {
+        //if in DN Transformation mode
+        Guid selectedAdapterId = Model.DistinguishedNameAdapterId.HasValue ? Model.DistinguishedNameAdapterId.Value : Guid.Empty;
+        IEnumerable<SelectListItem> adapterSelectItems = new[] { new SelectListItem { Value = string.Empty, Text = SharedResources.DistinguishedNameTemplateNoAdapterText, Selected = selectedAdapterId == Guid.Empty } }
+            .Concat(Model.Adapters.Select(adapter => new SelectListItem { Value = adapter.Key.ToString(), Text = adapter.Value, Selected = adapter.Key == selectedAdapterId }));
+        <div style="float: left; margin-bottom: 20px; padding-left: 1em; padding-top: 0.6em;">
+            @using (Html.MetaData("dnAdapterId", new { hideRequired = true }))
+            {
+                @Html.LabelShortName("dnAdapterId", SharedResources.DistinguishedNameTemplateAdapterIdLabel)
+                @Html.DropDownListShortName("dnAdapterId", adapterSelectItems, new { title = SharedResources.DistinguishedNameTemplateAdapterIdDescription })
+            }
+        </div>
+    }
+    else
+    {
+        //if in Edit DN mode
+        @Html.HiddenShortName("dnAdapterId", null, null)
+    }
+    <div id="@dnWidgetComboBox"></div>
+    <script type="text/javascript">
+        $(function () {
+            $("#" + "@dnWidgetComboBox").dnStrGenerator({
+                dnStr: "@dnTemplate",
+                leftColumnDataArr: @Html.Raw(leftArray),
+                rightColumnDataArr: @Html.Raw(rightArray),
+                afterCommit: function(event, mappingStrDisplay, mappingStrReal) {$("#@templateId").val(mappingStrReal);}
+            });
+        });
+    </script>
+</div>

@@ -1,0 +1,143 @@
+﻿@using Unify.EventBroker.Web.Views.Agents.FIMAutoConfig
+@using Unify.Framework.Web
+@model Unify.EventBroker.Web.Models.Operation.OperationListFunctionsViewInformation
+@{
+    // Images
+    string enableImageUrl = Url.WebIcon("control_play.png");
+    string disableImageUrl = Url.WebIcon("control_stop.png");
+    string restWatermarksUrl = Url.WebIcon("table_refresh.png");
+    string copyOperationListImageUrl = Url.WebIcon("page_copy.png");
+    string editOperationListImageUrl = Url.WebIcon("wrench.png");
+    string executeOperationListImageUrl = Url.WebIcon("script_go.png");
+    string executeSkipCheckOperationListImageUrl = Url.WebIcon("bullet_go.png");
+    string operationListDownloadWorkflowScriptImageUrl = Url.WebIcon("package_link.png");
+    // 
+    // Roles
+    bool inOperationsEditRole = Html.IsInRole(UnifyRoles.Write);
+    bool inOperationsReadRole = Html.IsInRole(UnifyRoles.Read);
+    bool inOperationsDeleteRole = Html.IsInRole(UnifyRoles.Full);
+    // Model value
+    Guid operationListId = Model.OperationListId;
+    bool isNotSchedulerStateStarting = Model.IsNotSchedulerStateStarting;
+    bool isOperationListEnabled = Model.IsOperationListEnabled;
+    bool isNotOperationListStateRunning = Model.IsNotOperationListStateRunning;
+    bool canExecuteWithDelay = Model.CanExecuteWithDelay;
+    // Execute
+    const RunOperationListFlags runFlags = RunOperationListFlags.SkipDelay;
+    const RunOperationListFlags runSkipCheckFlags = RunOperationListFlags.SkipCheck | RunOperationListFlags.SkipDelay;
+    const RunOperationListFlags runWithDelayFlags = RunOperationListFlags.None;
+    const RunOperationListFlags runWithDelaySkipCheckFlags = RunOperationListFlags.SkipCheck;
+    // buttons
+    string editOperationListHtml = string.Format("<img alt=\"{1}\"" + "title=\"{1}\"" + "src=\"{2}\"" + "id=\"editOperationListBtn\"/> {0}", OperationControllerResources.EditOperationListName, OperationControllerResources.EditOperationListText, editOperationListImageUrl);
+    string copyOperationListHtml = string.Format("<img alt=\"{1}\"" + "title=\"{1}\"" + "src=\"{2}\"" + "id=\"copyOperationListBtn\"/> {0}", OperationControllerResources.CopyOperationListName, OperationControllerResources.CopyOperationListAltText, copyOperationListImageUrl);
+    string operationListDownloadWorkflowScriptHtml = string.Format("<img alt=\"{1}\"" + "title=\"{1}\"" + "src=\"{2}\"" + "id=\"operationListDownloadWorkflowScriptBtn\"/> {0}", AutoConfigurationResources.DownloadWorkflowScriptAltText, AutoConfigurationResources.DownloadWorkflowScriptAltText, operationListDownloadWorkflowScriptImageUrl);
+    // deleted operation list btn
+    string deleteImageUrl = Url.WebIcon("delete.png");
+    const string modifyFormId = "modifyForm";
+    const string deleteInputId = "OperationListsFunctionDeleteButton";
+    const string deleteInputTextId = "OperationListsFunctionDeleteTextButton";
+    const string boundButtonName = "OperationListsFunctionDeleteTextButton";
+    string operationListDeleteUrl = Url.Action("ModifyOperationLists", "Operation");
+}
+@if (isNotSchedulerStateStarting && inOperationsReadRole && inOperationsEditRole)
+{
+    if (isOperationListEnabled)
+    {
+        using (Html.BeginForm("DisableOperationList", "Operation", new {id = operationListId}, FormMethod.Post, new {@class = "functionsMenuForm", style = "margin-left:-5px;"}))
+        {
+            <div class="functionsMenuIcon">
+                <input type="submit" value="@OperationControllerResources.DisableText" name="" style="background: url('@disableImageUrl') no-repeat;"
+                       class="OperationListFunctionsButton SubmitImageButton" alt="@OperationControllerResources.DisableOperationListAlt" title="@OperationControllerResources.DisableOperationListAlt" />
+                <input type="submit" value="@OperationControllerResources.DisableText" name="" class="OperationListFunctionsButton SubmitImageText"
+                       alt="@OperationControllerResources.DisableOperationListAlt" title="@OperationControllerResources.DisableOperationListAlt" />
+            </div>
+        }
+    }
+    else
+    {
+        using (Html.BeginForm("EnableOperationList", "Operation", new {id = operationListId}, FormMethod.Post, new {@class = "functionsMenuForm", style = "margin-left:-5px;"}))
+        {
+            <div class="functionsMenuIcon">
+                <input type="submit" value="@OperationControllerResources.EnableText" name="" style="background: url('@enableImageUrl') no-repeat;"
+                       class="OperationListFunctionsButton SubmitImageButton" alt="@OperationControllerResources.EnableOperationListAlt" title="@OperationControllerResources.EnableOperationListAlt" />
+                <input type="submit" value="@OperationControllerResources.EnableText" name="" class="OperationListFunctionsButton SubmitImageText"
+                       alt="@OperationControllerResources.EnableOperationListAlt" title="@OperationControllerResources.EnableOperationListAlt" />
+            </div>
+        }
+        <div class="functionsMenuIcon">
+            <a href="@Url.Action("Edit", "Operation", new {id = operationListId})">@Html.Raw(editOperationListHtml)</a>
+        </div>
+        if (isNotOperationListStateRunning)
+        {
+            <div class="functionsMenuIcon">
+                <a href="@Url.Action("CopyOperationList", "Operation", new {operationListId})">@Html.Raw(copyOperationListHtml)</a>
+            </div>
+            using (Html.BeginForm("ResetStoredValues", "Operation", new {id = operationListId}, FormMethod.Post, new {@class = "functionsMenuForm", style = "margin-left:-5px;"}))
+            {
+                <div class="functionsMenuIcon">
+                    <input type="submit" value="@OperationControllerResources.OperationListResetWatermarkName" name="" style="background: url('@restWatermarksUrl') no-repeat;"
+                           class="OperationListFunctionsButton SubmitImageButton" alt="@OperationControllerResources.OperationResetWatermarkAlt" title="@OperationControllerResources.OperationResetWatermarkAlt" />
+                    <input type="submit" value="@OperationControllerResources.OperationListResetWatermarkName" name="" class="OperationListFunctionsButton SubmitImageText"
+                           alt="@OperationControllerResources.OperationResetWatermarkAlt" title="@OperationControllerResources.OperationResetWatermarkAlt" />
+                </div>
+            }
+        }
+    }
+}
+@if (isNotOperationListStateRunning && isNotSchedulerStateStarting && isOperationListEnabled && inOperationsReadRole)
+{
+    <span>@RenderOperationListRunOption(operationListId, OperationControllerResources.OperationListRunFlagsName, OperationControllerResources.OperationListRunFlagsAltText, executeOperationListImageUrl, runFlags)</span>
+    <span>@RenderOperationListRunOption(operationListId, OperationControllerResources.OperationListRunSkipCheckFlagsName, OperationControllerResources.OperationListRunSkipCheckFlagsAltText, executeSkipCheckOperationListImageUrl, runSkipCheckFlags)</span>
+    if (canExecuteWithDelay)
+    {
+        <span>@RenderOperationListRunOption(operationListId, OperationControllerResources.OperationListRunWithDelayFlagsName, OperationControllerResources.OperationListRunWithDelayFlagsAltText, executeOperationListImageUrl, runWithDelayFlags)</span>
+        <span>@RenderOperationListRunOption(operationListId, OperationControllerResources.OperationListRunWithDelaySkipCheckFlagsName, OperationControllerResources.OperationListRunWithDelaySkipCheckFlagsAltText, executeSkipCheckOperationListImageUrl, runWithDelaySkipCheckFlags)</span>
+    }
+}
+@helper RenderOperationListRunOption(Guid operationListId, string value, string alt, string image, RunOperationListFlags flags)
+{
+    using (Html.BeginForm("Execute", "Operation", new {operationListId, flags}, FormMethod.Post, new {@class = "functionsMenuForm", style = "margin-left:-5px;"}))
+    {
+        <div class="functionsMenuIcon">
+            <input type="submit" value="@value" name="" style="background: url('@image') no-repeat;"
+                   class="OperationListFunctionsButton SubmitImageButton" alt="@alt" title="@alt" />
+            <input type="submit" value="@value" name="" class="OperationListFunctionsButton SubmitImageText"
+                   alt="@alt" title="@alt" />
+        </div>
+    }
+}
+<div class="functionsMenuIcon">
+    <a href="@Url.Action("DownloadConfiguredWorkflowScript", "Agents", new { operationListId, workflowType = FIMPortalWorkflowType.DataChanges })">@Html.Raw(operationListDownloadWorkflowScriptHtml)</a>
+</div>
+@if (inOperationsDeleteRole && isNotSchedulerStateStarting)
+{
+    using (Html.BeginForm("DeleteOperationList", "Operation", new { operationListId }, FormMethod.Post, new { @class = "functionsMenuForm", id = modifyFormId, style = "margin-left:-5px;" }))
+    {
+        <div class="functionsMenuIcon">
+            <input type="image" value="@OperationControllerResources.OperationListDeleteName" name="@boundButtonName" id="@deleteInputId" src="@deleteImageUrl"
+                   class="OperationListsFunctionsButton SubmitImageButton" alt="@OperationControllerResources.OperationListDeleteAltText" title="@OperationControllerResources.OperationListDeleteAltText" />
+            <input type="submit" value="@OperationControllerResources.OperationListDeleteName" name="@boundButtonName" id="@deleteInputTextId" class="OperationListsFunctionsButton SubmitImageText"
+                   alt="@OperationControllerResources.OperationListDeleteAltText" title="@OperationControllerResources.OperationListDeleteAltText" />
+        </div>
+    }
+}
+<script type="text/javascript">
+    $(function () {
+        // Block form submit.
+        $("#@modifyFormId").on('submit', function (e) {
+            e.preventDefault();
+        });
+        // delete operation list btn dialog
+        var deleteBtns = ["#@deleteInputId", "#@deleteInputTextId"];
+        for (var j = 0; j < deleteBtns.length; j++) {
+            $(deleteBtns[j]).jQueryUiDialogGenerator({
+                messageHtmlCodeStr: '<div>@OperationControllerResources.OperationListDetailsDeleteOperationListConfirmationMessage</div>',
+                boundElementName: "@boundButtonName", // name attribute of the bound element
+                btnSourceType: sourceTypeEnumFunc().submitBtnSelfDefine, // btnSourceType == sourceTypeEnumFunc().actionLink   means btn is action link <a>, btnSourceType == sourceTypeEnumFunc().formInput    means the btn is <form><input>
+                submitBtnClick: function () {
+                    $("#@modifyFormId").off('submit').submit();
+                }
+            });
+        }
+    });
+</script>

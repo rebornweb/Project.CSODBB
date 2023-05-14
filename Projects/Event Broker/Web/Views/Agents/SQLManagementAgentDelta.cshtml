@@ -1,0 +1,17 @@
+﻿@model Unify.Product.EventBroker.FIM.SQLServerManagementAgentConfigurationViewInformation
+           
+@using Unify.Framework.Web
+
+@Html.Hidden("AgentType", Model.DatabaseType)
+
+@using (Html.MetaDataFor(model => model.DeltaQuery, new { description = OperationControllerResources.SQLDeltaQueryDescription }))
+{
+    @Html.LabelFor(model => model.DeltaQuery, OperationControllerResources.SQLDeltaQueryName)
+    @Html.TextAreaFor(model => model.DeltaQuery, new{@class="wide-text", @rows = 10})
+}
+
+@using (Html.MetaDataFor(model => model.ClearChangesQuery, new { description = OperationControllerResources.SQLClearChangesQueryDescription }))
+{
+    @Html.LabelFor(model => model.ClearChangesQuery, OperationControllerResources.SQLClearChangesQueryName)
+    @Html.TextAreaFor(model => model.ClearChangesQuery, new { @class = "wide-text", @rows = 10 })
+}

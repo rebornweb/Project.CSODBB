@@ -1,0 +1,73 @@
+﻿@using Unify.Framework.Web
+@using Unify.Connect.Web.Extensions
+@model AdaptersViewInformation
+@{
+    bool anyAdapters = Model.Adapters.Any();
+}
+@if (anyAdapters)
+{
+    foreach (AdapterViewInformation adapter in Model.Adapters)
+    {
+        @RenderAdapter(adapter)
+    }
+}
+else
+{
+    if (Model.GroupId == null)
+    {
+        <p class="ListedAdapter">@AdapterResources.IndexNoAdaptersMessage</p>
+    }
+    else
+    {
+        <p class="ListedAdapter">@AdapterResources.IndexNoSelectedAdaptersMessage</p>
+    }
+}
+
+@helper RenderAdapter(AdapterViewInformation adapter)
+{
+    Guid adapterId = adapter.AdapterId;
+    string adapterName = adapter.AdapterName;
+    string selectionId = string.Concat(adapterId, "Selection");
+    string containerId = string.Concat(adapterId, "Container");
+    string inputId = string.Concat(adapterId, "Selector");
+    string deniedImg = Url.WebIcon("error.png");
+    string adapterEnabledDisabled = adapter.Enabled ? adapter.Inhibited ? AdapterResources.AdapterInhibitedText : AdapterResources.AdapterEnabledText : AdapterResources.AdapterDisabledText;
+
+    <div id="@containerId" class="ListedAdapter ActionRefreshListener">
+        <span id="@selectionId">
+            <input type="checkbox" id="@inputId" name="adapters" value="@adapterId" class="AdapterSelections"/>
+        </span>
+        <span>
+            <a href="@Url.Action("AdapterDetails", "Adapter", new {id = adapterId})">
+                @adapterName
+            </a>
+            <span class="AdapterAndStatusSeparator">-</span>
+            <span>
+                @{
+                    Html.RenderAction("AdapterStatistics", "Adapter", new { id = adapterId, isInLine = true });
+                }
+            </span>
+            <span class="AdapterAndStatusSeparator">-</span>
+            @if (adapter.Inhibited)
+            {
+                <img src="@deniedImg" alt="@AdapterResources.AdapterInhibitedIconAltText" />
+            }
+            @adapterEnabledDisabled
+        </span>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#@containerId")
+                .bind('refreshStart',
+                    function(event, arg1) {
+                        arg1["@inputId"] = $("#@inputId").is(':checked');
+                }
+            ).bind('refreshStop',
+                function(event, arg1) {
+                    if (arg1["@inputId"]) $("#@inputId").attr('checked', 'checked');
+                }
+            );
+        });
+    </script>
+}

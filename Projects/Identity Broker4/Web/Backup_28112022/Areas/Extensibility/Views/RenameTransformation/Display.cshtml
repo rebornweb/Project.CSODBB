@@ -1,0 +1,22 @@
+﻿@using Unify.Connect.Web
+@model RenameTransformationViewInformation
+
+@try
+{
+    var mappings = ExtensibleTransformationControllerExtensions.Deserialize(Model.Mappings.Text);   
+
+    <div>
+    @foreach (var line in mappings)
+    {
+        <p>
+            [@line.Key] RENAME-TO <span class="TransformationAddedField">[@line.Value]</span>
+        </p>
+    }
+    </div>
+}
+catch(Exception)
+{
+    <p>
+        @Model.Mappings.Text
+    </p>
+}

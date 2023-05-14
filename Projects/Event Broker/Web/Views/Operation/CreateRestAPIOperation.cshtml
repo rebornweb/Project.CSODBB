@@ -1,0 +1,268 @@
+﻿@using System.Linq.Expressions
+@using Unify.Framework.Web
+@model RestAPIRequestPlugInOperationConfigurationViewInformation
+
+@{
+    ViewBag.Title = Html.CreatePlugInTitle(Model.CreateOrUpdateText, TitleResources.CreateRestAPIOperationTitleCaption);
+}
+
+@using (Html.DecorateForm(
+    () => Html.BeginForm("CreatePlugInOperation", "Operation", FormMethod.Post, new { id = "CreateOperationForm" }),
+    Model.CreateOrUpdateText,
+    "CreateOperationForm",
+    OperationResources.ConfigureOperationAltText, "submitButton"))
+{
+    <div>
+        @Html.EditorFor(model => model, "OperationDisplayName")
+        
+        <fieldset>
+
+            @using (Html.MetaDataFor(model => model.AgentId, new { description = OperationControllerResources.SelectAgentDescription }, new { @class = "chzn-container" }))
+            { 
+                @Html.LabelFor(model => model.AgentId, OperationControllerResources.SelectAgentName)
+                @Html.DropDownListFor(model => model.AgentId,
+                new SelectList(
+                    Model.ApplicableAgents,
+                    "Id",
+                    "Name",
+                    Model.ApplicableAgents.Any(agent => agent.Id == Model.AgentId)
+                        ? Model.ApplicableAgents.Where(agent => agent.Id == Model.AgentId).Select(agent => agent).First()
+                        : Model.ApplicableAgents.First()),
+                new { @class = "chzn-select" })
+            }
+
+            @using (Html.MetaDataFor(model => model.RelativeURI, new { description = OperationControllerResources.RestAPIRelativeURIDescription }))
+            {
+                @Html.LabelFor(model => model.RelativeURI, OperationControllerResources.RestAPIRelativeURIName)
+                @Html.TextBoxFor(model => model.RelativeURI, new{ @class = "wide-text"})
+            }
+             
+            @using (Html.MetaDataFor(model => model.RequestType, new { description = OperationControllerResources.RestAPIRequestTypeDescription }, new {@class="chzn-container"}))
+            {
+                @Html.LabelFor(model => model.RequestType, OperationControllerResources.RestAPIRequestTypeName)
+                @Html.EnumDropDownList(model => model.RequestType, new { @class = "chzn-select", id = "request-type-dropdown" })
+            }
+            
+            <br/>
+
+            @using (Html.MetaDataFor(model => model.ExpectedStatus, new { description = OperationControllerResources.RestAPIRunAsyncDescription }, new { @class = "chzn-container" }))
+            {
+                @Html.LabelFor(model => model.ExpectedStatus, OperationControllerResources.RestApiExpectedStatusName)
+                @Html.EnumDropDownList(model => model.ExpectedStatus, new { @class = "chzn-select" })
+            }
+            
+            @using (Html.MetaDataFor(model => model.RunAsync, new {description = OperationControllerResources.RestAPIRunAsyncDescription}))
+            {
+                @Html.LabelFor(model => model.RunAsync, OperationControllerResources.RestAPIRunAsyncName)
+                @Html.CheckBoxFor(model => model.RunAsync)
+            }
+            
+            @ParamInput(
+                "querystring", 
+                OperationControllerResources.RestAPIQueryStringAttributesName, 
+                OperationControllerResources.RestAPIQueryStringAttributesDescription,
+                OperationControllerResources.RestAPINoScriptInstruction,
+                model => model.QueryStringParameters)
+            
+            <div id="contentInput">
+                <div id="contentInputSelect" style="display: none;">
+                    @using (Html.MetaDataFor(model => model.ContentAsString, new { description = OperationControllerResources.RestAPIContentModeDescription }))
+                    {
+                        @Html.LabelFor(model => model.ContentAsString, OperationControllerResources.RestAPIContentModeName)
+
+                        @Html.RadioButtonFor(model => model.ContentAsString, "False", new { id = "inputModePairs"})
+                        <span>@OperationControllerResources.RestAPIKeyValuePairLabel</span>
+
+                        @Html.RadioButtonFor(model => model.ContentAsString, "True", new { id = "inputModeText"})
+                        <span>@OperationControllerResources.RestAPITextLabel</span>
+                    }
+                </div>
+            
+                <div id="contentAsText">
+                    @using (Html.MetaDataFor(model => model.ContentString, new { description = OperationControllerResources.RestAPIContentAsTextDescription }))
+                    {
+                        @Html.LabelFor(model => model.ContentString, OperationControllerResources.RestAPIContentName)
+                        @Html.TextAreaFor(model => model.ContentString, new { @class = "wide-text", rows = 4 })
+                    }
+
+                    @using (Html.MetaDataFor(model => model.ContentType, new { description = OperationControllerResources.RestAPIContentTypeDescription }))
+                    {
+                        @Html.LabelFor(model => model.ContentType, OperationControllerResources.RestAPIContentTypeName)
+                        @Html.TextBoxFor(model => model.ContentType, new { @class = "wide-text" })
+                    }
+                </div>
+            
+                <div id="contentAsAttr" style="display: none;">
+                    @ParamInput(
+                        "content",
+                        OperationControllerResources.RestAPIContentName,
+                        OperationControllerResources.RestAPIContentAsAttributesDescription,
+                        OperationControllerResources.RestAPINoScriptInstruction,
+                        model => model.ContentParameters)
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            @Html.EditorFor(model => model, "OperationInnerDetails")
+        </fieldset>
+        <script type="text/javascript">
+            function ToggleContentMode() {
+                var checked = $("#inputModeText").prop("checked");
+                $("#contentAsText").toggle(checked);
+                $("#contentAsAttr").toggle(!checked);
+            }
+
+            function ToggleContent() {
+                var val = $("#request-type-dropdown").val();
+                var noContentRequest = val === "Get" || val === "Delete";
+                $("#contentInput").toggle(!noContentRequest);
+            }
+            
+            $(document).ready(function () {
+                $("#contentInputSelect").show();
+
+                ToggleContentMode();
+                ToggleContent();
+                
+                $("#request-type-dropdown").change(ToggleContent);
+                $("#inputModePairs").change(ToggleContentMode);
+                $("#inputModeText").change(ToggleContentMode);
+            });
+        </script>
+    </div>
+}
+
+@helper ParamInput(
+    string label,
+    string displayLabel,
+    string description,
+    string noJsInstructions,
+    Expression<Func<RestAPIRequestPlugInOperationConfigurationViewInformation, string>> targetRetrieval)
+{
+    const string keyValSep = RestAPIRequestValueSerializer.KeyValueSeparator;
+    const char pairSep = RestAPIRequestValueSerializer.PairSeparator;
+
+    var noJsId = string.Format("{0}_nojs", label);
+    var jsId = string.Format("{0}_jsonly", label);
+    var hiddenId = string.Format("{0}_hidden", label);
+    var attrNameInputId = string.Format("{0}_enterableAttrName", label);
+    var attrValueInputId = string.Format("{0}_enterableAttrValue", label);
+    var attrListId = string.Format("{0}_attrList", label);
+    var addButtonId = string.Format("{0}_attrAddButton", label);
+    var editButtonId = string.Format("{0}_attrEditButton", label);
+    var editButtonClass = string.Format("{0}_attrEditButton", label);
+    var deleteButtonId = string.Format("{0}_attrDeleteButton", label);
+    var enterFailedId = string.Format("{0}_entterableAttrFailed", label);
+
+    <div id="@noJsId">
+        @using (Html.MetaDataFor(targetRetrieval, new { description }))
+        {
+            @Html.LabelFor(targetRetrieval, displayLabel)
+            @Html.TextAreaFor(targetRetrieval)
+            <p>@noJsInstructions</p>
+        }
+    </div>
+
+    <div id="@jsId" style="display: none">
+        @using (Html.MetaDataFor(targetRetrieval, new { description }))
+        {
+            @Html.HiddenFor(targetRetrieval, new { @id = hiddenId })
+
+            @Html.LabelFor(targetRetrieval, displayLabel)
+            <table id="@attrListId" class="RightSpacedSmall">
+                <tr>
+                    <td>@Html.TextBox(attrNameInputId, "", new { @id = attrNameInputId, @placeholder = "Attribute Name" })</td>
+                    <td>@Html.TextBox(attrValueInputId, "", new { @id = attrValueInputId, @placeholder = "Attribute Value" })</td>
+                    <td><a href="javascript:void(0)" id="@addButtonId">Add</a></td>
+                    <td><span id="@enterFailedId" class="field-validation-error"></span></td>
+                </tr>
+            </table>
+        }
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#@noJsId").remove();
+                $("#@jsId").show();
+
+                var resultDict = [];
+                var resultDictCount = 0;
+
+                if ($("#@hiddenId").val() != "") {
+                    var resultPairs = $("#@hiddenId").val().split("@pairSep");
+
+                    resultPairs.forEach(function (entry) {
+                        var split = entry.split("@keyValSep");
+                        addPair(split[0], split[1]);
+                    });
+                }
+
+                $("#@addButtonId").click(function () {
+                    var name = $("#@attrNameInputId").val();
+                    var val = $("#@attrValueInputId").val();
+
+                    $("#@enterFailedId").html("");
+
+                    if (name == "@keyValSep" || name == "@pairSep" || name == "") {
+                        $("#@enterFailedId").html("Invalid attribute name. ");
+                    } else if (val == "@keyValSep" || val == "@pairSep" || val == "") {
+                        $("#@enterFailedId").html("Invalid attribute value. ");
+                    } else {
+                        $("#@attrNameInputId").html("");
+                        $("#@attrNameInputId").val("");
+                        $("#@attrValueInputId").val("");
+                        addPair(name, val);
+                    }
+                });
+
+                function addPair(name, val) {
+                    var editId = "@(editButtonId)_" + resultDictCount;
+                    var removeId = "@(deleteButtonId)_" + resultDictCount;
+                    $("#@attrListId").prepend("<tr><td>" + escape(name) + "</td><td>" + escape(val) + "</td><td><a class=\"@editButtonClass\" id=\"" + editId + "\" href=\"javascript:void(0)\">Edit</a></td><td><a id=\"" + removeId + "\" href=\"javascript:void(0)\">Remove</a></td></tr>");
+                    resultDict[name] = val;
+                    resultDictCount++;
+                    serializeAttrVals();
+                    createOnClick(removeId, name, false);
+                    createOnClick(editId, name, true);
+                }
+
+                function serializeAttrVals() {
+                    var serialized = "";
+                    for (key in resultDict) {
+                        var value = resultDict[key];
+                        if (serialized.length != 0) serialized += "@pairSep";
+                        serialized += key + "@keyValSep" + value;
+                    }
+
+                    $("#@hiddenId").val(serialized);
+                }
+
+                function createOnClick(buttonId, name, edit) {
+                    $("#" + buttonId).click(function () {
+                        if (edit) {
+                            $("#@enterFailedId").html("");
+                            $("#@addButtonId").text("Save");
+                            $("#@attrNameInputId").val(name);
+                            $("#@attrValueInputId").val(resultDict[name]);
+                            $(".@editButtonClass").parent().hide();
+                            $("#@addButtonId").one("click", function () {
+                                $("#@addButtonId").text("Add");
+                                $(".@editButtonClass").parent().show();
+                            });
+                        }
+
+                        $(this).parent().parent().remove();
+                        delete resultDict[name];
+                        serializeAttrVals();
+                    });
+                }
+
+                function escape(value) {
+                    var element = document.createElement('div');
+                    element.appendChild(document.createTextNode(value));
+                    var result = element.innerHTML;
+                    return result;
+                }
+            });
+        </script>
+    </div>
+}

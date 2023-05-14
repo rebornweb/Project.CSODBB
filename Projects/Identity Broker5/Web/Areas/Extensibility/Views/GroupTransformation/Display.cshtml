@@ -1,0 +1,68 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Collections
+@model GroupTransformationViewInformation
+
+<div>
+    @AdapterResources.TransformationGroupOnText
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        @if (Model.GroupConnectorExists)
+        {
+            <a href="@Url.Action("ConnectorDetails", "Connector", new { area = "", connectorId = Model.JoinConnectorId })">@Model.GroupConnectorName</a>
+        }
+        else
+        {
+            <span>@Model.GroupConnectorName</span>
+            <span class="ui-state-error-text">@AdapterResources.TransformationConnectorNotFoundText</span>
+        }
+    </p>
+
+    @try
+    {
+        IEnumerable<KeyValuePair<GroupedNameValueCollectionKey, GroupedNameValueCollectionKey>> relationships = TransformationControllerExtensions.Deserialize(Model.Relationships.Text);
+
+        @AdapterResources.TransformationWhereText
+
+        foreach (KeyValuePair<GroupedNameValueCollectionKey, GroupedNameValueCollectionKey> line in relationships)
+        {
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;[@line.Key] == [@line.Value]
+            </p>
+        }
+    }
+    catch (Exception)
+    {
+        <p>@Model.Relationships.Text</p>
+    }
+
+    @if (Model.WindowType == WindowType.SlidingDateWindow)
+    {
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;[@Model.DateRelationalInformation.StartKey] - "@Model.DateRelationalInformation.StartOffset" < @@NOW 
+        </p>
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;[@Model.DateRelationalInformation.EndKey] - "@Model.DateRelationalInformation.EndOffset" > @@NOW
+        </p>
+    }
+    
+    @if (Model.Filter)
+    {
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;[@Model.FilterField] @AdapterResources.TransformationInText (@Model.FilterWhiteList)
+        </p>
+    }
+
+</div>
+
+@{
+    string source = string.Format("\"{0}\"", Model.GenerateDistinguishedNames ? Model.Template : Model.Source);
+    string distinct = Model.Distinct ? AdapterResources.DistinctLabel : string.Empty;
+}
+
+<div>
+    @AdapterResources.TransformationMapText <br/>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;@source -> <span class="TransformationAddedField">[@Model.Target]@distinct</span>
+    </p>
+</div>

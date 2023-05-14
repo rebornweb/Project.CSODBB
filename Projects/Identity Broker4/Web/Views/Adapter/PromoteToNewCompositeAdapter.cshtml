@@ -1,0 +1,31 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+
+@model PromoteToNewCompositeAdapterViewInformation
+
+@using (Html.DecorateForm(
+            () => Html.BeginForm("PromoteToNewCompositeAdapter", "Adapter", FormMethod.Post, new{ id = "PromoteToNewCompositeAdapterForm"}),
+            AdapterResources.PromoteAdapterText,
+            "PromoteToNewCompositeAdapterForm",
+            AdapterResources.PromoteToNewCompositeAltText))
+{
+    
+    @Html.HiddenFor(model => model.AdapterIdToAdd)
+
+    using (Html.MetaDataFor(model => model.AdapterName, new { description = AdapterResources.AdapterNameDescription }))
+    {
+        @Html.LabelFor(model => model.AdapterName, AdapterResources.BaseAdapterNameLabel)
+        @Html.DisplayTextFor(model => model.AdapterName)
+    }
+
+    <fieldset>
+
+        <div class="AdapterConfiguration">
+            @Html.EditorFor(model => model.NewCompositeAdapterViewInformation)
+        </div>
+    
+    </fieldset>
+}
+
+
+

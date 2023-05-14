@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AdapterEngine>
+  <AdapterEngineConfigurations>
+    <CompositeAdapterConfiguration AdapterId="69c49870-11b2-49aa-a479-a1e3e4f3a548" AdapterName="SAS2IDM Adapter" enabled="true" AdapterComment="SAS2IDM Student data source (legacy)">
+      <AdapterEngineConfigurations>
+        <AdapterConfiguration AdapterId="462cc25e-70f7-4200-8a35-fdb4ef6ec877" AdapterName="SAS2IDM Adapter" enabled="true" BaseConnectorId="8e1154f8-3336-4641-9627-8455b0dc905f" class="person" AdapterImportSettings="CoupledProcess">
+          <dn>
+            <dnComponent name="Field" key="UniversalIdentificationNumber" attributeType="UID" />
+            <dnComponent name="Constant" value="People" attributeType="OU" />
+          </dn>
+          <Groups />
+        </AdapterConfiguration>
+        <AdapterConfiguration AdapterId="e863202f-8b49-4574-8b2b-7dbe4172a7ab" AdapterName="SAS2IDM Google Contact Adapter" enabled="true" BaseConnectorId="89970c26-44e5-434a-954d-8361ffcfcc3f" class="contact" AdapterImportSettings="CoupledProcess">
+          <dn>
+            <dnComponent name="Field" key="contactID" attributeType="UID" />
+            <dnComponent name="Constant" value="Contacts" attributeType="OU" />
+          </dn>
+          <Groups />
+        </AdapterConfiguration>
+        <AdapterConfiguration AdapterId="35db6516-70c3-49a9-91a2-17189a9f3502" AdapterName="SAS2IDM Student Ex" enabled="true" BaseConnectorId="539a9f50-8dc8-4e8a-87c8-623b6ee59019" class="personEx" AdapterImportSettings="CoupledProcess">
+          <dn template="CN=[CeIder],OU=People" />
+          <Groups />
+        </AdapterConfiguration>
+      </AdapterEngineConfigurations>
+      <Groups />
+    </CompositeAdapterConfiguration>
+    <CompositeAdapterConfiguration AdapterId="c59e51f8-a8a3-4b45-a9f8-0af0cf60852d" AdapterName="SAS2IDM Adapter DEV" enabled="true" AdapterComment="SAS2IDM Student data source (legacy)">
+      <AdapterEngineConfigurations>
+        <AdapterConfiguration AdapterId="608c2b0c-a96c-4e94-a7e9-e18f0726a739" AdapterName="SAS2IDM Adapter DEV" enabled="true" BaseConnectorId="dff8c52e-ab5f-4fc4-9e12-a5e365164ba5" class="person" AdapterImportSettings="CoupledProcess">
+          <dn>
+            <dnComponent name="Field" key="UniversalIdentificationNumber" attributeType="UID" />
+            <dnComponent name="Constant" value="People" attributeType="OU" />
+          </dn>
+          <Groups />
+        </AdapterConfiguration>
+        <AdapterConfiguration AdapterId="e863202f-8b49-4574-8b2b-7dbe4172a7ab" AdapterName="SAS2IDM Google Contact Adapter" enabled="true" BaseConnectorId="89970c26-44e5-434a-954d-8361ffcfcc3f" class="contact" AdapterImportSettings="CoupledProcess">
+          <dn>
+            <dnComponent name="Field" key="contactID" attributeType="UID" />
+            <dnComponent name="Constant" value="Contacts" attributeType="OU" />
+          </dn>
+          <Groups />
+        </AdapterConfiguration>
+        <AdapterConfiguration AdapterId="1869fbd3-638d-4290-9d8c-d660a9000d47" AdapterName="SAS2IDM Student Ex" enabled="true" BaseConnectorId="539a9f50-8dc8-4e8a-87c8-623b6ee59019" class="personEx" AdapterImportSettings="CoupledProcess">
+          <dn template="CN=[CeIder],OU=People" />
+          <Groups />
+        </AdapterConfiguration>
+      </AdapterEngineConfigurations>
+      <Groups />
+    </CompositeAdapterConfiguration>
+    <CompositeAdapterConfiguration AdapterId="5db0f5e1-a032-450a-9415-fa4863f171da" AdapterName="PHRIS HR" enabled="true">
+      <AdapterEngineConfigurations>
+        <AdapterConfiguration AdapterId="212556c5-d01d-4806-9538-0e170e0b970f" AdapterName="Person Adapter" enabled="true" BaseConnectorId="c5520333-987b-45d4-b1c1-24818db8fae9" class="person" AdapterImportSettings="CoupledProcess">
+          <dn>
+            <dnComponent name="Field" key="EmplId" attributeType="CN" />
+            <dnComponent name="Constant" value="People" attributeType="OU" />
+          </dn>
+          <Groups />
+          <adapterEntityTransformationFactory name="Sequential">
+            <adapter name="ConstantValue" key="e075b26f-1e01-454d-8cba-98f1c0204368">
+              <Extended xmlns="">
+                <value valueType="Date" TargetColumn="SmallDate">1900-01-01T10:00:00.000</value>
+              </Extended>
+            </adapter>
+            <adapter name="ConstantValue" key="0088ba6e-a717-42ec-8617-c740abf70dfa">
+              <Extended xmlns="">
+                <value valueType="Date" TargetColumn="BigDate">3999-12-30T10:00:00.000</value>
+              </Extended>
+            </adapter>
+            <adapter name="Relational" key="e8f686ea-cb45-4591-8102-7464ee8d9965">
+              <Extended InputKey="EmplId" RelationshipConnectorId="29BCC921-6B38-4AB7-95DF-47D1C297871E" RelationshipKey="EmplId">
+                <columnMappings>
+                  <columnMapping SourceAttribute="NationalId" TargetAttribute="NationalId" />
+                </columnMappings>
+              </Extended>
+            </adapter>
+            <adapter name="Relational.Compare.String" key="c7dcc5c5-ed89-409c-9a2f-1ceb853527b2">
+              <Extended InputKey="EmplId" RelationshipConnectorId="F80FD592-3EB2-4734-992E-2A28955AD3A7" RelationshipKey="EmplId" PriorityKey="EmailType">
+                <columnMappings>
+                  <columnMapping SourceAttribute="EmailId" TargetAttribute="Email" />
+                </columnMappings>
+                <items>
+                  <item>BUS</item>
+                </items>
+              </Extended>
+            </adapter>
+            <adapter name="Relation.Group" key="0314e0f8-c04d-42c7-9f40-ca73563deb6d">
+              <Extended InputKey="EmplId" RelationshipConnectorId="0857EC4C-9916-47E7-89A7-BD797F9A0A85" RelationKey="EmplId" RelationReference="EmplRcd" GroupTarget="jobs">
+                <dn>
+                  <dnComponent name="Field" key="EmplRcd" attributeType="CN" />
+                  <!--<dnComponent name="Constant" value="Job" attributeType="OU" />-->
+                  <dnComponent name="Field" key="EmplId" attributeType="CN" />
+                  <dnComponent name="Constant" value="People" attributeType="OU" />
+                </dn>
+              </Extended>
+            </adapter>
+            <adapter name="Relational.Compare.String" key="934b3fe5-e044-40d4-bc16-2d46964cb84b">
+              <Extended InputKey="EmplId" RelationshipConnectorId="0857EC4C-9916-47E7-89A7-BD797F9A0A85" RelationshipKey="EmplId" PriorityKey="JobIndicator">
+                <!-- PerOrg -->
+                <columnMappings>
+                  <!--
+                <columnMapping TargetAttribute="StdHours" SourceAttribute="StdHours" />
+                <columnMapping TargetAttribute="HrStatus" SourceAttribute="HrStatus" />
+                <columnMapping TargetAttribute="PositionNbr" SourceAttribute="PositionNbr" />
+                <columnMapping TargetAttribute="ApptType" SourceAttribute="ApptType" />
+                <columnMapping TargetAttribute="Location" SourceAttribute="Location" />
+                <columnMapping TargetAttribute="FullPartTime" SourceAttribute="FullPartTime" />
+                -->
+                  <columnMapping TargetAttribute="Grade" SourceAttribute="Grade" />
+                  <columnMapping TargetAttribute="SalAdminPlan" SourceAttribute="SalAdminPlan" />
+                  <columnMapping TargetAttribute="SupervisorId" SourceAttribute="SupervisorId" />
+                  <columnMapping TargetAttribute="DeptId" SourceAttribute="DeptId" />
+                </columnMappings>
+                <!--<items>
+                <item>EMP</item>
+                <item>POI</item>
+              </items>-->
+                <items>
+                  <item>P</item>
+                </items>
+              </Extended>
+            </adapter>
+            <adapter name="Relational.dn" key="4185ff4b-9eb3-4beb-a88c-4023fd61b776">
+              <Extended InputKey="SupervisorId" RelationshipConnectorId="C5520333-987B-45D4-B1C1-24818DB8FAE9" RelationshipKey="EmplId">
+                <dn target="Manager">
+                  <dnComponent name="Field" key="EmplId" attributeType="CN" />
+                  <dnComponent name="Constant" value="People" attributeType="OU" />
+                </dn>
+              </Extended>
+            </adapter>
+            <adapter name="Relation.Group.dn" key="cf1c59ce-410a-4c4f-bbff-3d6f02234f23">
+              <Extended InputKey="EmplId" RelationshipConnectorId="0857EC4C-9916-47E7-89A7-BD797F9A0A85" RelationKey="EmplId" RelationReference="DeptId" GroupTarget="AllDepartments" local="True">
+                <dn>
+                  <dnComponent name="Field" key="DeptId" attributeType="CN" />
+                  <dnComponent name="Constant" value="Departments" attributeType="OU" />
+                </dn>
+              </Extended>
+            </adapter>
+            <adapter name="Relation.Group.Composite.Filter.String" key="ce130abb-c6ef-4197-9d70-d1b784396197">
+              <Extended RelationshipConnectorId="0857EC4C-9916-47E7-89A7-BD797F9A0A85" GroupTarget="Departments" RelationshipFilterKey="HrStatus">
+                <Relationships>
+                  <Relationship InputKey="EmplId" RelationshipKey="EmplId" />
+                </Relationships>
+                <FilterValues>
+                  <FilterValue>A</FilterValue>
+                </FilterValues>
+                <dn>
+                  <dnComponent name="Field" key="DeptId" attributeType="CN" />
+                  <dnComponent name="Constant" value="Departments" attributeType="OU" />
+                </dn>
+              </Extended>
+            </adapter>
+            <adapter name="Relational.Composite" key="ab64c60a-bc8f-421e-a5b2-37f74eed97c3">
+              <Extended RelationshipConnectorId="2030B82B-BCE1-40DD-A1EE-09C9F0DC66C6">
+                <Relationships>
+                  <Relationship InputKey="SalAdminPlan" RelationshipKey="SalAdminPlan" />
+                  <Relationship InputKey="Grade" RelationshipKey="Grade" />
+                </Relationships>
+                <dn target="Grades">
+                  <dnComponent name="Field" key="Grade" attributeType="CN" />
+                  <dnComponent name="Constant" value="Grades" attributeType="OU" />
+                  <dnComponent name="Field" key="SalAdminPlan" attributeType="CN" />
+                  <dnComponent name="Constant" value="Plans" attributeType="OU" />
+                </dn>
+              </Extended>
+            </adapter>
+            <adapter name="Unify.Transformations.Join" key="7cb41f03-8f02-4fc8-ba44-2d83ef59e10c">
+              <Extended RelationshipConnectorId="0857ec4c-9916-47e7-89a7-bd797f9a0a85" xmlns="">
+                <Relationships>
+                  <Relationship InputKey="EmplId" RelationshipKey="EmplId" />
+                </Relationships>
+                <columnMappings>
+                  <columnMapping SourceAttribute="HrStatus" TargetAttribute="HrStatus" />
+                  <columnMapping SourceAttribute="ExpectedEndDate" TargetAttribute="ExpectedEndDate" />
+                </columnMappings>
+                <Window windowType="Unify.Windows.Relevant">
+                  <Extended local="true" RangeStartKey="Effdt" RangeEndKey="Effdt" RangeStartOffset="PT0S" RangeEndOffset="PT0S" />
+                </Window>
+                <Selection selectionType="Unify.Selections.Relevant">
+                  <Extended local="true" RangeStartKey="Effdt" RangeEndKey="Effdt" RangeStartOffset="PT0S" RangeEndOffset="PT0S" />
+                </Selection>
+              </Extended>
+            </adapter>
+            <adapter name="Unify.Transformations.Join" key="f15a7bf3-98ef-4782-a220-ea7b5844989f">
+              <Extended RelationshipConnectorId="0857ec4c-9916-47e7-89a7-bd797f9a0a85" xmlns="">
+                <Relationships>
+                  <Relationship InputKey="EmplId" RelationshipKey="EmplId" />
+                </Relationships>
+                <columnMappings>
+                  <columnMapping SourceAttribute="HrStatus" TargetAttribute="NextHrStatus" />
+                  <columnMapping SourceAttribute="Effdt" TargetAttribute="NextEffdt" />
+                </columnMappings>
+                <Window windowType="Unify.Windows.NextPlacement">
+                  <Extended local="true" RangeStartKey="Effdt" RangeEndKey="Effdt" RangeStartOffset="PT0S" RangeEndOffset="PT0S" />
+                </Window>
+                <Selection selectionType="Unify.Selections.NextPlacement">
+                  <Extended local="true" RangeStartKey="Effdt" RangeEndKey="Effdt" RangeStartOffset="PT0S" RangeEndOffset="PT0S" />
+                </Selection>
+              </Extended>
+            </adapter>
+            <adapter name="Relational.Composite" key="27474041-0410-4afc-8f5b-0a6dfd81e42d">
+              <Extended RelationshipConnectorId="2030B82B-BCE1-40DD-A1EE-09C9F0DC66C6">
+                <Relationships>
+                  <Relationship InputKey="SalAdminPlan" RelationshipKey="SalAdminPlan" />
+                  <Relationship InputKey="Grade" RelationshipKey="Grade" />
+                </Relationships>
+                <columnMappings>
+                  <columnMapping TargetAttribute="PrimJobTitle" SourceAttribute="Description" />
+                </columnMappings>
+              </Extended>
+            </adapter>
+            <adapter name="TimeOffset" key="2df22e5a-e417-4812-855f-adfb6f1cce86">
+              <Extended offset="PT0S" adjustForLocal="true" sourceColumn="BirthDate" destinationColumn="BirthDateAdj" xmlns="" />
+            </adapter>
+            <adapter name="Multivalue.GenerateDNs" key="e24bd919-8857-441a-9141-789b3507bc20">
+              <Extended InputKey="DeptId" GroupTarget="Department" xmlns="">
+                <dn template="CN=[DeptId],OU=Depts" />
+              </Extended>
+            </adapter>
+          </adapterEntityTransformationFactory>
+        </AdapterConfiguration>
+        <AdapterConfiguration AdapterId="0dc87cab-5d52-4933-b19a-cb8db61c82a5" AdapterName="Person Email Adapter" enabled="true" BaseConnectorId="f80fd592-3eb2-4734-992e-2a28955ad3a7" class="personEmail" AdapterImportSettings="CoupledProcess">
+          <dn>
+            <dnComponent name="Field" key="EmailType" attributeType="CN" />
+            <dnComponent name="Field" key="EmplId" attributeType="CN" />
+            <dnComponent name="Constant" value="People" attributeType="OU" />
+          </dn>
+          <Groups />
+          <adapterEntityTransformationFactory name="Sequential">
+            <adapter name="Move" key="a610ab2a-26bd-4ea8-bc99-395ecfe18d86">
+              <Extended xmlns="">
+                <columnMappings>
+                  <columnMapping SourceAttribute="Class" TargetAttribute="EmailClass" />
+                </columnMappings>
+              </Extended>
+            </adapter>
+          </adapterEntityTransformationFactory>
+        </AdapterConfiguration>
+        <AdapterConfiguration AdapterId="8b61e0c6-bbfd-42e0-b021-9cf56c09fc64" AdapterName="Department Adapter" enabled="true" BaseConnectorId="e2d6eaf0-a409-448d-a557-0131f8394aa7" class="department" AdapterImportSettings="CoupledProcess">
+          <dn>
+            <dnComponent name="Field" key="DeptId" attributeType="CN" />
+            <dnComponent name="Constant" value="Departments" attributeType="OU" />
+          </dn>
+          <Groups />
+        </AdapterConfiguration>
+        <AdapterConfiguration AdapterId="487ca118-2bf9-4627-a10c-7a6cae9c9ee8" AdapterName="Grade Adapter" enabled="true" BaseConnectorId="2030b82b-bce1-40dd-a1ee-09c9f0dc66c6" class="grade" AdapterImportSettings="CoupledProcess">
+          <dn>
+            <dnComponent name="Field" key="Grade" attributeType="CN" />
+            <dnComponent name="Constant" value="Grades" attributeType="OU" />
+            <dnComponent name="Field" key="SalAdminPlan" attributeType="CN" />
+            <dnComponent name="Constant" value="Plans" attributeType="OU" />
+          </dn>
+          <Groups />
+        </AdapterConfiguration>
+        <AdapterConfiguration AdapterId="8735934e-dafb-4545-9f0d-37158d2eb9cb" AdapterName="Job Adapter" enabled="true" BaseConnectorId="0857ec4c-9916-47e7-89a7-bd797f9a0a85" class="job" AdapterImportSettings="CoupledProcess">
+          <dn>
+            <dnComponent name="Field" key="EmplRcd" attributeType="CN" />
+            <!--<dnComponent name="Constant" value="Job" attributeType="OU" />-->
+            <dnComponent name="Field" key="EmplId" attributeType="CN" />
+            <dnComponent name="Constant" value="People" attributeType="OU" />
+          </dn>
+          <Groups />
+          <adapterEntityTransformationFactory name="Sequential">
+            <adapter name="Relational.dn" key="8e0a6b2f-c593-4673-9301-f304c17b280a">
+              <Extended InputKey="EmplId" RelationshipConnectorId="C5520333-987B-45D4-B1C1-24818DB8FAE9" RelationshipKey="EmplId">
+                <dn target="User">
+                  <dnComponent name="Field" key="EmplId" attributeType="CN" />
+                  <dnComponent name="Constant" value="People" attributeType="OU" />
+                </dn>
+              </Extended>
+            </adapter>
+            <adapter name="Relational.dn" key="6f2f7e2a-d2d1-430e-b368-23b056d7d59f">
+              <Extended InputKey="SupervisorId" RelationshipConnectorId="C5520333-987B-45D4-B1C1-24818DB8FAE9" RelationshipKey="EmplId">
+                <dn target="Manager">
+                  <dnComponent name="Field" key="EmplId" attributeType="CN" />
+                  <dnComponent name="Constant" value="People" attributeType="OU" />
+                </dn>
+              </Extended>
+            </adapter>
+            <adapter name="Relational.dn" key="ff06e39c-d4a4-4617-9dbc-df98fa428556">
+              <Extended InputKey="DeptId" RelationshipConnectorId="E2D6EAF0-A409-448D-A557-0131F8394AA7" RelationshipKey="DeptId">
+                <!-- {0857EC4C-9916-47E7-89A7-BD797F9A0A85} -->
+                <dn target="Department">
+                  <dnComponent name="Field" key="DeptId" attributeType="CN" />
+                  <dnComponent name="Constant" value="Departments" attributeType="OU" />
+                </dn>
+              </Extended>
+            </adapter>
+            <adapter name="Relational.Composite" key="fbdb1329-e77f-4e48-8178-a72c6676cf4e">
+              <Extended RelationshipConnectorId="2030B82B-BCE1-40DD-A1EE-09C9F0DC66C6">
+                <Relationships>
+                  <Relationship InputKey="SalAdminPlan" RelationshipKey="SalAdminPlan" />
+                  <Relationship InputKey="Grade" RelationshipKey="Grade" />
+                </Relationships>
+                <dn target="JobGrade">
+                  <dnComponent name="Field" key="Grade" attributeType="CN" />
+                  <dnComponent name="Constant" value="Grades" attributeType="OU" />
+                  <dnComponent name="Field" key="SalAdminPlan" attributeType="CN" />
+                  <dnComponent name="Constant" value="Plans" attributeType="OU" />
+                </dn>
+              </Extended>
+            </adapter>
+          </adapterEntityTransformationFactory>
+        </AdapterConfiguration>
+        <AdapterConfiguration AdapterId="408026f5-de6d-4f0e-a17b-f3dc414b0bcb" AdapterName="dept" enabled="true" BaseConnectorId="e2d6eaf0-a409-448d-a557-0131f8394aa7" class="dept" AdapterImportSettings="CoupledProcess">
+          <dn template="CN=[DeptId],OU=Depts" />
+          <Groups />
+        </AdapterConfiguration>
+      </AdapterEngineConfigurations>
+      <Groups />
+    </CompositeAdapterConfiguration>
+  </AdapterEngineConfigurations>
+</AdapterEngine>

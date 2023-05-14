@@ -1,0 +1,13 @@
+﻿@using Unify.Framework.Web
+@model ErrorModel
+@{
+    if (Request.IsAjaxRequest() || ViewContext.Controller.ControllerContext.IsChildAction)
+    {
+        Layout = null;
+    }
+    ViewBag.Title = Html.Title(WebStudioResources.ErrorPageTitle, Model.Branding.CompanyAndProductName);
+}
+
+<h2>@WebStudioResources.ErrorHeading</h2>
+
+<p>@Html.Raw(Html.Encode(Model.ExceptionContext.Exception == null ? string.Empty : Model.ExceptionContext.Exception.ToString()).Replace(Environment.NewLine, "<br />"))</p>

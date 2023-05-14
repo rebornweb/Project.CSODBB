@@ -1,0 +1,7 @@
+﻿@using Unify.Connect.Web
+@model DistinguishedNameGeneratorTransformationViewInformation
+
+<div>
+    FOR IN [@Model.Input]<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;DN:"@Model.Template" -> <span class="TransformationAddedField">[@Model.Target]</span>
+</div>

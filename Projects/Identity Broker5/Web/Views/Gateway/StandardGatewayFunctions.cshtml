@@ -1,0 +1,44 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model StandardGatewayFunctionsViewInformation
+
+@{
+    string editGatewayImageUrl = Url.WebIcon("wrench.png");
+    string recycleImageUrl = Url.WebIcon("connect.png");
+    string deleteGatewayImageUrl = Url.WebIcon("delete.png");
+    string deleteGatewayFormId = string.Format("DeleteGatewayForm{0}", Model.GatewayId);
+    string deleteGatewayFormInputId = string.Format("DeleteGatewayButton{0}", Model.GatewayId);
+    string deleteGatewayMessageId = string.Concat(deleteGatewayFormInputId, "Message");
+    string deleteGatewayOkCancelScript = RenderExtensions.SubmitOkCancelDialog(deleteGatewayFormId, deleteGatewayFormInputId, string.Empty);
+}
+
+<div class="FunctionsMenuContainer">
+    <div id="@deleteGatewayMessageId" style="display:none">
+        <div>@GatewayResources.DeleteGatewaysConfirmationWarningText</div><br/>
+        <div>@GatewayResources.DeleteGatewayWarningDescriptionText @WebStudioResources.ThisCannotBeUndoneText</div><br/>
+    </div>
+    <div>
+        <a href="@Url.Action("Edit", MvcApplication.GetGatewayController(Model.Type), new{Model.GatewayId, area="Extensibility"})">
+            <img src="@editGatewayImageUrl" title="@GatewayResources.EditGatewayAltText" alt="@GatewayResources.EditGatewayAltText"/>
+            @GatewayResources.EditGatewayLabel
+        </a>
+    </div>
+    <div>
+        @using (Html.BeginForm("Delete", "Gateway", new {id = Model.GatewayId}, FormMethod.Post, new {@class = "IconForm", id = deleteGatewayFormId}))
+        {
+            <input type="image" src="@deleteGatewayImageUrl" alt="@GatewayResources.DeleteGatewayAltText" title="@GatewayResources.DeleteGatewayAltText"/>
+            <input type="submit" value="@GatewayResources.DeleteGatewayButtonText" title="@GatewayResources.DeleteGatewayAltText" id="@deleteGatewayFormInputId" class="SubmitImageText"/>
+        }
+    </div>
+    <div>
+        @using (Html.BeginForm("Recycle", "Gateway", new {id = Model.GatewayId}, FormMethod.Post, new {@class = "IconForm"}))
+        {
+            <input type="image" src="@recycleImageUrl" alt="@GatewayResources.GatewayRecycleGatewayAltText" title="@GatewayResources.GatewayRecycleGatewayAltText"/>
+            <input type="submit" value="@GatewayResources.RecycleGatewayButtonText" title="@GatewayResources.GatewayRecycleGatewayAltText" class="SubmitImageText"/>
+        }
+    </div>
+</div>
+
+<script type="text/javascript">
+    @Html.Raw(deleteGatewayOkCancelScript)
+</script>

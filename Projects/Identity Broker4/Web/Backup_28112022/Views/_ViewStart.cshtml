@@ -1,0 +1,7 @@
+﻿@{
+    if (Request.IsAjaxRequest() || ViewContext.Controller.ControllerContext.IsChildAction)
+    {
+        Layout = null;
+    }
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}

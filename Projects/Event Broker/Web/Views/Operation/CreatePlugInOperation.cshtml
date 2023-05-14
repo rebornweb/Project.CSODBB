@@ -1,0 +1,40 @@
+﻿@model PlugInOperationDetails
+           
+@using Unify.EventBroker.Web
+@using Unify.Framework.Web
+
+@{
+    ViewBag.Title = Html.Title(string.Format(TitleResources.CreatePlugInTitleTemplate, TitleResources.CreateTitleCaption, TitleResources.CreatePlugInOperationTitleCaption));   
+}
+           
+@if (!Model.PlugInViewNamesDictionary.Any())
+{
+    <div><p>@string.Format(OperationControllerResources.NoPlugInsFoundMessage,Model.BrandingProductName)</p></div>
+}
+else
+{
+    using (Html.DecorateForm(
+            () => Html.BeginForm("CreateOperation", "Operation", FormMethod.Post, new { id = "CreateOperationForm" }),
+            OperationControllerResources.CreateButtonValue,
+            "CreateOperationForm",
+            OperationResources.ConfigureOperationAltText, "submitButton"))
+    {
+        @Html.HiddenFor(model => model.OperationListId)
+        @Html.HiddenFor(model => model.OperationId)
+        @Html.HiddenFor(model => model.IsTopLevel)
+        @Html.HiddenFor(model => model.IsRoot)
+        @Html.HiddenFor(model => model.IsLeaf)
+        @Html.HiddenFor(model => model.OperationTreeItemType)
+        @Html.HiddenFor(model => model.ParentOperationId)
+
+        <div>
+            <fieldset>
+                @using (Html.MetaDataFor(model => model.Id, new{description = OperationControllerResources.SelectOperationHintText}, new { @class = "chzn-container" }))
+                {
+                    @Html.LabelFor(model => model.Id, OperationControllerResources.SelectOperationCaptionName)
+                    @Html.DictionaryDropDownList(model => model.Id, Model.PlugInViewNamesDictionary.OrderBy(value => value.Key).ToDictionary(pair => pair.Key, pair => pair.Value), new { @id = "DropDown", @class = "chzn-select" })
+                }
+            </fieldset>
+         </div>
+    }
+}

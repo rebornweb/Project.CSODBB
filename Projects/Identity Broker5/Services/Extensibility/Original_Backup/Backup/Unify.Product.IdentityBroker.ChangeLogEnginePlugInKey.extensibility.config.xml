@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ChangeLog>
+	<dataConnection name="repository" repository="Unify.IdentityBroker" />
+  <LogPreservation preserveChangeLogDuration="P14D" changeLogCleanInterval="PT2H" />
+</ChangeLog>

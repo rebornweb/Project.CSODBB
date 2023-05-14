@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GatewayEngine>
+  <Gateways>
+    <Gateway id="82651481-29c2-4c9a-adf7-82c5752cf1dc" type="Unify.Gateway.Ldap" name="MIM LDAP" description="LDAP endpoint for use by MIM on occcp-im201">
+      <Extended host="0.0.0.0" port="389" maxOperations="10000" />
+    </Gateway>
+  </Gateways>
+</GatewayEngine>

@@ -1,0 +1,55 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+
+@model TimeOffsetViewInformation
+
+@{
+    // ReSharper disable Mvc.ControllerNotResolved
+    // ReSharper disable Mvc.ActionNotResolved
+    Html.RenderAction("SchedulesHeader", "Schedules", new {area = "Framework"});
+    // ReSharper restore Mvc.ActionNotResolved
+    // ReSharper restore Mvc.ControllerNotResolved
+}
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "TimeOffsetTransformation", FormMethod.Post),
+        TransformationResources.SaveTransformationButtonText,
+        "SaveTimeOffsetTransformation",
+        TransformationResources.SaveTransformationButtonAltText
+    ))
+{
+    @Html.TransformationDetailsFor(model => model)
+
+    <fieldset>
+        @using (Html.MetaDataFor(model => model.Source, new {description = TransformationResources.TimeOffsetSourceDescription, hideRequired = true}, new {@class = "chzn-form-fieldset-container"}))
+        {
+            @Html.LabelFor(model => model.Source)
+            @Html.SchemaFieldsFor(model => model.Source, Model.AdapterSchema, Model.Source, Model.AdapterSchemaTypes, new[] {Unify.Framework.ValueType.Date, Unify.Framework.ValueType.Timestamp})
+        }
+        @using (Html.MetaDataFor(model => model.Offset, new {description = TransformationResources.TimeOffsetOffsetDescription}))
+        {
+            @Html.LabelFor(model => model.Offset)
+            <span class="StandardTimeFormat">
+                @Html.TextBoxFor(model => model.Offset)
+            </span>
+        }
+        @using (Html.MetaDataFor(model => model.Target, new {description = TransformationResources.TimeOffsetTargetDescription}))
+        {
+            @Html.LabelFor(model => model.Target)
+            @Html.TextBoxFor(model => model.Target)
+        }
+        @using (Html.MetaDataFor(model => model.Local, new {description = TransformationResources.TimeOffsetUseLocalDescription}))
+        {
+            @Html.LabelFor(model => model.Local)
+            @Html.CheckBoxFor(model => model.Local)
+        }
+    </fieldset>
+
+    <script type="text/javascript">
+        $('.StandardTimeFormat').unifytimepicker({
+            includeDays: true,
+            allowNegative: true
+        });
+    </script>
+}

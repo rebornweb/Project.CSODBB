@@ -1,0 +1,27 @@
+﻿@using Unify.Connect.Web.Extensions
+@model Unify.Product.IdentityBroker.CertificateRemotingConfiguration
+<div>
+    <h2>@SettingControllerResources.CertificateManagementTitle</h2>
+    <table class="RightSpaced BottomSpaced VerticalAlignTable">
+        <tr>
+            <td>@SettingControllerResources.CertificateStoreLocationLabelText</td>
+            <td>@Model.StoreLocation</td>
+        </tr>
+        <tr>
+            <td>@SettingControllerResources.CertificateStoreNameLabelText</td>
+            <td>@Model.StoreName</td>
+        </tr>
+        @foreach (var attribute in @Model.Attributes)
+        {
+            <tr>
+                <td>
+                    @attribute.Key
+                </td>
+                <td>
+                    @attribute.Value
+                </td>
+            </tr>
+        }
+    </table>
+    @Html.ActionLink("Edit", "EditCertificateSettings", "Setting", null, new {@class = "m-btn"})
+</div>

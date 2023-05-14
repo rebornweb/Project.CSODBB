@@ -1,0 +1,42 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model AdapterGroupConfigurationViewInformationWithAdapters
+
+@{
+    ViewBag.Title = Html.Title(TitleResources.AdapterGroupDetailsTitle);
+    
+    AdapterGroupConfigurationViewInformation adapterGroupConfiguration = Model.Configuration;
+    string adapterComment = string.IsNullOrWhiteSpace(adapterGroupConfiguration.Comment)
+                    ? GroupControllerResources.DefaultAdapterGroupComment
+                    : Html.Encode(adapterGroupConfiguration.Comment);
+}
+
+<h2>
+    @adapterGroupConfiguration.Name
+    @{ Html.RenderAction("AdapterGroupFunctions", "Group", new { groupId = adapterGroupConfiguration.Id });  }
+</h2>
+
+<div>
+    <h3>@GroupControllerResources.AdapterGroupCommentHeadingText</h3>
+    <label>@adapterComment</label>
+</div>
+
+<div>
+    <h3>@GroupControllerResources.AdaptersHeadingText</h3>
+
+    @if (Model.Adapters.Any())
+    {
+        foreach (var adapter in Model.Adapters)
+        {
+            Guid id = adapter.AdapterId;
+            string displayName = adapter.AdapterName;
+        
+            <a href="@Url.Action("AdapterDetails", "Adapter", new{ id })">@displayName</a> 
+            <br />
+        }
+    }
+    else 
+    {
+        <label>@GroupControllerResources.NoAdaptersInGroupMessageText</label>
+    }
+</div>

@@ -1,0 +1,126 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+@model ConnectorIndexModel
+@{
+    ViewBag.Title = Html.Title(ConnectorControllerResources.ConnectorTitle);
+    string addGroupImageUrl = Url.WebIcon("group_add.png");
+    ViewBag.Title = Html.Title(TitleResources.ConnectorIndexTitle);
+    List<SelectListItem> selectList = new List<SelectListItem>{new SelectListItem{Text = "All", Value = null}};
+
+    string selectedGroup = string.Empty;
+    Guid? selectedGroupGuid = null;
+    if (TempData.Peek("connectorGroupSelection") != null)
+    {
+        selectedGroup = (string) TempData["connectorGroupSelection"];
+        selectedGroupGuid = new Guid(selectedGroup);
+    }
+    
+    selectList.AddRange(Model.ConnectorGroups.Select(
+        group => new SelectListItem
+        {
+            Text = group.Name,
+            Value = group.Key.ToString(),
+            Selected = selectedGroup.Equals(group.Key.ToString())
+        }));
+}
+
+<div class="ConnectorsViewSection">
+    <div class="ConnectorsViewSectionHeader">
+        <h2 class="inlineHeader">
+            @ConnectorControllerResources.ConnectorIndexHeadingText
+        </h2>
+        <span class="ConnectorsOperationsButton">
+            @Html.RenderConnectorsOperationsMenu(Url, @Model.SelectedGroup)
+        </span>
+        <span>
+            @if (Model.ConnectorGroups.Any())
+            {
+                using (Html.BeginForm("Index", "Connector", FormMethod.Get, new {id = "ConnectorGroupForm", @class = "IconForm"}))
+                {
+                    @Html.DropDownList(
+                        "groupId",
+                        selectList,
+                        new {id = "ConnectorGroupSelector", @class = "chzn-select"})
+                    <noscript>
+                        <input type="submit" value="@ConnectorControllerResources.SelectGroupSubmitValue" alt="@ConnectorControllerResources.FilterVisibleConnectorsOnGroupAltText" title="@ConnectorControllerResources.FilterVisibleConnectorsOnGroupAltText" />
+                    </noscript>
+                }
+            }
+        </span>
+        <span>
+            <input type="checkbox" id="ConnectorsHeadingInput" />
+            @ConnectorControllerResources.SelectDeselectAllMessage
+        </span>
+    </div>
+    <div id="ConnectorsContainer">
+        @Html.ActionRefresh(Url, "Connectors", 5000, "Connectors", "Connector", new RouteValueDictionary(new Dictionary<string, object>{{"groupId", selectedGroupGuid}}),
+            "Connectors",
+            "function(cache) { $('.ActionRefreshListener').trigger('refreshStart', cache); }",
+            "function(cache) { $('.ActionRefreshListener').trigger('refreshStop', cache); $('.scriptonly').show(); }")
+    </div>
+</div>
+
+
+<div class="ConnectorsViewSection">
+    <div class="ConnectorsViewSectionHeader">
+        <h2 class="inlineHeader">
+            @GroupControllerResources.ConnectorGroupsHeadingText
+        </h2>
+        <span>
+            <a href="@Url.Action("CreateConnectorGroup", "Group")"><img src="@addGroupImageUrl" alt="@GroupControllerResources.AddConnectorGroupAltText" title="@GroupControllerResources.AddConnectorGroupAltText" /></a>
+        </span>
+    </div>
+    <div>
+        @if (Model.ConnectorGroups.Any())
+        {
+            foreach (ConnectorGroup connectorGroup in Model.ConnectorGroups)
+            {
+                Guid groupId = connectorGroup.Key;
+                <div class="ListConnectorGroups">
+                    <a href="@Url.Action("ConnectorGroupDetails", "Group", new {groupId})">@connectorGroup.Name</a>
+                    @{ Html.RenderAction("ConnectorGroupFunctions", "Group", new {groupId}); }
+                </div>
+            }
+        }
+        else
+        {
+            <p class="ListConnectorGroups">@GroupControllerResources.NoConnectorGroupsMessageText</p>
+        }
+        <div id="AddConnectorContainer"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        @ViewData.RetrieveListItems("StandardConnectorsFunctions"); // RenderConnectorsOperationsMenu
+
+        $("#ConnectorsContainerFunctions").hide();
+
+        $("#ConnectorGroupSelector").change(function() {
+            $.get("@Url.Action("Connectors", "Connector")",
+                $("#ConnectorGroupForm").serialize(),
+                function(data) {
+                    $("#ConnectorsContainer").html(data);
+                });
+        });
+
+        $("#ConnectorsHeadingInput").change(function() {
+            var checked = $(this).is(':checked');
+            $('.ConnectorSelections').each(function() {
+                $(this).prop('checked', checked);
+            });
+
+            if (checked) {
+                $('.ListedConnector').each(function() {
+                    $(this).trigger('checkSelected');
+                });
+            } else {
+                $('.ListedConnector').each(function() {
+                    $(this).trigger('checkDeselected');
+                });
+            }
+        });
+    });
+</script>

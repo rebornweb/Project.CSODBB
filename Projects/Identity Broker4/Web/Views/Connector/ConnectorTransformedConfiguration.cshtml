@@ -1,0 +1,35 @@
+﻿@using Unify.Framework.Web
+@model ConnectorTransformedConfigurationViewInformation
+
+@{
+    ViewBag.Title = Html.Title(TitleResources.ConnectorTransformedConfigurationTitle);
+}
+
+<h1>
+    @(Model.ConnectorId.HasValue 
+        ? ConnectorControllerResources.TransformedConnectorConfigurationHeading
+        : ConnectorControllerResources.TransformedConnectorsConfigurationHeading)
+</h1>
+
+<div>
+    <a href="@Url.Action("DownloadConnectorTransformedConfiguration", "Connector", new { connectorId = Model.ConnectorId })">
+        @ConnectorControllerResources.DownloadTransformedConfigurationLink
+    </a>
+</div>
+
+<div>
+    <a href="@Url.Action("DownloadConnectorEngineConfiguration", "Connector")">
+        @ConnectorControllerResources.DownloadOriginalConfigurationLink
+    </a>
+</div>
+
+@if (Model.AvailableFileNames.Any())
+{
+    using (Html.BeginForm("ConnectorTransformedConfiguration", "Connector", new { connectorId = Model.ConnectorId }))
+    {
+        @Html.DropDownList("transformationFile", 
+                           new SelectList(Model.AvailableFileNames.Union(new[]{Model.FileName}), Model.FileName))
+    }
+}
+
+@{ Html.RenderAction("DisplayConnectorTransformedConfiguration", "Connector", new { connectorId = Model.ConnectorId, transformationFile = Model.FileName }); }

@@ -1,0 +1,39 @@
+﻿@model OracleDbAgentViewInformation
+@using Unify.Framework.Web
+
+@{
+    var agentTitleName = (Model.EditMode) ? Model.Name : AgentsControllerResources.OracleDbAgentDisplayNameText;
+    ViewBag.Title = Html.Title(Html.CreateAgentTitle(agentTitleName, Model.CreateOrUpdateText).ToString());
+}
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm(
+            Model.ManagementAgentKey == Guid.Empty
+                ? "Create"
+                : "CreateMAAgent",
+            "Agents",
+            FormMethod.Post,
+            new { id = "CreateAgentForm" }),
+        Model.CreateOrUpdateText,
+        "CreateAgentForm",
+        AgentsControllerResources.ConfigureAgentAltText,
+        "submitButton"
+    ))
+{
+    @Html.HiddenFor(model => model.PlugInName)
+    @Html.HiddenFor(model => model.AgentId)
+    @Html.HiddenFor(model => model.EditMode)
+    @Html.HiddenFor(model => model.FIMAgentId)
+    @Html.HiddenFor(model => model.ManagementAgentKey)
+
+    using (Html.MetaDataFor(model => model.Name, new {description = AgentsControllerResources.OracleAgentNameDescription}))
+    {
+        @Html.LabelFor(model => model.Name, AgentsControllerResources.OracleAgentNameName)
+        @Html.TextBoxFor(model => model.Name)
+    }
+    using (Html.MetaDataFor(model => model.ConnectionString, new{ description = AgentsControllerResources.OracleAgentConnectionStringDescription }))
+    {
+        @Html.LabelFor(model => model.ConnectionString, AgentsControllerResources.OracleAgentConnectionStringName)
+        @Html.TextAreaFor(model => model.ConnectionString, new{@class="wide-text", rows = 10})
+    }
+}

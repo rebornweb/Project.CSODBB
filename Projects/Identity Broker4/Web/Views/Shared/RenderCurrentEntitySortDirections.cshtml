@@ -1,0 +1,58 @@
+﻿@using Unify.Framework.Web
+@model EntitySearchSortDirectionsViewInformation
+
+@if (Model.CurrentSortDirections.Any())
+{
+    Guid partitionId = Model.PartitionId;
+
+    string ascendingTableSortImageUrl = 
+        Url.WebIcon("table_sort_asc.png");
+
+    string descendingTableSortImageUrl = 
+        Url.WebIcon("table_sort_desc.png");
+
+    string deleteImageUrl =
+        Url.WebIcon("delete.png");
+
+    <table>
+        @foreach (var sortDirection in Model.CurrentSortDirections)
+        {
+            string columnName = sortDirection.Key;
+            string sortDirectionImageUrl;
+            string sortDirectionDescription;
+            if (sortDirection.Value == System.Web.UI.WebControls.SortDirection.Ascending)
+            {
+                sortDirectionImageUrl = ascendingTableSortImageUrl;
+                sortDirectionDescription = string.Format(ConnectorControllerResources.AscendingEntitySortDirectionDescription, columnName);
+            }
+            else
+            {
+                sortDirectionImageUrl = descendingTableSortImageUrl;
+                sortDirectionDescription = string.Format(ConnectorControllerResources.DescendingEntitySortDirectionDescription, columnName);
+            }
+
+            <tr>
+                <td>
+                    <label>@columnName</label>
+                    <img src="@sortDirectionImageUrl" alt="@sortDirectionDescription" title="@sortDirectionDescription"/>
+                    @using (Html.BeginForm("SubmitRemoveEntitySearchSortDirections", 
+                                           Url.RequestContext.RouteData.ExecutingControllerName(), 
+                                           new { partitionId, columnName},
+                                           FormMethod.Post,
+                                           new { @class = "IconForm"}))
+                    {
+                        <input type="image" 
+                               alt="Remove this sort direction." 
+                               title="Remove this sort direction." 
+                               src="@deleteImageUrl" 
+                               onclick="$.post(@Url.Action("SubmitRemoveEntitySearchSortDirections", Url.RequestContext.RouteData.ExecutingControllerName(), new { partitionId, columnName}), function(data) { Redraw(); return false;}); return false;"/>
+                    }
+                </td>
+            </tr>   
+        }
+    </table>
+}
+else
+{
+    <label>There are currently no rows being sorted.</label>
+}

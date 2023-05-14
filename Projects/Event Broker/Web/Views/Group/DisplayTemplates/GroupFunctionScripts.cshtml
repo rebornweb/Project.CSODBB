@@ -1,0 +1,16 @@
+﻿@using Unify.Framework.Web
+@model Guid
+           
+@{
+    var deleteFormId = string.Concat("deleteForm", Model);
+    var deleteButtonId = string.Concat("deleteButton", Model);
+    var deleteMessageId = string.Concat(deleteButtonId, "Message");
+    var groupDeleteConfirmScript = RenderExtensions.SubmitOkCancelDialog(deleteFormId, deleteButtonId, deleteButtonId);
+}
+        
+<div id="@deleteMessageId" title="@GroupControllerResources.FunctionsDeleteGroupConfirmationHeading" style="display: none">
+    @GroupControllerResources.FunctionsDeleteGroupConfirmationMessage
+</div>
+<script type="text/javascript">
+    @Html.Raw(groupDeleteConfirmScript)
+</script>

@@ -1,0 +1,15 @@
+﻿@using Unify.Connect.Web
+@using Unify.Framework.Web
+@model DefaultConnectorViewInformation
+
+<table>
+    
+    <tr>
+        <td>
+            @ConnectorControllerResources.ConnectorExtendedConfigurationLabel
+        </td>
+        <td style="padding:1em;">
+            @Html.Raw(Html.EncodeTextSplitLines(Model.ExtendedConfiguration))
+        </td>
+    </tr>
+</table>

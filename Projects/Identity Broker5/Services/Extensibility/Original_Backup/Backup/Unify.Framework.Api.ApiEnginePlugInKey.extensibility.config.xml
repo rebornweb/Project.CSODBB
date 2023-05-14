@@ -1,0 +1,8 @@
+<ApiEngine rollbackTimeout="PT2M">
+    <ApiConfigurations>
+        <ApiConfiguration apiId="32864fbd-7d85-4cdb-95b7-17b1b915f242" displayName="Default API" description="The default API configuration" enabled="true" authenticationType="None" apiAddress="http://+:59991/IdentityBroker">
+            <ControllerMask />
+            <Extended />
+        </ApiConfiguration>
+    </ApiConfigurations>
+</ApiEngine>

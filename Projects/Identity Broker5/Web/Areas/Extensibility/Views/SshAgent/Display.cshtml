@@ -1,0 +1,35 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Connect.Web
+@using Unify.Product.IdentityBroker
+@model SshAgentViewInformation
+
+
+<table class="RightSpaced BottomSpaced VerticalAlignTable">
+    <tr>
+        <td style="min-width: 150px">@AgentResources.SshAgentHostLabel</td>
+        <td>@Model.Host</td>
+    </tr>
+    <tr>
+        <td style="min-width: 150px">@AgentResources.SshAgentPortLabel</td>
+        <td>@Model.Port</td>
+    </tr>
+    <tr>
+        <td style="min-width: 150px">@AgentResources.SshAgentUsernameLabel</td>
+        <td>@Model.Username</td>
+    </tr>
+
+    @if (Model.AuthenticationMode != SshAuthenticationMode.None)
+    {
+        <tr>
+            <td style="min-width: 150px">@AgentResources.SshAgentAuthenticationModeLabel</td>
+            @if (Model.AuthenticationMode == SshAuthenticationMode.Password)
+            {
+                <td>@AgentResources.SshAgentPasswordAuthenticationModeLabel</td>
+            }
+            else
+            {
+                <td>@AgentResources.SshAgentPrivateKeyAuthenticationModeLabel</td>
+            }
+        </tr>
+    }
+</table>

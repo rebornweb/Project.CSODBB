@@ -1,0 +1,68 @@
+﻿@using Unify.Product.IdentityBroker
+@model CurrentConnectorStates
+
+@if (Model.CurrentDescriptions.Any())
+{
+    int connectorCount = Model.SoftLimit;
+    Guid? connectorGroupId = Model.GroupId;
+    int? adapterCount = Model.AdapterLimitPassThrough;
+    Guid? adapterGroupId = Model.AdapterGroupIdPassThrough;
+
+    RouteValueDictionary valueDictionary = new RouteValueDictionary
+    {
+        {HomeControllerResources.ConnectorCountQueryName, connectorCount + Model.ConnectorIncrement}
+    };
+
+    if (connectorGroupId.HasValue) { valueDictionary.Add(HomeControllerResources.ConnectorGroupIdQueryName, connectorGroupId.Value); }
+    if (adapterCount.HasValue) { valueDictionary.Add(HomeControllerResources.AdapterCountQueryName, adapterCount); }
+    if (adapterGroupId.HasValue) { valueDictionary.Add(HomeControllerResources.AdapterGroupIdQueryName, adapterGroupId); }
+
+    foreach (ConnectorStateDescription connectorDescription in Model.CurrentDescriptions)
+    {
+        BasicConnectorInformation configuration = connectorDescription.Configuration;
+        string connectorType = configuration.ConnectorType;
+        Guid connectorId = configuration.ConnectorId;
+
+        <table class="RightSpaced">
+            <tr>
+                <td>
+                    @Html.ConnectorImage(connectorId, connectorType)
+                </td>
+                <td>
+                    <a href="@Url.Action("ConnectorDetails", "Connector", new {connectorId})">@configuration.DisplayName</a>
+                </td>
+                <td>
+                    <span class="ConnectorAndStatusSeparator">-</span>
+                    <span>
+                        @{
+                            Html.RenderAction("ConnectorStatistics", "Connector", new {connectorId});
+                        }
+                    </span>
+                    <span class="ConnectorAndStatusSeparator">-</span>
+                </td>
+                <td>
+                    @{ Html.RenderAction("ConnectorProgress", "Home", new { connectorId });}
+                </td>
+            </tr>
+        </table>
+    }
+
+    if (Model.CurrentDescriptions.Count() >= connectorCount)
+    {
+        <hr/>
+            
+        <div>
+            <p style="text-align:center">
+                <a href="@Url.Action("Index", "Home", valueDictionary)">@HomeControllerResources.HomeLoadMoreConnectorsText</a>
+            </p>
+        </div>
+    }
+    else
+    {
+        <br/>
+    }
+}
+else
+{
+    <p>@HomeControllerResources.HomeNoOperationalConnectorsText</p>
+}

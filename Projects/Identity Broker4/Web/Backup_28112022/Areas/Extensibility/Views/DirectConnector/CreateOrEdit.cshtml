@@ -1,0 +1,58 @@
+﻿@using Unify.Connect.Web
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+@model DirectConnectorViewInformation
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "DirectConnector", new { area = "Extensibility" }),
+        ConnectorControllerResources.SaveConnectorButtonText,
+        "SaveDirectConnectorForm",
+        ConnectorControllerResources.SaveConnectorButtonAltText
+    ))
+{
+    @Html.ConnectorDetailsFor(model => model)
+    
+    if (Model.AvailableAgents.Any())
+    {
+        using (Html.MetaDataFor(model => model.AgentId, new { description = ConnectorControllerResources.DirectConnectorDatabaseAgentIdDescription }, new { id = "Agent" }))
+        {
+            @Html.LabelFor(model => model.AgentId, ConnectorControllerResources.DirectConnectorDatabaseAgentIdLabel)
+            @Html.DropDownListFor(model => model.AgentId, new SelectList(Model.AvailableAgents,"Value", "Key"))
+        }
+        
+        using (Html.MetaDataFor(model => model.Owner, new { description = ConnectorControllerResources.DirectConnectorOwnerDescription }))
+        {
+            @Html.LabelFor(model => model.Owner, ConnectorControllerResources.DirectConnectorOwnerLabel)
+            @Html.TextBoxFor(model => model.Owner)
+        }
+        using (Html.MetaDataFor(model => model.Table, new { description = ConnectorControllerResources.DirectConnectorTableDescription }))
+        {
+            @Html.LabelFor(model => model.Table, ConnectorControllerResources.DirectConnectorTableLabel)
+            @Html.TextBoxFor(model => model.Table)
+        }
+        using (Html.MetaDataFor(model => model.Filter, new { description = ConnectorControllerResources.DirectConnectorFiltersDescription }))
+        {
+            @Html.LabelFor(model => model.Filter, ConnectorControllerResources.DirectConnectorFiltersLabel)
+            @Html.TextAreaFor(model => model.Filter, 4, 40, new { @class = "wide-text" })
+        }
+        using (Html.MetaDataFor(model => model.Order, new { description = ConnectorControllerResources.DirectConnectorOrdersDescription }))
+        {
+            @Html.LabelFor(model => model.Order, ConnectorControllerResources.DirectConnectorOrdersLabel)
+            @Html.TextAreaFor(model => model.Order, 4, 40, new { @class = "wide-text" })
+        }
+        using (Html.MetaDataFor(model => model.ReadThreshold, new { description = ConnectorControllerResources.DirectConnectorReadThresholdDescription }))
+        {
+            @Html.LabelFor(model => model.ReadThreshold, ConnectorControllerResources.DirectConnectorReadThresholdLabel)
+            @Html.TextBoxFor(model => model.ReadThreshold)
+        }
+    }
+    else
+    {
+        @Html.HiddenFor(model => model.AgentId)
+
+        <div class="FormText">
+            @ConnectorControllerResources.DirectConnectorCreateAgentPreLinkText <a href="@Url.Action("Create", "SqlServerAgent", new { type = DatabaseAgentAttributes.SqlServerAgentFactoryName, area = "Extensibility" })">@ConnectorControllerResources.DirectConnectorCreateAgentSqlServerLinkText</a>@ConnectorControllerResources.DirectConnectorCreateAgentLinkDividerText<a href="@Url.Action("Create", "OracleDbAgent", new { type = DatabaseAgentAttributes.OracleDbAgentFactoryName, area = "Extensibility" })">@ConnectorControllerResources.DirectConnectorCreateAgentOracleDbLinkText</a>@ConnectorControllerResources.DirectConnectorCreateAgentLinkDividerText<a href="@Url.Action("Create", "OleDbAgent", new { type = DatabaseAgentAttributes.OleDbAgentFactoryName, area = "Extensibility" })">@ConnectorControllerResources.DirectConnectorCreateAgentOleDbLinkText</a>@ConnectorControllerResources.DirectConnectorCreateAgentPostLinkText
+        </div>
+        <br/>
+    }
+}

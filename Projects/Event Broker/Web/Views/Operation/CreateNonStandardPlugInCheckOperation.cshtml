@@ -1,0 +1,30 @@
+﻿@using Unify.Framework.Web
+@model NonStandardPlugInOperationConfigurationViewInformation
+
+@{
+    ViewBag.Title = Model.CreateOrUpdateText; 
+}
+
+@using (Html.DecorateForm(
+            () => Html.BeginForm("CreateOrEditNonStandardPlugInCheckOperationResult", "Operation", FormMethod.Post, new { id = "CreateOperationForm" }),
+            Model.CreateOrUpdateText,
+            "CreateOperationForm",
+            OperationResources.ConfigureOperationAltText, "submitButton"))
+{ 
+    <div>
+        @Html.EditorFor(model => model, "OperationDisplayName")
+        
+        <fieldset>
+            
+            @using (Html.MetaDataFor(model => model.ConfigurationString, new { description = OperationControllerResources.NonStandardPlugInConfigurationDescription }))
+            {
+                @Html.LabelFor(model => model.ConfigurationString, OperationControllerResources.NonStandardPlugInConfigurationName)
+                @Html.TextAreaFor(model => model.ConfigurationString)
+            }
+
+            @Html.EditorFor(model => model, "CheckOperationInnerDetails")
+        
+        </fieldset>
+    </div>
+}
+

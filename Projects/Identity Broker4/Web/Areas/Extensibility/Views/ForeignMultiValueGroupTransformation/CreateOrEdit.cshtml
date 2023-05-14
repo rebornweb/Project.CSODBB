@@ -1,0 +1,54 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Collections
+@using Unify.Framework.Web
+@model ForeignMultiValueGroupTransformationViewInformation
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "ForeignMultiValueGroupTransformation", FormMethod.Post),
+        TransformationResources.SaveTransformationButtonText,
+        "SaveMultiValueGroupTransformationForm",
+        TransformationResources.SaveTransformationButtonAltText
+    ))
+{
+    
+    @Html.TransformationDetailsFor(model => model)
+    @Html.HiddenFor(model => model.RelationshipConnectorId)
+    
+    <fieldset>
+        
+        @using (Html.MetaDataFor(model => model.InputKey, new { description = TransformationResources.MultiValueGroupTransformationInputKeyDescription, hideRequired = true }, new { @class = "chzn-form-fieldset-container" }))
+        {
+            @Html.LabelFor(model => model.InputKey, TransformationResources.MultiValueGroupTransformationInputKeyLabel)
+            @Html.SchemaFieldsFor(model => model.InputKey, Model.AdapterSchema, Model.InputKey)
+        }
+        
+        @using (Html.MetaDataFor(model => model.RelationKey, new { description = TransformationResources.MultiValueGroupTransformationRelationKeyDescription, hideRequired = true }, new { @class = "chzn-form-fieldset-container" }))
+        {
+            @Html.LabelFor(model => model.RelationKey, TransformationResources.MultiValueGroupTransformationRelationKeyLabel)
+            @Html.SchemaFieldsFor(model => model.RelationKey, Model.RelationshipSchema, Model.RelationKey, Model.RelationshipSchemaTypes, new[]{ Unify.Framework.ValueType.MultiValue })
+        }
+        
+        @using (Html.MetaDataFor(model => model.GroupTarget, new { description = TransformationResources.MultiValueGroupTransformationGroupTargetDescription }))
+        {
+            @Html.LabelFor(model => model.GroupTarget, TransformationResources.MultiValueGroupTransformationGroupTargetLabel)
+            @Html.TextBoxFor(model => model.GroupTarget)
+        }
+        
+        @using (Html.MetaDataFor(model => model.Template, new { description = TransformationResources.MultiValueGroupTransformationTemplateDescription, hideRequired = true }))
+        {
+            @Html.LabelFor(model => model.Template)
+            <div>
+                @Html.DnTemplateFor(Model.Template, Model.RelationshipSchema, Model.RelationshipSchemaTypes, false)
+            </div>
+        }
+        
+        @using (Html.MetaDataFor(model => model.RelationReference, new { description = TransformationResources.MultiValueGroupTransformationRelationReferenceDescription, hideRequired = true }, new { @class = "chzn-form-fieldset-container" }))
+        {
+            @Html.LabelFor(model => model.RelationReference, TransformationResources.MultiValueGroupTransformationRelationReferenceLabel)
+            @Html.SchemaFieldsFor(model => model.RelationReference, Model.RelationshipSchema, Model.RelationReference)
+        }
+
+    </fieldset>
+    
+}

@@ -1,0 +1,18 @@
+﻿@model Unify.Framework.Web.ServiceUnavailableModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@WebStudioResources.ServiceUnavailableErrorTitle</title>
+</head>
+<body>
+    <h1>
+        @WebStudioResources.ServiceUnavailableHeading
+    </h1>
+    <p>
+        @WebStudioResources.NoServiceLocatedConfiguredMessage <a href="@Model.ServiceAddress">@Model.ServiceAddressName</a> @WebStudioResources.NoServiceLocatedNotLocatedMessage @Html.ActionLink("here", "Index", "Home") @WebStudioResources.NoServiceLocatedReturnToMessage
+    </p>
+</body>
+</html>

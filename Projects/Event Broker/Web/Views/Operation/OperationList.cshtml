@@ -1,0 +1,40 @@
+﻿@model IOperationListInformation
+@using Unify.Framework.Web
+
+@{
+    ViewBag.Title = Html.Title(Model.Name);
+}
+
+<script type="text/javascript">
+    $([
+            '@Url.WebIcon("delete.png")',
+            '@Url.WebIcon("arrow_turn_left.png")',
+            '@Url.WebIcon("arrow_turn_right_down.png")',
+            '@Url.WebIcon("arrow_up.png")',
+            '@Url.WebIcon("arrow_down.png")',
+            '@Url.WebIcon("plugin_edit.png")',
+            '@Url.WebIcon("Loader.gif")',
+            '@Url.WebIcon("bullet_go.png")',
+            '@Url.WebIcon("bullet_wrench.png")',
+            '@Url.WebIcon("cog.png")',
+            '@Url.WebIcon("information.png")',
+            '@Url.WebIcon("control_pause_blue.png")',
+            '@Url.WebIcon("control_play_blue.png")',
+            '@Url.WebIcon("clock_add.png")',
+            '@Url.WebIcon("clock_edit.png")',
+            '@Url.WebIcon("clock_delete.png")',
+            '@Url.WebIcon("plugin_add.png")',
+            '@Url.WebIcon("page_copy.png")',
+            '@Url.WebIcon("package_link.png")']).preload();
+</script>
+
+<div>
+    @Html.ActionRefresh(
+    Url,
+    "Details",
+    5000,
+    "OperationDetails",
+    "Operation",
+    new { id = Model.Id },
+    Url.Action("OperationList", "Operation", new { id = Model.Id }))
+</div>

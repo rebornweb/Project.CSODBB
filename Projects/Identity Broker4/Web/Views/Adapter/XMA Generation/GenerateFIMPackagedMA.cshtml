@@ -1,0 +1,138 @@
+﻿@using Unify.Connect.Web
+@using Unify.Framework.Web
+@using Unify.Connect.Web.Extensions
+
+@model GenerateFIMPackagedMAViewInformation
+           
+@{
+    ViewBag.Title = Html.Title(TitleResources.GenerateFIMPackagedMATitle);
+    var submitButtonText = Model.IsOnFIMServer ? XmaGeneratorResources.GeneratePackagedMASubmitButtonText : XmaGeneratorResources.DownloadToLocalMachineLabelText;
+}
+
+@using (Html.DecorateForm(
+            () => Html.BeginForm("GenerateFIMPackagedMA", "Adapter", FormMethod.Post, new { id = "GeneratePackagedXMAForm" }),
+            submitButtonText,
+            "GeneratePackagedXMAForm",
+            AdapterResources.FIMGenerateXmaDescription
+    ))
+{
+    @Html.HiddenFor(model => model.AdapterId)
+    @Html.HiddenFor(model => model.IdentityBrokerServiceUri)
+    @Html.HiddenFor(model => model.AdapterName)
+    @Html.HiddenFor(model => model.ObjectClasses)
+    
+    <fieldset>
+        <legend>@XmaGeneratorResources.GenerateFIMPackagedMAAdapterDetailsText</legend>
+
+        <div> 
+            @Html.LabelFor(model => model.AdapterName, XmaGeneratorResources.AdapterNameLabelText)
+            @Html.DisplayTextFor(model => model.AdapterName)
+        </div>
+        
+        <div> 
+            @Html.LabelFor(model => model.ObjectClasses, XmaGeneratorResources.ObjectClassesLabelText)
+            @Html.DisplayTextFor(model => model.ObjectClasses)
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>@XmaGeneratorResources.GenerateFIMPackagedMAServiceOptionsText</legend>
+        
+        @using (Html.MetaDataFor(model => model.UseAdvancedServiceView, new { description = XmaGeneratorResources.GenerateFIMPackagedMAStandardServiceOptionsHint }, new { @class = "controlset" }))
+        {
+            <span class="label">@XmaGeneratorResources.GenerateFIMPackagedMAStandardServiceOptionsText</span>
+
+            @Html.RadioButtonFor(model => model.UseAdvancedServiceView, false, new { onClick = "focus();" })
+            <label>@XmaGeneratorResources.GenerateFIMPackagedMAStandardOptionText</label>
+            
+            @Html.RadioButtonFor(model => model.UseAdvancedServiceView, true, new { onClick = "focus();" })
+            <label>@XmaGeneratorResources.GeneratedFIMPackagedMAAdvancedOptionText</label>
+        }
+
+        <div id="StandardViewSection">
+            
+            @using (Html.MetaDataFor(model => model.IdentityBrokerServiceUri))
+            {
+                @Html.LabelFor(model => model.IdentityBrokerServiceUri, XmaGeneratorResources.IdentityBrokerServiceUriLabelText)
+                @Html.DisplayTextFor(model => model.IdentityBrokerServiceUri)
+            }
+
+        </div>
+
+        <div id="AdvancedViewSection">
+            
+            @using (Html.MetaDataFor(model => model.IdentityBrokerServiceUriOverride, new { description = XmaGeneratorResources.ServiceURIOverrideHint }))
+            {
+                @Html.LabelFor(model => model.IdentityBrokerServiceUriOverride, XmaGeneratorResources.IdentityBrokerServiceUriLabelText)
+                @Html.TextBoxFor(model => model.IdentityBrokerServiceUriOverride)
+            }
+            
+            @using (Html.MetaDataFor(model => model.EndpointType, new { description = XmaGeneratorResources.EndpointTypeHint }, new { @class = "controlset" }))
+            {
+                <span class="label">@XmaGeneratorResources.FIMEndpointTypeLabelText</span>
+
+                @Html.RadioButtonFor(model => model.EndpointType, FIMEndpointType.FIMCompliant, new { onClick = "focus();" })  
+                <label>@XmaGeneratorResources.FIMCompliantEndpointTypeLabel</label>
+
+                @Html.RadioButtonFor(model => model.EndpointType, FIMEndpointType.LDIF, new { onClick = "focus();" }) 
+                <label>@XmaGeneratorResources.LDIFCompliantEndpointTypeLabel</label>
+            }
+    
+        </div>
+
+    </fieldset>
+
+    <fieldset>
+
+        <legend>@XmaGeneratorResources.GenerateFIMPackagedMASaveOptionsText</legend>
+        
+        @using (Html.MetaDataFor(model => model.PackagedMAFileName, new { description = XmaGeneratorResources.PackagedMAFileNameHint }))
+        {
+            @Html.LabelFor(model => model.PackagedMAFileName, XmaGeneratorResources.PackagedMAFileNameLabelText)
+            @Html.TextBoxFor(model => model.PackagedMAFileName)
+        }
+        
+        @if (Model.IsOnFIMServer)
+        {
+            using (Html.MetaDataFor(model => model.IsOnFIMServer, new { description = XmaGeneratorResources.GenerateFIMPackagedMASaveOptionsHint }, new { @class = "controlset" }))
+            {
+                <span class="label">@XmaGeneratorResources.MAGenerationOptionLabelText</span>
+                
+                @Html.RadioButtonFor(model => model.MASaveOption, FIMPackagedMASaveOptions.SaveToServerFIMInstance) 
+                <label>@XmaGeneratorResources.SaveToServerFIMInstanceLabelText</label>
+                
+                @Html.RadioButtonFor(model => model.MASaveOption, FIMPackagedMASaveOptions.DownloadToLocalMachine, new { onClick = "focus();" })  
+                <label>@XmaGeneratorResources.DownloadToLocalMachineLabelText</label>
+            }
+        }
+        else
+        {
+            @Html.HiddenFor(model => model.MASaveOption, FIMPackagedMASaveOptions.DownloadToLocalMachine)
+        }
+
+    </fieldset>
+}
+
+<script type="text/javascript">
+<!--
+    var advancedViewTrue = $('input[type=radio][id=UseAdvancedServiceView][value=True]');
+    var advancedViewFalse = $('input[type=radio][id=UseAdvancedServiceView][value=False]');
+    var standardViewSection = $('#StandardViewSection');
+    var advancedViewSection = $('#AdvancedViewSection');
+
+    advancedViewTrue.bind('change', function (event) {
+        ShowHideSection(advancedViewTrue, advancedViewSection, standardViewSection);
+    });
+
+    advancedViewFalse.bind('change', function (event) {
+        ShowHideSection(advancedViewFalse, standardViewSection, advancedViewSection);
+    });
+
+    $(document).ready(function () {
+        ShowHideSection(advancedViewFalse, standardViewSection, advancedViewSection);
+    });
+
+    </script>
+
+
+

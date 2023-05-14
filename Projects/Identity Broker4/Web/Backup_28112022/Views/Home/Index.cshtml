@@ -1,0 +1,104 @@
+﻿@using Unify.Framework
+@using Unify.Framework.Web
+@model HomeModel
+
+@{
+    ViewBag.Title = Html.Title(TitleResources.HomeTitle);
+    var schedulerEnabled = IdentityServiceClientInstance.Instance.GetSchedulerState() == SchedulerState.Started;
+}
+
+@{ Html.RenderAction("SeverityHeader", "Shared", new { area = "Framework" });}
+
+@Html.ActionRefresh(Url, "SchedulerRefresh", 5000, "Scheduler", "Home")
+
+<h2>@HomeControllerResources.HomeConnectorsHeading</h2>
+
+<div>
+    @if (schedulerEnabled)
+    {
+        @Html.ActionRefresh(Url, "ConnectorsRefresh", 10000, "Connectors", "Home")
+    }
+    else
+    {
+        <p>@HomeControllerResources.SchedulerDisabledConnectorMessage</p>
+    }
+    
+</div>
+
+<h2>@HomeControllerResources.HomeAdaptersHeading</h2>
+
+<div>
+    @if (schedulerEnabled)
+    {
+        @Html.ActionRefresh(Url, "AdaptersRefresh", 10000, "Adapters", "Home")
+    }
+    else
+    {
+        <p>@HomeControllerResources.SchedulerDisabledAdapterMessage</p>
+    }
+</div>
+
+<h2>@HomeControllerResources.HomeAlertsHeading</h2>
+
+<div>
+    @Html.ActionRefresh(Url, "AlertsRefresh", 5000, "Alerts", "Home")
+</div>
+
+@{
+    IEnumerable<KeyValuePair<string, string>> criticalAlerts =
+        Model.CurrentAlerts
+            .Where(alert => alert.Severity == AlertLevel.Critical)
+            .Select(
+                alert =>
+                    {
+                        Func<HtmlHelper, UrlHelper, AlertInformation, IHtmlString> renderFunction;
+                        if (!Model.AlertRenderFunctions.TryGetValue(alert.Name, out renderFunction))
+                        {
+                            renderFunction = (html, url, information) => new HtmlString(information.Message);
+                        }
+
+                        string rendered = renderFunction(Html, Url, alert).ToString();
+
+                        string[] splits = rendered.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
+
+                        string key;
+                        string value;
+
+                        if (splits.Length > 1)
+                        {
+                            key = splits[0];
+                            value = string.Join("<br/>", splits.Skip(1));
+                        }
+                        else
+                        {
+                            key = string.Empty;
+                            value = splits[0];
+                        }
+
+                        return new KeyValuePair<string, string>(key, value);
+                    }
+            )
+            .ToArray();
+
+    if (criticalAlerts.Any())
+    {
+        IList<string> alerts = new List<string>();
+        IList<string> containers = new List<string>();
+        foreach (var criticalAlert in criticalAlerts)
+        {
+            string containerId = Guid.NewGuid().ToString("N");
+            alerts.Add(string.Format("TitleDialog('#{0}', '{1}');", containerId, criticalAlert.Key));
+            containers.Add(string.Format("<div id=\"{0}\" style=\"display: none;\">{1}</div>", containerId, criticalAlert.Value));
+        }
+        string alertsString = string.Join(Environment.NewLine, alerts);
+        string containersString = string.Join(Environment.NewLine, containers);
+
+        @Html.Raw(containersString)
+
+        <script language="javascript" type="text/javascript">
+            @Html.Raw(alertsString)
+        </script>
+    }
+}
+    
+<div id="WelcomeMessage"></div>

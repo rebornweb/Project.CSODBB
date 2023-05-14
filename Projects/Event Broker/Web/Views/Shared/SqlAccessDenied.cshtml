@@ -1,0 +1,10 @@
+﻿@using Unify.Framework.Web
+@{
+    this.ClearLayoutIfPartial();
+    ViewBag.Title = Html.Title(TitleResources.SqlAccessDeniedTitle);
+}
+
+<h2>@SharedResources.AccessDeniedHeading</h2>
+
+@SharedResources.SQLAccessDeniedMessage
+

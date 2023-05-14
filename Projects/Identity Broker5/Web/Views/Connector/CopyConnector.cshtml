@@ -1,0 +1,23 @@
+﻿@model CopyConnectorViewInformation
+@using Unify.Framework.Web
+
+@{
+    ViewBag.Title = Html.Title(TitleResources.CopyConnectorTitle);
+}
+
+@using (Html.DecorateForm(
+            () => Html.BeginForm("CopyConnector", "Connector", FormMethod.Post, new { id = "CopyConnectorForm" }),
+            ConnectorControllerResources.CopySubmitText,
+            "CopyConnectorForm",
+            ConnectorControllerResources.CopyConnectorAltText))
+{
+    @Html.HiddenFor(model => model.Id)
+
+    <fieldset>
+        @using (Html.MetaDataFor(model => model.Name, new { description = ConnectorControllerResources.CopyConnectorNameDescription }))
+        {
+            @Html.LabelFor(model => model.Name, ConnectorControllerResources.CopyConnectorNameLabel)
+            @Html.TextBoxFor(model => model.Name)
+        }
+    </fieldset>
+}

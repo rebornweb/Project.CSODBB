@@ -1,0 +1,20 @@
+﻿@model OnceOffViewInformation
+           
+@using Unify.Framework.Web
+
+@{
+    string onceOffDateDescription = string.Format(
+            ConnectorControllerResources.OnceOffDateDescription,
+            ConnectorControllerResources.FriendlyDateFormat,
+            ConnectorControllerResources.FriendlyTimeFormat,
+            ConnectorControllerResources.DateFormatExample,
+            ConnectorControllerResources.TimeFormatExample);           
+}
+
+@using (Html.MetaDataFor(model => model.DateTime, new { description = onceOffDateDescription }))
+{
+    @Html.LabelFor(model => model.DateTime, ConnectorControllerResources.OnceOffDateName)
+    <span class="StandardDateTime">
+        @Html.EditorFor(model => model.DateTime)
+    </span>
+}

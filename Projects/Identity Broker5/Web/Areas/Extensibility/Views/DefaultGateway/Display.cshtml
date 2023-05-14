@@ -1,0 +1,17 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@model DefaultGatewayViewInformation
+
+<table>
+    <tr>
+        <td>@GatewayResources.UnknownGatewayText</td>
+        <td>&nbsp;</td>
+    </tr>
+    @foreach (KeyValuePair<string, string> agent in Model.KnownGateways)
+    {
+        <tr>
+            <td>&nbsp;</td>
+            <td>@agent.Key (@agent.Value)</td>
+        </tr>
+    }
+</table>

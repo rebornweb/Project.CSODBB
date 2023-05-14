@@ -1,0 +1,1214 @@
+﻿20230512,00:04:10,UNIFYBroker,Logging Engine,Information,Log file started.,Minimal
+20230512,00:04:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,00:04:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,00:04:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,00:04:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,00:04:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,00:04:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,00:04:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.1104731. ",Normal
+20230512,00:04:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1729764",Normal
+20230512,00:05:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Staff Connector started.",Normal
+20230512,00:05:16,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Staff Connector.",Normal
+20230512,00:05:16,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Staff Connector reported 0 changes. Duration: 00:00:00",Normal
+20230512,00:05:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Staff Connector returned 0 possible changes. Duration: 00:00:00.2347819",Normal
+20230512,00:06:22,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Student Connector started.",Normal
+20230512,00:06:22,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Student Connector.",Normal
+20230512,00:06:22,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Student Connector reported 1 changes. Duration: 00:00:00",Normal
+20230512,00:06:22,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Student Connector (page 1)",Normal
+20230512,00:06:22,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector CEnet Student Connector processed 1 entities, finding 1 differences. Duration: 00:00:00.2500181. ",Normal
+20230512,00:06:22,UNIFYBroker,Connector Processor,Information,"Connector Post Processing started.
+Connector Post Processing started - checking for deleted entities in connector CEnet Student Connector. Processed Entities: 1",Normal
+20230512,00:06:22,UNIFYBroker,Connector Processor,Information,"Connector Post Processing success.
+Connector Post Processing completed checking for deletes for connector CEnet Student Connector. Processed Entities: 1. Matching Entities: 0. Reported Changes: 0. Duration: 00:00:00.0156254",Normal
+20230512,00:06:22,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Student Connector returned 1 possible changes. Duration: 00:00:00.7198938",Normal
+20230512,00:06:26,UNIFYBroker,Change detection engine,Information,"Started processing changes register items.
+Started processing changes register items for connector CEnet Student Connector.",Normal
+20230512,00:06:26,UNIFYBroker,Change detection engine,Information,"Changes register item processing completed.
+Changes register item processing on connector CEnet Student Connector completed.  Duration: 00:00:00.3287637",Normal
+20230512,00:06:30,UNIFYBroker,Adapter,Information,"Request to reflect change entities of the adapter.
+Request to reflect change entities of the CEnet Student Adapter (2484ffb0-4500-4778-81ae-a78f3aa65aec) adapter completed with 0 adds, 0 updates and 0 deletes across 1 pages. Duration: 00:00:00.4387075",Normal
+20230512,00:06:56,UNIFYBroker,LDAP Gateway,Information,A client has connected to the LDAP endpoint from address: 10.19.205.75:54647.,Normal
+20230512,00:06:57,UNIFYBroker,LDAP engine,Information,"Handling of LDAP bind request.
+Handling of LDAP bind request received on connection 10.19.205.75:54647 to connect as user MIM completed successfully. The bind was successful. Duration: 00:00:00.0937585.",Normal
+20230512,00:06:57,UNIFYBroker,LDAP engine,Information,"Handling of LDAP Root DSE request.
+Handling of LDAP Root DSE request from user MIM on connection 10.19.205.75:54647 for the Root DSE completed successfully. Duration: 00:00:00.",Normal
+20230512,00:06:57,UNIFYBroker,LDAP engine,Information,"Handling of LDAP search request.
+Handling of LDAP search request from user MIM on connection 10.19.205.75:54647 targeting DC=IdentityBroker with a scope of SingleLevel completed successfully. Duration: 00:00:00.0312558.",Normal
+20230512,00:06:57,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:54647 for the schema CN=contacts,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,00:06:57,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:54647 for the schema CN=CEnetStudent,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,00:06:57,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:54647 for the schema CN=CEnetStaff,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,00:06:57,UNIFYBroker,LDAP engine,Information,"Handling of LDAP Root DSE request.
+Handling of LDAP Root DSE request from user MIM on connection 10.19.205.75:54647 for the Root DSE completed successfully. Duration: 00:00:00.",Normal
+20230512,00:06:57,UNIFYBroker,LDAP engine,Information,"Handling of LDAP change log request.
+Handling of LDAP change log request from user MIM on connection 10.19.205.75:54647 completed successfully. Added: 0. Modified: 0. Renamed: 0. Deleted: 1. Total: 1. Duration: 00:00:00.0625064.",Normal
+20230512,00:06:58,UNIFYBroker,LDAP engine,Information,"Handling of LDAP change log request.
+Handling of LDAP change log request from user MIM on connection 10.19.205.75:54647 completed successfully. Added: 0. Modified: 1. Renamed: 0. Deleted: 0. Total: 1. Duration: 00:00:00.0781288.",Normal
+20230512,00:06:58,UNIFYBroker,LDAP engine,Information,"Handling of LDAP search request.
+Handling of LDAP search request from user MIM on connection 10.19.205.75:54647 targeting CN=C6ABDB03-969F-47E6-BFDE-C5769C219B80,OU=CEnetStudent,DC=IdentityBroker with a scope of BaseObject completed successfully. Results: 1. Duration: 00:00:00.",Normal
+20230512,00:06:58,UNIFYBroker,LDAP engine,Information,"Handling of LDAP unbind request.
+Handling of LDAP unbind request received on connection 10.19.205.75:54647 to connect as user MIM completed successfully. Duration: 00:00:00.",Normal
+20230512,00:06:59,UNIFYBroker,LDAP Gateway,Information,A client has connected to the LDAP endpoint from address: 10.19.205.75:54651.,Normal
+20230512,00:07:00,UNIFYBroker,LDAP engine,Information,"Handling of LDAP bind request.
+Handling of LDAP bind request received on connection 10.19.205.75:54651 to connect as user MIM completed successfully. The bind was successful. Duration: 00:00:00.0948717.",Normal
+20230512,00:07:00,UNIFYBroker,LDAP engine,Information,"Handling of LDAP Root DSE request.
+Handling of LDAP Root DSE request from user MIM on connection 10.19.205.75:54651 for the Root DSE completed successfully. Duration: 00:00:00.0156281.",Normal
+20230512,00:07:00,UNIFYBroker,LDAP engine,Information,"Handling of LDAP search request.
+Handling of LDAP search request from user MIM on connection 10.19.205.75:54651 targeting DC=IdentityBroker with a scope of SingleLevel completed successfully. Duration: 00:00:00.0312532.",Normal
+20230512,00:07:00,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:54651 for the schema CN=contacts,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,00:07:00,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:54651 for the schema CN=CEnetStudent,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,00:07:00,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:54651 for the schema CN=CEnetStaff,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,00:07:00,UNIFYBroker,LDAP engine,Information,"Handling of LDAP Root DSE request.
+Handling of LDAP Root DSE request from user MIM on connection 10.19.205.75:54651 for the Root DSE completed successfully. Duration: 00:00:00.",Normal
+20230512,00:07:00,UNIFYBroker,LDAP engine,Information,"Handling of LDAP change log request.
+Handling of LDAP change log request from user MIM on connection 10.19.205.75:54651 completed successfully. Added: 0. Modified: 0. Renamed: 0. Deleted: 1. Total: 1. Duration: 00:00:00.0468787.",Normal
+20230512,00:07:01,UNIFYBroker,LDAP engine,Information,"Handling of LDAP change log request.
+Handling of LDAP change log request from user MIM on connection 10.19.205.75:54651 completed successfully. Added: 0. Modified: 2. Renamed: 0. Deleted: 0. Total: 2. Duration: 00:00:00.1751634.",Normal
+20230512,00:07:01,UNIFYBroker,LDAP engine,Information,"Handling of LDAP search request.
+Handling of LDAP search request from user MIM on connection 10.19.205.75:54651 targeting CN=GG.School.SCCSI.Staff,OU=contacts,DC=IdentityBroker with a scope of BaseObject completed successfully. Results: 1. Duration: 00:00:00.",Normal
+20230512,00:07:01,UNIFYBroker,LDAP engine,Information,"Handling of LDAP unbind request.
+Handling of LDAP unbind request received on connection 10.19.205.75:54651 to connect as user MIM completed successfully. Duration: 00:00:00.",Normal
+20230512,00:07:02,UNIFYBroker,LDAP Gateway,Information,A client has connected to the LDAP endpoint from address: 10.19.205.75:54653.,Normal
+20230512,00:07:02,UNIFYBroker,LDAP engine,Information,"Handling of LDAP bind request.
+Handling of LDAP bind request received on connection 10.19.205.75:54653 to connect as user MIM completed successfully. The bind was successful. Duration: 00:00:00.0891893.",Normal
+20230512,00:07:03,UNIFYBroker,LDAP engine,Information,"Handling of LDAP Root DSE request.
+Handling of LDAP Root DSE request from user MIM on connection 10.19.205.75:54653 for the Root DSE completed successfully. Duration: 00:00:00.",Normal
+20230512,00:07:03,UNIFYBroker,LDAP engine,Information,"Handling of LDAP search request.
+Handling of LDAP search request from user MIM on connection 10.19.205.75:54653 targeting DC=IdentityBroker with a scope of SingleLevel completed successfully. Duration: 00:00:00.5948772.",Normal
+20230512,00:07:03,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:54653 for the schema CN=contacts,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,00:07:03,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:54653 for the schema CN=CEnetStudent,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,00:07:04,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:54653 for the schema CN=CEnetStaff,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,00:07:04,UNIFYBroker,LDAP engine,Information,"Handling of LDAP Root DSE request.
+Handling of LDAP Root DSE request from user MIM on connection 10.19.205.75:54653 for the Root DSE completed successfully. Duration: 00:00:00.",Normal
+20230512,00:07:04,UNIFYBroker,LDAP engine,Information,"Handling of LDAP change log request.
+Handling of LDAP change log request from user MIM on connection 10.19.205.75:54653 completed successfully. Added: 0. Modified: 0. Renamed: 0. Deleted: 1. Total: 1. Duration: 00:00:00.0781323.",Normal
+20230512,00:07:04,UNIFYBroker,LDAP engine,Information,"Handling of LDAP change log request.
+Handling of LDAP change log request from user MIM on connection 10.19.205.75:54653 completed successfully. Added: 0. Modified: 1. Renamed: 0. Deleted: 0. Total: 1. Duration: 00:00:00.1718933.",Normal
+20230512,00:07:04,UNIFYBroker,LDAP engine,Information,"Handling of LDAP search request.
+Handling of LDAP search request from user MIM on connection 10.19.205.75:54653 targeting CN=55944100,UID=D5A13F70-D555-43D9-8447-3760CA747A2A,OU=CEnetStaff,DC=IdentityBroker with a scope of BaseObject completed successfully. Results: 1. Duration: 00:00:00.",Normal
+20230512,00:07:04,UNIFYBroker,LDAP engine,Information,"Handling of LDAP unbind request.
+Handling of LDAP unbind request received on connection 10.19.205.75:54653 to connect as user MIM completed successfully. Duration: 00:00:00.",Normal
+20230512,00:09:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,00:09:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,00:09:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,00:09:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,00:09:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,00:09:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,00:09:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0938680. ",Normal
+20230512,00:09:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1574938",Normal
+20230512,00:14:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,00:14:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,00:14:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,00:14:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,00:14:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,00:14:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,00:14:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.1250081. ",Normal
+20230512,00:14:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.2343918",Normal
+20230512,00:15:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Staff Connector started.",Normal
+20230512,00:15:16,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Staff Connector.",Normal
+20230512,00:15:16,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Staff Connector reported 0 changes. Duration: 00:00:00",Normal
+20230512,00:15:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Staff Connector returned 0 possible changes. Duration: 00:00:00.2667375",Normal
+20230512,00:19:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,00:19:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,00:19:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,00:19:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,00:19:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,00:19:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,00:19:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0781285. ",Normal
+20230512,00:19:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1250064",Normal
+20230512,00:24:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,00:24:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,00:24:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,00:24:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,00:24:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,00:24:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,00:24:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0781348. ",Normal
+20230512,00:24:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1250100",Normal
+20230512,00:25:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Staff Connector started.",Normal
+20230512,00:25:16,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Staff Connector.",Normal
+20230512,00:25:16,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Staff Connector reported 0 changes. Duration: 00:00:00",Normal
+20230512,00:25:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Staff Connector returned 0 possible changes. Duration: 00:00:00.2511430",Normal
+20230512,00:29:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,00:29:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,00:29:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,00:29:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,00:29:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,00:29:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,00:29:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.1406334. ",Normal
+20230512,00:29:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1886032",Normal
+20230512,00:33:37,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector MIM School Sites started.",Normal
+20230512,00:33:37,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector MIM School Sites.",Normal
+20230512,00:33:37,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector MIM School Sites return 45 entities. Duration: 00:00:00",Normal
+20230512,00:33:37,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector MIM School Sites (page 1)",Normal
+20230512,00:33:37,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector MIM School Sites processed 45 entities, finding 0 differences. Duration: 00:00:00.0781330. ",Normal
+20230512,00:33:37,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector MIM School Sites completed. Duration: 00:00:00.5636887",Normal
+20230512,00:34:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,00:34:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,00:34:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,00:34:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,00:34:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,00:34:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,00:34:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.1093819. ",Normal
+20230512,00:34:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1718853",Normal
+20230512,00:35:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Staff Connector started.",Normal
+20230512,00:35:16,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Staff Connector.",Normal
+20230512,00:35:16,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Staff Connector reported 0 changes. Duration: 00:00:00",Normal
+20230512,00:35:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Staff Connector returned 0 possible changes. Duration: 00:00:00.2823790",Normal
+20230512,00:36:22,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Student Connector started.",Normal
+20230512,00:36:22,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Student Connector.",Normal
+20230512,00:36:22,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Student Connector reported 0 changes. Duration: 00:00:00",Normal
+20230512,00:36:22,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Student Connector returned 0 possible changes. Duration: 00:00:00.3281538",Normal
+20230512,00:39:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,00:39:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,00:39:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,00:39:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,00:39:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,00:39:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,00:39:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0781297. ",Normal
+20230512,00:39:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1406342",Normal
+20230512,00:44:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,00:44:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,00:44:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,00:44:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,00:44:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,00:44:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,00:44:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0937589. ",Normal
+20230512,00:44:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1722514",Normal
+20230512,00:45:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Staff Connector started.",Normal
+20230512,00:45:16,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Staff Connector.",Normal
+20230512,00:45:16,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Staff Connector reported 0 changes. Duration: 00:00:00",Normal
+20230512,00:45:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Staff Connector returned 0 possible changes. Duration: 00:00:00.2656490",Normal
+20230512,00:49:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,00:49:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,00:49:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,00:49:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,00:49:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,00:49:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,00:49:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0781309. ",Normal
+20230512,00:49:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1406351",Normal
+20230512,00:54:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,00:54:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,00:54:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,00:54:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,00:54:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,00:54:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,00:54:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0806193. ",Normal
+20230512,00:54:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1275066",Normal
+20230512,00:55:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Staff Connector started.",Normal
+20230512,00:55:16,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Staff Connector.",Normal
+20230512,00:55:16,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Staff Connector reported 0 changes. Duration: 00:00:00",Normal
+20230512,00:55:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Staff Connector returned 0 possible changes. Duration: 00:00:00.2343894",Normal
+20230512,00:59:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,00:59:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,00:59:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,00:59:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,00:59:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,00:59:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,00:59:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0781308. ",Normal
+20230512,00:59:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1250107",Normal
+20230512,01:04:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,01:04:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,01:04:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,01:04:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,01:04:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,01:04:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,01:04:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.1250074. ",Normal
+20230512,01:04:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1718853",Normal
+20230512,01:05:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Staff Connector started.",Normal
+20230512,01:05:16,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Staff Connector.",Normal
+20230512,01:05:16,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Staff Connector reported 0 changes. Duration: 00:00:00",Normal
+20230512,01:05:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Staff Connector returned 0 possible changes. Duration: 00:00:00.2519076",Normal
+20230512,01:06:22,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Student Connector started.",Normal
+20230512,01:06:22,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Student Connector.",Normal
+20230512,01:06:22,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Student Connector reported 0 changes. Duration: 00:00:00",Normal
+20230512,01:06:22,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Student Connector returned 0 possible changes. Duration: 00:00:00.2817172",Normal
+20230512,01:09:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,01:09:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,01:09:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,01:09:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,01:09:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,01:09:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,01:09:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.1093834. ",Normal
+20230512,01:09:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1718872",Normal
+20230512,01:14:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,01:14:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,01:14:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,01:14:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,01:14:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,01:14:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,01:14:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0943066. ",Normal
+20230512,01:14:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1578934",Normal
+20230512,01:15:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Staff Connector started.",Normal
+20230512,01:15:16,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Staff Connector.",Normal
+20230512,01:15:16,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Staff Connector reported 0 changes. Duration: 00:00:00",Normal
+20230512,01:15:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Staff Connector returned 0 possible changes. Duration: 00:00:00.2662035",Normal
+20230512,01:19:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,01:19:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,01:19:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,01:19:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,01:19:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,01:19:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,01:19:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0781281. ",Normal
+20230512,01:19:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1250080",Normal
+20230512,01:24:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,01:24:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,01:24:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,01:24:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,01:24:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,01:24:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,01:24:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0781336. ",Normal
+20230512,01:24:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1250130",Normal
+20230512,01:25:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Staff Connector started.",Normal
+20230512,01:25:16,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Staff Connector.",Normal
+20230512,01:25:16,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Staff Connector reported 0 changes. Duration: 00:00:00",Normal
+20230512,01:25:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Staff Connector returned 0 possible changes. Duration: 00:00:00.2510751",Normal
+20230512,01:29:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,01:29:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,01:29:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,01:29:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,01:29:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,01:29:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,01:29:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0937591. ",Normal
+20230512,01:29:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1562654",Normal
+20230512,01:33:37,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector MIM School Sites started.",Normal
+20230512,01:33:37,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector MIM School Sites.",Normal
+20230512,01:33:37,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector MIM School Sites return 45 entities. Duration: 00:00:00",Normal
+20230512,01:33:37,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector MIM School Sites (page 1)",Normal
+20230512,01:33:37,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector MIM School Sites processed 45 entities, finding 0 differences. Duration: 00:00:00.0781314. ",Normal
+20230512,01:33:37,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector MIM School Sites completed. Duration: 00:00:00.7823791",Normal
+20230512,01:34:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,01:34:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,01:34:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,01:34:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,01:34:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,01:34:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,01:34:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.2372918. ",Normal
+20230512,01:34:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.3154197",Normal
+20230512,01:35:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Staff Connector started.",Normal
+20230512,01:35:16,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Staff Connector.",Normal
+20230512,01:35:16,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Staff Connector reported 0 changes. Duration: 00:00:00",Normal
+20230512,01:35:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Staff Connector returned 0 possible changes. Duration: 00:00:00.2500217",Normal
+20230512,01:36:22,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Student Connector started.",Normal
+20230512,01:36:22,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Student Connector.",Normal
+20230512,01:36:22,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Student Connector reported 1 changes. Duration: 00:00:00",Normal
+20230512,01:36:22,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Student Connector (page 1)",Normal
+20230512,01:36:22,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector CEnet Student Connector processed 1 entities, finding 0 differences. Duration: 00:00:00.0781286. ",Normal
+20230512,01:36:22,UNIFYBroker,Connector Processor,Information,"Connector Post Processing started.
+Connector Post Processing started - checking for deleted entities in connector CEnet Student Connector. Processed Entities: 1",Normal
+20230512,01:36:22,UNIFYBroker,Connector Processor,Information,"Connector Post Processing success.
+Connector Post Processing completed checking for deletes for connector CEnet Student Connector. Processed Entities: 1. Matching Entities: 0. Reported Changes: 0. Duration: 00:00:00",Normal
+20230512,01:36:22,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Student Connector returned 1 possible changes. Duration: 00:00:00.5167330",Normal
+20230512,01:39:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,01:39:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,01:39:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,01:39:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,01:39:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,01:39:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,01:39:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0786951. ",Normal
+20230512,01:39:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1251371",Normal
+20230512,01:44:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,01:44:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,01:44:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,01:44:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,01:44:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,01:44:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,01:44:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.1261407. ",Normal
+20230512,01:44:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1730205",Normal
+20230512,01:45:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Staff Connector started.",Normal
+20230512,01:45:16,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Staff Connector.",Normal
+20230512,01:45:16,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Staff Connector reported 1 changes. Duration: 00:00:00",Normal
+20230512,01:45:16,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Staff Connector (page 1)",Normal
+20230512,01:45:16,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector CEnet Staff Connector processed 1 entities, finding 0 differences. Duration: 00:00:00.1573481. ",Normal
+20230512,01:45:16,UNIFYBroker,Connector Processor,Information,"Connector Post Processing started.
+Connector Post Processing started - checking for deleted entities in connector CEnet Staff Connector. Processed Entities: 1",Normal
+20230512,01:45:16,UNIFYBroker,Connector Processor,Information,"Connector Post Processing success.
+Connector Post Processing completed checking for deletes for connector CEnet Staff Connector. Processed Entities: 1. Matching Entities: 0. Reported Changes: 0. Duration: 00:00:00.0156300",Normal
+20230512,01:45:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Staff Connector returned 1 possible changes. Duration: 00:00:00.5636379",Normal
+20230512,01:49:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,01:49:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,01:49:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,01:49:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,01:49:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,01:49:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,01:49:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0792214. ",Normal
+20230512,01:49:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1417270",Normal
+20230512,01:54:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,01:54:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,01:54:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,01:54:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,01:54:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,01:54:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,01:54:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0781363. ",Normal
+20230512,01:54:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1730414",Normal
+20230512,01:55:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Staff Connector started.",Normal
+20230512,01:55:16,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Staff Connector.",Normal
+20230512,01:55:16,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Staff Connector reported 2 changes. Duration: 00:00:00",Normal
+20230512,01:55:16,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Staff Connector (page 1)",Normal
+20230512,01:55:16,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector CEnet Staff Connector processed 2 entities, finding 1 differences. Duration: 00:00:00.2213173. ",Normal
+20230512,01:55:16,UNIFYBroker,Connector Processor,Information,"Connector Post Processing started.
+Connector Post Processing started - checking for deleted entities in connector CEnet Staff Connector. Processed Entities: 2",Normal
+20230512,01:55:16,UNIFYBroker,Connector Processor,Information,"Connector Post Processing success.
+Connector Post Processing completed checking for deletes for connector CEnet Staff Connector. Processed Entities: 2. Matching Entities: 0. Reported Changes: 0. Duration: 00:00:00",Normal
+20230512,01:55:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Staff Connector returned 2 possible changes. Duration: 00:00:00.6599685",Normal
+20230512,01:55:20,UNIFYBroker,Change detection engine,Information,"Started processing changes register items.
+Started processing changes register items for connector CEnet Staff Connector.",Normal
+20230512,01:55:21,UNIFYBroker,Change detection engine,Information,"Changes register item processing completed.
+Changes register item processing on connector CEnet Staff Connector completed.  Duration: 00:00:00.0312522",Normal
+20230512,01:55:25,UNIFYBroker,Adapter,Information,"Request to reflect change entities of the adapter.
+Request to reflect change entities of the CEnet Staff Adapter (f7593885-64f8-4b9a-89e8-48dbabe733e1) adapter completed with 0 adds, 0 updates and 0 deletes across 1 pages. Duration: 00:00:00.2349383",Normal
+20230512,01:59:03,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector CEnet Student Connector started.",Normal
+20230512,01:59:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,01:59:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,01:59:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,01:59:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,01:59:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,01:59:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,01:59:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0781323. ",Normal
+20230512,01:59:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1250772",Normal
+20230512,02:04:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,02:04:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,02:04:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,02:04:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,02:04:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,02:04:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,02:04:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0937582. ",Normal
+20230512,02:04:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1562629",Normal
+20230512,02:05:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Staff Connector started.",Normal
+20230512,02:05:16,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Staff Connector.",Normal
+20230512,02:05:16,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Staff Connector reported 1 changes. Duration: 00:00:00",Normal
+20230512,02:05:16,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Staff Connector (page 1)",Normal
+20230512,02:05:16,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector CEnet Staff Connector processed 1 entities, finding 0 differences. Duration: 00:00:00.0937597. ",Normal
+20230512,02:05:16,UNIFYBroker,Connector Processor,Information,"Connector Post Processing started.
+Connector Post Processing started - checking for deleted entities in connector CEnet Staff Connector. Processed Entities: 1",Normal
+20230512,02:05:16,UNIFYBroker,Connector Processor,Information,"Connector Post Processing success.
+Connector Post Processing completed checking for deletes for connector CEnet Staff Connector. Processed Entities: 1. Matching Entities: 0. Reported Changes: 0. Duration: 00:00:00",Normal
+20230512,02:05:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Staff Connector returned 1 possible changes. Duration: 00:00:00.5011527",Normal
+20230512,02:09:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,02:09:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,02:09:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,02:09:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,02:09:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,02:09:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,02:09:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0781283. ",Normal
+20230512,02:09:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1250089",Normal
+20230512,02:10:42,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector CEnet Student Connector.",Normal
+20230512,02:10:42,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Student Connector (page 1)",Normal
+20230512,02:10:44,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector CEnet Student Connector processed 1000 entities, finding 0 differences. Duration: 00:00:01.5602930. ",Normal
+20230512,02:10:44,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Student Connector (page 2)",Normal
+20230512,02:10:46,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+1000 entities in cumulative total. Current processing of page 2 for connector CEnet Student Connector processed 2000 entities, finding 0 differences. Duration: 00:00:01.7839583. ",Normal
+20230512,02:10:46,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Student Connector (page 3)",Normal
+20230512,02:10:47,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+3000 entities in cumulative total. Current processing of page 3 for connector CEnet Student Connector processed 1500 entities, finding 0 differences. Duration: 00:00:01.6984747. ",Normal
+20230512,02:10:47,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Student Connector (page 4)",Normal
+20230512,02:10:49,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+4500 entities in cumulative total. Current processing of page 4 for connector CEnet Student Connector processed 1250 entities, finding 0 differences. Duration: 00:00:01.5001557. ",Normal
+20230512,02:10:49,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Student Connector (page 5)",Normal
+20230512,02:10:51,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+5750 entities in cumulative total. Current processing of page 5 for connector CEnet Student Connector processed 1125 entities, finding 0 differences. Duration: 00:00:01.6821433. ",Normal
+20230512,02:10:51,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Student Connector (page 6)",Normal
+20230512,02:10:52,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+6875 entities in cumulative total. Current processing of page 6 for connector CEnet Student Connector processed 1250 entities, finding 0 differences. Duration: 00:00:01.5514930. ",Normal
+20230512,02:10:52,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Student Connector (page 7)",Normal
+20230512,02:10:54,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+8125 entities in cumulative total. Current processing of page 7 for connector CEnet Student Connector processed 1375 entities, finding 0 differences. Duration: 00:00:01.7352882. ",Normal
+20230512,02:10:54,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Student Connector (page 8)",Normal
+20230512,02:10:56,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+9500 entities in cumulative total. Current processing of page 8 for connector CEnet Student Connector processed 1500 entities, finding 0 differences. Duration: 00:00:01.6476078. ",Normal
+20230512,02:10:56,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Student Connector (page 9)",Normal
+20230512,02:10:57,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+11000 entities in cumulative total. Current processing of page 9 for connector CEnet Student Connector processed 1400 entities, finding 0 differences. Duration: 00:00:01.6618433. ",Normal
+20230512,02:10:57,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Student Connector (page 10)",Normal
+20230512,02:10:59,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+12400 entities in cumulative total. Current processing of page 10 for connector CEnet Student Connector processed 1300 entities, finding 0 differences. Duration: 00:00:01.5661501. ",Normal
+20230512,02:10:59,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Student Connector (page 11)",Normal
+20230512,02:11:00,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+13700 entities in cumulative total. Current processing of page 11 for connector CEnet Student Connector processed 1200 entities, finding 0 differences. Duration: 00:00:01.3471333. ",Normal
+20230512,02:11:00,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Student Connector (page 12)",Normal
+20230512,02:11:02,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+14900 entities in cumulative total. Current processing of page 12 for connector CEnet Student Connector processed 1100 entities, finding 0 differences. Duration: 00:00:01.3304318. ",Normal
+20230512,02:11:02,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Student Connector (page 13)",Normal
+20230512,02:11:02,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector CEnet Student Connector return 17386 entities. Duration: 00:00:19.3462414",Normal
+20230512,02:11:03,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+16000 entities in cumulative total. Current processing of page 13 for connector CEnet Student Connector processed 1200 entities, finding 0 differences. Duration: 00:00:01.5470935. ",Normal
+20230512,02:11:03,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Student Connector (page 14)",Normal
+20230512,02:11:03,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+17200 entities in cumulative total. Current processing of page 14 for connector CEnet Student Connector processed 186 entities, finding 0 differences. Duration: 00:00:00.1885912. ",Normal
+20230512,02:11:13,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector CEnet Student Connector completed. Duration: 00:12:10.2858419",Normal
+20230512,02:11:13,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Student Connector started.",Normal
+20230512,02:11:13,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Student Connector.",Normal
+20230512,02:11:13,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Student Connector reported 0 changes. Duration: 00:00:00",Normal
+20230512,02:11:13,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Student Connector returned 0 possible changes. Duration: 00:00:00.3604865",Normal
+20230512,02:11:16,UNIFYBroker,Change detection engine,Information,"Started processing changes register items.
+Started processing changes register items for connector CEnet Student Connector.",Normal
+20230512,02:11:16,UNIFYBroker,Change detection engine,Information,"Changes register item processing completed.
+Changes register item processing on connector CEnet Student Connector completed.  Duration: 00:00:00.2703337",Normal
+20230512,02:11:20,UNIFYBroker,Adapter,Information,"Request to reflect change entities of the adapter.
+Request to reflect change entities of the CEnet Student Adapter (2484ffb0-4500-4778-81ae-a78f3aa65aec) adapter completed with 0 adds, 0 updates and 2 deletes across 1 pages. Duration: 00:00:00.3324587",Normal
+20230512,02:11:26,UNIFYBroker,LDAP Gateway,Information,A client has connected to the LDAP endpoint from address: 10.19.205.75:57172.,Normal
+20230512,02:11:26,UNIFYBroker,LDAP engine,Information,"Handling of LDAP bind request.
+Handling of LDAP bind request received on connection 10.19.205.75:57172 to connect as user MIM completed successfully. The bind was successful. Duration: 00:00:00.0791722.",Normal
+20230512,02:11:26,UNIFYBroker,LDAP engine,Information,"Handling of LDAP Root DSE request.
+Handling of LDAP Root DSE request from user MIM on connection 10.19.205.75:57172 for the Root DSE completed successfully. Duration: 00:00:00.",Normal
+20230512,02:11:26,UNIFYBroker,LDAP engine,Information,"Handling of LDAP search request.
+Handling of LDAP search request from user MIM on connection 10.19.205.75:57172 targeting DC=IdentityBroker with a scope of SingleLevel completed successfully. Duration: 00:00:00.0312541.",Normal
+20230512,02:11:26,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:57172 for the schema CN=contacts,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,02:11:26,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:57172 for the schema CN=CEnetStudent,cn=schema completed successfully. Duration: 00:00:00.0010220.",Normal
+20230512,02:11:26,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:57172 for the schema CN=CEnetStaff,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,02:11:26,UNIFYBroker,LDAP engine,Information,"Handling of LDAP Root DSE request.
+Handling of LDAP Root DSE request from user MIM on connection 10.19.205.75:57172 for the Root DSE completed successfully. Duration: 00:00:00.",Normal
+20230512,02:11:27,UNIFYBroker,LDAP engine,Information,"Handling of LDAP change log request.
+Handling of LDAP change log request from user MIM on connection 10.19.205.75:57172 completed successfully. Added: 0. Modified: 0. Renamed: 0. Deleted: 1. Total: 1. Duration: 00:00:00.0312546.",Normal
+20230512,02:11:27,UNIFYBroker,LDAP engine,Information,"Handling of LDAP change log request.
+Handling of LDAP change log request from user MIM on connection 10.19.205.75:57172 completed successfully. Added: 0. Modified: 1. Renamed: 0. Deleted: 2. Total: 3. Duration: 00:00:00.0625016.",Normal
+20230512,02:11:27,UNIFYBroker,LDAP engine,Information,"Handling of LDAP search request.
+Handling of LDAP search request from user MIM on connection 10.19.205.75:57172 targeting CN=C6ABDB03-969F-47E6-BFDE-C5769C219B80,OU=CEnetStudent,DC=IdentityBroker with a scope of BaseObject completed successfully. Results: 1. Duration: 00:00:00.",Normal
+20230512,02:11:27,UNIFYBroker,LDAP engine,Information,"Handling of LDAP unbind request.
+Handling of LDAP unbind request received on connection 10.19.205.75:57172 to connect as user MIM completed successfully. Duration: 00:00:00.",Normal
+20230512,02:11:28,UNIFYBroker,LDAP Gateway,Information,A client has connected to the LDAP endpoint from address: 10.19.205.75:57173.,Normal
+20230512,02:11:29,UNIFYBroker,LDAP engine,Information,"Handling of LDAP bind request.
+Handling of LDAP bind request received on connection 10.19.205.75:57173 to connect as user MIM completed successfully. The bind was successful. Duration: 00:00:00.0781233.",Normal
+20230512,02:11:29,UNIFYBroker,LDAP engine,Information,"Handling of LDAP Root DSE request.
+Handling of LDAP Root DSE request from user MIM on connection 10.19.205.75:57173 for the Root DSE completed successfully. Duration: 00:00:00.",Normal
+20230512,02:11:29,UNIFYBroker,LDAP engine,Information,"Handling of LDAP search request.
+Handling of LDAP search request from user MIM on connection 10.19.205.75:57173 targeting DC=IdentityBroker with a scope of SingleLevel completed successfully. Duration: 00:00:00.0156254.",Normal
+20230512,02:11:29,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:57173 for the schema CN=contacts,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,02:11:29,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:57173 for the schema CN=CEnetStudent,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,02:11:29,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:57173 for the schema CN=CEnetStaff,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,02:11:29,UNIFYBroker,LDAP engine,Information,"Handling of LDAP Root DSE request.
+Handling of LDAP Root DSE request from user MIM on connection 10.19.205.75:57173 for the Root DSE completed successfully. Duration: 00:00:00.",Normal
+20230512,02:11:29,UNIFYBroker,LDAP engine,Information,"Handling of LDAP change log request.
+Handling of LDAP change log request from user MIM on connection 10.19.205.75:57173 completed successfully. Added: 0. Modified: 0. Renamed: 0. Deleted: 1. Total: 1. Duration: 00:00:00.0312523.",Normal
+20230512,02:11:29,UNIFYBroker,LDAP engine,Information,"Handling of LDAP change log request.
+Handling of LDAP change log request from user MIM on connection 10.19.205.75:57173 completed successfully. Added: 0. Modified: 2. Renamed: 0. Deleted: 0. Total: 2. Duration: 00:00:00.0635415.",Normal
+20230512,02:11:30,UNIFYBroker,LDAP engine,Information,"Handling of LDAP search request.
+Handling of LDAP search request from user MIM on connection 10.19.205.75:57173 targeting CN=GG.School.SCCSI.Staff,OU=contacts,DC=IdentityBroker with a scope of BaseObject completed successfully. Results: 1. Duration: 00:00:00.",Normal
+20230512,02:11:30,UNIFYBroker,LDAP engine,Information,"Handling of LDAP unbind request.
+Handling of LDAP unbind request received on connection 10.19.205.75:57173 to connect as user MIM completed successfully. Duration: 00:00:00.",Normal
+20230512,02:11:31,UNIFYBroker,LDAP Gateway,Information,A client has connected to the LDAP endpoint from address: 10.19.205.75:57174.,Normal
+20230512,02:11:31,UNIFYBroker,LDAP engine,Information,"Handling of LDAP bind request.
+Handling of LDAP bind request received on connection 10.19.205.75:57174 to connect as user MIM completed successfully. The bind was successful. Duration: 00:00:00.0781300.",Normal
+20230512,02:11:31,UNIFYBroker,LDAP engine,Information,"Handling of LDAP Root DSE request.
+Handling of LDAP Root DSE request from user MIM on connection 10.19.205.75:57174 for the Root DSE completed successfully. Duration: 00:00:00.",Normal
+20230512,02:11:32,UNIFYBroker,LDAP engine,Information,"Handling of LDAP search request.
+Handling of LDAP search request from user MIM on connection 10.19.205.75:57174 targeting DC=IdentityBroker with a scope of SingleLevel completed successfully. Duration: 00:00:00.0839360.",Normal
+20230512,02:11:32,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:57174 for the schema CN=contacts,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,02:11:32,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:57174 for the schema CN=CEnetStudent,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,02:11:32,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:57174 for the schema CN=CEnetStaff,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,02:11:32,UNIFYBroker,LDAP engine,Information,"Handling of LDAP Root DSE request.
+Handling of LDAP Root DSE request from user MIM on connection 10.19.205.75:57174 for the Root DSE completed successfully. Duration: 00:00:00.",Normal
+20230512,02:11:32,UNIFYBroker,LDAP engine,Information,"Handling of LDAP change log request.
+Handling of LDAP change log request from user MIM on connection 10.19.205.75:57174 completed successfully. Added: 0. Modified: 0. Renamed: 0. Deleted: 1. Total: 1. Duration: 00:00:00.0468790.",Normal
+20230512,02:11:32,UNIFYBroker,LDAP engine,Information,"Handling of LDAP change log request.
+Handling of LDAP change log request from user MIM on connection 10.19.205.75:57174 completed successfully. Added: 0. Modified: 2. Renamed: 0. Deleted: 0. Total: 2. Duration: 00:00:00.0937594.",Normal
+20230512,02:11:32,UNIFYBroker,LDAP engine,Information,"Handling of LDAP search request.
+Handling of LDAP search request from user MIM on connection 10.19.205.75:57174 targeting CN=55944100,UID=D5A13F70-D555-43D9-8447-3760CA747A2A,OU=CEnetStaff,DC=IdentityBroker with a scope of BaseObject completed successfully. Results: 1. Duration: 00:00:00.",Normal
+20230512,02:11:32,UNIFYBroker,LDAP engine,Information,"Handling of LDAP unbind request.
+Handling of LDAP unbind request received on connection 10.19.205.75:57174 to connect as user MIM completed successfully. Duration: 00:00:00.",Normal
+20230512,02:14:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,02:14:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,02:14:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,02:14:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,02:14:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,02:14:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,02:14:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0937579. ",Normal
+20230512,02:14:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.2354934",Normal
+20230512,02:15:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Staff Connector started.",Normal
+20230512,02:15:16,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Staff Connector.",Normal
+20230512,02:15:16,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Staff Connector reported 0 changes. Duration: 00:00:00",Normal
+20230512,02:15:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Staff Connector returned 0 possible changes. Duration: 00:00:00.2682288",Normal
+20230512,02:19:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,02:19:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,02:19:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,02:19:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,02:19:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,02:19:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,02:19:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0937581. ",Normal
+20230512,02:19:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1455922",Normal
+20230512,02:24:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,02:24:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,02:24:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,02:24:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,02:24:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,02:24:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,02:24:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0937545. ",Normal
+20230512,02:24:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1562594",Normal
+20230512,02:25:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Staff Connector started.",Normal
+20230512,02:25:16,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Staff Connector.",Normal
+20230512,02:25:16,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Staff Connector reported 0 changes. Duration: 00:00:00",Normal
+20230512,02:25:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Staff Connector returned 0 possible changes. Duration: 00:00:00.2674430",Normal
+20230512,02:29:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,02:29:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,02:29:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,02:29:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,02:29:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,02:29:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,02:29:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0781295. ",Normal
+20230512,02:29:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1250093",Normal
+20230512,02:33:37,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector MIM School Sites started.",Normal
+20230512,02:33:37,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector MIM School Sites.",Normal
+20230512,02:33:37,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector MIM School Sites return 45 entities. Duration: 00:00:00",Normal
+20230512,02:33:37,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector MIM School Sites (page 1)",Normal
+20230512,02:33:37,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector MIM School Sites processed 45 entities, finding 0 differences. Duration: 00:00:00.0781327. ",Normal
+20230512,02:33:37,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector MIM School Sites completed. Duration: 00:00:00.7825231",Normal
+20230512,02:34:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,02:34:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,02:34:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,02:34:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,02:34:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,02:34:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,02:34:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.1104791. ",Normal
+20230512,02:34:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1573651",Normal
+20230512,02:35:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Staff Connector started.",Normal
+20230512,02:35:16,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Staff Connector.",Normal
+20230512,02:35:16,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Staff Connector reported 0 changes. Duration: 00:00:00",Normal
+20230512,02:35:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Staff Connector returned 0 possible changes. Duration: 00:00:00.2343956",Normal
+20230512,02:36:22,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Student Connector started.",Normal
+20230512,02:36:22,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Student Connector.",Normal
+20230512,02:36:22,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Student Connector reported 0 changes. Duration: 00:00:00",Normal
+20230512,02:36:22,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Student Connector returned 0 possible changes. Duration: 00:00:00.3136215",Normal
+20230512,02:39:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,02:39:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,02:39:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,02:39:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,02:39:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,02:39:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,02:39:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.1093816. ",Normal
+20230512,02:39:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1562657",Normal
+20230512,02:44:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,02:44:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,02:44:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,02:44:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,02:44:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,02:44:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,02:44:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0937557. ",Normal
+20230512,02:44:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.2354872",Normal
+20230512,02:45:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Staff Connector started.",Normal
+20230512,02:45:16,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Staff Connector.",Normal
+20230512,02:45:16,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Staff Connector reported 0 changes. Duration: 00:00:00",Normal
+20230512,02:45:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Staff Connector returned 0 possible changes. Duration: 00:00:00.2656436",Normal
+20230512,02:49:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,02:49:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,02:49:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,02:49:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,02:49:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,02:49:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,02:49:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0781275. ",Normal
+20230512,02:49:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1250073",Normal
+20230512,02:54:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,02:54:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,02:54:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00.0156277] duration.,Normal
+20230512,02:54:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,02:54:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,02:54:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,02:54:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.1093829. ",Normal
+20230512,02:54:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1718892",Normal
+20230512,02:55:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Staff Connector started.",Normal
+20230512,02:55:16,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Staff Connector.",Normal
+20230512,02:55:16,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Staff Connector reported 1 changes. Duration: 00:00:00",Normal
+20230512,02:55:16,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Staff Connector (page 1)",Normal
+20230512,02:55:16,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector CEnet Staff Connector processed 1 entities, finding 0 differences. Duration: 00:00:00.0781311. ",Normal
+20230512,02:55:16,UNIFYBroker,Connector Processor,Information,"Connector Post Processing started.
+Connector Post Processing started - checking for deleted entities in connector CEnet Staff Connector. Processed Entities: 1",Normal
+20230512,02:55:16,UNIFYBroker,Connector Processor,Information,"Connector Post Processing success.
+Connector Post Processing completed checking for deletes for connector CEnet Staff Connector. Processed Entities: 1. Matching Entities: 0. Reported Changes: 0. Duration: 00:00:00",Normal
+20230512,02:55:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Staff Connector returned 1 possible changes. Duration: 00:00:00.5167645",Normal
+20230512,02:59:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,02:59:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,02:59:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,02:59:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,02:59:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,02:59:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,02:59:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0781305. ",Normal
+20230512,02:59:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1250086",Normal
+20230512,03:04:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector CEnet Staff Connector started.",Normal
+20230512,03:04:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,03:04:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,03:04:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,03:04:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,03:04:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,03:04:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,03:04:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0792211. ",Normal
+20230512,03:04:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1261071",Normal
+20230512,03:06:22,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Student Connector started.",Normal
+20230512,03:06:22,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Student Connector.",Normal
+20230512,03:06:22,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Student Connector reported 1 changes. Duration: 00:00:00",Normal
+20230512,03:06:22,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Student Connector (page 1)",Normal
+20230512,03:06:22,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector CEnet Student Connector processed 1 entities, finding 1 differences. Duration: 00:00:00.1886544. ",Normal
+20230512,03:06:23,UNIFYBroker,Connector Processor,Information,"Connector Post Processing started.
+Connector Post Processing started - checking for deleted entities in connector CEnet Student Connector. Processed Entities: 1",Normal
+20230512,03:06:23,UNIFYBroker,Connector Processor,Information,"Connector Post Processing success.
+Connector Post Processing completed checking for deletes for connector CEnet Student Connector. Processed Entities: 1. Matching Entities: 0. Reported Changes: 0. Duration: 00:00:00",Normal
+20230512,03:06:23,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Student Connector returned 1 possible changes. Duration: 00:00:00.7222868",Normal
+20230512,03:06:26,UNIFYBroker,Change detection engine,Information,"Started processing changes register items.
+Started processing changes register items for connector CEnet Student Connector.",Normal
+20230512,03:06:26,UNIFYBroker,Change detection engine,Information,"Changes register item processing completed.
+Changes register item processing on connector CEnet Student Connector completed.  Duration: 00:00:00.2500214",Normal
+20230512,03:06:30,UNIFYBroker,Adapter,Information,"Request to reflect change entities of the adapter.
+Request to reflect change entities of the CEnet Student Adapter (2484ffb0-4500-4778-81ae-a78f3aa65aec) adapter completed with 2 adds, 0 updates and 0 deletes across 1 pages. Duration: 00:00:00.3766382",Normal
+20230512,03:07:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector MIM Google Contacts started.",Normal
+20230512,03:07:16,UNIFYBroker,LDAP Gateway,Information,A client has connected to the LDAP endpoint from address: 10.19.205.75:58050.,Normal
+20230512,03:07:16,UNIFYBroker,LDAP engine,Information,"Handling of LDAP bind request.
+Handling of LDAP bind request received on connection 10.19.205.75:58050 to connect as user MIM completed successfully. The bind was successful. Duration: 00:00:00.0781313.",Normal
+20230512,03:07:16,UNIFYBroker,LDAP engine,Information,"Handling of LDAP Root DSE request.
+Handling of LDAP Root DSE request from user MIM on connection 10.19.205.75:58050 for the Root DSE completed successfully. Duration: 00:00:00.",Normal
+20230512,03:07:16,UNIFYBroker,LDAP engine,Information,"Handling of LDAP search request.
+Handling of LDAP search request from user MIM on connection 10.19.205.75:58050 targeting DC=IdentityBroker with a scope of SingleLevel completed successfully. Duration: 00:00:00.0156266.",Normal
+20230512,03:07:16,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:58050 for the schema CN=contacts,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,03:07:17,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:58050 for the schema CN=CEnetStudent,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,03:07:17,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:58050 for the schema CN=CEnetStaff,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,03:07:17,UNIFYBroker,LDAP engine,Information,"Handling of LDAP Root DSE request.
+Handling of LDAP Root DSE request from user MIM on connection 10.19.205.75:58050 for the Root DSE completed successfully. Duration: 00:00:00.",Normal
+20230512,03:07:17,UNIFYBroker,LDAP engine,Information,"Handling of LDAP change log request.
+Handling of LDAP change log request from user MIM on connection 10.19.205.75:58050 completed successfully. Added: 0. Modified: 0. Renamed: 0. Deleted: 1. Total: 1. Duration: 00:00:00.0937593.",Normal
+20230512,03:07:17,UNIFYBroker,LDAP engine,Information,"Handling of LDAP change log request.
+Handling of LDAP change log request from user MIM on connection 10.19.205.75:58050 completed successfully. Added: 1. Modified: 0. Renamed: 0. Deleted: 0. Total: 1. Duration: 00:00:00.2656414.",Normal
+20230512,03:07:17,UNIFYBroker,LDAP engine,Information,"Handling of LDAP search request.
+Handling of LDAP search request from user MIM on connection 10.19.205.75:58050 targeting CN=A36FF925-9A9A-4EB8-8D72-B48EF14B675A,OU=CEnetStudent,DC=IdentityBroker with a scope of BaseObject completed successfully. Results: 1. Duration: 00:00:00.",Normal
+20230512,03:07:18,UNIFYBroker,LDAP engine,Information,"Handling of LDAP unbind request.
+Handling of LDAP unbind request received on connection 10.19.205.75:58050 to connect as user MIM completed successfully. Duration: 00:00:00.",Normal
+20230512,03:07:19,UNIFYBroker,LDAP Gateway,Information,A client has connected to the LDAP endpoint from address: 10.19.205.75:58051.,Normal
+20230512,03:07:19,UNIFYBroker,LDAP engine,Information,"Handling of LDAP bind request.
+Handling of LDAP bind request received on connection 10.19.205.75:58051 to connect as user MIM completed successfully. The bind was successful. Duration: 00:00:00.0781290.",Normal
+20230512,03:07:19,UNIFYBroker,LDAP engine,Information,"Handling of LDAP Root DSE request.
+Handling of LDAP Root DSE request from user MIM on connection 10.19.205.75:58051 for the Root DSE completed successfully. Duration: 00:00:00.",Normal
+20230512,03:07:20,UNIFYBroker,LDAP engine,Information,"Handling of LDAP search request.
+Handling of LDAP search request from user MIM on connection 10.19.205.75:58051 targeting DC=IdentityBroker with a scope of SingleLevel completed successfully. Duration: 00:00:00.7668141.",Normal
+20230512,03:07:20,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:58051 for the schema CN=contacts,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,03:07:20,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:58051 for the schema CN=CEnetStudent,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,03:07:20,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:58051 for the schema CN=CEnetStaff,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,03:07:21,UNIFYBroker,LDAP engine,Information,"Handling of LDAP Root DSE request.
+Handling of LDAP Root DSE request from user MIM on connection 10.19.205.75:58051 for the Root DSE completed successfully. Duration: 00:00:00.",Normal
+20230512,03:07:21,UNIFYBroker,LDAP engine,Information,"Handling of LDAP change log request.
+Handling of LDAP change log request from user MIM on connection 10.19.205.75:58051 completed successfully. Added: 0. Modified: 0. Renamed: 0. Deleted: 1. Total: 1. Duration: 00:00:00.1104843.",Normal
+20230512,03:07:21,UNIFYBroker,LDAP engine,Information,"Handling of LDAP change log request.
+Handling of LDAP change log request from user MIM on connection 10.19.205.75:58051 completed successfully. Duration: 00:00:00.0156270.",Normal
+20230512,03:07:21,UNIFYBroker,LDAP engine,Information,"Handling of LDAP unbind request.
+Handling of LDAP unbind request received on connection 10.19.205.75:58051 to connect as user MIM completed successfully. Duration: 00:00:00.",Normal
+20230512,03:07:22,UNIFYBroker,LDAP Gateway,Information,A client has connected to the LDAP endpoint from address: 10.19.205.75:58059.,Normal
+20230512,03:07:22,UNIFYBroker,LDAP engine,Information,"Handling of LDAP bind request.
+Handling of LDAP bind request received on connection 10.19.205.75:58059 to connect as user MIM completed successfully. The bind was successful. Duration: 00:00:00.0792205.",Normal
+20230512,03:07:22,UNIFYBroker,LDAP engine,Information,"Handling of LDAP Root DSE request.
+Handling of LDAP Root DSE request from user MIM on connection 10.19.205.75:58059 for the Root DSE completed successfully. Duration: 00:00:00.",Normal
+20230512,03:07:23,UNIFYBroker,LDAP engine,Information,"Handling of LDAP search request.
+Handling of LDAP search request from user MIM on connection 10.19.205.75:58059 targeting DC=IdentityBroker with a scope of SingleLevel completed successfully. Duration: 00:00:00.0312523.",Normal
+20230512,03:07:23,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:58059 for the schema CN=contacts,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,03:07:23,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:58059 for the schema CN=CEnetStudent,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,03:07:23,UNIFYBroker,LDAP engine,Information,"Handling of LDAP schema request.
+Handling of LDAP schema request from user MIM on connection 10.19.205.75:58059 for the schema CN=CEnetStaff,cn=schema completed successfully. Duration: 00:00:00.",Normal
+20230512,03:07:23,UNIFYBroker,LDAP engine,Information,"Handling of LDAP Root DSE request.
+Handling of LDAP Root DSE request from user MIM on connection 10.19.205.75:58059 for the Root DSE completed successfully. Duration: 00:00:00.",Normal
+20230512,03:07:23,UNIFYBroker,LDAP engine,Information,"Handling of LDAP change log request.
+Handling of LDAP change log request from user MIM on connection 10.19.205.75:58059 completed successfully. Added: 0. Modified: 0. Renamed: 0. Deleted: 1. Total: 1. Duration: 00:00:00.1093860.",Normal
+20230512,03:07:23,UNIFYBroker,LDAP engine,Information,"Handling of LDAP change log request.
+Handling of LDAP change log request from user MIM on connection 10.19.205.75:58059 completed successfully. Duration: 00:00:00.0625052.",Normal
+20230512,03:07:23,UNIFYBroker,LDAP engine,Information,"Handling of LDAP unbind request.
+Handling of LDAP unbind request received on connection 10.19.205.75:58059 to connect as user MIM completed successfully. Duration: 00:00:00.",Normal
+20230512,03:09:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,03:09:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,03:09:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,03:09:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,03:09:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,03:09:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,03:09:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.2656507. ",Normal
+20230512,03:09:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.4386189",Normal
+20230512,03:10:33,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector CEnet Staff Connector.",Normal
+20230512,03:10:33,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Staff Connector (page 1)",Normal
+20230512,03:10:34,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector CEnet Staff Connector processed 1000 entities, finding 0 differences. Duration: 00:00:00.8260482. ",Normal
+20230512,03:10:34,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Staff Connector (page 2)",Normal
+20230512,03:10:34,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+1000 entities in cumulative total. Current processing of page 2 for connector CEnet Staff Connector processed 2000 entities, finding 0 differences. Duration: 00:00:00.8136398. ",Normal
+20230512,03:10:34,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Staff Connector (page 3)",Normal
+20230512,03:10:35,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+3000 entities in cumulative total. Current processing of page 3 for connector CEnet Staff Connector processed 1500 entities, finding 0 differences. Duration: 00:00:00.6584661. ",Normal
+20230512,03:10:35,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Staff Connector (page 4)",Normal
+20230512,03:10:36,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+4500 entities in cumulative total. Current processing of page 4 for connector CEnet Staff Connector processed 1250 entities, finding 0 differences. Duration: 00:00:00.6573732. ",Normal
+20230512,03:10:36,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Staff Connector (page 5)",Normal
+20230512,03:10:37,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+5750 entities in cumulative total. Current processing of page 5 for connector CEnet Staff Connector processed 1500 entities, finding 0 differences. Duration: 00:00:00.7858654. ",Normal
+20230512,03:10:37,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Staff Connector (page 6)",Normal
+20230512,03:10:37,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector CEnet Staff Connector return 9191 entities. Duration: 00:00:03.8820375",Normal
+20230512,03:10:37,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+7250 entities in cumulative total. Current processing of page 6 for connector CEnet Staff Connector processed 1750 entities, finding 0 differences. Duration: 00:00:00.7083669. ",Normal
+20230512,03:10:37,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector CEnet Staff Connector (page 7)",Normal
+20230512,03:10:38,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+9000 entities in cumulative total. Current processing of page 7 for connector CEnet Staff Connector processed 191 entities, finding 0 differences. Duration: 00:00:00.1417447. ",Normal
+20230512,03:10:43,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector CEnet Staff Connector completed. Duration: 00:06:32.8619374",Normal
+20230512,03:10:43,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Staff Connector started.",Normal
+20230512,03:10:43,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Staff Connector.",Normal
+20230512,03:10:43,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Staff Connector reported 0 changes. Duration: 00:00:00",Normal
+20230512,03:10:43,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Staff Connector returned 0 possible changes. Duration: 00:00:00.2656416",Normal
+20230512,03:14:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,03:14:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,03:14:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,03:14:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,03:14:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,03:14:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,03:14:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0781319. ",Normal
+20230512,03:14:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1547980",Normal
+20230512,03:15:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes started.
+Change detection engine import changes for connector CEnet Staff Connector started.",Normal
+20230512,03:15:16,UNIFYBroker,Connector,Information,"Request to import changes from connector.
+Request to import changes from connector CEnet Staff Connector.",Normal
+20230512,03:15:16,UNIFYBroker,Connector,Information,"Import changes from connector completed.
+Import changes from connector CEnet Staff Connector reported 0 changes. Duration: 00:00:00",Normal
+20230512,03:15:16,UNIFYBroker,Change detection engine,Information,"Change detection engine import changes completed.
+Change detection engine import changes for connector CEnet Staff Connector returned 0 possible changes. Duration: 00:00:00.2667282",Normal
+20230512,03:16:09,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector MIM Google Contacts.",Normal
+20230512,03:16:09,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector MIM Google Contacts return 397 entities. Duration: 00:00:00",Normal
+20230512,03:16:09,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector MIM Google Contacts (page 1)",Normal
+20230512,03:16:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector MIM Google Contacts processed 397 entities, finding 5 differences. Duration: 00:00:00.4159684. ",Normal
+20230512,03:16:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector MIM Google Contacts completed. Duration: 00:08:59.8488859",Normal
+20230512,03:16:11,UNIFYBroker,Change detection engine,Information,"Started processing changes register items.
+Started processing changes register items for connector MIM Google Contacts.",Normal
+20230512,03:16:11,UNIFYBroker,Change detection engine,Information,"Changes register item processing completed.
+Changes register item processing on connector MIM Google Contacts completed.  Duration: 00:00:00.0156255",Normal
+20230512,03:16:15,UNIFYBroker,Adapter,Information,"Request to reflect change entities of the adapter.
+Request to reflect change entities of the MIM Google Contacts (05685e2f-6aed-4027-a5a8-3f85b92e8c1d) adapter completed with 0 adds, 0 updates and 0 deletes across 1 pages. Duration: 00:00:00.2500226",Normal
+20230512,03:19:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items started.
+Change detection engine import all items for connector SAS2IDM School Promoted Status started.",Normal
+20230512,03:19:10,UNIFYBroker,GetAllEntities,Information,Started successfully.,Normal
+20230512,03:19:10,UNIFYBroker,GetAllEntities,Information,Completed successfully after [00:00:00] duration.,Normal
+20230512,03:19:10,UNIFYBroker,Connector,Information,"Request to import all entities from connector.
+Request to import all entities from connector SAS2IDM School Promoted Status.",Normal
+20230512,03:19:10,UNIFYBroker,Connector,Information,"Import all entities from connector completed.
+Import all entities from connector SAS2IDM School Promoted Status return 44 entities. Duration: 00:00:00",Normal
+20230512,03:19:10,UNIFYBroker,Connector Processor,Information,"Connector Processing started.
+Connector Processing started for connector SAS2IDM School Promoted Status (page 1)",Normal
+20230512,03:19:10,UNIFYBroker,Connector Processor,Information,"Connector processing success.
+0 entities in cumulative total. Current processing of page 1 for connector SAS2IDM School Promoted Status processed 44 entities, finding 0 differences. Duration: 00:00:00.0948838. ",Normal
+20230512,03:19:10,UNIFYBroker,Change detection engine,Information,"Change detection engine import all items completed.
+Change detection engine import all items for connector SAS2IDM School Promoted Status completed. Duration: 00:00:00.1544032",Normal

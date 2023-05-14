@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ConnectEngine>
+	<roleAuthorizations>
+		<roleAuthorization role="Unify.Connect.Administrator">
+			<group action="Allow" groupName="Administrators" />
+		</roleAuthorization>
+		<roleAuthorization role="Unify.Adapter">
+			<group action="Allow" groupName="Administrators" />
+			<anonymous action="Allow" />
+		</roleAuthorization>
+	</roleAuthorizations>
+</ConnectEngine>

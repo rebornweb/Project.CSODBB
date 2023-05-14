@@ -1,0 +1,124 @@
+﻿@model GroupContentsViewInformation
+@using Unify.Framework.Web
+@{
+    //ViewBag.Title = "TEST";//Html.Title(TitleResources.GroupOperationListsTitle);
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model.OperationLists.Any())
+{
+    using (Html.DecorateForm(
+                () => Html.BeginForm("OperationLists", "Group", new RouteValueDictionary(new { id = Model.GroupContents.Key }), FormMethod.Post, new { id = "GroupOperationListsForm" }),
+                GroupControllerResources.OperationListsUpdateButtonText,
+                "GroupOperationListsForm",
+                GroupControllerResources.ConfigureGroupMembersAltText, "submitButton"))
+    {
+        <table id="GroupsTable">
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th><span class="Tooltip" title="@GroupControllerResources.GroupNoGroupColumnDescription">@GroupControllerResources.GroupNoGroupColumnName</span></th>
+                    @if (!Model.GroupContents.ExclusionGroup)
+                    {
+                        <th><span class="Tooltip" title="@GroupControllerResources.GroupAddGroupColumnDescription">@GroupControllerResources.GroupAddGroupColumnName</span></th>
+                    }
+                    else
+                    {
+                        <th><span class="Tooltip" title="@GroupControllerResources.GroupNormalGroupColumnDescription">@GroupControllerResources.GroupNormalGroupColumnName</span></th>
+                        <th><span class="Tooltip" title="@GroupControllerResources.GroupPriorityGroupColumnDescription">@GroupControllerResources.GroupPriorityGroupColumnName</span></th>
+                    }
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><input type="radio" id="selectAllNone" name="SelectOperations" /></td>
+                    <td><input type="radio" id="selectAllAdd" name="SelectOperations" /></td>
+                    @if (Model.GroupContents.ExclusionGroup)
+                    {
+                        <td><input type="radio" id="selectAllPriority" name="SelectOperations" /></td>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (IOperationListInformation operationList in Model.OperationLists.OrderBy(list => list.Name))
+                {
+                    @RenderOperationList(operationList, Model.GroupContents)
+                }
+            </tbody>
+        </table>
+    }
+}
+else
+{
+    <p>@GroupControllerResources.OperationListsNoOperationListsCanBeAddedCaption</p>
+}
+
+@helper RenderOperationList(IOperationListInformation operationList, IGroupContents groupContents)
+{
+    var operationListId = operationList.Id;
+    var isPriority = Model.GroupContents.ExclusionGroup && groupContents.PriorityOperationLists.Keys.Contains(operationListId);
+    bool isGroup = false;
+    bool isNotGroup = false;
+    if (!isPriority)
+    {
+        isGroup = groupContents.OperationLists.Keys.Contains(operationListId);
+        if (!isGroup)
+        {
+            isNotGroup = true;
+        }
+    }
+    <tr>
+        <td class="Left">
+            @operationList.Name
+        </td>
+        <td>
+            @if (isNotGroup)
+            {
+                <input type="radio" name="@operationListId" class="groupTypeNone" value="@OperationListGroupInclusionType.None" checked="checked" />
+            }
+            else
+            {
+                <input type="radio" name="@operationListId" class="groupTypeNone" value="@OperationListGroupInclusionType.None" />
+            }
+        </td>
+        <td>
+            @if (isGroup)
+            {
+                <input type="radio" name="@operationListId" class="groupTypeNormal" value="@OperationListGroupInclusionType.Normal" checked="checked" />
+            }
+            else
+            {
+                <input type="radio" name="@operationListId" class="groupTypeNormal" value="@OperationListGroupInclusionType.Normal" />
+            }
+        </td>
+        @if (Model.GroupContents.ExclusionGroup)
+        {
+            <td>
+                @if (isPriority)
+                {
+                    <input type="radio" name="@operationListId" class="groupTypePriority" value="@OperationListGroupInclusionType.Trigger" checked="checked" />
+                }
+                else
+                {
+                    <input type="radio" name="@operationListId" class="groupTypePriority" value="@OperationListGroupInclusionType.Trigger" />
+                }
+            </td>
+        }
+    </tr>
+}
+
+<script type="text/javascript">
+    $(function () {
+
+        $("#selectAllNone").checkBoxExtraFuncGenerator({
+            targetSelectAllElementCollection: $(".groupTypeNone"),
+        });
+
+        $("#selectAllPriority").checkBoxExtraFuncGenerator({
+            targetSelectAllElementCollection: $(".groupTypePriority"),
+        });
+
+        $("#selectAllAdd").checkBoxExtraFuncGenerator({
+            targetSelectAllElementCollection: $(".groupTypeNormal"),
+        });
+
+    });
+</script>

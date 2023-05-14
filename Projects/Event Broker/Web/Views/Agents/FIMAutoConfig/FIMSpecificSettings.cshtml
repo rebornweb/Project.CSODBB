@@ -1,0 +1,78 @@
+﻿@using Unify.EventBroker.Web.Views.Agents.FIMAutoConfig
+@using Unify.Framework.Web
+@model FIMMaintenanceSettingsViewInformation
+
+@using (Html.DecorateForm(
+    () => Html.BeginForm("SaveMaintenanceSettings", "Agents", FormMethod.Post, new { id = "MaintenanceSettings" }),
+    AutoConfigurationResources.SaveMaintenanceSettingsButtonText,
+    "MaintenanceSettings",
+    AutoConfigurationResources.ConfigureMaintenanceOperationsAltText,
+    "submitButton"))
+{
+    @Html.HiddenFor(model => model.FIMAgentId)
+
+    <div class="SettingsContainer">
+        <div class="SettingsComponent WizardLeftContent">
+            <div>
+                 @Html.LabelFor(model => model.ClearRunHistoryFrequency, AutoConfigurationResources.ClearRunHistoryFrequencyLabel)
+            </div>
+        </div>
+    <div class="SettingsComponent WizardRightContent">
+        <div >
+            @using (Html.MetaDataFor(model => model.ClearRunHistoryFrequency, new { description = AutoConfigurationResources.ClearRunHistoryFrequencyHint }))
+            {
+                @Html.EnumDropDownList(model => model.ClearRunHistoryFrequency, new { @class = "chzn-select" })
+            }
+        </div>
+    </div>
+    </div>
+        <br class="Clear"/>
+        <div class="SettingsContainer">
+        <div class="SettingsComponent WizardLeftContent">
+            <div >
+                 @Html.LabelFor(model => model.ClearRunHistoryDays, AutoConfigurationResources.ClearRunHistoryDaysLabel)
+            </div>
+        </div>
+        <div class="SettingsComponent WizardRightContent">
+            <div>
+                @using (Html.MetaDataFor(model => model.ClearRunHistoryDays, new { description = AutoConfigurationResources.ClearRunHistoryDaysHint }))
+                {
+                    @Html.TextBoxFor(model => model.ClearRunHistoryDays)
+                }
+            </div>
+        </div>
+        </div>
+    <br class="Clear"/>
+    <div class="SettingsContainer">
+        <div class="SettingsComponent WizardLeftContent">
+            <div>
+                 @Html.LabelFor(model => model.ClearRunHistoryDirectory, AutoConfigurationResources.ClearRunHistoryDirectoryLabel)
+            </div>
+        </div>
+    <div class="SettingsComponent WizardRightContent">
+        <div>
+            @using (Html.MetaDataFor(model => model.ClearRunHistoryDirectory, new { description = AutoConfigurationResources.ClearRunHistoryDirectoryHint }))
+            {
+                @Html.TextBoxFor(model => model.ClearRunHistoryDirectory)
+            }
+        </div>
+    </div>
+    </div>
+        <br class="Clear"/>
+        <div class="SettingsContainer">
+        <div class="SettingsComponent WizardLeftContent">
+            <div>
+                 @Html.LabelFor(model => model.BaselineOnStartup, AutoConfigurationResources.BaselineOnStartupLabel)
+            </div>
+        </div>
+        <div class="SettingsComponent WizardRightContent">
+            <div>
+                @using (Html.MetaDataFor(model => model.BaselineOnStartup, new { description = AutoConfigurationResources.BaselineOnStartupHint }))
+                {
+                    @Html.CheckBoxFor(model => model.BaselineOnStartup)
+                }
+            </div>
+        </div>
+        </div>
+        <br class="Clear"/>
+}

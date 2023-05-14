@@ -1,0 +1,35 @@
+﻿@using Unify.Framework.Web
+@model ConnectorStatisticsViewInformation
+<h2>@ConnectorControllerResources.JobsHeadingText</h2>
+<div>
+    @Html.ActionRefresh(Url, "ConnectorStatistics", 5000, "ConnectorStatistics", "Connector", new {connectorId = Model.Key}, Url.Action("ConnectorDetails", "Connector", new {id = Model.Key}))
+</div>
+<div id="InternalConnectorFunctions">
+    <div>
+        <div>
+            @Html.ActionRefresh(Url, "ImportAllJob", 5000, "ImportAllJob", "Connector", new {connectorId = Model.Key}, Url.Action("ConnectorDetails", "Connector", new {id = Model.Key}))
+        </div>
+        @if (Model.ConnectorSupportsPolling)
+        {
+            <div>
+                @Html.ActionRefresh(Url, "ImportChangesJob", 5000, "ImportChangesJob", "Connector", new { connectorId = Model.Key }, Url.Action("ConnectorDetails", "Connector", new { id = Model.Key }))    
+            </div>
+        }
+        @if (Model.ConnectorSupportsDeleting)
+        {
+            <div>
+                @Html.ActionRefresh(Url, "DeleteEntitiesJob", 5000, "DeleteEntitiesJob", "Connector", new { connectorId = Model.Key }, Url.Action("ConnectorDetails", "Connector", new { id = Model.Key }))    
+            </div>
+        }
+        @if (Model.ConnectorSupportsSaving)
+        {
+            <div>
+                @Html.ActionRefresh(Url, "SaveEntitiesJob", 5000, "SaveEntitiesJob", "Connector", new { connectorId = Model.Key }, Url.Action("ConnectorDetails", "Connector", new { id = Model.Key }))    
+            </div>
+        }
+        <div>
+            @Html.ActionRefresh(Url, "ClearEntitiesJob", 5000, "ClearEntitiesJob", "Connector", new { connectorId = Model.Key }, Url.Action("ConnectorDetails", "Connector", new { id = Model.Key }))    
+        </div>
+        <br/>
+    </div>
+</div>

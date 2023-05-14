@@ -1,0 +1,46 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model AgentIndexInformation
+<div class="AgentsViewSection">
+    <div class="AdaptersViewSectionHeader">
+        <h2 class="inlineHeader">
+            @AgentResources.AgentsHeadingText
+        </h2>
+        <span class="AgentsOperationsButton">
+            @Html.RenderAgentsOperationsMenu(Url)
+            <script type="text/javascript">
+                @ViewData.RetrieveListItems("AgentsFunctions")
+            </script>
+        </span>
+        <span>
+            <input type="checkbox" class="scriptonly" id="SelectDeselectAgents" />
+            @AdapterResources.SelectDeselectAllText
+        </span>
+    </div>
+    <div id="AgentsContainer" style="margin-top: 1em;">
+        @Html.ActionRefresh(Url, "AgentsRefresh", 5000, "Agents", "Agent",
+            "function(cache) { $('.ActionRefreshListener').trigger('refreshStart', cache); }",
+            "function(cache) { $('.ActionRefreshListener').trigger('refreshStop', cache); $('.scriptonly').show(); }")
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $("#SelectDeselectAgents").change(function () {
+            var checked = $(this).is(':checked');
+            $('.AgentCheckBox').each(function () {
+                $(this).prop('checked', checked);
+            });
+
+            if (checked) {
+                $('.AgentCheckBox').each(function () {
+                    $(this).trigger('checkSelected');
+                });
+            } else {
+                $('.AgentCheckBox').each(function () {
+                    $(this).trigger('checkDeselected');
+                });
+            }
+        });
+    });
+</script>

@@ -1,0 +1,164 @@
+/* ------- Begin of   jQuery UI -----------   */
+        
+.ui-selectmenu-menu {
+    display: none;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+}
+
+.ui-selectmenu-menu .ui-menu {
+    overflow: auto; /* Support: IE7 */
+    overflow-x: hidden;
+    padding-bottom: 1px;
+}
+
+.ui-selectmenu-menu .ui-menu .ui-selectmenu-optgroup {
+    border: 0;
+    font-size: 1em;
+    font-weight: bold;
+    height: auto;
+    line-height: 1; /*set the height of the jquery ui dropdown symbol*/
+    margin: 0.5em 0 0 0;
+    padding: 2px 0.4em;
+    padding-right: 2em;
+}
+
+.ui-selectmenu-open { display: block; }
+
+.ui-selectmenu-button {
+    cursor: pointer;
+    display: inline-block;
+    height: 23px; /*set the height of the jquery ui dropdown symbol*/
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+}
+
+.ui-selectmenu-button span.ui-icon {
+    left: auto;
+    margin-top: -8px;
+    position: absolute;
+    right: 0.1em; /*set the DNSymbol position*/
+    top: 50%;
+}
+
+.ui-selectmenu-button span.ui-selectmenu-text {
+    display: block;
+    line-height: 0.6; /*set the height of the jquery ui dropdown symbol*/
+    overflow: hidden;
+    padding: 0.4em 2.1em 0.4em 0.5em; /*set the height of the jquery ui dropdown symbol*/
+    text-align: left;
+    white-space: nowrap;
+}
+
+/*http://stackoverflow.com/questions/22460856/jqueryui-autocomplete-css-suggestion-list-width*/
+
+.ui-autocomplete {
+    border: solid 1px lightblue;
+    clear: both; /* make sure it doesn't pull the next line up next to it */
+    float: left;
+    list-style: none;
+    margin: 0px; /* pull the list items over the left edge */
+    overflow-x: hidden;
+    padding: 0px;
+    text-align: left;
+    overflow-y : scroll;
+    max-height : 150px;
+}
+/* ------- End of   jQuery UI -----------   */
+
+
+.ColumnMappingComboBoxStyle {
+    float: left; /* toNextLine */
+    width: 100%; /* toNextLine */
+}
+
+.ColumnMappingComboBoxStyle .WidgetBtnStyle {
+    /*background: #a9a9a9;*/
+    /*color: white;*/
+    /* apply to "+"  "Edit"  "Submit"  "Cancel" */
+    float: left;
+    /*font-size: 1.8em; /* padding-left: 10px; */
+    padding: 10px 14px;
+    line-height: 14px;
+    margin-right: -15px;
+    text-align: center;
+    cursor: pointer;
+    z-index : 100;
+    position : relative;  /* z-index will not work without this */
+}
+
+.ColumnMappingComboBoxStyle .WidgetBtnTextStyle {
+    /* apply to "Edit"  "Submit"  "Cancel" */
+    width: 100px; /* padding-right: 10px;  */
+}
+
+.ColumnMappingComboBoxStyle .toNextLine{
+    float: left;
+    margin-bottom: 3px; /* the distance between next new line */
+    width: 100%;
+    overflow: hidden;
+}
+
+.ColumnMappingComboBoxStyle .SortableWidgetStyle {
+    float: left; /* width: 100%; Width of sortable, 100% for Horizontal*//* width: 430px; */
+    width: 550px;
+}
+
+.ColumnMappingComboBoxStyle .SortableWidgetStyle .SortableWidgetItemStyle {
+    float: left;
+    height: 35px; /*float: left;    horizontal or vertical sortable*/
+    margin: 0 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+    width: auto;
+    overflow: visible;
+    margin-right: 29px; /*make the new SortableWidgetItem to next line*/
+}
+
+.ColumnMappingComboBoxStyle .SortableWidgetStyle .SortableWidgetItemStyle .DragBtnStyle {
+    cursor: pointer;
+}
+
+.ColumnMappingComboBoxStyle .SortableWidgetStyle .SortableWidgetItemStyle span { float: left; }
+
+.ColumnMappingComboBoxStyle .SortableWidgetStyle .SortableWidgetItemStyle .ui-icon  { width: 18px; }
+
+.ColumnMappingComboBoxStyle .SortableWidgetStyle .SortableWidgetItemStyle .TextboxStyle {
+    height: 18px; /* Height of Textbox which is part of Editable Dropdown list */
+}
+
+.ColumnMappingComboBoxStyle .SortableWidgetStyle .SortableWidgetItemStyle .DropdownBtnStyle  {
+    height: 24px; /* Height of Dropdown Btn which is part of Editable Dropdown list */
+    margin-left: -1px;
+    margin-right: 10px;
+    width: 25px;
+}
+
+.ColumnMappingComboBoxStyle .SortableWidgetStyle .SortableWidgetItemStyle .DropdownBtnStyle .DropdownBtnPicStyle {
+    margin-left: 3px;
+    margin-top: 3px;
+}
+
+.ColumnMappingComboBoxStyle .SortableWidgetStyle .SortableWidgetItemStyle .LeftAndRightSeparatorDisplayStyle, .ColumnMappingComboBoxStyle .SortableWidgetStyle .SortableWidgetItemStyle .LeftAndRightSeparatorSelectValuesDisplayStyle {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.ColumnMappingComboBoxStyle .SortableWidgetStyle .SortableWidgetItemStyle .ComponentRemoveBtnPlaceHolderStyle .ComponentRemoveBtnStyle {
+    height: 21px; /* Height of Dropdown Btn which is part of Editable Dropdown list */
+    margin-left: 3px;
+    margin-top: 3px;
+    width: 19px;
+    cursor: pointer;
+}
+
+.hideElement {
+    display: none !important;
+}
+
+.showinlineElement {
+    display: inline-block !important;
+}

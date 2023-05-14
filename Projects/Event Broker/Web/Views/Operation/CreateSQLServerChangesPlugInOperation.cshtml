@@ -1,0 +1,75 @@
+﻿@model SQLServerChangesPlugInConfigurationViewInformation
+
+@using Unify.Framework.Web
+
+@{
+    ViewBag.Title = Html.CreatePlugInTitle(Model.CreateOrUpdateText, TitleResources.CreateSQLServerChangesOperationTitleCaption); 
+}
+
+@if (!Model.ApplicableAgents.Any())
+{
+    <p>
+        @string.Format(
+            OperationControllerResources.NoApplicableAgentMessageTemplate,
+            OperationControllerResources.PlugInOperationsSQLServerChangesName,
+            OperationControllerResources.AgentsSQLServerName)
+
+        @if (Html.IsInRole(UnifyRoles.Write))
+        { 
+            @Html.ActionLink("Create Agent", "Create", "Agents",
+                new { agentType = AgentPlugInNames.SQLServerAgentPlugInName },
+                null)
+        }
+        else
+        {
+            <label>@OperationControllerResources.CreateAgentInsufficientPermissions</label>
+        }
+    </p>
+}
+else
+{
+    using (Html.DecorateForm(
+        () => Html.BeginForm("CreatePlugInOperation", "Operation", FormMethod.Post, new { id = "CreateOperationForm" }),
+        OperationControllerResources.CreateButtonValue,
+        "CreateOperationForm",
+        OperationResources.ConfigureOperationAltText, "submitButton"))
+    {
+        <div>
+            @Html.EditorFor(model => model, "OperationDisplayName")
+
+            @using (Html.MetaDataFor(model => model.AgentId, new { description = OperationControllerResources.SelectAgentDescription }, new { @class = "chzn-container" }))
+            {
+                @Html.CustomTooltipFor(model => model.AgentId, OperationControllerResources.SelectAgentName, OperationControllerResources.SelectAgentDescription)
+
+                @Html.DropDownListFor(model => model.AgentId,
+                            new SelectList(
+                                Model.ApplicableAgents,
+                                "Id",
+                                "Name",
+                                Model.ApplicableAgents.Any(agent => agent.Id == Model.AgentId)
+                                    ? Model.ApplicableAgents.Where(agent => agent.Id == Model.AgentId).Select(agent => agent).First()
+                                    : Model.ApplicableAgents.First()),
+                                new { @class = "chzn-select" })
+            }
+
+            <fieldset>
+                <legend>@OperationControllerResources.SQLServerChangesPlugInOperationInformation</legend>
+
+                @using (Html.MetaDataFor(model => model.SQLTimeout, new { description = OperationControllerResources.SQLTimeoutDescription }))
+                {
+                    @Html.LabelFor(model => model.SQLTimeout, OperationControllerResources.SQLTimeoutName)
+                    @Html.TextBoxFor(model => model.SQLTimeout)
+                }
+                @using (Html.MetaDataFor(model => model.SQLQuery, new { description = OperationControllerResources.SQLQueryDescription }))
+                {
+                    @Html.LabelFor(model => model.SQLQuery, OperationControllerResources.SQLQueryName)
+                    @Html.TextAreaFor(model => model.SQLQuery, new { @class = "wide-text", rows = "4" })
+                }
+            </fieldset>
+
+            <fieldset>
+                @Html.EditorFor(model => model, "CheckOperationInnerDetails")
+            </fieldset>
+        </div>
+    }
+}

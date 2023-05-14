@@ -1,0 +1,25 @@
+﻿@using Unify.Framework.Web
+@model CreateConnectorViewInformation
+
+@using (Html.DecorateForm(
+    () => Html.BeginForm("SubmitCreate", "Connector", FormMethod.Get),
+    ConnectorControllerResources.CreateConnectorSubmit,
+    "CreateConnectorForm",
+    ConnectorControllerResources.CreateConnectorSubmitAlt))
+{
+    using (Html.MetaDataFor(model => model.Type, new { description = ConnectorControllerResources.ConnectorTypeDescription }, new { @class = "chzn-container" }))
+    {
+        @Html.LabelFor(model => model.Type, ConnectorControllerResources.ConnectorTypeLabel)
+        @Html.DropDownListFor(
+            model => model.Type, 
+            new SelectList(
+                Model.Factories.Select(pair => new KeyValuePair<string, string>(pair.Key, pair.Value.DisplayName)),
+                "Key",
+                "Value"
+            ),
+            new
+            {
+                @class = "chzn-select"
+            })
+    }
+}

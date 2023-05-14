@@ -1,0 +1,151 @@
+﻿@model LDAPDirectoryAgentViewInformation
+@using Unify.Framework.Web
+
+@{
+    string agentTitleName = (Model.EditMode) ? Model.Name : AgentsControllerResources.LDAPDirectoryAgentDisplayNameText;
+    ViewBag.Title = Html.Title(Html.CreateAgentTitle(agentTitleName, Model.CreateOrUpdateText).ToString());
+}
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm(
+            Model.ManagementAgentKey == Guid.Empty
+                ? "Create"
+                : "CreateMAAgent",
+            "Agents",
+            FormMethod.Post,
+            new { id = "CreateAgentForm" }),
+        Model.CreateOrUpdateText,
+        "CreateAgentForm",
+        AgentsControllerResources.ConfigureAgentAltText, "submitButton"))
+{
+    @Html.HiddenFor(model => model.PlugInName)
+    @Html.HiddenFor(model => model.AgentId)
+    @Html.HiddenFor(model => model.EditMode)
+    @Html.HiddenFor(model => model.FIMAgentId)
+    @Html.HiddenFor(model => model.ManagementAgentKey)
+
+    using (Html.MetaDataFor(model => model.Name, new { description = AgentsControllerResources.LDAPDirectoryAgentNameDescription }))
+    {
+        @Html.LabelFor(model => model.Name, AgentsControllerResources.LDAPDirectoryAgentNameName)
+        @Html.TextBoxFor(model => model.Name)
+    }
+    using (Html.MetaDataFor(model => model.Server, new { description = AgentsControllerResources.LDAPDirectoryAgentServerDescription }))
+    {
+        @Html.LabelFor(model => model.Server, AgentsControllerResources.LDAPDirectoryAgentServerName)
+        @Html.TextBoxFor(model => model.Server)
+    }
+    using (Html.MetaDataFor(model => model.Timeout, new {description = AgentsControllerResources.LDAPDirectoryAgentTimeoutDescription}))
+    {
+        @Html.LabelFor(model => model.Timeout, AgentsControllerResources.LDAPDirectoryAgentTimeoutName)
+        <span id="TimeoutContainer">
+            @Html.TextBoxFor(model => model.Timeout, new {@class = "timepickertexthint"})
+        </span>
+    }
+
+    <fieldset>
+        <legend>@AgentsControllerResources.LDAPDirectoryAgentCredentialsFieldsetText</legend>
+
+        @using (Html.MetaDataFor(model => model.AuthType, new { description = AgentsControllerResources.LDAPDirectoryAgentAuthenticationDescription }, new { @class = "chzn-container" }))
+        {
+            @Html.LabelFor(model => model.AuthType, AgentsControllerResources.LDAPDirectoryAgentAuthenticationName)
+            @Html.EnumDropDownList(model => model.AuthType, new { @class = "chzn-select" })
+        }
+
+        <div id="CredentialsSection">
+            @using (Html.MetaDataFor(model => model.Domain, new { description = AgentsControllerResources.LDAPDirectoryAgentDomainDescription }))
+            {
+                @Html.LabelFor(model => model.Domain, AgentsControllerResources.LDAPDirectoryAgentDomainName)
+                @Html.TextBoxFor(model => model.Domain)
+            }
+            @using (Html.MetaDataFor(model => model.UserName, new { description = AgentsControllerResources.LDAPDirectoryAgentUsernameDescription }))
+            {
+                @Html.LabelFor(model => model.UserName, AgentsControllerResources.LDAPDirectoryAgentUsernameName)
+                @Html.TextBoxFor(model => model.UserName)
+            }
+            @using (Html.MetaDataFor(model => model.Password, new { description = AgentsControllerResources.LDAPDirectoryAgentPasswordDescription }))
+            {
+                @Html.LabelFor(model => model.Password, AgentsControllerResources.LDAPDirectoryAgentPasswordName)
+                @Html.PasswordFor(model => model.Password)
+            }
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>@AgentsControllerResources.LDAPDirectoryAgentCertificateFieldsetText</legend>
+
+        @using (Html.MetaDataFor(model => model.UseCertificate, new { description = AgentsControllerResources.LDAPDirectoryAgentUseCertificateDescription }, new { @class = "controlset" }))
+        {
+            @Html.LabelFor(model => model.UseCertificate, AgentsControllerResources.LDAPDirectoryAgentUseCertificateName)
+            @Html.RadioButtonFor(model => model.UseCertificate, true)
+            <label>@AgentsControllerResources.LDAPDirectoryAgentUseCertificateEnabledText</label>
+            @Html.RadioButtonFor(model => model.UseCertificate, false)
+            <label>@AgentsControllerResources.LDAPDirectoryAgentUseCertificateDisabledText</label>
+        }
+
+        <div id="UseCertificateSection">
+            @using (Html.MetaDataFor(model => model.CertificateFilePath, new { description = AgentsControllerResources.LDAPDirectoryAgentCertificatePathDescription }))
+            {
+                @Html.LabelFor(model => model.CertificateFilePath, AgentsControllerResources.LDAPDirectoryAgentCertificatePathName)
+                @Html.TextBoxFor(model => model.CertificateFilePath, new { @class = "wide-text" })
+            }
+            @using (Html.MetaDataFor(model => model.UseCertificatePassword, new { description = AgentsControllerResources.LDAPDirectoryAgentUseCertificatePasswordDescription }, new { @class = "controlset" }))
+            {
+                @Html.LabelFor(model => model.UseCertificatePassword, AgentsControllerResources.LDAPDirectoryAgentUseCertificatePasswordName)
+                @Html.RadioButtonFor(model => model.UseCertificatePassword, true)
+                <label>@AgentsControllerResources.LDAPDirectoryAgentUseCertificatePasswordEnabledText</label>
+                @Html.RadioButtonFor(model => model.UseCertificatePassword, false)
+                <label>@AgentsControllerResources.LDAPDirectoryAgentUseCertificatePasswordDisabledText</label>
+            }
+
+            <div id="UseCertificatePasswordSection">
+                @using (Html.MetaDataFor(model => model.CertificatePassword, new { description = AgentsControllerResources.LDAPDirectoryAgentCertificatePasswordDescription }))
+                {
+                    @Html.LabelFor(model => model.CertificatePassword, AgentsControllerResources.LDAPDirectoryAgentCertificatePasswordName)
+                    @Html.PasswordFor(model => model.CertificatePassword)
+                }
+            </div>
+        </div>
+    </fieldset>
+}
+
+<script type="text/javascript">
+    var useCertificateTrue = $('input[type=radio][id=UseCertificate][value=True]');
+    var useCertificateFalse = $('input[type=radio][id=UseCertificate][value=False]');
+    var useCertificateSection = $('#UseCertificateSection');
+
+    var useCertificatePasswordTrue = $('input[type=radio][id=UseCertificatePassword][value=True]');
+    var useCertificatePasswordFalse = $('input[type=radio][id=UseCertificatePassword][value=False]');
+    var useCertificatePasswordSection = $('#UseCertificatePasswordSection');
+
+    $(document).ready(function () {
+        ShowHideAuthSection();
+        ShowHideSection(useCertificateTrue, useCertificateSection, null);
+        ShowHideSection(useCertificatePasswordTrue, useCertificatePasswordSection, null);
+        $('#TimeoutContainer').unifytimepicker();
+    });
+    $('#AuthType').bind('change', function (event) {
+        ShowHideAuthSection();
+    });
+    useCertificateTrue.bind('change', function (event) {
+        ShowHideSection(useCertificateTrue, useCertificateSection, null);
+    });
+    useCertificateFalse.bind('change', function (event) {
+        ShowHideSection(useCertificateTrue, useCertificateSection, null);
+    });
+    useCertificatePasswordTrue.bind('change', function (event) {
+        ShowHideSection(useCertificatePasswordTrue, useCertificatePasswordSection, null);
+    });
+    useCertificatePasswordFalse.bind('change', function (event) {
+        ShowHideSection(useCertificatePasswordTrue, useCertificatePasswordSection, null);
+    });
+    function ShowHideAuthSection() {
+        var select = $('#AuthType');
+        var cred = $('#CredentialsSection');
+        var selectVal = select.val();
+        if (selectVal == '@System.DirectoryServices.Protocols.AuthType.Anonymous.ToString()') {
+            cred.hide();
+        } else {
+            cred.show();
+        }
+    }
+</script>

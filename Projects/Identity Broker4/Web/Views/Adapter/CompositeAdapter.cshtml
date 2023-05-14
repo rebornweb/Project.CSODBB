@@ -1,0 +1,18 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model CompositeAdapterViewInformation
+
+@{
+    ViewBag.Title = Html.Title(TitleResources.CompositeAdapterTitle);
+}
+
+<p>@AdapterResources.CompositeAdapterDescription</p>
+
+@using (Html.BeginForm("ConfigureCompositeAdapter", "Adapter", FormMethod.Post))
+{
+    @Html.EditorFor(model => model)
+    
+    <div class="buttonrow">
+        <input type="submit" value="@WebStudioResources.SaveText"/>
+    </div>
+}

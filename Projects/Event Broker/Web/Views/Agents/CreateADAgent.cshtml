@@ -1,0 +1,104 @@
+﻿@model ADAgentViewInformation
+@using Unify.Framework.Web
+
+@{
+    string agentTitleName = Model.EditMode ? Model.Name : AgentsControllerResources.ADAgentDisplayNameText;
+    ViewBag.Title = Html.Title(Html.CreateAgentTitle(agentTitleName, Model.CreateOrUpdateText).ToString());
+}
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm(
+            Model.ManagementAgentKey == Guid.Empty
+                ? "Create"
+                : "CreateMAAgent",
+            "Agents",
+            FormMethod.Post,
+            new { id = "CreateAgentForm" }),
+        Model.CreateOrUpdateText,
+        "CreateAgentForm",
+        AgentsControllerResources.ConfigureAgentAltText, "submitButton"))
+{
+    <div>
+        @Html.HiddenFor(model => model.PlugInName)
+        @Html.HiddenFor(model => model.AgentId)
+        @Html.HiddenFor(model => model.EditMode)
+        @Html.HiddenFor(model => model.FIMAgentId)
+        @Html.HiddenFor(model => model.ManagementAgentKey)
+
+        @using (Html.MetaDataFor(model => model.Name, new { description = AgentsControllerResources.ADAgentNameDescription }))
+        {
+            @Html.LabelFor(model => model.Name, AgentsControllerResources.ADAgentNameName)
+            @Html.TextBoxFor(model => model.Name)
+        }
+
+        <fieldset>
+            <legend>@AgentsControllerResources.ADAgentCredentialsFieldsetText</legend>
+
+            @using (Html.MetaDataFor(model => model.Servers, new {description = AgentsControllerResources.ADAgentServersNameDescription}))
+            {
+                @Html.LabelFor(model => model.Servers, AgentsControllerResources.ADAgentServersNameName)
+                @Html.TextAreaFor(model => model.Servers, 5, 30, new {@class = "wide-text"})
+            }
+
+            <div id="AuthenticationDetails">
+                @using (Html.MetaDataFor(model => model.Username, new {description = AgentsControllerResources.ADAgentUsernameDescription}))
+                {
+                    @Html.LabelFor(model => model.Username, AgentsControllerResources.ADAgentUsernameName)
+                    @Html.TextBoxFor(model => model.Username)
+                }
+                @using (Html.MetaDataFor(model => model.Password, new {description = AgentsControllerResources.ADAgentPasswordDescription}))
+                {
+                    @Html.LabelFor(model => model.Password, AgentsControllerResources.ADAgentPasswordName)
+                    @Html.PasswordFor(model => model.Password)
+                }
+            </div>
+
+            <!-- Use standard view -->
+            @using (Html.MetaDataFor(model => model.PredefinedSelection, new {description = AgentsControllerResources.ADAgentAuthenticationPredefinedSelectionDescription}, new {@class = "scriptonly chzn-container"}))
+            {
+                @Html.LabelFor(model => model.PredefinedSelection, AgentsControllerResources.ADAgentAuthenticationName)
+                @Html.EnumDropDownList(model => model.PredefinedSelection, new {id = "PredefinedSelectionDropDown", @class = "chzn-select"})
+            }
+
+            <!-- Non-standard view -->
+            @using (Html.MetaDataFor(model => model.Authentication, new {description = AgentsControllerResources.ADAgentAuthenticationDescription}, new {id = "TypesSection"}))
+            {
+                <label class="scriptonly">&nbsp;</label>
+                <noscript>@Html.LabelFor(model => model.Authentication, AgentsControllerResources.ADAgentAuthenticationName)</noscript>
+                @Html.EnumListBox(model => model.Authentication, new {id = "AuthenticationDropDown"})
+            }
+        </fieldset>
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        ShowHideTypes();
+
+        $('#PredefinedSelectionDropDown').bind('change', function (event) {
+            ShowHideTypes();
+        });
+
+        function ShowHideTypes() {
+            var type = $('#PredefinedSelectionDropDown');
+            var types = $('#TypesSection');
+
+            var authDetails = $('#AuthenticationDetails');
+
+            if (type.val() == '@StandardADAgentSelection.Custom.ToString()') {
+                authDetails.show();
+                types.show();
+            }
+            else {
+                if (type.val() == '@StandardADAgentSelection.Anonymous.ToString()') {
+                    authDetails.hide();
+                }
+                else {
+                    authDetails.show();
+                }
+
+                types.hide();
+            }
+        }
+    });
+</script>

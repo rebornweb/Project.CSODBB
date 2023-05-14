@@ -1,0 +1,54 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model DefaultAgentViewInformation
+           
+<style>
+    form div {
+        margin: 0 !important;
+    }
+    
+    .CodeMirror-lines {
+        margin-left: 22px !important;
+    }
+</style>
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "DefaultAgent", new{area = "Extensibility"}),
+        AgentResources.SaveAgentButtonText,
+        "SaveAgentForm",
+        AgentResources.SaveAgentButtonAltText))
+{
+    @Html.AgentDetailsFor(model => model)
+
+    <fieldset>
+        <legend>@AgentResources.AgentExtendedInformationLegendText</legend>
+    </fieldset>
+    
+    <div>
+    
+        <div class="FormText">
+            <p>A complete user-interface could not be located for this agent type. This may be the intention of the developer for the agent.</p>
+            <br/>
+            <p>Make sure that both the Web and Service components have been correctly installed and refer to the respective documentation of the agent for information about the configuration process.</p>
+        </div>
+        <br/>
+        @Html.TextAreaFor(model => model.ExtendedConfiguration, new { id = "code" })
+    
+    </div>
+}
+
+<script type="text/javascript">
+
+    var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        mode: "application/xml",
+        lineNumbers: true,
+        onCursorActivity: function () {
+            editor.setLineClass(hlLine, null);
+            hlLine = editor.setLineClass(editor.getCursor().line, "activeline");
+        }
+    });
+
+    var hlLine = editor.setLineClass(0, "activeline");
+    
+</script>

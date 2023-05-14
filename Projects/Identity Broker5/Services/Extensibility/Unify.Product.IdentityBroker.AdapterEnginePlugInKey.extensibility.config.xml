@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AdapterEngine>
+  <dataConnection name="repository" repository="Unify.IdentityBroker" />
+  <LDAPSettings enforceSingleSchema="false" />
+  <AdapterEngineConfigurations>
+    <AdapterConfiguration AdapterId="05685e2f-6aed-4027-a5a8-3f85b92e8c1d" AdapterName="MIM Google Contacts" containerName="contacts" enabled="true" BaseConnectorId="d1d5b786-2e5e-495f-8b26-ab3feaf4649c" class="contact">
+      <dn template="CN=[contactID]" />
+      <Groups />
+    </AdapterConfiguration>
+    <AdapterConfiguration AdapterId="2484ffb0-4500-4778-81ae-a78f3aa65aec" AdapterName="CEnet Student Adapter" containerName="CEnetStudent" enabled="true" BaseConnectorId="c54b750a-f03a-4a41-8ac6-cebaad595f76" class="CEnetStudent">
+      <dn template="CN=[ID]" />
+      <Groups />
+      <adapterEntityTransformationFactory name="Sequential">
+        <adapter name="Unify.Transformations.Join" key="6f04e5da-98a8-4859-adb1-7f873d892aea">
+          <Extended RelationshipConnectorId="5d2ae8ff-7d89-45ea-9ab7-9c7e321fb5e8">
+            <Relationships>
+              <Relationship InputKey="SchoolID" RelationshipKey="csoSiteCode" />
+            </Relationships>
+            <columnMappings>
+              <columnMapping SourceAttribute="Address1" TargetAttribute="Address1" />
+              <columnMapping SourceAttribute="Address2" TargetAttribute="Address2" />
+              <columnMapping SourceAttribute="Address3" TargetAttribute="Address3" />
+              <columnMapping SourceAttribute="MailSuffix" TargetAttribute="MailSuffix" />
+              <columnMapping SourceAttribute="PhysicalDeliveryOfficeName" TargetAttribute="PhysicalDeliveryOfficeName" />
+              <columnMapping SourceAttribute="PostalCode" TargetAttribute="PostalCode" />
+            </columnMappings>
+            <Window windowType="Unify.Windows.Default">
+              <Extended />
+            </Window>
+            <Selection selectionType="Unify.Selections.Default">
+              <Extended />
+            </Selection>
+          </Extended>
+        </adapter>
+        <adapter name="ConstantValue" key="e3389f99-07bf-4169-866a-5b554a34e2f0">
+          <Extended>
+            <value valueType="String" TargetColumn="StudentType">CENet</value>
+          </Extended>
+        </adapter>
+        <adapter name="ConstantValue" key="f6dc63b2-f448-4965-9a09-8a345d8fca44">
+          <Extended>
+            <value valueType="String" TargetColumn="AlumniType">S</value>
+          </Extended>
+        </adapter>
+        <adapter name="ConstantValue" key="883952c5-3546-464b-a9eb-a99ce082b243">
+          <Extended>
+            <value valueType="String" TargetColumn="Archive">N</value>
+          </Extended>
+        </adapter>
+        <adapter name="ConstantValue" key="e9c75281-8c10-450d-a41f-52a2ba4b5a48">
+          <Extended>
+            <value valueType="String" TargetColumn="PreEnrolment">N</value>
+          </Extended>
+        </adapter>
+        <adapter name="Unify.Transformations.Join" key="179fad58-9046-419d-8dcc-dc6fc67d3de0">
+          <Extended RelationshipConnectorId="926d876e-74a2-4e93-a864-792859c46ff1">
+            <Relationships>
+              <Relationship InputKey="PhysicalDeliveryOfficeName" RelationshipKey="SchoolID" />
+            </Relationships>
+            <columnMappings>
+              <columnMapping SourceAttribute="IsPromoted" TargetAttribute="IsPromoted" />
+            </columnMappings>
+            <Window windowType="Unify.Windows.Default">
+              <Extended />
+            </Window>
+            <Selection selectionType="Unify.Selections.Default">
+              <Extended />
+            </Selection>
+          </Extended>
+        </adapter>
+        <adapter name="TimeOffset" key="d4450147-5893-41f5-aaf4-121a7aa123d6">
+          <Extended offset="PT0S" adjustForLocal="true" sourceColumn="DOB" destinationColumn="DOBLocal" />
+        </adapter>
+        <adapter name="PowerShell" key="5f950b6d-86c3-47e8-9334-497ef09afa43">
+          <Extended>
+            <Scripts>
+              <TransformationScript># Loop through each input entity
+foreach ($entity in $entities)
+{
+    $entity['YearText'] = $entity['Year'].Value.PadLeft(2,"0");
+    $entity['DOBLong'] = ([datetime]$entity['DOB'].Value).ToLocalTime();
+}</TransformationScript>
+              <ReverseTransformationScript># Loop through each input entity
+foreach ($entity in $entities)
+{
+    
+}</ReverseTransformationScript>
+              <SchemaScript>New-Field 'YearText' 'string'; # name type
+New-Field 'DOBLong' 'string';</SchemaScript>
+            </Scripts>
+          </Extended>
+        </adapter>
+      </adapterEntityTransformationFactory>
+    </AdapterConfiguration>
+    <AdapterConfiguration AdapterId="f7593885-64f8-4b9a-89e8-48dbabe733e1" AdapterName="CEnet Staff Adapter" containerName="CEnetStaff" enabled="true" BaseConnectorId="1d1d50f7-05b4-4e9c-865c-d6d842366e6c" class="CEnetStaff">
+      <dn template="CN=[EmplId],UID=[ID]" />
+      <Groups />
+      <adapterEntityTransformationFactory name="Sequential">
+        <adapter name="TimeOffset" key="9a4769d1-8fc0-42e2-9d0a-b1ca37ab99c4">
+          <Extended offset="PT0S" adjustForLocal="false" sourceColumn="BirthDate" destinationColumn="BirthDateAdj" />
+        </adapter>
+      </adapterEntityTransformationFactory>
+    </AdapterConfiguration>
+  </AdapterEngineConfigurations>
+</AdapterEngine>

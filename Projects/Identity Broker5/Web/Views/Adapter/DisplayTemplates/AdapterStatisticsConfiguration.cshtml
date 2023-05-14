@@ -1,0 +1,53 @@
+﻿@using System.Globalization
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework
+@using Unify.Framework.Web
+@model StatisticsJobViewInformationBase
+@{
+    string errorImageUrl = Url.WebIcon("exclamation.png");
+    string runningImageUrl = Url.Content("~/Content/Loader.gif");
+    string lastRun = !Model.LastRunCompleted.HasValue ? AdapterResources.LastRunNotFoundMessageText : Model.LastRunCompleted.Value.ToLocalTime().ToString(LoggingControllerConstants.DateTimeFormatCSharpReadMode, CultureInfo.InvariantCulture);
+    string lastRunDuration = !Model.LastRunDuration.HasValue ? AdapterResources.LastRunDurationNotFoundMessageText : Model.LastRunDuration.ToString();
+    bool lastRunSucceeded = Model.LastRunSucceeeded ?? false;
+    string lastRunErrorMessage = Model.LastRunErrorMessage ?? AdapterResources.LastRunErrorMessageNotFoundMessageText;
+    bool isShownDuration = !(Model.IsFromImportChangesJob && (Model.LastRunCount == 0)) || (Model.IsFromImportChangesJob && (Model.LastRunCount != 0));
+}
+@if (Model.Running && Model.LastRunStarted.HasValue)
+{
+    <div>
+        @Html.LabelFor(model => model.LastRunStarted, AdapterResources.StatisticsStartedLabel)
+        @Model.LastRunStarted.Value.ToLocalTime().ToString(LoggingControllerConstants.DateTimeFormatCSharpReadMode, CultureInfo.InvariantCulture)
+    </div>
+    <div>
+        @AdapterResources.CurrentlyRunningLabel
+        <img src="@runningImageUrl" alt="Running" title="Running" />
+    </div>
+}
+else if (Model.LastRunCompleted != null || Model.LastRunErrored != null)
+{
+    <div>
+        @Html.LabelFor(model => model.LastRunCompleted, AdapterResources.LastRunLabelText)
+        @lastRun
+    </div>
+    if (isShownDuration)
+    {
+        <br />
+        <div>
+            @Html.LabelFor(model => model.LastRunDuration, AdapterResources.LastRunDurationLabelText)
+            @lastRunDuration
+        </div>
+    }
+    if (!lastRunSucceeded)
+    {
+        <br />
+        <hr />
+        <div>
+            <img src="@errorImageUrl" alt="@AdapterResources.LastRunErroredText" title="@AdapterResources.LastRunErroredText" />
+            @lastRunErrorMessage
+        </div>
+    }
+}
+else
+{
+    <p>@AdapterResources.JobHasNotRunMessage</p>
+}

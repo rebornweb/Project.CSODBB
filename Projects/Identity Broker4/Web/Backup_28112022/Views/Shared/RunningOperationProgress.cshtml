@@ -1,0 +1,102 @@
+﻿@using System.Globalization
+@model IRunningOperationDetails
+
+@{
+    string operation = Model.OperationName;
+
+    const double maxProgress = 100.0;
+
+    double positive = Math.Abs(Model.Completion);
+    double current = IdentityBrokerRenderExtensions.PercentageOfMaximum(positive, (int)maxProgress);
+    double totalWidth = maxProgress - current;
+
+    bool hasStarted = Model.IsRunning && Model.StartTime.HasValue;
+    bool hasRunBefore = Model.StartTime.HasValue;
+    bool isFirstRun = Model.Completion == -1;   //TODO: TS - Why is there a magic number here?
+
+    string internalProgressContainerClass;
+    string internalProgressBlindClass = "InactiveProgressBlind";
+
+    if (hasStarted)
+    {
+        internalProgressBlindClass = "ActiveProgressBlind";
+        
+        internalProgressContainerClass =
+            current < 100.0 || isFirstRun
+                ? "RunningProgressContainer"
+                : "CompleteProgressContainer";
+    }
+    else if (hasRunBefore)
+    {
+        if (Model.Faulted)
+        {
+            internalProgressContainerClass = "CompletedWithWarningsProgressContainer";
+        }
+        else if (Model.Errored)
+        {
+            internalProgressContainerClass = "CompletedWithErrorsProgressContainer";
+        }
+        else if(Model.Blocked)
+        {
+            internalProgressContainerClass = "BlockedProgressContainer";
+        }
+        else if (Model.Queued)
+        {
+            internalProgressContainerClass = "QueuedProgressContainer";
+        }
+        else
+        {
+            internalProgressContainerClass = "SuccessfullyCompleteProgressContainer";
+        }
+    }
+    else
+    {
+        internalProgressContainerClass = "InactiveProgressContainer";
+    }
+
+    string currentDurationDescription =
+        hasStarted
+            ? string.Format(WebStudioResources.RunningOperationProgressStartedTemplate,
+                            Model.StartTime.Value.ToLocalTime(),
+                            Model.SnapshotTime.ToLocalTime() - Model.StartTime.Value.ToLocalTime(),
+                            Model.Completion < 1.0 
+                                ? current.ToString(CultureInfo.InvariantCulture)
+                                : HomeControllerResources.NotApplicableText)
+            : HomeControllerResources.OperationNotCurrentRunningText;
+        
+} 
+
+<div class="ProgressContainer @internalProgressContainerClass" title="@Html.Raw(currentDurationDescription)">
+    <span class="ProgressValue">
+        @if (hasStarted)
+        {
+            var currentValue = (int) current;
+
+            string currentDisplayValue =
+                currentValue == 0 || isFirstRun
+                    ? string.Empty
+                    : string.Format(HomeControllerResources.CurrentPercentageText, currentValue);
+
+            @operation 
+            @currentDisplayValue
+        }
+        else if (Model.Blocked)
+        {
+            @operation
+            @Html.Raw(HomeControllerResources.JobBlockedMessage)
+        }
+        else if (Model.Queued)
+        {
+            @operation
+            @HomeControllerResources.JobQueuedMessage
+        }
+        else
+        {
+            @Html.Raw(Model.DefaultDescription)
+        }
+    </span>
+    <span class="ProgressBlind @internalProgressBlindClass" style="width:@totalWidth%">
+    </span>
+</div>
+
+<div style="clear:both"></div>

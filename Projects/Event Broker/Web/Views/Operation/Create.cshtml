@@ -1,0 +1,59 @@
+﻿@model OperationListViewInformation
+@using Unify.Framework.Web
+
+@{
+    ViewBag.Title = Html.Title(TitleResources.CreateOperationListTitle);
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#DelayTimeSpanContainer').unifytimepicker();
+    });
+</script>
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("Create", "Operation", FormMethod.Post, new { id = "CreateOperationListForm" }),
+        OperationControllerResources.CreateButtonValue,
+        "CreateOperationListForm",
+        OperationResources.ConfigureOperationListAltText, 
+        "submitButton"))
+{
+    <div>
+        <fieldset>
+            
+            @using (Html.MetaDataFor(model => model.Name, new { description = OperationControllerResources.NameDescription }))
+            {
+                @Html.LabelFor(model => model.Name, OperationControllerResources.NameName)
+                @Html.TextBoxFor(model => model.Name)
+            }
+            
+            @using (Html.MetaDataFor(model => model.QueueMissed, new { description = OperationControllerResources.QueueMissedDescription }))
+            {
+                @Html.LabelFor(model => model.QueueMissed, OperationControllerResources.QueueMissedName)
+                @Html.CheckBoxFor(model => model.QueueMissed)
+            }
+            
+            @using (Html.MetaDataFor(model => model.RunOnStartup, new { description = string.Format(OperationControllerResources.RunOnStartupDescription,Model.BrandingProductName) }))
+            {
+                @Html.LabelFor(model => model.RunOnStartup, OperationControllerResources.RunOnStartupName)
+                @Html.CheckBoxFor(model => model.RunOnStartup)
+            }
+            
+            @using (Html.MetaDataFor(model => model.Delay, new {description = OperationControllerResources.DelayDescription}))
+            {
+                @Html.LabelFor(model => model.Delay, OperationControllerResources.DelayName)
+                <span id="DelayTimeSpanContainer">
+                    @Html.TextBoxFor(model => model.Delay, new { @class = "timepickertexthint" })
+                </span>
+            }
+            
+            @using (Html.MetaDataFor(model => model.Comment, new { description = OperationControllerResources.CommentDescription }))
+            {
+                @Html.LabelFor(model => model.Comment, OperationControllerResources.CommentName)
+                @Html.TextAreaFor(model => model.Comment, new { rows = 3, style = "width: 300px;" })
+            }
+
+        </fieldset>
+
+    </div>
+}

@@ -1,0 +1,13 @@
+﻿@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker;
+@model AdapterEntityTransformationErroredSchemaContribution
+           
+@Html.HiddenFor(model => model.TransformationId)
+
+@{
+    string errorImageUrl = Url.WebIcon("exclamation.png");
+}
+
+<div style="padding:10px">
+    <img src="@errorImageUrl" alt="@WebStudioResources.ErrorText" title="@WebStudioResources.ErrorText"/> &nbsp; @Html.Raw(Model.ErrorMessage)
+</div>

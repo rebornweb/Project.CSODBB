@@ -1,0 +1,68 @@
+﻿@using Unify.Framework.Web
+@model EventBrokerLicenseSummary
+
+<div class="FormSection">
+    <div class="FormSectionHeading"><h4>@AboutControllerResources.LicenseDetailsHeading</h4></div>
+    <div class="FormSectionCollapse">
+    @using (Html.BeginForm("SubmitNewLicense", "About", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <table>
+        @if (!string.IsNullOrEmpty(Model.CompanyName) && !string.IsNullOrEmpty(Model.ContactName) && !string.IsNullOrEmpty(Model.ContactEmailAddress))
+        {
+            <tr><td class="FormSectionLabel">@AboutControllerResources.CompanyNameName</td><td>@Model.CompanyName</td></tr>
+            <tr><td class="FormSectionLabel">@AboutControllerResources.ContactNameName</td><td>@Model.ContactName</td></tr>
+            <tr><td class="FormSectionLabel">@AboutControllerResources.ContactEmailAddressName</td><td>@Model.ContactEmailAddress</td></tr>
+        }
+            <tr><td class="FormSectionLabel">@AboutControllerResources.LicenseStatusName</td><td>@Model.Status.ToString()</td></tr>
+            <tr><td class="FormSectionLabel">@AboutControllerResources.LicenseSiteCodeName</td><td>@Model.SiteCode</td></tr>
+        @if (Model.VersionRestriction != null)
+        {
+            <tr><td class="FormSectionLabel">@AboutControllerResources.LicenseVersionRestrictionName</td><td>@Model.VersionRestriction.ToString()</td></tr>
+        }
+        @if (Model.TotalAgentsLimit.HasValue)
+        {
+            <tr><td class="FormSectionLabel">@AboutControllerResources.LicenseAgentLimitName</td><td>@Model.TotalAgentsLimit.Value</td></tr>
+        }
+        @if (Model.RestrictedAgents != null && Model.RestrictedAgents.Count > 0)
+        {
+            <tr><td class="FormSectionLabel">@AboutControllerResources.LicenseRestrictedAgentsName</td><td><ul>
+            @foreach (var restriction in Model.RestrictedAgents)
+            {
+                <li>@restriction.Key (@restriction.Value)</li>
+            }
+            </ul></td></tr>
+        }
+        @if (Model.PlugInsWhitelist != null && Model.PlugInsWhitelist.Any())
+        {
+            <tr><td class="FormSectionLabel">@AboutControllerResources.LicenseAvailablePluginsName</td><td><ul>
+            @foreach (var plugin in Model.PlugInsWhitelist)
+            {
+                <li>@plugin</li>
+            }
+            </ul></td></tr>
+        }
+        else if (Model.PlugInsBlacklist != null && Model.PlugInsBlacklist.Any())
+        {
+            <tr><td class="FormSectionLabel">@AboutControllerResources.LicenseUnavailablePluginsName</td><td><ul>
+            @foreach (var plugin in Model.PlugInsBlacklist)
+            {
+                <li>@plugin</li>
+            }
+            </ul></td></tr>
+        }
+        @if (Model.DaysRemaining > 0)
+        {
+            <tr><td class="FormSectionLabel">@AboutControllerResources.LicenseDaysRemainingName</td><td>@Model.DaysRemaining</td></tr>
+        }
+        @if (Model.MaintenanceExpiry.HasValue)
+        {
+            <tr><td class="FormSectionLabel">@AboutControllerResources.MaintenanceExpiryName</td><td>@Model.MaintenanceExpiry.Value.ToString("dddd, dd MMMM yyyy")</td></tr>
+        }
+        @if (Html.IsInRole(UnifyRoles.Admin))
+        {
+            <tr><td class="FormSectionLabel"><label for="licenseFile" title="@AboutControllerResources.LicenseFileName" class="ClearLayout">@AboutControllerResources.LicenseFileName</label></td><td><input type="file" name="licenseFile"/></td><td><input type="submit" value="@AboutControllerResources.SaveLicenseButtonText"/></td></tr>
+        }
+        </table>
+    }
+    </div>
+</div>

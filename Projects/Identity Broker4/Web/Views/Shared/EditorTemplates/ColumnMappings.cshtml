@@ -1,0 +1,40 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model IMappedTransformation
+
+@using (Html.MetaDataFor(model => model.Mappings, new { description = Model.MappingsDescription, hideRequired = true }))
+{
+    @Html.TextAreaFor(model => model.Mappings.Text, new { id = "ColumnMappingsText" })
+
+    <div id="ColumnMappingsDisplay" class="chzn-form-fieldset-container"></div>
+    <a href="javascript:;" id="AddMappingButton" class="scriptonly">@TransformationResources.AddMappingButtonText</a>
+    
+    <br/>
+    
+    @Html.ValidationMessageFor(model => model.Mappings.Text)
+}
+
+<script type="text/javascript">
+    $('#ColumnMappingsText').hide();
+
+    var mappings = new ColumnMappings({
+        leftSideKeys : [@Html.Raw(string.Join(",", Model.Mappings.Schema.GroupedKeys.Select(mapping => string.Format("\"{0}\"", mapping))))],
+        formatText: $('#ColumnMappingsText'),
+        formatDisplay: $('#ColumnMappingsDisplay'),
+        name : 'mappings'
+    });
+            
+    @if (!string.IsNullOrWhiteSpace(Model.Mappings.Text))
+    {
+        <text>mappings.Accept($('#ColumnMappingsText').val());</text>
+    }
+
+    $('#AddMappingButton').click(
+        function () {
+            mappings.AddMapping({ left: '@Model.Mappings.Schema.GroupedKeys.First()', right: '@Model.Mappings.Schema.GroupedKeys.First()' });
+            mappings.Commit();
+            return false;
+        }
+    );
+
+</script>

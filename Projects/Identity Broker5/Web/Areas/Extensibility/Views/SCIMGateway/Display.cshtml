@@ -1,0 +1,65 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework
+@using Unify.Framework.Api
+@using Unify.Framework.Web
+@model SCIMGatewayAgentViewInformation
+
+<table class="RightSpaced BottomSpaced VerticalAlignTable">
+    <tr>
+        <td>@GatewayResources.SCIMSettingsFormAddressLabelText</td>
+        <td>@Model.Address</td>
+    </tr>
+    @if (!string.IsNullOrEmpty(Model.Audience))
+    {
+        <tr>
+            <td>@GatewayResources.SCIMSettingsFormAudienceLabelText</td>
+            <td>@Model.Audience</td>
+        </tr>
+    }
+    @if (!string.IsNullOrEmpty(Model.Tenant))
+    {
+        <tr>
+            <td>@GatewayResources.SCIMSettingsFormTenantLabelText</td>
+            <td>@Model.Tenant</td>
+        </tr>
+    }
+    <tr>
+        <td>@GatewayResources.SCIMSettingsFormUserIdLookupFieldLabelText</td>
+        <td>@(Model.UserIdLookupField ?? GatewayResources.SCIMSettingsDnText)</td>
+    </tr>
+    @if (Model.UserAdapterId != Guid.Empty)
+    {
+        <tr>
+            <td>@GatewayResources.SCIMSettingsFormUserAdapterLabelText</td>
+            <td>@Html.AdapterLinkFor(Model.UserAdapterId)</td>
+        </tr>
+        <tr style="border-top: 1px #a9a9a9 solid">
+            <td colspan="2">@GatewayResources.SCIMSettingsFormUserMappingsLegendText</td>
+        </tr>
+        foreach (KeyValuePair<string, string> mapping in Model.UserMappings)
+        {
+            <tr>
+                <td>@mapping.Key</td>
+                <td>@mapping.Value</td>
+            </tr>
+        }
+    }
+    @if (Model.GroupAdapterId != Guid.Empty)
+    {
+        <tr>
+            <td>@GatewayResources.SCIMSettingsFormGroupAdapterLabelText</td>
+            <td>@Html.AdapterLinkFor(Model.GroupAdapterId)</td>
+        </tr>
+        <tr style="border-top: 1px #a9a9a9 solid">
+            <td colspan="2">@GatewayResources.SCIMSettingsFormGroupMappingsLegendText</td>
+        </tr>
+        foreach (KeyValuePair<string, string> mapping in Model.GroupMappings)
+        {
+            <tr>
+                <td>@mapping.Key</td>
+                <td>@mapping.Value</td>
+            </tr>
+        }
+    }
+</table>

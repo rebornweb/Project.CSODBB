@@ -1,0 +1,76 @@
+﻿@using Unify.Connect.Web
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+@model CSVConnectorViewInformation
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "CSVConnector", new { area = "Extensibility" }),
+        ConnectorControllerResources.SaveConnectorButtonText,
+        "SaveCSVConnectorForm",
+        ConnectorControllerResources.SaveConnectorButtonAltText
+    ))
+{
+    @Html.ConnectorDetailsFor(model => model)
+    
+    <fieldset>
+        
+        <legend>@ConnectorControllerResources.CsvConnectorFileInformationLegendText</legend>
+        
+        @if (Model.AvailableAgents.Any())
+        {
+            using (Html.MetaDataFor(model => model.Local, new { description = ConnectorControllerResources.CSVConnectorLocalDescription }, new { @class = "controlset" }))
+            {
+                <span class="label">@ConnectorControllerResources.CSVConnectorLocalLabel</span>
+            
+                @Html.RadioButtonFor(model => model.Local, true, new{id="Local"})
+                <label>@ConnectorControllerResources.CSVConnectoLocalFileSystemLabel</label>
+
+            
+                @Html.RadioButtonFor(model => model.Local, false, new{id="Remote"})
+                <label>@ConnectorControllerResources.CSVConnectorRemoteServerLabel</label>
+            }
+        
+            using (Html.MetaDataFor(model => model.AgentId, new { description = ConnectorControllerResources.CSVConnectorAgentIdDescription }, new{id = "Agent"}))
+            {
+                @Html.LabelFor(model => model.AgentId, ConnectorControllerResources.CSVConnectorAgentIdLabel)
+                @Html.DropDownListFor(model => model.AgentId, new SelectList(Model.AvailableAgents,"Value", "Key"))
+            }
+        }
+        else
+        {
+            @Html.HiddenFor(model => model.AgentId)
+            @Html.HiddenFor(model => model.Local)
+
+            <div class="FormText">
+                If the CSV file is in a remote source, a <a href="@Url.Action("Create", "FtpAgent", new { type = FtpStreamCommunicatorFactoryAttributes.FtpAgentFactoryName, area="Extensibility" })">FTP Agent</a> or <a href="@Url.Action("Create", "SshAgent", new { type = SshCommunicatorFactoryAttributes.SshAgentFactoryName, area="Extensibility" })">SSH Agent</a> will need to be created first.
+            </div>
+            <br/>
+        }
+        
+        @using (Html.MetaDataFor(model => model.FilePath, new { description = ConnectorControllerResources.CSVConnectorPathDescription }))
+        {
+            @Html.LabelFor(model => model.FilePath, ConnectorControllerResources.CSVConnectorPathLabel)
+            @Html.TextBoxFor(model => model.FilePath, new { @class = "wide-text" })
+        }
+
+    </fieldset>
+    
+}
+
+@if (Model.AvailableAgents.Any())
+{
+    <script type="text/javascript">
+        $('#Local').change(function () {
+            $('#Agent').hide();
+        });
+
+        $('#Remote').change(function () {
+            $('#Agent').show();
+        });
+        
+        @if (Model.Local)
+        {
+            <text>$('#Agent').hide();</text>
+        }
+    </script>
+}

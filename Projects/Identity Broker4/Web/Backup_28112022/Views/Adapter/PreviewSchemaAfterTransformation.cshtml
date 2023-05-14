@@ -1,0 +1,8 @@
+﻿@using Unify.Connect.Web.Extensions
+@model EntitySchemaViewInformation
+           
+<h2>@AdapterResources.PreviewTransformationSchemaHeading</h2>
+
+<p>@AdapterResources.PreviewTransformationSchemaMessage</p>
+
+@Html.DisplayFor(model => model, "EntitySchemaRows")

@@ -1,0 +1,130 @@
+﻿@using Unify.Framework.Web
+@model Unify.EventBroker.Web.Models.Operation.OperationListsFunctionsViewInformation
+@{
+    string enableImageUrl = Url.WebIcon("control_play.png");
+    string disableImageUrl = Url.WebIcon("control_stop.png");
+    string executeOperationListImageUrl = Url.WebIcon("script_go.png");
+    string executeSkipCheckOperationListImageUrl = Url.WebIcon("bullet_go.png");
+    string restWatermarksUrl = Url.WebIcon("table_refresh.png");
+    string deleteImageUrl = Url.WebIcon("delete.png");
+    string addImageUrl = Url.WebIcon("add.png");
+    const string boundButtonName = "submitButton";
+    const string modifyFormId = "modifyForm";
+    const string deleteInputId = "OperationListsFunctionsDeleteButton";
+    const string deleteInputTextId = "OperationListsFunctionsDeleteTextButton";
+    string operationListFunctionsUrl = Url.Action("ModifyOperationLists", "Operation");
+    string addOperationListHtml = string.Format("<img alt=\"{1}\"" + "title=\"{1}\"" + "src=\"{2}\"" + "id=\"AddConnectorButton\"/> {0}", OperationControllerResources.OperationListCreateName, OperationControllerResources.OperationListCreateAltText, addImageUrl);
+}
+@if (Html.IsInRole(UnifyRoles.Write))
+{
+    <div class="functionsMenuIcon">
+        <a href="@Url.Action("Create", "Operation")">@Html.Raw(addOperationListHtml)</a>
+    </div>
+}
+@using (Html.BeginForm("ModifyOperationLists", "Operation", FormMethod.Post, new { @class = "functionsMenuForm", id = modifyFormId, style = "margin-left:-10px;" }))
+{
+    if (Model.OperationListWithStatusAndAlertInformation.ClientStatus.OperationEngineStatus.SchedulerState != SchedulerState.Starting)
+    {
+        <div>
+            @if (Html.IsInRole(UnifyRoles.Write))
+            {
+                <div class="functionsMenuIcon">
+                    <input type="submit" value="@OperationControllerResources.OperationListEnableName" name="@boundButtonName" style="background: url('@enableImageUrl') no-repeat;"
+                           class="OperationListsFunctionsButton SubmitImageButton" alt="@OperationControllerResources.OperationListEnableAltText" title="@OperationControllerResources.OperationListEnableAltText" />
+                    <input type="submit" value="@OperationControllerResources.OperationListEnableName" name="@boundButtonName" class="OperationListsFunctionsButton SubmitImageText"
+                           alt="@OperationControllerResources.OperationListEnableAltText" title="@OperationControllerResources.OperationListEnableAltText" />
+                </div>
+                <div class="functionsMenuIcon">
+                    <input type="submit" value="@OperationControllerResources.OperationListDisableName" name="@boundButtonName" style="background: url('@disableImageUrl') no-repeat;"
+                           class="OperationListsFunctionsButton SubmitImageButton" alt="@OperationControllerResources.OperationListDisableAltText" title="@OperationControllerResources.OperationListDisableAltText" />
+                    <input type="submit" value="@OperationControllerResources.OperationListDisableName" name="@boundButtonName" class="OperationListsFunctionsButton SubmitImageText"
+                           alt="@OperationControllerResources.OperationListDisableAltText" title="@OperationControllerResources.OperationListDisableAltText" />
+                </div>
+                <div class="functionsMenuIcon">
+                    <input type="submit" value="@OperationControllerResources.OperationListRunFlagsName" name="@boundButtonName" style="background: url('@executeOperationListImageUrl') no-repeat;"
+                           class="OperationListsFunctionsImageBOperationListsFunctionsButtonutton SubmitImageButton" alt="@OperationControllerResources.OperationListRunFlagsAltText" title="@OperationControllerResources.OperationListRunFlagsAltText" />
+                    <input type="submit" value="@OperationControllerResources.OperationListRunFlagsName" name="@boundButtonName" class="OperationListsFunctionsButton SubmitImageText"
+                           alt="@OperationControllerResources.OperationListRunFlagsAltText" title="@OperationControllerResources.OperationListRunFlagsAltText" />
+                </div>
+                <div class="functionsMenuIcon">
+                    <input type="submit" value="@OperationControllerResources.OperationListRunSkipCheckFlagsName" name="@boundButtonName" style="background: url('@executeSkipCheckOperationListImageUrl') no-repeat;"
+                           class="OperationListsFunctionsImageBOperationListsFunctionsButtonutton SubmitImageButton" alt="@OperationControllerResources.OperationListRunSkipCheckFlagsAltText" title="@OperationControllerResources.OperationListRunSkipCheckFlagsAltText" />
+                    <input type="submit" value="@OperationControllerResources.OperationListRunSkipCheckFlagsName" name="@boundButtonName" class="OperationListsFunctionsButton SubmitImageText"
+                           alt="@OperationControllerResources.OperationListRunSkipCheckFlagsAltText" title="@OperationControllerResources.OperationListRunSkipCheckFlagsAltText" />
+                </div>
+                <div class="functionsMenuIcon">
+                    <input type="submit" value="@OperationControllerResources.OperationListResetWatermarkName" name="@boundButtonName" style="background: url('@restWatermarksUrl') no-repeat;"
+                           class="OperationListsFunctionsImageBOperationListsFunctionsButtonutton SubmitImageButton" alt="@OperationControllerResources.OperationListResetWatermarkAltText" title="@OperationControllerResources.OperationListResetWatermarkAltText" />
+                    <input type="submit" value="@OperationControllerResources.OperationListResetWatermarkName" name="@boundButtonName" class="OperationListsFunctionsButton SubmitImageText"
+                           alt="@OperationControllerResources.OperationListResetWatermarkAltText" title="@OperationControllerResources.OperationListResetWatermarkAltText" />
+                </div>
+            }
+            @if (Html.IsInRole(UnifyRoles.Full))
+            {
+                <div class="functionsMenuIcon">
+                    <input type="submit" value="@OperationControllerResources.OperationListDeleteName" name="@boundButtonName" id="@deleteInputId" style="background: url('@deleteImageUrl') no-repeat;"
+                           class="OperationListsFunctionsButton SubmitImageButton" alt="@OperationControllerResources.OperationListDeleteAltText" title="@OperationControllerResources.OperationListDeleteAltText" />
+                    <input type="submit" value="@OperationControllerResources.OperationListDeleteName" name="@boundButtonName" id="@deleteInputTextId" class="OperationListsFunctionsButton SubmitImageText"
+                           alt="@OperationControllerResources.OperationListDeleteAltText" title="@OperationControllerResources.OperationListDeleteAltText" />
+                </div>
+            }
+        </div>
+    }
+}
+<script type="text/javascript">
+    $(function () {
+        function postOperationListFunctions(functionValue) {
+            // get all values of ticked checkbox of OperationLists into  OperationListsArr
+            var operationListsArr = new Array();
+            var maxIndex = 0;
+            $(".OperationCheckBox").each(function () {
+                if ($(this).prop("checked")) {
+                    operationListsArr[maxIndex] = $(this).val();
+                    maxIndex++;
+                }
+            });
+            // functionValue store the value of the button which you click in the function menu, the value can be "Delete" or "Clear"
+            var postData = { 'ids': operationListsArr, 'submitButton': functionValue };
+            $.ajaxSettings.traditional = true;
+            // when sunncess then reload this windows
+            $.ajax({
+                type: "POST",
+                url: "@operationListFunctionsUrl",
+                data: postData,
+                success: function () {
+                    if ('@TempData["operationListsFunctionsDestination"]' == "/") {
+                        location.href = "/";
+                    } else {
+                        location.reload(true);
+                    }
+                }
+            });
+        }
+        // Block form submit.
+        $("#@modifyFormId").on('submit', function (e) {
+            e.preventDefault();
+        });
+        $(".OperationListsFunctionsButton").each(function () {
+            // register click event to all the buttons which has no id attribute
+            // then run the right action by button value. e.g. reload this windows
+            if ($(this).filter("[id]").length <= 0) {
+                $(this).on("click", function () {
+                    postOperationListFunctions($(this).val());
+                });
+            }
+        });
+
+        // delete operation list btn confirmation dialog
+        var deleteBtns = ["#@deleteInputId", "#@deleteInputTextId"];
+        for (var j = 0; j < deleteBtns.length; j++) {
+            $(deleteBtns[j]).jQueryUiDialogGenerator({
+                messageHtmlCodeStr: '<div>@OperationControllerResources.OperationListDetailsDeleteOperationListConfirmationMessage</div>',
+                boundElementName: "@boundButtonName", // name attribute of the bound element
+                btnSourceType: sourceTypeEnumFunc().submitBtnSelfDefine, // btnSourceType == sourceTypeEnumFunc().actionLink   means btn is action link <a>, btnSourceType == sourceTypeEnumFunc().formInput    means the btn is <form><input>
+                submitBtnClick: function () {
+                    postOperationListFunctions($(deleteBtns[0]).val());
+                }
+            });
+        }
+    });
+</script>

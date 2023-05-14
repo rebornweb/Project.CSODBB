@@ -1,0 +1,159 @@
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model AdapterViewInformation
+
+@{
+    ViewBag.Title = Html.Title(Model.AdapterName);
+    Guid adapterId = Model.AdapterId;
+    bool baseConnectorAvailable = !string.IsNullOrWhiteSpace(Model.BaseConnectorName);
+}
+
+@helper RenderAdapterHeader(Guid adapterId)
+{
+    @Html.AdapterImage(adapterId, new Dictionary<string, string> {{"style", "vertical-align: middle;"}})
+    @Model.AdapterName
+    @Html.RenderAdapterOperationsMenu(Url, adapterId)
+}
+
+@helper RenderAdapterEnableDisable(Guid adapterId, bool baseConnectorAvailable)
+{
+    string enabledText = Model.Enabled ? Model.Inhibited ? AdapterResources.AdapterInhibitedText : AdapterResources.AdapterEnabledText : AdapterResources.AdapterDisabledText;
+    string inhibitedImg = Url.WebIcon("error.png");
+    string toggleAction = Model.Enabled ? "DisableAdapter" : "EnableAdapter";
+    string toggleButtonText = Model.Enabled ? AdapterResources.AdapterDisableBtnText : AdapterResources.AdapterEnableBtnText;
+    string toggleButtonAltText = Model.Enabled ? AdapterResources.DisableAdapterImageAltText : AdapterResources.EnableAdapterImageAltText;
+    string toggleButtonClass = Model.Enabled ? "m-btn red mini mini-form" : "m-btn green mini mini-form";
+    
+    <span style="margin-right: 10px;">
+        @if (Model.Inhibited)
+        {
+            <img src="@inhibitedImg" alt="@AdapterResources.AdapterInhibitedIconAltText" />
+        }
+        @enabledText
+    </span>
+
+    if (baseConnectorAvailable)
+    {
+        using (Html.BeginForm(toggleAction, "Adapter", new {id = adapterId}, FormMethod.Post, new {@class = "IconForm"}))
+        {
+            <input type="submit" value="@toggleButtonText" title="@toggleButtonAltText" class="@toggleButtonClass"/>
+        }
+    }
+    else
+    {
+        <span>
+            <input type="submit" value="@AdapterResources.AdapterEnableBtnText" title="@AdapterResources.UnableToEnableAdapterImageAltText" class="m-btn mini mini-form" disabled="disabled" />
+        </span>
+    }
+}
+
+<div class="AdapterConfiguration">
+    <h1>
+        @RenderAdapterHeader(adapterId)
+    </h1>
+
+    <div>
+        <div>
+            @if (Model.Inhibited)
+            {
+                <p>@AdapterResources.AdapterInhibitedSpannerText</p>
+            }
+            else if (Model.Enabled)
+            {
+                <p>@AdapterResources.AdapterSpannerText</p>
+            }
+            <table class="RightSpaced BottomSpaced VerticalAlignTable">
+                @if (!string.IsNullOrWhiteSpace(Model.AdapterComment))
+                {
+                    <tr>
+                        <td style="min-width: 100px;">
+                            @AdapterResources.AdapterCommentLabel
+                        </td>
+                        <td>
+                            @Model.AdapterComment
+                        </td>
+                    </tr>
+                }
+                <tr style="min-width: 100px;">
+                    <td>
+                        @AdapterResources.AdapterStateLabel
+                    </td>
+                    <td>
+                        @RenderAdapterEnableDisable(adapterId, baseConnectorAvailable)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @AdapterResources.BaseConnectorLabel
+                    </td>
+                    <td>
+                        @if (baseConnectorAvailable)
+                        {
+                            <a href="@Url.Action("ConnectorDetails", "Connector", new {connectorId = Model.BaseConnectorId})">
+                                @Model.BaseConnectorName
+                            </a>
+
+                            if (Model.BaseConnectorEnabled)
+                            {
+                                <span> (@AdapterResources.BaseConnectorEnabledText) </span>
+                                using (Html.BeginForm("DisableAdapterConnector", "Adapter", new {id = Model.AdapterId, connectorId = Model.BaseConnectorId}, FormMethod.Post, new {@class = "IconForm"}))
+                                {
+                                    <input type="submit" value="@ConnectorControllerResources.ConnectorDisableBtnText" title="@ConnectorControllerResources.ConnectorDisableAltText" class="m-btn red mini mini-form"/>
+                                }
+                            }
+                            else
+                            {
+                                <span> (@AdapterResources.BaseConnectorDisabledText) </span>
+                                using (Html.BeginForm("EnableAdapterConnector", "Adapter", new {id = Model.AdapterId, connectorId = Model.BaseConnectorId}, FormMethod.Post, new {@class = "IconForm"}))
+                                {
+                                    <input type="submit" value="@ConnectorControllerResources.ConnectorEnableBtnText" title="@ConnectorControllerResources.ConnectorEnableAltText" class="m-btn green mini mini-form"/>
+                                }
+                            }
+                        }
+                        else
+                        {
+                            <span>
+                                <img src="@Url.WebIcon("error.png")" />
+                                @AdapterResources.BaseConnectorNotFoundMessageText
+                                @Html.ActionLink(AdapterResources.PickAnotherConnectorText, "EditAdapter", "Adapter", new {id = Model.AdapterId}, null)
+                            </span>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>@AdapterResources.AdapterContainerNameLabel</td>
+                    <td>@Model.ContainerName</td>
+                </tr>
+                <tr>
+                    <td>@AdapterResources.ObjectClassLabel</td>
+                    <td>@Model.ObjectClass</td>
+                </tr>
+                <tr>
+                    <td>@AdapterResources.DistinguishedNameTemplateLabel</td>
+                    <td>@Model.Template</td>
+                </tr>
+            </table>
+            <div>
+                @Html.ActionRefresh(Url, string.Format("AdapterStatistics{0}", Model.AdapterId), 5000, "AdapterStatistics", "Adapter", new {id = Model.AdapterId, isInLine = false}, Url.Action("AdapterDetails", "Adapter", new {id = Model.AdapterId}))
+            </div>
+        </div>
+
+        @Html.DisplayFor(model => model.AdapterId, "AdapterJobs")
+
+        @if (baseConnectorAvailable)
+        {
+            Html.RenderAction("Transformations", "Adapter", new {id = adapterId});
+        }
+    </div>
+    <div>
+        @{
+            <br/><br />
+            var adapterDetailsProviderInformation = new AdapterDetailsProviderInformation(Model.AdapterId, Model.AdapterName, Model.ContainerName, Model.ObjectClass, Model.Enabled, Model.BaseConnectorId, Model.BaseConnectorName, Model.BaseConnectorEnabled, Model.Schema, Model.SchemaTypes, Model.Connectors);
+            AdapterDetailsProvider.Instance.WriteAll(Html, adapterDetailsProviderInformation);
+        }
+    </div>
+</div>
+<script type="text/javascript">
+    @ViewData.RetrieveListItems("AdapterFunctions");
+    @ViewData.RetrieveListItems("InnerAdapterFunctions");
+</script>

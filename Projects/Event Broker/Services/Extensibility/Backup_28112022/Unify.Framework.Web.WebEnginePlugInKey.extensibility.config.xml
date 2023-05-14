@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<WebEngine changeId="{34CC19F0-9C9A-4587-B7F6-2CB83EB126A1}" enabled="false">
+	<Configuration
+		applicationPath="..\Web"
+		port="8080"
+	/>
+</WebEngine>
+
+<!--
+applicationPath	- if contains ":" or begins with "\\", send straight to cassini, else append to executing directory
+ipAddress		- optional
+port
+virtualPath		- optional
+-->

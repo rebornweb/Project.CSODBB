@@ -1,0 +1,91 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model dynamic
+@{
+    string addAgentImageUrl = Url.WebIcon("add.png");
+    string deleteImageUrl = Url.WebIcon("delete.png");
+    const string formId = "AgentFunctionsForm";
+    string agentOperationsUrl = Url.Action("AgentIndexOperation", "Agent");
+    // add new agent
+    string addAgentUrl = Url.Action("NewAgent", "Agent");
+    string addAgentImageHtml = string.Format("<img alt=\"{0}\" title=\"{0}\" src=\"{1}\" id=\"AddAgentButton\"/> {0}", AgentResources.AddAgentAltText, addAgentImageUrl);
+    // delete agent
+    const string deleteInputId = "AgentFunctionsDeleteButton";
+    const string deleteInputTextId = "AgentFunctionsDeleteTextButton";
+}
+<div class="functionsMenuIcon">
+    <a href="@addAgentUrl">@Html.Raw(addAgentImageHtml)</a>
+</div>
+<div>
+    @using (Html.BeginForm("AgentIndexOperation", "Agent", FormMethod.Post, new { Class = "functionsMenuForm", id = formId, style = "margin-left: -1.2em;" }))
+    {
+        <div id="AgentFunctions">
+            <div>
+                <div class="functionsMenuIcon">
+                    <input type="submit" value="Delete" name="Function" id="@deleteInputId" style="background:url('@deleteImageUrl') no-repeat"
+                           class="SubmitImageButton AgentsFunctionsImageButton" title="@AgentResources.IndexDeleteAgentsAltText" />
+                    <input type="submit" value="Delete" name="Function" id="@deleteInputTextId"
+                           class="SubmitImageText AgentsFunctionsTextButton" alt="Delete" title="@AgentResources.IndexDeleteAgentsAltText" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('.scriptonly').show();
+        function postAgentFunctions(functionValue) {
+            var agentsArr = new Array();
+            var maxIndex = 0;
+            $(".AgentCheckBox").each(function () {
+                if ($(this).prop("checked")) {
+                    agentsArr[maxIndex] = $(this).val();
+                    maxIndex++;
+                }
+            });
+
+            var postData = { 'agents': agentsArr, 'function': functionValue };
+            $.ajaxSettings.traditional = true;
+
+            $.ajax({
+                type: "POST",
+                url: "@agentOperationsUrl",
+                data: postData,
+                success: function () {
+                    location.reload(true);
+                }
+            });
+        }
+
+        $(".functionsMenuForm").on('submit', function (e) {
+            e.preventDefault();
+        });
+
+        $(".AgentsFunctionsImageButton").each(function () {
+            if ($(this).filter("[id]").length <= 0) {
+                $(this).on("click", function () {
+                    postAgentFunctions($(this).val());
+                });
+            }
+        });
+        $(".AgentsFunctionsTextButton").each(function () {
+            if ($(this).filter("[id]").length <= 0) {
+                $(this).on("click", function () {
+                    postAgentFunctions($(this).val().replace(/\s+/g, '')); // remove spaces
+                });
+            }
+        });
+
+        var deleteBtns = ["#@deleteInputId", "#@deleteInputTextId"];
+        for (var j = 0; j < deleteBtns.length; j++) {
+            $(deleteBtns[j]).jQueryUiDialogGenerator({
+                messageHtmlCodeStr: '<div>@AgentResources.DeleteAgentsConfirmationWarningText</div><br/><div>@AgentResources.DeleteAgentWarningDescriptionText @WebStudioResources.ThisCannotBeUndoneText</div><br/>',
+                boundElementName: "Function", // name attribute of the bound element
+                btnSourceType: sourceTypeEnumFunc().submitBtnSelfDefine, // btnSourceType == sourceTypeEnumFunc().actionLink   means btn is action link <a>, btnSourceType == sourceTypeEnumFunc().formInput    means the btn is <form><input>
+                submitBtnClick: function () {
+                    postAgentFunctions($(deleteBtns[0]).val());
+                }
+            });
+        }
+    });
+</script>

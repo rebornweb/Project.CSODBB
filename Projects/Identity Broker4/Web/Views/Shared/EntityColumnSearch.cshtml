@@ -1,0 +1,217 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+@model EntityColumnSearchViewInformation
+           
+@{
+    Guid partialId = Guid.NewGuid();
+    string partialIdName = partialId.ToString().Replace("-", string.Empty);
+
+    string editModeId = string.Concat("EditModeValue", partialIdName);
+    string partitionIdId = string.Concat("PartitionIdValue", partialIdName);
+    string searchIdId = string.Concat("SearchIdValue", partialIdName);
+    string schemaKeyId = string.Concat("SchemaKeyValue", partialIdName);
+
+    const string attributeOperatorsContainerIdTemplate = "operators{0}{1}"; // Attribute : Partial Id
+    const string attributeOperatorsValueIdTemplate = "operatorsValue{0}{1}"; // Attribute : Partial Id
+
+    string operatorsClass = string.Format("operators{0}", partialIdName);
+    string attributeSelectListId = string.Format("selectList{0}", partialIdName);
+
+    string submitFormId = string.Concat("submitForm", partialIdName);
+
+    string operatorSelectionsIndexName = string.Concat(Html.GetPropertyName<EntityColumnSearchViewInformation>(model => model.OperatorSelections), ".Index");
+
+    string operatorList =
+        string.Concat("['", Model.CompleteAvailableOperatorSelections.Keys
+                               .Aggregate((a, b) => string.Concat(a, "', '", b)), "']");
+
+    string stringContainerId = string.Concat("stringValueContainer", partialIdName);
+
+    string booleanContainerId = string.Concat("booleanValueContainer", partialIdName);
+
+    string timespanContainerId = string.Concat("timeSpanValueContainer", partialIdName);
+    string timespanValueId = string.Concat("timeSpanValueText", partialIdName);
+
+    string dateContainerId = string.Concat("dateValueContainer", partialIdName);
+    string dateValueId = string.Concat("dateValueText", partialIdName);
+
+    string dateTimeContainerId = string.Concat("dateTimeValueContainer", partialIdName);
+    string dateTimeValueId = string.Concat("dateTimeValueText", partialIdName);
+
+    string isScriptedId = string.Concat("isScripted", partialIdName);
+}
+
+<script type="text/javascript">
+    var operatorList = @Html.Raw(operatorList);
+
+    var operatorValueTypes = { };
+    
+    @foreach (var operatorSelection in Model.CompleteAvailableOperatorSelections)
+    {
+        string operatorKey = string.Format("operatorValueTypes[\"{0}\"]", operatorSelection.Key);
+
+        @Html.Raw(string.Concat(operatorKey, "= { };"))
+
+        foreach (var attributeSelection in operatorSelection.Value)
+        {
+            string attributeKey = string.Format("{0}[\"{1}\"]", operatorKey, attributeSelection.Key);
+                @Html.Raw(string.Concat(attributeKey, " = '", attributeSelection.Value.ValueType.ToString(), "'; "))
+        }
+    }
+    
+    $("#@dateValueId").datepicker({
+        dateFormat: '@ConnectorControllerResources.DateFormat'
+    });
+    
+    $("#@dateTimeValueId").datetimepicker(
+    {
+        dateFormat: '@ConnectorControllerResources.DateFormat',
+        timeFormat: '@ConnectorControllerResources.TimeFormat'
+    });
+
+    $('.timeSpanValueSpan').unifytimepicker({
+        includeDays: true,
+        allowNegative: true
+    });
+
+    ShowHideColumnSearchSections("@attributeSelectListId", "@partialIdName", function (valueName) {
+        SelectSearchValueTypeSection("operatorsValue" + valueName + "@partialIdName", "@attributeSelectListId", operatorValueTypes, "@stringContainerId", "@booleanContainerId", "@dateContainerId", "@timespanContainerId", "@dateTimeContainerId");
+    });
+    
+    $(document).ready(function () {
+
+        $('#@attributeSelectListId').change(function () {
+            ShowHideColumnSearchSections("@attributeSelectListId", "@partialIdName", function (valueName) {
+                SelectSearchValueTypeSection("operatorsValue" + valueName + "@partialIdName", "@attributeSelectListId", operatorValueTypes, "@stringContainerId", "@booleanContainerId", "@dateContainerId", "@timespanContainerId", "@dateTimeContainerId");    
+            }); 
+        });
+
+        $('.@operatorsClass').change(function() {
+            SelectSearchValueTypeSection($(this).attr('id'), "@attributeSelectListId", operatorValueTypes, "@stringContainerId", "@booleanContainerId", "@dateContainerId", "@timespanContainerId", "@dateTimeContainerId");
+        });
+
+        $("#@submitFormId").submit(function(eventObject) {
+            SubmitSearchForm("@submitFormId");
+            return false;
+        });
+    });
+</script>
+
+<style type="text/css">
+    form label
+    {
+        width:80px;    
+    }
+</style>
+
+<h3>@SchemaResources.ConfigureSearchTermsHeading</h3>
+           
+@using (Html.BeginForm("EntityColumnSearch", ViewContext.Controller.ControllerContext.RouteData.ExecutingControllerName(), FormMethod.Post, new { id = submitFormId }))
+{
+    @Html.HiddenFor(model => model.EditMode, new { id = editModeId })
+    @Html.HiddenFor(model => model.PartitionId, new { id = partitionIdId })
+    @Html.HiddenFor(model => model.SearchId, new { id = searchIdId })
+    @Html.HiddenFor(model => model.SchemaKeyIdentifier, new { id = schemaKeyId })
+    @Html.HiddenFor(model => model.SearchContext)
+    @Html.HiddenFor(model => model.IsScripted, new { id = isScriptedId })
+
+    <div>
+        <div class="InternalSearchTermComponent">
+            <b>@Model.SchemaKeyIdentifier</b>
+        </div>
+        
+        @using (Html.MetaDataFor(model => model.Attribute, new { description = SchemaResources.SearchAttributeDescription }, new { @class = "InternalSearchTermComponent" }))
+        {
+            <noscript>@Html.LabelFor(model => model.Attribute, SchemaResources.SearchAttributeLabel)</noscript>
+            @Html.DropDownListFor(
+                model => model.Attribute,
+                new SelectList(
+                    Model.AvailableOperatorSelections.Keys,
+                    Model.AvailableOperatorSelections.Keys.First()
+                    ), new
+                           {
+                               id = attributeSelectListId
+                           })
+        }
+
+        @foreach (var attribute in Model.OperatorSelections.Keys)
+        {
+            @MvcHtmlString.Create(string.Format(
+                "<input type=\"hidden\" name=\"{0}\" value=\"{1}\"/>",
+                operatorSelectionsIndexName,
+                attribute))
+            
+            @MvcHtmlString.Create(string.Format(
+                "<input type=\"hidden\" name=\"{0}\" value=\"{1}\"/>",
+                string.Format("{0}[{1}].Key",
+                              Html.GetPropertyName<EntityColumnSearchViewInformation>(model => model.OperatorSelections),
+                              attribute),
+                attribute))
+
+            string attributeOperatorsContainerId = string.Format(
+                attributeOperatorsContainerIdTemplate,
+                attribute,
+                partialIdName);
+
+            string attributeOperatorsValueId = string.Format(
+                attributeOperatorsValueIdTemplate,
+                attribute,
+                partialIdName);
+
+            using (Html.MetaData(string.Format("{0}[{1}].Value", Html.GetPropertyName<EntityColumnSearchViewInformation>(model => model.OperatorSelections), attribute), 
+                                 new{description = SchemaResources.SearchOperatorDescription},
+                                 new{id=attributeOperatorsContainerId, @class="InternalSearchTermComponent"}))
+            {
+                <noscript><label>@attribute</label></noscript>
+                @Html.DropDownList(
+                         string.Format("{0}[{1}].Value", Html.GetPropertyName<EntityColumnSearchViewInformation>(model => model.OperatorSelections), attribute),
+                    new SelectList(
+                        Model.CompleteAvailableOperatorSelections[attribute].ToDictionary(pair => pair.Key, pair => pair.Value.OperatorName),
+                        "Key",
+                        "Value",
+                        Model.OperatorSelections[attribute] ?? Model.AvailableOperatorSelections[attribute].First()
+                        ),
+                    new { @id = attributeOperatorsValueId, @class = operatorsClass })
+            }
+        }
+        
+        @using (Html.MetaDataFor(model => model.Value, new{description = SchemaResources.ValueDescription}, new{id=stringContainerId, @class="InternalSearchTermComponent"}))
+        {
+            <noscript>@Html.LabelFor(model => model.Value, SchemaResources.ValueLabel)</noscript>
+            @Html.TextBoxFor(model => model.Value)   
+        }
+        
+        @using (Html.MetaDataFor(model => model.BooleanValue, new {description = SchemaResources.ValueDescription}, new{id=booleanContainerId, @class="InternalSearchTermComponent", style="display:none"}))
+        {
+            <noscript>@Html.LabelFor(model => model.BooleanValue, SchemaResources.ValueLabel)</noscript>
+            @Html.CheckBoxFor(model => model.BooleanValue)
+        }
+        
+        @using (Html.MetaDataFor(model => model.DateValue, new{description = SchemaResources.ValueDescription}, new{id=dateContainerId, @class="InternalSearchTermComponent", style="display:none"}))
+        {
+            <noscript>@Html.LabelFor(model => model.DateValue, SchemaResources.ValueLabel)</noscript>
+            @Html.TextBoxFor(model => model.DateValue, new { id = dateValueId })
+        }
+        
+        @using (Html.MetaDataFor(model => model.DateTimeValue, new{description = SchemaResources.ValueDescription}, new{id=dateTimeContainerId, @class="InternalSearchTermComponent", style="display:none"}))
+        {
+            <noscript>@Html.LabelFor(model => model.DateTimeValue, SchemaResources.ValueLabel)</noscript>
+            @Html.TextBoxFor(model => model.DateTimeValue, new { id = dateTimeValueId })
+        }
+        
+        @using (Html.MetaDataFor(model => model.TimeSpanValue, new{description = SchemaResources.ValueDescription}, new{id=timespanContainerId, @class="InternalSearchTermComponent", style="display:none"}))
+        {
+            <noscript>@Html.LabelFor(model => model.TimeSpanValue, SchemaResources.ValueLabel)</noscript>
+            <span class="timeSpanValueSpan">
+                @Html.TextBoxFor(model => model.TimeSpanValue, new { id = timespanValueId })
+            </span>
+        }
+    </div>
+    
+    <input type="submit" class="submit" value="@SchemaResources.RunSearchInputText"/>
+}
+
+<script type="text/javascript">
+    $("#@isScriptedId").val("True")
+</script>

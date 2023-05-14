@@ -1,0 +1,65 @@
+﻿@model SchemaFieldDefinitionInformation
+           
+@using Unify.Framework.Web
+
+@Html.HiddenFor(model => model.ConnectorId)
+@Html.HiddenFor(model => model.ValidatorName)
+@Html.HiddenFor(model => model.Edit)
+@Html.HiddenFor(model => model.SchemaKey)
+
+<fieldset>
+    <legend>@Model.KnownTypes[Model.ValidatorName].DisplayName</legend>
+    
+    @using (Html.MetaDataFor(model => model.FieldName, new { description = ConnectorControllerResources.EntitySchemaFieldNameDescription }))
+    {
+        @Html.LabelFor(model => model.FieldName, ConnectorControllerResources.EntitySchemaFieldNameLabel)
+        @Html.TextBoxFor(model => model.FieldName)
+    }
+    @using (Html.MetaDataFor(model => model.Key, new { description = ConnectorControllerResources.EntitySchemaKeyDescription }))
+    {
+        @Html.LabelFor(model => model.Key, ConnectorControllerResources.EntitySchemaKeyLabel)
+        @Html.CheckBoxFor(model => model.Key)
+    }
+    @using (Html.MetaDataFor(model => model.ReadOnly, new { description = ConnectorControllerResources.EntitySchemaReadOnlyDescription }))
+    {
+        @Html.LabelFor(model => model.ReadOnly, ConnectorControllerResources.EntitySchemaReadOnlyLabel)
+        @Html.CheckBoxFor(model => model.ReadOnly)
+    }
+    @using (Html.MetaDataFor(model => model.Required, new { description = ConnectorControllerResources.EntitySchemaRequiredDescription }))
+    {
+        @Html.LabelFor(model => model.Required, ConnectorControllerResources.EntitySchemaRequiredLabel)
+        @Html.CheckBoxFor(model => model.Required)
+    }
+</fieldset>
+
+@if (Model.KnownTypes[Model.ValidatorName].Type.HasFlag(Unify.Framework.ValueType.MultiValue))
+{
+    <fieldset>
+        <legend>
+            @ConnectorControllerResources.MinimumValueCountInnerValidatorLegendText
+            @Html.CheckBoxFor(model => model.EnableMinValueCountFlag, new {@class = "CheckCollapse"})
+            <span class="hint">@ConnectorControllerResources.MinimumValueCountInnerValidatorFlagDescription<span class="hint-pointer">&nbsp;</span></span>
+        </legend>
+
+        @using (Html.MetaDataFor(model => model.MinValueCount, new {description = ConnectorControllerResources.EntitySchemaRowMinCountDescription}, new {@class = "CheckSection"}))
+        {
+            @Html.LabelFor(model => model.MinValueCount, ConnectorControllerResources.EntitySchemaRowMinCountLabel)
+            @Html.TextBoxFor(model => model.MinValueCount)
+        }
+    </fieldset>
+    
+    <fieldset>
+        <legend>
+            @ConnectorControllerResources.MaximumValueCountInnerValidatorLegendText
+            @Html.CheckBoxFor(model => model.EnableMaxValueCountFlag, new { @class = "CheckCollapse" })
+            <span class="hint">@ConnectorControllerResources.MaximumValueCountInnerValidatorFlagDescription<span class="hint-pointer">&nbsp;</span></span>
+        </legend>
+
+        @using (Html.MetaDataFor(model => model.MaxValueCount, new { description = ConnectorControllerResources.EntitySchemaRowMaxCountDescription }, new { @class = "CheckSection" }))
+        {
+            @Html.LabelFor(model => model.MaxValueCount, ConnectorControllerResources.EntitySchemaRowMaxCountLabel)
+            @Html.TextBoxFor(model => model.MaxValueCount)
+        }
+    </fieldset>
+}
+

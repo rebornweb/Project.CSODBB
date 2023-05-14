@@ -1,0 +1,202 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+	    <style type="text/css">
+
+h1
+	{margin-top:24.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Cambria","serif";
+	color:#365F91;
+	font-weight:bold;
+            }
+ p.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:0cm;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	}
+p
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	}
+h2
+	{margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	page-break-after:avoid;
+	font-size:13.0pt;
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-weight:bold;
+            }
+p.MsoListParagraphCxSpFirst
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	}
+p.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	}
+p.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:36.0pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	}
+p.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:36.0pt;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	}
+        </style>
+	</head>
+	<body>
+	
+	    <h1>
+            UNIFY Identity Broker for Microsoft FIM v4.0.0 Configuration Guide<o:p></o:p></h1>
+        <p class="MsoNormal">
+            <o:p>&nbsp;</o:p></p>
+        <h2>
+            Installation Notes<o:p></o:p></h2>
+        <p class="MsoListParagraphCxSpFirst" 
+            style="text-indent:-18.0pt;mso-list:l0 level1 lfo1">
+            <![if !supportLists]>
+            <span style="font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span></span></span><![endif]>Run the MSI.<o:p></o:p></p>
+        <p class="MsoListParagraphCxSpMiddle" 
+            style="text-indent:-18.0pt;mso-list:l0 level1 lfo1">
+            <![if !supportLists]>
+            <span style="font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span></span></span><![endif]>The installer for the adapter defaults to the
+            <b style="mso-bidi-font-weight:normal">Services/Microsoft.FIM</b> directory, and 
+            contains a <b style="mso-bidi-font-weight:normal">
+            Unify.IdentityBroker.FIMAdapter.dll</b> file.<o:p></o:p></p>
+        <p class="MsoListParagraphCxSpLast" 
+            style="text-indent:-18.0pt;mso-list:l0 level1 lfo1">
+            <![if !supportLists]>
+            <span style="font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span></span></span><![endif]>For a Microsoft Forefront Identity Manager 
+            instance, this file must be placed in the <b style="mso-bidi-font-weight:normal">
+            Microsoft Forefront Identity Manager/2010/Synchronization Service/Extensions</b> 
+            directory. The <b style="mso-bidi-font-weight:normal">miisserver.exe.config</b> 
+            file in the bin directory of FIM must also be configured with the correct WCF 
+            endpoint information. Here is an example of what the file should look like:<o:p></o:p></p>
+        <div style="mso-element:para-border-div;border:solid #4F81BD 1.0pt;mso-border-themecolor:
+accent1;mso-border-alt:solid #4F81BD .5pt;mso-border-themecolor:accent1;
+padding:1.0pt 4.0pt 1.0pt 4.0pt">
+            <p class="MsoNormal" style="border:none;mso-border-alt:solid #4F81BD .5pt;
+mso-border-themecolor:accent1;padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt">
+                <span style="font-size:10.0pt;line-height:115%;font-family:&quot;Courier New&quot;;mso-fareast-language:
+EN-AU">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-16&quot;?&gt;<o:p></o:p></span></p>
+            <p class="MsoNormal" style="border:none;mso-border-alt:solid #4F81BD .5pt;
+mso-border-themecolor:accent1;padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt">
+                <span style="font-size:10.0pt;line-height:115%;font-family:&quot;Courier New&quot;;mso-fareast-language:
+EN-AU">&lt;configuration&gt;<o:p></o:p></span></p>
+            <p class="MsoNormal" style="border:none;mso-border-alt:solid #4F81BD .5pt;
+mso-border-themecolor:accent1;padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt">
+                <span style="font-size:10.0pt;line-height:115%;font-family:&quot;Courier New&quot;;mso-fareast-language:
+EN-AU">&lt;startup&gt;<o:p></o:p></span></p>
+            <p class="MsoNormal" style="border:none;mso-border-alt:solid #4F81BD .5pt;
+mso-border-themecolor:accent1;padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt">
+                <span style="font-size:10.0pt;line-height:115%;font-family:&quot;Courier New&quot;;mso-fareast-language:
+EN-AU">&lt;requiredRuntime version=&quot;v2.0.50727&quot;&gt;<o:p></o:p></span></p>
+            <p class="MsoNormal" style="border:none;mso-border-alt:solid #4F81BD .5pt;
+mso-border-themecolor:accent1;padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt">
+                <span style="font-size:10.0pt;line-height:115%;font-family:&quot;Courier New&quot;;mso-fareast-language:
+EN-AU">&lt;/requiredRuntime&gt;<o:p></o:p></span></p>
+            <p class="MsoNormal" style="border:none;mso-border-alt:solid #4F81BD .5pt;
+mso-border-themecolor:accent1;padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt">
+                <span style="font-size:10.0pt;line-height:115%;font-family:&quot;Courier New&quot;;mso-fareast-language:
+EN-AU">&lt;supportedRuntime version=&quot;v2.0.50727&quot;&gt;<o:p></o:p></span></p>
+            <p class="MsoNormal" style="border:none;mso-border-alt:solid #4F81BD .5pt;
+mso-border-themecolor:accent1;padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt">
+                <span style="font-size:10.0pt;line-height:115%;font-family:&quot;Courier New&quot;;mso-fareast-language:
+EN-AU">&lt;/supportedRuntime&gt;<o:p></o:p></span></p>
+            <p class="MsoNormal" style="border:none;mso-border-alt:solid #4F81BD .5pt;
+mso-border-themecolor:accent1;padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt">
+                <span style="font-size:10.0pt;line-height:115%;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;color:black;mso-fareast-language:EN-AU">&lt;/startup&gt;</span><span 
+                    style="font-size:10.0pt;line-height:115%;font-family:&quot;Courier New&quot;;color:black"><o:p></o:p></span></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:12.75pt;border:none;
+mso-border-alt:solid #4F81BD .5pt;mso-border-themecolor:accent1;padding:0cm;
+mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt">
+                <b style="mso-bidi-font-weight:normal">
+                <span style="font-size:10.0pt;font-family:&quot;Courier New&quot;;color:black">
+                &lt;system.serviceModel&gt;<br />
+                &lt;bindings&gt;<br />
+                &lt;basicHttpBinding&gt;<br />
+                &lt;binding name=&quot;MetadataExchangeHttpBinding_ILDIFAdapter&quot; closeTimeout=&quot;10:00:00&quot;<br />
+                openTimeout=&quot;10:00:00&quot; receiveTimeout=&quot;10:00:00&quot; sendTimeout=&quot;10:00:00&quot;<br />
+                maxBufferSize=&quot;65536&quot; maxReceivedMessageSize=&quot;204003200&quot; transferMode=&quot;Streamed&quot; 
+                /&gt;<br />
+                &lt;/basicHttpBinding&gt;<br />
+                &lt;/bindings&gt;<br />
+                &lt;client&gt;<br />
+                &lt;endpoint address=&quot;&quot;<br />
+                binding=&quot;basicHttpBinding&quot; 
+                bindingConfiguration=&quot;MetadataExchangeHttpBinding_ILDIFAdapter&quot;<br />
+                contract=&quot;IdentityBrokerLDIFAdapter.ILDIFAdapter&quot; name=&quot;ILDIFAdapter&quot; /&gt;<o:p></o:p></span></b></p>
+            <p style="margin:0cm;margin-bottom:.0001pt;line-height:12.75pt;border:none;
+mso-border-alt:solid #4F81BD .5pt;mso-border-themecolor:accent1;padding:0cm;
+mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt">
+                <b style="mso-bidi-font-weight:normal">
+                <span style="font-size:10.0pt;font-family:&quot;Courier New&quot;;color:black">
+                &lt;/client&gt;<br />
+                &lt;/system.serviceModel&gt;<o:p></o:p></span></b></p>
+            <p class="MsoNormal" style="border:none;mso-border-alt:solid #4F81BD .5pt;
+mso-border-themecolor:accent1;padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt">
+                <span style="font-size:10.0pt;line-height:115%;font-family:&quot;Courier New&quot;;mso-fareast-language:
+EN-AU"><o:p>&nbsp;</o:p></span></p>
+            <p class="MsoNormal" style="border:none;mso-border-alt:solid #4F81BD .5pt;
+mso-border-themecolor:accent1;padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt">
+                <span style="font-size:10.0pt;line-height:115%;font-family:&quot;Courier New&quot;;mso-fareast-language:
+EN-AU">&lt;/configuration&gt;<o:p></o:p></span></p>
+        </div>
+        <p class="MsoNormal">
+            <o:p>&nbsp;</o:p></p>
+        <p class="MsoListParagraph" style="text-indent:-18.0pt;mso-list:l0 level1 lfo1">
+            <![if !supportLists]>
+            <span style="font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span></span></span><![endif]>After this, the FIM service must be restarted.<o:p></o:p></p>
+	
+	</body>
+</html>

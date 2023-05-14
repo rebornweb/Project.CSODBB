@@ -1,0 +1,114 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Product.IdentityBroker
+@model EntityViewInformation
+
+@{
+    string parentPartitionIdN = Model.ParentPartitionId.ToString("N");
+    IDictionary<AdapterEntityValueCollectionKey, string> values = Model.EntityDisplayValues;
+    string entityIdString = Model.EntityId.ToString();
+    bool hasDn = !string.IsNullOrWhiteSpace(Model.EntityDn);
+    string dialogTitle = hasDn ? Model.EntityDn : SharedResources.ViewEntityDialogTitle;
+
+    string dialogIdString = string.Format(
+        WebConstants.HashedIdTemplate,
+        string.Format(
+            WebConstants.EntityDisplayDivIdTemplate,
+            parentPartitionIdN,
+            entityIdString,
+            Model.PartitionId,
+            Model.ExploreDepth));
+}
+
+<h3>@EntitySchemaResources.EntityHeading</h3>
+
+<div>
+    <table class="FeintTableRows EntitySchemaRows LeftAlignTable entityViewTable">
+        <tr>
+            <td>
+                @EntitySchemaResources.EntityIdLabel
+            </td>
+            <td colspan="2">
+                @Model.EntityId.ToString()
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @EntitySchemaResources.PartitionIdLabel
+            </td>
+            <td colspan="2">
+                @Model.PartitionId.ToString()
+            </td>
+        </tr>
+
+        @if (Model.EntityCreatedTime.HasValue)
+        {
+            <tr>
+                <td>
+                    @EntitySchemaResources.EntityCreatedLabel
+                </td>
+                <td colspan="2">
+                    @Model.EntityCreatedTime.Value.ToString("u")
+                </td>
+            </tr>
+        }
+        @if (Model.EntityModifiedTime.HasValue)
+        {
+            <tr>
+                <td>
+                    @EntitySchemaResources.EntityModifiedLabel
+                </td>
+                <td colspan="2">
+                    @Model.EntityModifiedTime.Value.ToString("u")
+                </td>
+            </tr>
+        }
+
+        @foreach (KeyValuePair<AdapterEntityValueCollectionKey, string> valuePair in values)
+        {
+            AdapterEntityValueCollectionKey column = valuePair.Key;
+
+            string value = valuePair.Value;
+
+            var displayValue = new MvcHtmlString(EntitySerializer.IsNull(value)
+                ? EntitySerializer.NullDisplay()
+                : value);
+
+            Guid columnKey;
+            Model.Schema.KeyIds.TryGetValue(column.ToString(), out columnKey);
+
+            EntitySchemaFieldDefinitionConfiguration schemaValue;
+            Model.Schema.Configurations.TryGetValue(columnKey, out schemaValue);
+
+            string rowStyle = schemaValue != null && schemaValue.Key ? WebConstants.EntitySchemaKeyRowId : WebConstants.EntityStandardRowId;
+            int newDepth = Model.ExploreDepth + 1;
+            string originDivId = string.Format(
+                WebConstants.OriginDivIdTemplate,
+                parentPartitionIdN,
+                Model.EntityId,
+                Model.PartitionId,
+                valuePair.Key,
+                newDepth);
+
+            <tr class="@rowStyle">
+                <td>
+                    <label><b>@column.ToString():</b></label>
+                </td>
+                <td>
+                    <span>@displayValue</span>
+                </td>
+                <td>
+                    <div id="@originDivId"></div>
+                    <a href="javascript:DisplayOrigin@(parentPartitionIdN)('@column.ToString()', '@Model.EntityId', '@Model.PartitionId', @newDepth);">@EntityViewResources.OriginInfoTitle</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<script>
+    $(document).ready(function() {
+        var element = $('@dialogIdString');
+        element.dialog('option', 'title', '@dialogTitle');
+        element.parent().position({ at: 'center', my: 'center', of: window });
+    });
+</script>

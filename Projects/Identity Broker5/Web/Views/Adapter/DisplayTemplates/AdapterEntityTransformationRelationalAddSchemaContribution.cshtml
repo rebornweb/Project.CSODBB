@@ -1,0 +1,29 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+
+@model AdapterEntityTransformationRelationalAddSchemaContribution
+           
+@{
+    string relationalAddImageUrl = Url.WebIcon("arrow_join.png");
+}
+
+@Html.HiddenFor(model => model.TransformationId)
+@if (!Model.AddedFields.Any())
+{
+    <p>@AdapterResources.TransformationModifiesNoFieldsMessage</p>
+}
+
+<ul>
+    @foreach (IEntitySchemaFieldDefinitionConfiguration addedField in Model.AddedFields)
+    {
+        <li style="list-style-image: url('@relationalAddImageUrl')">
+            <b>@TransformationResources.RelationalAddContributionAddedText</b> 
+            @addedField.FieldName
+            <b>@TransformationResources.RelationalAddContributionFromConnectorText</b> 
+            <a href="@Url.Action("ConnectorDetails", "Connector", new{ connectorId = Model.RelationshipConnectorId})">
+                @Model.RelationshipConnectorName
+            </a>
+        </li>
+    }
+</ul>

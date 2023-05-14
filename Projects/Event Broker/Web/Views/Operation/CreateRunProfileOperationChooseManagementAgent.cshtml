@@ -1,0 +1,53 @@
+﻿@model RunProfilePlugInConfigurationViewInformation
+
+@using Unify.Framework.Web
+
+@{
+    ViewBag.Title = Html.CreatePlugInTitle(Model.CreateOrUpdateText, TitleResources.CreateRunProfileOperationTitleCaption);
+}
+
+@if (!Model.ApplicableManagementAgents.Any())
+{
+    <p>@OperationControllerResources.NoAccessibleManagementAgentsErrorMessage</p>
+}
+else
+{
+    using (Html.DecorateForm(
+        () => Html.BeginForm("CreateRunProfileOperationSelectManagementAgent", "Operation", FormMethod.Post, new { id = "SubmitSelectManagementAgentForm" }),
+        Model.CreateOrUpdateText,
+        "SubmitSelectManagementAgentForm",
+        OperationResources.ConfigureOperationAltText, "submitButton"))
+    {
+        @Html.HiddenFor(model => model.OperationListId)
+        @Html.HiddenFor(model => model.OperationId)
+        @Html.HiddenFor(model => model.ParentOperationId)
+        @Html.HiddenFor(model => model.OperationTreeItemType)
+        @Html.HiddenFor(model => model.AgentId)
+        @Html.HiddenFor(model => model.Retries)
+        @Html.HiddenFor(model => model.RetryWait)
+        @Html.HiddenFor(model => model.SuccessAction)
+        @Html.HiddenFor(model => model.FailureAction)
+        @Html.HiddenFor(model => model.RunProfileKey)
+        @Html.HiddenFor(model => model.EditMode)
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.DisplayName)
+
+        <div>
+            <fieldset>
+                @using (Html.MetaDataFor(model => model.ManagementAgentKey, new { description = OperationControllerResources.ManagementAgentGuidDescription }, new { @class = "chzn-container" }))
+                {
+                    @Html.LabelFor(model => model.ManagementAgentKey, OperationControllerResources.ManagementAgentGuidName)
+                    @Html.DropDownListFor(model => model.ManagementAgentKey,
+                        new SelectList(
+                            Model.ApplicableManagementAgents,
+                            "Value",
+                            "Key",
+                            Model.ManagementAgentKey != Guid.Empty && Model.ApplicableManagementAgents.ContainsValue(Model.ManagementAgentKey)
+                                ? Model.ApplicableManagementAgents.First(item => item.Value == Model.ManagementAgentKey)
+                                : Model.ApplicableManagementAgents.First()),
+                        new { @class = "chzn-select" })
+                }
+            </fieldset>
+        </div>
+    }
+}

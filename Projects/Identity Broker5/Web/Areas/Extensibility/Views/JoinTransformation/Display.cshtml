@@ -1,0 +1,128 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Collections
+@model JoinTransformationViewInformation
+
+<div>
+    
+    @AdapterResources.TransformationJoinOnText
+    
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        @if (Model.JoinConnectorExists)
+        {
+            <a href="@Url.Action("ConnectorDetails", "Connector", new { area = "", connectorId = Model.RelationshipConnectorId })">@Model.JoinConnectorName</a>
+        }
+        else
+        {
+            <span>@Model.RelationshipConnectorId</span>
+            <span class="ui-state-error-text">@AdapterResources.TransformationConnectorNotFoundText</span>
+        }
+    </p>
+    
+    @try
+    {
+        IEnumerable<KeyValuePair<GroupedNameValueCollectionKey, GroupedNameValueCollectionKey>> relationships = TransformationControllerExtensions.Deserialize(Model.Relationships.Text);
+            
+        @AdapterResources.TransformationWhereText
+    
+        foreach (KeyValuePair<GroupedNameValueCollectionKey, GroupedNameValueCollectionKey> line in relationships)
+        {
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;[@line.Key] == [@line.Value]
+            </p>
+        }
+    }
+    catch (Exception)
+    {
+        <p>@Model.Relationships.Text</p>       
+    }
+    
+    @if (Model.WindowType == WindowType.SlidingDateWindow)
+    {
+        switch (Model.DateRelationalWindowType)
+        {
+            case DateRelationalType.Standard:
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[@Model.DateRelationalInformation.StartKey] + "@Model.DateRelationalInformation.StartOffset" &lt;= @@NOW
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[@Model.DateRelationalInformation.EndKey] + "@Model.DateRelationalInformation.EndOffset" >= @@NOW
+                </p>
+                break;
+
+            case DateRelationalType.Recent:
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[@Model.DateRelationalInformation.StartKey] + "@Model.DateRelationalInformation.StartOffset" &lt;= @@NOW
+                </p>
+                break;
+
+            case DateRelationalType.NextPlacement:
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;[@Model.DateRelationalInformation.StartKey] + "@Model.DateRelationalInformation.StartOffset" > @@NOW
+                </p>
+                break;
+        }
+    }
+    
+    @AdapterResources.TransformationSelectText 
+    @if (Model.SelectionType == SelectionType.First)
+    {
+        switch (Model.DateRelationalWindowType)
+        {
+            case DateRelationalType.Standard:
+                <p>&nbsp;&nbsp;&nbsp;&nbsp; First</p>
+                break;
+                    
+            case DateRelationalType.Recent:
+                <p>&nbsp;&nbsp;&nbsp;&nbsp; Most Recent</p>
+                break;
+                    
+            case DateRelationalType.Relevant:
+                <p>&nbsp;&nbsp;&nbsp;&nbsp; Most Relevant</p>
+                break;
+                    
+            case DateRelationalType.NextPlacement:
+                <p>&nbsp;&nbsp;&nbsp;&nbsp; Next</p>
+                break;
+        }
+    }
+    else
+    {
+        <p>&nbsp;&nbsp;&nbsp;&nbsp; @Model.SelectionType</p>
+        <span>ON [</span>@Model.PrioritySelectionInformation.PriorityKey<span>]</span>
+        if (Model.PrioritySelectionInformation.DefinePriorityStructure)
+        {
+            <span>( @Model.PrioritySelectionInformation.PriorityValues )</span>
+        }
+    }
+    
+    @if (Model.MapRelationshipDistinguishedName || Model.Mappings.Text.Length > 0)
+    {
+        @AdapterResources.TransformationMapText
+    }
+    
+    @try
+    {
+        IEnumerable<KeyValuePair<GroupedNameValueCollectionKey, GroupedNameValueCollectionKey>> mappings = TransformationControllerExtensions.Deserialize(Model.Mappings.Text);
+
+        foreach (KeyValuePair<GroupedNameValueCollectionKey, GroupedNameValueCollectionKey> line in mappings)
+        {
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;[@line.Key] -> <span class="TransformationAddedField">[@line.Value]</span>
+            </p>
+        }
+    }
+    catch (Exception)
+    {
+        <p>@Model.Mappings.Text</p>
+    }
+    
+    @if (Model.MapRelationshipDistinguishedName)
+    {
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;@AdapterResources.TransformationDnText:"@Model.Template" -> <span class="TransformationAddedField">[@Model.DistinguishedNameTarget]</span>
+        </p>
+    }
+
+</div>

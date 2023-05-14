@@ -1,0 +1,17 @@
+﻿@model Unify.Product.EventBroker.FIM.LDAPManagementAgentConfigurationViewInformation
+           
+@using Unify.Framework.Web
+
+@Html.Hidden("AgentType", Model.LdapType)
+           
+@using (Html.MetaDataFor(model => model.RootDistinguishedName, new { description = OperationControllerResources.DNDescription }))
+{
+    @Html.LabelFor(model => model.RootDistinguishedName, OperationControllerResources.DNName)
+    @Html.TextBoxFor(model => model.RootDistinguishedName)
+}
+
+@using (Html.MetaDataFor(model => model.LDAPFilter, new { description = OperationControllerResources.FilterDescription }))
+{
+    @Html.LabelFor(model => model.LDAPFilter, OperationControllerResources.FilterName)
+    @Html.TextAreaFor(model => model.LDAPFilter)
+}

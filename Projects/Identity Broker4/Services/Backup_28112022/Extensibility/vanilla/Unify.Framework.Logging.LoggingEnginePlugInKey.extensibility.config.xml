@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LoggingEngine logDaysKeep="5" filePrefix="UnifyLog">
+  <LogWriter name="LogWriterFilterDecorator" id="{2aec01ad-11cd-4cd8-a43e-19402f5c45ba}" enabled="true" displayName="Console">
+    <LogWriter name="AsyncLogWriterComposite" pollingInterval="100">
+      <LogWriter name="Console" />
+    </LogWriter>
+    <logFilter name="MinimumLoggingLevel" loggingLevel="Normal" />
+  </LogWriter>
+</LoggingEngine>

@@ -1,0 +1,102 @@
+﻿@model ADChangesPlugInConfigurationViewInformation
+@using Unify.EventBroker.Web
+@using Unify.Framework.Web
+@{
+    
+    ViewBag.Title = Html.CreatePlugInTitle(Model.CreateOrUpdateText, TitleResources.CreateADChangesOperationTitleCaption);   
+}
+
+@if (!Model.ApplicableAgents.Any())
+{
+    <p>@string.Format(
+        OperationControllerResources.NoApplicableAgentMessageTemplate,
+        OperationControllerResources.PlugInOperationsADChangesName,
+        OperationControllerResources.AgentsADName)
+
+        @if (Html.IsInRole(UnifyRoles.Write))
+        { 
+            @Html.ActionLink("Create Agent", "Create", "Agents", new { agentType = AgentPlugInNames.ADAgentPlugInName }, null)
+        }
+        else
+        {
+            <label>@OperationControllerResources.CreateAgentInsufficientPermissions</label>
+        }
+    </p>
+}
+else
+{
+    using (Html.DecorateForm(
+            () => Html.BeginForm("CreatePlugInOperation", "Operation", FormMethod.Post, new { id = "CreateOperationForm" }),
+            Model.CreateOrUpdateText,
+            "CreateOperationForm",
+            OperationResources.ConfigureOperationAltText, "submitButton"))
+    {
+        <div>
+            @Html.EditorFor(model => model, "OperationDisplayName")
+
+            <fieldset>
+                @using (Html.MetaDataFor(model => model.AgentId, new{description = OperationControllerResources.SelectAgentDescription},new { @class = "chzn-container" }))
+                {
+                    @Html.LabelFor(model => model.AgentId, OperationControllerResources.SelectAgentName)
+                    @Html.DropDownListFor(model => model.AgentId,
+                                                new SelectList(
+                                                    Model.ApplicableAgents,
+                                                    "Id",
+                                                    "Name",
+                                                    Model.ApplicableAgents.Any(agent => agent.Id == Model.AgentId)
+                                                        ? Model.ApplicableAgents.Where(agent => agent.Id == Model.AgentId).Select(agent => agent).First()
+                                                        : Model.ApplicableAgents.First()),
+                                                new { @class = "chzn-select" })
+                }
+            </fieldset>
+
+            <fieldset>
+                <legend>@OperationControllerResources.LDAPTriggerPlugInOperationInformation</legend>
+
+                @using (Html.MetaDataFor(model => model.Filter, new { description = OperationControllerResources.FilterDescription }))
+                {
+                    @Html.LabelFor(model => model.Filter, OperationControllerResources.FilterName)
+                    @Html.TextBoxFor(model => model.Filter)
+                }
+                @using (Html.MetaDataFor(model => model.OuName, new { description = OperationControllerResources.OUDescription }))
+                {
+                    @Html.LabelFor(model => model.OuName, OperationControllerResources.OUName)
+                    @Html.TextBoxFor(model => model.OuName)
+                }
+                @using (Html.MetaDataFor(model => model.CheckTombstone, new{ description = OperationControllerResources.CheckTombstoneDescription }, new { @class = "controlset" }))
+                {
+                    @Html.LabelFor(model => model.CheckTombstone, OperationControllerResources.CheckTombstoneName)
+                    @Html.RadioButtonFor(model => model.CheckTombstone, true)
+                    <label>@OperationControllerResources.CheckTombstoneEnabledMessage</label>
+                    @Html.RadioButtonFor(model => model.CheckTombstone, false)
+                    <label>@OperationControllerResources.CheckTombstoneDisabledMessage</label>
+                }
+                @using (Html.MetaDataFor(model => model.TombstoneFilter, new {description = OperationControllerResources.TombstoneFilterDescription}, new { id = "TombstoneFilterSection" }))
+                {
+                    @Html.LabelFor(model => model.TombstoneFilter, OperationControllerResources.TombstoneFilterName)
+                    @Html.TextBoxFor(model => model.TombstoneFilter)
+                }
+            </fieldset>
+            
+            <fieldset>
+                @Html.EditorFor(model => model, "CheckOperationInnerDetails")
+            </fieldset>
+        </div>
+    }
+}
+
+<script type="text/javascript">
+    var checkTombstoneTrue = $('input[type=radio][id=CheckTombstone][value=True]');
+    var checkTombstoneFalse = $('input[type=radio][id=CheckTombstone][value=False]');
+    var checkTombstoneSection = $('#TombstoneFilterSection');
+
+    $(document).ready(function () {
+        ShowHideSection(checkTombstoneTrue, checkTombstoneSection, null);
+        checkTombstoneTrue.bind('change', function (event) {
+            ShowHideSection(checkTombstoneTrue, checkTombstoneSection, null);
+        });
+        checkTombstoneFalse.bind('change', function (event) {
+            ShowHideSection(checkTombstoneTrue, checkTombstoneSection, null);
+        });
+    });
+</script>

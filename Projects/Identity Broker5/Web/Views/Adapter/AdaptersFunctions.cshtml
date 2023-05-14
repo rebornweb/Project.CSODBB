@@ -1,0 +1,148 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework
+@using Unify.Framework.Web
+@model Unify.Connect.Web.Models.Adapter.StandardAdaptersFunctionsViewInformation
+@{
+
+    string addAdapterImageUrl = Url.WebIcon("add.png");
+    string xsltImageUrl = Url.WebIcon("report.png");
+    string enableImageUrl = Url.WebIcon("control_play.png");
+    string disableImageUrl = Url.WebIcon("control_stop.png");
+    string deleteImageUrl = Url.WebIcon("delete.png");
+    string clearAdapterImageUrl = Url.WebIcon("database_delete.png");
+
+    // add new adapter
+    string addAdapterUrl = Url.Action("AddAdapter", "Adapter");
+    string addAdapterImageHtml = string.Format("<img alt=\"{0}\" title=\"{0}\" src=\"{1}\" id=\"AddAdapterButton\"/> {0}", AdapterResources.AddAdapterAltText, addAdapterImageUrl);
+
+    // AdapterIndexOperations
+    string adapterOperationsUrl = Url.Action("AdapterIndexOperations", "Adapter");
+    const string formId = "AdapterFunctionsForm";
+    const string deleteInputId = "AdapterFunctionsDeleteButton";
+    const string deleteInputTextId = "AdapterFunctionsDeleteTextButton";
+    const string clearInputId = "ClearAdapterButton";
+    const string clearInputTextId = "ClearAdapterTextButton";
+
+    IUnifyBranding branding = ViewContext.GetCurrentBranding();
+    ViewBag.Title = Html.Title(TitleResources.AdapterIndexTitle);
+}
+
+
+<div class="functionsMenuIcon">
+    <a href="@addAdapterUrl">@Html.Raw(addAdapterImageHtml)</a>
+</div>
+
+<div>
+    @using (Html.BeginForm("AdapterIndexOperations", "Adapter", new { groupId = Model.SelectedGroup }, FormMethod.Post, new { @class = "functionsMenuForm", id = formId, style="margin-left:-15px;"}))
+    {
+        <div class="scriptonly" id="AdapterFunctions">
+            <div>
+                <div class="functionsMenuIcon">
+                    <input type="submit" value="Enable" name="function" style="background: url('@enableImageUrl') no-repeat;"
+                           class="SubmitImageButton AdaptersFunctionsImageButton" title="@AdapterResources.IndexEnableAdaptersAltText" />
+                    <input type="submit" value="Enable" name="Function" class="SubmitImageText AdaptersFunctionsTextButton" alt="Enable"
+                           title="@AdapterResources.IndexEnableAdaptersAltText" />
+                </div>
+                <div class="functionsMenuIcon">
+                    <input type="submit" value="Disable" name="function" style="background: url('@disableImageUrl') no-repeat;"
+                           class="SubmitImageButton AdaptersFunctionsImageButton" title="@AdapterResources.IndexDisableAdaptersAltText" />
+                    <input type="submit" value="Disable" name="Function" class="SubmitImageText AdaptersFunctionsTextButton" alt="Enable"
+                           title="@AdapterResources.IndexDisableAdaptersAltText" />
+                </div>
+                <div class="functionsMenuIcon">
+                    <input type="submit" value="Delete" name="function" id="@deleteInputId" style="background: url('@deleteImageUrl') no-repeat;"
+                           class="SubmitImageButton AdaptersFunctionsImageButton" title="@AdapterResources.IndexDeleteAdaptersAltText" />
+                    <input type="submit" value="Delete" name="Function" id="@deleteInputTextId" class="SubmitImageText AdaptersFunctionsTextButton" alt="Enable"
+                           title="@AdapterResources.IndexDeleteAdaptersAltText" />
+                </div>
+                <div class="functionsMenuIcon">
+                    <input type="submit" value="Clear" name="function" id="@clearInputId" style="background: url('@clearAdapterImageUrl') no-repeat;"
+                           class="SubmitImageButton AdaptersFunctionsImageButton" title="@AdapterResources.IndexClearAdaptersAltText" />
+                    <input type="submit" value="Clear" name="Function" id="@clearInputTextId" class="SubmitImageText AdaptersFunctionsTextButton" alt="Enable"
+                           title="@AdapterResources.IndexClearAdaptersAltText" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('.scriptonly').show();
+
+        function postAdapterFunctions(functionValue) {
+            var adaptersArr = new Array();
+            var maxIndex = 0;
+            $(".AdapterSelections").each(function () {
+                if ($(this).prop("checked")) {
+                    adaptersArr[maxIndex] = $(this).val();
+                    maxIndex++;
+                }
+            });
+
+            // functionValue store the value of the button which you click in the function menu, the value can be "Delete" or "Clear"
+            var postData = { 'adapters': adaptersArr, 'function': functionValue, 'groupId': $("#AdapterGroupSelector").val() };
+            $.ajaxSettings.traditional = true;
+
+            $.ajax({
+                type: "POST",
+                url: "@adapterOperationsUrl",
+                data: postData,
+                success: function () {
+                    location.reload(true);
+                }
+            });
+        }
+
+        // Block form submit.
+        $(".functionsMenuForm").on('submit', function(e) {
+            e.preventDefault();
+        });
+
+        $(".AdaptersFunctionsImageButton").each(function () {
+            // register click event to all the buttons which has no id attribute
+            // pass the button value such as "Delete" or "Clear"
+            // then run the right action by button value.
+            // reload this windows
+            if ($(this).filter("[id]").length <= 0) {
+                $(this).on("click", function () {
+                    postAdapterFunctions($(this).val());
+                });
+            }
+        });
+
+        $(".AdaptersFunctionsTextButton").each(function () {
+            if ($(this).filter("[id]").length <= 0) {
+                $(this).on("click", function () {
+                    postAdapterFunctions($(this).val().replace(/\s+/g, ''));    // replace the space to '' means get rid of space
+                });
+            }
+        });
+
+        // delete adapters btn confirmation dialog
+        var deleteBtns = ["#@deleteInputId", "#@deleteInputTextId"];
+        for (var j = 0; j < deleteBtns.length; j++) {
+            $(deleteBtns[j]).jQueryUiDialogGenerator({
+                messageHtmlCodeStr: '<div>@AdapterResources.DeleteAdapterConfirmationWarningText</div><br /><div>@string.Format(AdapterResources.DeleteAdapterWarningDescriptionText, branding.ProductName) @WebStudioResources.ThisCannotBeUndoneText</div><br />',
+                boundElementName: "Function", // name attribute of the bound element
+                btnSourceType: sourceTypeEnumFunc().submitBtnSelfDefine, // btnSourceType == sourceTypeEnumFunc().actionLink   means btn is action link <a>, btnSourceType == sourceTypeEnumFunc().formInput    means the btn is <form><input>
+                submitBtnClick: function () {
+                    postAdapterFunctions($(deleteBtns[0]).val());
+                }
+            });
+        }
+
+        // clear adapters btn confirmation dialog
+        var clearBtns = ["#@clearInputId", "#@clearInputTextId"];
+        for (var k = 0; k < clearBtns.length; k++) {
+            $(clearBtns[k]).jQueryUiDialogGenerator({
+                messageHtmlCodeStr: '<div>@string.Format(AdapterResources.ClearAdapterWarningMessageTemplate, branding.ProductName) @WebStudioResources.ThisCannotBeUndoneText</div><br />',
+                boundElementName: "Function", // name attribute of the bound element
+                btnSourceType: sourceTypeEnumFunc().submitBtnSelfDefine, // btnSourceType == sourceTypeEnumFunc().actionLink   means btn is action link <a>, btnSourceType == sourceTypeEnumFunc().formInput    means the btn is <form><input>
+                submitBtnClick: function () {
+                    postAdapterFunctions($(clearBtns[0]).val());
+                }
+            });
+        }
+    });
+</script>

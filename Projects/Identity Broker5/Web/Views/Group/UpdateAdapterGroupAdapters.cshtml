@@ -1,0 +1,45 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+@model AdapterGroupsViewInformation
+
+@{
+    ViewBag.Title = Html.Title(TitleResources.UpdateAdapterGroupAdaptersTitle);
+}
+
+<h3>@string.Format(GroupControllerResources.UpdateAdapterGroupAdaptersMessageTemplate, Model.Configuration.Name)</h3>
+
+<div>
+    @using (
+        Html.DecorateForm(
+            () => Html.BeginForm("UpdateAdapterGroupAdapters", "Group", FormMethod.Post, new { id = "UpdateAdapterGroupAdaptersForm" }),
+            WebStudioResources.SaveText,
+            "UpdateAdapterGroupAdaptersForm",
+            GroupControllerResources.SaveGroupMembersConfigurationAltText
+        ))
+    { 
+        <fieldset>
+            <legend>@GroupControllerResources.AdapterGroupAdaptersMessageText</legend>
+
+            @Html.HiddenFor(model => model.Configuration.Id)
+
+            @for (int i = 0; i < Model.MembersInGroup.Count; i++)
+            {
+                AdapterRemotingConfigurationInformation adapterConfiguration = Model.MemberConfigurations[i];
+
+                string adapterCommentDisplay = string.Format(
+                        ConnectorControllerResources.AdapterCommentDisplayDescription,
+                        adapterConfiguration.AdapterName,
+                        Model.Configuration.Name);
+
+                @Html.HiddenFor(model => model.MembersInGroup[i].Id)
+
+                using (Html.MetaDataFor(model => model.MembersInGroup[i].InGroup, new { description = adapterCommentDisplay }))
+                {
+                    @Html.LabelFor(model => model.MembersInGroup[i].InGroup, adapterConfiguration.AdapterName)     
+                    @Html.CheckBoxFor(model => model.MembersInGroup[i].InGroup)
+                }
+            }
+        </fieldset>
+    }
+</div>

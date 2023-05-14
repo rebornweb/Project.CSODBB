@@ -1,0 +1,31 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model AdapterViewInformation
+           
+@using (Html.DecorateForm(
+        () => Html.BeginForm("ConfigureAdapterSetDN", "Adapter"),
+        AdapterResources.SaveDnTemplateButton,
+        "ConfigureAdapterDNTemplate",
+        AdapterResources.SaveDnTemplateButtonAltText
+    ))
+{
+    @Html.HiddenFor(model => model.AdapterComment)
+    @Html.HiddenFor(model => model.AdapterId)
+    @Html.HiddenFor(model => model.AdapterName)
+    @Html.HiddenFor(model => model.ContainerName)
+    @Html.HiddenFor(model => model.BaseConnectorId)
+    @Html.HiddenFor(model => model.EditMode)
+    @Html.HiddenFor(model => model.Enabled)
+    @Html.HiddenFor(model => model.Inhibited)
+    @Html.HiddenFor(model => model.ObjectClass)
+
+    using (Html.MetaDataFor(model => model.Template, new {description = AdapterResources.DistinguishedNameTemplateDescription, hideRequired = true}))
+    {
+        @Html.LabelFor(model => model.Template, AdapterResources.DistinguishedNameTemplateLabel)
+        <br/>
+        <br/>
+        <div>
+            @Html.DnTemplateFor(Model.Template, Model.Schema, Model.SchemaTypes)
+        </div>
+    }
+}

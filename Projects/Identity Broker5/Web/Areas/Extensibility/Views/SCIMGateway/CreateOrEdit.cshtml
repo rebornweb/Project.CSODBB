@@ -1,0 +1,84 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework
+@using Unify.Framework.Api
+@using Unify.Framework.Web
+@model SCIMGatewayAgentViewInformation
+
+@using (Html.DecorateForm(
+    () => Html.BeginForm("CreateOrEdit", "SCIMGateway", new {area = "Extensibility"}),
+    GatewayResources.SaveGatewaySubmit,
+    "SaveGatewayForm",
+    GatewayResources.SaveGatewayDescription))
+{
+    @Html.GatewayDetailsFor(model => model)
+
+    @Html.HiddenFor(model => model.UserAdapterId)
+    @Html.HiddenFor(model => model.GroupAdapterId)
+
+    <fieldset>
+        <legend>@GatewayResources.SettingsLegendText</legend>
+
+        @using (Html.MetaDataFor(model => model.Address, new {description = GatewayResources.SCIMSettingsFormAddressHint}))
+        {
+            @Html.LabelFor(model => model.Address, GatewayResources.SCIMSettingsFormAddressLabelText)
+            @Html.TextBoxFor(model => model.Address)
+        }
+        @using (Html.MetaDataFor(model => model.Audience, new {description = GatewayResources.SCIMSettingsFormAudienceHint}))
+        {
+            @Html.LabelFor(model => model.Audience, GatewayResources.SCIMSettingsFormAudienceLabelText)
+            @Html.TextBoxFor(model => model.Audience)
+        }
+        @using (Html.MetaDataFor(model => model.Tenant, new {description = GatewayResources.SCIMSettingsFormTenantHint}))
+        {
+            @Html.LabelFor(model => model.Tenant, GatewayResources.SCIMSettingsFormTenantLabelText)
+            @Html.TextBoxFor(model => model.Tenant)
+        }
+        @using (Html.MetaDataFor(model => model.UserIdLookupField, new { description = GatewayResources.SCIMSettingsFormUserIdLookupFieldHint }))
+        {
+            IEnumerable<SelectListItem> selectListItems = Model.UserAdapterFields.Select(field => new KeyValuePair<string, string>(field, field)).Concat(new[] {new KeyValuePair<string, string>(GatewayResources.SCIMSettingsDnText, string.Empty)}).Select(field => new SelectListItem {Value = field.Value, Text = field.Key, Selected = string.Equals(field.Value, Model.UserIdLookupField, StringComparison.InvariantCulture)}).OrderBy(field => field.Text);
+            @Html.LabelFor(model => model.UserIdLookupField, GatewayResources.SCIMSettingsFormUserIdLookupFieldLabelText)
+            @Html.DropDownListFor(model => model.UserIdLookupField, selectListItems)
+        }
+    </fieldset>
+
+    if (Model.UserAdapterId != Guid.Empty)
+    {
+        <fieldset>
+            <legend>@GatewayResources.SCIMSettingsFormUserMappingsLegendText</legend>
+
+            @foreach (string userField in Model.UserScimFields)
+            {
+                string currentValue;
+                Model.UserMappings.TryGetValue(userField, out currentValue);
+                IEnumerable<SelectListItem> selectListItems = Model.UserAdapterFields.Select(field => new KeyValuePair<string, string>(field, field)).Concat(new[] {new KeyValuePair<string, string>(GatewayResources.SCIMSettingsNotSelectedText, string.Empty)}).Select(field => new SelectListItem {Value = field.Value, Text = field.Key, Selected = string.Equals(field.Value, currentValue, StringComparison.InvariantCulture)}).OrderBy(field => field.Text);
+
+                using (Html.MetaData("UserMappings", new {description = string.Format(GatewayResources.SCIMSettingsFormMappingTextTemplate, userField), hideRequired = true}))
+                {
+                    @Html.Label(userField)
+                    @Html.DropDownListFor(model => model.UserMappings[userField], selectListItems)
+                }
+            }
+        </fieldset>
+    }
+
+    if (Model.GroupAdapterId != Guid.Empty)
+    {
+        <fieldset>
+            <legend>@GatewayResources.SCIMSettingsFormGroupMappingsLegendText</legend>
+
+            @foreach (string groupField in Model.GroupScimFields)
+            {
+                string currentValue;
+                Model.GroupMappings.TryGetValue(groupField, out currentValue);
+                IEnumerable<SelectListItem> selectListItems = Model.GroupAdapterFields.Select(field => new KeyValuePair<string, string>(field, field)).Concat(new[] {new KeyValuePair<string, string>(GatewayResources.SCIMSettingsNotSelectedText, string.Empty)}).Select(field => new SelectListItem {Value = field.Value, Text = field.Key, Selected = string.Equals(field.Value, currentValue, StringComparison.InvariantCulture)}).OrderBy(field => field.Text);
+
+                using (Html.MetaData("GroupMappings", new {description = string.Format(GatewayResources.SCIMSettingsFormMappingTextTemplate, groupField), hideRequired = true}))
+                {
+                    @Html.Label(groupField)
+                    @Html.DropDownListFor(model => model.GroupMappings[groupField], selectListItems)
+                }
+            }
+        </fieldset>
+    }
+}

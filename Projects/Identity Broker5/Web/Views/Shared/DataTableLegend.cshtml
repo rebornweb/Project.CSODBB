@@ -1,0 +1,26 @@
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+@model dynamic
+@{
+    string demoteRowVisibilityImageUrl = HttpUtility.HtmlEncode(Url.WebIcon("table_delete.png"));
+    string groupEntitiesByImageUrl = HttpUtility.HtmlEncode(Url.WebIcon("table_multiple.png"));
+    string addSearchTermForRowImageUrl = HttpUtility.HtmlEncode(Url.WebIcon("magnifier_zoom_in.png"));
+}
+<h2>@EntitySchemaResources.LegendHeading</h2>
+<div class="FaintBorder">
+    <table>
+        <tr>
+            <td><img src="@demoteRowVisibilityImageUrl" alt="@EntitySchemaResources.HideColumnAltText" title="@EntitySchemaResources.HideColumnAltText" /></td>
+            <td>@EntitySchemaResources.HideColumnDescription</td>
+        </tr>
+        <tr class="scriptonly">
+            <td><img src="@groupEntitiesByImageUrl" alt="@EntitySchemaResources.GroupColumnAltText" title="@EntitySchemaResources.GroupColumnAltText" /></td>
+            <td>@EntitySchemaResources.GroupColumnDescription</td>
+        </tr>
+        <tr>
+            <td><img src="@addSearchTermForRowImageUrl" alt="@EntitySchemaResources.SearchColumnAltText" title="@EntitySchemaResources.SearchColumnAltText" /></td>
+            <td>@EntitySchemaResources.SearchColumnDescription</td>
+        </tr>
+    </table>
+</div>

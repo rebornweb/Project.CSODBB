@@ -1,0 +1,37 @@
+﻿@using Unify.Connect.Web.Extensions
+@model AgentsViewInformation
+@foreach (AgentViewInformation agent in Model.Agents)
+{
+    string inputId = string.Concat(agent.AgentId, "Selector");
+    string containerId = string.Concat(agent.AgentId, "Container");
+    <div id="@containerId" class="ListedAgent ActionRefreshListener">
+        <div>
+            <input type="checkbox" id="@inputId" name="agents" value="@agent.AgentId" class="AgentCheckBox" />
+        </div>
+        &nbsp;
+        <div>
+            <a href="@Url.Action("Details", "Agent", new {id = agent.AgentId})">
+                @agent.DisplayName
+            </a>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#@containerId")
+                .bind('refreshStart',
+                    function(event, arg1) {
+                        arg1["@inputId"] = $("#@inputId").is(':checked');
+                }
+            ).bind('refreshStop',
+                function(event, arg1) {
+                    if (arg1["@inputId"]) $("#@inputId").attr('checked', 'checked');
+                }
+            );
+        });
+    </script>
+}
+@if (!Model.Agents.Any())
+{
+    <p>@AgentResources.NoAgentsConfiguredText</p>
+}

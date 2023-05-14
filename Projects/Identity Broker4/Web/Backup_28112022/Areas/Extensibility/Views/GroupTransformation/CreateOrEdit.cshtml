@@ -1,0 +1,190 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Collections
+@using Unify.Framework.Web
+@model GroupTransformationViewInformation
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "GroupTransformation", FormMethod.Post),
+        TransformationResources.SaveTransformationButtonText,
+        "SaveGroupTransformationForm",
+        TransformationResources.SaveTransformationButtonAltText
+    ))
+{
+    
+    @Html.TransformationDetailsFor(model => model)
+    @Html.HiddenFor(model => model.JoinConnectorId)
+    
+    <fieldset>
+        
+        <legend>@TransformationResources.GroupTransformationGroupCriteriaLegend</legend>
+        
+        @Html.RelationshipsFor(model => model)
+
+    </fieldset>
+    
+    <br/>
+    
+    <fieldset>
+        
+        <legend>@TransformationResources.GroupTransformationEntityWindowLegend</legend>
+        
+        @using (Html.MetaDataFor(model => model.WindowType, new { description = TransformationResources.GroupWindowTypeDescription }, new { @class = "controlset" }))
+        {
+            @Html.RadioButtonFor(model => model.WindowType, WindowType.NoFilter, new { onchange = "$('#SlidingWindowInformation').hide();" })
+            @Html.LabelFor(model => model.WindowType, TransformationResources.WindowTypeNoFilterLabel)
+
+            @Html.RadioButtonFor(model => model.WindowType, WindowType.SlidingDateWindow, new { onchange = "$('#SlidingWindowInformation').show();" })
+            @Html.LabelFor(model => model.WindowType, TransformationResources.WindowTypeSlidingDateLabel)
+        }
+        
+        <div id="SlidingWindowInformation" class="chzn-form-fieldset-container">
+            
+             <br/>
+            
+            <div class="FormText">
+                @TransformationResources.JoinTransformationSlidingDateWindowDescription
+            </div>
+            
+            <br/>
+            
+            @using (Html.MetaDataFor(model => model.DateRelationalInformation.StartKey, new { description = TransformationResources.DateRelationalInformationStartKeyDescription, hideRequired = true }, new { @class = "chzn-form-fieldset-container" }))
+            {
+                @Html.LabelFor(model => model.DateRelationalInformation.StartKey, TransformationResources.DateRelationalInformationStartKeyLabel)
+                @Html.SchemaFieldsFor(model => model.DateRelationalInformation.StartKey, Model.RelationalSchema, Model.DateRelationalInformation.StartKey, Model.RelationalSchemaTypes, new[] { Unify.Framework.ValueType.Date, Unify.Framework.ValueType.Timestamp })
+            }
+            
+            @using (Html.MetaDataFor(model => model.DateRelationalInformation.EndKey, new { description = TransformationResources.DateRelationalInformationEndKeyDescription, hideRequired = true }, new { @class = "chzn-form-fieldset-container" }))
+            {
+                @Html.LabelFor(model => model.DateRelationalInformation.EndKey, TransformationResources.DateRelationalInformationEndKeyLabel)
+                @Html.SchemaFieldsFor(model => model.DateRelationalInformation.EndKey, Model.RelationalSchema, Model.DateRelationalInformation.EndKey, Model.RelationalSchemaTypes, new[] { Unify.Framework.ValueType.Date, Unify.Framework.ValueType.Timestamp })
+            }
+            
+            @using (Html.MetaDataFor(model => model.DateRelationalInformation.StartOffset, new { description = TransformationResources.DateRelationalInformationStartOffsetDescription }))
+            {
+                @Html.LabelFor(model => model.DateRelationalInformation.StartOffset, TransformationResources.DateRelationalInformationStartOffsetLabel)
+                <span class="OffsetInput">
+                    @Html.TextBoxFor(modle => Model.DateRelationalInformation.StartOffset)
+                </span>
+                @Html.ValidationMessage("DateRelationalInformation.EndOffset")
+            }
+
+            @using (Html.MetaDataFor(model => model.DateRelationalInformation.EndOffset, new { description = TransformationResources.DateRelationalInformationEndOffsetDescription }))
+            {
+                @Html.LabelFor(model => model.DateRelationalInformation.EndOffset, TransformationResources.DateRelationalInformationEndOffsetLabel)
+                <span class="OffsetInput">
+                    @Html.TextBoxFor(modle => Model.DateRelationalInformation.EndOffset)
+                </span>
+                @Html.ValidationMessage("DateRelationalInformation.StartOffset")
+            }
+            
+            @using (Html.MetaDataFor(model => model.DateRelationalInformation.UseLocal, new { description = TransformationResources.DateRelationalInformationUseLocalDescription }))
+            {
+                @Html.LabelFor(model => model.DateRelationalInformation.UseLocal, TransformationResources.DateRelationalInformationLocalLabel)
+                @Html.CheckBoxFor(model => model.DateRelationalInformation.UseLocal)
+                
+            }
+
+        </div>
+        
+        @if (Model.WindowType == WindowType.NoFilter)
+        {
+            <script type="text/javascript">
+                $('#SlidingWindowInformation').hide();
+            </script>
+        }
+
+    </fieldset>
+    
+    <br/>
+    
+    <script type="text/javascript">
+        $('.OffsetInput').each(function () {
+            $(this).unifytimepicker({
+                includeDays: true,
+                allowNegative: true
+            });
+        });
+    </script>
+    
+    <fieldset>
+        
+        <legend>
+            @TransformationResources.WhiteListLegend
+        </legend>
+        
+        @using (Html.MetaDataFor(model => model.Filter, new { description = TransformationResources.GroupTransformationFilterDescription }, new { @class = "controlset" }))
+        {
+            @Html.RadioButtonFor(model => model.Filter, false, new { onclick = "$('#WhiteList').hide();" })
+            @Html.LabelFor(model => model.Filter, TransformationResources.GroupTransformationFilterNoneLabel)
+
+            @Html.RadioButtonFor(model => model.Filter, true, new { onclick = "$('#WhiteList').show();" })
+            @Html.LabelFor(model => model.Filter, TransformationResources.GroupTransformationFilterFieldLabel)
+        }
+        
+        <div id="WhiteList" class="chzn-form-fieldset-container">
+            
+            <br/>
+            
+            <div class="FormText">
+                Entities on the grouped connector will be filtered based on whether their values are in the whitelist. Filtered entities will not be visible for joining.
+            </div>
+            
+            <br/>
+            
+            @using (Html.MetaDataFor(model => model.FilterField, new { description = TransformationResources.GroupTransformationFilterFieldDescription, hideRequired = true }, new { @class = "chzn-form-fieldset-container" }))
+            {
+                @Html.LabelFor(model => model.FilterField, TransformationResources.GroupTransformationFilterFieldLabel)
+                @Html.SchemaFieldsFor(model => model.FilterField, Model.RelationalSchema, Model.FilterField)
+            }
+            
+            @using (Html.MetaDataFor(model => model.FilterWhiteList, new { description = TransformationResources.GroupTransformationFilerWhiteListDescription }))
+            {
+                @Html.LabelFor(model => model.FilterWhiteList, TransformationResources.GroupTransformationFilterWhiteListLabel)
+                @Html.TextBoxFor(model => model.FilterWhiteList)
+            }
+
+        </div>
+        
+        @if (!Model.Filter)
+        {
+            <script type="text/javascript">
+
+                $('#WhiteList').hide();
+
+            </script>
+        }
+
+    </fieldset>
+    
+    <br/>
+    
+    <fieldset>
+        
+        <legend>@TransformationResources.GroupValuesLegend</legend>
+        
+        @using (Html.MetaDataFor(model => model.Target, new { description = TransformationResources.GroupTransformationTargetDescription }))
+        {
+            @Html.LabelFor(model => model.Target)
+            @Html.TextBoxFor(model => model.Target)
+        }
+        
+        @using (Html.MetaDataFor(model => model.Template, new { description = TransformationResources.GroupTransformationTemplateDescription, hideRequired = true }))
+        {
+            @Html.LabelFor(model => model.Template)
+            <br/>
+            <div>
+                @Html.DnTemplateFor(Model.Template, Model.RelationalSchema, Model.RelationalSchemaTypes, false)
+            </div>
+        }
+        
+        @using (Html.MetaDataFor(model => model.Distinct, new { description = TransformationResources.GroupTransformationDistinctDescription }))
+        {
+            @Html.LabelFor(model => model.Distinct, TransformationResources.GroupTransformationDistinctLabel)
+            @Html.CheckBoxFor(model => model.Distinct)
+        }
+
+    </fieldset>
+    
+    <br/>
+}

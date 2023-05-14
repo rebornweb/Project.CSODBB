@@ -1,0 +1,143 @@
+﻿@using Unify.Framework
+@using Unify.Framework.Web
+@model LDAPDirectoryListenPlugInConfigurationViewInformation
+
+@{
+    ViewBag.Title = Html.CreatePlugInTitle(Model.CreateOrUpdateText, TitleResources.CreateOpenLDAPListenOperationTitleCaption);
+}
+
+@if (!Model.ApplicableAgents.Any())
+{
+    <p>@string.Format(
+        OperationControllerResources.NoApplicableAgentMessageTemplate,
+        OperationControllerResources.PlugInOperationsOpenLDAPListen,
+        OperationControllerResources.AgentsOpenLDAPName)
+
+        @if (Html.IsInRole(UnifyRoles.Write))
+        {
+            @Html.ActionLink("Create Agent", "Create", "Agents", new {agentType = AgentPlugInNames.OpenLDAPAgentPlugInName }, null)
+        }
+        else
+        {
+            <label>@OperationControllerResources.CreateAgentInsufficientPermissions</label>
+        }
+    </p>
+}
+else
+{
+    string requestTimeoutDescription = string.Format(
+        OperationControllerResources.RequestTimeoutDescription,
+        LoggingControllerConstants.TimeFormatCSharpEditMode,
+        LoggingControllerConstants.TimeSampleEditMode,
+        LoggingControllerConstants.DayTimeFormatCSharpEditMode,
+        LoggingControllerConstants.DayTimeSampleEditMode,
+        LoggingControllerConstants.DayTimeSampleFullTextEditMode);
+    string lastLogonAllowanceDescription = string.Format(
+        OperationControllerResources.LastLogonAllowanceDescription,
+        LoggingControllerConstants.TimeFormatCSharpEditMode,
+        LoggingControllerConstants.TimeSampleEditMode);
+
+    using (Html.DecorateForm(
+        () => Html.BeginForm("CreatePlugInOperation", "Operation", FormMethod.Post, new { id = "CreateOperationForm" }),
+        Model.CreateOrUpdateText,
+        "CreateOperationForm",
+        "Create LDAP Operation",
+        "submitButton"))
+    {
+        <div>
+            @Html.EditorFor(model => model, "OperationDisplayName")
+
+            @using (Html.MetaDataFor(model => model.AgentId, new { description = OperationControllerResources.SelectAgentDescription }, new { @class = "chzn-container" }))
+            {
+                @Html.CustomTooltipFor(model => model.AgentId, OperationControllerResources.SelectAgentName, OperationControllerResources.SelectAgentDescription)
+                @Html.DropDownListFor(model => model.AgentId,
+                            new SelectList(
+                                Model.ApplicableAgents,
+                                "Id",
+                                "Name",
+                                Model.ApplicableAgents.Any(agent => agent.Id == Model.AgentId)
+                                    ? Model.ApplicableAgents.Where(agent => agent.Id == Model.AgentId).Select(agent => agent).First()
+                                    : Model.ApplicableAgents.First()),
+                                new { @class = "chzn-select" })
+            }
+
+            <fieldset>
+                <legend>@OperationControllerResources.LDAPTriggerPlugInOperationInformation</legend>
+
+                @using (Html.MetaDataFor(model => model.DistinguishedName, new {description = OperationControllerResources.LdapTriggerDNDescription}))
+                {
+                    @Html.LabelFor(model => model.DistinguishedName, OperationControllerResources.LdapTriggerDNName)
+                    @Html.TextBoxFor(model => model.DistinguishedName)
+                }
+                @using (Html.MetaDataFor(model => model.Filter, new {description = OperationControllerResources.FilterDescription}))
+                {
+                    @Html.LabelFor(model => model.Filter, OperationControllerResources.FilterName)
+                    @Html.TextBoxFor(model => model.Filter)
+                }
+                @using (Html.MetaDataFor(model => model.SearchScope, new {description = OperationControllerResources.SearchScopeDescription}, new {@class = "chzn-container"}))
+                {
+                    @Html.LabelFor(model => model.SearchScope, OperationControllerResources.SearchScopeName)
+                    @Html.EnumDropDownList(model => model.SearchScope, new {@class = "chzn-select"})
+                }
+                @using (Html.MetaDataFor(model => model.RequestTimeout, new {description = requestTimeoutDescription}))
+                {
+                    @Html.LabelFor(model => model.RequestTimeout, OperationControllerResources.RequestTimeoutName)
+                    <span id="RequestTimeoutContainer">@Html.TextBoxFor(model => model.RequestTimeout, new {@class = "timepickertexthint"})</span>
+                }
+                @using (Html.MetaDataFor(model => model.RecycleTimeout, new {description = OperationControllerResources.RecycleTimeoutDescription}))
+                {
+                    @Html.LabelFor(model => model.RecycleTimeout, OperationControllerResources.RecycleTimeoutName)
+                    <span id="RecycleTimeoutContainer">@Html.TextBoxFor(model => model.RecycleTimeout, new {@class = "timepickertexthint"})</span>
+                }
+                @using (Html.MetaDataFor(model => model.IgnoreRecentLastLogon, new { description = OperationControllerResources.IgnoreRecentLastLogonDescription }, new { @class = "controlset" }))
+                {
+                    @Html.LabelFor(model => model.IgnoreRecentLastLogon, OperationControllerResources.IgnoreRecentLastLogonName)
+                    @Html.RadioButtonFor(model => model.IgnoreRecentLastLogon, true)
+                    <label>@OperationControllerResources.IgnoreRecentLastLogonEnabledMessage</label>
+                    @Html.RadioButtonFor(model => model.IgnoreRecentLastLogon, false)
+                    <label>@OperationControllerResources.IgnoreRecentLastLogonDisabledMessage</label>
+                }
+            </fieldset>
+
+            <fieldset id="IgnoreRecentLastLogonSection">
+                <legend>@OperationControllerResources.IgnoreRecentLastLogonText</legend>
+
+                @using (Html.MetaDataFor(model => model.LastLogonAttributeName, new { description = OperationControllerResources.LastLogonAttributeNameDescription }))
+                {
+                    @Html.LabelFor(model => model.LastLogonAttributeName, OperationControllerResources.LastLogonAttributeNameName)
+                    @Html.TextBoxFor(model => model.LastLogonAttributeName)
+                }
+                @using (Html.MetaDataFor(model => model.LastLogonAllowance, new { description = lastLogonAllowanceDescription }))
+                {
+                    @Html.LabelFor(model => model.LastLogonAllowance, OperationControllerResources.LastLogonAllowanceName)
+                    <span id="LastLogonAllowanceContainer">
+                        @Html.TextBoxFor(model => model.LastLogonAllowance, new { @class = "timepickertexthint" })
+                    </span>
+                }
+            </fieldset>
+
+            <fieldset>
+                @Html.EditorFor(model => model, "CheckOperationInnerDetails")
+            </fieldset>
+        </div>
+    }
+}
+
+<script type="text/javascript">
+    var ignoreRecentLastLogonTrue = $('input[type=radio][id=IgnoreRecentLastLogon][value=True]');
+    var ignoreRecentLastLogonFalse = $('input[type=radio][id=IgnoreRecentLastLogon][value=False]');
+    var ignoreRecentLastLogonSection = $('#IgnoreRecentLastLogonSection');
+
+    $(document).ready(function () {
+        ShowHideSection(ignoreRecentLastLogonTrue, ignoreRecentLastLogonSection, null);
+        ignoreRecentLastLogonTrue.bind('change', function (event) {
+            ShowHideSection(ignoreRecentLastLogonTrue, ignoreRecentLastLogonSection, null);
+        });
+        ignoreRecentLastLogonFalse.bind('change', function (event) {
+            ShowHideSection(ignoreRecentLastLogonTrue, ignoreRecentLastLogonSection, null);
+        });
+        $('#LastLogonAllowanceContainer').unifytimepicker();
+        $('#RequestTimeoutContainer').unifytimepicker({ 'includeDays': true });
+        $('#RecycleTimeoutContainer').unifytimepicker({ 'includeDays': true });
+    });
+</script>

@@ -1,0 +1,102 @@
+﻿@model TransformationFunctionsViewInformation
+
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+
+@{
+    string moveTransformationUpImageUrl = Url.WebIcon("arrow_up.png");
+    string moveTransformationDownImageUrl = Url.WebIcon("arrow_down.png");
+    string addTransformationImageUrl = Url.WebIcon("table_add.png");
+    string previewTransformationSchemaImageUrl = Url.WebIcon("table.png");
+    string editImageUrl = Url.WebIcon("wrench.png");
+
+    Guid partId = Guid.NewGuid();
+
+    string deleteImageUrl = Url.WebIcon("table_delete.png");
+    string deleteFormId = string.Format("DeleteTransformationForm{0}{1}", Model.TransformationId, partId);
+    string deleteFormInputId = string.Format("DeleteTransformationButton{0}{1}", Model.TransformationId, partId);
+    string deleteMessageId = string.Concat(deleteFormInputId, "Message");
+    string deleteOkCancelScript = RenderExtensions.SubmitOkCancelDialog(deleteFormId, deleteFormInputId, string.Empty);
+
+    string previewContributionUrl = Url.Action("PreviewSchemaAfterTransformation", "Adapter", new { adapterId = Model.ContainingAdapterId, transformationId = Model.TransformationId });
+    string previewSchemaButton = string.Concat("PreviewSchemaButton", Model.TransformationId.ToString());
+    string previewSchemaFunction = string.Format(
+        "$.get(\"{0}\", function(data) {{$(\"#{1}\").dialog({{'modal' : true, width:'auto', title:'Transformation Schema Preview'}}).html(data).css({{overflow:'visible'}}); $(\".chzn-select\").chosen(); $('.ui-dialog').css({{ overflow: 'visible' }}); }}); return false;",
+                                    Html.Raw(previewContributionUrl),
+                                    previewSchemaButton);
+
+    string addTransformationHereUrl = Url.Action("ChooseTransformation", new { siteTransformation = Model.TransformationId, adapterId = Model.ContainingAdapterId, front = false });
+    string addTransformationHereContainerId = string.Concat("AddTransformationHere", Model.TransformationId.ToString());
+    
+}
+           
+@Html.HiddenFor(model => model.TransformationId)
+@Html.HiddenFor(model => model.IsScripted)
+@Html.HiddenFor(model => model.ContainingAdapterId)
+
+<div class="FunctionsMenuContainer">
+
+    <div>
+        <div id="@previewSchemaButton"></div>
+        <a href="@previewContributionUrl" onclick="@previewSchemaFunction">
+            <img src="@previewTransformationSchemaImageUrl"/>
+            @TransformationResources.PreviewTransformationSchemaAltText
+        </a>
+    </div>
+
+    @if (!Model.Enabled)
+    {
+        <div id="@addTransformationHereContainerId"></div>
+        <div id="@deleteMessageId" style="display:none">
+            <div>@AdapterResources.DeleteTransformationConfirmationInitialWarning</div>
+            <div>@AdapterResources.DeleteTransformationWarningDescription @WebStudioResources.ThisCannotBeUndoneText</div>
+        </div>
+
+        <div>
+            
+            <div>
+                <a href="@Url.Action("Edit", MvcApplication.GetTransformationController(Model.TransformationType), new {area="Extensibility", adapterId = Model.ContainingAdapterId, transformationId = Model.TransformationId })">
+                    <input type="image" src="@editImageUrl" alt="@TransformationResources.EditTransformationAltText" title="@TransformationResources.EditTransformationAltText"/>
+                    @TransformationResources.EditTransformationAltText
+                </a>
+            </div>
+
+            <div>
+                <a href="@addTransformationHereUrl">
+                    <img src="@addTransformationImageUrl" alt="@TransformationResources.AddTransformationHereAltText" title="@TransformationResources.AddTransformationHereAltText"/>
+                    @TransformationResources.AddTransformationHereAltText
+                </a>
+            </div>
+    
+            <div>
+                @using (Html.BeginForm("MoveTransformationUp", "Adapter", new { id = Model.TransformationId, adapterId = Model.ContainingAdapterId }, FormMethod.Post, new { @class = "IconForm" }))
+                {
+                    <input type="image" src="@moveTransformationUpImageUrl" alt="@TransformationResources.MoveTransformationUpAltText" title="@TransformationResources.MoveTransformationUpAltText"/>
+                    <input type="submit" value="@TransformationResources.MoveTransformationUpAltText" class="SubmitImageText"/>
+                }
+            </div>
+    
+            <div>
+                @using (Html.BeginForm("MoveTransformationDown", "Adapter", new { id = Model.TransformationId, adapterId = Model.ContainingAdapterId }, FormMethod.Post, new { @class = "IconForm" }))
+                {
+                    <input type="image" src="@moveTransformationDownImageUrl" alt="@TransformationResources.MoveTransformationDownAltText" title="@TransformationResources.MoveTransformationDownAltText"/>
+                    <input type="submit" value="@TransformationResources.MoveTransformationDownAltText" class="SubmitImageText"/>
+                }
+            </div>
+    
+            <div>
+                @using (Html.BeginForm("DeleteTransformation", "Adapter", new { id = Model.TransformationId, adapterId = Model.ContainingAdapterId }, FormMethod.Post, new { id = deleteFormId, @class = "IconForm" }))
+                {
+                    <input type="image" src="@deleteImageUrl" alt="@AdapterResources.DeleteTransformationAltText" title="@AdapterResources.DeleteTransformationAltText" />
+                    <input type="submit" value="@TransformationResources.DeleteTransformationAltText" class="SubmitImageText" id="@deleteFormInputId"/>
+                }
+            </div>
+
+        </div>
+    }
+
+</div>
+
+<script type="text/javascript">
+    @Html.Raw(deleteOkCancelScript)
+</script>

@@ -1,0 +1,238 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model JoinTransformationViewInformation
+           
+@{ Html.RenderAction("SchedulesHeader", "Schedules", new { area = "Framework" }); }
+           
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "JoinTransformation", new{area = "Extensibility"}),
+        TransformationResources.SaveTransformationButtonText,
+        "SaveTransformationForm",
+        TransformationResources.SaveTransformationButtonAltText
+    ))
+{
+    @Html.TransformationDetailsFor(model => model)
+
+    @Html.HiddenFor(model => model.RelationshipConnectorId)
+
+    <fieldset>
+        
+        <legend>@TransformationResources.JoinTransformationJoinCriteriaLegend</legend>
+        
+        @Html.RelationshipsFor(model => model)
+
+    </fieldset>
+    
+    <br/>
+    
+    <fieldset>
+        
+        <legend>@TransformationResources.JoinTransformationRelationshipsLegend</legend>
+        
+        @using (Html.MetaDataFor(model => model.WindowType, new { description = TransformationResources.WindowTypeDescription }, new { @class = "controlset" }))
+        {
+            @Html.RadioButtonFor(model => model.WindowType, WindowType.NoFilter, new { onchange = "$('#SlidingWindowInformation').hide(); $('#SelectionContainer').show();" })
+            @Html.LabelFor(model => model.WindowType, TransformationResources.WindowTypeNoFilterLabel)
+
+            @Html.RadioButtonFor(model => model.WindowType, WindowType.SlidingDateWindow, new { onchange = "$('#SlidingWindowInformation').show(); var currentValue = $('#dateRelationalType option:selected').val();  $('#SelectionContainer').toggle(currentValue == 'Standard');" })
+            @Html.LabelFor(model => model.WindowType, TransformationResources.WindowTypeSlidingDateLabel)
+        }
+        
+        <div id="SlidingWindowInformation" class = "chzn-form-fieldset-container" >
+            
+            <br/>
+            
+            <div class="FormText">
+                @TransformationResources.JoinTransformationSlidingDateWindowDescription
+            </div>
+            
+            <br/>
+            
+            @using (Html.MetaDataFor(model => model.DateRelationalWindowType, new { description = TransformationResources.DateRelationalInformationTypeDescription }, new { @class = "chzn-form-fieldset-container" }))
+            {
+                @Html.LabelFor(model => model.DateRelationalWindowType, TransformationResources.DateRelationalInformationTypeLabel)
+                @Html.EnumDropDownList(model => model.DateRelationalWindowType, new { @class = "chzn-select", id = "dateRelationalType", onchange = "var currentValue = $('#dateRelationalType option:selected').val();  $('#SelectionContainer').toggle(currentValue == 'Standard');" })
+            }
+            
+            @using (Html.MetaDataFor(model => model.DateRelationalInformation.StartKey, new { description = TransformationResources.DateRelationalInformationStartKeyDescription, hideRequired = true }, new { @class = "chzn-form-fieldset-container" }))
+            {
+                @Html.LabelFor(model => model.DateRelationalInformation.StartKey, TransformationResources.DateRelationalInformationStartKeyLabel)
+                @Html.SchemaFieldsFor(model => model.DateRelationalInformation.StartKey, Model.Mappings.Schema, Model.DateRelationalInformation.StartKey, Model.RelationshipSchemaTypes, new[] { Unify.Framework.ValueType.Date, Unify.Framework.ValueType.Timestamp })
+                @Html.ValidationMessage("DateRelationalInformation.StartKey")
+            }
+            
+            @using (Html.MetaDataFor(model => model.DateRelationalInformation.EndKey, new { description = TransformationResources.DateRelationalInformationEndKeyDescription, hideRequired = true }, new { @class = "chzn-form-fieldset-container" }))
+            {
+                @Html.LabelFor(model => model.DateRelationalInformation.EndKey, TransformationResources.DateRelationalInformationEndKeyLabel)
+                @Html.SchemaFieldsFor(model => model.DateRelationalInformation.EndKey, Model.Mappings.Schema, Model.DateRelationalInformation.EndKey, Model.RelationshipSchemaTypes, new[] { Unify.Framework.ValueType.Date, Unify.Framework.ValueType.Timestamp })
+                @Html.ValidationMessage("DateRelationalInformation.EndKey")
+            }
+            
+            @using (Html.MetaDataFor(model => model.DateRelationalInformation.StartOffset, new { description = TransformationResources.DateRelationalInformationStartOffsetDescription }))
+            {
+                @Html.LabelFor(model => model.DateRelationalInformation.StartOffset, TransformationResources.DateRelationalInformationStartOffsetLabel)
+                <span class="OffsetInput">
+                    @Html.TextBoxFor(model => model.DateRelationalInformation.StartOffset)
+                </span>
+                @Html.ValidationMessage("DateRelationalInformation.StartOffset")
+            }
+
+            @using (Html.MetaDataFor(model => model.DateRelationalInformation.EndOffset, new { description = TransformationResources.DateRelationalInformationEndOffsetDescription }))
+            {
+                @Html.LabelFor(model => model.DateRelationalInformation.EndOffset, TransformationResources.DateRelationalInformationEndOffsetLabel)
+                <span class="OffsetInput">
+                    @Html.TextBoxFor(model => model.DateRelationalInformation.EndOffset)
+                </span>
+                @Html.ValidationMessage("DateRelationalInformation.EndOffset")
+            }
+            
+            @using (Html.MetaDataFor(model => model.DateRelationalInformation.UseLocal, new { description = TransformationResources.DateRelationalInformationUseLocalDescription }))
+            {
+                @Html.LabelFor(model => model.DateRelationalInformation.UseLocal, TransformationResources.DateRelationalInformationLocalLabel)
+                @Html.CheckBoxFor(model => model.DateRelationalInformation.UseLocal)
+                @Html.ValidationMessage("DateRelationalInformation.UseLocal")
+            }
+
+        </div>
+        
+        @if (Model.WindowType == WindowType.NoFilter)
+        {
+            <script type="text/javascript">
+                $('#SlidingWindowInformation').hide();
+            </script>
+        }
+
+    </fieldset>
+    
+    <br/>
+    
+    <fieldset id="SelectionContainer">
+        
+        <legend>@TransformationResources.JoinTransformationSelectionLegend</legend>
+        
+        @using (Html.MetaDataFor(model => model.SelectionType, new { description = TransformationResources.SelectionTypeDescription }, new { @class = "controlset" }))
+        {
+            @Html.RadioButtonFor(model => model.SelectionType, SelectionType.First, new { onchange = "$('#PriorityInformation').hide();" })
+            @Html.LabelFor(model => model.SelectionType, TransformationResources.SelectionTypePickFirstLabel)
+
+            @Html.RadioButtonFor(model => model.SelectionType, SelectionType.Priority, new { onchange = "$('#PriorityInformation').show();" })
+            @Html.LabelFor(model => model.SelectionType, TransformationResources.SelectionTypeStringPriorityLabel)
+        }
+        
+        <div id="PriorityInformation" class="chzn-form-fieldset-container">
+            
+            <br/>
+            
+            <div class="FormText">
+                @TransformationResources.JoinTransformationPrioritySelectionInformationDescription
+            </div>
+            
+            <br />
+            
+            @using (Html.MetaDataFor(model => model.PrioritySelectionInformation.PriorityKey, new { description = TransformationResources.PrioritySelectionInformationPriorityKeyDescription, hideRequired = true }, new { @class = "chzn-form-fieldset-container" }))
+            {
+                @Html.LabelFor(model => model.PrioritySelectionInformation.PriorityKey, TransformationResources.PrioritySelectionInformationPriorityKeyLabel)
+                @Html.SchemaFieldsFor(model => model.PrioritySelectionInformation.PriorityKey, Model.Mappings.Schema, Model.PrioritySelectionInformation.PriorityKey)
+                @Html.ValidationMessage("PrioritySelectionInformation.PriorityKey")
+            }
+            
+            @using (Html.MetaDataFor(model => model.PrioritySelectionInformation.DefinePriorityStructure, new { description = TransformationResources.PrioritySelectionInformationDefinePriorityStructureDescription }))
+            {
+                @Html.LabelFor(model => model.PrioritySelectionInformation.DefinePriorityStructure, TransformationResources.PrioritySelectionInformationDefinePriorityStructureLabel)
+                @Html.CheckBoxFor(model => model.PrioritySelectionInformation.DefinePriorityStructure, new { onchange = "$('#PriorityValuesContainer').toggle($(this).is(':checked'));" })
+                @Html.ValidationMessage("PrioritySelectionInformation.DefinePriorityStructure")
+            }
+            
+            @using (Html.MetaDataFor(model => model.PrioritySelectionInformation.PriorityValues, new { description = TransformationResources.PrioritySelectionInformationPriorityValuesDescription }, new { id = "PriorityValuesContainer" }))
+            {
+                @Html.LabelFor(model => model.PrioritySelectionInformation.PriorityValues, TransformationResources.PrioritySelectionInformationPriorityValuesLabel)
+                @Html.TextAreaFor(model => model.PrioritySelectionInformation.PriorityValues)
+                @Html.ValidationMessage("PrioritySelectionInformation.PriorityValues")
+            }
+            
+            @if (!Model.PrioritySelectionInformation.DefinePriorityStructure)
+            {
+                <script type="text/javascript">
+                    $('#PriorityValuesContainer').hide();
+                </script>
+            }
+
+        </div>
+        
+        @if (Model.SelectionType == SelectionType.First)
+        {
+            <script type="text/javascript">
+                $('#PriorityInformation').hide();
+            </script>
+        }
+        
+        @if (Model.WindowType == WindowType.SlidingDateWindow && Model.DateRelationalWindowType != DateRelationalType.Standard)
+        {
+            <script type="text/javascript">
+                $('#SelectionContainer').hide();
+            </script>
+        }
+
+    </fieldset>
+    
+    <br/>
+    
+    <fieldset>
+        
+        <legend>@TransformationResources.JoinTransformationSelectedAttributesLegend</legend>
+        @Html.ColumnMappingsFor(model => model)
+
+    </fieldset>
+    
+    <br/>
+
+    <fieldset>
+        
+        <legend>@TransformationResources.JoinTransformationDistinguishedNameLegend</legend>
+        
+        @using (Html.MetaDataFor(model => model.MapRelationshipDistinguishedName, new { description = ConnectorControllerResources.JoinTransformationMapRelationshipDistinguishedNameDescription }))
+        {
+            @Html.LabelFor(model => model.MapRelationshipDistinguishedName, ConnectorControllerResources.JoinTransformationMapRelationshipDistinguishedNameLabel)
+            @Html.CheckBoxFor(model => model.MapRelationshipDistinguishedName, new { onclick = "$('#OptionalDistinguishedNameContainer').toggle($(this).is(':checked'));" })   
+        }
+        
+        <div id="OptionalDistinguishedNameContainer">
+            
+            @using (Html.MetaDataFor(model => model.DistinguishedNameTarget, new { description = TransformationResources.JoinTransformationDnTargetDescription }))
+            {
+                @Html.LabelFor(model => model.DistinguishedNameTarget, TransformationResources.JoinTransformationDnTargetLabel)
+                @Html.TextBoxFor(model => model.DistinguishedNameTarget)
+            }
+        
+            @using (Html.MetaDataFor(model => model.Template, new { description = TransformationResources.JoinTransformationDnTemplateDescription, hideRequired = true }))
+            {
+                @Html.LabelFor(model => model.Template, TransformationResources.JoinTransformationDnTemplateLabel)
+                <br/>
+                <div>
+                    @Html.DnTemplateFor(Model.Template, Model.Mappings.Schema, false)
+                </div>
+            }
+            
+        </div>
+        
+        @if (!Model.MapRelationshipDistinguishedName)
+        {
+            <script type="text/javascript">
+                $('#OptionalDistinguishedNameContainer').hide();
+            </script>
+        }
+
+    </fieldset>
+    
+    <br/>
+    
+    <script type="text/javascript">
+        $('.OffsetInput').each(function() {
+            $(this).unifytimepicker({
+                includeDays: true,
+                allowNegative: true
+            });
+        });
+    </script>
+}

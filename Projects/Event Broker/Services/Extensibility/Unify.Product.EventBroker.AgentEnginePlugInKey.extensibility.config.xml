@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AgentEngine changeId="a9744cea-f751-455d-8250-e4d9f4d1acdc" testConnections="PT5M">
+  <AgentConfigurations>
+    <Agent id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" name="FIM Agent" type="Unify.EventBroker.Agent.FIM">
+      <Extended xmlns="">
+        <FIMAgent serverName="" userName="" password="+sKaVeCfrnsyRkT+icBFww==" connectionString="4tAdEwfm2eqIp9RhpRlxjnZ1xc1dovPbZq9KDWfEjWW6PGxF4kjr8lqM6x5T+q2nXPHV/+t4bMeelSKT7upJL1Ah3smtMx3KvNsea7FeqStaQgz8E+f6cnQl5n9osfHn" useStandardView="true" successStatus="success;in-progress;completed-no-objects;completed-warnings;completed-sync-errors;completed-discovery-errors;completed-export-errors;completed-transient-objects;stopped-object-limit;no-start-ma-already-running;call-failure:0x8023063D" isLocalInstance="true" />
+      </Extended>
+    </Agent>
+    <Agent id="d3187109-fc0d-41f9-bd94-3a60a8757457" name="UNIFYFIM AD" type="Unify.EventBroker.Agent.AD">
+      <Extended xmlns="">
+        <AD UserName="svcilm_ma_ad@dbb.local" Password="zO+2HKGPr1GfPz7l5Rrz1w==" Authentication="Secure">
+          <Servers>
+            <Server name="dgswu-dc001.dbb.local" />
+            <Server name="dequa-dc001.dbb.local" />
+          </Servers>
+        </AD>
+      </Extended>
+    </Agent>
+    <Agent id="cf7a4d14-0f3e-4f41-bc4d-1837312c9552" name="NASS Db" type="Unify.EventBroker.Agent.SQLServer">
+      <Extended xmlns="">
+        <SQLServerAgent connectionString="QhH9lECRtVPkbS0AWYTaQYmV+CX5BiF01/iv0eInQzCaVMRy5lltGS7Z6BwLiDizxMR1vk//WkVtPmjZfAlRa89txFd6P15Xy8jAJWMlDKwy+bKc9+YoCcuBuK5PZudj" useStandardView="true" />
+      </Extended>
+    </Agent>
+    <Agent id="18eb1d41-e527-40d5-8c7a-76d3e6ab63bd" name="Identity Broker" type="Unify.EventBroker.Agent.IdentityBroker">
+      <Extended xmlns="">
+        <IdentityBrokerAgent EndPointAddress="http://occcp-IM301:59990/" ManagementStudioEndpointConfigurationName="IdentityBroker" ChangesEndpointConfigurationName="IdentityBroker" version="v41" />
+      </Extended>
+    </Agent>
+    <Agent id="796f072a-095e-46a6-9aa6-9e886a73ec4e" name="Identity Broker v5" type="Unify.EventBroker.Agent.IdentityBroker">
+      <Extended xmlns="">
+        <IdentityBrokerAgent EndPointAddress="http://10.19.205.69:59990/" ManagementStudioEndpointConfigurationName="IdentityBroker" ChangesEndpointConfigurationName="IdentityBroker" version="v50" />
+      </Extended>
+    </Agent>
+    <Agent id="1b0275fb-897a-4c35-8d98-130019353992" name="FIM Service" type="Unify.EventBroker.Agent.SQLServer">
+      <Extended xmlns="">
+        <SQLServerAgent connectionString="4tAdEwfm2eqIp9RhpRlxjnZ1xc1dovPbZq9KDWfEjWVi7aGuclWaL3uMl217n2a4DPJtCyvL3TNXa0FrnlYsXcWXvQEqBsxIAJrQTfMl6i0=" useStandardView="true" />
+      </Extended>
+    </Agent>
+    <Agent id="ee3509eb-3667-484b-a013-e933be28a050" name="CSODBB ADLDS" type="Unify.EventBroker.Agent.AD">
+      <Extended xmlns="">
+        <AD UserName="CN=CEnet,CN=Roles,DC=CSODBB" Password="oGfBHftDwIBEeei9RX67V/yfSsQVHligKk3mG4bJ57c=" Authentication="None">
+          <Servers>
+            <Server name="OCCCP-AS218.dbb.local:50000" />
+          </Servers>
+        </AD>
+      </Extended>
+    </Agent>
+  </AgentConfigurations>
+</AgentEngine>

@@ -1,0 +1,50 @@
+﻿@using Unify.EventBroker.Web
+@using Unify.Framework.Web
+@model RunProfilePlugInConfigurationViewInformation
+
+@{
+    ViewBag.Title = Html.CreatePlugInTitle(Model.CreateOrUpdateText, TitleResources.CreateRunProfileOperationTitleCaption);
+    const string keyFieldName = "Key";
+    const string valueFieldName = "Value";
+}
+
+@if (!Model.ApplicableRunProfiles.Any())
+{
+    <div>@OperationControllerResources.NoAccessibleRunProfilesErrorMessage</div>
+}
+else
+{
+    using (Html.DecorateForm(
+            () => Html.BeginForm("CreatePlugInOperation", "Operation", FormMethod.Post, new { id = "CreateOperationForm" }),
+            Model.CreateOrUpdateText,
+            "CreateOperationForm",
+            OperationResources.ConfigureOperationAltText, "submitButton"))
+    {
+        <div>
+            @Html.HiddenFor(model => model.ManagementAgentKey)
+            @Html.HiddenFor(model => model.AgentId)
+
+            @Html.EditorFor(model => model, "OperationDisplayName")
+
+            <fieldset>
+                @using (Html.MetaDataFor(model => model.RunProfileKey, new{ description = OperationControllerResources.RunProfilesDescription }, new { @class = "chzn-container" }))
+                {
+                    @Html.LabelFor(model => model.RunProfileKey, OperationControllerResources.RunProfilesName)
+
+                    @Html.DropDownListFor(model => model.RunProfileKey,
+                                                    new SelectList(
+                                                        Model.ApplicableRunProfiles,
+                                                        valueFieldName,
+                                                        keyFieldName,
+                                                        Model.RunProfileKey != Guid.Empty && Model.ApplicableRunProfiles.ContainsValue(Model.RunProfileKey)
+                                                            ? Model.ApplicableRunProfiles.First(item => item.Value == Model.RunProfileKey)
+                                                            : Model.ApplicableRunProfiles.First()
+                                                        ),
+                                                    new { @class = "chzn-select" })
+                }
+
+                @Html.EditorFor(model => model, "OperationInnerDetails")
+            </fieldset>
+        </div>
+    }
+}

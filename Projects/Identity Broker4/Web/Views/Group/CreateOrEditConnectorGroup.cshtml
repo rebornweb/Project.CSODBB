@@ -1,0 +1,43 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model ConnectorGroupConfigurationViewInformation
+
+@{
+    var createOrEdit = RenderExtensions.SimpleCreateOrEditText(Model.Edit);
+
+    ViewBag.Title = Html.Title(string.Format(TitleResources.CreateOrEditConnectorGroupTitleTemplate, createOrEdit));
+}
+           
+@using (Html.DecorateForm(
+            () => Html.BeginForm("CreateOrEditConnectorGroup", "Group", FormMethod.Post, new { id = "CreateOrEditConnectorGroupForm" }),
+            WebStudioResources.SaveText,
+            "CreateOrEditConnectorGroupForm",
+            GroupControllerResources.SaveGroupConfigurationAltText))
+{
+    string createOrEditConnectorText = string.Format(GroupControllerResources.CreateOrEditConnectorGroupHeadingTemplate, createOrEdit);
+    @Html.HiddenFor(model => model.Edit)
+    @Html.HiddenFor(model => model.Id)
+    
+    <fieldset>
+        <legend>@createOrEditConnectorText</legend>   
+    
+        @using (Html.MetaDataFor(model => model.Name, new { description = GroupControllerResources.ConnectorGroupDisplayNameDescription }))
+        {
+            @Html.LabelFor(model => model.Name, GroupControllerResources.ConnectorGroupDisplayNameLabel)
+            @Html.TextBoxFor(model => model.Name)
+        }
+        
+        @using (Html.MetaDataFor(model => model.Comment, new { GroupControllerResources.AdapterGroupCommentDescription }))
+        {
+            @Html.LabelFor(model => model.Comment, GroupControllerResources.AdapterGroupCommentLabel)
+            @Html.TextAreaFor(model => model.Comment, new { @class = "wide-text" })
+        }
+        
+        @using (Html.MetaDataFor(model => model.Exclusion, new { description = GroupControllerResources.ConnectorGroupExclusionDescription }))
+        {
+            @Html.LabelFor(model => model.Exclusion, GroupControllerResources.ConnectorGroupExclusionLabel)
+            @Html.CheckBoxFor(model => model.Exclusion)
+        }
+    
+    </fieldset>
+}

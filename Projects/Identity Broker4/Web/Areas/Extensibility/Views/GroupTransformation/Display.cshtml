@@ -1,0 +1,67 @@
+﻿@using Unify.Connect.Web
+@model GroupTransformationViewInformation
+           
+@{
+    
+}
+
+<div>
+    
+    GROUP ON
+    
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        @if (Model.GroupConnectorExists)
+        {
+            <a href="@Url.Action("ConnectorDetails", "Connector", new { area = "", connectorId = Model.JoinConnectorId })">@Model.GroupConnectorName</a>
+        }
+        else
+        {
+            <span>@Model.GroupConnectorName</span>
+            <span class="ui-state-error-text">(Connector could not be found)</span>
+        }
+    </p>
+
+    @try
+    {
+        var relationships = ExtensibleTransformationControllerExtensions.Deserialize(Model.Relationships.Text);
+
+        <text>WHERE</text>
+
+        foreach (var line in relationships)
+        {
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;[@line.Key] == [@line.Value]
+            </p>
+        }
+    }
+    catch (Exception)
+    {
+        <p>@Model.Relationships.Text</p>       
+    }
+
+    @if (Model.WindowType == WindowType.SlidingDateWindow)
+    {
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;[@Model.DateRelationalInformation.StartKey] - "@Model.DateRelationalInformation.StartOffset" < @@NOW 
+        </p>
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;[@Model.DateRelationalInformation.EndKey] - "@Model.DateRelationalInformation.EndOffset" > @@NOW
+        </p>
+    }
+    
+    @if (Model.Filter)
+    {
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;[@Model.FilterField] IN (@Model.FilterWhiteList)
+        </p>
+    }
+
+</div>
+
+<div>
+    MAP <br/> 
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;DN:"@Model.Template" -> <span class="TransformationAddedField">[@Model.Target]</span>
+    </p>
+</div>

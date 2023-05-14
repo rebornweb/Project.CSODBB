@@ -1,0 +1,76 @@
+﻿@model RestAPIAgentViewInformation
+@using Unify.Framework.Web
+
+@{
+    ViewBag.Title = Html.CreatePlugInTitle(Model.CreateOrUpdateText, TitleResources.CreateRestAPIAgentTitleCaption);
+}
+
+@using (Html.DecorateForm(
+    () => Html.BeginForm(
+        Model.ManagementAgentKey == Guid.Empty ? "Create" : "CreateMAAgent",
+        "Agents",
+        FormMethod.Post,
+        new {id = "CreateAgentForm"}),
+    Model.CreateOrUpdateText,
+    "CreateAgentForm",
+    AgentsControllerResources.ConfigureAgentAltText,
+    "submitButton"))
+{
+    <div>
+        <fieldset>
+            @Html.HiddenFor(model => model.PlugInName)
+            @Html.HiddenFor(model => model.AgentId)
+            @Html.HiddenFor(model => model.EditMode)
+            @Html.HiddenFor(model => model.FIMAgentId)
+            @Html.HiddenFor(model => model.ManagementAgentKey)
+
+            @using (Html.MetaDataFor(model => model.Name, new { description = AgentsControllerResources.RestAPIAgentNameDescription }))
+            {
+                @Html.LabelFor(model => model.Name, AgentsControllerResources.RestAPIAgentNameName)
+                @Html.TextBoxFor(model => model.Name)
+            }
+            @using (Html.MetaDataFor(model => model.BaseURI, new { description = AgentsControllerResources.RestAPIAgentBaseURIDescription }))
+            {
+                @Html.LabelFor(model => model.BaseURI, AgentsControllerResources.RestAPIAgentBaseURIName)
+                @Html.TextBoxFor(model => model.BaseURI)
+            }
+            @using (Html.MetaDataFor(model => model.DefaultPort, new { description = AgentsControllerResources.RestAPIAgentDefaultPortDescription }, new { @class = "chzn-container" }))
+            {
+                @Html.LabelFor(model => model.DefaultPort, AgentsControllerResources.RestAPIAgentDefaultPortName)
+                @Html.EnumDropDownList(model => model.DefaultPort, new { @class = "chzn-select", @id = "portDropDown" })
+            }
+            @using (Html.MetaDataFor(model => model.CustomPort, new { description = AgentsControllerResources.RestAPIAgentCustomPortDescription }, new { @id = "customPortTextBox" }))
+            {
+                @Html.LabelFor(model => model.CustomPort, AgentsControllerResources.RestAPIAgentCustomPortName)
+                @Html.TextBoxFor(model => model.CustomPort)
+            }
+            @using (Html.MetaDataFor(model => model.RequestTimeout, new { description = AgentsControllerResources.RestAPIAgentRequestTimeoutDescription }, new { @id = "requestTimeoutTextBox" }))
+            {
+                @Html.LabelFor(model => model.RequestTimeout, AgentsControllerResources.RestAPIAgentRequestTimeoutName)
+                @Html.TextBoxFor(model => model.RequestTimeout)
+            }
+        </fieldset>
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($("#portDropDown").val() != "Custom") {
+            $("#customPortTextBox").hide();
+        }
+
+        $("#portDropDown").change(function () {
+            var val = $("#portDropDown").val();
+            if (val == "Custom") {
+                $("#customPortTextBox").show();
+            } else {
+                $("#customPortTextBox").hide();
+            }
+        });
+
+        $('#requestTimeoutTextBox').unifytimepicker(
+        {
+            includeDays: false
+        });
+    })
+</script>

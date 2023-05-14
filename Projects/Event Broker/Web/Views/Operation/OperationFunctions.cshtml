@@ -1,0 +1,124 @@
+﻿@model Unify.EventBroker.Web.Models.IOperationDetails
+@using Unify.Framework.Web
+
+@{
+    var operationId = Model.OperationId;
+
+    var operationListId = Model.OperationListId;
+    var listAndOperationRouteValues = new {operationListId, operationId };
+
+    var listAndOperationNextRouteValues = new { parentOperationId = operationId, operationListId, operationTreeItemType = OperationTreeItemType.Next, operationType = OperationType.Operation };
+    var listAndOperationChildRouteValues = new { parentOperationId = operationId, operationListId, operationTreeItemType = OperationTreeItemType.Child, operationType = OperationType.Operation };
+
+    var deleteButtonId = string.Concat("delete_", operationId);
+    var deleteFormId = string.Concat("deleteForm_", operationId);
+    var deleteFormMessageId = string.Concat(deleteButtonId, "Message");
+
+    var editOperationUrl = Url.Action("EditOperation", listAndOperationRouteValues);
+
+    var editOperationId = string.Format("editOperation_{0}", operationId);
+
+    var addNextPlugInButtonId = string.Format("addNextPlugIn_{0}", operationId);
+
+    var addNextPlugInOperationUrl = Url.Action("CreatePlugInOperationByRouteValues", listAndOperationNextRouteValues);
+    var addChildPlugInButtonId = string.Format("addChildPlugIn_{0}", operationId);
+
+    var addChildPlugInOperationUrl = Url.Action("CreatePlugInOperationByRouteValues", listAndOperationChildRouteValues);
+}
+
+<div class="FunctionsMenuContainer">
+    @if (Html.IsInRole(UnifyRoles.Write))
+    {
+        <div>
+            <a href="@editOperationUrl" id="@editOperationId">
+                <img src="@Url.WebIcon("plugin_edit.png")" alt="@OperationControllerResources.EditOperationAltText" title="@OperationControllerResources.EditOperationAltText"/>
+                @OperationControllerResources.OperationFunctionsEditOperationButtonText
+            </a>
+        </div>
+    }
+    
+    @if (Html.IsInRole(UnifyRoles.Full))
+    {
+        <div id="@deleteFormMessageId" title="@OperationControllerResources.DeleteConfirmationAlt" style="display:none">
+            @(Model.IsLeaf ? OperationControllerResources.DeleteConfirmationMessage : OperationControllerResources.DeleteConfirmationChildrenMessage)
+        </div>
+        
+        <div>
+            @using (Html.BeginForm("DeleteOperation", "Operation", listAndOperationRouteValues, FormMethod.Post, new{@class= "IconForm", id=deleteFormId}))
+            {
+                <input type="image" src="@Url.WebIcon("delete.png")" alt="@OperationControllerResources.DeleteOperationAltText" title="@OperationControllerResources.DeleteOperationAltText"/>
+                <input type="submit" id="@deleteButtonId" value="@OperationControllerResources.OperationFunctionsDeleteOperationButtonText" class="SubmitImageText"/>
+            }
+        </div>
+    }
+    
+    @if (Html.IsInRole(UnifyRoles.Write))
+    {
+        <div>
+            <a href="@addNextPlugInOperationUrl" id="@addNextPlugInButtonId">
+                <img src="@Url.WebIcon("plugin_add.png")"/>
+                @OperationControllerResources.AddNextOperationMessage
+            </a>
+        </div>
+        
+        <div>
+            <a href="@addChildPlugInOperationUrl" id="@addChildPlugInButtonId">
+                <img src="@Url.WebIcon("plugin_add.png")"/>
+                @OperationControllerResources.AddChildOperationMessage
+            </a>
+        </div>
+    }
+    
+    @if (Html.IsInRole(UnifyRoles.Write))
+    {
+        if (Model.PreviousOperationId != default(Guid) && !Model.IsFirstChild)
+        {
+            <div>
+                @using (Html.BeginForm("MoveOperationUp", "Operation", listAndOperationRouteValues, FormMethod.Post, new { @class = "IconForm" }))
+                {
+                    <input type="image" src="@Url.WebIcon("arrow_up.png")" alt="@OperationControllerResources.MoveOperationUpAltText" title="@OperationControllerResources.MoveOperationUpAltText"/>
+                    <input type="submit" value="@OperationControllerResources.OperationFunctionsMoveOperationUpButtonText" class="SubmitImageText"/>
+                }
+            </div>
+        }
+        if (Model.HasNext)
+        {
+            <div>
+                @using (Html.BeginForm("MoveOperationNext", "Operation", listAndOperationRouteValues, FormMethod.Post, new{@class="IconForm"}))
+                {
+                    <input type="image" src="@Url.WebIcon("arrow_down.png")" alt="@OperationControllerResources.MoveOperationDownAltText" title="@OperationControllerResources.MoveOperationDownAltText"/>
+                    <input type="submit" value="@OperationControllerResources.OperationFunctionsMoveOperationDownButtonText" class="SubmitImageText"/>
+                }
+            </div>
+        }
+        if (!Model.IsTopLevel)
+        {
+            <div>
+                @using (Html.BeginForm("PromoteOperation", "Operation", listAndOperationRouteValues, FormMethod.Post, new{@class="IconForm"}))
+                {
+                    <input type="image" src="@Url.WebIcon("arrow_turn_left.png")" alt="@OperationControllerResources.PromoteOperationAltText" title="@OperationControllerResources.PromoteOperationAltText"/>
+                    <input type="submit" value="@OperationControllerResources.OperationFunctionsPromoteOperationButtonText" class="SubmitImageText"/>
+                }
+            </div>
+        }
+        if (!Model.IsFirstChild && !Model.IsRoot)
+        {
+            <div>
+                @using (Html.BeginForm("DemoteOperation", "Operation", listAndOperationRouteValues, FormMethod.Post, new{@class="IconForm"}))
+            {
+                <input type="image" src="@Url.WebIcon("arrow_turn_right_down.png")" alt="@OperationControllerResources.DemoteOperationAltText" title="@OperationControllerResources.DemoteOperationAltText"/>
+                <input type="submit" value="@OperationControllerResources.OperationFunctionsDemoteOperationButtonText" class="SubmitImageText"/>
+            }
+            </div>
+        }
+    }
+</div>
+
+@if (Model.IsScripted)
+{
+<text>
+<script type="text/javascript">
+    @Html.Raw(RenderExtensions.SubmitOkCancelDialog(deleteFormId, deleteButtonId, string.Empty))
+</script>
+</text>
+}

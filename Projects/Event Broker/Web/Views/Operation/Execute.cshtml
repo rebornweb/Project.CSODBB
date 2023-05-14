@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = Html.Title(TitleResources.ExecuteOperationListPageTitle);
+}
+@model Guid
+
+<h2>@OperationControllerResources.ExecuteHeading</h2>
+
+@string.Format(@OperationControllerResources.ExecutedOperationListWithIDMessageTemplate, @Model)
+

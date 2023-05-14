@@ -1,0 +1,39 @@
+﻿@using Unify.Connect.Web.Extensions
+@model AdapterGroupConfigurationViewInformation
+           
+@using Unify.Framework.Web
+
+@{
+    string createOrEdit = RenderExtensions.SimpleCreateOrEditText(Model.Edit);
+
+    ViewBag.Title = Html.Title(string.Format(TitleResources.CreateOrEditAdapterGroupTitleTemplate, createOrEdit));
+}
+
+@using (
+    Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEditAdapterGroup", "Group", FormMethod.Post, "CreateOrEditAdapterGroupForm"),
+        WebStudioResources.SaveText,
+        "CreateOrEditAdapterGroupForm",
+        GroupControllerResources.SaveGroupConfigurationAltText
+    ))
+{
+    @Html.HiddenFor(model => model.Edit)
+    @Html.HiddenFor(model => model.Id)    
+    
+    <fieldset>
+        <legend>@string.Format(GroupControllerResources.CreateOrEditAdapterGroupHeadingTemplate, createOrEdit)</legend>
+        
+        @using (Html.MetaDataFor(model => model.Name, new { description = GroupControllerResources.AdapterGroupDisplayNameDescription }))
+        {
+            @Html.LabelFor(model => model.Name, GroupControllerResources.AdapterGroupDisplayNameLabel)
+            @Html.TextBoxFor(model => model.Name)
+        }
+        
+        @using (Html.MetaDataFor(model => model.Comment, new { description = GroupControllerResources.AdapterGroupCommentDescription }))
+        {
+            @Html.LabelFor(model => model.Comment, GroupControllerResources.AdapterGroupCommentLabel)
+            @Html.TextAreaFor(model => model.Comment, new { @class = "wide-text" })
+        }
+
+    </fieldset>
+}

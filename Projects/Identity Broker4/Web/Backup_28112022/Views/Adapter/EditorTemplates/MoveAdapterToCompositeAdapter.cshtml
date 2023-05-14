@@ -1,0 +1,41 @@
+﻿@model MoveToExistingCompositeAdapterViewInformation
+
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+
+@if (!Model.CompositeAdapters.Any())
+{
+    <p>@AdapterResources.NoConfiguredCompositeAdaptersMessage</p>
+}
+else
+{
+    <p>@AdapterResources.MoveToExistingCompositeAdapterDescription</p>
+
+    @Html.HiddenFor(model => model.AdapterIdToAdd)
+    @Html.HiddenFor(model => model.AdapterNameToAdd)
+
+    <br/>
+
+    <div>
+        @Html.LabelFor(model => model.AdapterNameToAdd, AdapterResources.AdapterNameLabel)
+        @Html.DisplayTextFor(model => model.AdapterNameToAdd)
+    </div>
+    
+    <fieldset>
+        
+        @using (Html.MetaDataFor(model => model.SelectedCompositeAdapter, new { description = AdapterResources.ChooseCompositeAdapterDescription }))
+        {
+            @Html.LabelFor(model => model.SelectedCompositeAdapter, AdapterResources.TargetCompositeAdapterLabel)
+
+            @Html.DropDownListFor(model => model.SelectedCompositeAdapter,
+                            new SelectList(
+                                Model.CompositeAdapters,
+                                "Value",
+                                "Key",
+                                Model.CompositeAdapters.Any(pair => pair.Value == Model.SelectedCompositeAdapter)
+                                    ? Model.CompositeAdapters.Where(pair => pair.Value == Model.SelectedCompositeAdapter).Select(pair => pair).First()
+                                    : Model.CompositeAdapters.First()))
+        }
+
+    </fieldset>
+}

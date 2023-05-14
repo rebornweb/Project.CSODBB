@@ -1,0 +1,46 @@
+﻿@model TimestampSchemaFieldDefinitionInformation 
+@using Unify.Framework
+@using Unify.Framework.Web
+@{
+    string dateTimeFormatDescription = string.Format(
+           ConnectorControllerResources.DayTimeAndDateAndDateTimeFormatDescriptionTemplate,
+           LoggingControllerConstants.DateTimeFormatCSharpEditMode,
+           LoggingControllerConstants.DateTimeSampleEditMode);
+}
+<fieldset>
+    <legend>
+        @ConnectorControllerResources.MinimumValueInnerValidatorLegendText
+        @Html.CheckBoxFor(model => model.EnableMinValueFlag, new { @class = "CheckCollapse" })
+        <span class="hint">@ConnectorControllerResources.MinimumValueInnerValidatorFlagDescription<span class="hint-pointer">&nbsp;</span></span>
+    </legend>
+    @using (Html.MetaDataFor(model => model.MinValue, new { description = string.Concat(ConnectorControllerResources.EntitySchemaRowMinValueDescription, " ", dateTimeFormatDescription) }, new { @class = "CheckSection" }))
+    {
+        @Html.LabelFor(model => model.MinValue, ConnectorControllerResources.EntitySchemaRowMinValueLabel)
+        @Html.TextBoxFor(model => model.MinValue, LoggingControllerConstants.DateTimeFormatStrCSharpEditMode)
+    }
+</fieldset>
+<fieldset>
+    <legend>
+        @ConnectorControllerResources.MaximumValueInnerValidatorLegendText
+        @Html.CheckBoxFor(model => model.EnableMaxValueFlag, new { @class = "CheckCollapse" })
+        <span class="hint">@ConnectorControllerResources.MaximumValueInnerValidatorFlagDescription<span class="hint-pointer">&nbsp;</span></span>
+    </legend>
+    @using (Html.MetaDataFor(model => model.MaxValue, new { description = string.Concat(ConnectorControllerResources.EntitySchemaRowMaxValueDescription, " ", dateTimeFormatDescription) }, new { @class = "CheckSection" }))
+    {
+        @Html.LabelFor(model => model.MaxValue, ConnectorControllerResources.EntitySchemaRowMaxValueLabel)
+        @Html.TextBoxFor(model => model.MaxValue, LoggingControllerConstants.DateTimeFormatStrCSharpEditMode)
+    }
+</fieldset>
+<script type="text/javascript">
+    $(function () {
+        $("#MaxValue, #MinValue").datetimepicker(
+            {
+                dateFormat: "@LoggingControllerConstants.DateFormatJQueryEditMode",
+                timeFormat: "@LoggingControllerConstants.TimeFormatJQueryEditMode",
+                showSecond: true,
+                changeMonth: true,
+                changeYear: true,
+                showWeek: true
+            });
+    });
+</script>

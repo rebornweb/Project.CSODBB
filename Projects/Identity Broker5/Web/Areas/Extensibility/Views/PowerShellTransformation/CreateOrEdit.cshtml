@@ -1,0 +1,45 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model PowerShellTransformationViewInformation
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "PowerShellTransformation", FormMethod.Post),
+        TransformationResources.SaveTransformationButtonText,
+        "SaveTransformationForm",
+        TransformationResources.SaveTransformationButtonAltText
+    ))
+{
+    @Html.TransformationDetailsFor(model => model)
+
+    <fieldset>
+        <legend>@TransformationResources.PowerShellTransformationLegend</legend>
+
+        @using (Html.MetaDataFor(model => model.TransformationScript, new {description = TransformationResources.PowerShellTransformationDescription}))
+        {
+            @Html.LabelFor(model => model.TransformationScript, TransformationResources.PowerShellTransformationLabel)
+            @Html.TextAreaFor(model => model.TransformationScript, 10, 50, new {@class = "wide-text"})
+        }
+    </fieldset>
+
+    <fieldset>
+        <legend>@TransformationResources.ReversePowerShellTransformationLegend</legend>
+
+        @using (Html.MetaDataFor(model => model.ReverseTransformationScript, new { description = TransformationResources.ReversePowerShellTransformationDescription }))
+        {
+            @Html.LabelFor(model => model.ReverseTransformationScript, TransformationResources.ReversePowerShellTransformationLabel)
+            @Html.TextAreaFor(model => model.ReverseTransformationScript, 10, 50, new { @class = "wide-text" })
+        }
+    </fieldset>
+
+    <fieldset>
+        <legend>@TransformationResources.PowerShellSchemaLegend</legend>
+
+        @using (Html.MetaDataFor(model => model.SchemaScript, new { description = TransformationResources.PowerShellSchemaDescription }))
+        {
+            @Html.LabelFor(model => model.SchemaScript, TransformationResources.PowerShellSchemaLabel)
+            @Html.TextAreaFor(model => model.SchemaScript, 10, 50, new { @class = "wide-text" })
+        }
+    </fieldset>
+
+}

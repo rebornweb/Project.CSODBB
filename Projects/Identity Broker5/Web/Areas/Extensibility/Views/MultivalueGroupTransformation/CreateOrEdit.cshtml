@@ -1,0 +1,85 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model MultivalueGroupTransformationViewInformation
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "MultivalueGroupTransformation", FormMethod.Post) ,
+        TransformationResources.SaveTransformationButtonText,
+        "SaveForeignDNTransformationForm",
+        TransformationResources.SaveTransformationButtonAltText
+    ))
+{
+    @Html.TransformationDetailsFor(model => model)
+    @Html.HiddenFor(model => model.RelationshipConnectorId)
+
+    <fieldset>
+        @using (Html.MetaDataFor(model => model.InputKey, new {description = TransformationResources.ForeignDnGeneratorTransformationInputKeyDescription, hideRequired = true}, new {@class = "chzn-form-fieldset-container"}))
+        {
+            @Html.LabelFor(model => model.InputKey, TransformationResources.ForeignDnGeneratorTransformationInputKeyLabel)
+            @Html.SchemaFieldsFor(model => model.InputKey, Model.AdapterSchema, Model.InputKey, Model.AdapterSchemaTypes, new[] {Unify.Framework.ValueType.MultiValue})
+        }
+        @using (Html.MetaDataFor(model => model.RelationKey, new { description = TransformationResources.ForeignDnGeneratorTransformationRelationKeyDescription, hideRequired = true }, new { @class = "chzn-form-fieldset-container" }))
+        {
+            @Html.LabelFor(model => model.RelationKey, TransformationResources.ForeignDnGeneratorTransformationRelationKeyLabel)
+            @Html.SchemaFieldsFor(model => model.RelationKey, Model.RelationalSchema, Model.RelationKey)
+        }
+        @using (Html.MetaDataFor(model => model.GroupTarget, new { description = TransformationResources.ForeignDnGeneratorTransformationGroupTargetDescription }))
+        {
+            @Html.LabelFor(model => model.GroupTarget, TransformationResources.ForeignDnGeneratorTransformationGroupTargetLabel)
+            @Html.TextBoxFor(model => model.GroupTarget)
+        }
+        @using (Html.MetaDataFor(model => model.GenerateDistinguishedNames, new { description = TransformationResources.GroupTransformationGenerateDistinguishedNamesDescription }, new { @class = "controlset" }))
+        {
+            @Html.RadioButtonFor(model => model.GenerateDistinguishedNames, false, new { onclick = "$('#DistinguishedNameTemplateSection').hide(); $('#PlainFieldSection').show();" })
+            @Html.LabelFor(model => model.GenerateDistinguishedNames, TransformationResources.GroupTransformationGenerateDistinguishedNamesFalseLabel)
+
+            @Html.RadioButtonFor(model => model.GenerateDistinguishedNames, true, new { onclick = "$('#DistinguishedNameTemplateSection').show(); $('#PlainFieldSection').hide();" })
+            @Html.LabelFor(model => model.GenerateDistinguishedNames, TransformationResources.GroupTransformationGenerateDistinguishedNamesTrueLabel)
+        }
+
+        <div id="DistinguishedNameTemplateSection">
+            @using (Html.MetaDataFor(model => model.Template, new { description = TransformationResources.ForeignDnGeneratorTransformationTemplateDescription, hideRequired = true }))
+            {
+                @Html.LabelFor(model => model.Template)
+                <div>
+                    @Html.DnTemplateFor(Model.Template, Model.RelationalSchema, Model.AdapterSchemaTypes, Model.Adapters, Model.DnAdapterId)
+                </div>
+            }
+        </div>
+        <div id="PlainFieldSection">
+            @using (Html.MetaDataFor(model => model.Source, new { description = TransformationResources.GroupTransformationSourceDescription }))
+            {
+                @Html.LabelFor(model => model.Source, TransformationResources.GroupTransformationSourceLabel)
+                @Html.SchemaFieldsFor(model => model.Source, Model.RelationalSchema, Model.Source, Model.RelationalSchema)
+            }
+        </div>
+        @using (Html.MetaDataFor(model => model.Distinct, new { description = TransformationResources.GroupTransformationDistinctDescription }))
+        {
+            @Html.LabelFor(model => model.Distinct, TransformationResources.GroupTransformationDistinctLabel)
+            @Html.CheckBoxFor(model => model.Distinct)
+        }
+
+        @using (Html.MetaDataFor(model => model.RelationReference, new { description = TransformationResources.ForeignDnGeneratorTransformationRelationReferenceDescription, hideRequired = true }, new { @class = "chzn-form-fieldset-container" }))
+        {
+            @Html.LabelFor(model => model.RelationReference, TransformationResources.ForeignDnGeneratorTransformationRelationReferenceLabel)
+            @Html.SchemaFieldsFor(model => model.RelationReference, Model.RelationalSchema, Model.RelationReference)
+        }
+
+        @if (Model.GenerateDistinguishedNames)
+        {
+            <script type="text/javascript">
+                $('#DistinguishedNameTemplateSection').show();
+                $('#PlainFieldSection').hide();
+            </script>
+        }
+        else
+        {
+            <script type="text/javascript">
+                $('#DistinguishedNameTemplateSection').hide();
+                $('#PlainFieldSection').show();
+            </script>
+        }
+    </fieldset>
+    
+}

@@ -1,0 +1,12 @@
+﻿@using Unify.Connect.Web.Extensions
+@model TalliedStatisticsJobViewInformationBase
+
+
+@if (Model.LastRunStarted != null)
+{
+    <div>
+        @AdapterResources.LastRunTotalEntitiesLabel
+        @Model.LastRunCount
+    </div>    
+    <br/>
+}

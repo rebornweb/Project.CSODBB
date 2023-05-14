@@ -1,0 +1,634 @@
+﻿@using System.Text
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework
+@using Unify.Framework.Collections
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+@model EntitySearchViewInformation
+
+@{
+    //Images and headers
+    Html.RenderAction("DataTablesHeader", "Logging", new { area = "Framework" });
+    Html.RenderAction("SchedulesHeader", "Schedules", new { area = "Framework" });
+
+    ViewBag.Title = Html.Title(Model.Title);
+
+    string demoteRowVisibilityImageUrl = HttpUtility.HtmlEncode(Url.WebIcon("table_delete.png"));
+    string improveRowVisibilityImageUrl = HttpUtility.HtmlEncode(Url.WebIcon("table_add.png"));
+    string groupEntitiesByImageUrl = HttpUtility.HtmlEncode(Url.WebIcon("table_multiple.png"));
+    string refreshDataTableImageUrl = HttpUtility.HtmlEncode(Url.WebIcon("arrow_rotate_clockwise.png"));
+    string destroyDataTableStateImageUrl = HttpUtility.HtmlEncode(Url.WebIcon("table_delete.png"));
+    string ascendingTableSortImageUrl = HttpUtility.HtmlEncode(Url.WebIcon("table_sort_asc.png"));
+    string descendingTableSortImageUrl = HttpUtility.HtmlEncode(Url.WebIcon("table_sort_desc.png"));
+    string addSearchTermForRowImageUrl = HttpUtility.HtmlEncode(Url.WebIcon("magnifier_zoom_in.png"));
+
+    // View data
+    IDictionary<GroupedNameValueCollectionKey, Unify.Framework.ValueType> schema = Model.Schema;
+    ICollection<GroupedNameValueCollectionKey> keys = schema.Keys.ToList();
+
+    var columnArray = new StringBuilder();
+
+    columnArray.Append("var columnsArray={");
+
+    IList<string> columnHeadings = new List<string>();
+
+    var dataTablesBuilder = new StringBuilder();
+
+    dataTablesBuilder.Append(string.Concat("{\"sName\": \"", EntitySerializer.EntityIdColumnName, "\",\"sTitle\": \"", EntitySerializer.EntityIdColumnName, "\""));
+    dataTablesBuilder.Append(", \"bSortable\" : false, \"fnRender\": function(oObj) { var entityId = oObj.aData[0]; var rowEntityDisplayId = 'RowEntityDisplay' +  entityId; var onclickFunction = \"DisplayEntity('\" + rowEntityDisplayId + \"', $.trim('\" + entityId + \"'));\"; return '<div  id=\"' + rowEntityDisplayId + '\"></div><a href=\"javascript:;\" onclick=\"' + onclickFunction + ' return false; \">' + entityId + '</a>';}");
+    dataTablesBuilder.Append("},");
+
+    const int leftOffset = 1;
+    const string valueName = "value";
+
+    string currentControllerName = ViewContext.Controller.ControllerContext.RouteData.ExecutingControllerName();
+
+    schema.Visit((column, count) =>
+    {
+        dataTablesBuilder.Append(string.Concat("{\"sName\": \"", column.Key, "\",\"sTitle\": \"", column.Key, "\""));
+
+        if (Model.FieldVisibility.ContainsKey(column.Key) && !Model.FieldVisibility[column.Key])
+        {
+            dataTablesBuilder.Append(",\"bVisible\": false");
+        }
+
+        var fieldDefinition = schema[column.Key];
+
+        dataTablesBuilder.Append(string.Concat(
+            ", \"fnRender\": function(oObj) { ",
+                                "var ", valueName, " = oObj.aData[", count + leftOffset, "]; ",
+                                "if (", EntitySerializer.IsNullFunction(valueName), ")",
+                                "{ return \"", EntitySerializer.NullDisplay(), "\"; }",
+                                "else { return ", valueName, " }}"));
+
+        if ((fieldDefinition & Unify.Framework.ValueType.MultiValue) != 0 || fieldDefinition == Unify.Framework.ValueType.Guid)
+        {
+            dataTablesBuilder.Append(", \"bSortable\" : false");
+        }
+
+        dataTablesBuilder.Append("}");
+
+        if (count < keys.Count - 1)
+        {
+            dataTablesBuilder.Append(",");
+        }
+    });
+
+    schema.Visit((column, count) =>
+    {
+        columnArray.Append(string.Format("\"{0}\":{1}", column.Key, count + 1));
+
+        columnHeadings.Add(column.Key.ToString());
+
+        if (count < keys.Count - 1)
+        {
+            columnArray.Append(",");
+        }
+    });
+
+    columnArray.Append("};");
+
+    var columnArrayString = columnArray.ToString();
+    var columnsString = dataTablesBuilder.ToString();
+}
+
+<style type="text/css">
+    .ui-dialog
+    {
+     
+    }
+    
+    .VisibleSetting
+    {
+    }
+    
+    .NotVisibleSetting
+    {
+        display:none;
+    }
+    
+    .dataTables_wrapper {
+        min-height: 0;
+        height: auto;
+    }
+</style>
+
+<h1>@Model.Title&nbsp;<a href="@Url.Action("SearchEntities", currentControllerName, new { partitionId = Model.PartitionId, pageNumber = Model.PageNumber, pageSize = Model.PageSize })" onclick="Redraw(); return false;"><img src="@refreshDataTableImageUrl" title="Refresh the displayed entities" alt="Refresh the displayed entities" /></a></h1>
+
+@RenderEntities(columnHeadings, schema, demoteRowVisibilityImageUrl, groupEntitiesByImageUrl, currentControllerName, ascendingTableSortImageUrl, descendingTableSortImageUrl, addSearchTermForRowImageUrl)
+
+<h2>@EntitySchemaResources.SearchSettingsHeading</h2>
+
+<div class="FaintBorder">
+    @RenderSearchSettings(Model.PartitionId, improveRowVisibilityImageUrl, currentControllerName, destroyDataTableStateImageUrl)
+</div>
+
+<h2>@EntitySchemaResources.LegendHeading</h2>
+
+<div class="FaintBorder">
+    <table>
+        <tr>
+            <td><img src="@demoteRowVisibilityImageUrl" alt="@EntitySchemaResources.HideColumnAltText" title="@EntitySchemaResources.HideColumnAltText"/></td>
+            <td>@EntitySchemaResources.HideColumnDescription</td>
+        </tr>
+        <tr class="scriptonly">
+            <td><img src="@groupEntitiesByImageUrl" alt="@EntitySchemaResources.GroupColumnAltText" title="@EntitySchemaResources.GroupColumnAltText"/></td>
+            <td>@EntitySchemaResources.GroupColumnDescription</td>
+        </tr>
+        <tr>
+            <td><img src="@addSearchTermForRowImageUrl" alt="@EntitySchemaResources.SearchColumnAltText" title="@EntitySchemaResources.SearchColumnAltText"/></td>
+            <td>@EntitySchemaResources.SearchColumnDescription</td>
+        </tr>
+    </table>
+    <noscript>
+        <table>
+            <tr>
+                <td><img src="@descendingTableSortImageUrl" alt="@EntitySchemaResources.OrderByDescendingAltText" title="@EntitySchemaResources.OrderByDescendingAltText"/></td>   
+                <td>@EntitySchemaResources.OrderByDescendingDescription</td>
+            </tr>
+            <tr>
+                <td><img src="@ascendingTableSortImageUrl" alt="@EntitySchemaResources.OrderByAscendingAltText" title="@EntitySchemaResources.OrderByAscendingAltText"/></td>
+                <td>@EntitySchemaResources.OrderByAscendingDescription</td>
+            </tr>
+        </table>
+    </noscript>
+</div>
+
+<br/>
+
+<noscript>
+    <div>
+        @EntitySchemaResources.TotalCountLabel @Model.TotalRecords
+    </div>
+</noscript>
+
+<script type="text/javascript">
+    @ViewData.RetrieveListItems("AddEntityColumnSearch")
+    
+    @Html.Raw(columnArrayString)
+    
+    var table = PrepareEntityTable();
+    
+    $(document).ready(function () {
+        $(".NotVisibleSetting").hide();
+
+        $("#Entities_filter").hide();
+
+	    $('.dataTables_filter input')
+    	    .unbind('keypress keyup')
+    	    .keypress(function(e) {
+	            if (e.which == 13) {
+                    table.fnFilter($(this).val());
+	            }
+	        })
+	        .hide();
+	    
+	    $('#Entities').toggleClass("FeintTableRows");
+        
+	    RefreshColumnVisibilityDescriptor();
+        
+        $("#EntityIdFilterResult").change(
+            function () {
+                table.fnFilter($("#EntityIdFilterResult").val());
+	        }
+        );
+
+        $("#EntitiesContainer").css({ 'overflow': 'inherit' });
+	});
+
+    function ClearEntityTableState() {
+        table.fnDestroy();
+        $("#EntitySearchGrouping").hide();
+        PrepareEntityTable();
+    }
+
+    function RedrawGlobalDataTable() {
+        table.fnDraw();
+    }
+    
+    function GroupByColumn(columnIndex, columnName) {
+        ClearEntityTableState();
+
+        $("#EntitySearchGrouping").show();
+        $("#EntitySearchGroupingText").text(columnName);
+        $(".RowGroupings").hide();
+        
+        table.rowGrouping({
+            iGroupingColumnIndex: columnIndex
+        });
+    }
+
+    function PrepareEntityTable() {
+        return $('#Entities').dataTable({
+                "aoColumns": [@Html.Raw(columnsString)],
+                "bAutoWidth": true,
+                "sScrollX": "100%",
+                "bJQueryUI": true,
+                "sPaginationType": "full_numbers",
+                "bProcessing": true,
+                "bSort": true,
+                "bFilter": true,
+                "bServerSide": true,
+                "sAjaxSource": "@Html.Raw(Url.Action("EntityData", currentControllerName, new { partitionId = Model.PartitionId, searchContext = Model.SearchContext }))",
+                "aaSorting": [],
+                "iDisplayLength": 20,
+                "aLengthMenu" : [[10, 20, 50, 100 -1], [10, 20, 50, 100, "All"]]
+            });
+    }
+
+    function Redraw() {
+        $(document).ready(function ()
+        {
+            RedrawGlobalDataTable();
+
+            $.get("@Url.Action("RenderCurrentSearchTerms", currentControllerName, new { partitionId = Model.PartitionId, searchContext = Model.SearchContext })&amp;cacheBusting=@Guid.NewGuid().ToString()", function(data) {
+                $('#CurrentSearchTerms').html(data);
+            });
+
+            $.get("@Url.Action("RenderCurrentSortDirections", currentControllerName, new { partitionId = Model.PartitionId, cacheBusting = Guid.NewGuid() })&amp;cacheBusting=@Guid.NewGuid().ToString()", function(data) {
+                $("#CurrentSortDirections").html(data);
+            });
+        });
+    }
+    
+    function DisplayEntity(rowEntityDisplayId, entityId) {
+        $.get("@Url.Action("ViewEntity", currentControllerName, new { partitionId = Model.PartitionId, context = Model.SearchContext })", 
+                { entityId : entityId, context : '@Model.SearchContext' },
+                function(data) {
+                    $('#' + rowEntityDisplayId)
+                        .dialog({
+                            autoResize:true,
+                            width:'auto',
+                            height:450,
+                            create: function (event) { $(event.target).parent().css('position', 'fixed'); }
+                            }).html(data);
+                });
+    }
+    
+    function SelectSearchValueTypeSection(operatorContainer, attributeValue, valueTypeLookup, stringValue, booleanValue, dateValue, timespanValue, dateTimeValue) {
+        var completeattributeSelection = "#" + attributeValue + " option:selected";
+        var completeoperatorSelection = "#" + operatorContainer + " option:selected";
+
+        var attribute = "";
+        $(completeattributeSelection).each(function () {
+            attribute += $(this).val();
+        });
+
+        var operator = "";
+        $(completeoperatorSelection).each(function() {
+            operator += $(this).val();
+        });
+
+        var currentValueType = valueTypeLookup[attribute][operator];
+
+        $("#" + stringValue).hide();
+        $("#" + booleanValue).hide();
+        $("#" + dateValue).hide();
+        $("#" + timespanValue).hide();
+        $("#" + dateTimeValue).hide();
+        
+        if (currentValueType == "") {
+            $("attributeContainer").hide();
+        } else {
+            $("attributeContainer").show();
+            if (currentValueType == "@Unify.Framework.ValueType.Date") {
+                $("#" + dateValue).show();
+            } else if (currentValueType == "@Unify.Framework.ValueType.Time") {
+                $("#" + timespanValue).show();
+            } else if (currentValueType == "@Unify.Framework.ValueType.Timestamp") {
+                $("#" + dateTimeValue).show();
+            } else if (currentValueType == "@Unify.Framework.ValueType.Boolean") {
+                $("#" + booleanValue).show();
+            } else {
+                $("#" + stringValue).show();
+            }
+        }
+    }
+
+    function ShowHideColumnSearchSections(attributeSelectListId, partialIdName, attributeHandler) {
+        var completeSelectedSelector = '#' + attributeSelectListId + ' option:selected';
+
+        $(completeSelectedSelector).each(function () {
+            var valueName = $(this).text();
+            var id = "#operators" + valueName + partialIdName;
+            $(id).show();
+            attributeHandler(valueName);
+        });
+
+        var completeNotSelectedSelector = '#' + attributeSelectListId + ' option:not(:selected)';
+
+        $(completeNotSelectedSelector).each(function () {
+            var valueName = $(this).text();
+            var id = "#operators" + valueName + partialIdName;
+            $(id).hide();
+        });
+    }
+    
+    function SubmitSearchForm(submitFormId) {
+        $.post('@Url.Action("EntityColumnSearch", ViewContext.Controller.ControllerContext.RouteData.ExecutingControllerName())', 
+            $("#" + submitFormId).serialize(),
+            function () {
+                Redraw();
+                return false;   
+            });
+    }
+
+    function ToggleColumnVisibility(column, show) {
+        table.fnSetColumnVis(columnsArray[column], show);
+        table.fnDraw();
+        
+        $(".schemaRowSetting_" + column)
+            .toggleClass("VisibleSetting", !show)
+            .toggleClass("NotVisibleSetting", show);
+
+        $(".NotVisibleSetting").hide();
+        $(".VisibleSetting").show();
+
+        RefreshColumnVisibilityDescriptor();
+    };
+
+    function ShowColumn(column) {
+        ToggleColumnVisibility(column, true);
+    };
+    
+    function HideColumn(column) {
+        ToggleColumnVisibility(column, false);
+    };
+    
+    function RefreshColumnVisibilityDescriptor() {
+        if ($(".RowVisibilitySetting.VisibleSetting").length == 0)
+        {
+            $("#HiddenColumns").hide();
+        }
+        else {
+            $("#HiddenColumns").show();
+        }
+    };
+</script>
+
+@helper RenderColumnSearchVisibilitySetting(GroupedNameValueCollectionKey schemaKey, string improveRowVisibilityImageUrl, bool visible, string currentControllerName)
+{
+    string actionUrl = HttpUtility.HtmlEncode(Url.Action("ToggleEntitySearchColumn", currentControllerName, new { partitionId = Model.PartitionId, columnName = schemaKey.ToString() }));
+    string function = string.Concat("$.post('", actionUrl, "', function(data) { ShowColumn('", schemaKey, "'); })");
+    string visibilityClass = visible ? "VisibleSetting" : "NotVisibleSetting";
+    string schemaSettingId = string.Concat("schemaRowSetting_", schemaKey);
+    
+    <div class="@visibilityClass @schemaSettingId RowVisibilitySetting" id="@schemaSettingId" style="border:1px solid;float:left;padding:5px;margin:2px"> 
+        @schemaKey.ToString()
+
+        <form class="IconForm" action="@Html.Raw(actionUrl)" method="post">
+            &nbsp;
+            <input type="image" src="@Html.Raw(improveRowVisibilityImageUrl)" alt="Show column" title="Show column" onclick="@Html.Raw(function); return false;"/>
+        </form>
+    </div>
+}
+
+@helper RenderSearchSettings(Guid partitionId, string improveRowVisibilityImageUrl, string currentControllerName, string destroyDataTableStateImageUrl)
+{
+    <div id="EntitySearchGrouping" style="display:none">
+        <h4>@EntitySchemaResources.ColumnGroupingHeading</h4>
+        @Html.Raw(string.Format(EntitySchemaResources.ColumnGroupingDynamicLabel, "EntitySearchGroupingText"))
+        <a href="@Request.Url.AbsoluteUri"><img src="@destroyDataTableStateImageUrl" title="@EntitySchemaResources.ClearGroupingAltText" alt="@EntitySchemaResources.ClearGroupingAltText"/></a>
+    </div>
+    
+    string showHideColumnsVisibilityClass = !Model.HiddenSchemaItems.Any() ? "NotVisibleSetting" : "VisibleSetting";
+    
+    <div class="@showHideColumnsVisibilityClass" id="HiddenColumns">
+        <h4>@SchemaResources.HiddenColumnsHeading</h4>
+    
+        @{
+            foreach (var visibilityPairing in Model.FieldVisibility)
+            {
+                @RenderColumnSearchVisibilitySetting(visibilityPairing.Key, improveRowVisibilityImageUrl, !visibilityPairing.Value, currentControllerName)
+            }
+        }
+
+        @if (!Model.VisibileSchemaItems.Any())
+        {
+            <label>@SchemaResources.AllFieldsAreBeingDisplayedMessage</label>
+        }
+
+        <span style="clear:both"></span>    
+        <br /><br />
+    </div>
+        
+    <noscript>
+        <h4>@SchemaResources.PagingHeader</h4>
+
+        @using (Html.BeginForm(
+                        "SearchEntities",
+                        currentControllerName,
+                        FormMethod.Get))
+        {
+            @Html.HiddenFor(model => model.PartitionId, new { id = "PartitionIdHidden" })
+            @Html.HiddenFor(model => model.PageSize, new { id = "PageSizeOne" })
+
+            double pageNumberCount = (double)Model.TotalRecords / Model.PageSize;
+
+            IEnumerable<int> pageNumbers =
+                            Enumerable.Range(0, Math.Abs(pageNumberCount - 0.0) > double.Epsilon && pageNumberCount % (int)pageNumberCount > 0.0
+                                                    ? (int)pageNumberCount + 1
+                                                    : (int)pageNumberCount);
+
+            @EntitySchemaResources.CurrentPageNumberText
+            @Html.DropDownListFor(
+                model => model.PageNumber,
+                new SelectList(pageNumbers.Any() ? pageNumbers : new[] { Model.PageNumber }, Model.PageNumber))
+
+            <input type="submit" value="@SchemaResources.UpdateInputMessage" />
+        }
+
+        @using (Html.BeginForm(
+                        "SearchEntities",
+                        currentControllerName,
+                        FormMethod.Get))
+        {
+            @Html.HiddenFor(model => model.PartitionId)
+
+            @EntitySchemaResources.CurrentPageSizeText
+            @Html.DropDownListFor(
+                model => model.PageSize,
+                new SelectList(new[] { 10, 20, 50, 100 }.Union(new[] { Model.PageSize }).OrderBy(value => value), Model.PageSize))
+
+            <input type="submit" value="@SchemaResources.UpdateInputMessage" />
+        }
+
+        <h4>@EntitySchemaResources.SortDirectionsHeading</h4>
+    
+        <div id="CurrentSortDirections">
+            @{ Html.RenderAction("RenderCurrentSortDirections", currentControllerName, new { partitionId }); }
+        </div>
+
+        <br/>
+
+    </noscript>
+    
+    <h4>@SchemaResources.SearchTermsHeading</h4>
+    
+    <div id="CurrentSearchTerms">
+        @{ Html.RenderAction("RenderCurrentSearchTerms", currentControllerName, new { partitionId }); }
+    </div>
+}
+
+@helper RenderColumnAddSearchTerm(GroupedNameValueCollectionKey column, string currentControllerName, string addSearchTermForRowImageUrl, string nonce)
+{
+    const string addButtonTitle = "Append search terms";
+    string addButtonId = string.Concat("addSearchTerms_", nonce, "_", column);
+
+    string addButtonUrl = Url.Action("AddEntityColumnSearch", currentControllerName, new { partitionId = Model.PartitionId, columnKey = column, searchContext = Model.SearchContext });
+
+    string ajaxFunctionDialogScript = Html.AjaxFunctionDialog("AddEntityColumnSearch", addButtonId, addButtonUrl);
+    ViewData.AddListItem("AddEntityColumnSearch", ajaxFunctionDialogScript);
+
+    string addButtonContent = string.Concat("<a href=\"", HttpUtility.HtmlEncode(addButtonUrl), "\" style=\"color:black\"><img src=\"", addSearchTermForRowImageUrl, "\" title=\"", addButtonTitle, "\" alt=\"", addButtonTitle, "\" class=\"OperationButton\" id=\"", addButtonId, "\" /></a>&nbsp;");
+    <span>@MvcHtmlString.Create(addButtonContent)</span>
+}
+
+@helper RenderEntitySearchFieldFunctions(
+            string columnName,
+            int index,
+            IDictionary<GroupedNameValueCollectionKey, Unify.Framework.ValueType> configuration,
+            string demoteRowVisibilityImageUrl,
+            string groupEntitiesByImageUrl,
+            string currentControllerName,
+            string ascendingTableSortImageUrl,
+            string descendingTableSortImageUrl,
+            string addSearchTermForRowImageUrl,
+            string nonce)
+    {  
+    string actionUrl = HttpUtility.HtmlEncode(Url.Action("ToggleEntitySearchColumn", currentControllerName, new { partitionId = Model.PartitionId, columnName }));
+    string function = string.Concat("$.post('", actionUrl, "', function(data) { HideColumn('", columnName, "'); })");
+    
+    <div style="min-width:200px;text-align: center;">
+        <form action="@actionUrl" method="post" class="IconForm">
+            <input type="image" 
+                   src="@demoteRowVisibilityImageUrl" 
+                   alt="Hide row" 
+                   title="Hide row" 
+                   onclick="@Html.Raw(function); return false;"/>
+        </form>
+        
+        &nbsp;
+    
+        @RenderColumnAddSearchTerm(columnName, currentControllerName, addSearchTermForRowImageUrl, nonce)
+
+        <span class="scriptonly RowGroupings">
+            <a href="javascript:;" onclick="GroupByColumn(@index, '@columnName'); return false;" style="color:#000">
+                <img src="@Html.Raw(groupEntitiesByImageUrl)" alt="Group by field" title="Group by field"/>
+            </a>
+        </span>
+        
+        &nbsp;
+
+        <div class="noscript">
+            @if ((configuration[columnName] & Unify.Framework.ValueType.MultiValue) == 0)
+            {
+                <a href="@Url.Action("SearchEntities", currentControllerName, new { partitionId = Model.PartitionId, pageSize = Model.PageSize, pageNumber = Model.PageNumber, groupColumn = columnName, ascending = true })" style="color:#000">
+                    <img src="@Html.Raw(ascendingTableSortImageUrl)" alt="@EntitySchemaResources.OrderByAscendingAltText" title="@EntitySchemaResources.OrderByAscendingAltText" />
+                </a>
+
+                <text>&nbsp;</text>
+
+                <a href="@Url.Action("SearchEntities", currentControllerName, new { partitionId = Model.PartitionId, pageSize = Model.PageSize, pageNumber = Model.PageNumber, groupColumn = columnName, ascending = false })" style="color:#000">
+                    <img src="@Html.Raw(descendingTableSortImageUrl)" alt="@EntitySchemaResources.OrderByDescendingAltText" title="@EntitySchemaResources.OrderByDescendingAltText" />
+                </a>
+            }
+        </div>
+    </div>
+}
+
+@helper RenderEntities(
+            IList<string> columnHeadings,
+            IDictionary<GroupedNameValueCollectionKey, Unify.Framework.ValueType> schema,
+            string demoteRowVisibilityImageUrl,
+            string groupEntitiesByImageUrl,
+            string currentControllerName,
+            string ascendingTableSortImageUrl,
+            string descendingTableSortImageUrl,
+            string addSearchTermForRowImageUrl)
+    {
+    <div style="overflow:auto" id="EntitiesContainer">
+        <table id="Entities" class="FeintTableRows">
+
+            <thead class="EntitySearchFields" style="border:1px solid">
+                <tr id="columnOperators" style="height:50px;" class="scriptonly"> 
+                    <th>
+                        <span>
+                            <input type="text" name="EntityIdFilter" id="EntityIdFilterResult"/>
+                        </span>
+                    </th>
+                    @foreach (string row in columnHeadings)
+                    {
+                        string visibilityClass = Model.FieldVisibility[row] ? "VisibleSetting" : "NotVisibleSetting";
+
+                        <th class="@visibilityClass">
+                            <div class="scriptonly EntitySearchFields">
+                                @RenderEntitySearchFieldFunctions(
+                                    row,
+                                    columnHeadings.IndexOf(row) + 1,
+                                    schema,
+                                    demoteRowVisibilityImageUrl,
+                                    groupEntitiesByImageUrl,
+                                    currentControllerName,
+                                    ascendingTableSortImageUrl,
+                                    descendingTableSortImageUrl,
+                                    addSearchTermForRowImageUrl,
+                                    "one")
+                            </div>
+                        </th>
+                    }
+                </tr>
+                <tr style="height:50px;">
+                    <th>@EntitySerializer.EntityIdColumnName</th>
+                    @foreach (string row in columnHeadings)
+                    {
+                        string visibilityClass = Model.FieldVisibility[row] ? "VisibleSetting" : "NotVisibleSetting";
+
+                        <th class="@visibilityClass" style="width:auto">
+                            @row
+                            <div class="noscript">
+                                @RenderEntitySearchFieldFunctions(
+                                    row,
+                                    columnHeadings.IndexOf(row) + 1,
+                                    schema,
+                                    demoteRowVisibilityImageUrl,
+                                    groupEntitiesByImageUrl,
+                                    currentControllerName,
+                                    ascendingTableSortImageUrl,
+                                    descendingTableSortImageUrl,
+                                    addSearchTermForRowImageUrl,
+                                    "two")
+                            </div>
+                        </th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var entity in Model.Entities)
+                {
+                    IDictionary<GroupedNameValueCollectionKey, string> entityDisplayValues = entity.EntityDisplayValues(schema);
+                    
+                    <tr class="noscript">
+                        <td>
+                            <a href="@Url.Action("ViewEntity", currentControllerName, new { entityId = entity.EntityId, partitionId = Model.PartitionId, context = Model.SearchContext })">
+                                @entity.EntityId.ToString()
+                            </a>
+                        </td>
+
+                        @foreach (var row in columnHeadings)
+                        {
+                            string visibilityClass = Model.FieldVisibility[row] ? "VisibleSetting" : "NotVisibleSetting";
+                            string value = entityDisplayValues[row];
+                            
+                            <text>
+                            <td class="standardSchemaField FeintTableRows @visibilityClass">
+                                @Html.Raw(EntitySerializer.IsNull(value) ? EntitySerializer.NullDisplay(): Html.EncodeTextSplitLines(value))
+                            </td>
+                            </text>      
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

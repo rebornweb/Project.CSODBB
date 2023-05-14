@@ -1,0 +1,17 @@
+﻿@model MinimumConnectorViewInformation
+
+<div>
+    <h2>
+        @Html.ConnectorImage(Model.Id)
+        @Model.DisplayName
+    </h2>
+</div>
+
+<br/>
+
+<div >
+    @Html.DisplayFor(model => model.Schema, "EntitySchemaRows")
+    <div style="clear:left"></div>
+</div>
+
+<div style="clear:left"></div>

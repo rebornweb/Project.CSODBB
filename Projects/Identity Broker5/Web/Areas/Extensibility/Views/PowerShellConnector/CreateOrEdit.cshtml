@@ -1,0 +1,125 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Client
+@using Unify.Framework.Web
+@using Unify.IdentityBroker.Connector
+@model PowerShellConnectorViewInformation
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "PowerShellConnector", new{area = "Extensibility"}),
+        ConnectorControllerResources.SaveConnectorButtonText,
+        "SavePowerShellConnectorForm",
+        ConnectorControllerResources.SaveConnectorButtonAltText
+    ))
+{
+    @Html.ConnectorDetailsFor(model => model)
+    
+    <fieldset>
+        <legend>@ConnectorControllerResources.PowerShellConnectorImportScriptsLegendText</legend>
+        
+        @using (Html.MetaDataFor(model => model.GetAllEntitiesScript, new {description = ConnectorControllerResources.PowerShellConnectorGetAllEntitiesDescription}))
+        {
+            @Html.LabelFor(model => model.GetAllEntitiesScript, ConnectorControllerResources.PowerShellConnectorGetAllEntitiesLabel)
+            @Html.TextAreaFor(model => model.GetAllEntitiesScript, 10, 50, new {@class = "wide-text"})
+        }
+        
+        @using (Html.MetaDataFor(model => model.PollingType, new { description = ConnectorControllerResources.PowerShellConnectorPollingTypeDescription }, new { @class = "controlset" }))
+        {
+            <span class="label">
+                @ConnectorControllerResources.PowerShellConnectorPollingTypeLabel
+            </span>
+            
+            @Html.RadioButtonFor(model => model.PollingType, PowerShellConnectorPollingType.Entity, new { onchange = "$('#EntityIdChangesContainer').hide(); $('#EntityChangesContainer').show();" })
+            @Html.LabelFor(model => model.PollingType, ConnectorControllerResources.PowerShellPollingTypeEntity)
+
+            @Html.RadioButtonFor(model => model.PollingType, PowerShellConnectorPollingType.EntityId, new { onchange = "$('#EntityIdChangesContainer').show(); $('#EntityChangesContainer').hide();" })
+            @Html.LabelFor(model => model.PollingType, ConnectorControllerResources.PowerShellPollingTypeEntityId)
+
+            @Html.RadioButtonFor(model => model.PollingType, PowerShellConnectorPollingType.None, new { onchange = "$('#EntityIdChangesContainer').hide(); $('#EntityChangesContainer').hide();" })
+            @Html.LabelFor(model => model.PollingType, ConnectorControllerResources.PowerShellPollingTypeNone)
+        }
+        
+        <div id="EntityIdChangesContainer">
+            @using (Html.MetaDataFor(model => model.PollIdChangesScript, new {description = ConnectorControllerResources.PowerShellConnectorPollIdChangesScriptDescription}))
+            {
+                @Html.LabelFor(model => model.PollIdChangesScript, ConnectorControllerResources.PowerShellConnectorPollIdChangesScriptLabel)
+                @Html.TextAreaFor(model => model.PollIdChangesScript, 10, 50, new {@class = "wide-text"})
+            }
+        
+            @using (Html.MetaDataFor(model => model.GetEntitiesScript, new {description = ConnectorControllerResources.PowerShellConnectorGetEntitiesDescription}))
+            {
+                @Html.LabelFor(model => model.GetEntitiesScript, ConnectorControllerResources.PowerShellConnectorGetEntitiesLabel)
+                @Html.TextAreaFor(model => model.GetEntitiesScript, 10, 50, new {@class = "wide-text"})
+            }
+        </div>
+        
+        @using (Html.MetaDataFor(model => model.PollEntityChangesScript, new {description = ConnectorControllerResources.PowerShellConnectorPollEntityChangesDescription}, new {@id = "EntityChangesContainer"}))
+        {
+            @Html.LabelFor(model => model.PollEntityChangesScript, ConnectorControllerResources.PowerShellConnectorPollEntityChangesLabel)
+            @Html.TextAreaFor(model => model.PollEntityChangesScript, 10, 50, new {@class = "wide-text"})
+        }
+    </fieldset>
+    
+    <fieldset>
+        <legend>@ConnectorControllerResources.PowerShellConnectorExportScriptsLegendText</legend>
+        
+        @using (Html.MetaDataFor(model => model.AddEntitiesScript, new {description = ConnectorControllerResources.PowerShellConnectorAddEntitiesDescription}))
+        {
+            @Html.LabelFor(model => model.AddEntitiesScript, ConnectorControllerResources.PowerShellConnectorAddEntitiesLabel)
+            @Html.TextAreaFor(model => model.AddEntitiesScript, 10, 50, new {@class = "wide-text"})
+        }
+        
+        @using (Html.MetaDataFor(model => model.UpdateEntitiesScript, new {description = ConnectorControllerResources.PowerShellConnectorUpdateEntitiesDescription}))
+        {
+            @Html.LabelFor(model => model.UpdateEntitiesScript, ConnectorControllerResources.PowerShellConnectorUpdateEntitiesLabel)
+            @Html.TextAreaFor(model => model.UpdateEntitiesScript, 10, 50, new {@class = "wide-text"})
+        }
+        
+        @using (Html.MetaDataFor(model => model.DeleteEntitiesScript, new {description = ConnectorControllerResources.PowerShellConnectorDeleteEntitiesDescription}))
+        {
+            @Html.LabelFor(model => model.DeleteEntitiesScript, ConnectorControllerResources.PowerShellConnectorDeleteEntitiesLabel)
+            @Html.TextAreaFor(model => model.DeleteEntitiesScript, 10, 50, new {@class = "wide-text"})
+        }
+        
+        @using (Html.MetaDataFor(model => model.DeleteAllEntitiesScript, new {description = ConnectorControllerResources.PowerShellConnectorDeleteAllEntitiesDescription}))
+        {
+            @Html.LabelFor(model => model.DeleteAllEntitiesScript, ConnectorControllerResources.PowerShellConnectorDeleteAllEntitiesLabel)
+            @Html.TextAreaFor(model => model.DeleteAllEntitiesScript, 10, 50, new {@class = "wide-text"})
+        }
+        
+        @using (Html.MetaDataFor(model => model.ChangePasswordScript, new {description = ConnectorControllerResources.PowerShellConnectorChangePasswordDescription}))
+        {
+            @Html.LabelFor(model => model.ChangePasswordScript, ConnectorControllerResources.PowerShellConnectorChangePasswordLabel)
+            @Html.TextAreaFor(model => model.ChangePasswordScript, 10, 50, new {@class = "wide-text"})
+        }
+    </fieldset>
+    
+    <fieldset>
+        <legend>@ConnectorControllerResources.SchemaProviderLegendText</legend>
+        
+        @using (Html.MetaDataFor(model => model.SchemaGenerationScript, new {description = ConnectorControllerResources.PowerShellConnectorSchemaGenerationDescription}))
+        {
+            @Html.LabelFor(model => model.SchemaGenerationScript, ConnectorControllerResources.PowerShellConnectorSchemaGenerationLabel)
+            @Html.TextAreaFor(model => model.SchemaGenerationScript, 10, 50, new {@class = "wide-text"})
+        }
+    </fieldset>
+}
+
+@if (Model.PollingType == PowerShellConnectorPollingType.Entity)
+{
+    <script type="text/javascript">
+        $('#EntityIdChangesContainer').hide(); 
+    </script>
+}
+else if (Model.PollingType == PowerShellConnectorPollingType.EntityId)
+{
+    <script type="text/javascript">
+        $('#EntityChangesContainer').hide();
+    </script>
+}
+else
+{
+    <script type="text/javascript">
+        $('#EntityIdChangesContainer').hide();
+        $('#EntityChangesContainer').hide();
+    </script>
+}

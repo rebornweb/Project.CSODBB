@@ -1,0 +1,22 @@
+﻿@model RangedSchemaFieldDefinitionInformation
+           
+@using Unify.Framework.Web
+
+@{
+    string createOrEditSchemaRowText = RenderExtensions.SimpleCreateOrEditText(Model.Edit);
+
+    ViewBag.Title = Html.Title(string.Format(TitleResources.RangeEntitySchemaValidatorTitleTemplate, createOrEditSchemaRowText));
+    
+    Html.RenderAction("SchedulesHeader", "Schedules", new { area = "Framework" });
+}
+
+@using (Html.DecorateForm(
+            () => Html.BeginForm("RangeEntitySchemaValidator", "Connector", new { connectorId = Model.ConnectorId }, FormMethod.Post, new{id ="RangeEntitySchemaValidatorForm"}),
+            WebStudioResources.SaveText,
+            "RangeEntitySchemaValidatorForm",
+            ConnectorControllerResources.SaveFieldDefinitionAltText))
+{ 
+    @Html.EditorFor(model => model, "RenderEntitySchemaCoreValidatorAttributes")
+    @Html.EditorFor(model => model, "RenderEntitySchemaStringRangeValidatorAttributes")
+}
+

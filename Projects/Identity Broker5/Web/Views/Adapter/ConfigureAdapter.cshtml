@@ -1,0 +1,21 @@
+﻿@using Unify.Framework.Web
+@using Unify.Connect.Web.Extensions
+
+@model AdapterViewInformation
+
+@{
+    ViewBag.Title = Html.Title(TitleResources.ConfigureAdapterTitle);
+}
+
+@using (Html.DecorateForm(
+            () => Html.BeginForm("ConfigureAdapter", "Adapter", FormMethod.Post, new {id="ConfigureAdapterForm"}),
+            WebStudioResources.SaveText,
+            "ConfigureAdapterForm",
+            AdapterResources.SaveAdapterAltText))
+{
+    <fieldset>
+        @Html.EditorFor(model => model, "AdapterViewInformation")
+    </fieldset>
+}
+
+

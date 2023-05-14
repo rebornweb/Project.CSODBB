@@ -1,0 +1,37 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model MergeCollectionsTransformationViewInformation
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "MergeCollectionsTransformations", FormMethod.Post),
+        TransformationResources.SaveTransformationButtonText,
+        "SaveMergeTransformationForm",
+        TransformationResources.SaveTransformationButtonAltText
+    ))
+{
+    @Html.TransformationDetailsFor(model => model)
+    
+    <fieldset>
+        
+        @using (Html.MetaDataFor(model => model.Sources, new { description = TransformationResources.MergeCollectionsTransformationSourcesDescription } ))
+        {
+            @Html.LabelFor(model => model.Sources, TransformationResources.MergeCollectionsTransformationCollectionsDescription)
+            @Html.ListBoxFor(model => model.Sources, new MultiSelectList(Model.AvailableSources))
+        }
+        
+        @using (Html.MetaDataFor(model => model.Target, new { description = TransformationResources.MergeCollectionsTransformationTargetDescription }))
+        {
+            @Html.LabelFor(model => model.Target)
+            @Html.TextBoxFor(model => model.Target)
+        }
+        
+        @using (Html.MetaDataFor(model => model.RemoveDuplicates, new { description = TransformationResources.MergeCollectionsTransformationRemoveDuplicatesDescription }))
+        {
+            @Html.LabelFor(model => model.RemoveDuplicates, TransformationResources.MergeCollectionsTransformationRemoveDuplicatesLabel)
+            @Html.CheckBoxFor(model => model.RemoveDuplicates)
+        }
+
+    </fieldset>
+    
+}

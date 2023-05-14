@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LoggingEngine filePrefix="UnifyLog" logDaysKeep="5" minimumLoggingLevel="Normal" />

@@ -1,0 +1,39 @@
+﻿@using Unify.Framework.Web
+@model DailyExclusionViewInformation
+
+@{
+    
+    string startTimeDescription = string.Format(
+            ConnectorControllerResources.DailyExclusionStartTimeDescription,
+            ConnectorControllerResources.FriendlyTimeFormat,
+            ConnectorControllerResources.TimeFormatExample);
+
+    string endTimeDescription = string.Format(
+            ConnectorControllerResources.DailyExclusionEndTimeDescription,
+            ConnectorControllerResources.FriendlyTimeFormat,
+            ConnectorControllerResources.TimeFormatExample);
+        
+}
+
+@using (Html.MetaDataFor(model => model.StartTime, new { description = startTimeDescription }))
+{
+    @Html.LabelFor(model => model.StartTime, ConnectorControllerResources.DailyExclusionStartTimeName)
+    <span class="StandardTimeFormat">
+        @Html.EditorFor(model => model.StartTime)
+    </span>
+}
+
+@using (Html.MetaDataFor(model => model.EndTime, new { description = endTimeDescription }))
+{
+    @Html.LabelFor(model => model.EndTime, ConnectorControllerResources.DailyExclusionEndTimeName)
+    <span class="StandardTimeFormat">
+        @Html.EditorFor(model => model.EndTime)
+    </span>
+}
+
+@using (Html.MetaDataFor(model => model.DaysExclusionApplies, new { description = ConnectorControllerResources.DailyExclusionDaysToExcludeDescription }))
+{
+    @Html.LabelFor(model => model.DaysExclusionApplies, ConnectorControllerResources.DailyExclusionDaysToExcludeName)
+    @Html.EnumListBox(model => model.DaysExclusionApplies)
+}
+

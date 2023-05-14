@@ -1,0 +1,99 @@
+﻿@model ConnectorsModel
+
+<h3>@ConnectorControllerResources.ConnectorsText</h3>
+
+@if (Model.ConnectorViewInformations.Any())
+{
+    foreach (var connectorViewInformation in Model.ConnectorViewInformations)
+    {
+        @ConnectorDetail(connectorViewInformation)
+    }
+}
+else
+{
+    if (Model.GroupId == null)
+    {
+        <label>@ConnectorControllerResources.NoConfiguredConnectorsMessageText</label>
+    }
+    else
+    {
+        <label>@ConnectorControllerResources.NoSelectedConnectorsMessageText</label>
+    }
+}
+
+@helper ConnectorDetail(ConnectorViewInformation connector)
+{
+    string selectionId = string.Concat(connector.Id, "Selection");
+    string containerId = string.Concat(connector.Id, "Container");
+    string connectorInputId = string.Concat(connector.Id, "Selector");
+
+    string connectorEnabledDisabled =
+        connector.Enabled ?
+            ConnectorControllerResources.CurrentlyEnabledMessage :
+            ConnectorControllerResources.CurrentlyDisabledMessage;
+
+    Guid connectorId = connector.Id;
+    
+    <div id="@containerId" class="ListedConnector ActionRefreshListener">
+        <div id="@selectionId">
+            <input type="checkbox" id="@connectorInputId" name="connectors" value="@connectorId" class="ConnectorSelections"/>
+        </div>
+        &nbsp;
+        <div>
+            <a href="@Url.Action("ConnectorDetails", "Connector", new { connectorId })" 
+               title="@connector.Comment">@connector.DisplayName</a>
+            &nbsp;-&nbsp;@connectorEnabledDisabled
+        </div>
+        <br style="clear:left"/>
+    </div>
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#@selectionId").hide();
+            $("#@containerId")
+                .hover(
+                    function () {
+                        SelectedCheck("#@selectionId", "#@containerId");
+                        $("#@containerId").css({
+                            border: 'solid 1px #CCC',
+                            'border-radius': '10px 10px 10px 10px'
+                        });
+                    },
+                    function () {
+                        DeselectedCheck("#@selectionId", "#@connectorInputId");
+                        $("#@containerId").css({
+                            border: 'none'
+                        });
+                    }
+                )
+                .bind('checkSelected', function () {
+                    SelectedCheck("#@selectionId", "#@containerId");
+                })
+                .bind('checkDeselected', function () {
+                    DeselectedCheck("#@selectionId", "#@connectorInputId");
+                })
+                .bind('refreshStart', function (event, arg1) {
+                    arg1["@connectorInputId"] = $("#@connectorInputId").is(':checked');
+                })
+                .bind('refreshStop', function (event, arg1) {
+                    if (arg1["@connectorInputId"]) {
+                        $("#@connectorInputId").attr('checked', 'checked');
+                        SelectedCheck("#@selectionId");
+                    }
+                });
+        });
+    </script>
+}
+
+<!-- There is no type to workaround an issue with Jquery 1.6.1 and IE8/9 --->
+<script>
+    function SelectedCheck(selectionId) {
+        $(selectionId).show();
+    }
+
+    function DeselectedCheck(selectionId, connectorInputId) {
+        if (!$(connectorInputId).is(':checked')) {
+            $(selectionId).hide();
+        }
+    }
+</script>

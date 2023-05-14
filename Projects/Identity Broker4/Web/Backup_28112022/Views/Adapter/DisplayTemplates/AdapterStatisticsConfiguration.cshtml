@@ -1,0 +1,65 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model StatisticsJobViewInformationBase
+
+@{
+    string lastRun = Model.LastRunCompleted == null
+                         ? AdapterResources.LastRunNotFoundMessageText
+                         : Model.LastRunCompleted.Value.ToLocalTime().ToString("dd/MMM/yyyy HH:mm:ss");
+
+    string lastRunDuration = Model.LastRunDuration == null
+                         ? AdapterResources.LastRunDurationNotFoundMessageText
+                         : Model.LastRunDuration.ToString();
+
+    bool lastRunSucceeded = Model.LastRunSucceeeded ?? false;
+
+    string lastRunErrorMessage = Model.LastRunErrorMessage ?? AdapterResources.LastRunErrorMessageNotFoundMessageText;
+
+    string runningImageUrl = Url.Content("~/Content/Loader.gif");
+}
+
+@if (Model.LastRunCompleted != null)
+{
+    <div>
+        @Html.LabelFor(model => model.LastRunCompleted, AdapterResources.LastRunLabelText)
+        <label>@lastRun</label>
+    </div>
+        
+    <br />
+
+    <div>
+        @Html.LabelFor(model => model.LastRunDuration, AdapterResources.LastRunDurationLabelText)
+        <label>@lastRunDuration</label>
+    </div>
+        
+    <br />
+
+    if (!lastRunSucceeded)
+    {
+        string errorImageUrl = Url.WebIcon("exclamation.png");
+
+        <hr />
+        <div>
+            <img src="@errorImageUrl" alt="@AdapterResources.LastRunErroredText" title="@AdapterResources.LastRunErroredText"/>
+            <label>@lastRunErrorMessage</label>
+        </div>
+    }
+}
+else if (Model.LastRunStarted != null)
+{
+    <div>
+        @Html.LabelFor(model => model.LastRunStarted, AdapterResources.StatisticsStartedLabel)
+        <label>
+            @Model.LastRunStarted.Value.ToLocalTime().ToString("dd/MMM/yyyy HH:mm:ss")
+        </label>
+    </div>
+        
+    <div>
+        <label>@AdapterResources.CurrentlyRunningLabel</label> 
+        <img src="@runningImageUrl" alt="Running" title="Running"/>
+    </div>
+}
+else
+{
+    <label>@AdapterResources.JobHasNotRunMessage</label>
+}

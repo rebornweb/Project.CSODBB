@@ -1,0 +1,24 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model OracleDbAgentViewInformation
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "OracleDbAgent", new { area = "Extensibility" }),
+        AgentResources.SaveAgentButtonText,
+        "CreateOracleDbAgentForm",
+        AgentResources.SaveAgentButtonAltText
+    ))
+{
+    @Html.AgentDetailsFor(model => model)
+    
+    <fieldset>
+        <legend>@AgentResources.OracleDbAgentConnectionDetailsFieldsetText</legend>
+            
+        @using (Html.MetaDataFor(model => model.ConnectionString, new { description = AgentResources.OracleDbAgentConnectionStringDescription }))
+        {
+            @Html.LabelFor(model => model.ConnectionString, AgentResources.OracleDbAgentConnectionStringName)
+            @Html.TextAreaFor(model => model.ConnectionString, new { @class = "wide-text", rows = "4" })
+        }
+    </fieldset>
+}

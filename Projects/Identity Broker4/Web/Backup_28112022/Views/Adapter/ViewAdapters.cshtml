@@ -1,0 +1,21 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model AdaptersViewInformation
+
+@{
+    ViewBag.Title = Html.Title(TitleResources.AdapterIndexTitle);
+}
+           
+<h1>@AdapterResources.AdapterDetailsHeading</h1>
+
+@{
+    foreach (var adapter in Model.StandardAdapters ?? Enumerable.Empty<AdapterViewInformation>())
+    {
+        @Html.DisplayFor(model => adapter, "AdapterConfiguration");
+    }
+    
+    foreach (var compositeAdapter in Model.CompositeAdapters ?? Enumerable.Empty<CompositeAdapterViewInformation>())
+    {
+        @Html.DisplayFor(model => compositeAdapter, "CompositeAdapterConfiguration");
+    }
+}

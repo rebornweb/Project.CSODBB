@@ -1,0 +1,38 @@
+﻿@model RangedSchemaFieldDefinitionInformation
+           
+@using Unify.Framework.Web
+
+@Html.HiddenFor(model => model.InnerValueType)
+
+<fieldset>
+
+    <legend>
+        @ConnectorControllerResources.MinimumValueInnerValidatorLegendText
+        @Html.CheckBoxFor(model => model.EnableMinValueFlag, new { @class = "CheckCollapse" })
+        <span class="hint">@ConnectorControllerResources.MinimumValueInnerValidatorFlagDescription<span class="hint-pointer">&nbsp;</span></span>    
+    </legend>
+    
+    @using (Html.MetaDataFor(model => model.MinValue, new { description = ConnectorControllerResources.EntitySchemaRowMinValueDescription }, new { @class = "CheckSection" }))
+    {
+        @Html.LabelFor(model => model.MinValue, ConnectorControllerResources.EntitySchemaRowMinValueLabel)
+        @Html.TextBoxFor(model => model.MinValue)
+    }
+
+</fieldset>
+
+<fieldset>
+    
+    <legend>
+        @ConnectorControllerResources.MaximumValueInnerValidatorLegendText
+        @Html.CheckBoxFor(model => model.EnableMaxValueFlag, new { @class = "CheckCollapse" })
+        <span class="hint">@ConnectorControllerResources.MaximumValueInnerValidatorFlagDescription<span class="hint-pointer">&nbsp;</span></span>    
+    </legend>
+    
+    @using (Html.MetaDataFor(model => model.MaxValue, new { description = ConnectorControllerResources.EntitySchemaRowMaxValueDescription }, new { @class = "CheckSection" }))
+    {
+        @Html.LabelFor(model => model.MaxValue, ConnectorControllerResources.EntitySchemaRowMaxValueLabel)
+        @Html.TextBoxFor(model => model.MaxValue)
+    }
+
+</fieldset>
+

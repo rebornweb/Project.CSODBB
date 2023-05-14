@@ -1,0 +1,10 @@
+﻿@using Unify.Framework.Web
+@model ErrorModel
+@{
+    this.ClearLayoutIfPartial();
+    ViewBag.Title = Html.Title(ErrorResources.IndexErrorHeading, Model.Branding.CompanyAndProductName, (string[])null);
+}
+
+<h2>@ErrorResources.IndexErrorHeading</h2>
+
+<p>@Html.Raw(Html.Encode(Model.ExceptionContext.Exception == null ? string.Empty : Model.ExceptionContext.Exception.ToString()).Replace(Environment.NewLine, "<br />"))</p>

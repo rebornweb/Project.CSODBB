@@ -1,0 +1,35 @@
+﻿@using Unify.EventBroker.Web
+@using Unify.Framework.Web
+@model CopyOperationListViewInformation
+
+@{
+    ViewBag.Title = Html.Title(TitleResources.CopyOperationListTitle);
+}
+
+@using (Html.DecorateForm(
+            () => Html.BeginForm("CopyOperationList", "Operation", FormMethod.Post, new { id = "CopyOperationListForm" }),
+            OperationControllerResources.CopyOperationListSubmitText,
+            "CopyOperationListForm",
+            OperationResources.ConfigureOperationListAltText, "submitButton"))
+{
+    <div>
+        @Html.HiddenFor(model => model.OperationListToCopyId)
+        @Html.HiddenFor(model => model.SourceOperationListName)
+        
+        <fieldset>
+            
+            <div style="text-align:left">
+                <label>@OperationControllerResources.CopyOperationListSourceOperationListText</label>
+                @Model.SourceOperationListName
+            </div>
+            
+            @using (Html.MetaDataFor(model => model.NewOperationListName, new { description = OperationControllerResources.NewOperationListNameDescription }))
+            {
+                @Html.LabelFor(model => model.NewOperationListName, OperationControllerResources.NewOperationListName)
+                @Html.TextBoxFor(model => model.NewOperationListName)
+            }
+
+        </fieldset>
+
+    </div>
+}

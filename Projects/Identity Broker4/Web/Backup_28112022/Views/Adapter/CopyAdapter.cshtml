@@ -1,0 +1,18 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model CopyAdapterViewInformation
+
+@using (Html.DecorateForm(
+            () => Html.BeginForm("CopyAdapter", "Adapter", FormMethod.Post, new { id = "CopyAdapterForm" }),
+            AdapterResources.CopySubmitText,
+            "CopyAdapterForm",
+            AdapterResources.CopyAdapterAltText))
+{
+    @Html.HiddenFor(model => model.Id)
+
+    using (Html.MetaDataFor(model => model.Name, new{description = AdapterResources.CopyAdapterNameDescription}))
+    {
+        @Html.LabelFor(model => model.Name, AdapterResources.CopyAdapterNameLabel)
+        @Html.TextBoxFor(model => model.Name)
+    }
+}

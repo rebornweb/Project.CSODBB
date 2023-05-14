@@ -1,0 +1,59 @@
+﻿@using Unify.Framework.Web
+@model ConnectorTimingViewInformation
+@{
+    var allowEdit = !Model.Enabled;
+    var deleteScript = string.Empty;
+    var deleteMessage = string.Empty;
+
+    var clockEditImageUrl = Url.WebIcon("clock_edit.png");
+    var clockDeleteImageUrl = Url.WebIcon("clock_delete.png");
+}
+@if (!Model.Timings.Any())
+{
+    <p>@ConnectorControllerResources.NoSchedulesAddedMessage</p>
+}
+else
+{
+    <table>
+        @foreach (var timing in Model.Timings)
+        {
+            var timingDisplay = timing.DisplayValue();
+            var timeToNextRun = timing.TimeToNextRun;
+
+            <tr>
+                <td>@Html.RenderTiming(timingDisplay)
+                </td>
+                @if (allowEdit)
+                {
+                    var deleteFormId = string.Concat("deleteForm", timing.Key);
+                    var deleteButtonId = string.Concat("deleteButton", timing.Key);
+                    var deleteMessageId = string.Concat(deleteButtonId, "Message");
+
+                    deleteScript = string.Concat(deleteScript, Environment.NewLine, Unify.Framework.Web.RenderExtensions.SubmitOkCancelDialog(deleteFormId, deleteButtonId, deleteButtonId));
+                    deleteMessage = string.Concat(deleteMessage, "<div id=\"", deleteMessageId, "\" title=\"", ConnectorControllerResources.DisplaySchedulesDeleteTimingConfirmationHeading, "\" style=\"display:none\">", ConnectorControllerResources.DisplaySchedulesDeleteTimingConfirmationMessage, "</div>");
+        
+                    <td>
+                        <a href="@Url.Action((Model.TimingType == ConnectorTimingType.GetAllEntities) ? "CreateOrEditGetAllEntitiesTiming" : "CreateOrEditPollingTiming", "Connector", new { connectorId = Model.ConnectorId, timingId = timing.Key, edit = true })">
+                            <img title="@ConnectorControllerResources.EditScheduleAlt" alt="@ConnectorControllerResources.EditScheduleAlt" src="@clockEditImageUrl" />
+                        </a>
+                        @using (Html.BeginForm((Model.TimingType == ConnectorTimingType.GetAllEntities) ? "DeleteGetAllEntitiesTiming" : "DeletePollingTiming", "Connector", new { connectorId = Model.ConnectorId, timingId = timing.Key }, FormMethod.Post, new { id = deleteFormId, @class = "Reset", style = "display: inline;" }))
+                        {<input type="image" id="@deleteButtonId" name="@deleteButtonId" value="@deleteButtonId" title="@ConnectorControllerResources.DeleteScheduleAlt" alt="@ConnectorControllerResources.DeleteScheduleAlt" src="@clockDeleteImageUrl" />}
+                    </td>
+                }
+                @if (!timing.TimingExpired && timeToNextRun > TimeSpan.Zero)
+                {
+                    <td>
+                        - (<i>@timeToNextRun.ToFriendlyString()</i>)
+                    </td>
+                }
+            </tr>                                                                                                       
+        }
+    </table>
+        if (allowEdit && !string.IsNullOrWhiteSpace(deleteScript))
+        {
+            @Html.Raw(deleteMessage)
+            <script type="text/javascript">
+                    @Html.Raw(deleteScript)
+            </script>
+        }
+}

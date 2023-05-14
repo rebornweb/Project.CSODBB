@@ -1,0 +1,436 @@
+@using System
+@using System.Linq
+@using Unify.EventBroker.Web.Extensions
+@using Unify.EventBroker.Web.Views.Agents.FIMAutoConfig
+@using Unify.Framework
+@using Unify.Framework.Web
+@using SchedulerState = Unify.Product.EventBroker.SchedulerState
+@model Unify.EventBroker.Web.Models.IOperationWithStatus
+@{
+    ICheckOperationConfigurationInformation checkOperation = Model.OperationList.CheckOperation;
+    IListenOperationConfigurationInformation listenOperation = Model.OperationList.ListenOperation;
+    OperationListState operationListStateStatus = Model.OperationListStatus.State;
+    OperationListLastExecutionStatus executionStatus = Model.OperationListLastExecutionStatus;
+    IOperationListStatus operationListStatus = Model.OperationListStatus;
+    ListenState triggerState = operationListStatus.TriggerState;
+
+    Guid operationListId = Model.OperationList.Id;
+    var listAndOperationCheckOperationRouteValues = new { parentOperationId = Guid.Empty, operationListId, operationTreeItemType = OperationTreeItemType.Next, operationType = OperationType.CheckOperation };
+    var listAndOperationListOperationRouteValues = new { parentOperationId = Guid.Empty, operationListId, operationTreeItemType = OperationTreeItemType.Next, operationType = OperationType.ListOperation };
+    bool inOperationsEditRole = Html.IsInRole(UnifyRoles.Write);
+    bool inOperationsReadRole = Html.IsInRole(UnifyRoles.Read);
+    bool inOperationsFullRole = Html.IsInRole(UnifyRoles.Full);
+    bool isNotSchedulerStateStarting = (Model.ClientStatus.OperationEngineStatus.SchedulerState != SchedulerState.Starting);
+    bool isOperationListEnabled = Model.OperationList.Enabled;
+    bool isNotOperationListStateRunning = (operationListStateStatus != OperationListState.Running);
+    bool canExecuteWithDelay = Model.OperationList.Delay != new TimeSpan(0) && Model.ClientStatus.OperationEngineStatus.SchedulerState != SchedulerState.Stopped;
+}
+<div class="OperationListViewSection" style="border-bottom: 1px solid rgb(228, 228, 228);">
+    <div class="OperationListViewSectionHeader">
+        <h2 class="inlineHeader">@Model.OperationList.Name</h2>
+        <span class="OperationListOperationsButton">
+            @Html.RenderOperationListOperationsMenu(Url, operationListId, isNotSchedulerStateStarting, isOperationListEnabled, isNotOperationListStateRunning, canExecuteWithDelay)
+            <script type="text/javascript">
+                @ViewData.RetrieveListItems("OperationListFunctions")
+            </script>
+        </span>
+    </div>
+</div>
+
+@if (Model.OperationList.Enabled && inOperationsEditRole)
+{
+    <p>@OperationControllerResources.OperationDetailsOperationListMustBeDisabledMessage</p>
+}
+<div class="PaddedContent">
+    <table class="RightSpaced BottomSpaced VerticalAlignTable">
+        <tbody>
+            <tr style="min-width: 100px">
+                <td>
+                    @OperationControllerResources.OperationListEnabledName
+                </td>
+                <td>
+                    @if (Model.ClientStatus.OperationEngineStatus.SchedulerState != SchedulerState.Starting && inOperationsReadRole && inOperationsEditRole)
+                    {
+                        if (Model.OperationList.Enabled)
+                        {
+                            <span>True</span>
+                            using (Html.BeginForm("DisableOperationList", "Operation", new { id = operationListId }, FormMethod.Post, new { @class = "IconForm" }))
+                            {
+                                <input type="submit"
+                                       value="@OperationControllerResources.DisableText"
+                                       class="m-btn mini mini-form red"
+                                       alt="@OperationControllerResources.DisableOperationListAlt"
+                                       title="@OperationControllerResources.DisableOperationListAlt" />
+                            }
+                        }
+                        else
+                        {
+                            <span>False</span>
+                            using (Html.BeginForm("EnableOperationList", "Operation", new { id = operationListId }, FormMethod.Post, new { @class = "IconForm" }))
+                            {
+                                <input type="submit"
+                                       value="@OperationControllerResources.EnableText"
+                                       class="m-btn mini mini-form green"
+                                       alt="@OperationControllerResources.EnableOperationListAlt"
+                                       title="@OperationControllerResources.EnableOperationListAlt" />
+                            }
+                        }
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @OperationControllerResources.CommentName
+                </td>
+                <td>
+                    @if (string.IsNullOrWhiteSpace(Model.OperationList.Comment))
+                    {
+                        @OperationControllerResources.NoUserCommentAvailableMessage
+                    } 
+                    else 
+                    {
+                        @Html.Raw(Html.EncodeTextSplitLines(Model.OperationList.Comment))
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @OperationControllerResources.QueueMissedName
+                </td>
+                <td>
+                    @Model.OperationList.QueueMissed
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @OperationControllerResources.RunOnStartupName
+                </td>
+                <td>
+                    @Model.OperationList.RunOnStartup
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Delay
+                </td>
+                <td>
+                    @Model.OperationList.Delay
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@if (inOperationsReadRole)
+{
+    <div class="FormSection PaddedContent">
+        <div class="FormSectionHeading">
+            <h4>
+                @OperationControllerResources.OperationListSchedulesTitleText&nbsp;
+                @if (!Model.OperationList.Enabled && operationListStateStatus != OperationListState.Running && inOperationsEditRole)
+                {
+                    <a href="@Url.Action("CreateSchedule", new {operationListId})"><img title="@OperationControllerResources.AddScheduleName" alt="@OperationControllerResources.AddScheduleName" src="@Url.WebIcon("clock_add.png")" /></a>
+                }
+            </h4>
+        </div>
+        <div>
+            @Html.Action("DisplaySchedules", new { operationListId })
+        </div>
+    </div>
+}
+
+<br/>
+
+@{
+    bool outputListenFunction = false;
+    string listenDeleteConfirmScript = string.Empty;
+    string deleteListenButtonId = string.Concat("deleteListenButton", operationListId);
+    string deleteListenMessageId = string.Concat(deleteListenButtonId, "Message");
+}
+
+<div class="FormSection PaddedContent">
+    <div class="FormSectionHeading">
+        <h4>
+            @OperationControllerResources.ListenOperationText
+
+            @if (triggerState != ListenState.None)
+            {
+                <label>- <i>@triggerState.ToString()</i></label>
+            }
+
+            @if (listenOperation == null && !Model.OperationList.Enabled && operationListStateStatus != OperationListState.Running && inOperationsEditRole)
+            {
+                <a href="@Url.Action("CreatePlugInOperationByRouteValues", listAndOperationListOperationRouteValues)">
+                    <img title="@OperationControllerResources.AddListenOperationAltText" alt="@OperationControllerResources.AddListenOperationAltText" src="@Url.WebIcon("plugin_add.png")"/>
+                </a>
+            }
+        </h4>
+    </div>
+    <div>
+        @if (listenOperation == null)
+        {
+            <p>@OperationControllerResources.OperationDetailsListenOperationNotAddedMessage</p>
+        }
+        else
+        {
+            Guid operationId = listenOperation.OperationId;
+            OperationListLastExecutionStatus currentExecutionStatus = Model.OperationListCurrentExecutionStatus;
+            MvcHtmlString operationClass = Html.StyleOperation(operationId, operationListStatus, currentExecutionStatus);
+            MvcHtmlString runningImage = Html.OperationRunningImage(Url, operationId, operationListStatus);
+            <div>
+
+                <span>
+                    <span class="@operationClass">@listenOperation.DisplayName</span>
+                </span>
+                <span>
+                    @runningImage
+                </span>
+                @if (!Model.OperationList.Enabled && operationListStateStatus != OperationListState.Running)
+                {
+                    if (inOperationsEditRole)
+                    {
+                        <span>
+                            <a href="@Url.Action("EditListenOperation", new {operationListId})">
+                                <img title="@OperationControllerResources.EditListenOperationAltText" alt="@OperationControllerResources.EditListenOperationAltText" src="@Url.WebIcon("bullet_wrench.png")" />
+                            </a>
+                        </span>
+                    }
+                    if (inOperationsFullRole)
+                    {
+                        string deleteListenFormId = string.Concat("deleteListenForm", operationListId);
+                        outputListenFunction = true;
+                        listenDeleteConfirmScript = RenderExtensions.SubmitOkCancelDialog(deleteListenFormId, deleteListenButtonId, deleteListenButtonId);
+                        <span>
+                            @using (Html.BeginForm("DeleteListenOperation", "Operation", new {operationListId}, FormMethod.Post, new {id = deleteListenFormId, @class = "Reset, IconForm"}))
+                            {
+                                <input type="image" src="@Url.WebIcon("delete.png")" alt="@OperationControllerResources.DeleteListenOperationAltText" title="@OperationControllerResources.DeleteListenOperationAltText" class="FormIconAlign" />
+                            }
+                        </span>
+                    }
+                }
+
+            </div>
+        }
+    </div>
+</div>
+@if (outputListenFunction)
+{
+    <div id="@deleteListenMessageId" title="@OperationControllerResources.OperationDetailsDeleteListenOperationConfirmationHeading" style="display: none">@OperationControllerResources.OperationDetailsDeleteListenOperationConfirmationMessage</div>
+    <script type="text/javascript">
+        @Html.Raw(listenDeleteConfirmScript)
+    </script>
+}
+
+<br />
+
+@{
+    bool outputCheckFunction = false;
+    string checkDeleteConfirmScript = string.Empty;
+    string deleteCheckButtonId = string.Concat("deleteCheckButton", operationListId);
+    string deleteCheckMessageId = string.Concat(deleteCheckButtonId, "Message");
+}
+
+<div class="FormSection PaddedContent">
+    <div class="FormSectionHeading">
+        <h4>
+            @OperationControllerResources.CheckOperationText
+            @if (checkOperation == null && !Model.OperationList.Enabled && operationListStateStatus != OperationListState.Running && inOperationsEditRole)
+            {
+                <a href="@Url.Action("CreatePlugInOperationByRouteValues", listAndOperationCheckOperationRouteValues)">
+                    <img title="@OperationControllerResources.AddCheckOperationName" alt="@OperationControllerResources.AddCheckOperationName" src="@Url.WebIcon("plugin_add.png")" />
+                </a>
+            }
+        </h4>
+    </div>
+    <div>
+        @if (checkOperation == null)
+        {
+            <p>@OperationControllerResources.OperationDetailsCheckOperationNotAddedMessage</p>
+        }
+        else
+        {
+            Guid operationId = checkOperation.OperationId;
+            OperationListLastExecutionStatus currentExecutionStatus = Model.OperationListCurrentExecutionStatus;
+            MvcHtmlString operationClass = Html.StyleOperation(operationId, operationListStatus, currentExecutionStatus);
+            MvcHtmlString runningImage = Html.OperationRunningImage(Url, operationId, operationListStatus);
+            <div>
+                <span class="@operationClass">@checkOperation.DisplayName</span>
+                <span>@runningImage</span>
+                @if (!Model.OperationList.Enabled && operationListStateStatus != OperationListState.Running)
+                {
+                    if (inOperationsEditRole)
+                    {
+                        <span>
+                            <a href="@Url.Action("EditCheckOperation", new {operationListId, operationId})">
+                                <img title="@OperationControllerResources.EditCheckOperationAlt" alt="@OperationControllerResources.EditCheckOperationAlt" src="@Url.WebIcon("bullet_wrench.png")" />
+                            </a>
+                        </span>
+                    }
+                    if (inOperationsFullRole)
+                    {
+                        string deleteCheckFormId = string.Concat("deleteCheckForm", operationListId);
+                        outputCheckFunction = true;
+                        checkDeleteConfirmScript = RenderExtensions.SubmitOkCancelDialog(deleteCheckFormId, deleteCheckButtonId, deleteCheckButtonId);
+                        <span>
+                            @using (Html.BeginForm("DeleteCheckOperation", "Operation", new { operationListId }, FormMethod.Post, new { id = deleteCheckFormId, @class = "Reset, IconForm" }))
+                            {
+                                <input type="image" id="@deleteCheckButtonId" name="@deleteCheckButtonId" value="@deleteCheckButtonId" title="@OperationControllerResources.RemoveCheckOperationAlt" alt="@OperationControllerResources.RemoveCheckOperationAlt" src="@Url.WebIcon("delete.png")" class="FormIconAlign" />
+                            }
+                        </span>
+                    }
+                }
+            </div>
+        }
+    </div>
+</div>
+@if (outputCheckFunction)
+{
+    <div id="@deleteCheckMessageId" title="@OperationControllerResources.OperationDetailsDeleteCheckOperationConfirmationHeading" style="display: none">@OperationControllerResources.OperationDetailsDeleteCheckOperationConfirmationMessage</div>
+    <script type="text/javascript">
+        @Html.Raw(checkDeleteConfirmScript)
+    </script>
+}
+
+<br />
+
+<div class="FormSection PaddedContent">
+    <div class="FormSectionHeading">
+        <h4>
+            @OperationControllerResources.OperationsText
+            @if (!Model.OperationList.Enabled && !Model.OperationList.Operations.HasValue && operationListStateStatus != OperationListState.Running)
+            {
+                <a href="@Url.Action("AddRootOperationList", new {id = operationListId})"><img title="@OperationControllerResources.AddRootOperationAlt" alt="@OperationControllerResources.AddRootOperationAlt" src="@Url.WebIcon("plugin_add.png")" /></a>
+            }
+        </h4>
+    </div>
+    <div>
+        @if (Model.OperationList.Operations.Any())
+        {
+            @RenderOperationTree(operationListId, Model.OperationListStatus, Model.OperationList.Operations, Model.OperationListCurrentExecutionStatus, inOperationsReadRole, inOperationsEditRole, inOperationsFullRole)
+        }
+        else
+        {
+            <p>@OperationControllerResources.NoOperationsAddedMessage</p>
+        }
+    </div>
+</div>
+
+<br />
+
+@if (executionStatus != null)
+{
+    <div class="FormSection PaddedContent">
+        <div class="FormSectionHeading"><h4>@OperationControllerResources.LastRunStatisticsNameHeader&nbsp;<a href="@Url.Action("OperationListExecutionDetails", new {id = operationListId})"><img src="@Url.WebIcon("information.png")" alt="@OperationControllerResources.LastRunStatisticsNameAlt" title="@OperationControllerResources.LastRunStatisticsNameAlt" /></a></h4></div>
+        <div>
+            <table class="Statistics">
+                <tr>
+                    <td class="FormSectionLabel">
+                        @OperationControllerResources.LastRunBeginNameHeader
+                    </td>
+                    <td>
+                        @if (executionStatus.BeginTime.HasValue)
+                        {
+                            @Html.LocalTime(executionStatus.BeginTime.Value).ToString(LoggingControllerConstants.DateTimeFormatCSharpReadMode)
+                        }
+                        else
+                        {
+                            @OperationControllerResources.OperationNotStartedText
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td class="FormSectionLabel">
+                        @OperationControllerResources.LastRunEndNameHeader
+                    </td>
+                    <td>
+                        @if (executionStatus.EndTime.HasValue)
+                        {
+                            @Html.LocalTime(executionStatus.EndTime.Value).ToString(LoggingControllerConstants.DateTimeFormatCSharpReadMode)
+                        }
+                        else
+                        {
+                            @OperationControllerResources.OperationNotCompletedText
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td class="FormSectionLabel">
+                        @OperationControllerResources.LastRunWarningsNameHeader
+                    </td>
+                    <td>
+                        @executionStatus.OperationExecutionStatus.SelectMany(item => item.Value.Retries).Count()
+                    </td>
+                </tr>
+                <tr>
+                    <td class="FormSectionLabel">
+                        @OperationControllerResources.LastRunErrorsNameHeader
+                    </td>
+                    <td>
+                        @(executionStatus.StoppedOperation.HasValue ?
+                                OperationControllerResources.OperationListErrorsMessage :
+                                OperationControllerResources.OperationListNoErrorsMessage)
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    @ViewData.RetrieveListItems("OperationFunctions")
+</script>
+
+<script type="text/javascript">
+    @ViewData.RetrieveListItems("StandardOperationListRunFunctions")
+</script>
+
+
+@helper RenderOperationTree(Guid operationListId, IOperationListStatus operationListStatus, ITree<IOperationConfigurationInformation> operation, OperationListLastExecutionStatus currentExecutionStatus, bool inOperationsReadRole, bool inOperationsEditRole, bool inOperationsFullRole)
+{
+    if (operation != null && operation.HasValue)
+    {
+        IOperationConfigurationInformation operationValue = operation.Value;
+        Guid operationId = operationValue.OperationId;
+        string functionContent = string.Empty;
+        MvcHtmlString operationClass = Html.StyleOperation(operationId, operationListStatus, currentExecutionStatus);
+        bool hasNext = operation.HasNext;
+        if (!Model.OperationListStatus.Enabled && operationListStatus.State != OperationListState.Running)
+        {
+            string functionsButtonTitle = OperationControllerResources.FunctionsButtonTitle;
+            string functionsButtonId = string.Concat("functions_", operationId);
+            var route = new { operationListId, operationId, isScripted = true };
+            var noScriptRoute = new { operationListId, operationId, isScripted = false };
+            string functionsUrl = Url.Action("OperationFunctions", "Operation", route);
+            MvcHtmlString functionsAction = Html.Action("OperationFunctions", "Operation", noScriptRoute);
+            string script = Html.AjaxFunctionDialog("Functions", functionsButtonId, functionsUrl);
+            if (inOperationsEditRole)
+            {
+                ViewData.AddListItem("OperationFunctions", script);
+                functionContent = string.Concat("&nbsp;<span class=\"scriptonly\"><a href=\"", functionsUrl, "\"><img src=\"", Url.WebIcon("cog.png"), "\" title=\"", functionsButtonTitle, "\" alt=\"", functionsButtonTitle, "\" class=\"OperationButton\" id=\"", functionsButtonId, "\" /></a></span><noscript>", functionsAction, "</noscript>");
+            }
+        }
+
+        MvcHtmlString runningImage = Html.OperationRunningImage(Url, operationId, operationListStatus);
+        <ul class="Tree">
+            <li>
+                <span class="@operationClass">@operationValue.DisplayName</span>&nbsp;<span>@runningImage</span><span>@MvcHtmlString.Create(functionContent)</span>
+            </li>
+            @if (operation.HasChild)
+            {
+                @RenderOperationTree(operationListId, operationListStatus, operation.Child, currentExecutionStatus, inOperationsReadRole, inOperationsEditRole, inOperationsFullRole)
+            }
+            @if (inOperationsEditRole && !Model.OperationList.Enabled && !hasNext)
+            {
+                <li>
+                    <a href="@Url.Action("CreatePlugInOperationByRouteValues", new {parentOperationId = operationId, operationListId, operationTreeItemType = OperationTreeItemType.Next, operationType = OperationType.Operation})">
+                        @OperationControllerResources.NewOperationLinkMessage
+                    </a>
+                </li>
+            }
+        </ul>
+        if (hasNext)
+        {
+            @RenderOperationTree(operationListId, operationListStatus, operation.Next, currentExecutionStatus, inOperationsReadRole, inOperationsEditRole, inOperationsFullRole)
+        }
+    }
+}

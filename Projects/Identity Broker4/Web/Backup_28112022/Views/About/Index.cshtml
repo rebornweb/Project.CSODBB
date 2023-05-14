@@ -1,0 +1,162 @@
+﻿@using Unify.Framework
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+@model AboutViewInformation
+
+@{
+    ViewBag.Title = Html.Title(AboutControllerResources.AboutTitle);
+    
+    IEnumerable<LicensedProductDetailsExpositor> licensedProducts = new[]
+    {
+        new LicensedProductDetailsExpositor{
+            ProductName = AboutControllerResources.JQueryHeading,
+            ProductLink = AboutControllerResources.JQueryUrlText,
+            ProductLinkDescription = AboutControllerResources.JQueryAddressText,
+            LicenseLink = AboutControllerResources.JQueryLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.JQueryLicenseTypeText
+        },
+        
+        new LicensedProductDetailsExpositor{
+            ProductName = AboutControllerResources.SilkIconsHeading,
+            ProductLink = AboutControllerResources.SilkIconsUrlText,
+            ProductLinkDescription = AboutControllerResources.SilkIconsAddressText,
+            LicenseLink = AboutControllerResources.SilkIconsLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.SilkIconsLicenseTypeText
+        },
+         
+        new LicensedProductDetailsExpositor{
+            ProductName = AboutControllerResources.DataTablesHeading,
+            ProductLink = AboutControllerResources.DataTablesUrlText,
+            ProductLinkDescription = AboutControllerResources.DataTablesAddressText,
+            LicenseLink = AboutControllerResources.DataTablesLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.DataTablesLicenseTypeText
+        },
+        
+        new LicensedProductDetailsExpositor{
+            ProductName = AboutControllerResources.CassiniDevHeading,
+            ProductLink = AboutControllerResources.CassiniDevUrlText,
+            ProductLinkDescription = AboutControllerResources.CassiniDevAddressText,
+            LicenseLink = AboutControllerResources.CassiniDevLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.CassiniDevLicenseTypeText
+        },
+        
+        new LicensedProductDetailsExpositor{
+            ProductName = AboutControllerResources.TimepickerHeading,
+            ProductLink = AboutControllerResources.TimepickerUrlText,
+            ProductLinkDescription = AboutControllerResources.TimepickerAddressText,
+            LicenseLink = AboutControllerResources.TimepickerLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.TimepickerLicenseTypeText
+        },
+        
+        new LicensedProductDetailsExpositor{
+            ProductName = AboutControllerResources.InterLINQHeading,
+            ProductLink = AboutControllerResources.InterLINQUrlText,
+            ProductLinkDescription = AboutControllerResources.InterLINQAddressText,
+            LicenseLink = AboutControllerResources.InterLINQLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.InterLINQLicenseTypeText
+        },
+        
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.ChosenHeading,
+            ProductLink = AboutControllerResources.ChosenUrlText,
+            ProductLinkDescription = AboutControllerResources.ChosenAddressText,
+            LicenseLink = AboutControllerResources.ChosenLicenseUrlText,
+            LicenseType = AboutControllerResources.ChosenLicenseTypeText
+        },
+        
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.MVCTemplatesHeading,
+            ProductLink = AboutControllerResources.MVCTemplatesUrlText,
+            ProductLinkDescription = AboutControllerResources.MVCTemplatesAddressText,
+            LicenseLink = AboutControllerResources.MVCTemplatesLicenseUrlText,
+            LicenseType = AboutControllerResources.MVCTemplatesLicenseTypeText
+        },
+        
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.DataTablesRowGroupingHeading,
+            ProductLink = AboutControllerResources.DataTablesRowGroupingUrlText,
+            ProductLinkDescription = AboutControllerResources.DataTablesRowGroupingAddressText,
+            LicenseLink = AboutControllerResources.DataTablesRowGroupingLicenseText,
+            LicenseType = AboutControllerResources.DataTablesRowGroupingLicenseTypeText
+        },
+        
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.CodeMirrorHeading,
+            ProductLink = AboutControllerResources.CodeMirrorUrlText,
+            ProductLinkDescription = AboutControllerResources.CodeMirrorAddressText,
+            LicenseLink = AboutControllerResources.CodeMirrorLicenseText,
+            LicenseType = AboutControllerResources.CodeMirrorLicenseTypeText
+        }
+                
+    };
+       
+}
+
+@{
+    const string displayLicensedProductDetailsActionName = "DisplayLicensedProductDetails";
+    const string displayProductDetailsActionname = "DisplayProductDetails";
+    const string aboutControllerName = "About";
+}
+
+<h2>@AboutControllerResources.AboutPageHeading</h2>
+<br />
+
+<div class="FaintBorder">
+@{ 
+    Html.RenderAction(displayProductDetailsActionname, aboutControllerName, new { 
+        expositor = new CompanyProductDetailsExpositor
+                    {
+                        ProductLinkDescription = ViewContext.CreateAboutMessage(typeof(MvcApplication).Assembly).ToString(),
+                        CompanyName = UnifyIdentityBrokerBranding.Instance.CompanyAndProductName,
+                        ProductName = UnifyIdentityBrokerBranding.Instance.ProductName,
+                        
+                        ProductLink = UnifyIdentityBrokerBranding.Instance.LicensingInformation,
+                        SupportEmailLink = UnifyIdentityBrokerBranding.Instance.SupportEmail, 
+                        SupportEmailName = UnifyIdentityBrokerBranding.Instance.SupportEmail
+                    },
+        area = "Framework"
+    }); 
+}
+</div>
+
+<br />
+<br />
+
+@if (Model.PlugInInformations.Any())
+{
+    <div class="FaintBorder">
+        <h3>@AboutControllerResources.VersionsHeading</h3>
+        <table>
+            <thead style="font-weight: bold;">
+                <tr>
+                    <td>@AboutControllerResources.PlugInKeyLabel</td><td>@AboutControllerResources.VersionLabel</td>
+                </tr>
+            </thead>
+            @foreach (var plugIn in Model.PlugInInformations)
+            {
+                <tr>
+                    <td style="padding-right: 10px;">@plugIn.PlugInKey</td>
+                    <td>@plugIn.PlugInVersion.ToString(4)</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <br />
+    <br />
+}
+
+<h3>@AboutControllerResources.AcknowledgementsHeading</h3>
+@foreach (var expositor in licensedProducts)
+{
+    <div class="FaintBorder" style="padding-top:0px">
+        @{ Html.RenderAction(displayLicensedProductDetailsActionName, aboutControllerName, new { area = "Framework", expositor }); }
+    </div>
+    <br />
+}
+

@@ -1,0 +1,14 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Connect.Web
+@using Unify.Framework.Communicator
+@model FtpAgentViewInformation
+
+<table class="RightSpaced BottomSpaced VerticalAlignTable">
+    <tr>
+        <td style="min-width: 150px">@AgentResources.FtpAgentUriLabel</td>
+        <td>@Model.Uri</td>
+    </tr>
+    @Html.DisplayCredentialsCommunicatorFor(model => model)
+    @Html.DisplayNetworkCommunicatorFor(model => model)
+    @Html.DisplayProxyCommunicatorFor(model => model)
+</table>

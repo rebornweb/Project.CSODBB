@@ -1,0 +1,197 @@
+﻿@using Unify.Connect.Web.Extensions
+@model AdaptersViewInformation
+ 
+@{
+    bool anyStandardAdapters = Model.StandardAdapters.Any();
+    bool anyCompositeAdapters = Model.CompositeAdapters.Any();
+}
+
+<h3>@AdapterResources.IndexAdapterHeading</h3>
+
+@if (anyStandardAdapters)
+{
+    foreach (var adapter in Model.StandardAdapters)
+    {
+        @RenderStandardAdapter(adapter)
+    }
+}
+else
+{
+    if (Model.GroupId == null)
+    {
+        <p>@AdapterResources.IndexNoAdaptersMessage</p>
+    }
+    else
+    {
+        <p>@AdapterResources.IndexNoSelectedAdaptersMessage</p>
+    }
+}
+        
+<h3>@AdapterResources.IndexCompositeAdaptersHeading</h3>
+        
+@if (anyCompositeAdapters)
+{
+    foreach (var compositeAdapter in Model.CompositeAdapters)
+    {
+        @RenderCompositeAdapter(compositeAdapter)
+    }
+}
+else
+{
+    if (Model.GroupId == null)
+    {
+        <p>@AdapterResources.IndexNoCompositeAdaptersMessage</p>
+    }
+    else
+    {
+        <p>@AdapterResources.IndexNoSelectedCompositeAdaptersMessage</p>
+    }
+}
+    
+
+@helper RenderStandardAdapter(AdapterViewInformation adapter)
+    {
+        Guid adapterId = adapter.AdapterId;
+        string adapterName = adapter.AdapterName;
+
+        string selectionId = string.Concat(adapterId, "Selection");
+        string containerId = string.Concat(adapterId, "Container");
+        string inputId = string.Concat(adapterId, "Selector");
+
+    <div id="@containerId" class="ListedAdapter ActionRefreshListener">
+        <div id="@selectionId">
+            <input type="checkbox" id="@inputId" name="adapters" value="@adapterId" class="AdapterSelections"/>
+        </div>
+        &nbsp;
+        <div>
+            <a href="@Url.Action("AdapterDetails", "Adapter", new { id = adapterId })">
+                @adapterName
+            </a>
+            &nbsp;
+            @(adapter.Enabled ? AdapterResources.AdapterEnabledText : AdapterResources.AdapterDisabledText)
+        </div>
+        <br style="clear: left"/>
+    </div>
+
+    @* TODO Tony Sheehy Shared framework component *@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#@selectionId").hide();
+            $("#@containerId").hover(
+                function () {
+                    SelectedCheck("#@selectionId", "#@containerId");
+                    $("#@containerId").css({
+                        'border': 'solid 1px #CCC',
+                        'border-radius': '10px 10px 10px 10px'
+                    });
+                },
+                function () {
+                    DeselectedCheck("#@selectionId", "#@inputId");
+                    $("#@containerId").css({
+                        border: 'none'
+                    });
+                }
+            ).bind('checkSelected',
+                function () {
+                    SelectedCheck("#@selectionId", "#@containerId");
+                }
+            ).bind('checkDeselected',
+                function () {
+                    DeselectedCheck("#@selectionId", "#@inputId");
+                }
+            ).bind('refreshStart', 
+                function (event, arg1) {
+                    arg1["@inputId"] = $("#@inputId").is(':checked');
+                }
+            ).bind('refreshStop', 
+                function (event, arg1) {
+                    if (arg1["@inputId"]) {
+                        $("#@inputId").attr('checked', 'checked');
+                        SelectedCheck("#@selectionId");
+                    }
+                }
+            );
+        });
+    </script>
+}
+
+@helper RenderCompositeAdapter(CompositeAdapterViewInformation compositeAdapter)
+{       
+    Guid compositeAdapterId = compositeAdapter.AdapterId;
+    string selectionId = string.Concat(compositeAdapterId, "Selection");
+    string containerId = string.Concat(compositeAdapterId, "Container");
+    string inputId = string.Concat(compositeAdapterId, "Selector");
+    
+    <div id="@containerId" class="ActionRefreshListener ListedAdapter">
+        
+        <div style="display: none" id="@selectionId">
+            <input type="checkbox" id="@inputId" name="adapters" value="@compositeAdapterId" class="AdapterSelections"/>
+        </div>
+        &nbsp;
+        <div>
+            <a href="@Url.Action("AdapterDetails", "Adapter", new { id = compositeAdapterId })">
+                @compositeAdapter.AdapterName
+            </a>
+            &nbsp;
+            @(compositeAdapter.Enabled ? AdapterResources.AdapterEnabledText : AdapterResources.AdapterDisabledText)
+        </div>
+        <br style="clear: left"/>
+    </div>
+    
+    @* TODO Tony Sheehy Shared framework component *@
+    <script>
+        $(document).ready(function () {
+            $("#@containerId").hover(
+                function () {
+                    SelectedCheck("#@selectionId", "#@containerId");
+                    $("#@containerId").css({
+                        'border': 'solid 1px #CCC',
+                        'border-radius': '10px 10px 10px 10px'
+                    });
+                },
+                function () {
+                    DeselectedCheck("#@selectionId", "#@inputId");
+                    $("#@containerId").css({
+                        border: 'none'
+                    });
+                }
+            )
+                .bind('checkSelected',
+                    function () {
+                        SelectedCheck("#@selectionId", "#@containerId");
+                    }
+                )
+                .bind('checkDeselected',
+                    function () {
+                        DeselectedCheck("#@selectionId", "#@inputId");
+                    }
+                )
+                .bind('refreshStart', 
+                    function (event, arg1) {
+                        arg1["@inputId"] = $("#@inputId").is(':checked');
+                    }
+                )
+                .bind('refreshStop', 
+                    function (event, arg1) {
+                        if (arg1["@inputId"]) {
+                            $("#@inputId").attr('checked', 'checked');
+                            SelectedCheck("#@selectionId");
+                        }
+                    }
+                );
+        });
+    </script>
+}
+
+<!-- There is no type to workaround an issue with Jquery 1.6.1 and IE8/9 --->
+<script>
+    function SelectedCheck(selectionId) {
+        $(selectionId).show();
+    }
+
+    function DeselectedCheck(selectionId, inputId) {
+        if (!$(inputId).is(':checked')) {
+            $(selectionId).hide();
+        }
+    }
+</script>

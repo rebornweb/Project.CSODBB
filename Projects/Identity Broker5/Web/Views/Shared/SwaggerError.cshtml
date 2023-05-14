@@ -1,0 +1,44 @@
+﻿@using Unify.Framework.Web.Extensions
+@using Unify.Framework.Web
+@using Unify.Framework.Web.Areas.Framework.Extensions
+
+@model SwaggerExceptionData
+@{
+    ViewBag.Title = Html.Title(WebStudioResources.ErrorPageTitle, Model.Branding.CompanyAndProductName);
+
+    SwaggerExceptionData data = Model;
+}
+
+<h2>@ExtensionResources.ServerErrorIndexHeading</h2>
+
+@{
+    while (data != null)
+    {
+        <table class="RightSpaced BottomSpaced VerticalAlignTable">
+            <tr>
+                <td style="min-width: 100px">@ExtensionResources.SwaggerExceptionMessageLabel</td>
+                <td>@data.FormattedMessage()</td>
+            </tr>
+            @if (!string.IsNullOrWhiteSpace(data.ExceptionType))
+            {
+                <tr>
+                    <td style="min-width: 100px">@ExtensionResources.SwaggerExceptionTypeLabel</td>
+                    <td>@data.ExceptionType</td>
+                </tr>
+            }
+            @if (!string.IsNullOrWhiteSpace(data.StackTrace))
+            {
+                <tr>
+                    <td style="min-width: 100px">@ExtensionResources.SwaggerExceptionStacktraceLabel</td>
+                    <td>@Html.Raw(Html.EncodeTextSplitLines(data.StackTrace))</td>
+                </tr>
+            }
+        </table>
+
+        data = data.InnerException;
+        if (data != null)
+        {
+            <h4>@ExtensionResources.SwaggerExceptionInnerExceptionLabel</h4>
+        }
+    }
+}

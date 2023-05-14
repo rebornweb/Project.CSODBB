@@ -1,0 +1,195 @@
+﻿@using System.Linq
+@using Unify.Connect.Web
+@using Unify.Connect.Web.Client
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+@model TransformationsViewInformation
+
+@{
+    string warningImageUrl = Url.WebIcon("error.png");
+
+    bool invalidSchemaCalculation = Model.AdapterSchema == null;
+    
+    string addSchemaTransformationUrl = Url.Action("ChooseTransformation", "Adapter", new { adapterId = Model.AdapterId, siteTransformation = Guid.Empty, front = false});
+    
+    string addTransformationButtonId = string.Concat("AddTransformationButton", Guid.NewGuid().ToString());
+    string addTransformationContainerId = string.Concat("AddSchemaContribution", Guid.NewGuid().ToString());
+
+    var lookUp = Model.Descriptions.ToDictionary(description => description.Name);
+}
+
+<h2>@AdapterResources.AdapterSchemaLabel</h2>
+
+<div>
+    
+    @if (Model.IsNotLdapCompliant)
+    {  
+        <div class="message">
+            <label>
+                <img src="@warningImageUrl" alt="Warning" title="Warning"/>
+                @if (Model.Enabled)
+                {
+                    @AdapterResources.AdapterSchemaNotCompliantMessage
+                }
+                else
+                {
+                    @Html.Raw(
+                        string.Format(
+                            TransformationResources.AdapterSchemaNotCompliantMessageTemplate,
+                            Html.ActionLink(TransformationResources.HereText, "AddLdapCompliantMoveTransformation", "Adapter", new { adapterId = Model.AdapterId }, new object())))
+                }
+            </label>
+        </div>
+    }
+    
+    @if (!Model.IsNotLdapCompliant && Model.NonUniqueAttributes.Any())
+    {
+        <div class="message">
+            <label>
+                <img src="@warningImageUrl" alt="Warning" title="Warning"/>
+                @if (Model.Enabled)
+                {
+                    @AdapterResources.AdapterSchemaNotCompliantMessage
+                }
+                else
+                {
+                    string fieldlist = Model.NonUniqueAttributes.Aggregate("<ul>", (current, nonUnique) => current + ("<li>" + nonUnique + "</li>"));
+                    fieldlist += "</ul>";
+                    
+                    @Html.Raw(
+                        string.Format(
+                            TransformationResources.AdapterSchemaDuplcateAttributeNamesTemplate, 
+                            Model.NonUniqueAttributes.Count() > 1 ? "fields" : "field",
+                            fieldlist,
+                            Html.ActionLink(TransformationResources.HereText, 
+                                "MakeUniqueRenameTransformation", 
+                                "Adapter", 
+                                new { adapterId = Model.AdapterId }, 
+                                new object())))
+                }
+            </label>
+        </div>
+    }
+    
+    @if (!Model.NonUniqueAttributes.Any() && !Model.IsNotLdapCompliant && Model.IllegalAttributes.Any())
+    { 
+        <div class="message">
+            <label>
+                <img src="@warningImageUrl" alt="Warning" title="Warning" />
+                @if (Model.Enabled)
+                {
+                    @AdapterResources.AdapterSchemaNotCompliantMessage
+                }
+                else
+                {
+                    string fieldList = Model.IllegalAttributes.Aggregate("<ul>", (current, illegal) => current + ("<li>" + illegal + "</li>"));
+                    fieldList += "</ul>";
+                    
+                    @Html.Raw(
+                        string.Format(
+                            TransformationResources.AdapterSchemaIllegalAttributeNamesTemplate,
+                            Model.IllegalAttributes.Count() > 1 ? "fields" : "field",
+                            fieldList,
+                            Html.ActionLink(TransformationResources.HereText,
+                                "MakeLegalRenameTransformation",
+                                "Adapter",
+                                new {adapterId = Model.AdapterId},
+                                new object())))
+                }
+            </label>
+        </div>
+    }
+    
+    @(invalidSchemaCalculation
+           ? Html.DisplayFor(model => model.SchemaFailedMessage.Message, "IncorrectlyCalculatedEntitySchemaRows")
+           : Html.DisplayFor(model => model.AdapterSchema, "EntitySchemaRows"))
+    
+    <div style="margin-top:15px;">
+        @if (Model.Transformations != null)
+        {
+        
+            <h2>
+                @TransformationResources.TransformationsHeading
+
+                @if (!Model.Enabled && Model.Transformations != null)
+                {
+                    <a class="m-btn sm" href="@addSchemaTransformationUrl" id="@addTransformationButtonId">
+                        @TransformationResources.TransformSchemaButtonText
+                    </a>
+                }
+            </h2>
+
+            BasicTransformationInformation[] contributions = Model.Transformations.ToArray();
+
+            if (contributions.Any())
+            {
+                foreach (BasicTransformationInformation transformation in contributions)
+                {
+                    string displayName = transformation.TransformationType;
+
+                    AdapterEntityTransformationGeneratorDescription description;
+                    if (lookUp.TryGetValue(transformation.TransformationType, out description))
+                    {
+                        displayName = description.TransformationDisplayName;
+                    }
+
+                    <fieldset style="padding:2em;">
+                        <legend>
+                            @displayName
+                            @Html.RenderTransformationsFunctionsMenu(Url, transformation.TransformationId, Model.AdapterId)
+                        </legend>
+
+                        @{
+                            AdapterEntityTransformationSchemaContribution contribution;
+
+                            bool renderError = false;
+
+                            if (Model.Contributions.TryGetValue(transformation.TransformationId, out contribution))
+                            {
+                                if (contribution.ErrorMessage != null)
+                                {
+                                    renderError = true;
+                                }
+                            }
+                        }
+
+                        @if (renderError)
+                        {
+                            <div class="message">
+                                @(string.Format(TransformationResources.TransformationsContributionErrorMessageTemplate, contribution.ErrorMessage))
+                            </div>
+                            <br/>
+                        }
+
+                        @{ 
+                        Html.RenderAction(
+                            "Display",
+                            MvcApplication.GetTransformationController(transformation.TransformationType),
+                            new
+                            {
+                                area = "Extensibility",
+                                adapterId = Model.AdapterId,
+                                transformationId = transformation.TransformationId
+                            }
+                            );
+                        }
+                    </fieldset>
+                }
+            }
+            else
+            {
+                @TransformationResources.NoTransformationsConfiguredMessage
+            }
+        }
+    </div>
+
+</div>
+
+<div id="@addTransformationContainerId"></div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        @ViewData.RetrieveListItems("TransformationFunctions")
+    });
+</script>

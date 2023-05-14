@@ -1,0 +1,62 @@
+﻿@using System.Linq
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+
+@model AdapterViewInformation
+
+@Html.HiddenFor(model => model.AdapterId)
+@Html.HiddenFor(model => model.EditMode)
+@Html.HiddenFor(model => model.Template)
+
+@using (Html.MetaDataFor(model => model.AdapterName, new { description = AdapterResources.AdapterNameDescription }))
+{
+    @Html.LabelFor(model => model.AdapterName, AdapterResources.AdapterNameLabel)
+    @Html.TextBoxFor(model => model.AdapterName)
+}
+
+@using (Html.MetaDataFor(model => model.ContainerName, new { description = AdapterResources.AdapterContainerNameDescription }))
+{
+    @Html.LabelFor(model => model.ContainerName, AdapterResources.AdapterContainerNameLabel)
+    @Html.TextBoxFor(model => model.ContainerName)
+}
+
+@using (Html.MetaDataFor(model => model.ObjectClass, new { description = AdapterResources.ObjectClassDescription }))
+{
+    @Html.LabelFor(model => model.ObjectClass, AdapterResources.AdapterObjectClassLabel)
+    @Html.TextBoxFor(model => model.ObjectClass)
+}
+
+@if (Model.EditMode || Model.BaseConnectorId == null || Model.BaseConnectorId == Guid.Empty)
+{
+    Guid baseConnectorId = Model.BaseConnectorId ?? Guid.Empty;
+
+    using (Html.MetaDataFor(model => model.BaseConnectorId, new { description = AdapterResources.SelectBaseConnectorDescription }, new { @class = "chzn-form-fieldset-container" }))
+    {
+        @Html.LabelFor(model => model.BaseConnectorId, AdapterResources.SelectBaseConnectorLabel)
+        @Html.DropDownListFor(model => baseConnectorId, new SelectList(Model.Connectors, "Key", "Value",
+                                 Model.Connectors.Any(connector => connector.Key == baseConnectorId)
+                                     ? Model.Connectors.First(baseConnector => baseConnector.Key == baseConnectorId)
+                                     : Model.Connectors.First()),
+                                     new
+                                     {
+                                         @class = "chzn-select"
+                                     })
+    }
+}
+else
+{
+    @Html.HiddenFor(model => model.BaseConnectorId)
+    @Html.HiddenFor(model => model.BaseConnectorName)
+    <div>
+        @Html.LabelFor(model => model.BaseConnectorId, AdapterResources.AdapterBaseConnectorLabel)
+        <p>
+            <a href="@Url.Action("ConnectorDetails", "Connector", new { connectorId = Model.BaseConnectorId })">@Model.BaseConnectorName</a>
+        </p>
+    </div>
+}
+
+@using (Html.MetaDataFor(model => model.AdapterComment, new {description = AdapterResources.AdapterCommentDescription}))
+{
+    @Html.LabelFor(model => model.AdapterComment, AdapterResources.AdapterCommentLabel)
+    @Html.TextAreaFor(model => model.AdapterComment, 4, 20, new {@class = "wide-text"})
+}

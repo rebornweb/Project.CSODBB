@@ -1,0 +1,9 @@
+﻿@model StatisticsSaveJobViewInformation
+
+<div>   
+    <h3>@ConnectorControllerResources.SaveEntitiesHeadingText</h3>
+    <div class="PaddedContent">
+        @Html.DisplayFor(model => model, "TalliedConnectorStatisticsConfiguration")
+        @Html.DisplayFor(model => model, "ConnectorStatisticsConfiguration")
+    </div>
+</div>

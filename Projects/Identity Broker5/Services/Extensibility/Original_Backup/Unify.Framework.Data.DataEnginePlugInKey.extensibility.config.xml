@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataEngine>
+	<dataRepository>
+		<dataConnection name="sql" repository="Unify.IdentityBroker" connectionString="Data Source=OCCCP-DB301;Initial Catalog=Unify.IdentityBroker5;Integrated Security=True;"/>
+        <!-- <dataConnection name="postgres" repository="Unify.IdentityBroker" type="PostgreSql" connectionString="Username=postgres;Port=5432;Database=Unify.IdentityBroker;Host=localhost;Password=" /> -->
+	</dataRepository>
+</DataEngine>

@@ -1,0 +1,378 @@
+/* Themes */
+
+.opaque1 {
+    -ms-opacity: 0.2;
+    opacity: 0.2;
+}
+
+.opaque2 {
+    -ms-opacity: 0.4;
+    opacity: 0.4;
+}
+
+.opaque3 {
+    -ms-opacity: 0.6;
+    opacity: 0.6;
+}
+
+.opaque4 {
+    -ms-opacity: 0.8;
+    opacity: 0.8;
+}
+
+.opaque5 {
+    -ms-opacity: 0.99;
+    opacity: 0.99;
+}
+
+.TitleHeadingNavigation 
+{    
+    background-color: #F49211;
+}
+
+.ActiveTab
+{
+    background-color: #efaa4e !important;
+}
+
+a {
+     color: #F49211;
+}
+
+form input:focus, form textarea:focus {
+    background-color: #F6B35B;
+    border-color: #F49211;
+}
+
+.hint {
+    background: #F6B35B url("forms/pointer_orange.gif") no-repeat -10px 5px;
+    border-color: #F49211;
+}
+
+.hint .hint-pointer {
+    background: url("forms/pointer_orange.gif") left top no-repeat;
+}
+
+body, .TitleHeadingNavigation {
+    -moz-min-width: 680px;
+    -ms-min-width: 680px;
+    -o-min-width: 680px;
+    -webkit-min-width: 680px;
+    min-width: 680px;
+}
+
+body, .TitleHeadingNavigation {
+    -moz-min-width: 750px;
+    -ms-min-width: 750px;
+    -o-min-width: 750px;
+    -webkit-min-width: 750px;
+    min-width: 750px;
+}
+
+ul#menu li a {
+    border-color: #F49211;
+    color: #FA9F23;
+}
+
+
+/* Identity Broker data-tables override 
+-----------------------------------------------------------*/
+
+tr.odd { background-color: #FDEAD0 !important; }
+
+td.sorting_1 { background-color: #FBDCB2 !important; }
+
+td.sorting_2 { background-color: #FBDCB2 !important; }
+
+td.sorting_3 { background-color: #FBDCB2 !important; }
+
+
+/* Identity Broker specific 
+-----------------------------------------------------------*/
+
+.RightSpaced td { padding-right: 10px; }
+
+.BottomSpaced td { padding-bottom: 5px; }
+
+.VerticalAlignTable td { vertical-align: text-top; }
+
+div.InnerAdapter {
+    display: inline;
+    margin-left: 150px;
+}
+
+.schemaKey {
+     background-color: #f9c27a;
+}
+
+
+.schemaKey .formcontrol { background-color: #FFF; }
+
+table.FeintTableRows, td.FeintTableRows { /*border: 1px solid #CCC;*/ }
+
+td.FeintTableRows {
+    border-bottom-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    padding-bottom: 10px;
+}
+
+table.EntitySchemaRows tr, table.EntitySchemaRowControls tr {
+     height: 30px;
+     text-align: center;
+}
+
+table.EntitySchemaRows, table.EntitySchemaRowControls {
+    border-collapse: collapse;
+	border-spacing: 0;
+}
+
+tr.MultiPartComponent { border: 1px solid #D45C5C; }
+
+.ProgressContainer {
+    border: 1px solid #CCC;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    height: 33px;
+    width: 240px;
+    overflow-x: hidden;
+}
+
+.RunningProgressContainer {
+     background-image: url('/Content/LightLoader.gif');
+}
+
+.CompleteProgressContainer, .SuccessfullyCompleteProgressContainer { background: #d7e5bd; }
+.CompletedWithWarningsProgressContainer { background: #f5ee9e; }
+.CompletedWithErrorsProgressContainer { background: #dc7676; }
+.BlockedProgressContainer, .QueuedProgressContainer { background: rgb(235, 235, 244);}
+
+
+.InactiveProgressContainer { background: transparent; }
+
+.ProgressValue {
+    font-size: 0.8em;
+    margin: 5px 0 0 5px;
+    padding: 5px 0 0 5px;
+    position: absolute;
+}
+
+.ProgressBlind {
+    background-color: #F6F6F6;
+    border-left: 2px solid #FAB355;
+    -ms-border-radius: 0 10px 10px 0;
+    border-radius: 0 10px 10px 0;
+    float: right;
+    height: 33px;
+}
+
+.ActiveProgressBlind { }
+
+.InactiveProgressBlind { display: none; }
+
+.ErroredComponent {
+    background-color: #E7E7E7;
+    padding: 20px;
+}
+
+.InternalSearchTermComponent { float: left; }
+
+.ListedComponentFunctions {
+    float: left;
+    height: 200px;
+    margin: 0;
+    padding: 5px;
+    zoom:1;
+    position:relative;
+}
+
+.ListedComponentContainer {
+    float: left;
+    height: 300px;
+    margin: 0;
+    max-height: 300px;
+    -moz-min-width: 100px;
+    -ms-min-width: 100px;
+    -o-min-width: 100px;
+    -webkit-min-width: 100px;
+    min-width: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 85%;
+    zoom:1;
+    position:relative;
+}
+
+.ListedAdapter, .ListedConnector, .ListedAgent {
+    margin: 0;
+    margin-bottom: 5px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-top: 10px;
+    zoom:1;
+}
+
+.ListedAdapter:hover, .ListedConnector:hover, .ListedAgent:hover {
+    border: solid 1px #CCC;
+    -ms-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.ListedAdapter div, .ListedConnector div, .ListedAgent div {
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+.ConnectorSelections, .AdapterSelections, .AgentCheckBox {
+    margin-right: 5px;
+}
+
+.ConfimationButton, .PendingSubmission {
+    margin:0;
+    padding:7px;
+    color:black;
+    -moz-min-width:100px;
+    -ms-min-width:100px;
+    -o-min-width:100px;
+    -webkit-min-width:100px;
+    min-width:100px;
+}
+
+.ConfimationButton {
+    background-color: rgb(228, 247, 198);
+}
+
+.PendingSubmission {
+}
+
+.UnderText {
+    font-size:0.8em;
+    padding-left:2em;
+}
+
+
+/* Chosen Select Lists */
+
+.chzn-container, .chzn-form-fieldset-container {
+    overflow: visible;
+    margin: 0;
+}
+
+form fieldset div .chzn-select { overflow: auto; }
+
+.chzn-single, .chzn-drop {
+    -moz-min-width: 220px;
+    -ms-min-width: 220px;
+    -o-min-width: 220px;
+    -webkit-min-width: 220px;
+    min-width: 220px;
+}
+
+.chzn-drop {
+     text-align: left;
+     margin: 0;
+     padding-left: 8px;
+}
+
+.chzn-search input {
+    -moz-min-width: 185px;
+    -ms-min-width: 185px;
+    -o-min-width: 185px;
+    -webkit-min-width: 185px;
+    min-width: 185px;
+}
+
+.chzn-select { width: auto; }
+
+.FormText {
+    background-color: #f4f4f4;
+    border-left:1px solid #CCC;
+    border-right:1px solid #CCC;
+    padding:1em;
+}
+
+/* Distinguished name styles */
+
+.DnComponent {
+    margin-left:2px;
+    margin-right:2px;
+    padding:0.6em;
+    padding-right:0   
+}
+
+.DnComponent:hover {
+    border:solid 1px #CCC
+}
+
+.DnComponent button {
+    display: none;
+    border:none;
+    color: #CCC;
+    background:none;
+}
+
+.DnComponent:hover button {
+    display:inherit
+}
+
+.DnComponent label {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    display: inline;
+    text-align: left;
+    float: none;
+}
+
+.DnComponents {
+    border:solid 1px #CCC;
+    padding:1em;
+    position: relative;
+    height: auto;
+    min-height: 2em;
+}
+
+.DnComponents input {
+    width: 90%;
+    position:absolute;
+    left:0;
+    top:0;
+    display: none;
+    padding:0;
+    margin: 0;
+    border: none;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 1em;
+    height: auto;
+    min-height: 2em;
+}
+
+.DnComponentsButton {
+    display: none;
+    border:none;
+    color: #4A4A4A;
+    background:none;
+}
+
+.DnComponentsShowHide {
+}
+
+.DnComponents:hover .DnComponentsShowHide {
+    display: inherit;
+}
+
+.DnValueListing {
+    padding: 0;
+    margin: 0;
+    padding-left: 3em;
+}
+
+.DnValueListing a {
+    color: #BF7411;
+}
+
+.TransformationAddedField {
+    color: #D6A247;
+}

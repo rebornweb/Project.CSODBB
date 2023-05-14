@@ -1,0 +1,18 @@
+﻿@using Unify.Product.IdentityBroker
+@model string
+
+<img style="max-width: 200px; max-height: 200px;" src="data:image/png;base64,@Model"/>
+<br/><br/>
+<a href="javascript:;" id="ShowOriginalButton">@EntitySchemaResources.BinaryViewShowOriginalText</a>
+<textarea style="display: none" rows="5" cols="10" id="ShowOriginalText">@Model</textarea>
+
+<script type="text/javascript">
+    $(function() {
+        $("#ShowOriginalButton")
+            .on('click',
+                function() {
+                    $("#ShowOriginalText").show();
+                    $(this).hide();
+                });
+    });
+</script>

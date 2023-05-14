@@ -1,0 +1,84 @@
+﻿@model IdentityBrokerChangesPlugInConfigurationViewInformation
+@using Unify.Framework.Web
+@{
+    ViewBag.Title = Html.CreatePlugInTitle(Model.CreateOrUpdateText, TitleResources.CreateIdBChangesOperationCaption);
+    const string keyFieldName = "Key";
+    const string valueFieldName = "Value"; 
+}
+
+@using (Html.DecorateForm(
+            () => Html.BeginForm("CreatePlugInOperation", "Operation", FormMethod.Post, new { id = "CreateOperationForm" }),
+            Model.CreateOrUpdateText,
+            "CreateOperationForm",
+            OperationResources.ConfigureOperationAltText, "submitButton"))
+{
+    <div>
+        @Html.HiddenFor(model => model.AgentId)
+        @Html.EditorFor(model => model, "OperationDisplayName")
+
+        <fieldset>
+            <legend>@OperationControllerResources.IdentityBrokerSelectAdapterInformationText</legend>
+
+            @if (Model.AvailableAdapters != null && Model.AvailableAdapters.Any())
+            {
+                using (Html.MetaDataFor(model => model.UseOverride, new {description = OperationControllerResources.UseAdapterIdOverrideDescription}, new {@class = "controlset"}))
+                {
+                    @Html.LabelFor(model => model.UseOverride, OperationControllerResources.UseAdapterIdOverrideName)
+                    @Html.RadioButtonFor(model => model.UseOverride, true)
+                    <label>@OperationControllerResources.UseAdapterIdOverrideYesName</label>
+                    @Html.RadioButtonFor(model => model.UseOverride, false)
+                    <label>@OperationControllerResources.UseAdapterIdOverrideNoName</label>
+                }
+
+                using (Html.MetaDataFor(model => model.AdapterId, new {description = OperationControllerResources.SelectAdapterDescription}, new {id = "AdapterDropDownSection", @class = "chzn-container"}))
+                {
+                    @Html.LabelFor(model => model.AdapterId, OperationControllerResources.SelectAdapterName)
+                    @Html.DropDownListFor(model => model.AdapterId,
+                        new SelectList(
+                            Model.AvailableAdapters,
+                            keyFieldName,
+                            valueFieldName,
+                            Model.AvailableAdapters.Any(adapter => adapter.Key == Model.AdapterId)
+                                ? Model.AvailableAdapters.First(adapter => adapter.Key == Model.AdapterId)
+                                : Model.AvailableAdapters.First()),
+                        new {@class = "chzn-select"})
+                }
+
+                <script type="text/javascript">
+                    $(document)
+                        .ready(function() {
+                            var useOverrideTrue = $('input[type=radio][id=UseOverride][value=True]');
+                            var useOverrideFalse = $('input[type=radio][id=UseOverride][value=False]');
+                            var adapterDropDownSection = $('#AdapterDropDownSection');
+                            var adapterIdSection = $('#AdapterIdSection');
+
+                            ShowHideSection(useOverrideTrue, adapterIdSection, adapterDropDownSection);
+                            useOverrideTrue.bind('change',
+                                function(event) {
+                                    ShowHideSection(useOverrideTrue, adapterIdSection, adapterDropDownSection);
+                                });
+                            useOverrideFalse.bind('change',
+                                function(event) {
+                                    ShowHideSection(useOverrideTrue, adapterIdSection, adapterDropDownSection);
+                                });
+                        });
+                </script>
+            }
+            else
+            {
+                @* An issue occurred with respects to model binding, in and of that the use override field was being set to default false, irrespective of its actual state *@
+                <input id="UseOverride" name="UseOverride" type="hidden" value="True"/>
+            }
+
+            @using (Html.MetaDataFor(model => model.AdapterIdOverride, new {description = OperationControllerResources.AdapterIdDescription}, new {id = "AdapterIdSection"}))
+            {
+                @Html.LabelFor(model => model.AdapterIdOverride, OperationControllerResources.AdapterIdName)
+                @Html.TextBoxFor(model => model.AdapterIdOverride, new {@class = "guid-length"})
+            }
+        </fieldset>
+
+        <fieldset>
+            @Html.EditorFor(model => model, "CheckOperationInnerDetails")
+        </fieldset>
+    </div>
+}

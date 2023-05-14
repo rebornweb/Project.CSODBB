@@ -1,0 +1,110 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+
+@model AdapterViewInformation
+
+@Html.HiddenFor(model => model.AdapterId)
+@Html.HiddenFor(model => model.EditMode)
+@Html.HiddenFor(model => model.Template)
+@Html.HiddenFor(model => model.IsInComposite)
+
+@using (Html.MetaDataFor(model => model.AdapterName, new { description = AdapterResources.AdapterNameDescription }))
+{
+    @Html.LabelFor(model => model.AdapterName, AdapterResources.AdapterNameLabel)
+    @Html.TextBoxFor(model => model.AdapterName)
+}
+
+@if (Model.EditMode || Model.BaseConnectorId == null || Model.BaseConnectorId == Guid.Empty)
+{
+    var baseConnectorId = Model.BaseConnectorId ?? Guid.Empty;
+
+    using (Html.MetaDataFor(model => model.BaseConnectorId, new { description = AdapterResources.SelectBaseConnectorDescription }, new { @class = "chzn-form-fieldset-container" }))
+    {
+        @Html.LabelFor(model => model.BaseConnectorId, AdapterResources.SelectBaseConnectorLabel)
+        @Html.DropDownListFor(model => baseConnectorId, new SelectList(Model.Connectors, "Key", "Value",
+                                 Model.Connectors.Any(connector => connector.Key == baseConnectorId)
+                                     ? Model.Connectors.First(baseConnector => baseConnector.Key == baseConnectorId)
+                                     : Model.Connectors.First()),
+                                     new
+                                     {
+                                         @class = "chzn-select"
+                                     })
+    }
+}
+else
+{
+    @Html.HiddenFor(model => model.BaseConnectorId)
+    @Html.HiddenFor(model => model.BaseConnectorName)
+    <div>
+        @Html.LabelFor(model => model.BaseConnectorId, AdapterResources.AdapterBaseConnectorLabel)
+        <p>
+            <a href="@Url.Action("ConnectorDetails", "Connector", new { connectorId = Model.BaseConnectorId })">@Model.BaseConnectorName</a>
+        </p>
+    </div>
+}
+
+@using (Html.MetaDataFor(model => model.ObjectClass, new { description = AdapterResources.ObjectClassDescription }))
+{
+    @Html.LabelFor(model => model.ObjectClass, AdapterResources.AdapterObjectClassLabel)
+    @Html.TextBoxFor(model => model.ObjectClass)
+}
+
+@if (!Model.IsInComposite)
+{
+using (Html.MetaDataFor(model => model.AdapterComment, new {description = AdapterResources.AdapterCommentDescription}))
+ {
+     @Html.LabelFor(model => model.AdapterComment, AdapterResources.AdapterCommentLabel)
+     @Html.TextAreaFor(model => model.AdapterComment, 4, 20, new {@class = "wide-text"})
+ }
+}
+else
+{
+  @Html.HiddenFor(model => model.AdapterComment)
+}
+
+<!-- TODO: IDB-151 - To be made visible once reflection works properly with deltas -->
+
+@using (Html.MetaDataFor(model => model.UseAdvancedView, new { }, new { style = "display:none" }))
+{
+    @Html.LabelFor(model => model.UseAdvancedView, AdapterResources.UseAdvancedViewLabelText)
+    @Html.CheckBoxFor(model => model.UseAdvancedView)
+}
+    
+<!-- TODO: IDB-151 - To be made visible once reflection works properly with deltas -->
+<div id="AdvancedViewSection" style="display:none">
+    <fieldset>
+        <legend>@AdapterResources.AdapterContextSettingsLegendText</legend>
+        <p>@AdapterResources.AdapterContextSettingsDescription</p>
+
+        @using (Html.MetaDataFor(model => model.ReflectOnBaseConnectorImport))
+        {
+            @Html.LabelFor(model => model.ReflectOnBaseConnectorImport, AdapterResources.ReflectOnBaseConnectorImportLabel)
+            @Html.CheckBoxFor(model => model.ReflectOnBaseConnectorImport)
+        }
+        
+        @using (Html.MetaDataFor(model => model.ReflectOnBaseConnectorPoll))
+        {
+            @Html.LabelFor(model => model.ReflectOnBaseConnectorPoll, AdapterResources.ReflectOnBaseConnectorPollLabel)
+            @Html.CheckBoxFor(model => model.ReflectOnBaseConnectorPoll)
+        }
+        
+        @using (Html.MetaDataFor(model => model.ReflectOnRelationalConnectorImport))
+        {
+            @Html.LabelFor(model => model.ReflectOnRelationalConnectorImport, AdapterResources.ReflectOnRelationalConnectorImportLabel)
+            @Html.CheckBoxFor(model => model.ReflectOnRelationalConnectorImport)
+        }
+        
+        @using (Html.MetaDataFor(model => model.ReflectOnRelationalConnectorPoll))
+        {
+            @Html.LabelFor(model => model.ReflectOnRelationalConnectorPoll, AdapterResources.ReflectOnRelationalConnectorPollLabel)
+            @Html.CheckBoxFor(model => model.ReflectOnRelationalConnectorPoll)
+        }
+        
+        @using (Html.MetaDataFor(model => model.ReflectOnChangesDue))
+        {
+            @Html.LabelFor(model => model.ReflectOnChangesDue, AdapterResources.ReflectOnChangesDueLabel)
+            @Html.CheckBoxFor(model => model.ReflectOnChangesDue)
+        }
+    </fieldset>
+</div>
+    

@@ -1,0 +1,297 @@
+﻿@using Unify.Framework
+@using Unify.Framework.Web
+@model CreateConnectorScheduleViewInformation
+
+@{
+    ViewBag.Title = Html.Title(string.Format(TitleResources.CreateSchedulePageTitleTemplate, Model.CreateOrUpdateText));
+
+    string actionName = Model.TimingType == ConnectorTimingType.GetAllEntities
+                            ? "CreateOrEditGetAllEntitiesTiming"
+                            : "CreateOrEditPollingTiming";
+
+    string addImageUrl = Url.WebIcon("add.png");
+    string deleteImageUrl = Url.WebIcon("delete.png");
+
+    // ReSharper disable Mvc.ControllerNotResolved
+    // ReSharper disable Mvc.ActionNotResolved
+    Html.RenderAction("SchedulesHeader", "Schedules", new {area = "Framework"});
+    // ReSharper restore Mvc.ActionNotResolved
+    // ReSharper restore Mvc.ControllerNotResolved
+
+    Func<int, int, int?, int?, RouteValueDictionary> routeValues = (dates, daily, additionalHiddenDate, additionalHiddenDaily) =>
+    {
+        var finalRouteValues = new RouteValueDictionary();
+
+        finalRouteValues["edit"] = Model.EditMode;
+        finalRouteValues["connectorId"] = Model.ConnectorId;
+        finalRouteValues["timingId"] = Model.TimingId;
+        finalRouteValues["currentDatesCount"] = Model.CurrentDatesCount + dates;
+        finalRouteValues["currentDailyCount"] = Model.CurrentDailyCount + daily;
+
+        var hiddenDates = additionalHiddenDate == null
+                              ? Model.HiddenDatesTimings
+                              : Model.HiddenDatesTimings.Concat(new[] { additionalHiddenDate.Value }).ToArray();
+
+        hiddenDates.Visit((date, index) =>
+        {
+            finalRouteValues[string.Format("hiddenDates[{0}]", index)] = date;
+        });
+
+        var hiddenDaily = additionalHiddenDaily == null
+                              ? Model.HiddenDailyTimings
+                              : Model.HiddenDailyTimings.Concat(new[] { additionalHiddenDaily.Value }).ToArray();
+
+        hiddenDaily.Visit((dailyValue, index) =>
+        {
+            finalRouteValues[string.Format("hiddenDaily[{0}]", index)] = dailyValue;
+        });
+
+        return finalRouteValues;
+    };
+}
+
+<script type="text/javascript">
+    function prepareDateTimePickers() {
+        $('span.StandardDateTime input').datetimepicker(
+        {
+            dateFormat: "@LoggingControllerConstants.DateFormatJQueryEditMode",
+            timeFormat: "@LoggingControllerConstants.TimeFormatJQueryEditMode",
+            showSecond: true,
+            changeMonth: true,
+            changeYear: true,
+            showWeek: true
+        });
+
+        $('span.StandardDate input').datepicker({
+            dateFormat: "@LoggingControllerConstants.DateFormatJQueryEditMode",
+            showButtonPanel: true,
+            changeMonth: true,
+            changeYear: true,
+            showWeek: true
+        });
+
+        $('span.StandardTimeFormat input').timepicker({
+            timeFormat: "@LoggingControllerConstants.TimeFormatJQueryEditMode",
+            showSecond: true
+        });
+    }
+
+    function redraw() {
+        prepareInputsForHints();
+        prepareDateTimePickers();
+    }
+
+    $(document).ready(redraw);
+</script>
+
+@using (
+    Html.DecorateForm(
+        () => Html.BeginForm((Model.TimingType == ConnectorTimingType.GetAllEntities)
+                                ? "CreateOrEditGetAllEntitiesTiming" 
+                                : "CreateOrEditPollingTiming", "Connector", 
+                                FormMethod.Post,
+                                new{id = "CreateOrEditTimingForm"}),
+        Model.CreateOrUpdateText,
+        "CreateOrEditTimingForm",
+        ConnectorControllerResources.SaveScheduleAltText))
+{
+    <div>
+     
+        @Html.HiddenFor(model => model.ConnectorId)
+        @Html.HiddenFor(model => model.TimingId)
+        @Html.HiddenFor(model => model.TimingType)
+        @Html.HiddenFor(model => model.EditMode)
+        @Html.HiddenFor(model => model.TimingState)
+
+        <h2>@ConnectorControllerResources.ScheduleBaseOccurenceHeading</h2>
+        
+        <fieldset>
+            <legend>@Html.RadioButtonFor(model => model.BaseOccurrenceType, BaseOccurrenceOptions.RecurringTimeSpan)&nbsp;@ConnectorControllerResources.RecurringTimespanCaption</legend>
+            <div id="RecurringTimeSpanSection" class="RadioSection">
+                @* ReSharper disable once Mvc.TemplateNotResolved *@
+                @Html.EditorFor(model => model.RecurringTimeSpanViewInformation, "RecurringTimeSpan", new { area = "Framework" })
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>@Html.RadioButtonFor(model => model.BaseOccurrenceType, BaseOccurrenceOptions.OnceOff)&nbsp;@ConnectorControllerResources.OnceOffCaption</legend>
+            <div id="OnceOffSection" class="RadioSection">
+                @* ReSharper disable once Mvc.TemplateNotResolved *@
+                @Html.EditorFor(model => model.OnceOffViewInformation, "OnceOff", new { area = "Framework" })
+            </div>
+        </fieldset>
+        
+        <fieldset>
+            <legend>@Html.RadioButtonFor(model => model.BaseOccurrenceType, BaseOccurrenceOptions.DailyAtTimeFromDate)&nbsp;@ConnectorControllerResources.DailyAtTimeCaption</legend>
+            <div id="DailyAtTimeFromDateSection" class="RadioSection">
+                @* ReSharper disable once Mvc.TemplateNotResolved *@
+                @Html.EditorFor(model => model.DailyAtTimeFromDateViewInformation, "DailyAtTimeFromDate", new { area = "Framework" })
+            </div>
+        </fieldset>
+         
+        <fieldset>
+            <legend>@Html.RadioButtonFor(model => model.BaseOccurrenceType, BaseOccurrenceOptions.WeeklyOnDayAtTimeFromDate)&nbsp;@ConnectorControllerResources.WeeklyAtTimeCaption</legend>
+            <div id="WeeklyOnDayAtTimeFromDateSection" class="RadioSection">
+                @* ReSharper disable once Mvc.TemplateNotResolved *@
+                @Html.EditorFor(model => model.WeeklyOnDayAtTimeFromDateViewInformation, "WeeklyOnDayAtTimeFromDate", new { area = "Framework" })
+            </div>
+        </fieldset>
+
+        <h3>@ConnectorControllerResources.ScheduleTimingPropertiesHeading</h3>
+
+        <fieldset>
+            <legend>@Html.CheckBoxFor(model => model.DayExclusionViewInformation.Selected, new { @class = "CheckCollapse" })&nbsp;@ConnectorControllerResources.DayExclusionCaption</legend>
+            <div class="CheckSection">
+                @* ReSharper disable once Mvc.TemplateNotResolved *@
+                @Html.EditorFor(model => model.DayExclusionViewInformation, "DayExclusion", new { area = "Framework" })
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>@Html.CheckBoxFor(model => model.ExpiryTimingViewInformation.Selected, new { @class = "CheckCollapse" })&nbsp;@ConnectorControllerResources.ExpiryTimingCaption</legend>
+            <div class="CheckSection">
+                @* ReSharper disable once Mvc.TemplateNotResolved *@
+                @Html.EditorFor(model => model.ExpiryTimingViewInformation, "Expiry", new { area = "Framework" })
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>
+                @ConnectorControllerResources.DailyExclusionCaption 
+                
+                <a href="@Html.Raw(Url.Action(actionName, "Connector", routeValues(0, 1, null, null)))"
+                   onclick="return false;"
+                   id="DailyExclusionsAdd" >
+                    <img src="@addImageUrl"
+                         alt="@ConnectorControllerResources.AddDailyExclusionTimingAltText" 
+                         title="@ConnectorControllerResources.AddDailyExclusionTimingAltText" />
+                </a>
+            </legend>
+
+            <div id="DailyExclusions" > 
+                @for (int i = 0; i < Model.EachDailyExclusionViewInformation.Count; i++)
+                {
+                    if (!Model.HiddenDailyTimings.Contains(i))
+                    {
+                        <div class="FaintBorder" id="@string.Format("DailyExclusions{0}", i)" style="margin: 3px">
+                            
+                            <input type="hidden" name="EachDailyExclusionViewInformation.Index" value="@i"/>
+                            <div>
+                                @* ReSharper disable once Mvc.TemplateNotResolved *@
+                                @Html.EditorFor(model => model.EachDailyExclusionViewInformation[i], "DailyExclusion", new { area = "Framework" })
+                            </div>
+                            <div>
+                                &nbsp;
+                                <a href="@Html.Raw(Url.Action(actionName, "Connector", routeValues(0, -1, null, i)))"
+                                   id="@string.Format("DailyExclusionsRemove{0}", i)"
+                                   onclick=" $('#@string.Format("DailyExclusions{0}", i)').remove(); return false;">
+                                    <span style="margin-left: 75px;">Delete</span>
+                                    <img src="@deleteImageUrl" 
+                                         alt="@WebStudioResources.DeleteText"
+                                         title="@WebStudioResources.DeleteText"/>
+                                </a>
+                            </div>
+                            <br/><br/>
+
+                        </div>
+                    }
+                } 
+            </div>
+                
+        </fieldset>
+
+        <fieldset>
+            <legend>
+                @ConnectorControllerResources.DatesExclusionCaption 
+                
+                <a href="@Html.Raw(Url.Action(actionName, "Connector", routeValues(1, 0, null, null)))"
+                   onclick="return false;"
+                   id="DatesExclusionsAdd">
+                    <img src="@addImageUrl" 
+                         alt="@ConnectorControllerResources.AddDatesExclusionTimingAltText"
+                         title="@ConnectorControllerResources.AddDatesExclusionTimingAltText" />
+                </a>
+            </legend>
+
+            <div id="DateExclusions">
+                @for (int i = 0; i < Model.EachDatesExclusionViewInformation.Count; i++)
+                {
+                    if (!Model.HiddenDatesTimings.Contains(i))
+                    {
+                        <div class="FaintBorder" id="@string.Format("DateExclusions{0}", i)" style="margin: 3px">
+                            <input type="hidden" name="EachDatesExclusionViewInformation.Index" value="@i"/>
+                            <div>
+                                @* ReSharper disable once Mvc.TemplateNotResolved *@
+                                @Html.EditorFor(model => model.EachDatesExclusionViewInformation[i], "DatesExclusion", new { area = "Framework" })
+                            </div>
+                            <div>
+                                <a href="@Html.Raw(Url.Action(actionName, "Connector", routeValues(-1, 0, i, null)))"
+                                   onclick=" $('#@string.Format("DateExclusions{0}", i)').remove(); return false;">
+                                    <span style="margin-left: 75px;">Delete</span>
+                                    <img id="@string.Format("DateExclusionsRemove{0}", i)" 
+                                         src="@deleteImageUrl" 
+                                         alt="@WebStudioResources.DeleteText"
+                                         title="@WebStudioResources.DeleteText"/>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </fieldset>
+    </div>
+
+    // Generate a template HTML string for the Dates exclusion editor
+    Model.EachDatesExclusionViewInformation.Add(new DatesExclusionViewInformation());
+
+    int nextDates = Model.EachDatesExclusionViewInformation.Count - 1;
+    string underScoreNextDatesReplacementRegex = string.Format("/\\_{0}\\_/g", nextDates);
+    string indexNextDatesReplacementsRegex = string.Format("/\\[{0}\\]/g", nextDates);
+    //ReSharper disable once Mvc.TemplateNotResolved
+    IHtmlString rawDatesHtmlTemplate = Html.Raw(HttpUtility.JavaScriptStringEncode(Html.EditorFor(model => Model.EachDatesExclusionViewInformation[nextDates], "DatesExclusion", new { area = "Framework" }).ToHtmlString()));
+
+    Model.EachDatesExclusionViewInformation.RemoveAt(nextDates);
+
+    // Generate a template HTML string for the Daily exclusion editor
+    Model.EachDailyExclusionViewInformation.Add(new DailyExclusionViewInformation());
+
+    int nextDaily = Model.EachDailyExclusionViewInformation.Count - 1;
+    string underScoreNextDailyReplacementRegex = string.Format("/\\_{0}\\_/g", nextDaily);
+    string indexNextDailyReplacementsRegex = string.Format("/\\[{0}\\]/g", nextDaily);
+    //ReSharper disable once Mvc.TemplateNotResolved
+    IHtmlString rawDailyHtmlTemplate = Html.Raw(HttpUtility.JavaScriptStringEncode(Html.EditorFor(model => Model.EachDailyExclusionViewInformation[nextDaily], "DailyExclusion", new { area = "Framework" }).ToHtmlString()));
+
+    Model.EachDailyExclusionViewInformation.RemoveAt(nextDaily);
+
+    <script type="text/javascript">
+
+        // Disable the date linke, such that if javascript is enabled it will not redirect.
+
+        $('.disabledDateLink').bind('click', function() { return false; });
+
+        new DynamicFormCollection(
+            '#DatesExclusionsAdd',
+            '#DateExclusions',
+            'DateExclusions',
+            '@deleteImageUrl',
+            @nextDates
+        ).prepareCollection(function(currentCount) {
+                                return '<input type="hidden" name="EachDatesExclusionViewInformation.Index" value="' + currentCount + '"/>' +
+                                    '@rawDatesHtmlTemplate'.replace(@underScoreNextDatesReplacementRegex, '_' + currentCount + '_')
+                                        .replace( @indexNextDatesReplacementsRegex , '[' + currentCount + ']' );
+                            }, redraw);
+
+        new DynamicFormCollection(
+            '#DailyExclusionsAdd',
+            '#DailyExclusions',
+            'DailyExclusions',
+            '@deleteImageUrl',
+            @nextDaily
+        ).prepareCollection(function(currentCount) {
+                                return '<input type="hidden" name="EachDailyExclusionViewInformation.Index" value="' + currentCount + '"/>' +
+                                    '@rawDailyHtmlTemplate'.replace(@underScoreNextDailyReplacementRegex , '_' + currentCount + '_')
+                                        .replace( @indexNextDailyReplacementsRegex , '[' + currentCount + ']');
+                            }, redraw);
+        
+    </script>
+}

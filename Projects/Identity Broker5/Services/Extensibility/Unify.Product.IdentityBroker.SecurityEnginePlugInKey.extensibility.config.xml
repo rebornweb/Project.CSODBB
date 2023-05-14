@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SecurityEngine>
+  <Certificate storeLocation="LocalMachine" storeName="My">
+    <Searches>
+      <Search type="IssuerName" value="WMSvc-OCCCP-IM201" />
+    </Searches>
+  </Certificate>
+  <Users>
+    <User username="MIM" role="Read" password="$2a$10$HofH7WEdzgJgc4tcmUnSt.136CrQzj2gIgFB2u1RqckGZuD6Pc1j2" />
+  </Users>
+</SecurityEngine>

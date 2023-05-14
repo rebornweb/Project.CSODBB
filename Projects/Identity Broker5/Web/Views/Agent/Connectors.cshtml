@@ -1,0 +1,15 @@
+﻿@using Unify.Connect.Web.Client
+@using Unify.Connect.Web.Extensions
+@using Unify.Product.IdentityBroker
+@model Unify.Product.IdentityBroker.BasicConnectorInformation[]
+<div class="PaddedContent">
+    @foreach(BasicConnectorInformation connector in Model)
+    {
+        @Html.ActionLink(connector.DisplayName, "ConnectorDetails", "Connector", new { connectorId = connector.ConnectorId, area = string.Empty }, null)
+        <br/>
+    }
+    @if (!Model.Any())
+    {
+        <p>@AgentResources.NoAgentConnectorsText</p>
+    }
+</div>

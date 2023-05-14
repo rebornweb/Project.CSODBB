@@ -1,0 +1,16 @@
+﻿@model Unify.Product.EventBroker.FIM.FIMManagementAgentConfigurationViewInformation
+        
+@Html.HiddenFor(model => model.FIMIncomingOperationListId)
+@Html.HiddenFor(model => model.BaseliningOperationListId)
+@Html.HiddenFor(model => model.FIMAgentId)
+@Html.Hidden("AgentType", AgentPlugInNames.FIMAgentPlugInName)
+
+<div class="FormText">
+    <p>
+        Unlike other Management Agents where @EventBrokerBranding.Instance.ProductName asks for changes, the FIM Portal tells @EventBrokerBranding.Instance.ProductName when changes occur through the <b>@EventBrokerBranding.Instance.ProductName Changes Activity</b>.
+    </p>
+    <br/>
+    <p>
+        Continue to <b>FIM Portal Integration</b> once this Management Agent has been configured.
+    </p>
+</div>

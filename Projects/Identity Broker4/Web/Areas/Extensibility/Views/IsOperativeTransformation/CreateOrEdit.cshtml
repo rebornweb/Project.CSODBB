@@ -1,0 +1,67 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Collections
+@using Unify.Framework.Web
+@model IsOperativeTransformationViewInformation
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "IsOperativeTransformation", FormMethod.Post),
+        TransformationResources.SaveTransformationButtonText,
+        "SaveIsOperativeTransformationForm",
+        TransformationResources.SaveTransformationButtonAltText
+    ))
+{
+    @Html.TransformationDetailsFor(model => model)
+
+    <fieldset>
+        
+        @using (Html.MetaDataFor(model => model.Target, new { description = TransformationResources.IsOperativeTransformationTargetDescription }))
+        {
+            @Html.LabelFor(model => model.Target)
+            @Html.TextBoxFor(model => model.Target)
+        }
+        
+        @using (Html.MetaDataFor(model => model.Start, new { description = TransformationResources.IsOperativeTransformationStartDescription, hideRequired = true }, new { @class = "chzn-form-fieldset-container" }))
+        {
+            @Html.LabelFor(model => model.Start)
+            @Html.SchemaFieldsFor(model => model.Start, Model.AdapterSchema, Model.Start, Model.AdapterSchemaTypes, new[]{ Unify.Framework.ValueType.Date, Unify.Framework.ValueType.Timestamp })
+        }
+        
+        @using (Html.MetaDataFor(model => model.End, new { description = TransformationResources.IsOperativeTransformationEndDescription, hideRequired = true }, new { @class = "chzn-form-fieldset-container" }))
+        {
+            @Html.LabelFor(model => model.End)
+            @Html.SchemaFieldsFor(model => model.End, Model.AdapterSchema, Model.End, Model.AdapterSchemaTypes, new[]{ Unify.Framework.ValueType.Date, Unify.Framework.ValueType.Timestamp })
+        }
+        
+        @using (Html.MetaDataFor(model => model.IsOperative, new { description = TransformationResources.IsOperativeTransformationIsOperativeDescription }))
+        {
+            @Html.LabelFor(model => model.IsOperative, TransformationResources.IsOperativeTransformationIsOperativeLabel)
+            @Html.TextBoxFor(model => model.IsOperative)
+        }
+        
+        @using (Html.MetaDataFor(model => model.IsNotOperative, new { description = TransformationResources.IsOperativeTransformationIsNotOperativeDescription }))
+        {
+            @Html.LabelFor(model => model.IsNotOperative, TransformationResources.IsOperativeTransformationIsNotOperativeLabel)
+            @Html.TextBoxFor(model => model.IsNotOperative)
+        }
+        
+        @using (Html.MetaDataFor(model => model.UseLocal, new { description = TransformationResources.IsOperativeTransformationUseLocalDescription }))
+        {
+            @Html.LabelFor(model => model.UseLocal, TransformationResources.IsOperativeTransformationUseLocalLabel)
+            @Html.CheckBoxFor(model => model.UseLocal)
+        }
+        
+        @using (Html.MetaDataFor(model => model.EndDateInclusive, new { description = TransformationResources.IsOperativeTransformationEndDateInclusiveDescription }))
+        {
+            @Html.LabelFor(model => model.EndDateInclusive, TransformationResources.IsOperativeTransformationEndDateInclusiveLabel)
+            @Html.CheckBoxFor(model => model.EndDateInclusive)
+        }
+        
+        @using (Html.MetaDataFor(model => model.NullEndDateValid, new { description = TransformationResources.IsOperativeTransformationNullEndDateValidDescription }))
+        {
+            @Html.LabelFor(model => model.NullEndDateValid, TransformationResources.IsOperativeTransformationNullEndDateValidLabel)
+            @Html.CheckBoxFor(model => model.NullEndDateValid)
+        }
+
+    </fieldset>   
+}

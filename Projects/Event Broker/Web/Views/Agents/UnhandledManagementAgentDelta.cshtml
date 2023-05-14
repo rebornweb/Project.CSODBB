@@ -1,0 +1,66 @@
+﻿@model Unify.Product.EventBroker.FIM.UnhandledManagementAgentConfigurationViewInformation
+           
+@using Unify.Framework.Web
+           
+@using (Html.MetaDataFor(model => model.ChangeMechanism, new { description = OperationControllerResources.UnhandledMAChangeMechanismDescription }, new{@class="chzn-container"}))
+{
+    @Html.LabelFor(model => model.ChangeMechanism, OperationControllerResources.UnhandledMAChangeMechanismLabel)
+    @Html.DropDownListFor(model => model.ChangeMechanism, new SelectList(Model.ChangeMechanismDictionary, "Key", "Value", Model.ChangeMechanism), new { id = "changeMechanismDropdown", @class = "chzn-select" })
+}
+
+<div id="PowerShellSection">
+    
+    @using (Html.MetaDataFor(model => model.CheckOperationPowerShellScript, new { description = OperationControllerResources.UnhandledMACheckPSScriptDescription }))
+    {
+        @Html.LabelFor(model => model.CheckOperationPowerShellScript, OperationControllerResources.UnhandledMACheckPSScriptLabel)
+        @Html.TextAreaFor(model => model.CheckOperationPowerShellScript)
+    }
+    
+    @using (Html.MetaDataFor(model => model.FollowUpScript, new { description = OperationControllerResources.UnhandledMAFollowupScriptDescription }))
+    {
+        @Html.LabelFor(model => model.FollowUpScript, OperationControllerResources.UnhandledMAFollowupScriptLabel)
+        @Html.TextAreaFor(model => model.FollowUpScript)
+    }
+
+</div>
+
+<div id="FileChangesSection">
+    
+    @using (Html.MetaDataFor(model => model.Filename, new { description = OperationControllerResources.FileToCheckDescription }))
+    {
+        @Html.LabelFor(model => model.Filename, OperationControllerResources.FileToCheckName)
+        @Html.TextBoxFor(model => model.Filename, new { @class = "wide-text" })
+    }
+
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var powerShellSection = $('#PowerShellSection');
+        var fileChangesSection = $('#FileChangesSection');
+        showSections();
+
+        $('#changeMechanismDropdown').change(showSections);
+        function showSections() {
+            var selectedValue = $('#changeMechanismDropdown').val();
+            switch (selectedValue) {
+                case '@UnhandledMAChangeMechanismTypes.None':
+                    powerShellSection.hide();
+                    fileChangesSection.hide();
+                    break;
+                case '@UnhandledMAChangeMechanismTypes.PowerShellScript':
+                    powerShellSection.show();
+                    fileChangesSection.hide();
+                    break;
+                case '@UnhandledMAChangeMechanismTypes.FileChanges':
+                    powerShellSection.hide();
+                    fileChangesSection.show();
+                    break;
+            }
+        };
+
+    });
+
+</script>

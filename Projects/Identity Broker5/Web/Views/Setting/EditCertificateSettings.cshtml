@@ -1,0 +1,67 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+@model CertificateSettingsViewInformation
+@{
+    ViewBag.Title = SettingControllerResources.EditCertificateSettingsTitle;
+    string uniqueId = Guid.NewGuid().ToString("N");
+    string mappingStrHiddenID = string.Concat(uniqueId, "_mappingStrHiddenID");
+    string mappingStrWidgetID = string.Concat("mappingStrWidgetID_", uniqueId);
+
+    // searchForMappingStrGenerator
+    string leftArray = Enum.GetNames(typeof(CertificateFindType)).ToList().DataArrayString();
+    string inputjQueryMappingStr = Model.AttributesInformation.Text.Replace(Environment.NewLine, "\\n");
+}
+<h2>@ViewBag.Title</h2>
+@using (
+    Html.DecorateForm(
+        () => Html.BeginForm("SaveCertificateAttributeSettings", "Setting", null, FormMethod.Post, new { id = SettingControllerResources.CertificateAttributeSettingsFormID}),
+        SettingControllerResources.CertificateAttributeSettingsFormSubmitBtnText, // submitText
+        SettingControllerResources.CertificateAttributeSettingsFormID, // FormID
+        SettingControllerResources.CertificateAttributeSettingsFormHint // FormTitle
+        )
+    )
+{
+    <fieldset>
+        @using (Html.MetaDataFor(model => model.StoreName, new {description = SettingControllerResources.CertificateAttributeSettingsFormStoreNameHint}))
+        {
+            @Html.LabelFor(label => label.StoreName, SettingControllerResources.CertificateAttributeSettingsFormStoreNameLabelText)
+            @Html.EnumDropDownList(option => option.StoreName)
+        }
+        @using (Html.MetaDataFor(model => model.StoreLocation, new {description = SettingControllerResources.CertificateAttributeSettingsFormStoreLocationHint}))
+        {
+            @Html.LabelFor(label => label.StoreLocation, SettingControllerResources.CertificateAttributeSettingsFormStoreLocationLabelText)
+            @Html.EnumDropDownList(option => option.StoreLocation)
+        }
+        @using (Html.MetaDataFor(model => model.AttributesInformation.Attributes, new { description = SettingControllerResources.EditCertificateSettingsAttributeHint, hideRequired = true}, new { style="overflow:hidden;"}))
+        {
+            <table>
+                <tr >
+                    <td style="padding-top: 15px; vertical-align: top;">
+                        @Html.LabelFor(label => label.AttributesInformation.Text, SettingControllerResources.EditCertificateSettingsAttributeLabelText)
+                    </td>
+                    <td style="vertical-align: top; width: 10em">
+                        <div id="@mappingStrWidgetID"></div>
+                        @Html.TextAreaFor(model => model.AttributesInformation.Text, new {id = @mappingStrHiddenID})
+                    </td>
+                </tr>
+            </table>
+        }
+    </fieldset>
+}
+<script type="text/javascript">
+    $(function() {
+        $("#@mappingStrHiddenID").hide();
+        var mappingStrWidgetElement = $("#@mappingStrWidgetID");
+        mappingStrWidgetElement.searchForMappingStrGenerator({
+            columnMappingStr: "@inputjQueryMappingStr",
+            leftColumnDataArr: @Html.Raw(leftArray),
+            componentSeparatorStrDisplay: '<br/>',
+            leftAndRightSeparatorStrDisplay: ' search for ',
+            leftAndRightSeparatorStrDisplayInColumnMappingStrFieldDisplay: '  <span style="font-weight:bold; color:blue; font-size:14px;"> search for </span> ',
+            afterCommit: function(event, mappingStrDisplay, mappingStrReal) {
+                $("#@mappingStrHiddenID").val(mappingStrReal);
+            }
+        });
+    });
+</script>

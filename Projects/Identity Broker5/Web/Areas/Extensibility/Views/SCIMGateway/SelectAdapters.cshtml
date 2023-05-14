@@ -1,0 +1,40 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework
+@using Unify.Framework.Api
+@using Unify.Framework.Web
+@model SelectAdapterSCIMGatewayAgentViewInformation
+
+@{
+    IEnumerable<SelectListItem> selectListItems = Model.Adapters != null ? Model.Adapters
+        .OrderBy(adapter => adapter.Key)
+        .Select(adapter => new SelectListItem
+        {
+            Text = adapter.Key,
+            Value = adapter.Value.ToString()
+        }).ToArray() : Enumerable.Empty<SelectListItem>();
+}
+
+@using (Html.DecorateForm(
+    () => Html.BeginForm("SubmitSelectedAdapter", "SCIMGateway", new {area = "Extensibility"}),
+    GatewayResources.SaveGatewaySubmit,
+    "SaveGatewayForm",
+    GatewayResources.SaveGatewayDescription))
+{
+    @Html.GatewayDetailsFor(model => model)
+
+    <fieldset>
+        <legend>@GatewayResources.SettingsLegendText</legend>
+
+        @using (Html.MetaDataFor(model => model.UserAdapterId, new {description = GatewayResources.SCIMSettingsFormUserAdapterLabelDescription}))
+        {
+            @Html.LabelFor(model => model.UserAdapterId, GatewayResources.SCIMSettingsFormUserAdapterLabelText)
+            @Html.DropDownListFor(model => model.UserAdapterId, selectListItems)
+        }
+        @using (Html.MetaDataFor(model => model.GroupAdapterId, new {description = GatewayResources.SCIMSettingsFormGroupAdapterLabelDescription}))
+        {
+            @Html.LabelFor(model => model.GroupAdapterId, GatewayResources.SCIMSettingsFormGroupAdapterLabelText)
+            @Html.DropDownListFor(model => model.GroupAdapterId, selectListItems)
+        }
+    </fieldset>
+}

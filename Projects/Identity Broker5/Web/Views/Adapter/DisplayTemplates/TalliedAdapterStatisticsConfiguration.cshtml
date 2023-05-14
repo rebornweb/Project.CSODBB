@@ -1,0 +1,17 @@
+﻿@using Unify.Connect.Web.Extensions
+@model TalliedStatisticsJobViewInformationBase
+@if (Model.LastRunStarted != null)
+{
+    <div>
+        @if (Model.IsFromImportChangesJob)
+        {
+            @AdapterResources.LastRunTotalChangesLabel
+        }
+        else
+        {
+            @AdapterResources.LastRunTotalEntitiesLabel
+        }
+        @Model.LastRunCount
+    </div>
+    <br />
+}

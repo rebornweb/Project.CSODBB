@@ -1,0 +1,66 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+@model EntitySearchTermsViewInformation
+@{
+    string removeSearchTermForRowImageUrl = Url.WebIcon("magifier_zoom_out.png");
+    string editSearchTermForRowImageUrl = Url.WebIcon("magnifier_edit.png");
+}
+
+@if (Model.SearchContexts.Any())
+{
+    <h2>@SchemaResources.SearchTermsHeading</h2>
+    <div class="FaintBorder">
+        @foreach (KeyValuePair<Guid, IIdentifierEntitySearchInformation> context in Model.SearchContexts)
+        {
+            @RenderSearchTerm(Model.PartitionId, context.Key, context.Value, removeSearchTermForRowImageUrl, editSearchTermForRowImageUrl)
+        }
+        @if (!Model.SearchContexts.Any())
+        {
+            <p id="noSearchTerms">@SchemaResources.CurrentNoSearchTermsMessage</p>
+        }
+        <script type="text/javascript">
+            @ViewData.RetrieveListItems("UpdateEntityColumnSearch")
+        </script>
+    </div>
+}
+
+@helper RenderEditSearchTerm(Guid partitionId, Guid searchId, string editSearchTermForRowImageUrl)
+{
+    var editButtonTitle = EntitySchemaResources.EditSearchTermsTitle;
+    var editButtonId = string.Concat("editSearchTerms_", partitionId, "_", searchId);
+
+    var editButtonUrl = Url.Action("UpdateEntityColumnSearch", ViewContext.Controller.ControllerContext.RouteData.ExecutingControllerName(), new { partitionId, searchId, searchTerms = Model.SearchContext, extraInformation = Model.ExtraInformation, parentViewName = Model.ParentViewName, parentViewController = Model.ParentViewController, fromAdapter = Model.FromAdapter });
+    var ajaxFunctionDialogScript = Html.AjaxFunctionDialog("UpdateEntityColumnSearch", editButtonId, editButtonUrl);
+    ViewData.AddListItem("UpdateEntityColumnSearch", ajaxFunctionDialogScript);
+
+    var editButtonContent = string.Concat("&nbsp;<a href=\"", editButtonUrl, "\"><img src=\"", editSearchTermForRowImageUrl, "\" title=\"", editButtonTitle, "\" alt=\"", editButtonTitle, "\" class=\"OperationButton\" id=\"", editButtonId, "\" /></a>");
+    <span>@MvcHtmlString.Create(editButtonContent)</span>
+}
+
+@helper RenderSearchTerm(Guid partitionId, Guid searchContainerId, IIdentifierEntitySearchInformation container, string removeSearchTermForRowImageUrl, string editSearchTermForRowImageUrl)
+{
+    <div style="margin:7px">
+        @{ Write(RenderDescription(container)); }
+
+        @using (Html.BeginForm("SubmitRemoveEntityColumnSearch", ViewContext.Controller.ControllerContext.RouteData.ExecutingControllerName(), new { partitionId, searchContainerId, extraInformation = Model.ExtraInformation, parentViewName = Model.ParentViewName, parentViewController = Model.ParentViewController, fromAdapter = Model.FromAdapter }, FormMethod.Post, new { @class = "IconForm" }))
+        {
+            Write(SubmitRemoveImage(partitionId, searchContainerId, removeSearchTermForRowImageUrl));
+        }
+
+        @{ Write(RenderEditSearchTerm(partitionId, searchContainerId, editSearchTermForRowImageUrl)); }
+    </div>
+}
+
+@helper RenderDescription(IIdentifierEntitySearchInformation container)
+{
+    var searchContainerInformationAdapter = new IdentifierEntitySearchInformationAdapter(EntitySearchIdentifierKeys.Keys);
+
+    <label style="border-color: grey; border: solid 1px; padding: 3px; display: inline">@searchContainerInformationAdapter.Transform(container)</label>
+}
+
+@helper SubmitRemoveImage(Guid partitionId, Guid searchContainerId, string removeSearchTermForRowImageUrl)
+{
+    string removeSearchTermsActionUrl = Url.Action("SubmitRemoveEntityColumnSearch", ViewContext.Controller.ControllerContext.RouteData.ExecutingControllerName(), new { partitionId, searchContainerId, extraInformation = Model.ExtraInformation, parentViewName = Model.ParentViewName, parentViewController = Model.ParentViewController, fromAdapter = Model.FromAdapter });
+    <input type="image" src="@removeSearchTermForRowImageUrl" alt="@SchemaResources.RemoveSearchTerm" title="@SchemaResources.RemoveSearchTerm" onclick="@string.Concat("$.post('", removeSearchTermsActionUrl, "', function() { Redraw(); return false; }); return false;")" />
+}

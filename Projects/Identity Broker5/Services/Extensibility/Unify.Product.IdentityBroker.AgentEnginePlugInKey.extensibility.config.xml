@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AgentEngine>
+  <Agents>
+    <Agent name="CENet REST API" id="be2be8bc-d2cc-4f8b-afc6-8b91b0d45d6b" type="Unify.Agent.CSODBB.CENet" description="">
+      <Extended>
+        <communicator baseUrl="https://api.cenet.catholic.edu.au/ws/rest/scim/v2" username="DBB_PROD_UDM@cenetcatholiceducationnet-AO9QBJ" password="QnJbh6+UTNkgwOnGD3uzSQQuPsE3hpV3DtVMUHHUtyITeIIYS7j74vUuo8R6oP2r" />
+      </Extended>
+    </Agent>
+    <Agent name="SAS2IDM SQL" id="37f8ea84-5ba2-496c-89cd-c8c3d6934ebd" type="Unify.Agent.SqlServerDatabase" description="">
+      <Extended>
+        <communicator connectionString="aaaNsCJoxVLfOb4iuL+9N3D/0vU5qra/5rd4JClIf+/uyIruQ6su/ypWmoQH/cryULdVkHrsXs/myJh1CiMaB2Uma2z05UXQiaW6Z2lTKC0l0MDxUJCXfqb65k6+Uaec" enableTransactions="false" operationTimeout="PT0S" />
+      </Extended>
+    </Agent>
+  </Agents>
+</AgentEngine>

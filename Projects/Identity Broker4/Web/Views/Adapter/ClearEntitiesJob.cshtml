@@ -1,0 +1,36 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework
+@using Unify.Framework.Web
+@model AdapterStatisticsClearJobViewInformation
+           
+@{
+    const string clearInputId = "ClearAdapterButton";
+    const string formId = "ClearAdapterForm";
+    string clearInputMessageId = string.Concat(clearInputId, "Message");
+    string clearInputOkCancelScript = RenderExtensions.SubmitOkCancelDialog(formId, clearInputId, "Function");
+    IUnifyBranding branding = ViewContext.GetCurrentBranding();
+}
+           
+<div id="@clearInputMessageId" style="display:none">
+    <div>@string.Format(AdapterResources.ClearAdapterWarningMessageTemplate, branding.ProductName)</div><br/>
+    <div>@AdapterResources.ClearAdapterConfirmationQuestion</div>
+</div>
+
+<h3>
+    @ConnectorControllerResources.ClearEntitiesHeadingText
+    @if (Model.Enabled && Model.SchedulerState == SchedulerState.Started)
+    {
+        using (Html.BeginForm("ExecuteClearAdapter", "Adapter", new { adapterId = Model.AdapterId }, FormMethod.Post, new { style = "display:inline", id=formId}))
+        {
+            <button class="m-btn sm" alt="@AdapterResources.ClearAdapterText" title="@AdapterResources.ClearAdapterText" id="@clearInputId">
+                Clear
+            </button>
+        }
+    }
+</h3>
+<script type="text/javascript">
+    @Html.Raw(clearInputOkCancelScript)
+</script>
+<div class="PaddedContent">
+    @Html.DisplayFor(model => model, "AdapterStatisticsConfiguration")
+</div>

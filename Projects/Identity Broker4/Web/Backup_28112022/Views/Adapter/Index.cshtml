@@ -1,0 +1,202 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework
+@using Unify.Framework.Web
+
+@{
+    string addGroupImageUrl = Url.WebIcon("group_add.png");
+    string enableImageUrl = Url.WebIcon("control_play.png");
+    string disableImageUrl = Url.WebIcon("control_stop.png");
+    string deleteImageUrl = Url.WebIcon("delete.png");
+    string clearAdapterImageUrl = Url.WebIcon("database_delete.png");
+    string addAdapterImageUrl = Url.WebIcon("add.png");
+
+    string addAdapterUrl = Url.Action("AddAdapter", "Adapter");
+    
+    string addAdapterImageHtml =
+        string.Format("<img src=\"{0}\" alt=\"{1}\" title=\"{1}\" id=\"AddAdapterButton\"/>",
+        addAdapterImageUrl,
+        AdapterResources.AddAdapterAltText
+        );
+
+    string xsltImageUrl = Url.WebIcon("report.png");
+
+    const string formId = "AdapterFunctionsForm";
+
+    const string deleteInputId = "AdapterFunctionsDeleteButton";
+    string deleteInputMessageId = string.Concat(deleteInputId, "Message");
+    string deleteInputOkCancelScript = RenderExtensions.SubmitOkCancelDialog(formId, deleteInputId, "Function");
+
+    
+    const string clearInputId = "ClearAdapterButton";
+    string clearInputMessageId = string.Concat(clearInputId, "Message");
+    string clearInputOkCancelScript = RenderExtensions.SubmitOkCancelDialog(formId, clearInputId, "Function");
+
+    IUnifyBranding branding = ViewContext.GetCurrentBranding();
+
+    ViewBag.Title = Html.Title(TitleResources.AdapterIndexTitle);
+}
+
+@model AdapterIndexViewInformation
+
+<h2>
+    @AdapterResources.IndexAdapterHeading
+    <a href="@addAdapterUrl">@Html.Raw(addAdapterImageHtml)</a>
+    @if (Model.ShowXslt)
+    {
+        <a href="@Url.Action("AdapterTransformedConfiguration", "Adapter")">
+            <img src="@xsltImageUrl"
+                 alt="@AdapterResources.AdapterEngineXsltConfigurationAltText"
+                 title="@AdapterResources.AdapterEngineXsltConfigurationAltText"/>
+        </a>
+    }
+</h2>
+
+@if (Model.AdapterGroups.Any())
+{
+    using (Html.BeginForm("Index", "Adapter", FormMethod.Get, new { id = "AdapterGroupForm", @class = "Form" }))
+    {
+        @Html.DropDownList(
+            "groupId",
+            new SelectList(
+                new[] { new KeyValuePair<string, string>("All", null) }
+                .Concat(
+                    Model.AdapterGroups
+                     .Select(group => new KeyValuePair<string, string>(group.Name, group.Key.ToString()))
+                ),
+                "Value",
+                "Key"
+            ),
+            new { id = "AdapterGroupSelector", @class = "chzn-select" }
+        )
+        <noscript>
+            <input type="submit" value="@AdapterResources.AdapterSelectGroupSubmitValue" alt="@AdapterResources.AdapterSelectGroupSubmitValue" title="@AdapterResources.AdapterSelectGroupSubmitValue"/>
+        </noscript>
+    }
+}
+
+<br/>
+
+<div>
+    <input type="checkbox" class="scriptonly" id="SelectDeselectAdapters" />
+    @AdapterResources.SelectDeselectAllText
+</div>
+
+<br/>
+
+<div>
+    @using (Html.BeginForm("AdapterIndexOperations", "Adapter", new { groupId = Model.SelectedGroup }, FormMethod.Post, new { style = "margin:0px;padding:0px;border:0px", id = formId }))
+    {
+    
+        <div id="@deleteInputMessageId" style="display:none">
+            <div>@AdapterResources.DeleteAdapterConfirmationWarningText</div><br/>
+            <div>@string.Format(AdapterResources.DeleteAdapterWarningDescriptionText, branding.ProductName) @WebStudioResources.ThisCannotBeUndoneText</div><br/>
+        </div>
+        <div id="@clearInputMessageId" style="display:none">
+            <div>@string.Format(AdapterResources.ClearAdapterWarningMessageTemplate, branding.ProductName) @WebStudioResources.ThisCannotBeUndoneText</div><br/>
+        </div>
+
+        <div class="ListedComponentFunctions" id="AdapterFunctions">
+            <div>
+                <div>
+                    <input type="submit" value="Enable" style="background:url('@enableImageUrl') no-repeat;" class="SubmitImageButton" 
+                           name="function" title="@AdapterResources.IndexEnableAdaptersAltText"/>
+                </div>      
+                <div>
+                    <input type="submit" value="Disable" style="background:url('@disableImageUrl') no-repeat;" class="SubmitImageButton" 
+                           name="function" title="@AdapterResources.IndexDisableAdaptersAltText"/>
+                </div>
+                <div>
+                    <input type="submit" value="Delete" style="background:url('@deleteImageUrl') no-repeat;" class="SubmitImageButton" 
+                           name="function" id="@deleteInputId" title="@AdapterResources.IndexDeleteAdaptersAltText"/>
+                </div>
+                <div>
+                    <input type="submit" value="Clear" style="background:url('@clearAdapterImageUrl') no-repeat;" class="SubmitImageButton" 
+                           name="function" id="@clearInputId" title="@AdapterResources.IndexClearAdaptersAltText"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="ListedComponentContainer FaintBorder">
+            <div id="AdaptersContainer">
+                @Html.ActionRefresh(
+                    Url, 
+                    "AdaptersRefresh", 
+                    5000, 
+                    "Adapters", 
+                    "Adapter",
+                    "function(cache) { $('.ActionRefreshListener').trigger('refreshStart', cache); }",
+                    "function(cache) { $('.ActionRefreshListener').trigger('refreshStop', cache); $('.scriptonly').show(); }")
+            </div>
+        </div>
+    
+        <div style="clear:both">&nbsp;</div>
+    }
+</div>
+
+<h3>
+    @GroupControllerResources.AdapterGroupsHeadingText
+    <a href="@Url.Action("CreateAdapterGroup", "Group")">
+        <img src="@addGroupImageUrl" alt="@GroupControllerResources.AddAdapterGroupAltText" />
+    </a>
+</h3>
+
+<div>
+
+    @if (Model.AdapterGroups.Any())
+    {
+        foreach (var adapterGroup in Model.AdapterGroups)
+        {
+            Guid groupId = adapterGroup.Key;
+            <a href="@Url.Action("AdapterGroupDetails", "Group", new { groupId })">@adapterGroup.Name</a>
+                                                                              Html.RenderAction("AdapterGroupFunctions", "Group", new { groupId });
+            <br />
+            <br />
+        }
+    }
+    else
+    { 
+        <label>@GroupControllerResources.NoAdapterGroupsMessageText</label>
+    }
+
+</div>
+
+<div id="WelcomeMessage"></div>
+<div id="AddAdapterContainer"></div>
+
+<script type="text/javascript">
+    @ViewData.RetrieveListItems("StandardAdapterFunctions")
+    @ViewData.RetrieveListItems("InnerAdapterFunctions")
+
+    $(document).ready(function() {
+
+        $("#SelectDeselectAdapters").change(function() {
+            var checked = $(this).is(':checked');
+            $('.AdapterSelections').each(function() {
+                $(this).prop('checked', checked);
+            });
+            
+            if (checked) {
+                $('.ListedAdapter').each(function() {
+                    $(this).trigger('checkSelected');
+                });
+            } else {
+                $('.ListedAdapter').each(function() {
+                    $(this).trigger('checkDeselected');
+                });
+            }
+        });
+        
+        $("#AdapterGroupSelector").change(function() {
+            $.get("@Url.Action("Adapters", "Adapter")",
+                $("#AdapterGroupForm").serialize(),
+                function(data) {
+                    $("#AdaptersContainer").html(data);
+                });
+        });
+    });
+    
+    @Html.Raw(deleteInputOkCancelScript)
+    @Html.Raw(clearInputOkCancelScript)
+
+</script>

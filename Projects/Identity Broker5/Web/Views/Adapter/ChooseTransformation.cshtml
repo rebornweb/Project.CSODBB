@@ -1,0 +1,54 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model ChooseTransformationViewInformation
+@{
+    string transformationSelectionId = Guid.NewGuid().ToString();
+    string transformationDescriptionContainerId = Guid.NewGuid().ToString();
+}
+@using (Html.DecorateForm(
+        () => Html.BeginForm(
+                    "AddTransformation",
+                    "Adapter",
+                    new { adapterId = Model.AdapterId, previousTransformationId = Model.PreviousTransformationId },
+                    FormMethod.Get),
+        AdapterResources.AdapterAddTransformationButtonText,
+        "AddTransformationOfSelectedTypeForm",
+        AdapterResources.AdapterAddTransformationButtonAltText
+    ))
+{
+    @Html.HiddenFor(model => model.AdapterId)
+    @Html.HiddenFor(model => model.PreviousTransformationId)
+    <fieldset>
+        @Html.Label("type", TransformationResources.TransformThroughText, new { style = "padding-top: 5px;" })
+        @Html.GroupedDropDownList(
+            "type",
+            Model.AvailableTransformations.GroupBy(transformation => transformation.TransformationGrouping).OrderBy(grouping => grouping.Key),
+            key => key,
+            description => description.Name,
+            description => description.TransformationDisplayName,
+            description => false,
+            new Dictionary<string, string> { { "id", transformationSelectionId }, { "class", "chzn-select" } }
+           )
+    </fieldset>
+    <div style="height:auto;clear:left;min-height: 240px">
+        <div id="@transformationDescriptionContainerId" style="padding:0px;">
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    var getTransformationDescription = function() {
+        var currentValue = $("#@transformationSelectionId option:selected").val();
+        $.get("@Url.Action("TransformationDescription", "Adapter")",
+            { transformationType: currentValue },
+            function (data) {
+                $("#@transformationDescriptionContainerId").html(data);
+            }); 
+    }
+
+    $(document).ready(function () {
+        getTransformationDescription();
+        $("#@transformationSelectionId").change(function () {
+            getTransformationDescription();
+        });
+    });
+</script>

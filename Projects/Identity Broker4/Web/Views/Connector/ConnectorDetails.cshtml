@@ -1,0 +1,126 @@
+﻿@using System.Globalization
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+
+@model ConnectorViewInformation
+
+@{
+    ConnectorViewInformation connectorConfiguration = Model;
+
+    string connectorDescription = string.IsNullOrWhiteSpace(connectorConfiguration.Description)
+        ? ConnectorControllerResources.DefaultConnectorDescription
+        : connectorConfiguration.Description;
+
+    string connectorComment = string.IsNullOrWhiteSpace(connectorConfiguration.Comment)
+        ? SchemaResources.DefaultConnectorComment
+        : connectorConfiguration.Comment;
+
+    string connectorName = string.IsNullOrWhiteSpace(connectorConfiguration.DisplayName)
+        ? ConnectorControllerResources.DefaultConnectorName
+        : connectorConfiguration.DisplayName;
+
+    Guid connectorId = connectorConfiguration.Id;
+    string factoryName = connectorConfiguration.Type;
+    bool enabled = connectorConfiguration.Enabled;
+    bool queueMissed = connectorConfiguration.QueueMissed;
+
+    ViewBag.Title = Html.Title(TitleResources.ConnectorIndexTitle);
+}
+
+<div class="DetailsContent">
+
+    @RenderInnerConnectorConfiguration(connectorId,
+                                         connectorName,
+                                         enabled,
+                                         factoryName,
+                                         connectorComment,
+                                         connectorDescription,
+                                         queueMissed)
+                                         
+    <div>
+        @{ Html.RenderAction("ConnectorTimings", "Connector", new { connectorId }); }
+    </div>
+    
+    <div>
+        @{ Html.RenderAction("ConnectorJobs", "Connector", new { connectorId }); }
+    </div>
+                                         
+    <div id="ConnectorSchema">
+        @{ Html.RenderAction("ConnectorSchema", "Connector", new { connectorId }); }
+    </div>
+</div>
+
+<div id="SchemaDialog"></div>
+
+@helper RenderInnerConnectorConfiguration(Guid connectorId,
+                                          string connectorName,
+                                          bool enabled,
+                                          string plugInId,
+                                          string connectorComment,
+                                          string connectorDescription,
+                                          bool queueMissed)
+{
+    string enableImageUrl = Url.WebIcon("control_play.png");
+    string disableImageUrl = Url.WebIcon("control_stop.png");
+
+    string imageText = string.Concat(plugInId, " - ", connectorDescription);
+    
+    <div>
+        
+        <h1>
+            @Html.ConnectorImage(connectorId, new Dictionary<string, string> { { "style", "vertical-align: middle;" }, { "alt", imageText }, { "title", imageText } })
+
+            @connectorName
+            
+            @Html.RenderConnectorOperationsMenu(Url, connectorId)
+
+            <a href="@Url.Action(enabled ? "Disable" : "Enable", "Connector", new { connectorId })">
+                @if (enabled)
+                {
+                    <img src="@disableImageUrl" alt="@ConnectorControllerResources.ConnectorDisableAltText" title="@ConnectorControllerResources.ConnectorDisableAltText"/>    
+                }
+                else
+                { 
+                    <img src="@enableImageUrl" alt="@ConnectorControllerResources.ConnectorEnableAltText" title="@ConnectorControllerResources.ConnectorEnableAltText"/>   
+                }
+            </a>
+            
+        </h1>
+    </div>
+
+    <div class="PaddedContent">
+        <table class="RightSpaced BottomSpaced VerticalAlignTable">
+            <tr>
+                <td style="min-width: 100px;">
+                    @ConnectorControllerResources.ConnectorCommentLabel
+                </td>
+                <td>
+                    @connectorComment
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @ConnectorControllerResources.ConnectorQueueMissedLabel
+                </td>
+                <td>
+                    @queueMissed.ToString(CultureInfo.InvariantCulture)
+                </td>
+            </tr>
+        </table>
+        
+	@{
+		Html.RenderAction(
+			"Display",
+			MvcApplication.GetConnectorController(Model.Type),
+			new{
+				connectorId,
+				area = "Extensibility"
+			});
+	}
+
+    </div>
+}
+
+<script type="text/javascript">
+    @ViewData.RetrieveListItems("StandardConnectorFunctions")
+</script>

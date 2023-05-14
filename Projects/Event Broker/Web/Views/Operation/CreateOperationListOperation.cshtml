@@ -1,0 +1,66 @@
+﻿@using Unify.EventBroker.Web
+@using Unify.Framework.Web
+@model OperationListPlugInConfigurationViewInformation
+@{
+    ViewBag.Title = Html.CreatePlugInTitle(Model.CreateOrUpdateText, TitleResources.CreateOperationListOperationTitleCaption);
+}
+
+@using (Html.DecorateForm(
+            () => Html.BeginForm("CreatePlugInOperation", "Operation", FormMethod.Post, new { id = "CreateOperationForm" }),
+            Model.CreateOrUpdateText,
+            "CreateOperationForm",
+            OperationResources.ConfigureOperationAltText, "submitButton"))
+{
+    <div>
+        
+        @Html.EditorFor(model => model, "OperationDisplayName")
+        
+        <fieldset>
+            @using (Html.MetaDataFor(model => model.TargetOperationListId, new { description = OperationControllerResources.OperationListDescription }, new { @class = "chzn-container" }))
+            {
+                @Html.LabelFor(model => model.TargetOperationListId, OperationControllerResources.OperationListName)
+                @Html.DropDownListFor(model => model.TargetOperationListId,
+                    new SelectList(
+                        Model.ApplicableOperationLists,
+                        "Value",
+                        "Key",
+                        Model.TargetOperationListId != Guid.Empty &&  Model.ApplicableOperationLists.ContainsValue(Model.TargetOperationListId)
+                            ? Model.ApplicableOperationLists.FirstOrDefault(item => item.Value == Model.TargetOperationListId)
+                            : Model.ApplicableOperationLists.FirstOrDefault()),
+                    new
+                    {
+                        id = "OperationLists",
+                        @class = "chzn-select"
+                    })
+            }
+            
+            <div>
+                @using (Html.MetaDataFor(model => model.Blocking, new {description = OperationControllerResources.BlockingDescription}))
+                {
+                    @Html.LabelFor(model => model.Blocking, OperationControllerResources.BlockingName)
+                    @Html.CheckBoxFor(model => model.Blocking)
+                }
+            </div>
+            
+            <div>
+                @using (Html.MetaDataFor(model => model.Flags, new { description = OperationControllerResources.FlagsDescription }, new { @class = "chzn-container" }))
+                {
+                    @Html.LabelFor(model => model.Flags, OperationControllerResources.FlagsName)
+                    @Html.EnumListBox(model => model.Flags)
+                }
+            </div>
+
+            @Html.EditorFor(model => model, "OperationInnerDetails")
+        
+        </fieldset>
+
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#TemplateScripts').bind('change', function () {
+            $('#Script').val($('#TemplateScripts').val());
+        });
+    });
+</script>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LoggingEngine filePrefix="UnifyLog" logDaysKeep="5" minimumLoggingLevel="Normal">
+  <LogWriter name="LogWriterFilterDecorator" id="c0fd3d4c-2ba4-46ae-b9b0-f8cec51249ee" enabled="false" displayName="Console">
+    <LogWriter name="AsyncLogWriterComposite" pollingInterval="100">
+      <LogWriter name="Console" />
+    </LogWriter>
+    <logFilter name="MinimumLoggingLevel" loggingLevel="Normal" />
+  </LogWriter>
+  <LogWriter xmlns="" name="LogWriterFilterDecorator" id="8265953c-5e97-4bea-97b4-a1f88bd1b651" enabled="false" displayName="UNIFY Support Email">
+    <LogWriter name="LogWriterFilterDecorator">
+      <LogWriter name="Email" fromAddress="svcFIM_Service@dbb.local" replyToAddress="rene.pisani@dbb.org.au" senderAddress="svcFIM_Service@dbb.local" smtpHost="smtp.dbb.local" subjectPrefix="CSODBB IdB (PROD):" toAddress="csodbbsupport@unifysolutions.net" />
+      <logFilter name="MinimumLoggingLevel" loggingLevel="Normal" />
+    </LogWriter>
+    <logFilter name="MinimumSeverityLevel" severity="Error" />
+  </LogWriter>
+  <LogWriter xmlns="" name="LogWriterFilterDecorator" id="6ae33b93-9569-420d-b330-0391948f901f" enabled="false" displayName="CSODBB Support Email">
+    <LogWriter name="LogWriterFilterDecorator">
+      <LogWriter name="Email" fromAddress="svcFIM_Service@dbb.local" replyToAddress="robert.broadley@dbb.catholic.edu.au" senderAddress="svcFIM_Service@dbb.local" smtpHost="smtp.dbb.local" subjectPrefix="IdB (PROD OCCCP-IM301):" toAddress="csodbbsupport@unifysolutions.net,robert.broadley@dbb.catholic.edu.au" />
+      <logFilter name="MinimumLoggingLevel" loggingLevel="Normal" />
+    </LogWriter>
+    <logFilter name="MinimumSeverityLevel" severity="Error" />
+  </LogWriter>
+</LoggingEngine>

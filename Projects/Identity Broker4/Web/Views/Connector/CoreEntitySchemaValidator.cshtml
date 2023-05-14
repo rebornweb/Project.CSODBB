@@ -1,0 +1,20 @@
+﻿@model SchemaFieldDefinitionInformation
+@using Unify.Framework.Web
+
+@{
+    string createOrEditSchemaRowText = RenderExtensions.SimpleCreateOrEditText(Model.Edit);
+
+    ViewBag.Title = Html.Title(string.Format(TitleResources.CoreEntitySchemaValidatorTitleTemplate, createOrEditSchemaRowText));
+    
+    Html.RenderAction("SchedulesHeader", "Schedules", new { area = "Framework" });
+}
+
+@using (Html.DecorateForm(
+            () => Html.BeginForm("CoreEntitySchemaValidator", "Connector", new { connectorId = Model.ConnectorId }, FormMethod.Post, new { id = "CoreEntitySchemaValidatorForm" }),
+            WebStudioResources.SaveText,
+            "CoreEntitySchemaValidatorForm",
+            ConnectorControllerResources.SaveFieldDefinitionAltText
+    ))
+{ 
+    @Html.EditorFor(model => model, "RenderEntitySchemaCoreValidatorAttributes")
+}

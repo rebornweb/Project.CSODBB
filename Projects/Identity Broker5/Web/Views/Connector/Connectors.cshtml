@@ -1,0 +1,51 @@
+﻿@using Unify.Framework.Web
+@model ConnectorsModel
+@if (Model.ConnectorViewInformations.Any())
+{
+    foreach (ConnectorViewInformation connectorViewInformation in Model.ConnectorViewInformations)
+    {
+        @ConnectorDetail(connectorViewInformation)
+    }
+}
+else
+{
+    <p class="ListedConnector"> @((Model.GroupId == null) ? (ConnectorControllerResources.NoConfiguredConnectorsMessageText) : (ConnectorControllerResources.NoSelectedConnectorsMessageText)) </p>
+}
+@helper ConnectorDetail(ConnectorViewInformation connector)
+{
+    string selectionId = string.Concat(connector.Id, "Selection");
+    string containerId = string.Concat(connector.Id, "Container");
+    string connectorInputId = string.Concat(connector.Id, "Selector");
+    string connectorEnabledDisabled = connector.Enabled ? ConnectorControllerResources.CurrentlyEnabledMessage : ConnectorControllerResources.CurrentlyDisabledMessage;
+    Guid connectorId = connector.Id;
+    <div id="@containerId" class="ListedConnector ActionRefreshListener">
+        <span id="@selectionId">
+            <input type="checkbox" id="@connectorInputId" name="connectors" value="@connectorId" class="ConnectorSelections" />
+        </span>
+        <span>
+            <a href="@Url.Action("ConnectorDetails", "Connector", new {connectorId})" title="@connector.Comment">
+                @connector.DisplayName
+            </a>
+            <span class="ConnectorAndStatusSeparator">-</span>
+            <span>
+                @{
+                    Html.RenderAction("ConnectorStatistics", "Connector", new {connectorId = connector.Id});
+                }
+            </span>
+            <span class="ConnectorAndStatusSeparator">-</span>
+            @connectorEnabledDisabled
+        </span>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#@containerId").bind('refreshStart',
+                function(event, arg1) {
+                    arg1["@connectorInputId"] = $("#@connectorInputId").is(':checked');
+            }).bind('refreshStop',
+                function(event, arg1) {
+                    if (arg1["@connectorInputId"]) $("#@connectorInputId").attr('checked', 'checked');
+                }
+            );
+        });
+    </script>
+}

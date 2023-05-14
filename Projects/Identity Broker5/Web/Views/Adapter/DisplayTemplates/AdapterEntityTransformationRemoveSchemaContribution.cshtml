@@ -1,0 +1,25 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+
+@model AdapterEntityTransformationRemoveSchemaContribution
+           
+@{
+    string removeImageUrl = Url.WebIcon("delete.png");
+}
+
+@Html.HiddenFor(model => model.TransformationId)
+@if (!Model.RemovedFields.Any())
+{
+    <p>@AdapterResources.TransformationModifiesNoFieldsMessage</p>
+}
+
+<ul>
+    @foreach(EntitySchemaFieldDefinitionConfiguration removedField in Model.RemovedFields)
+    {
+        <li style="@removeImageUrl">
+            <b>@TransformationResources.RemoeContributrionRemovedText</b> 
+            @removedField.FieldName
+        </li>
+    }
+</ul>

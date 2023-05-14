@@ -1,0 +1,45 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model DistinguishedNameGeneratorTransformationViewInformation
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "DNGeneratorTransformation", FormMethod.Post),
+        TransformationResources.SaveTransformationButtonText,
+        "SaveDNGeneratorTransformationFormId",
+        TransformationResources.SaveTransformationButtonAltText
+    ))
+{
+    @Html.TransformationDetailsFor(model => model)
+
+    <fieldset>
+        @using (Html.MetaDataFor(model => model.Input, new { description = TransformationResources.DNGeneratorTransformationInputDescription, hideRequired = true }, new { @class = "chzn-form-fieldset-container" }))
+        {
+            @Html.LabelFor(model => model.Input, TransformationResources.DNGeneratorTransformationInputLabel)
+            @Html.SchemaFieldsFor(model => model.Input, Model.AdapterSchema, Model.Input)
+        }
+        @using (Html.MetaDataFor(model => model.Target, new {description = TransformationResources.DNGeneratorTransformationTargetDescription}))
+        {
+            @Html.LabelFor(model => model.Target, TransformationResources.DNGeneratorTransformationTargetLabel)
+            @Html.TextBoxFor(model => model.Target)
+        }
+        @using (Html.MetaDataFor(model => model.FlattenToSingleValue, new { description = TransformationResources.DNGeneratorTransformationFlattenToSingleValueDescription }))
+        {
+            @Html.LabelFor(model => model.FlattenToSingleValue, TransformationResources.DNGeneratorTransformationFlattenToSingleValueLabel)
+            @Html.CheckBoxFor(model => model.FlattenToSingleValue)
+        }
+        @using (Html.MetaDataFor(model => model.SkipMissingData, new { description = TransformationResources.DNGeneratorTransformationSkipMissingDataDescription }))
+        {
+            @Html.LabelFor(model => model.SkipMissingData, TransformationResources.DNGeneratorTransformationSkipMissingDataLabel)
+            @Html.CheckBoxFor(model => model.SkipMissingData)
+        }
+        @using (Html.MetaDataFor(model => model.Template, new { description = TransformationResources.DNGeneratorTransformationTemplateDescription, hideRequired = true }))
+        {
+            @Html.LabelFor(model => model.Template, TransformationResources.DNGeneratorTransformationTemplateLabel)
+            <br/>
+            <div>
+                @Html.DnTemplateFor(Model.Template, Model.AdapterSchema, Model.AdapterSchemaTypes, Model.Adapters, Model.DnAdapterId)
+            </div>
+        }
+    </fieldset>
+}

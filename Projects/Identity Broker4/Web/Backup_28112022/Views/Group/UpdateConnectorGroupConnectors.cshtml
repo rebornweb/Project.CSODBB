@@ -1,0 +1,53 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+@model ConnectorGroupsViewInformation
+
+@{
+    ViewBag.Title = Html.Title(TitleResources.UpdateConnectorGroupConnectorsTitle);
+}
+
+<h3>@string.Format(GroupControllerResources.UpdateConnectorGroupConnectorsMessageTemplate, Model.Configuration.Name)</h3>
+
+<div>
+    @using (Html.DecorateForm(
+                () => Html.BeginForm("UpdateConnectorGroupConnectors", "Group", FormMethod.Post, new{id = "UpdateConnectorGroupConnectorsForm"}),
+                WebStudioResources.SaveText,
+                "UpdateConnectorGroupConnectorsForm",
+                GroupControllerResources.SaveGroupMembersConfigurationAltText))
+    {
+        if (Model.Configuration.Exclusion)
+        {
+            <i style="color: gray">@WebStudioResources.ExclusionGroupEnabledConnectorMessage</i>
+        }    
+        
+        <fieldset>
+            <legend>@GroupControllerResources.ConnectorGroupConnectorsMessageText</legend>
+            @Html.HiddenFor(model => model.Configuration.Id)
+    
+            @for (int i = 0; i < Model.MembersInGroup.Count; i++)
+            {
+                ConnectorEngineConfiguration connectorConfiguration = Model.MemberConfigurations[i];
+
+                string connectorCommentDisplay = string.Format(
+                    GroupControllerResources.ConnectorGroupInGroupDescriptionTemplate,
+                    connectorConfiguration.DisplayName,
+                    Model.Configuration.Name
+                    );
+            
+                @Html.HiddenFor(model => model.MembersInGroup[i].Id)
+
+                using (Html.MetaDataFor(model => model.MembersInGroup[i].InGroup, new { description = connectorCommentDisplay }))
+                {
+                    @Html.LabelFor(model => model.MembersInGroup[i].InGroup, connectorConfiguration.DisplayName)
+                    @Html.CheckBoxFor(model => model.MembersInGroup[i].InGroup)
+                    if (connectorConfiguration.Enabled && Model.Configuration.Exclusion)
+                    {
+                        <i style="color: gray">&nbsp;@GroupControllerResources.GroupEnabledText</i>
+                    }
+                }
+            }
+        </fieldset>
+    }
+</div>
+

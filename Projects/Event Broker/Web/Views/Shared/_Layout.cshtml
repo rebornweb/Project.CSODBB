@@ -1,0 +1,162 @@
+﻿@using System.Diagnostics
+@using StackExchange.Profiling
+@using Unify.Framework
+@using Unify.Framework.Web
+@{
+    string title = ViewBag.Title == null ? null : ViewBag.Title.ToString();
+    if (string.IsNullOrWhiteSpace(title))
+    {
+        try
+        {
+            title = Html.Title(SiteMap.CurrentNode.Title).ToString();
+        }
+        catch
+        {
+            // Not handled here.
+        }
+    }
+
+    string normalStyle = "NormalTab";
+    string activeStyle = "ActiveTab";
+    string controller = ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.ToString();
+    string agentsStyle = controller.Equals("Agents") ? activeStyle : normalStyle;
+    string operationStyle = controller.Equals("Operation") ? activeStyle : normalStyle;
+    string groupStyle = controller.Equals("Group") ? activeStyle : normalStyle;
+    string loggingStyle = controller.Equals("Logging") ? activeStyle : normalStyle;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" /><!--do not drop back to compatability mode-->
+    <title>
+        @title
+    </title>
+
+    @{
+        IUnifyBranding currentBranding = ViewContext.GetCurrentBranding();
+
+        // ReSharper disable Mvc.ControllerNotResolved
+        // ReSharper disable Mvc.ActionNotResolved
+        Html.RenderAction("SharedFrameworkHeader", "Shared", new {area = "Framework"});
+        Html.RenderAction("MainHeader", "Shared", new {area = "Framework"});
+        Html.RenderAction("FormsHeader", "Shared", new {area = "Framework"});
+        Html.RenderAction("PopupHeader", "Shared", new {area = "Framework"});
+        Html.RenderAction("ValidationHeader", "Shared", new {area = "Framework"});
+        Html.RenderAction("SeverityHeader", "Shared", new {area = "Framework"});
+        // ReSharper enable Mvc.ActionNotResolved
+        // ReSharper enable Mvc.ControllerNotResolved
+    }
+
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/themes/smothness/jquery-ui.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/themes/smothness/jquery-ui.structure.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/themes/smothness/jquery-ui.theme.min.css")" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+        $(['@Url.Content("~/Content/forms/pointer.gif")']).preload();
+        $(document).ready(function () {
+            $(".chzn-select").chosen().css({ width: 'auto' });
+
+            $(document.body).css('padding-top', $('#unifyTopNavBar').height() + 1);
+            $(window).resize(function () {
+                $(document.body).css('padding-top', $('#unifyTopNavBar').height() + 1);
+            });
+        });
+    </script>
+    <script type='text/javascript'>
+        var _ues = {
+        host:'unifyvoice.userecho.com',
+        forum:'5',
+        lang:'en',
+        tab_corner_radius:5,
+        tab_font_size:20,
+        tab_image_hash:'ZmVlZGJhY2s%3D',
+        tab_chat_hash:'Y2hhdA%3D%3D',
+        tab_alignment:'right',
+        tab_text_color:'#ffffff',
+        tab_text_shadow_color:'#00000055',
+        tab_bg_color:'#2677b4',
+        tab_hover_color:'#f45c5c'
+        };
+
+        (function() {
+            var _ue = document.createElement('script'); _ue.type = 'text/javascript'; _ue.async = true;
+            _ue.src = 'https://cdn.userecho.com/js/widget-1.4.gz.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(_ue, s);
+        })();
+    </script>
+</head>
+
+<body>
+    <nav id="unifyTopNavBar" class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">
+                    @if (currentBranding.TitleImage == null)
+                    {
+                        @currentBranding.CompanyAndProductName
+                    }
+                    else
+                    {
+                        <img src="@Url.WebResource(currentBranding.GetType(), currentBranding.TitleImage)"
+                             alt="@currentBranding.CompanyAndProductName"
+                             title="@currentBranding.CompanyAndProductName" />
+                    }
+                </a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    @if (Html.IsInRole(UnifyRoles.Read))
+                    {
+                        <li>
+                            @Html.ActionLink("Agents", "Index", "Agents", new { area = string.Empty }, new { @class = agentsStyle })
+                        </li>
+                        <li>
+                            @Html.ActionLink("Operations", "Index", "Operation", new { area = string.Empty }, new { @class = operationStyle })
+                        </li>
+                        <li>
+                            @Html.ActionLink("Groups", "Index", "Group", new { area = string.Empty }, new { @class = groupStyle })
+                        </li>
+                        <li>
+                            @Html.ActionLink("Logs", "Index", "Logging", new { area = "Framework" }, new { @class = loggingStyle })
+                        </li>
+                    }
+                </ul>
+                @if (UnifyAuthorizeSettings.Instance.AuthorizeSetting != UnifyAuthorizeSetting.Disabled)
+                {
+                    @Html.Action("SignInView", "Account", new { area = "Framework" })
+                }
+            </div>
+        </div>
+    </nav>
+    <div>
+        <div class="container">
+            @if (TempData.Peek("message") != null)
+            {
+                <div class="message TitleHeadingPart">
+                    <img src="@Url.WebIcon("error.png")" alt="@SharedResources.ErrorHeading" />
+                    @TempData["message"]
+                </div>
+                <br />
+            }
+
+            @{ Html.RenderAction("SiteMap", "SiteMap", new { area = "Framework" }); }
+
+            <div id="main" class="FaintBorder">
+                <div id="body">
+                    @RenderBody()
+                </div>
+            </div>
+            <div style="text-align: right">
+                @Html.Raw(currentBranding.WebpageFooterText)&nbsp;|&nbsp;@Html.ActionLink("About", "Index", "About", new { area = string.Empty }, new { })&nbsp;&nbsp;
+            </div>
+            <br />
+        </div>
+    </div>
+    @if (Debugger.IsAttached)
+    {
+        @MiniProfiler.RenderIncludes();
+    }
+</body>
+</html>

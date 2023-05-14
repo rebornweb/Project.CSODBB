@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<EventEngine changeId="{025F5A02-200E-4BA3-B74F-72623FAD3731}">
+  <roleAuthorizations>
+    <roleAuthorization role="Unify.Event.User">
+      <anonymous action="Allow" />
+      <group action="Allow" groupName="Administrators" />
+    </roleAuthorization>
+    <roleAuthorization role="Unify.Event.Administrator">
+      <anonymous action="Allow" />
+      <group action="Allow" groupName="Administrators" />
+    </roleAuthorization>
+  </roleAuthorizations>
+</EventEngine>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConnectorEngine schedulerEnabled="false">
+  <dataConnection name="repository" repository="Unify.IdentityBroker" />
+  <connectorconfigurations />
+</ConnectorEngine>

@@ -1,0 +1,28 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+
+@model AdapterEntityTransformationModifySchemaContribution
+           
+@{
+    const string pencilImageUrl = "pencil.png";
+    string modifyImageUrl = Url.WebIcon(pencilImageUrl);
+}
+   
+@Html.HiddenFor(model => model.TransformationId)
+@if (!Model.OriginalToNewSchemaDefinitionPairs.Any())
+{
+    <p>@AdapterResources.TransformationModifiesNoFieldsMessage</p>
+}
+
+<ul>
+    @foreach (var modifiedField in Model.OriginalToNewSchemaDefinitionPairs)
+    {
+        <li style="list-style-image: url('@modifyImageUrl')">
+            <b>@TransformationResources.ModifyContributionModifiedText</b> 
+            @modifiedField.Key.FieldName 
+            <b>@TransformationResources.ModifyContributionToText</b> 
+            @modifiedField.Value.FieldName        
+        </li>
+    }
+</ul>

@@ -1,0 +1,211 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+@model EntityOriginViewInformation
+
+@{
+    string parentPartitionIdN = Model.ParentPartitionId.ToString("N");
+    OriginRemotingKey key = Model.Record.ValueKey;
+    string entityIdValue = key != null ? key.EntityId.ToString() : EntityViewResources.NoKeyEntityMessage;
+    string partitionIdValue = key != null ? key.PartitionId.ToString() : EntityViewResources.NoKeyPartitionMessage;
+    string fieldValue = key != null ? key.Field : EntityViewResources.NoKeyFieldMessage;
+    string type = Model.Record.RecordType.ToString();
+    string currentControllerName = ViewContext.Controller.ControllerContext.RouteData.ExecutingControllerName();
+
+    string originElementId = string.Format(
+        WebConstants.HashedIdTemplate,
+        string.Format(
+            WebConstants.OriginDivIdTemplate,
+            parentPartitionIdN,
+            Model.Record.ValueKey.EntityId,
+            Model.Record.ValueKey.PartitionId,
+            Model.Record.ValueKey.Field,
+            Model.ExploreDepth));
+}
+
+<div id="valueSummary">
+    <table id="summaryTable" class="FeintTableRows EntitySchemaRows LeftAlignTable">
+        <tr>
+            <td><b>@EntityViewResources.EntityIdTitle</b></td>
+            <td>@entityIdValue</td>
+        </tr>
+        <tr>
+            <td><b>@EntityViewResources.PartitionIdTitle</b></td>
+            <td>@partitionIdValue</td>
+        </tr>
+        <tr>
+            <td><b>@EntityViewResources.FieldTitle</b></td>
+            <td>@fieldValue</td>
+        </tr>
+        <tr>
+            <td><b>@EntityViewResources.TypeTitle</b></td>
+            <td>@type</td>
+        </tr>
+    </table>
+</div>
+
+<br/>
+@RecordDisplay(Model.Record, EntityViewResources.AncestorsTitle, r => r.Ancestors.ToArray(), currentControllerName, parentPartitionIdN)
+<br/>
+@RecordDisplay(Model.Record, EntityViewResources.DescendantsTitle, r => r.Descendants.ToArray(), currentControllerName, parentPartitionIdN)
+
+@helper RecordDisplay(
+    EntityValueOriginRemotingRecord record,
+    string identifier, 
+    Func<EntityValueOriginRemotingRecord, EntityValueOriginRemotingRecord[]> getInnerRecords,
+    string currentControllerName,
+    string parentPartitionIdN)
+{
+    string divId = string.Format(WebConstants.OriginContainerIdTemplate, identifier);
+    string tableId = string.Format(WebConstants.OriginTableIdTemplate, identifier);
+
+    EntityValueOriginRemotingRecord[] innerRecords = getInnerRecords(record);
+
+    <div id="@divId">
+
+        @if (innerRecords.Any(ir => ir.RecordType != OriginRecordType.Gateway))
+        {
+            <h4>@identifier</h4>
+
+            <table id="@tableId" class="originTable shadedTable">
+                <tr>
+                    <th>@EntityViewResources.StepTitle</th>
+                    <th>@EntityViewResources.EntityIdTitle</th>
+                    <th>@EntityViewResources.PartitionIdTitle</th>
+                    <th>@EntityViewResources.FieldTitle</th>
+                    <th>@EntityViewResources.TypeTitle</th>
+                </tr>
+                @RecordRows(1, identifier, innerRecords, getInnerRecords, currentControllerName, parentPartitionIdN)
+            </table>
+        }
+        else
+        {
+            <h4>@string.Format(EntityViewResources.NoSpaceTitle, identifier)</h4>
+        }
+    </div>
+}
+
+@helper RecordRows(
+    int depth,
+    string recordType,
+    EntityValueOriginRemotingRecord[] innerRecords,
+    Func<EntityValueOriginRemotingRecord, EntityValueOriginRemotingRecord[]> getInnerRecords,
+    string currentControllerName,
+    string parentPartitionIdN)
+{
+int i = 0;
+foreach (EntityValueOriginRemotingRecord iterRecord in innerRecords)
+{
+    int newDepth = Model.ExploreDepth + 1;
+
+    if (iterRecord.RecordType.Equals(OriginRecordType.Gateway))
+    {
+        @BoundaryRow(recordType, parentPartitionIdN, depth + 1, string.Format(EntityViewResources.GatewayEntranceBoundaryMessage, iterRecord.ValueKey.PartitionId))
+        continue;
+    }
+
+    string entityDisplayDivId = string.Format(
+        WebConstants.EntityDisplayDivIdTemplate,
+        parentPartitionIdN,
+        iterRecord.ValueKey.EntityId,
+        iterRecord.ValueKey.PartitionId,
+        newDepth);
+
+    string originDivId = string.Format(
+        WebConstants.OriginDivIdTemplate,
+        parentPartitionIdN,
+        iterRecord.ValueKey.EntityId,
+        iterRecord.ValueKey.PartitionId,
+        iterRecord.ValueKey.Field,
+        newDepth);
+
+        <tr id="@RecordRowId(recordType, parentPartitionIdN, depth, i)">
+            <td>@depth</td>
+            <td>
+                <div id="@entityDisplayDivId"></div>
+                <a onclick="javascript:DisplayEntity@(parentPartitionIdN)('@iterRecord.ValueKey.EntityId', '@iterRecord.ValueKey.PartitionId', '@SearchContext(iterRecord.RecordType, currentControllerName)', @newDepth);">
+                    @iterRecord.ValueKey.EntityId
+                </a>
+            </td>
+            <td>@iterRecord.ValueKey.PartitionId</td>
+            <td>
+                <div id="@originDivId"></div>
+                <a onclick="javascript:DisplayOrigin@(parentPartitionIdN)('@iterRecord.ValueKey.Field', '@iterRecord.ValueKey.EntityId', '@iterRecord.ValueKey.PartitionId', @newDepth);">
+                    @iterRecord.ValueKey.Field
+                </a>
+            </td>
+            <td>@ValueSource(iterRecord.RecordType)</td>
+        </tr>
+
+        i++;
+
+        if (iterRecord.Initial)
+        {
+            @BoundaryRow(recordType, parentPartitionIdN, depth + 1, EntityViewResources.ValueEntranceBoundaryMessage)
+        }
+        else if (iterRecord.Terminal)
+        {
+            @BoundaryRow(recordType, parentPartitionIdN, depth + 1, EntityViewResources.ValueExitBoundaryMessage)
+        }
+        else
+        {
+            @RecordRows(depth + 1, recordType, getInnerRecords(iterRecord), getInnerRecords, currentControllerName, parentPartitionIdN)
+        }
+    }
+}
+
+@helper ValueSource (OriginRecordType recordType)
+{
+    if (recordType == OriginRecordType.PlugIn)
+    {
+        @Html.Raw(EntityViewResources.RecordTypePlugInName)
+    }
+    else if (recordType == OriginRecordType.Connector)
+    {
+        @Html.Raw(EntityViewResources.RecordTypeConnectorName)
+    }
+    else if (recordType == OriginRecordType.Adapter)
+    {
+        @Html.Raw(EntityViewResources.RecordTypeAdapterName)
+    }
+    else
+    {
+        @Html.Raw(EntityViewResources.RecordTypeUnknownName)
+    }
+}
+
+@helper SearchContext(OriginRecordType recordType, string currentControllerName)
+{
+    if (recordType == OriginRecordType.PlugIn)
+    {
+        @Html.Raw(IdentityBrokerEntitySearchController.PlugInEntitySearchContext)
+    }
+    else if (recordType == OriginRecordType.Connector && currentControllerName == "Connector" ||
+             recordType == OriginRecordType.Adapter && currentControllerName == "Adapter")
+    {
+        @Html.Raw(IdentityBrokerEntitySearchController.StandardEntitySearchContextKey)
+    }
+    else
+    {
+        @Html.Raw(IdentityBrokerEntitySearchController.ForeignEntitySearchContextKey)
+    }
+}
+
+@helper BoundaryRow(string rowType, string parentPartitionIdN, int depth, string message)
+{
+    <tr id="@RecordRowId(rowType, parentPartitionIdN, depth, 0)" class="originBoundryRow">
+        <td colspan="5">@message</td>
+    </tr>
+}
+
+@helper RecordRowId(string recordType, string parentPartitionIdN, int depth, int count)
+{
+    @Html.Raw(string.Format(WebConstants.RecordRowIdFormat, parentPartitionIdN, recordType, depth, count))
+}
+
+<script>
+    $(document).ready(function() {
+        var element = $('@originElementId').parent();
+        element.position({ at: 'center', my: 'center', of: window });
+    });
+</script>

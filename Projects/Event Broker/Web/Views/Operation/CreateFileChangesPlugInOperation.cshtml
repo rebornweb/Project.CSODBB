@@ -1,0 +1,39 @@
+﻿@model FileChangesPlugInConfigurationViewInformation
+@using Unify.Framework.Web
+
+@{
+    ViewBag.Title = Html.CreatePlugInTitle(Model.CreateOrUpdateText, TitleResources.CreateFileChangesOperationTitleCaption);
+}
+
+@using (Html.DecorateForm(
+            () => Html.BeginForm("CreatePlugInOperation", "Operation", FormMethod.Post, new { id = "CreateOperationForm" }),
+            Model.CreateOrUpdateText,
+            "CreateOperationForm",
+            OperationResources.ConfigureOperationAltText, "submitButton"))
+{
+    <div>
+        @Html.EditorFor(model => model, "OperationDisplayName")
+        
+        <fieldset>
+            
+            @using (Html.MetaDataFor(model => model.FileToCheck, new { description = OperationControllerResources.FileToCheckDescription }))
+            {
+                @Html.LabelFor(model => model.FileToCheck, OperationControllerResources.FileToCheckName)
+                @Html.TextBoxFor(model => model.FileToCheck, new { @class = "wide-text" })
+            }
+
+            @using (Html.MetaDataFor(model => model.CheckMethod, new {description = OperationControllerResources.CheckMethodDescription}))
+            {
+                @Html.LabelFor(model => model.FileToCheck, OperationControllerResources.CheckMethodName)
+                @Html.EnumDropDownList(model => model.CheckMethod)
+            }
+
+        </fieldset>
+        
+        <fieldset>
+            @Html.EditorFor(model => model, "CheckOperationInnerDetails")
+        </fieldset>
+
+    </div>
+
+}

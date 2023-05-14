@@ -1,0 +1,60 @@
+﻿@using Unify.EventBroker.Web
+@using Unify.Framework.Web
+@model PowerShellScriptPlugInConfigurationViewInformation
+@{
+    ViewBag.Title = Html.CreatePlugInTitle(Model.CreateOrUpdateText, TitleResources.CreatePowershellOperationTitleCaption);
+}
+
+@using (Html.DecorateForm(
+            () => Html.BeginForm("CreatePlugInOperation", "Operation", FormMethod.Post, new { id = "CreateOperationForm" }),
+            Model.CreateOrUpdateText,
+            "CreateOperationForm",
+            OperationResources.ConfigureOperationAltText, "submitButton"))
+{
+    <div>
+        
+        @Html.EditorFor(model => model, "OperationDisplayName")
+        
+        <fieldset>
+            
+            <div class = "scriptonly chzn-container">
+                @Html.LabelFor(model => model.Script, OperationResources.TemplateScriptName)
+                @Html.DropDownList(
+                    "TemplateScripts",
+                    new SelectList(
+                        new Dictionary<string, string>
+                            {
+                                { OperationControllerResources.TemplateScriptCustomName, Model.Script },
+                                { OperationControllerResources.TemplateScriptExecuteFileName, 
+                                    OperationControllerResources.TemplateScriptImportModuleScript }, 
+                                { OperationControllerResources.TemplateScriptExecuteFileWithFunctionName, 
+                                    OperationControllerResources.TemplateScriptImportModuleWithFunctionScript }
+                            },
+                        "Value", "Key"),
+                    new
+                        {
+                            id = "TemplateScripts",
+                            @class = "chzn-select"
+                        })
+            </div>
+            
+            @using (Html.MetaDataFor(model => model.Script, new { description = OperationControllerResources.PowerShellScriptDescription }))
+            {
+                @Html.LabelFor(model => model.Script, OperationControllerResources.PowerShellScriptName)
+                @Html.TextAreaFor(model => model.Script, new {id = "Script", @class = "wide-text", rows = "5"})
+            }
+        
+            @Html.EditorFor(model => model, "OperationInnerDetails")
+        
+        </fieldset>
+
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#TemplateScripts').bind('change', function () {
+            $('#Script').val($('#TemplateScripts').val());
+        });
+    });
+</script>

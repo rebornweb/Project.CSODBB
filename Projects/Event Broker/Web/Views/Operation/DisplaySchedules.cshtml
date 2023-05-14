@@ -1,0 +1,46 @@
+﻿@using Unify.Framework
+@using Unify.Framework.Web
+@model OperationListSchedules
+@{
+    bool allowEdit = Html.IsInRole(UnifyRoles.Write) && !Model.Enabled;
+    string deleteScript = string.Empty;
+    string deleteMessage = string.Empty;
+}
+@if (!Model.Timings.Any())
+{
+    <p>@OperationControllerResources.NoSchedulesAddedMessage</p>
+}
+else
+{
+    foreach (ITiming timing in Model.Timings)
+    {
+        string timingDisplay = timing.DisplayValue();
+
+        <div>
+            <span>@Html.RenderTiming(timingDisplay)</span>
+            @if (allowEdit)
+            {
+                string deleteFormId = string.Concat("deleteForm", timing.Key);
+                string deleteButtonId = string.Concat("deleteButton", timing.Key);
+                string deleteMessageId = string.Concat(deleteButtonId, "Message");
+                deleteScript = string.Concat(deleteScript, Environment.NewLine, RenderExtensions.SubmitOkCancelDialog(deleteFormId, deleteButtonId, deleteButtonId));
+                deleteMessage = string.Concat(deleteMessage, "<div id=\"", deleteMessageId, "\" title=\"", OperationControllerResources.DisplaySchedulesDeleteTimingConfirmationHeading, "\" style=\"display:none\">", OperationControllerResources.DisplaySchedulesDeleteTimingConfirmationMessage, "</div>");
+
+                <span><a href="@Url.Action("EditSchedule", "Operation", new {operationListId = Model.OperationListId, timingId = timing.Key})"><img title="@OperationControllerResources.EditScheduleAlt" alt="@OperationControllerResources.EditScheduleAlt" src="@Url.WebIcon("clock_edit.png")" /></a></span>
+                <span>
+                    @using (Html.BeginForm("DeleteSchedule", "Operation", new { operationListId = Model.OperationListId, timingId = timing.Key }, FormMethod.Post, new { id = deleteFormId, @class = "Reset, IconForm" }))
+                    {
+                        <input type="image" id="@deleteButtonId" name="@deleteButtonId" value="@deleteButtonId" title="@OperationControllerResources.DeleteScheduleAlt" alt="@OperationControllerResources.DeleteScheduleAlt" src="@Url.WebIcon("clock_delete.png")" class="FormIconAlign" />
+                    }
+                </span>
+            }
+        </div>
+    }
+    if (allowEdit && !string.IsNullOrWhiteSpace(deleteScript))
+    {
+        @Html.Raw(deleteMessage)
+        <script type="text/javascript">
+            @Html.Raw(deleteScript)
+        </script>
+    }
+}

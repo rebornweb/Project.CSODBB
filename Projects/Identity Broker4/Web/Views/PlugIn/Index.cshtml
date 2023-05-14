@@ -1,0 +1,13 @@
+﻿@using Unify.Connect.Web.Extensions
+
+@model IEnumerable<IPlugInControllerInformation>
+
+<h2>@PlugInResources.IndexPlugInsHeading</h2>
+
+@foreach(IPlugInControllerInformation plugIn in Model)
+{
+    @Html.ActionLink(plugIn.LinkName, plugIn.DisplayActionName, plugIn.ControllerName, new { area = "Extensibility" }, new { title = plugIn.LinkDescription })
+    <br />
+    <span class="UnderText">@plugIn.LinkDescription</span>
+    <br />
+}

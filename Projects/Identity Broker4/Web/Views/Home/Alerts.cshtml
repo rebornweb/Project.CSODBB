@@ -1,0 +1,3 @@
+﻿@model HomeAlertsModel           
+
+@{ Html.RenderAction("Alerts", "Alerts", new { area = "Framework", renderFunctions = Model.AlertRenderFunctions, alerts = Model.CurrentAlerts }); }

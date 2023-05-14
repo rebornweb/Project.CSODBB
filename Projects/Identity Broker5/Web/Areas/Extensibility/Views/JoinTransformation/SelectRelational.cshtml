@@ -1,0 +1,26 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model SelectRelationalConnectorViewInformation
+
+@using (Html.DecorateForm(
+    () => Html.BeginForm("SubmitSelectedRelationshipConnector", "JoinTransformation", new {area = "Extensibility"}),
+    TransformationResources.SelectRelationshipConnectorButtonText,
+    "SelectRelationalConnectorForm",
+    TransformationResources.SelectRelationshipConnectorButtonAltText))
+{
+    @Html.TransformationDetailsFor(model => model)
+
+    <fieldset>
+        @using (Html.MetaDataFor(model => model.ConnectorId, new {description = TransformationResources.SelectRelationalConnectorIdDescription}))
+        {
+            @Html.LabelFor(model => model.ConnectorId, TransformationResources.SelectRelationalConnectorIdLabel)
+            @Html.DropDownListFor(
+                model => model.ConnectorId,
+                new SelectList(
+                    Model.Connectors,
+                    "Value",
+                    "Key"))
+        }
+    </fieldset>
+}

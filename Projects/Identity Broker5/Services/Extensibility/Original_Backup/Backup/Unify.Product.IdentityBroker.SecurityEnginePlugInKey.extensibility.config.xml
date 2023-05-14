@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SecurityEngine>
+  <Certificate storeLocation="LocalMachine" storeName="My">
+    <Searches>
+      <Search type="IssuerName" value="dbb-D-OCCCP-DC201-CA" />
+    </Searches>
+  </Certificate>
+  <Users>
+    <User username="MIM" role="Read" password="$2a$10$IEsMpCvFcseH61mLFS8RReaiCzCEgE5fCT0l.P/2FEoAvuSJTAtV6" />
+  </Users>
+</SecurityEngine>

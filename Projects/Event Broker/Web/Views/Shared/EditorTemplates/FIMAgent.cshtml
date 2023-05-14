@@ -1,0 +1,160 @@
+﻿@using Unify.Framework.Web
+
+@model FIMAgentViewInformation
+
+<div>
+    @Html.HiddenFor(model => model.PlugInName)
+    @Html.HiddenFor(model => model.AgentId)
+    @Html.HiddenFor(model => model.EditMode)
+    @Html.HiddenFor(model => model.FIMAgentId)
+    @Html.HiddenFor(model => model.ManagementAgentKey)
+
+    @using (Html.MetaDataFor(model => model.Name, new { description = AgentsControllerResources.FIMAgentNameDescription }))
+    {
+        @Html.LabelFor(model => model.Name, AgentsControllerResources.FIMAgentNameName)
+        @Html.TextBoxFor(model => model.Name)
+    }
+
+    @*Only allow edit of success statuses*@
+    @if (Model.EditMode)
+    {
+        using (Html.MetaDataFor(model => model.SuccessStatuses, new { description = AgentsControllerResources.FIMAgentSuccessStatusesDescription }))
+        {
+            @Html.LabelFor(model => model.SuccessStatuses, AgentsControllerResources.FIMAgentSuccessStatusesName)
+            @Html.TextBoxFor(model => model.SuccessStatuses, new { style = "width: 300px;" })
+        }
+    }
+
+    <fieldset>
+        <legend>@AgentsControllerResources.FIMAgentStandardConnectionDetailsText</legend>
+
+        @using (Html.MetaDataFor(model => model.IsLocalInstance, new { description = AgentsControllerResources.FIMAgentIsLocalInstanceDescription }, new { @class = "controlset" }))
+        {
+            @Html.LabelFor(model => model.IsLocalInstance, AgentsControllerResources.FIMAgentIsLocalInstanceName)
+            @Html.RadioButtonFor(model => model.IsLocalInstance, true)
+            <label>@AgentsControllerResources.FIMAgentIsLocalInstanceYesName</label>
+            @Html.RadioButtonFor(model => model.IsLocalInstance, false)
+            <label>@AgentsControllerResources.FIMAgentIsLocalInstanceNoName</label>
+        }
+
+        <div id="InstanceLocationSection">
+            @using (Html.MetaDataFor(model => model.ServerName, new { description = AgentsControllerResources.FIMAgentServerDescription }))
+            {
+                @Html.LabelFor(model => model.ServerName, AgentsControllerResources.FIMAgentServerName)
+                @Html.TextBoxFor(model => model.ServerName)
+            }
+            @using (Html.MetaDataFor(model => Model.UserName, new { description = AgentsControllerResources.FIMAgentUsernameDescription }))
+            {
+                @Html.LabelFor(model => model.UserName, AgentsControllerResources.FIMAgentUsernameName)
+                @Html.TextBoxFor(model => model.UserName)
+            }
+            @using (Html.MetaDataFor(model => model.Password, new { description = AgentsControllerResources.FIMAgentPasswordDescription }))
+            {
+                @Html.LabelFor(model => model.Password, AgentsControllerResources.FIMAgentPasswordName)
+                @Html.PasswordFor(model => model.Password)
+            }
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>@AgentsControllerResources.FIMAgentDatabaseConnectionDetailsText</legend>
+            
+        @using (Html.MetaDataFor(model => model.UseStandardView, new { description = AgentsControllerResources.FIMAgentUseConnectionDetailsForDatabaseDescription }, new { @class = "controlset" }))
+        {
+            @Html.LabelFor(model => model.UseStandardView, AgentsControllerResources.FIMAgentUseConnectionDetailsForDatabaseName)
+
+            @Html.RadioButtonFor(model => model.UseStandardView, true)
+            <label>@AgentsControllerResources.FIMAgentUseConnectionDetailsForDatabaseYesName</label>
+
+            @Html.RadioButtonFor(model => model.UseStandardView, false)
+            <label>@AgentsControllerResources.FIMAgentUseConnectionDetailsForDatabaseNoName</label>
+        }
+
+        @using (Html.MetaDataFor(model => model.ConnectionString, new { description = AgentsControllerResources.FIMAgentConnectionStringDescription }, new { id = "ConnectionStringSection" }))
+        {
+            @Html.LabelFor(model => model.ConnectionString, AgentsControllerResources.FIMAgentConnectionStringName)
+            @Html.TextAreaFor(model => model.ConnectionString, new { @class = "wide-text", rows = "4" })
+        }
+
+        <div id="StandardViewSection">
+            @using (Html.MetaDataFor(model => model.DatabaseServerName, new { description = AgentsControllerResources.FIMAgentDatabaseServerNameDescription }))
+            {
+                @Html.LabelFor(model => model.DatabaseServerName, AgentsControllerResources.FIMAgentDatabaseServerNameName)
+                @Html.TextBoxFor(model => model.DatabaseServerName)
+            }
+            @using (Html.MetaDataFor(model => model.FIMDatabaseName, new { description = AgentsControllerResources.FIMAgentDatabaseNameDescription }))
+            {
+                @Html.LabelFor(model => model.FIMDatabaseName, AgentsControllerResources.FIMAgentDatabaseNameName)
+                @Html.TextBoxFor(model => model.FIMDatabaseName)
+            }
+        </div>
+
+        <div id="WholeCredentialsSection">
+            @using (Html.MetaDataFor(model => model.UseSQLAuthentication, new { description = AgentsControllerResources.FIMAgentUseSqlAuthenticationDescription }, new { @class = "controlset" }))
+            {
+                @Html.LabelFor(model => model.UseSQLAuthentication, AgentsControllerResources.FIMAgentUseSqlAuthenticationName)
+                @Html.RadioButtonFor(model => model.UseSQLAuthentication, false)
+                <label>@AgentsControllerResources.FIMAgentUseSqlAuthenticationNoName</label>
+                @Html.RadioButtonFor(model => model.UseSQLAuthentication, true)
+                <label>@AgentsControllerResources.FIMAgentUseSqlAuthenticationYesName</label>
+            }
+
+            <div id="CredentialsSection">
+                @using (Html.MetaDataFor(model => model.DatabaseUserName, new { description = AgentsControllerResources.FIMAgentDatabaseUsernameDescription }))
+                {
+                    @Html.LabelFor(model => model.DatabaseUserName, AgentsControllerResources.FIMAgentDatabaseUsernameName)
+                    @Html.TextBoxFor(model => model.DatabaseUserName)
+                }
+                @using (Html.MetaDataFor(model => model.DatabasePassword, new { description = AgentsControllerResources.FIMAgentDatabasePasswordDescription }))
+                {
+                    @Html.LabelFor(model => model.DatabasePassword, AgentsControllerResources.FIMAgentDatabasePasswordName)
+                    @Html.PasswordFor(model => model.DatabasePassword)
+                }
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+<script type="text/javascript">
+    var localInstanceTrue = $('input[type=radio][id=IsLocalInstance][value=True]');
+    var localInstanceFalse = $('input[type=radio][id=IsLocalInstance][value=False]');
+    var instanceLocationSection = $('#InstanceLocationSection');
+
+    var wholeCredentialsSection = $('#WholeCredentialsSection');
+
+    var useSQLAuthTrue = $('input[type=radio][id=UseSQLAuthentication][value=True]');
+    var useSQLAuthFalse = $('input[type=radio][id=UseSQLAuthentication][value=False]');
+    var useSQLAuthSection = $('#CredentialsSection');
+
+    var useStandardTrue = $('input[type=radio][id=UseStandardView][value=True]');
+    var useStandardFalse = $('input[type=radio][id=UseStandardView][value=False]');
+    var standardViewSection = $('#StandardViewSection');
+    var connStringSection = $('#ConnectionStringSection');
+
+    $(document).ready(function () {
+        ShowHideSection(localInstanceFalse, instanceLocationSection, null);
+        ShowHideSection(useSQLAuthTrue, useSQLAuthSection, null);
+        ShowHideSection(useStandardTrue, standardViewSection, connStringSection);
+        ShowHideSection(useStandardTrue, wholeCredentialsSection, null);
+    });
+    localInstanceTrue.bind('change', function (event) {
+        ShowHideSection(localInstanceFalse, instanceLocationSection, null);
+    });
+    localInstanceFalse.bind('change', function (event) {
+        ShowHideSection(localInstanceFalse, instanceLocationSection, null);
+    });
+    useSQLAuthTrue.bind('change', function (event) {
+        ShowHideSection(useSQLAuthTrue, useSQLAuthSection, null);
+    });
+    useSQLAuthFalse.bind('change', function (event) {
+        ShowHideSection(useSQLAuthTrue, useSQLAuthSection, null);
+    });
+    useStandardTrue.bind('change', function (event) {
+        ShowHideSection(useStandardTrue, standardViewSection, connStringSection);
+        ShowHideSection(useStandardTrue, wholeCredentialsSection, null);
+    });
+    useStandardFalse.bind('change', function (event) {
+        ShowHideSection(useStandardTrue, standardViewSection, connStringSection);
+        ShowHideSection(useStandardTrue, wholeCredentialsSection, null);
+    });
+</script>

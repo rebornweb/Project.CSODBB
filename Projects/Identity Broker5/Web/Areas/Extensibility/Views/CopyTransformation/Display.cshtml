@@ -1,0 +1,21 @@
+﻿@using Unify.Connect.Web
+@using Unify.Framework.Collections
+@model CopyTransformationViewInformation
+
+@try
+{
+    IEnumerable<KeyValuePair<GroupedNameValueCollectionKey, GroupedNameValueCollectionKey>> mappings = TransformationControllerExtensions.Deserialize(Model.Mappings.Text);
+
+    <div>
+    @foreach (var line in mappings)
+    {
+        <p>
+            [@line.Key] -> <span class="TransformationAddedField">[@line.Value]</span>
+        </p>
+    }
+    </div>
+}
+catch (Exception)
+{
+    <span>@Model.Mappings.Text</span>
+}

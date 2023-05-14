@@ -1,0 +1,33 @@
+﻿@using Unify.Framework.Web
+@model ConnectorTimingsViewInformation
+
+<h2>
+    @ConnectorControllerResources.ImportAllSchedulesHeading
+    @if (!Model.Enabled)
+    {
+        <a class="m-btn sm" href="@Url.Action("CreateOrEditGetAllEntitiesTiming", new { Model.ConnectorId, edit = false })">
+            Add Schedule
+        </a>
+    }
+</h2>
+
+<div class="PaddedContent">
+    @Html.ActionRefresh(Url, "DisplayGetAllTimings", 10000, "DisplayGetAllTimings", "Connector", new { connectorId = Model.ConnectorId }, Url.Action("ConnectorDetails", "Connector", new { Model.ConnectorId }))
+</div>
+
+@if (Model.ConnectorSupportsPolling)
+{
+    <h2>
+        @ConnectorControllerResources.ImportChangesSchedulesHeading
+        @if (!Model.Enabled)
+        {
+            <a class="m-btn sm" href="@Url.Action("CreateOrEditPollingTiming", new { connectorId = Model.ConnectorId, edit = false })">
+                Add Schedule
+            </a>
+        }
+    </h2>
+    
+    <div class="PaddedContent">
+        @Html.ActionRefresh(Url, "DisplayPollingTimings", 10000, "DisplayPollingTimings", "Connector", new { connectorId = Model.ConnectorId }, Url.Action("ConnectorDetails", "Connector", new { Model.ConnectorId }))
+    </div>
+}

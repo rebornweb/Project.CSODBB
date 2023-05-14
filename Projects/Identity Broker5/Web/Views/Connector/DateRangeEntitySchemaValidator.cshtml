@@ -1,0 +1,29 @@
+﻿@model DateSchemaFieldDefinitionInformation
+@using Unify.Framework.Web
+
+@{
+    string createOrEditSchemaRowText = RenderExtensions.SimpleCreateOrEditText(Model.Edit);
+
+    ViewBag.Title = Html.Title(string.Format(TitleResources.DateRangeEntitySchemaValidatorTitleTemplate, createOrEditSchemaRowText));
+
+    // ReSharper disable Mvc.ControllerNotResolved
+    // ReSharper disable Mvc.ActionNotResolved
+    Html.RenderAction("SchedulesHeader", "Schedules", new {area = "Framework"});
+    // ReSharper enable Mvc.ActionNotResolved
+    // ReSharper enable Mvc.ControllerNotResolved
+}
+
+<div>
+
+@using (Html.DecorateForm(
+            () => Html.BeginForm("DateRangeEntitySchemaValidator", "Connector", new {connectorId = Model.ConnectorId}, FormMethod.Post, new{id="DateRangeEntitySchemaValidatorForm"}),
+            WebStudioResources.SaveText,
+            "DateRangeEntitySchemaValidatorForm",
+            ConnectorControllerResources.SaveFieldDefinitionAltText
+            ))
+{
+    @Html.EditorFor(model => model, "RenderEntitySchemaCoreValidatorAttributes")
+    @Html.EditorFor(model => model, "RenderEntitySchemaDateRangeValidatorAttributes")
+}
+
+</div>

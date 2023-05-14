@@ -1,0 +1,143 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+@model TransformationsViewInformation
+
+@{
+    string warningImageUrl = Url.WebIcon("error.png");
+
+    bool invalidSchemaCalculation = Model.AdapterSchema == null;
+    
+    string addSchemaTransformationUrl = Url.Action("ChooseTransformation", "Adapter", new { adapterId = Model.AdapterId, siteTransformation = Guid.Empty, front = false});
+    
+
+    string addTransformationButtonId = string.Concat("AddTransformationButton", Guid.NewGuid().ToString());
+    string addTransformationContainerId = string.Concat("AddSchemaContribution", Guid.NewGuid().ToString());
+
+    var lookUp = Model.Descriptions.ToDictionary(description => description.Name);
+}
+
+<h2>
+    @AdapterResources.AdapterSchemaLabel 
+</h2>
+
+@Html.HiddenFor(model => model.ParentAdapterId)
+@Html.HiddenFor(model => model.AdapterId)
+@Html.HiddenFor(model => model.IsNotLdapCompliant)
+
+<div>
+    
+    @if (Model.IsNotLdapCompliant)
+    {  
+        <div class="message">
+            <label>
+                <img src="@warningImageUrl" alt="Warning" title="Warning"/>
+                @if (Model.AdapterEnabled)
+                {
+                    @AdapterResources.AdapterSchemaNotCompliantMessage
+                }
+                else
+                {
+                    @Html.Raw(
+                        string.Format(
+                            TransformationResources.AdapterSchemaNotCompliantMessageTemplate,
+                            Html.ActionLink(TransformationResources.HereText, "AddLdapCompliantMoveTransformation", "Adapter", new { adapterId = Model.AdapterId }, new object())))
+                }
+            </label>
+        </div>
+    }
+    
+    @(invalidSchemaCalculation
+           ? Html.DisplayFor(model => model.SchemaFailedMessage, "IncorrectlyCalculatedEntitySchemaRows")
+           : Html.DisplayFor(model => model.AdapterSchema, "EntitySchemaRows"))
+    
+    <div style="margin-top:15px;">
+        @if (Model.Transformations != null)
+        {
+        
+            <h2>
+                @TransformationResources.TransformationsHeading
+
+                @if (!Model.AdapterEnabled && Model.Transformations != null)
+                {
+                    <a class="m-btn sm" href="@addSchemaTransformationUrl" id="@addTransformationButtonId">
+                        @TransformationResources.TransformSchemaButtonText
+                    </a>
+                }
+            </h2>
+
+            List<AdapterEntityTransformationConfiguration> contributions = Model.Transformations.ToList();
+
+            if (contributions.Any())
+            {
+                foreach (AdapterEntityTransformationConfiguration transformation in contributions)
+                {
+                    string displayName = transformation.TransformationType;
+                    
+                    AdapterEntityTransformationGeneratorDescription description; 
+                    if (lookUp.TryGetValue(transformation.TransformationType, out description))
+                    {
+                        displayName = description.TransformationDisplayName;
+                    }
+
+                    <fieldset style="padding:2em;">
+                        <legend>
+                            @displayName
+                            @Html.RenderTransformationsFunctionsMenu(Url, transformation.Key, Model.AdapterId)
+                        </legend>
+                        
+                        
+                        @{
+                            IAdapterEntityTransformationSchemaContribution contribution;
+
+                            bool renderError = false;
+                            
+                            if (Model.Contributions.TryGetValue(transformation.Key, out contribution))
+                            {
+                                if (contribution is AdapterEntityTransformationErroredSchemaContribution)
+                                {
+                                    renderError = true;
+                                }
+                            }
+                        }
+
+                        @if (renderError)
+                        {
+                            <div class="message">
+                                @(string.Format(TransformationResources.TransformationsContributionErrorMessageTemplate, ((AdapterEntityTransformationErroredSchemaContribution)contribution).ErrorMessage))
+                            </div>
+                            <br/>
+                        }
+
+                        @{ 
+                        Html.RenderAction(
+                            "Display",
+                            MvcApplication.GetTransformationController(transformation.TransformationType),
+                            new
+                            {
+                                area = "Extensibility",
+                                parentAdapterId = Model.ParentAdapterId,
+                                adapterId = Model.AdapterId,
+                                transformationId = transformation.Key
+                            }
+                            );
+                        }
+                    </fieldset>
+                }
+            }
+            else
+            {
+                @TransformationResources.NoTransformationsConfiguredMessage
+            }
+        }
+    </div>
+
+</div>
+
+<div id="@addTransformationContainerId"></div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        @ViewData.RetrieveListItems("TransformationFunctions")
+    });
+</script>

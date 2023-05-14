@@ -1,0 +1,136 @@
+﻿@using System
+@using System.Collections.Generic
+@using System.Linq
+@using Unify.Framework.Web
+@model IEnumerable<AgentAlertInformation>
+@{
+    ViewBag.Title = Html.Title(TitleResources.AgentPageTitle);
+    
+    const string boundButtonName = "submitButton";
+    const string deleteButtonId = "Delete";
+    var deleteMessageId = string.Concat(deleteButtonId, "Message");
+
+}
+
+<h2>@AgentsControllerResources.AgentPageHeading</h2>
+
+@if (Html.IsInRole(UnifyRoles.Write))
+{
+    using (Html.BeginForm("Create", "Agents", FormMethod.Get, new { id = "CreateAgentForm" }))
+    {
+        <span>@AgentsControllerResources.IndexCreateAgentDropDownName
+            <select name="agentType" id="CreateAgentName">
+                <option value="@AgentPlugInNames.FIMAgentPlugInName">@AgentsControllerResources.FIMAgentDisplayNameText</option>
+                <option value="@AgentPlugInNames.ADAgentPlugInName">@AgentsControllerResources.ADAgentDisplayNameText</option>
+                <option value="@AgentPlugInNames.OpenLDAPAgentPlugInName">@AgentsControllerResources.LDAPDirectoryAgentDisplayNameText</option>
+                <option value="@AgentPlugInNames.IdentityBrokerAgentPlugInName">@AgentsControllerResources.IdBAgentDisplayNameText</option>
+                <option value="@AgentPlugInNames.SQLServerAgentPlugInName">@AgentsControllerResources.SqlServerAgentDisplayNameText</option>
+                <option value="@AgentPlugInNames.OracleDbAgentPlugInName">@AgentsControllerResources.OracleDbAgentDisplayNameText</option>
+                <option value="@AgentPlugInNames.RestAPIAgentPlugInName">@AgentsControllerResources.RestAPIAgentDisplayNameText</option>
+            </select>
+            <input type="submit" value="@AgentsControllerResources.IndexCreateAgentDropDownButtonText" id="CreateAgentSubmitButton" />
+        </span>
+    }
+}
+
+<h3>@AgentsControllerResources.IndexCurrentAgentsHeading</h3>
+<div>
+    @{
+        if (!Model.Any())
+        {
+            <p>@AgentsControllerResources.IndexNoAgentsMessage</p>
+        }
+        else
+        {
+            const string modifyFormId = "ModifyForm";
+            using (Html.BeginForm("Modify", "Agents", FormMethod.Post, new { id = modifyFormId }))
+            {
+                
+                var deleteConfirmScript = string.Empty;
+            
+                <table>
+
+                    @if (Html.IsInRole(UnifyRoles.Full))
+                    {
+                        deleteConfirmScript = string.Concat(deleteConfirmScript, Environment.NewLine, RenderExtensions.SubmitOkCancelDialog(modifyFormId, deleteButtonId, boundButtonName));
+
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="scriptonly" id="SelectDeselectAgents"  />
+                            </td>
+                            <td>@AgentsControllerResources.AgentSelectDeselectAllText</td>
+                        </tr>
+                    }
+
+                    @foreach (var agentAlert in Model)
+                    {
+                        var agent = agentAlert.agentInformation;
+                        var alert = agentAlert.alertInformation;
+                        var checkedId = string.Concat("check_", agent.Id);
+                        <tr>
+                            @if (Html.IsInRole(UnifyRoles.Full))
+                            { 
+                                <td><input type="checkbox" id="@checkedId" class="AgentCheckBox" name="ids" value="@agent.Id.ToString()" /></td>
+                            }
+                            @if (Html.IsInRole(UnifyRoles.Write))
+                            { 
+                                <td>
+                                    <a href="@Url.Action("Edit", new { id = agent.Id, fimAgentId = Guid.Empty })">@agent.Name</a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>@agent.Name</td> 
+                            }
+
+                            @if (alert != null)
+                            {
+                                <td><ul class="Severity @alert.Severity" title="@AlertMessages.ShowShortMessage(alert)"><li>@AlertMessages.ShowShortMessage(alert)</li></ul></td>
+                            }
+
+                            @if (agent.PlugInName == AgentPlugInNames.FIMAgentPlugInName)
+                            {
+                                if (Html.IsInRole(UnifyRoles.Write))
+                                {
+                                    if (Html.IsInRole(UnifyRoles.Write))
+                                    {
+                                        string autoConfigureUrl = Url.Action("AutoConfigureForFIMAgent", new { id = agent.Id });
+
+                                        <td>
+                                            <div class="m-btn-group">
+                                                <a href="@autoConfigureUrl" class="m-btn blue mini mini-form">
+                                                    @AgentsControllerResources.ManagementAgentsButtonText
+                                                </a>
+                                                <a href="@Url.Action("ConfigureMaintenanceOperations", new{fimAgentId = agent.Id})" class="m-btn mini mini-form">
+                                                    @AgentsControllerResources.MaintenanceSettingsButtonText
+                                                </a>
+                                            </div>
+                                        </td>
+                                    }
+                                }
+                            }
+                        </tr>
+                    }
+                </table>
+
+                if (Html.IsInRole(UnifyRoles.Full))
+                {
+                    <input type="submit" id="@deleteButtonId" name="@boundButtonName" value="@AgentsControllerResources.AgentDeleteName" />
+                    <div id="@deleteMessageId" title="@AgentsControllerResources.IndexDeleteAgentConfirmationHeading" style="display:none">
+                        @AgentsControllerResources.IndexDeleteAgentConfirmationMessage
+                    </div>
+                }
+
+                <script type="text/javascript">@Html.Raw(deleteConfirmScript); </script>
+            }
+        }
+    }
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#SelectDeselectAgents").checkBoxExtraFuncGenerator({
+            targetSelectAllElementCollection: $(".AgentCheckBox"),
+        });
+    });
+</script>

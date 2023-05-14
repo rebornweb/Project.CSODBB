@@ -1,0 +1,31 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model NewAgentViewInformation
+
+@using (Html.DecorateForm(
+    () => Html.BeginForm(
+            "Add",
+            "Agent",
+            FormMethod.Get
+        ),
+    AgentResources.CreateAgentButtonText,
+    "SelectAgentTypeForCreationForm",
+    AgentResources.CreateAgentButtonAltText))
+{
+    using (Html.MetaDataFor(model => model.Type, new { description = AgentResources.CreateAgentTypeDescription }, new { @class="chzn-container" }))
+    {
+        @Html.LabelFor(model => model.Type)
+
+        @Html.DropDownListFor(
+            model => model.Type,
+            new SelectList(
+                Model.Types,
+                "Key",
+                "Value"        
+            ),
+            new
+            {
+                @class="chzn-select"
+            })
+    }
+}

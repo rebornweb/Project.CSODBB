@@ -1,0 +1,13 @@
+﻿@using Unify.Connect.Web
+@using Unify.Framework.Web
+@model DefaultConnectorViewInformation
+
+@using (Html.DecorateForm(
+                () => Html.BeginForm("CreateOrEdit", "PlaceholderConnector", new { area = "Extensibility" }),
+                ConnectorControllerResources.SaveConnectorButtonText,
+                "SavePlaceholderConnectorForm",
+                ConnectorControllerResources.SaveConnectorButtonAltText
+                ))
+{
+    @Html.ConnectorDetailsFor(model => model)
+}

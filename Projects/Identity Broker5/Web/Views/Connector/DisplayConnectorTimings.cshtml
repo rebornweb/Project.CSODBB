@@ -1,0 +1,85 @@
+﻿@using Unify.Framework
+@using Unify.Framework.Web
+@model ConnectorTimingViewInformation
+@{
+    bool allowEdit = !Model.Enabled;
+    string deleteScript = string.Empty;
+    string deleteMessage = string.Empty;
+
+    string clockEditImageUrl = Url.WebIcon("clock_edit.png");
+    string clockDeleteImageUrl = Url.WebIcon("clock_delete.png");
+    string pauseImageUrl = Url.WebIcon("control_pause.png");
+    string playImageUrl = Url.WebIcon("control_play.png");
+}
+@if (Model.Timings == null || !Model.Timings.Any())
+{
+    <p>@ConnectorControllerResources.NoSchedulesAddedMessage</p>
+}
+else
+{
+    <div>
+        @foreach (TimingDisplayInformation timing in Model.Timings)
+        {
+            string editButtonHref = Url.Action(
+                Model.TimingType == ConnectorTimingType.GetAllEntities ? "CreateOrEditGetAllEntitiesTiming" : "CreateOrEditPollingTiming",
+                "Connector",
+                new {connectorId = Model.ConnectorId, timingId = timing.TimingInformation.TimingId, edit = true});
+
+            string toggleButtonHref = Url.Action(
+                Model.TimingType == ConnectorTimingType.GetAllEntities ? "ToggleGetAllEntitiesTimingEnabled" : "TogglePollingTimingEnabled",
+                "Connector",
+                new {connectorId = Model.ConnectorId, timingId = timing.TimingInformation.TimingId, enabled = !timing.TimingInformation.TimingState});
+
+            string toggleButtonAlt = timing.TimingInformation.TimingState ? ConnectorControllerResources.DisableTimingAlt : ConnectorControllerResources.EnableTimingAlt;
+            string toggleButtonImgUrl = timing.TimingInformation.TimingState ? pauseImageUrl : playImageUrl;
+
+            <div>
+                <span>@timing.TimingDescription</span>
+                @if (allowEdit)
+                {
+                    var deleteFormId = string.Concat("deleteForm", timing.TimingInformation.TimingId);
+                    var deleteButtonId = string.Concat("deleteButton", timing.TimingInformation.TimingId);
+                    var deleteMessageId = string.Concat(deleteButtonId, "Message");
+
+                    deleteScript = string.Concat(deleteScript, Environment.NewLine, RenderExtensions.SubmitOkCancelDialog(deleteFormId, deleteButtonId, deleteButtonId));
+                    deleteMessage = string.Concat(deleteMessage, "<div id=\"", deleteMessageId, "\" title=\"", ConnectorControllerResources.DisplaySchedulesDeleteTimingConfirmationHeading, "\" style=\"display:none\">", ConnectorControllerResources.DisplaySchedulesDeleteTimingConfirmationMessage, "</div>");
+
+                    <span>
+                        <a href="@editButtonHref">
+                            <img title="@ConnectorControllerResources.EditScheduleAlt" alt="@ConnectorControllerResources.EditScheduleAlt" src="@clockEditImageUrl" />
+                        </a>
+                    </span>
+                    <span>
+                        @using (Html.BeginForm(Model.TimingType == ConnectorTimingType.GetAllEntities ? "DeleteGetAllEntitiesTiming" : "DeletePollingTiming", "Connector", new {connectorId = Model.ConnectorId, timingId = timing.TimingInformation.TimingId}, FormMethod.Post, new {id = deleteFormId, @class = "Reset IconForm"}))
+                        {
+                            <input type="image" id="@deleteButtonId" name="@deleteButtonId" value="@deleteButtonId" title="@ConnectorControllerResources.DeleteScheduleAlt" alt="@ConnectorControllerResources.DeleteScheduleAlt" src="@clockDeleteImageUrl" class="FormIconAlign" />
+                        }
+                    </span>
+
+                    <a href="@toggleButtonHref">
+                        <img title="@toggleButtonAlt" alt="@toggleButtonAlt" src="@toggleButtonImgUrl"/>
+                    </a>
+                }
+                @if (!timing.TimingInformation.TimingState)
+                {
+                    <span>
+                        - (<i>Disabled</i>)
+                    </span>
+                }
+                else if (timing.NextRun > TimeSpan.Zero)
+                {
+                    <span>
+                        - (<i>@timing.NextRun.ToFriendlyString()</i>)
+                    </span>
+                }
+            </div>
+        }
+    </div>
+    if (allowEdit && !string.IsNullOrWhiteSpace(deleteScript))
+    {
+        @Html.Raw(deleteMessage)
+        <script type="text/javascript">
+            @Html.Raw(deleteScript)
+        </script>
+    }
+}

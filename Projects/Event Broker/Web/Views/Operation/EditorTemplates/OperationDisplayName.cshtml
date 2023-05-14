@@ -1,0 +1,12 @@
+﻿@model PlugInConfigurationInformationViewBase
+           
+@using Unify.Framework.Web
+           
+<div>
+    
+    @using (Html.MetaDataFor(model => model.DisplayName, new { description = OperationControllerResources.CustomDisplayNameDescription }))
+    {
+        @Html.LabelFor(model => model.DisplayName, OperationControllerResources.OperationDisplayName)
+        @Html.TextBoxFor(model => model.DisplayName)
+    }
+</div>

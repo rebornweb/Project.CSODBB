@@ -1,0 +1,125 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model SqlServerAgentViewInformation
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "SqlServerAgent", new { area = "Extensibility" }),
+        AgentResources.SaveAgentButtonText,
+        "CreateSqlServerAgentForm",
+        AgentResources.SaveAgentButtonAltText
+    ))
+{
+    @Html.AgentDetailsFor(model => model)
+    
+    <fieldset>
+        <legend>@AgentResources.SqlServerAgentConnectionDetailsFieldsetText</legend>
+
+        @using (Html.MetaDataFor(model => model.UseStandardView, new { description = AgentResources.SqlServerAgentUseConnectionDetailsForDatabaseDescription }, new { @class = "controlset" }))
+        {
+            @Html.LabelFor(model => model.UseStandardView, AgentResources.SqlServerAgentUseConnectionDetailsForDatabaseName)
+
+            @Html.RadioButtonFor(model => model.UseStandardView, true)
+            <label>@AgentResources.SqlServerAgentUseConnectionDetailsForDatabaseYesName</label>
+
+            @Html.RadioButtonFor(model => model.UseStandardView, false)
+            <label>@AgentResources.SqlServerAgentUseConnectionDetailsForDatabaseNoName</label>
+        }
+        @using (Html.MetaDataFor(model => model.ConnectionString, new { description = AgentResources.SqlServerAgentConnectionStringDescription }, new { id = "ConnectionStringSection" }))
+        {
+            @Html.LabelFor(model => model.ConnectionString, AgentResources.SqlServerAgentConnectionStringName)
+            @Html.TextAreaFor(model => model.ConnectionString, new { @class = "wide-text", rows = "4" })
+        }
+        @using (Html.MetaDataFor(model => model.EnableTransactions, new {description = AgentResources.SqlServerAgentEnableTransactionsDescription}))
+        {
+            @Html.LabelFor(model => model.EnableTransactions, AgentResources.SqlServerAgentEnableTransactionsName)
+            @Html.CheckBoxFor(model => model.EnableTransactions)
+        }
+        @using (Html.MetaDataFor(model => model.OperationTimeout, new {description = AgentResources.SqlServerAgentOperationTimeoutDescription}))
+        {
+            @Html.LabelFor(model => model.OperationTimeout, AgentResources.SqlServerAgentOperationTimeoutName)
+            <span id="OperationTimeoutContainer">@Html.TextBoxFor(model => model.OperationTimeout)</span>
+        }
+
+        <div id="StandardViewSection">
+            @using (Html.MetaDataFor(model => model.ServerName, new { description = AgentResources.SqlServerAgentServerDescription }))
+            {
+                @Html.LabelFor(model => model.ServerName, AgentResources.SqlServerAgentServerName)
+                @Html.TextBoxFor(model => model.ServerName)
+            }
+            @using (Html.MetaDataFor(model => model.DatabaseName, new { description = AgentResources.SqlServerAgentDatabaseNameDescription }))
+            {
+                @Html.LabelFor(model => model.DatabaseName, AgentResources.SqlServerAgentDatabaseNameName)
+                @Html.TextBoxFor(model => model.DatabaseName)
+            }
+        </div>
+    </fieldset>
+
+    <fieldset id="CredentialsFieldset">
+        <legend>@AgentResources.SQLServerAgentCredentialsFieldsetText</legend>
+
+        @using (Html.MetaDataFor(model => model.UseSQLAuthentication, new { description = AgentResources.SqlServerAgentSqlAuthenticationDescription, hideRequired = true }, new { @class = "controlset" }))
+        {
+            <span class="label">@AgentResources.SqlServerAgentSqlAuthenticationName</span>
+
+            @Html.RadioButtonFor(model => model.UseSQLAuthentication, false)
+            <label>@AgentResources.SqlServerAgentSqlAuthNoName</label>
+
+            @Html.RadioButtonFor(model => model.UseSQLAuthentication, true)
+            <label>@AgentResources.SqlServerAgentSqlAuthYesName</label>
+        }
+
+        <div id="CredentialsSection">
+            @using (Html.MetaDataFor(model => model.Username, new { description = AgentResources.SqlServerAgentUsernameDescription }))
+            {
+                @Html.LabelFor(model => model.Username, AgentResources.SqlServerAgentUsernameName)
+                @Html.TextBoxFor(model => model.Username)
+            }
+            @using (Html.MetaDataFor(model => model.Password, new { description = AgentResources.SqlServerAgentPasswordDescription }))
+            {
+                @Html.LabelFor(model => model.Password, AgentResources.SqlServerAgentPasswordName)
+                @Html.PasswordFor(model => model.Password)
+            }
+            @using (Html.MetaDataFor(model => model.ConfirmationPassword, new { description = AgentResources.SqlServerAgentConfirmationPasswordDescription }))
+            {
+                @Html.LabelFor(model => model.ConfirmationPassword, AgentResources.SqlServerAgentConfirmationPasswordName)
+                @Html.PasswordFor(model => model.ConfirmationPassword)
+            }
+        </div>
+    </fieldset>
+}
+
+<script type="text/javascript">
+    var credentialsFieldset = $('#CredentialsFieldset');
+
+    var useWinAuthTrue = $('input[type=radio][id=UseSQLAuthentication][value=False]');
+    var useWinAuthFalse = $('input[type=radio][id=UseSQLAuthentication][value=True]');
+    var useWinAuthSection = $('#CredentialsSection');
+
+    var useStandardTrue = $('input[type=radio][id=UseStandardView][value=True]');
+    var useStandardFalse = $('input[type=radio][id=UseStandardView][value=False]');
+    var standardViewSection = $('#StandardViewSection');
+    var connStringSection = $('#ConnectionStringSection');
+
+    $(document).ready(function () {
+        ShowHideSection(useWinAuthFalse, useWinAuthSection, null);
+        ShowHideSection(useStandardTrue, standardViewSection, connStringSection);
+        ShowHideSection(useStandardTrue, credentialsFieldset, null);
+    });
+    useWinAuthTrue.bind('change', function (event) {
+        ShowHideSection(useWinAuthFalse, useWinAuthSection, null);
+    });
+    useWinAuthFalse.bind('change', function (event) {
+        ShowHideSection(useWinAuthFalse, useWinAuthSection, null);
+    });
+    useStandardTrue.bind('change', function (event) {
+        ShowHideSection(useStandardTrue, standardViewSection, connStringSection);
+        ShowHideSection(useStandardTrue, credentialsFieldset, null);
+    });
+    useStandardFalse.bind('change', function (event) {
+        ShowHideSection(useStandardTrue, standardViewSection, connStringSection);
+        ShowHideSection(useStandardTrue, credentialsFieldset, null);
+    });
+
+    $('#OperationTimeoutContainer').unifytimepicker();
+</script>

@@ -1,0 +1,12 @@
+﻿@using Unify.Connect.Web.Extensions
+@model AdapterStatisticsImportChangesJobViewInformation
+@{
+    Model.IsFromImportChangesJob = true;
+}
+<h3>@AdapterResources.ImportChangesHeadingText</h3>
+<div>
+    @(Model.LastRunCount == 0 && Model.LastRunStarted != null
+          ? MvcHtmlString.Create(string.Format("<p>{0}</p>", AdapterResources.ImportChangesNoEntities))
+          : Html.DisplayFor(model => model, "TalliedAdapterStatisticsConfiguration"))
+    @Html.DisplayFor(model => model, "AdapterStatisticsConfiguration")
+</div>

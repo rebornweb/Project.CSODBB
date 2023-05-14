@@ -1,0 +1,13 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@model MultivalueGroupTransformationViewInformation
+
+@{
+    string source = string.Format("\"{0}\"", Model.GenerateDistinguishedNames ? Model.Template : Model.Source);
+    string distinct = Model.Distinct ? AdapterResources.DistinctLabel : String.Empty;
+}
+
+<div>
+    WHERE [@Model.InputKey] CONTAINS [@Model.RelationKey]<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;@source -> <span class="TransformationAddedField">[@Model.GroupTarget]@distinct</span>
+</div>

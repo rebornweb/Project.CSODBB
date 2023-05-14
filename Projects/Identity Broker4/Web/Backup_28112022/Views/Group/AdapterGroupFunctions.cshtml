@@ -1,0 +1,42 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+
+@model Guid
+           
+@{
+    Guid groupId = Model;
+    string deleteImageUrl = Url.WebIcon("group_delete.png");
+    string updateGroupMembersImageUrl = Url.WebIcon("group_link.png");
+    string editGroupImageUrl = Url.WebIcon("group_edit.png");
+
+    string deleteAdapterGroupFormId = string.Format("DeleteAdapterGroup{0}", groupId);
+    string deleteAdapterGroupFormInputId = string.Format("DeleteAdapterGroupButton{0}", groupId);
+    string deleteAdapterGroupMessageId = string.Concat(deleteAdapterGroupFormInputId, "Message");
+    string deleteAdapterGroupOkCancelScript =
+        Unify.Framework.Web.RenderExtensions.SubmitOkCancelDialog(deleteAdapterGroupFormId, deleteAdapterGroupFormInputId, string.Empty);
+}
+
+<a href="@Url.Action("EditAdapterGroup", "Group", new { groupId  })" >
+    <img src="@editGroupImageUrl" alt="@GroupControllerResources.EditAdapterGroupDetailsAltText" title="@GroupControllerResources.EditAdapterGroupDetailsAltText" />
+</a>
+
+<a href="@Url.Action("UpdateAdapterGroupAdapters", "Group", new { groupId })">
+    <img src="@updateGroupMembersImageUrl" alt="@GroupControllerResources.UpdateAdapterGroupAdaptersAltText" title="@GroupControllerResources.UpdateAdapterGroupAdaptersAltText"/>
+</a>
+
+<div id="@deleteAdapterGroupMessageId" style="display:none">
+    <div>@GroupControllerResources.DeleteAdapterGroupInitialConfirmationMessage</div>
+</div>
+
+@using (Html.BeginForm("DeleteAdapterGroup", "Group", new { groupId }, FormMethod.Post, new { @class="IconForm", id=deleteAdapterGroupFormId }))
+{
+    <input type="image" 
+           src="@deleteImageUrl" 
+           alt="@GroupControllerResources.DeleteConnectorGroupAltText" 
+           title="@GroupControllerResources.DeleteConnectorGroupAltText"
+           id="@deleteAdapterGroupFormInputId"/>
+}
+
+<script type="text/javascript">
+    @Html.Raw(deleteAdapterGroupOkCancelScript)
+</script>

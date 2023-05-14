@@ -1,0 +1,81 @@
+﻿@using Unify.EventBroker.Web
+@using Unify.Framework.Web
+@model OimChangesPlugInConfigurationViewInformation
+@{
+    ViewBag.Title = Html.CreatePlugInTitle(Model.CreateOrUpdateText, TitleResources.CreateOimChangesOperationTitleCaption);
+}
+@using (Html.DecorateForm(
+            () => Html.BeginForm("CreatePlugInOperation", "Operation", FormMethod.Post, new { id = "CreateOperationForm" }),
+            Model.CreateOrUpdateText,
+            "CreateOperationForm",
+            OperationResources.ConfigureOperationAltText, "submitButton"))
+{
+    <div>
+        @Html.EditorFor(model => model, "OperationDisplayName")
+
+        @using (Html.MetaDataFor(model => model.WebServiceUri, new { description = OperationControllerResources.OimChangesWebServiceUriDescription }))
+        {
+            @Html.LabelFor(model => model.WebServiceUri, OperationControllerResources.OimChangesWebServiceUriName)
+            @Html.TextBoxFor(model => model.WebServiceUri)
+        }
+
+        @using (Html.MetaDataFor(model => model.DataObjectTypeIds, new { description = OperationControllerResources.OimChangesDataObjectTypeIdsDescription }))
+        {
+            @Html.LabelFor(model => model.DataObjectTypeIds, OperationControllerResources.OimChangesDataObjectTypeIdsName)
+            @Html.TextBoxFor(model => model.DataObjectTypeIds)
+        }
+
+        @using (Html.MetaDataFor(model => model.UseCurrentUser, new { description = OperationControllerResources.OimChangesUseCurrentUserDescription }, new { @class = "controlset" }))
+        {
+            @Html.LabelFor(model => model.UseCurrentUser, OperationControllerResources.OimChangesUseCurrentUserName)
+
+            @Html.RadioButtonFor(model => model.UseCurrentUser, true)
+            <span>@OperationControllerResources.OimChangesUseCurrentUserYesName</span>
+
+            @Html.RadioButtonFor(model => model.UseCurrentUser, false)
+            <span>@OperationControllerResources.OimChangesUseCurrentUserNoName</span>
+        }
+
+        <fieldset id="CredentialsSection">
+            <legend>@OperationControllerResources.OimChangesCredentialsSectionCaption</legend>
+
+            @using (Html.MetaDataFor(model => model.Username, new { description = OperationControllerResources.OimChangesUsernameDescription }))
+            {
+                @Html.LabelFor(model => model.Username, OperationControllerResources.OimChangesUsernameName)
+                @Html.TextBoxFor(model => model.Username)
+            }
+
+            @using (Html.MetaDataFor(model => model.Domain, new { description = OperationControllerResources.OimChangesDomainDescription }))
+            {
+                @Html.LabelFor(model => model.Domain, OperationControllerResources.OimChangesDomainName)
+                @Html.TextBoxFor(model => model.Domain)
+            }
+
+            @using (Html.MetaDataFor(model => model.Password, new { description = OperationControllerResources.OimChangesPasswordDescription }))
+            {
+                @Html.LabelFor(model => model.Password, OperationControllerResources.OimChangesPasswordName)
+                @Html.PasswordFor(model => model.Password)
+            }
+        </fieldset>
+
+        <fieldset>
+            @Html.EditorFor(model => model, "CheckOperationInnerDetails")
+        </fieldset>
+    </div>
+}
+
+<script type="text/javascript" language="javascript">
+    var useCurrentUserRadioTrue = $('input[type=radio][id=UseCurrentUser][value=True]');
+    var useCurrentUserRadioFalse = $('input[type=radio][id=UseCurrentUser][value=False]');
+    var credentialsSection = $('#CredentialsSection');
+
+    $(document).ready(function () {
+        ShowHideSection(useCurrentUserRadioFalse, credentialsSection, null);
+    });
+    useCurrentUserRadioTrue.bind('change', function (event) {
+        ShowHideSection(useCurrentUserRadioFalse, credentialsSection, null);
+    });
+    useCurrentUserRadioFalse.bind('change', function (event) {
+        ShowHideSection(useCurrentUserRadioFalse, credentialsSection, null);
+    });
+</script>

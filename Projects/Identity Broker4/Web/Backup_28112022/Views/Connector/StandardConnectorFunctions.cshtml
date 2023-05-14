@@ -1,0 +1,145 @@
+﻿@using Unify.Framework
+@using Unify.Framework.Web
+@using Unify.Connect.Web
+@model StandardConnectorFunctionsViewInformation
+
+@Html.HiddenFor(model => model.IsScripted)
+
+@{
+    string clearConnectorImageUrl = Url.WebIcon("database_delete.png");
+    string deltaImportImageUrl = Url.WebIcon("table_relationship.png");
+    string fullImportImageUrl = Url.WebIcon("table_refresh.png");
+
+    string deleteImageUrl = Url.WebIcon("delete.png");
+    string editEntityImageUrl = Url.WebIcon("wrench.png");
+
+    string revertSchemaRowDefaultImageUrl = Url.WebIcon("table_delete.png");
+
+    string copyImageUrl = Url.WebIcon("page_copy.png");
+
+    Guid connectorId = Model.ConnectorId;
+
+    string addAdapterImageUrl = Url.WebIcon("add.png");
+
+    IUnifyBranding branding = ViewContext.GetCurrentBranding();
+
+    const string deleteFormId = "DeleteConnectorForm";
+    const string deleteFormInputId = "DeleteConnectorButton";
+    string deleteFormMessageId = string.Concat(deleteFormInputId, "Message");
+    string deleteFormOkCancelScript = Unify.Framework.Web.RenderExtensions.SubmitOkCancelDialog(deleteFormId, deleteFormInputId, string.Empty);
+
+    const string clearFormId = "ClearConnectorForm";
+    const string clearFormInputId = "ClearConnectorButton";
+    string clearFormMessageId = string.Concat(clearFormInputId, "Message");
+    string clearFormOkCancelScript = Unify.Framework.Web.RenderExtensions.SubmitOkCancelDialog(clearFormId, clearFormInputId, string.Empty);
+
+    const string clearConnectorSchemaFormId = "ClearConnectorSchemaForm";
+    const string clearConnectorSchemaFormInputId = "ClearConnectorSchemaButton";
+    string clearConnectorSchemaFormMessageId = string.Concat(clearConnectorSchemaFormInputId, "Message");
+    string clearSchemaFormOkCancelScript = Unify.Framework.Web.RenderExtensions.SubmitOkCancelDialog(clearConnectorSchemaFormId, clearConnectorSchemaFormInputId, string.Empty);
+
+    string addSchemaRowImageUrl = Url.WebIcon("table_row_insert.png");
+}
+
+<div class="FunctionsMenuContainer">
+
+    @if (Model.Enabled)
+    {
+        <div>
+            @using (Html.BeginForm("ExecuteFullImport", "Connector", new { connectorId }, FormMethod.Post, new { @class = "IconForm" }))
+            {
+                <input type="image" src="@fullImportImageUrl" alt="@ConnectorControllerResources.ExecuteFullImportLabel" title="@ConnectorControllerResources.ExecuteFullImportLabel"/>
+                <input type="submit" value="@ConnectorControllerResources.ExecuteFullImportLabel" class="SubmitImageText" alt="@ConnectorControllerResources.ExecuteFullImportLabel" title="@ConnectorControllerResources.ExecuteFullImportLabel"/>
+            }          
+        </div>
+
+        <div>
+            @using (Html.BeginForm("ExecuteDeltaImport", "Connector", new { connectorId }, FormMethod.Post, new { @class = "IconForm" }))
+            {
+                <input type="image" src="@deltaImportImageUrl" alt="@ConnectorControllerResources.ExecuteDeltaImportLabel" title="@ConnectorControllerResources.ExecuteDeltaImportLabel"/>
+                <input type="submit" value="@ConnectorControllerResources.ExecuteDeltaImportLabel" class="SubmitImageText" alt="@ConnectorControllerResources.ExecuteDeltaImportLabel" title="@ConnectorControllerResources.ExecuteDeltaImportLabel"/>
+            }    
+        </div>
+
+        <div id="@clearFormMessageId" style="display:none">
+            <div>@ConnectorControllerResources.ClearConnectorConfirmationInitialWarning</div><br/>
+            <div>@string.Format(ConnectorControllerResources.ClearConnectorDescriptionText, branding.ProductName) @WebStudioResources.ThisCannotBeUndoneText</div><br/>
+        </div>
+
+        <div>
+            @using (Html.BeginForm("ExecuteClearConnector", "Connector", new { connectorId }, FormMethod.Post, new { @class = "IconForm", id = clearFormId }))
+            {
+                <input type="image" src="@clearConnectorImageUrl" alt="@ConnectorControllerResources.ExecuteClearConnectorLabel"  title="@ConnectorControllerResources.ExecuteClearConnectorLabel"/>
+                <input type="submit" value="@ConnectorControllerResources.ExecuteClearConnectorLabel" class="SubmitImageText" id="@clearFormInputId" alt="@ConnectorControllerResources.ExecuteClearConnectorLabel" title="@ConnectorControllerResources.ExecuteClearConnectorLabel"/>
+            }    
+        </div>
+    }
+    else
+    {
+        <div>
+            <a href="@Url.Action("Edit", "Connector", new { id = connectorId })">
+                <img src="@editEntityImageUrl" alt="@ConnectorControllerResources.UpdateConnectorLabel" title="@ConnectorControllerResources.UpdateConnectorLabel"/>
+                @Html.Raw(ConnectorControllerResources.UpdateConnectorLabel.ReplaceWhiteSpace())
+            </a>
+            
+        </div>
+    
+        <div id="@clearConnectorSchemaFormMessageId" style="display:none">
+            <div>@Html.Raw(ConnectorControllerResources.ClearConnectorSchemaConfirmationInitialWarning)</div><br/>
+            <div>@Html.Raw(ConnectorControllerResources.ClearConnectorSchemaWarningDescriptionText) @WebStudioResources.ThisCannotBeUndoneText</div><br/>
+        </div>
+
+        <div>
+            @using (Html.BeginForm("RevertToFixedSchema", "Connector", new { connectorId }, FormMethod.Post, new { @class = "IconForm", id = clearConnectorSchemaFormId }))
+            { 
+                <input type="image" src="@revertSchemaRowDefaultImageUrl" alt="@ConnectorControllerResources.RevertSchemaConfigurationAltText" title="@ConnectorControllerResources.RevertSchemaConfigurationAltText" /> 
+                <input type="submit" value="@ConnectorControllerResources.ClearConnectorSchemaOperationText" class="SubmitImageText" id="@clearConnectorSchemaFormInputId"
+                       alt="@ConnectorControllerResources.RevertSchemaConfigurationAltText" title="@ConnectorControllerResources.RevertSchemaConfigurationAltText" />
+            }
+        </div>
+        
+        <div>
+            @using (Html.BeginForm("CreateConnectorSchemaRow", "Connector", new { connectorId  }, FormMethod.Get, new { id = "CreateConnectorButton", @class = "IconForm" }))
+            {
+                @Html.Hidden("connectorId", connectorId)
+                <input type="image" src="@addSchemaRowImageUrl" alt="@ConnectorControllerResources.CreateEntitySchemaRowAltText" title="@ConnectorControllerResources.CreateEntitySchemaRowAltText" />
+                <input type="submit" class="SubmitImageText" value="Add Row to Schema" alt="@ConnectorControllerResources.CreateEntitySchemaRowAltText" title="@ConnectorControllerResources.CreateEntitySchemaRowAltText" />
+            }
+        </div>
+    
+        <div id="@deleteFormMessageId" style="display: none">
+            <div>@ConnectorControllerResources.DeleteConnectorConfirmationInitialWarning</div><br/>
+            <div>@string.Format(ConnectorControllerResources.DeleteConnectorWarningDescriptionText, branding.ProductName)</div><br/>
+            <div>@ConnectorControllerResources.DeleteConnectorDescriptionText @WebStudioResources.ThisCannotBeUndoneText</div><br/>
+        </div>
+    
+        <div>
+            @using (Html.BeginForm("DeleteConnector", "Connector", new { connectorId }, FormMethod.Post, new { @class = "IconForm", id = deleteFormId }))
+            {
+                <input type="image" alt="@ConnectorControllerResources.DeleteConnectorAlt" title="@ConnectorControllerResources.DeleteConnectorAlt" src="@deleteImageUrl"/>
+                <input type="submit" value="@ConnectorControllerResources.DeleteConnectorAlt" class="SubmitImageText" id="@deleteFormInputId"
+                       alt="@ConnectorControllerResources.DeleteConnectorAlt" title="@ConnectorControllerResources.DeleteConnectorAlt" /> 
+            }
+        </div>
+    }
+
+    <div>
+        <a href="@Url.Action("AddAdapter", "Adapter", new { baseConnectorId = connectorId })">
+            <img src="@addAdapterImageUrl" alt="@ConnectorControllerResources.AddAdapterForConnectorAltText" title="@ConnectorControllerResources.AddAdapterForConnectorAltText"/>
+            @Html.Raw(ConnectorControllerResources.AddAdapterForConnectorAltText.ReplaceWhiteSpace())
+        </a>
+    </div>
+
+    <div>
+        <a href="@Url.Action("CopyConnector", "Connector", new { connectorId })">
+            <img src="@copyImageUrl" alt="@ConnectorControllerResources.CopyConnectorAltText" title="@ConnectorControllerResources.CopyConnectorAltText"/>
+            @Html.Raw(ConnectorControllerResources.CopyConnectorAltText.ReplaceWhiteSpace())
+        </a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    @Html.Raw(deleteFormOkCancelScript)
+    @Html.Raw(clearFormOkCancelScript)
+    @Html.Raw(clearSchemaFormOkCancelScript)
+</script>

@@ -1,0 +1,38 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model OracleDbAgentViewInformation
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "OracleDbAgent", new { area = "Extensibility" }),
+        AgentResources.SaveAgentButtonText,
+        "CreateOracleDbAgentForm",
+        AgentResources.SaveAgentButtonAltText
+    ))
+{
+    @Html.AgentDetailsFor(model => model)
+    
+    <fieldset>
+        <legend>@AgentResources.OracleDbAgentConnectionDetailsFieldsetText</legend>
+            
+        @using (Html.MetaDataFor(model => model.ConnectionString, new { description = AgentResources.OracleDbAgentConnectionStringDescription }))
+        {
+            @Html.LabelFor(model => model.ConnectionString, AgentResources.OracleDbAgentConnectionStringName)
+            @Html.TextAreaFor(model => model.ConnectionString, new { @class = "wide-text", rows = "4" })
+        }
+        @using (Html.MetaDataFor(model => model.EnableTransactions, new {description = AgentResources.OracleDbAgentEnableTransactionsDescription}))
+        {
+            @Html.LabelFor(model => model.EnableTransactions, AgentResources.OracleDbAgentEnableTransactionsName)
+            @Html.CheckBoxFor(model => model.EnableTransactions)
+        }
+        @using (Html.MetaDataFor(model => model.OperationTimeout, new {description = AgentResources.OracleDbAgentOperationTimeoutDescription}))
+        {
+            @Html.LabelFor(model => model.OperationTimeout, AgentResources.OracleDbAgentOperationTimeoutName)
+            <span id="OperationTimeoutContainer">@Html.TextBoxFor(model => model.OperationTimeout)</span>
+        }
+    </fieldset>
+}
+
+<script type="text/javascript">
+    $('#OperationTimeoutContainer').unifytimepicker();
+</script>

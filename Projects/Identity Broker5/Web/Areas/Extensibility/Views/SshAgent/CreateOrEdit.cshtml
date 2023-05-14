@@ -1,0 +1,187 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Product.IdentityBroker
+@using Unify.Framework.Web
+@model SshAgentViewInformation
+
+@{ 
+    string authModeNoneRadioId = "auth-mode-none";
+    string authModePasswordRadioId = "auth-mode-pass";
+    string authModePrivateKeyRadioId = "auth-mode-key";
+
+    string authPasswordInputDivId = "auth-pass-inputs";
+    string authPrivateKeyInputDivId = "auth-key-inputs";
+
+    string proxyNoneRadioId = "proxy-none";
+    string proxySocks4RadioId = "proxy-socks-4";
+    string proxySocks5RadioId = "proxy-socks-5";
+    string proxyHttpRadioId = "proxy-http";
+
+    string proxyInputDivId = "proxy-inputs";
+}
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "SshAgent", new { area = "Extensibility" }),
+        AgentResources.SaveAgentButtonText,
+        "CreateSshAgentForm",
+        AgentResources.SaveAgentButtonAltText
+    ))
+{
+    @Html.AgentDetailsFor(model => model)
+
+    <fieldset>
+        <legend>@AgentResources.ConnectionInformationLegendText</legend>
+
+        @using (Html.MetaDataFor(model => model.Host, new { description = AgentResources.SshAgentHostDescription }))
+        {
+            @Html.LabelFor(model => model.Host, AgentResources.SshAgentHostLabel)
+            @Html.TextBoxFor(model => model.Host)
+        }
+
+        @using (Html.MetaDataFor(model => model.Port, new { description = AgentResources.SshAgentPortDescription }))
+        {
+            @Html.LabelFor(model => model.Port, AgentResources.SshAgentPortLabel)
+            @Html.TextBoxFor(model => model.Port)
+        }
+
+        @using (Html.MetaDataFor(model => model.Timeout, new { description = AgentResources.SshAgentTimeoutDescription }))
+        {
+            @Html.LabelFor(model => model.Timeout, AgentResources.SshAgentTimeoutLabel)
+            <span id="RecurringTimeSpanFrequencyContainer">
+                @Html.TextBoxFor(model => model.Timeout)
+            </span>
+        }
+
+        @using (Html.MetaDataFor(model => model.ExpectedFingerprint, new { description = AgentResources.SshAgentExpectedFingerprintDescription }))
+        {
+            @Html.LabelFor(model => model.ExpectedFingerprint, AgentResources.SshAgentExpectedFingerprintLabel)
+            @Html.TextBoxFor(model => model.ExpectedFingerprint)
+        }
+    </fieldset>
+
+
+    <fieldset>
+        <legend>@AgentResources.AuthenticationLegendText</legend>
+
+        @using (Html.MetaDataFor(model => model.AuthenticationMode, new { description = AgentResources.SshAgentAuthenticationModeDescription }, new { @class = "controlset" }))
+        {
+            <label>@AgentResources.SshAgentAuthenticationModeLabel</label>
+
+            @Html.RadioButtonFor(model => model.AuthenticationMode, SshAuthenticationMode.None, new { id = authModeNoneRadioId })
+            @Html.LabelFor(model => model.AuthenticationMode, AgentResources.SshAgentNoneAuthenticationModeLabel)
+
+            @Html.RadioButtonFor(model => model.AuthenticationMode, SshAuthenticationMode.Password, new { id = authModePasswordRadioId })
+            @Html.LabelFor(model => model.AuthenticationMode, AgentResources.SshAgentPasswordAuthenticationModeLabel)
+
+            @Html.RadioButtonFor(model => model.AuthenticationMode, SshAuthenticationMode.PrivateKey, new { id = authModePrivateKeyRadioId })
+            @Html.LabelFor(model => model.AuthenticationMode, AgentResources.SshAgentPrivateKeyAuthenticationModeLabel)
+        }
+
+        @using (Html.MetaDataFor(model => model.Username, new { description = AgentResources.SshAgentUsernameDescription }))
+        {
+            @Html.LabelFor(model => model.Username, AgentResources.SshAgentUsernameLabel)
+            @Html.TextBoxFor(model => model.Username)
+        }
+
+        <div id="@authPasswordInputDivId">
+            @using (Html.MetaDataFor(model => model.Password, new { description = AgentResources.SshAgentPasswordDescription }))
+            {
+                @Html.LabelFor(model => model.Password, AgentResources.SshAgentPasswordLabel)
+                @Html.PasswordFor(model => model.Password)
+            }
+        </div>
+
+        <div id="@authPrivateKeyInputDivId">
+            @using (Html.MetaDataFor(model => model.PrivateKeyPath, new { description = AgentResources.SshAgentPrivateKeyPathDescription }))
+            {
+                @Html.LabelFor(model => model.PrivateKeyPath, AgentResources.SshAgentPrivateKeyPathLabel)
+                @Html.TextBoxFor(model => model.PrivateKeyPath)
+            }
+
+            @using (Html.MetaDataFor(model => model.PrivateKeyPassPhrase, new { description = AgentResources.SshAgentPrivateKeyPassPhraseDescription }))
+            {
+                @Html.LabelFor(model => model.PrivateKeyPassPhrase, AgentResources.SshAgentPrivateKeyPassPhraseLabel)
+                @Html.PasswordFor(model => model.PrivateKeyPassPhrase)
+            }
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>@AgentResources.ProxyLegendText</legend>
+
+        @using (Html.MetaDataFor(model => model.ProxyType, new { description = AgentResources.SshAgentProxyTypeDescription }, new { @class = "controlset" }))
+        {
+            <label>@AgentResources.SshAgentProxyTypeLabel</label>
+
+            @Html.RadioButtonFor(model => model.ProxyType, SshProxyType.None, new { id = proxyNoneRadioId })
+            @Html.LabelFor(model => model.ProxyType, AgentResources.SshAgentNoneProxyTypeLabel)
+
+            @Html.RadioButtonFor(model => model.ProxyType, SshProxyType.Socks4, new { id = proxySocks4RadioId })
+            @Html.LabelFor(model => model.ProxyType, AgentResources.SshAgentSocks4ProxyTypeLabel)
+
+            @Html.RadioButtonFor(model => model.ProxyType, SshProxyType.Socks5, new { id = proxySocks5RadioId })
+            @Html.LabelFor(model => model.ProxyType, AgentResources.SshAgentSocks5ProxyTypeLabel)
+
+            @Html.RadioButtonFor(model => model.ProxyType, SshProxyType.Http, new { id = proxyHttpRadioId })
+            @Html.LabelFor(model => model.ProxyType, AgentResources.SshAgentHttpProxyTypeLabel)
+        }
+
+        <div id="@proxyInputDivId">
+            @using (Html.MetaDataFor(model => model.ProxyHost, new { description = AgentResources.SshAgentProxyHostDescription }))
+            {
+                @Html.LabelFor(model => model.ProxyHost, AgentResources.SshAgentProxyHostLabel)
+                @Html.TextBoxFor(model => model.ProxyHost)
+            }
+
+            @using (Html.MetaDataFor(model => model.ProxyPort, new { description = AgentResources.SshAgentProxyPortDescription }))
+            {
+                @Html.LabelFor(model => model.ProxyPort, AgentResources.SshAgentProxyPortLabel)
+                @Html.TextBoxFor(model => model.ProxyPort)
+            }
+
+            @using (Html.MetaDataFor(model => model.ProxyUsername, new { description = AgentResources.SshAgentProxyUsernameDescription }))
+            {
+                @Html.LabelFor(model => model.ProxyUsername, AgentResources.SshAgentProxyUsernameLabel)
+                @Html.TextBoxFor(model => model.ProxyUsername)
+            }
+
+            @using (Html.MetaDataFor(model => model.ProxyPassword, new { description = AgentResources.SshAgentProxyPasswordDescription }))
+            {
+                @Html.LabelFor(model => model.ProxyPassword, AgentResources.SshAgentProxyPasswordLabel)
+                @Html.PasswordFor(model => model.ProxyPassword)
+            }
+        </div>
+    </fieldset>
+}
+
+<script type="text/javascript">
+    $('#RecurringTimeSpanFrequencyContainer').unifytimepicker();
+
+    $('#@authModeNoneRadioId').change(function () {
+        $('#@authPasswordInputDivId').hide();
+        $('#@authPrivateKeyInputDivId').hide();
+    });
+
+    $('#@authModePasswordRadioId').change(function () {
+        $('#@authPasswordInputDivId').show();
+        $('#@authPrivateKeyInputDivId').hide();
+    });
+
+    $('#@authModePrivateKeyRadioId').change(function () {
+        $('#@authPasswordInputDivId').hide();
+        $('#@authPrivateKeyInputDivId').show();
+    });
+
+    $('#@proxyNoneRadioId').change(function () {
+        $('#@proxyInputDivId').hide();
+    });
+
+    $('#@proxySocks4RadioId, #@proxySocks5RadioId, #@proxyHttpRadioId').change(function () {
+        $('#@proxyInputDivId').show();
+    });
+
+    $('#@authPasswordInputDivId').toggle($('#@authModePasswordRadioId').is(':checked'));
+    $('#@authPrivateKeyInputDivId').toggle($('#@authModePrivateKeyRadioId').is(':checked'));
+    $('#@proxyInputDivId').toggle(!$('#@proxyNoneRadioId').is(':checked'));
+
+</script>

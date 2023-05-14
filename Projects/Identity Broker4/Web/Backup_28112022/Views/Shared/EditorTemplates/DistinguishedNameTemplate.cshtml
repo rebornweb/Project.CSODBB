@@ -1,0 +1,179 @@
+﻿@model DistinguishedNameTemplateViewInformation
+           
+@{
+    string serializedValues = string.Join(",", Model.AvailableValues.Select(value => string.Format("\"{0}\"", value)));
+    string serializedAttributes = string.Join(",", Model.AvailableAttributes.Select(value => string.Format("\"{0}\"", value)));
+    string serializedSelections = string.Join(",", Model.AvailableFullSelections.Select(value => string.Format("\"{0}\"", value)));
+    var dnTemplate = 
+        string.IsNullOrWhiteSpace(Model.DistinguishedNameTemplate)
+            ? string.Empty
+            : Model.DistinguishedNameTemplate.Replace(new string(new[]{ '\\' }), new string(new[]{ '\\', '\\' }));
+}
+
+<div class="DnComponents">
+    <input type="text" id="textBox" name="template" autocomplete="off"/>
+    <div style="position:absolute;right:0">
+        <button class="DnComponentsButton DnComponentsShowHide" id="DnEditComponents">@SharedResources.DistinguishedNameTemplateEditButtonText</button>
+        <button class="DnComponentsButton" id="DnCommitComponents" style="display:none">@SharedResources.DistinguishedNameTemplateCommitButtonText</button>
+    </div>
+    <div id="DistinguishedNameContent" style="overflow: hidden">
+    </div>
+</div>
+<div id="DnValueListing" class="DnValueListing"></div>
+<br/>
+<script type="text/javascript">
+    var availableFields = [@Html.Raw(serializedValues)];
+    var availableAttributeNames = [@Html.Raw(serializedAttributes)];
+    var availableFullSelections = [@Html.Raw(serializedSelections)];
+    var availableSeparators = [",", "+"];
+
+    var handleData = @Html.Raw(Model.OnConfigurationChange ?? "function(data) {}");
+
+    var handleCommit =
+        function(data, template) {
+            if (template.Accept($('#textBox').val())) {
+                handleData(data);
+            }
+        };
+
+    var dnTemplate =
+        new DistinguishedNameTemplate(
+            {
+                formatText: $('#textBox'),
+                formatDisplay: $('#DistinguishedNameContent'),
+                onConfigurationChange: function () { handleCommit($('#UpdateDNForm').serialize(), dnTemplate); },
+                name : 'dnTemplate'
+            });
+
+    dnTemplate.Accept('@dnTemplate');
+    dnTemplate.Commit();
+
+    var lastPosition;
+    var currentCaret;
+
+    $('#textBox').focus(function(event) {
+        if (!this.value)
+        {
+            DisplayAttributes();
+        }
+    });
+
+    $('#textBox').keyup(function (event) {
+        LoadCaret();
+
+        if (!this.value)
+        {
+            DisplayAttributes();
+        }
+        else
+        {
+            switch (event.which) {
+            case 187:
+                if (event.shiftKey) {
+                    DisplayAttributes();
+                }
+                else {
+                    DisplayFields();
+                }
+
+                break;
+            case 188:
+                try {
+                    currentCaret.begin++;
+                } catch(e) {}
+                try {
+                    currentCaret.end++;
+                } catch(e) {}
+
+                DisplayAttributes();
+
+                break;
+            case 16:
+                break;
+            default:
+                $('#DnValueListing').html('');
+            }
+        }
+    });
+    
+    function LoadCaret() {
+        if (currentCaret == null) {
+            currentCaret = $('#textBox').caret();
+        }
+    }
+
+    function DisplayAttributes() {
+        $('#DnValueListing').html('');
+
+        for (var i = 0; i < availableAttributeNames.length; i++) {
+            $('#DnValueListing').append(
+                '<a href="javascript:;" onclick="WriteToCaret(\'' + availableAttributeNames[i] + '=\'); DisplayFields(); return false;">' + availableAttributeNames[i] + '</a><br/>'
+            );
+        }
+        
+        for (var j =0; j < availableFullSelections.length; j++) {
+            $('#DnValueListing').append(
+                '<a href="javascript:;" onclick="WriteToCaret(\'' + availableFullSelections[j] + '\'); DisplaySeparators(); return false;">' + availableFullSelections[j] + '</a><br/>'
+            );
+        }
+    }
+
+    function DisplayFields() {
+        $('#DnValueListing').html('');
+
+        for (var i = 0; i < availableFields.length; i++) {
+            $('#DnValueListing').append(
+                '<a href="javascript:;" onclick="WriteToCaret(\'' + availableFields[i] + '\'); DisplaySeparators(); return false;">' + availableFields[i] + '</a><br/>'
+            );
+        }
+    }
+
+    function DisplaySeparators() {
+        $('#DnValueListing').html('');
+
+        for (var i = 0; i < availableSeparators.length; i++) {
+            $('#DnValueListing').append(
+                '<a href="javascript:;" onclick="WriteToCaret(\'' + availableSeparators[i] + '\'); DisplayAttributes(); return false;">' + availableSeparators[i] + '</a><br/>'
+            );
+        }
+    }
+
+    function WriteToCaret(value) {
+        var currentValue = $('#textBox').val();
+
+        var valueToWrite = currentValue.substring(0, currentCaret.begin) + value + currentValue.substring(currentCaret.begin, currentValue.length);
+
+        $('#textBox').val(valueToWrite);
+
+        $('#DnValueListing').html('');
+
+        currentCaret.begin += value.length;
+    }
+
+    $('#DnEditComponents').click(function () {
+        $('#DistinguishedNameContent').hide();
+        $('#DnEditComponents').hide();
+        $('#DnCommitComponents').show();
+        $('#textBox').show();
+        
+        return false;
+    });
+
+    $('#DnCommitComponents').click(function () {
+        $('#DistinguishedNameContent').show();
+        $('#DnEditComponents').show();
+        $('#DnCommitComponents').hide();
+        $('#textBox').hide();
+        $('#DnValueListing').html('');
+
+        handleCommit(
+            $('#UpdateDNForm').serialize(), 
+            dnTemplate);
+
+        return false;
+    });
+
+    $(document).ready(function() {
+        LoadCaret();
+    });
+</script>

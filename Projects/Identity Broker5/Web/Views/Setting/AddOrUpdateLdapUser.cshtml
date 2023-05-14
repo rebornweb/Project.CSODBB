@@ -1,0 +1,66 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model LdapUserInformation
+@using (
+    Html.DecorateForm(
+        () => Html.BeginForm("AddOrUpdateLdapUser", "Setting", null, FormMethod.Post, new {id = SettingControllerResources.UserManagementFormID}),
+        SettingControllerResources.UserManagementFormSubmitBtnText, // submitText
+        SettingControllerResources.UserManagementFormID, // FormID
+        SettingControllerResources.UserManagementFormHint // FormTitle
+        )
+    )
+{
+    <fieldset>
+        @Html.HiddenFor(model => model.EditMode)
+        @if (Model.EditMode)
+        {
+            <div>
+                @Html.Label(SettingControllerResources.UserManagementFormUserNameLabelText)
+                @Model.Username
+                @Html.HiddenFor(text => text.Username)
+            </div>
+        }
+        else
+        {
+            using (Html.MetaDataFor(model => model.Username, new {description = SettingControllerResources.UserManagementFormUserNameHint}))
+            {
+                @Html.LabelFor(label => label.Username, SettingControllerResources.UserManagementFormUserNameLabelText)
+                @Html.TextBoxFor(text => text.Username)
+            }
+        }
+
+        @using (Html.MetaDataFor(model => model.AccessLevel, new {description = SettingControllerResources.UserManagementFormAccessLevelHint}))
+        {
+            @Html.LabelFor(label => label.AccessLevel, SettingControllerResources.UserManagementFormAccessLevelLabelText)
+            @Html.EnumDropDownList(option => option.AccessLevel)
+        }
+        
+        @if (!Model.EditMode)
+        {
+            @Html.HiddenFor(text => text.SetPassword)
+        }
+        else
+        {
+            using (Html.MetaDataFor(model => model.SetPassword, new {description = SettingControllerResources.ChangePasswordHint}))
+            {
+                @Html.LabelFor(label => label.AccessLevel, SettingControllerResources.ChangePasswordLabelText)
+                @Html.CheckBoxFor(option => option.SetPassword)
+            }
+        }
+        
+        @using (Html.HiddenIf(() => Model.EditMode && !Model.SetPassword, SettingControllerResources.PasswordFieldsClassName, "SetPassword"))
+        {
+            using (Html.MetaDataFor(model => model.Password, new {description = SettingControllerResources.UserManagementFormPasswordHint}))
+            {
+                @Html.LabelFor(label => label.Password, SettingControllerResources.UserManagementFormPasswordLabelText)
+                @Html.PasswordFor(text => text.Password)
+            }
+
+            using (Html.MetaDataFor(model => model.ConfirmPassword, new {description = SettingControllerResources.UserManagementFormPasswordConfirmedHint}))
+            {
+                @Html.LabelFor(label => label.ConfirmPassword, SettingControllerResources.UserManagementFormPasswordConfirmedLabelText)
+                @Html.PasswordFor(text => text.ConfirmPassword)
+            }
+        }
+    </fieldset>
+}

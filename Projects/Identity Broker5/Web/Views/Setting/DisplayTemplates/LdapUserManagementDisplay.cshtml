@@ -1,0 +1,75 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+@model LDAPUserRemotingConfiguration[]
+@{
+    ViewBag.Title = SettingControllerResources.UserManagementGridViewTitle;
+}
+<style type="text/css">
+    .tableColumnSapce {
+        padding-right: 20px;
+    }
+</style>
+<div>
+    <h2>@ViewBag.Title</h2>
+    @if (Model.Length > 0)
+    {
+        <table>
+            <tr>
+                <th class="tableColumnSapce">
+                    @SettingControllerResources.UserManagementGridViewUserNameColumnTitle
+                </th>
+                <th class="tableColumnSapce">
+                    @SettingControllerResources.UserManagementGridViewAccessLevelColumnTitle
+                </th>
+            </tr>
+            @foreach (LDAPUserRemotingConfiguration ldapuser in Model)
+            {
+                string deleteLdapUserFormId = string.Format("DeleteLdapUserForm{0}", @ldapuser.Username);
+                string deleteLdapUserFormInputId = string.Format("DeleteLdapUserButton{0}", @ldapuser.Username);
+                string deleteLdapUserFormMessageId = string.Concat(deleteLdapUserFormInputId, "Message");
+                string deleteLdapUserFormOkCancelScript = RenderExtensions.SubmitOkCancelDialog(deleteLdapUserFormId, deleteLdapUserFormInputId, string.Empty); // (string formId, string buttonId, string boundButtonName)
+                <tr>
+                    <td class="tableColumnSapce">
+                        @ldapuser.Username
+                    </td>
+                    <td class="tableColumnSapce">
+                        @ldapuser.AccessLevel
+                    </td>
+                    <td class="tableColumnSapce">
+                        <span>
+                            @Html.ActionLink(@SettingControllerResources.UserManagementGridViewEditBtnText, "AddOrUpdateLdapUser", "Setting", new { userName = ldapuser.Username }, new { @class = "m-btn mini mini-form", title = "Edit " + ldapuser.Username })
+                        </span>
+                        <span>
+                            @using (Html.BeginForm("DeleteLdapUser", "Setting", new { userName = ldapuser.Username }, FormMethod.Post, new { @class = "IconForm", id = deleteLdapUserFormId }))
+                            {
+                                <input type="submit" value="@SettingControllerResources.UserManagementGridViewDeleteBtnText" title="Delete @ldapuser.Username" class="m-btn red mini mini-form" id="@deleteLdapUserFormInputId" />
+                            }
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="@deleteLdapUserFormMessageId" style="display: none">
+                            <div>@SettingControllerResources.UserManagementGridViewDeleteBtnConfirmationText</div>
+                        </div>
+                        <script type="text/javascript">
+                            @Html.Raw(deleteLdapUserFormOkCancelScript)
+                        </script>
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        @MvcHtmlString.Create(String.Format("No users are configured."))
+    }
+    <table>
+        <tr>
+            <td>
+                @Html.ActionLink(@SettingControllerResources.UserManagementGridViewAddBtnText, "AddOrUpdateLdapUser", "Setting", null, new { @class = "m-btn", title = SettingControllerResources.UserManagementGridViewAddBtnHint })
+            </td>
+        </tr>
+    </table>
+</div>

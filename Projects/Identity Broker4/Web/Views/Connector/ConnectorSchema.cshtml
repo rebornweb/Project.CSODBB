@@ -1,0 +1,431 @@
+﻿@using System.Globalization
+@using Unify.Framework
+@using Unify.Framework.Web
+@model ConnectorEntitySchemaViewInformation
+           
+@{
+    string deleteSchemaRowImageUrl =
+        Url.WebIcon("table_row_delete.png");
+
+    string acceptImageUrl =
+        Url.WebIcon("arrow_right.png");
+
+    string editImageUrl =
+        Url.WebIcon("wrench.png");
+
+    string runningImageUrl = Url.Content("~/Content/Loader.gif");
+    string mergeSchemaProviderImageUrl = Url.WebIcon("table_lightning.png");
+
+    string closeImageUrl = Url.WebIcon("accept.png");
+
+    string warningImageUrl = Url.WebIcon("error.png");
+
+    string functionSchemaContainer = string.Concat("FunctionSchemaDialog", Model.PartitionId.ToString());
+    string functionSchemaApplication = string.Concat("FunctionSchemaButton", Model.PartitionId.ToString());
+    string schemaProviderUrl = Url.Action("ApplySchemaProvider", "Connector", new { connectorId = Model.PartitionId });
+
+    if (!Model.Enabled)
+    {
+        ViewData["Rows_Key"] =
+        (Func<EntitySchemaRowViewInformation, object>)ConnectorSchemaKey;
+
+        ViewData["Rows_FieldName"] =
+            (Func<EntitySchemaRowViewInformation, object>)ConnectorSchemaFieldName;
+
+        ViewData["Rows_ValidatorFactory"] =
+            (Func<EntitySchemaRowViewInformation, object>)ConnectorSchemaValidatorFactory;
+
+        ViewData["Rows_Required"] =
+            (Func<EntitySchemaRowViewInformation, object>)ConnectorSchemaRequired;
+
+        ViewData["Rows_Readonly"] =
+            (Func<EntitySchemaRowViewInformation, object>)ConnectorSchemaReadonly;
+
+        ViewData["Rows_RightFunctions"] =
+            (Func<EntitySchemaRowViewInformation, object>)(row => ConnectorSchemaRightFunctions(row, acceptImageUrl, runningImageUrl, closeImageUrl));
+    }
+}
+
+<h2>
+    @ConnectorControllerResources.ConnectorEntitySchemaHeading
+    @if (!Model.Enabled)
+    {
+        if (Model.HasProviders)
+        {
+            <a href="@schemaProviderUrl" 
+               id="@functionSchemaApplication" 
+               class="m-btn sm"
+               title="@ConnectorControllerResources.ApplySchemaProviderAltText">
+               Request Schema
+            </a>
+        }
+        else
+        {
+            using (Html.BeginForm("CreateConnectorSchemaRow", "Connector", new { connectorId = Model.PartitionId }, FormMethod.Get, new { id = "CreateConnectorButton", @class = "IconForm" }))
+            {
+                @Html.Hidden("connectorId", Model.PartitionId)
+                <button class="m-btn" alt="@ConnectorControllerResources.CreateEntitySchemaRowAltText" title="@ConnectorControllerResources.CreateEntitySchemaRowAltText">
+                    Add Field
+                </button>
+            }
+        }
+    }
+</h2>
+
+<div>
+    <div id="@functionSchemaContainer"></div>
+    
+    <div id="SchemaKeysWarning" style="@(!Model.Rows.Any(row => row.Key) ? string.Empty : "display:none")">
+        <div class="message">
+            <img src="@warningImageUrl" alt="Warning" title="Warning"/>
+            @ConnectorControllerResources.ConnectorRequiresKeyMessage
+        </div>
+        <br/>
+    </div>
+
+    @if (Model.SchemaErrored != null)
+    {
+        <div class="message">
+            <img src="@warningImageUrl" alt="Warning" title="Warning"/>
+            <label>@Model.SchemaErrored</label>
+        </div>
+        <br />
+    }
+    
+    @if (Model.Enabled || !Model.Rows.Any() || Model.Rows.All(row => row.IsFixed))
+    {
+        <div>@Html.DisplayFor(entitySchema => entitySchema, "EntitySchemaRows")</div>
+    }
+    else
+    {
+        IUnifyBranding branding = ViewContext.GetCurrentBranding();
+        
+        <div style="position: relative">
+            <div style="position:absolute;width:60px">
+                <table class="EntitySchemaRows">
+                    <tbody>
+                        <tr><td>&nbsp;</td></tr>
+                        @foreach (var row in Model.Rows.OrderSchemaViewInformation())
+                        {
+                            <tr class="schemaRow"><td style="width:4em;">@ConnectorSchemaFunctions(row, deleteSchemaRowImageUrl, editImageUrl, branding)</td></tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div style="margin-left:62px;">
+            @Html.DisplayFor(entitySchema => entitySchema, "EntitySchemaRows")
+        </div>
+    }
+</div>
+
+<br />
+
+<script type="text/javascript">
+    @ViewData.RetrieveListItems("StandardConnectorRowFunctions")
+    
+    $("#@functionSchemaApplication").bind('click',
+        function () {
+            $.get("@schemaProviderUrl",
+                function(data) {
+                    $("#SchemaDialog").dialog({
+                        "modal": true,
+                        height: 500,
+                        width: 900,
+                        minHeight: 500,
+                        minWidth: 900,
+                        title: '<img src="@mergeSchemaProviderImageUrl" alt="@ConnectorControllerResources.SchemaProvidersAltText" title="@ConnectorControllerResources.SchemaProvidersAltText"/> @ConnectorControllerResources.SchemaProvidersTitle',
+                        autoResize: true,
+                        position: 'center'
+                    }).html(data);
+                    $(".chzn-select").chosen();
+                });
+            return false;
+        });
+
+    function ToggleWarning() {
+        var hasKey = false;
+        $('.schemaKey').each(function () {
+            hasKey = true;
+        });
+        if (hasKey) {
+            $("#SchemaKeysWarning").hide();
+        } else {
+            $("#SchemaKeysWarning").show();
+        }
+    }
+</script>
+
+@helper ConnectorSchemaKey(EntitySchemaRowViewInformation row)
+{    
+    if (row.IsFixed)
+    {
+        @row.Key.ToString(CultureInfo.InvariantCulture)
+    }
+    else
+    {
+        string inputId = string.Format("KeyInput{0}", row.Id);
+        string formId = string.Format("KeyForm{0}", row.Id);
+        string formAction = Url.Action("UpdateSchemaKey", "Connector", new { connectorId = Model.PartitionId, rowId = row.Id });
+        string okForm = string.Format("InnerValidatorsCheck{0}", row.Id);
+        string schemaRowClass = string.Format("SchemaRowClass{0}", row.Id);
+        string pendingImageId = string.Format("PendingImage{0}", row.Id);
+        string confirmedContainerId = string.Format("ConfirmedContainer{0}", row.Id);
+    
+        <form action="@formAction" method="POST" class="IconForm" id="@formId">
+            @Html.CheckBox("key", row.Key, new { id = inputId, @class = "schemaKeyCheckBox" })
+        </form>
+        <script type="text/javascript">
+            $("#@inputId").change(function () {
+                $("#@confirmedContainerId").hide();
+                $("#@okForm").show();
+                $("#@formId").addClass("@schemaRowClass");
+            });
+            $("#@formId").bind("schemaRowChanged", function () {
+                $.post("@Html.Raw(formAction)", $("#@formId").serialize(), function (data) {
+                    if ($("#@inputId").is(":checked")) {
+                        $("#@formId").parent().parent().addClass("schemaKey");
+                    } else {
+                        $("#@formId").parent().parent().removeClass("schemaKey");
+                    }
+
+                    $("#@pendingImageId").hide();
+                    $("#@confirmedContainerId").show();
+
+                    ToggleWarning();
+                });
+            });
+        </script>
+    }
+}
+
+@helper ConnectorSchemaFieldName(EntitySchemaRowViewInformation row)
+{   
+    if (row.IsFixed)
+    {
+        @row.FieldName.ToString()
+    }
+    else
+    {
+        string inputId = string.Format("FieldNameInput{0}", row.Id);
+        string formId = string.Format("FieldNameForm{0}", row.Id);
+        string formAction = Url.Action("UpdateSchemaFieldName", "Connector", new { connectorId = Model.PartitionId, rowId = row.Id });
+        string okForm = string.Format("InnerValidatorsCheck{0}", row.Id);
+        string schemaRowClass = string.Format("SchemaRowClass{0}", row.Id);
+
+        string pendingImageId = string.Format("PendingImage{0}", row.Id);
+        string confirmedContainerId = string.Format("ConfirmedContainer{0}", row.Id);
+    
+        <form action="@formAction"
+                method="POST"
+                class="IconForm"
+                id="@formId">
+            @Html.TextBox("fieldName", row.FieldName, new { id = inputId })
+        </form>
+        <script type="text/javascript">
+            $("#@inputId").keyup(function () {
+                $("#@confirmedContainerId").hide();
+                $("#@okForm").show();
+                $("#@formId").addClass("@schemaRowClass");
+            });
+            $("#@formId").bind("schemaRowChanged", function () {
+                $.post("@Html.Raw(formAction)", $("#@formId").serialize(), function (data) {
+                    $("#@pendingImageId").hide();
+                    $("#@confirmedContainerId").show();
+                });
+            });
+        </script>
+    }
+    
+}
+
+@helper ConnectorSchemaValidatorFactory(EntitySchemaRowViewInformation row)
+    {
+        if (row.IsFixed)
+        {
+        @Model.ValidatorNames[row.ValidatorFactoryName].DisplayName
+        }
+        else
+        {
+            string inputId = string.Format("FactoryNameInput{0}", row.Id);
+            string formId = string.Format("FactoryNameForm{0}", row.Id);
+            string formAction = Url.Action("UpdateSchemaFactoryName", "Connector", new { connectorId = Model.PartitionId, rowId = row.Id });
+            string okForm = string.Format("InnerValidatorsCheck{0}", row.Id);
+            string schemaRowClass = string.Format("SchemaRowClass{0}", row.Id);
+
+            string pendingImageId = string.Format("PendingImage{0}", row.Id);
+            string confirmedContainerId = string.Format("ConfirmedContainer{0}", row.Id);
+    
+        <form action="@formAction" method="POST" class="IconForm" id="@formId">
+            @Html.FieldDefinitionDropDown(
+                "validatorFactoryName",
+                Model.ValidatorNames.Values,
+                new { @class = "chzn-select", id = inputId },
+                row.ValidatorFactoryName)
+        </form>
+        <script type="text/javascript">
+            $("#@inputId").change(function () {
+                $("#@confirmedContainerId").hide();
+                $("#@okForm").show();
+                $("#@formId").addClass("@schemaRowClass");
+            });
+            $("#@formId").bind("schemaRowChanged", function () {
+                $.post("@Html.Raw(formAction)", $("#@formId").serialize(), function (data) {
+                    $("#@pendingImageId").hide();
+                    $("#@confirmedContainerId").show();
+                });
+            });
+        </script>
+        }
+    
+}
+
+@helper ConnectorSchemaRequired(EntitySchemaRowViewInformation row)
+    {
+        if (row.IsFixed)
+        {
+        @row.Required.ToString(CultureInfo.InvariantCulture)
+        }
+        else
+        {
+            string inputId = string.Format("RequiredInput{0}", row.Id);
+            string formId = string.Format("RequiredForm{0}", row.Id);
+            string formAction = Url.Action("UpdateSchemaRequired", "Connector", new { connectorId = Model.PartitionId, rowId = row.Id });
+            string okForm = string.Format("InnerValidatorsCheck{0}", row.Id);
+            string schemaRowClass = string.Format("SchemaRowClass{0}", row.Id);
+
+            string pendingImageId = string.Format("PendingImage{0}", row.Id);
+            string confirmedContainerId = string.Format("ConfirmedContainer{0}", row.Id);
+    
+        <form action="@formAction" method="POST" class="IconForm" id="@formId">
+            @Html.CheckBox("required", row.Required, new { id = inputId })
+        </form>
+        <script type="text/javascript">
+            $("#@inputId").change(function () {
+                $("#@confirmedContainerId").hide();
+                $("#@okForm").show();
+                $("#@formId").addClass("@schemaRowClass");
+            });
+            $("#@formId").bind("schemaRowChanged", function () {
+                $.post("@Html.Raw(formAction)", $("#@formId").serialize(), function (data) {
+                    $("#@pendingImageId").hide();
+                    $("#@confirmedContainerId").show();
+                });
+            });
+        </script>
+        }
+}
+
+@helper ConnectorSchemaReadonly(EntitySchemaRowViewInformation row)
+    {
+        if (row.IsFixed)
+        {
+        @row.ReadOnly.ToString(CultureInfo.InvariantCulture)
+        }
+        else
+        {
+            string inputId = string.Format("ReadonlyInput{0}", row.Id);
+            string formId = string.Format("ReadonlyForm{0}", row.Id);
+            string formAction = Url.Action("UpdateSchemaReadonly", "Connector", new { connectorId = Model.PartitionId, rowId = row.Id });
+            string okForm = string.Format("InnerValidatorsCheck{0}", row.Id);
+            string schemaRowClass = string.Format("SchemaRowClass{0}", row.Id);
+
+            string pendingImageId = string.Format("PendingImage{0}", row.Id);
+            string confirmedContainerId = string.Format("ConfirmedContainer{0}", row.Id);
+
+        <form action="@formAction" method="POST" class="IconForm" id="@formId">
+            @Html.CheckBox("readOnly", row.ReadOnly, new { id = inputId })
+        </form>
+        <script type="text/javascript">
+            $("#@inputId").change(function() {
+                $("#@confirmedContainerId").hide();
+                $("#@okForm").show();
+                $("#@formId").addClass("@schemaRowClass");
+            });
+            $("#@formId").bind("schemaRowChanged", function() {
+                $.post("@Html.Raw(formAction)", $("#@formId").serialize(), function(data) {
+                    $("#@pendingImageId").hide();
+                    $("#@confirmedContainerId").show();
+                });
+            });
+        </script>
+        }
+}
+
+@helper ConnectorSchemaRightFunctions(EntitySchemaRowViewInformation row, string acceptImageUrl, string pendingImageUrl, string confirmedImageUrl)
+    {
+        if (!row.IsFixed)
+        {
+            string okForm = string.Format("InnerValidatorsCheck{0}", row.Id);
+            string schemaRowClass = string.Format("SchemaRowClass{0}", row.Id);
+            string pendingImageId = string.Format("PendingImage{0}", row.Id);
+
+            string confirmedContainerId = string.Format("ConfirmedContainer{0}", row.Id);
+
+        <div style="width:150px;">
+            <a href="javascript:;" 
+                onclick="$(this).hide(); $('#@pendingImageId').show(); $('.@schemaRowClass').each(function () { $(this).trigger('schemaRowChanged'); }); return false;"
+                id="@okForm"
+                style="display:none;min-width:100px;opacity:0.8">
+                <span class="FaintBorder ConfimationButton">
+                    @ConnectorControllerResources.UpdateSchemaRowSubmitText
+                    <img src="@acceptImageUrl" alt="@WebStudioResources.AcceptAltText" title="@WebStudioResources.AcceptAltText"/>
+                </span>
+            </a>
+            <span class="FaintBorder PendingSubmission" style="display:none;min-width:100px;" id="@pendingImageId">
+                @ConnectorControllerResources.UpdateSchemaRowPendingText
+                <img src="@pendingImageUrl" 
+                        alt="@WebStudioResources.PendingText" 
+                        title="@WebStudioResources.PendingText"  />
+            </span>
+            <span class="FaintBorder ConfimationButton"
+                    id="@confirmedContainerId"
+                    onclick="$(this).hide();"
+                    style="display:none;min-width:100px;">
+                <label>@ConnectorControllerResources.UpdateSchemaRowFieldsUpdatedText</label>
+                <img src="@confirmedImageUrl" 
+                        alt="@ConnectorControllerResources.UpdateSchemaRowCloseAltText" 
+                        title="@ConnectorControllerResources.UpdateSchemaRowCloseAltText"
+                        style="opacity: 0.5"/>
+            </span>
+        </div>   
+        }
+}
+
+@helper ConnectorSchemaFunctions(EntitySchemaRowViewInformation row, string deleteImageUrl, string editImageUrl, IUnifyBranding branding)
+    {
+        if (!row.IsFixed)
+        {
+            string formId = string.Format("InnerValidatorsForm{0}", row.Id);
+            string formInputId = string.Format("InnerValidatorsFormButton{0}", row.Id);
+            string formMessageContainerId = string.Concat(formInputId, "Message");
+            string formConfirmationScript = Unify.Framework.Web.RenderExtensions.SubmitOkCancelDialog(formId, formInputId, string.Empty);
+
+            string formAction = Url.Action("DeleteConnectorSchemaRow", "Connector", new { connectorId = Model.PartitionId, rowId = row.Id });
+    
+        <a href="@Url.Action("UpdateConnectorSchemaRow", "Connector", new { connectorId = Model.PartitionId, schemaKey = row.Id })">
+            <img src="@editImageUrl"
+                 alt="@ConnectorControllerResources.UpdateEntitySchemaRowAltText"
+                 title="@ConnectorControllerResources.UpdateEntitySchemaRowAltText"/>
+        </a>
+        <div id="@formMessageContainerId" style="display:none">
+            <div>@Html.Raw(string.Format(ConnectorControllerResources.RemoveFieldConfirmationInitialWarning, row.FieldName))</div><br/>
+            <div>@string.Format(ConnectorControllerResources.RemoveFieldWarningDescriptionText, branding.ProductName)</div>
+            <div>@ConnectorControllerResources.RemoveFieldConfirmationFinalWarning</div>
+        </div>
+        <form action="@formAction" 
+              method="POST" 
+              class="IconForm" 
+              id="@formId">
+            <input type="image" 
+                   src="@deleteImageUrl" 
+                   alt="@ConnectorControllerResources.DeleteConnectorSchemaRowAlt" 
+                   title="@ConnectorControllerResources.DeleteConnectorSchemaRowAlt"
+                   id="@formInputId"/>
+        </form>
+    
+        <script type="text/javascript">
+            @Html.Raw(formConfirmationScript)
+        </script>
+        }
+}

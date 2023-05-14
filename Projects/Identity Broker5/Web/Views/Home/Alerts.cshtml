@@ -1,0 +1,9 @@
+﻿@model HomeAlertsModel
+
+@{
+    // ReSharper disable Mvc.ControllerNotResolved
+    // ReSharper disable Mvc.ActionNotResolved
+    Html.RenderAction("Alerts", "Alerts", new {area = "Framework", renderFunctions = Model.AlertRenderFunctions, alerts = Model.CurrentAlerts});
+    // ReSharper enable Mvc.ActionNotResolved
+    // ReSharper enable Mvc.ControllerNotResolved
+}

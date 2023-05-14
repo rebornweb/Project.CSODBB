@@ -1,0 +1,9 @@
+﻿@model TalliedStatisticsJobViewInformationBase
+@if (Model.LastRunStarted != null)
+{
+    <div>
+        @((Model.IsChanges) ? @MvcHtmlString.Create(String.Format("<b>{0}</b>", @ConnectorControllerResources.LastRunCountImportChangesLabel)) : @MvcHtmlString.Create(String.Format("<b>{0}</b>", @ConnectorControllerResources.LastRunCountLabel)))
+        @Model.LastRunCount
+    </div>
+    <br />
+}

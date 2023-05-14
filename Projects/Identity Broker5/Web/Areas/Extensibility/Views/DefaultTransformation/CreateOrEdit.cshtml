@@ -1,0 +1,17 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@model DefaultTransformationViewInformation
+
+<div>
+    <div class="FormText">
+        <p>
+            @AdapterResources.UnknownTransformationText
+            <ul>
+                @foreach (KeyValuePair<string, string> agent in Model.KnownTransformations)
+                {
+                    <li>@agent.Key (@agent.Value)</li>
+                }
+            </ul>
+        </p>
+    </div>
+</div>

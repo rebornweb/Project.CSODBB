@@ -1,0 +1,53 @@
+﻿@using System.Globalization
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model AgentViewInformation
+
+<h1>
+    @Model.DisplayName
+    @Html.RenderAgentOperationsMenu(Url, Model.AgentId)
+</h1>
+
+<br/>
+
+<div class="PaddedContent">
+    <table class="RightSpaced BottomSpaced VerticalAlignTable">
+        <tr>
+            <td>
+                @AgentResources.DescriptionLabel
+            </td>
+            <td>
+                @(
+                    string.IsNullOrWhiteSpace(Model.Description) 
+                        ? AgentResources.NoDescriptionGivenText 
+                        : Model.Description
+                )
+            </td>
+        </tr>
+    </table>
+    
+    @{ 
+        Html.RenderAction(
+            "Display", 
+            MvcApplication.GetAgentController(Model.Type),
+            new
+                {
+                    agentId = Model.AgentId,
+                    area = "Extensibility"
+                }); 
+    }
+</div>
+
+<div>
+    <h2>Connectors</h2>
+    @{ Html.RenderAction("Connectors", "Agent", new { id = Model.AgentId }); }
+</div>
+
+<div>
+    <h2>Adapters</h2>
+    @{ Html.RenderAction("Adapters", "Agent", new { id = Model.AgentId }); }
+</div>
+
+<script>
+    @ViewData.RetrieveListItems("StandardAgentsFunctions")
+</script>

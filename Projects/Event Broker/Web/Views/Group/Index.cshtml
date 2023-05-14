@@ -1,0 +1,63 @@
+﻿@using System
+@using System.Collections.Generic
+@using System.Linq
+@using Unify.Framework.Web
+@model IEnumerable<IGroup>
+@{
+    ViewBag.Title = Html.Title(TitleResources.GroupPageTitle);
+}
+<h2>@GroupControllerResources.GroupPageHeading</h2>
+@if (Html.IsInRole(UnifyRoles.Write)) {
+    <text>@Html.ActionLink(GroupControllerResources.IndexCreateNewGroupLinkText, "Create", "Group")</text>
+}
+
+<h3>@GroupControllerResources.IndexCurrentGroupsHeading</h3>
+@if (!Html.IsInRole(UnifyRoles.Read))
+{
+    <p>
+        @string.Format(SharedResources.AccessDeniedMessageTemplate, UnifyRoles.Read)
+    </p>
+}
+else if (!Html.IsInRole(UnifyRoles.Write))
+{
+    foreach(IGroup group in Model)
+    {
+        <div>
+            @group.Name
+        </div>
+    }
+}
+else if (!Model.Any())
+{
+    <p>
+        @GroupControllerResources.GroupNoneExistMessage
+    </p>
+}
+else
+{
+    <div>
+        @foreach (IGroup group in Model)
+        {
+            Guid id = group.Key;
+            var route = new { id };
+
+            <div>
+                <span>
+                    @Html.ActionLink(group.Name, "Group", route)
+                </span>
+                <span>
+                    &nbsp;
+                    @if (group.ExclusionGroup)
+                    { @GroupControllerResources.ExclusionGroupText }
+                </span>
+                @Html.DisplayFor(model => id, "GroupFunctions")
+            </div>
+        }
+    </div>
+
+    foreach (IGroup group in Model)
+    {
+        Guid id = group.Key;
+        @Html.DisplayFor(model => id, "GroupFunctionScripts")
+    }
+}

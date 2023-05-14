@@ -1,0 +1,22 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model Exception
+           
+@{
+    string errorImageUrl = Url.WebIcon("error.png");
+}
+
+<div style="padding:10px" class="FaintBorder">
+                
+    <img src="@errorImageUrl" alt="@WebStudioResources.ErrorText" title="@WebStudioResources.ErrorText"/>&nbsp;
+
+    @if (Model != null)
+    {
+        @Html.Raw(Model.Message)
+    }
+    else
+    {
+        <label>@AdapterResources.AdapterSchemaFailedNoReasonGivenMessage</label>
+    }
+
+</div>

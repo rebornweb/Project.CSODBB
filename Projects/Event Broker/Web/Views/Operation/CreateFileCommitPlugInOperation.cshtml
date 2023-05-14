@@ -1,0 +1,22 @@
+﻿@using Unify.EventBroker.Web
+@using Unify.Framework.Web
+@model FileCommitPlugInConfigurationViewInformation
+@{
+    ViewBag.Title = Html.CreatePlugInTitle(Model.CreateOrUpdateText, TitleResources.CreateFileCommitOperationTitleCaption);   
+}
+
+@using (Html.DecorateForm(
+            () => Html.BeginForm("CreatePlugInOperation", "Operation", FormMethod.Post, new { id = "CreateOperationForm" }),
+            Model.CreateOrUpdateText,
+            "CreateOperationForm",
+            OperationResources.ConfigureOperationAltText, "submitButton"))
+{
+    <div>
+        @Html.EditorFor(model => model, "OperationDisplayName")
+
+        <fieldset>
+            @Html.EditorFor(model => model, "OperationInnerDetails")
+        </fieldset>
+    </div>
+
+}

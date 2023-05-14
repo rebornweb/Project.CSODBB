@@ -1,0 +1,107 @@
+@using Unify.Framework
+@using Unify.Framework.Web
+@using Unify.Connect.Web.Extensions
+@model AdapterFunctionsViewInformation
+@{
+    Guid adapterId = Model.AdapterId;
+    string editAdapterImageUrl = Url.WebIcon("wrench.png");
+    string editDnTemplateImageUrl = Url.WebIcon("link_edit.png");
+    string enableImageUrl = Url.WebIcon("control_play.png");
+    string disableImageUrl = Url.WebIcon("control_stop.png");
+    string arrowRightImageUrl = Url.WebIcon("arrow_right.png");
+    string deleteImageUrl = Url.WebIcon("delete.png");
+    string copyImageUrl = Url.WebIcon("page_copy.png");
+    string deleteAdapterFormId = string.Format("DeleteAdapterForm{0}", adapterId);
+    string deleteAdapterFormInputId = string.Format("DeleteAdapterButton{0}", adapterId);
+    string deleteAdapterMessageId = string.Concat(deleteAdapterFormInputId, "Message");
+    string deleteAdapterOkCancelScript = RenderExtensions.SubmitOkCancelDialog(deleteAdapterFormId, deleteAdapterFormInputId, string.Empty);
+    IUnifyBranding branding = ViewContext.GetCurrentBranding();
+}
+@Html.HiddenFor(model => model.IsScripted)
+<div class="FunctionsMenuContainer">
+    @if (!Model.Enabled)
+    {
+        <div>
+            @using (Html.BeginForm("EnableAdapter", "Adapter", new { id = adapterId }, FormMethod.Post, new { @class = "IconForm" }))
+            {
+                <img src="@enableImageUrl" alt="Enable Hint" title="Enable Hint" class="SubmitImageText" />
+                <input type="submit" value="@AdapterResources.AdapterEnableBtnText" title="@AdapterResources.EnableAdapterImageAltText" alt="@AdapterResources.EnableAdapterImageAltText" class="SubmitImageText" />
+            }
+            
+        </div>
+        <div>
+            <a href="@Url.Action("EditAdapter", "Adapter", new { id = adapterId })">
+                <img src="@editAdapterImageUrl"
+                     alt="@AdapterResources.EditAdapterAltText"
+                     title="@AdapterResources.EditAdapterAltText" />
+                @Html.Raw(AdapterResources.EditAdapterAltText.ReplaceWhiteSpace())
+            </a>
+        </div>
+        <div>
+            <a href="@Url.Action("UpdateDN", "Adapter", new {id=adapterId})">
+                <img src="@editDnTemplateImageUrl" alt="@AdapterResources.EditAdapterDnTemplateAltText" title="@AdapterResources.EditAdapterDnTemplateAltText" />
+                @Html.Raw(AdapterResources.EditAdapterDnTemplateAltText.ReplaceWhiteSpace())
+            </a>
+        </div>
+        <div id="@deleteAdapterMessageId" style="display:none">
+            <div>@AdapterResources.DeleteAdapterConfirmationInitialWarning</div><br />
+            <div>@string.Format(AdapterResources.DeleteAdapterWarningDescriptionText, branding.ProductName) @WebStudioResources.ThisCannotBeUndoneText</div><br />
+        </div>
+
+        <div>
+            @using (Html.BeginForm("DeleteAdapter", "Adapter", new { id = adapterId }, FormMethod.Post, new { @class = "IconForm", id = deleteAdapterFormId }))
+            {
+                <input type="image" src="@deleteImageUrl" alt="@AdapterResources.DeleteAdapterAltText" title="@AdapterResources.DeleteAdapterAltText" />
+                <input type="submit" value="@AdapterResources.DeleteAdapterAltText" class="SubmitImageText" id="@deleteAdapterFormInputId" alt="@AdapterResources.DeleteAdapterAltText" title="@AdapterResources.DeleteAdapterAltText" />
+            }
+        </div>
+        <div>
+            <a href="@Url.Action("CopyAdapter", "Adapter", new { id = adapterId })">
+                <img src="@copyImageUrl" alt="@AdapterResources.CopyAdapterHeading" title="@AdapterResources.CopyAdapterHeading" />
+                @Html.Raw(AdapterResources.CopyAdapterHeading.ReplaceWhiteSpace())
+            </a>
+        </div>
+    }
+    <br />
+    @if (Model.Enabled)
+    {
+        <div>
+            @using (Html.BeginForm("DisableAdapter", "Adapter", new { id = adapterId }, FormMethod.Post, new { @class = "IconForm" }))
+            {
+                <img src="@disableImageUrl" alt="@AdapterResources.DisableAdapterImageAltText" title="@AdapterResources.DisableAdapterImageAltText" class="SubmitImageText" />
+                <input type="submit" value="@AdapterResources.AdapterDisableBtnText" title="@AdapterResources.DisableAdapterImageAltText" alt="Disable Hint" class="SubmitImageText" />
+            }
+        </div>
+    }
+    @{ AdapterFunctionsProvider.Instance.WriteAll(Html, new AdapterFunctionsProviderInformation(Model.AdapterId, Model.Enabled)); }
+    @if (Model.Enabled && !Model.Inhibited)
+    {
+        <fieldset>
+            <legend>@AdapterResources.AdvancedOperationsLegendText</legend>
+            <div>
+                @using (Html.BeginForm("SimulateChanges", "Adapter", new { id = adapterId }, FormMethod.Post, new { @class = "IconForm" }))
+                {
+                    <input type="image" src="@arrowRightImageUrl" alt="@AdapterResources.SimulateChangeAdapterAltText" title="@AdapterResources.SimulateChangeAdapterAltText" />
+                    <input type="submit" value="@AdapterResources.SimulateChangeAdapterButton" class="SubmitImageText" alt="@AdapterResources.SimulateChangeAdapterAltText" title="@AdapterResources.SimulateChangeAdapterAltText" />
+                }
+            </div>
+            <div>
+                @using (Html.BeginForm("ClearChanges", "Adapter", new { id = adapterId }, FormMethod.Post, new { @class = "IconForm" }))
+                {
+                    <input type="image" src="@arrowRightImageUrl" alt="@AdapterResources.ClearAdapterChangesAltText" title="@AdapterResources.ClearAdapterChangesAltText" />
+                    <input type="submit" value="@AdapterResources.ClearAdapterChangesButton" class="SubmitImageText" alt="@AdapterResources.ClearAdapterChangesAltText" title="@AdapterResources.ClearAdapterChangesAltText" />
+                }
+            </div>
+            <div>
+                @using (Html.BeginForm("ClearContext", "Adapter", new { id = adapterId }, FormMethod.Post, new { @class = "IconForm" }))
+                {
+                    <input type="image" src="@arrowRightImageUrl" alt="@AdapterResources.ClearAdapterContexAltText" title="@AdapterResources.ClearAdapterContexAltText" />
+                    <input type="submit" value="@AdapterResources.ClearAdapterContextButton" class="SubmitImageText" alt="@AdapterResources.ClearAdapterContexAltText" title="@AdapterResources.ClearAdapterContexAltText" />
+                }
+            </div>
+        </fieldset>
+    }
+</div>
+<script type="text/javascript">
+    @Html.Raw(deleteAdapterOkCancelScript)
+</script>

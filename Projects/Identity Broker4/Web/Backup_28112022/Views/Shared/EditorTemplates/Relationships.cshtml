@@ -1,0 +1,42 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model IRelationshipsTransformation
+
+@using (Html.MetaDataFor(model => model.Relationships, new { description = Model.RelationshipsDescription, hideRequired = true }, new { @class = "chzn-form-fieldset-container" }))
+{
+    @Html.TextAreaFor(model => model.Relationships.Text, new { id = "RelationshipsText" })
+
+    <div id="RelationshipsDisplay" class="chzn-form-fieldset-container"></div>
+    <a href="#" id="AddRelationshipsButton">@TransformationResources.AddRelationshipsButtonText</a>
+    
+    <br/>
+    
+    @Html.ValidationMessageFor(model => model.Relationships.Text)
+}
+
+<script type="text/javascript">
+    
+    $('#RelationshipsText').hide();
+
+        var relationships = new Relationships({
+            name: 'relationships',
+            formatText: $('#RelationshipsText'),
+            formatDisplay: $('#RelationshipsDisplay'),
+            leftSideKeys: [@Html.Raw(string.Join(",", Model.Relationships.LeftSchema.GroupedKeys.Select(mapping => string.Format("\"{0}\"", mapping))))],
+            rightSideKeys: [@Html.Raw(string.Join(",", Model.Relationships.RightSchema.GroupedKeys.Select(mapping => string.Format("\"{0}\"", mapping))))]
+        });
+            
+        @if (!string.IsNullOrWhiteSpace(Model.Relationships.Text))
+        {
+            <text>relationships.Accept($('#RelationshipsText').val());</text>
+        }
+
+        $('#AddRelationshipsButton').click(
+            function () {
+                relationships.AddRelationship({ left: '@Model.Relationships.LeftSchema.GroupedKeys.First()', right: '@Model.Relationships.RightSchema.GroupedKeys.First()' });
+                relationships.Commit();
+                return false;
+            }
+        );
+
+    </script>

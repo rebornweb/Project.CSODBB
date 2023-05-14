@@ -1,0 +1,77 @@
+﻿@model InnerAdapterFunctionsViewInformation
+
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework
+@using Unify.Framework.Web
+
+@{
+    string editAdapterImageUrl = Url.WebIcon("wrench.png");
+    string demoteAdapterImageUrl = Url.WebIcon("arrow_turn_right_down.png");
+    string promoteToExistingCompositeImageUrl = Url.WebIcon("arrow_turn_right.png");
+    string deleteImageUrl = Url.WebIcon("delete.png");
+
+    Guid adapterId = Model.InnerAdapterId;
+
+    string deleteAdapterFormId = string.Format("DeleteAdapterForm{0}", adapterId);
+    string deleteAdapterFormInputId = string.Format("DeleteAdapterButton{0}", adapterId);
+    string deleteAdapterMessageId = string.Concat(deleteAdapterFormInputId, "Message");
+    string deleteAdapterOkCancelScript = RenderExtensions.SubmitOkCancelDialog(deleteAdapterFormId, deleteAdapterFormInputId, string.Empty);
+
+    IUnifyBranding branding = ViewContext.GetCurrentBranding();
+}
+           
+@Html.HiddenFor(model => model.InnerAdapterId)
+@Html.HiddenFor(model => model.IsScripted)
+
+@Html.HiddenFor(model => model.IsScripted)
+
+<div class="FunctionsMenuContainer">
+
+    @if (Model.AdapterEnabled)
+    {
+        <label>@AdapterResources.AdapterDisabledMessage</label>
+    }
+    else
+    {
+        <div>
+            <a href="@Url.Action("EditStandardAdapter", new { id = adapterId })">
+                <img src="@editAdapterImageUrl" alt="@AdapterResources.EditAdapterAltText" title="@AdapterResources.EditAdapterAltText" />
+                @Html.Raw(AdapterResources.EditAdapterAltText.ReplaceWhiteSpace())
+            </a>
+        </div>
+    
+        <div>
+            @using (Html.BeginForm("MoveToExistingCompositeAdapter", "Adapter", new { id = Model.InnerAdapterId, compositeAdapterId = Model.ContainingCompositeAdapterId }, FormMethod.Post, new { @class = "IconForm" }))
+            {
+                <input type="image" src="@promoteToExistingCompositeImageUrl" alt="@AdapterResources.MoveToExistingCompositeAltText" title="@AdapterResources.MoveToExistingCompositeAltText"/>
+                <input type="submit" value="@AdapterResources.MoveToExistingCompositeAltText" class="SubmitImageText" alt="@AdapterResources.MoveToExistingCompositeAltText" title="@AdapterResources.MoveToExistingCompositeAltText"/> 
+            }
+        </div>
+    
+        <div>
+            @using (Html.BeginForm("DemoteToStandardAdapter", "Adapter", new { id = Model.InnerAdapterId }, FormMethod.Post, new { @class = "IconForm" }))
+            {
+                <input type="image" src="@demoteAdapterImageUrl" alt="@AdapterResources.DemoteToStandardAdapterAltText" title="@AdapterResources.DemoteToStandardAdapterAltText"/>
+                <input type="submit" value="@AdapterResources.DemoteToStandardAdapterAltText" class="SubmitImageText" alt="@AdapterResources.DemoteToStandardAdapterAltText" title="@AdapterResources.DemoteToStandardAdapterAltText"/>
+            }
+        </div>
+    
+        <div id="@deleteAdapterMessageId" style="display:none">
+            <div>@AdapterResources.DeleteAdapterConfirmationInitialWarning</div><br/>
+            <div>@string.Format(AdapterResources.DeleteAdapterWarningDescriptionText, branding.ProductName) @WebStudioResources.ThisCannotBeUndoneText</div><br/>
+        </div>
+    
+        <div>
+            @using (Html.BeginForm("DeleteAdapter", "Adapter", new { id = adapterId }, FormMethod.Post, new { @class = "IconForm", id=deleteAdapterFormId }))
+            {
+                <input type="image" src="@deleteImageUrl" alt="@AdapterResources.DeleteAdapterAltText" title="@AdapterResources.DeleteAdapterAltText"/>
+                <input type="submit" value="@AdapterResources.DeleteAdapterAltText" class="SubmitImageText" id="@deleteAdapterFormInputId" alt="@AdapterResources.DeleteAdapterAltText" title="@AdapterResources.DeleteAdapterAltText"/>
+            }        
+        </div>
+    }
+
+</div>
+
+<script type="text/javascript">
+    @Html.Raw(deleteAdapterOkCancelScript)
+</script>

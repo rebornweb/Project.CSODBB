@@ -1,0 +1,240 @@
+﻿@using Unify.EventBroker.Web.Views.Agents.FIMAutoConfig
+@using Unify.Framework
+@using Unify.Framework.Web
+@using Unify.Product.EventBroker.FIM
+@model ManagementAgentConfigurationViewInformation
+@{
+    IDictionary<string, Guid> runProfileDictionary = Model.RunProfiles.ToDictionary(profile => profile.LastKnownRunProfileName, profile => profile.Key);
+    IValueAdapter<string, string> managementAgentTypeMapper = new ManagementAgentTypeToRelevantAgentTypeMapper();
+
+ // ReSharper disable Mvc.ActionNotResolved
+ // ReSharper disable Mvc.ControllerNotResolved
+    Html.RenderAction("SchedulesHeader", "Schedules", new {area = "Framework"});
+ // ReSharper restore Mvc.ControllerNotResolved
+ // ReSharper restore Mvc.ActionNotResolved
+}
+<div>
+    <noscript>
+        @using (Html.BeginForm("ConfigureManagementAgent", "Agents", new
+        {
+            fimAgentId = Model.FIMAgentId,
+            managementAgentKey = Model.Identifier,
+            redirectToAgentMappings = Model.RedirectToAgentMapping
+        }))
+        {
+            <div class="FaintBorder">
+                <h5>@string.Format(AutoConfigurationResources.NoScriptSelectAgentHeaderTemplate, Model.Name)</h5>
+                @Html.DropDownList(
+                    "agentId",
+                    new SelectList(
+                        Model.AllAgents,
+                        "Value",
+                        "Key"),
+                    new {@class = "chzn-select"})
+                <br />
+                <input type="submit" value="Select" class="m-btn noscript" />
+            </div>
+        }
+    </noscript>
+    @using (Html.DecorateForm(() => Html.BeginForm("SaveManagementAgent", "Agents", FormMethod.Post, new {id = "ConfigureMA"}), SharedResources.SaveAndContinueText, "ConfigureMA", AutoConfigurationResources.ConfigureManagementAgentSubmitButton, "submitButton"))
+    {
+        @Html.HiddenFor(model => model.FIMAgentId)
+        @Html.HiddenFor(model => model.Identifier)
+        @Html.HiddenFor(model => model.RedirectToAgentMapping)
+        string supportedAgentType = managementAgentTypeMapper.Transform(Model.ManagementAgentType);
+        IDictionary<string, Guid> supportedAgents = new Dictionary<string, Guid>();
+        switch (supportedAgentType)
+        {
+            case AgentPlugInNames.FIMAgentPlugInName:
+                supportedAgents.AddRange(Model.FIMAgents);
+                break;
+            case AgentPlugInNames.ADAgentPlugInName:
+                supportedAgents.AddRange(Model.ADAgents);
+                break;
+            case AgentPlugInNames.IdentityBrokerAgentPlugInName:
+                supportedAgents.AddRange(Model.IdentityBrokerAgents);
+                break;
+            case AgentPlugInNames.OpenLDAPAgentPlugInName:
+                supportedAgents.AddRange(Model.LDAPAgents);
+                break;
+            case AgentPlugInNames.SQLServerAgentPlugInName:
+                supportedAgents.AddRange(Model.SQLServerAgents);
+                break;
+            case AgentPlugInNames.OracleDbAgentPlugInName:
+                supportedAgents.AddRange(Model.OracleAgents);
+                break;
+            default:
+                supportedAgents.AddRange(Model.AllAgents);
+                break;
+        }
+        bool showWarning = false;
+        if (supportedAgentType != AgentPlugInNames.FIMAgentPlugInName)
+        {
+            showWarning = !supportedAgents.Any();
+
+            supportedAgents.Add("Custom", Guid.Empty);
+        }
+        <fieldset>
+            <legend>@AutoConfigurationResources.ChangeMechanismLegend</legend>
+            <div id="ChangeMechanismWarning">
+                @if (showWarning)
+                {
+                    <div class="FormText" style="padding-bottom: 2em; padding-top: 2em; width: auto;">
+                        <p>Management Agents correspond to particular target systems, which are described in @Model.BrandingProductName as <b>Agents</b>.</p>
+                        <br />
+                        <p>For changes to be recognized in the target system, a new <b>@Model.AgentInstanceNames[supportedAgentType]</b> agent will need to be created.</p>
+                    </div>
+                    <div class="m-btn-group" style="margin-left: 5px; overflow: hidden">
+                        <a href="@Url.Action("CreateMAAgent", "Agents", new {agentType = supportedAgentType, fimAgentId = Model.FIMAgentId, managementAgentKey = Model.Identifier})" class="m-btn blue mini mini-form">
+                            Create @Model.AgentInstanceNames[supportedAgentType] Agent.
+                        </a>
+                        <span class="m-btn mini mini-form" id="UseCustomButton">
+                            I want to define my own Change Mechanism.
+                        </span>
+                    </div>
+                }
+            </div>
+            <div class="chzn-container" id="ChangeMechanism">
+                @if (supportedAgents.Count > 1)
+                {
+                    if (Model.AgentId == Guid.Empty)
+                    {
+                        Model.AgentId = supportedAgents.First().Value;
+                    }
+
+                    <div class="chzn-container">
+                        <label>@AutoConfigurationResources.TargetSystemLabel</label>
+                        @Html.DropDownListFor(
+                            model => model.AgentId,
+                            new SelectList(
+                                supportedAgents,
+                                "Value",
+                                "Key"),
+                            new
+                            {
+                                @class = "chzn-select",
+                                id = "agentSelector"
+                            })
+                    </div>
+                    <br />
+                    <div id="deltaInformation" class="chzn-container">
+                        @{ Html.RenderAction("MADeltaInformation", Model); }
+                    </div>
+                    <br />
+                }
+                else if (supportedAgents.Any())
+                {
+                    if (Model.AgentId == Guid.Empty)
+                    {
+                        Model.AgentId = supportedAgents.First().Value;
+                    }
+                    @Html.HiddenFor(model => model.AgentId)
+                    <div class="chzn-container">
+                        @{ Html.RenderAction("MADeltaInformation", Model); }
+                    </div>
+                    <br />
+                }
+                else
+                {
+                    <div class="message">
+                        @AutoConfigurationResources.ManagementAgentsNoSupportedAgentsText
+                    </div>
+                }
+            </div>
+        </fieldset>
+        if (showWarning)
+        {
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $('#ChangeMechanism').hide();
+                    $('#UseCustomButton').click(function() {
+                        $('#ChangeMechanism').show();
+                        $('#ChangeMechanismWarning').hide();
+                    });
+                });
+            </script>
+        }
+        <fieldset>
+            <legend>@AutoConfigurationResources.IncomingOperationsLegend</legend>
+            <div class="chzn-container">
+                @using (Html.MetaDataFor(model => model.IncomingRunProfile, new {description = AutoConfigurationResources.IncomingOperationListTooltip}, new {@class = "chzn-container"}))
+                {
+                    @Html.LabelFor(model => model.IncomingRunProfile, AutoConfigurationResources.RunProfileLabelText)
+                    @Html.DropDownListFor(model => model.IncomingRunProfile, new SelectList(runProfileDictionary, "Value", "Key", Model.IncomingRunProfile), new {@class = "chzn-select"})
+                }
+                <br />
+                @using (Html.MetaDataFor(model => model.IncomingFrequency, new {description = AutoConfigurationResources.IncomingOperationListFrequencyTooltip}, new {@class = "chzn-container"}))
+                {
+                    @Html.LabelFor(model => model.IncomingFrequency, AutoConfigurationResources.FrequencyLabelText)
+                    @Html.DropDownListFor(model => model.IncomingFrequency, new SelectList(Model.IncomingAndOutgoingFrequencyDisplayNameDictionary, "Key", "Value", Model.IncomingFrequency), new {@class = "chzn-select"})
+                }
+                <br />
+            </div>
+        </fieldset>
+        <br />
+        <fieldset>
+            <legend>@AutoConfigurationResources.OutgoingOperationsLegend</legend>
+            <div class="chzn-container">
+                @using (Html.MetaDataFor(model => model.OutgoingRunProfile, new {description = AutoConfigurationResources.OutgoingOperationListTooltip}, new {@class = "chzn-container"}))
+                {
+                    @Html.LabelFor(model => model.OutgoingRunProfile, AutoConfigurationResources.RunProfileLabelText)
+                    @Html.DropDownListFor(model => model.OutgoingRunProfile, new SelectList(runProfileDictionary, "Value", "Key", Model.OutgoingRunProfile), new {@class = "chzn-select"})
+                }
+                <br />
+                @using (Html.MetaDataFor(model => model.OutgoingFrequency, new {description = string.Format(AutoConfigurationResources.OutgoingOperationListFrequencyTooltip, Model.BrandingProductName)}, new {@class = "chzn-container"}))
+                {
+                    @Html.LabelFor(model => model.OutgoingFrequency, AutoConfigurationResources.FrequencyLabelText)
+                    @Html.DropDownListFor(model => model.OutgoingFrequency, new SelectList(Model.IncomingAndOutgoingFrequencyDisplayNameDictionary, "Key", "Value", Model.OutgoingFrequency), new {@class = "chzn-select"})
+                }
+                <br />
+            </div>
+        </fieldset>
+        <br />
+        <fieldset>
+            <legend>@AutoConfigurationResources.SynchronizationOperationsLegend</legend>
+            <div class="chzn-container">
+                @using (Html.MetaDataFor(model => model.SynchronizationOperationRunProfile, new {description = AutoConfigurationResources.SynchronizationOperationListTooltip}, new {@class = "chzn-container"}))
+                {
+                    @Html.LabelFor(model => model.SynchronizationOperationRunProfile, AutoConfigurationResources.RunProfileLabelText)
+                    @Html.DropDownListFor(model => model.SynchronizationOperationRunProfile, new SelectList(runProfileDictionary, "Value", "Key", Model.SynchronizationOperationRunProfile), new {@class = "chzn-select"})
+                }
+                <br />
+                @using (Html.MetaDataFor(model => model.SynchronizationOperationFrequency, new {description = AutoConfigurationResources.SynchronizationOperationListFrequencyTooltip}, new {@class = "chzn-container"}))
+                {
+                    @Html.LabelFor(model => model.SynchronizationOperationFrequency, AutoConfigurationResources.FrequencyLabelText)
+                    @Html.DropDownListFor(model => model.SynchronizationOperationFrequency, new SelectList(Model.SynchronizationFrequencyDisplayNameDictionary, "Key", "Value", Model.SynchronizationOperationFrequency), new {@class = "chzn-select"})
+                }
+                <br />
+                @using (Html.MetaDataFor(model => model.SynchronizationOperationStartTime, new {description = AutoConfigurationResources.SynchronizationOperationListStartFromTooltip}, new {@class = "chzn-container"}))
+                {
+                    @Html.LabelFor(model => model.SynchronizationOperationStartTime, AutoConfigurationResources.StartFromLabelTest)
+                    @Html.TextBoxFor(model => model.SynchronizationOperationStartTime, LoggingControllerConstants.DateTimeFormatStrCSharpEditMode, new { @class = "SynchronizationOperationStartTime" })
+                }
+            </div>
+        </fieldset>
+    }
+</div>
+<script type="text/javascript">
+    $(function() {
+        $('#agentSelector').change(
+            function() {
+                $('#deltaInformation').html('@SharedResources.LoadingText');
+                $.get('@Url.Action("MADeltaInformation")',
+                    { agentId: $('#agentSelector option:selected').val() },
+                    function(data) {
+                        $('#deltaInformation').html(data);
+                        $('.chzn-select').chosen();
+                    });
+            }
+        );
+        $(".SynchronizationOperationStartTime").datetimepicker(
+        {
+            dateFormat: "@LoggingControllerConstants.DateFormatJQueryEditMode",
+            timeFormat: "@LoggingControllerConstants.TimeFormatJQueryEditMode",
+            showSecond: true,
+            changeMonth: true,
+            changeYear: true,
+            showWeek: true
+        });
+    });
+</script>

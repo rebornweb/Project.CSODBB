@@ -1,0 +1,24 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework
+@using Unify.Framework.Web
+@model LdapGatewayAgentViewInformation
+
+<table class="RightSpaced BottomSpaced VerticalAlignTable">
+    <tr>
+        <td>@GatewayResources.LdapSettingsFormAddressLabelText</td>
+        <td>@Model.Address</td>
+    </tr>
+    <tr>
+        <td>@GatewayResources.LdapSettingsFormPortNumberLabelText</td>
+        <td>@Model.PortNumber</td>
+    </tr>
+    <tr>
+        <td>@GatewayResources.LdapSettingsFormMaxOpsLabelText</td>
+        <td>@Model.MaxOps</td>
+    </tr>
+</table>
+
+<div>
+    @Html.ActionRefresh(Url, "ConnectionsRefresh", 5000, "ConnectionDetails", "LdapGateway", new { gatewayId = Model.GatewayDetails.Id }, Url.Action("Index", "Gateway"))
+</div>

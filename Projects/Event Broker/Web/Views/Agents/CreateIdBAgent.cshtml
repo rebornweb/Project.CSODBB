@@ -1,0 +1,60 @@
+﻿@model IdentityBrokerAgentViewInformation
+@using Unify.Framework.Web
+
+@{
+    var agentTitleName = (Model.EditMode) ? Model.Name : AgentsControllerResources.IdBAgentDisplayNameText;
+    ViewBag.Title = Html.Title(Html.CreateAgentTitle(agentTitleName, Model.CreateOrUpdateText).ToString());
+}
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm(
+            Model.ManagementAgentKey == Guid.Empty
+                ? "Create"
+                : "CreateMAAgent",
+            "Agents",
+            FormMethod.Post,
+            new { id = "CreateAgentForm" }),
+        Model.CreateOrUpdateText,
+        "CreateAgentForm",
+        AgentsControllerResources.ConfigureAgentAltText, 
+        "submitButton"))
+{
+    <div>
+        @Html.HiddenFor(model => model.PlugInName)
+        @Html.HiddenFor(model => model.AgentId)
+        @Html.HiddenFor(model => model.EditMode)
+        @Html.HiddenFor(model => model.FIMAgentId)
+        @Html.HiddenFor(model => model.ManagementAgentKey)
+
+        @using (Html.MetaDataFor(model => model.Name, new{description = AgentsControllerResources.IdBAgentNameDescription}))
+        {
+            @Html.LabelFor(model => model.Name, AgentsControllerResources.IdBAgentNameName)
+            @Html.TextBoxFor(model => model.Name)
+        }
+
+        <fieldset>
+            <legend>@AgentsControllerResources.IdBAgentConfigurationFieldsetText</legend>
+
+            @using (Html.MetaDataFor(model => model.EndPointAddress, new { description = AgentsControllerResources.IdBAgentEndpointAddressDescription }))
+            {
+                @Html.LabelFor(model => model.EndPointAddress, AgentsControllerResources.IdBAgentEndpointAddressName)
+                @Html.TextBoxFor(model => model.EndPointAddress, new { @class = "wide-text" })
+            }
+            @using (Html.MetaDataFor(model => model.ManagementStudioEndPointConfigurationName, new { description = AgentsControllerResources.IdBAgentManagementStudioEndpointConfigurationDescription }))
+            {
+                @Html.LabelFor(model => model.ManagementStudioEndPointConfigurationName, AgentsControllerResources.IdBAgentManagementStudioEndpointConfigurationName)
+                @Html.TextBoxFor(model => model.ManagementStudioEndPointConfigurationName)
+            }
+            @using (Html.MetaDataFor(model => model.ChangesEndPointConfigurationName, new{description = AgentsControllerResources.IdBAgentChangesEndpointConfigurationDescription}))
+            {
+                @Html.LabelFor(model => model.ChangesEndPointConfigurationName, AgentsControllerResources.IdBAgentChangesEndpointConfigurationName)
+                @Html.TextBoxFor(model => model.ChangesEndPointConfigurationName)
+            }
+            @using (Html.MetaDataFor(model => model.Version, new { description = AgentsControllerResources.IdBAgentVersionDescription }, new { @class = "chzn-container" }))
+            {
+                @Html.LabelFor(model => model.Version, AgentsControllerResources.IdBAgentVersionName)
+                @Html.EnumDropDownList(model => model.Version, new { @class = "chzn-select" })
+            }
+        </fieldset>
+    </div>
+}

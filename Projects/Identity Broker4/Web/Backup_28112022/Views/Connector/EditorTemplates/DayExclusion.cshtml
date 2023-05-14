@@ -1,0 +1,10 @@
+﻿@using Unify.Framework.Web
+@model DayExclusionViewInformation
+
+@Html.HiddenFor(model => model.Selected)
+
+@using (Html.MetaDataFor(model => model.DaysToExclude, new { description = ConnectorControllerResources.DayExclusionDaysToExcludeDescription }))
+{
+    @Html.LabelFor(model => model.DaysToExclude, ConnectorControllerResources.DayExclusionDaysToExcludeName)
+    @Html.EnumListBox(model => model.DaysToExclude)
+}

@@ -1,0 +1,23 @@
+﻿@using Unify.Connect.Web
+@model BusinessDayOffsetFlagViewInformation
+
+<div>
+    
+    <p>
+        IF [@Model.Source] == NULL <br/>
+        &nbsp;&nbsp;&nbsp; "@Model.NullValue" -> <span class="TransformationAddedField">[@Model.Target]</span>
+    </p>
+    <p>
+        IF [@Model.Source] + (@@BusinessDays * @Model.Offset) == @@NOW<br/>
+        &nbsp;&nbsp;&nbsp; "@Model.EqualValue" -> <span class="TransformationAddedField">[@Model.Target]</span>
+    </p>
+    <p>
+        IF [@Model.Source] + (@@BusinessDays * @Model.Offset) < @@NOW <br/>
+        &nbsp;&nbsp;&nbsp; "@Model.LesserValue" -> <span class="TransformationAddedField">[@Model.Target]</span>
+    </p>
+    <p>
+        IF [@Model.Source] + (@@BusinessDays * @Model.Offset) > @@NOW<br/>
+        &nbsp;&nbsp;&nbsp; "@Model.GreaterValue" -> <span class="TransformationAddedField">[@Model.Target]</span>
+    </p>
+
+</div>

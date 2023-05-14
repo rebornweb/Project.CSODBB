@@ -1,0 +1,135 @@
+@model LDAPDirectoryChangesPlugInConfigurationViewInformation
+@using Unify.EventBroker.Web.Extensions
+@using Unify.Framework.Web
+
+@{
+    ViewBag.Title = Html.CreatePlugInTitle(Model.CreateOrUpdateText, TitleResources.CreateOpenLDAPChangesOperationTitleCaption);
+    
+    IEnumerable<KeyValuePair<string, OpenLDAPChangesSortControl>> displayToSortControlMap = new Dictionary<string, OpenLDAPChangesSortControl>
+    {
+        {OpenLDAPSortControlDisplayNameResources.DefaultDisplayName, OpenLDAPChangesSortControl.Default},
+        {OpenLDAPSortControlDisplayNameResources.EnglishAusDisplayName, OpenLDAPChangesSortControl.OracleEnglishAus},
+        {OpenLDAPSortControlDisplayNameResources.EnglishCanDisplayName, OpenLDAPChangesSortControl.OracleEnglishCan},
+        {OpenLDAPSortControlDisplayNameResources.EnglishGBDisplayName, OpenLDAPChangesSortControl.OracleEnglishGB},
+        {OpenLDAPSortControlDisplayNameResources.EnglishHKDisplayName, OpenLDAPChangesSortControl.OracleEnglishHK},
+        {OpenLDAPSortControlDisplayNameResources.EnglishIndDisplayName, OpenLDAPChangesSortControl.OracleEnglishInd},
+        {OpenLDAPSortControlDisplayNameResources.EnglishIreDisplayName, OpenLDAPChangesSortControl.OracleEnglishIre},
+        {OpenLDAPSortControlDisplayNameResources.EnglishMaltaDisplayName, OpenLDAPChangesSortControl.OracleEnglishMalta},
+        {OpenLDAPSortControlDisplayNameResources.EnglishNZDisplayName, OpenLDAPChangesSortControl.OracleEnglishNZ},
+        {OpenLDAPSortControlDisplayNameResources.EnglishPhilDisplayName, OpenLDAPChangesSortControl.OracleEnglishPhil},
+        {OpenLDAPSortControlDisplayNameResources.EnglishSADisplayName, OpenLDAPChangesSortControl.OracleEnglishSA},
+        {OpenLDAPSortControlDisplayNameResources.EnglishSingDisplayName, OpenLDAPChangesSortControl.OracleEnglishSing},
+        {OpenLDAPSortControlDisplayNameResources.EnglishUSDisplayName, OpenLDAPChangesSortControl.OracleEnglishUS},
+        {OpenLDAPSortControlDisplayNameResources.EnglishVIDisplayName, OpenLDAPChangesSortControl.OracleEnglishVI},
+        {OpenLDAPSortControlDisplayNameResources.EnglishZimDisplayName, OpenLDAPChangesSortControl.OracleEnglishZim},
+        {OpenLDAPSortControlDisplayNameResources.NoneDisplayName, OpenLDAPChangesSortControl.None},
+        {OpenLDAPSortControlDisplayNameResources.CustomDisplayName, OpenLDAPChangesSortControl.Custom}
+    };
+}
+
+@if (!Model.ApplicableAgents.Any())
+{
+    <p>@string.Format(
+        OperationControllerResources.NoApplicableAgentMessageTemplate,
+        OperationControllerResources.PlugInOperationsOpenLDAPChanges,
+        OperationControllerResources.AgentsOpenLDAPName)
+        
+        @if (Html.IsInRole(UnifyRoles.Write))
+        {
+            @Html.ActionLink("Create Agent", "Create", "Agents",
+                new { agentType = AgentPlugInNames.OpenLDAPAgentPlugInName },
+                null)
+        }
+        else
+        {
+            <label>@OperationControllerResources.CreateAgentInsufficientPermissions</label>
+        }
+    </p>
+}
+else
+{
+    using (Html.DecorateForm(
+            () => Html.BeginForm("CreatePlugInOperation", "Operation", FormMethod.Post, new { id = "CreateOperationForm" }),
+            Model.CreateOrUpdateText,
+            "CreateOperationForm",
+            OperationResources.ConfigureOperationAltText, "submitButton"))
+    {
+        <div>
+            @Html.EditorFor(model => model, "OperationDisplayName")
+            
+            @using (Html.MetaDataFor(model => model.AgentId, new{ description = OperationControllerResources.SelectAgentDescription}, new { @class = "chzn-container" }))
+            {
+                @Html.CustomTooltipFor(model => model.AgentId, OperationControllerResources.SelectAgentName, OperationControllerResources.SelectAgentDescription)
+
+                @Html.DropDownListFor(model => model.AgentId,
+                    new SelectList(
+                        Model.ApplicableAgents,
+                        "Id",
+                        "Name",
+                        Model.ApplicableAgents.Any(agent => agent.Id == Model.AgentId)
+                            ? Model.ApplicableAgents.Where(agent => agent.Id == Model.AgentId).Select(agent => agent).First()
+                            : Model.ApplicableAgents.First()),
+                    new { @class = "chzn-select" })
+            }
+
+            <fieldset>
+                <legend>@OperationControllerResources.LDAPChangesPlugInOperationInformation</legend>
+
+                @using (Html.MetaDataFor(model => model.DistinguishedName, new { description = OperationControllerResources.DNDescription }))
+                {
+                    @Html.LabelFor(model => model.DistinguishedName, OperationControllerResources.DNName)
+                    @Html.TextBoxFor(model => model.DistinguishedName, new {@class = "wide-text"})
+                }
+                @using (Html.MetaDataFor(model => model.Filter, new { description = OperationControllerResources.FilterDescription }))
+                {
+                    @Html.LabelFor(model => model.Filter, OperationControllerResources.FilterName)
+                    @Html.TextBoxFor(model => model.Filter, new { @class = "wide-text" })
+                }
+                @using (Html.MetaDataFor(model => model.SearchScope, new { description = OperationControllerResources.SearchScopeDescription }, new { @class = "chzn-container" }))
+                {
+                    @Html.LabelFor(model => model.SearchScope, OperationControllerResources.SearchScopeName)
+                    @Html.EnumDropDownList(model => model.SearchScope, new { @class = "chzn-select" })
+                }
+                <br/>
+                @using (Html.MetaDataFor(model => model.SortControl, new { description = OperationControllerResources.SortControlDescription }, new { @class = "chzn-container" }))
+                {
+                    @Html.LabelFor(model => model.SortControl, OperationControllerResources.SortControlName)
+                    @Html.DropDownListFor(model => model.SortControl, displayToSortControlMap.Select(disName => new SelectListItem
+                    {
+                        Text = disName.Key, 
+                        Value = disName.Value.ToString(), 
+                        Selected = disName.Value == Model.SortControl
+                    }), new { @class = "chzn-select", @id = "sortControlDropDown"})
+                }
+                <div id="customSortTextBox">
+                    @using (Html.MetaDataFor(model => model.CustomSortControl, new { description = OperationControllerResources.CustomSortControlDescription }))
+                    {
+                        @Html.LabelFor(model => model.CustomSortControl, OperationControllerResources.CustomSortControlName)
+                        @Html.TextBoxFor(model => model.CustomSortControl)
+                    }
+                </div>
+            </fieldset>
+            
+            <fieldset>
+                @Html.EditorFor(model => model, "CheckOperationInnerDetails")
+            </fieldset>
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                if ($("#sortControlDropDown").val() != "Custom") {
+                    $("#customSortTextBox").hide();
+                }
+
+                $("#sortControlDropDown").change(function () {
+                    var val = $("#sortControlDropDown").val();
+                    if (val == "Custom") {
+                        $("#customSortTextBox").show();
+                    } else {
+                        $("#customSortTextBox").hide();
+                    }
+                });
+            })
+        </script>
+    }
+}

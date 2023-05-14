@@ -1,0 +1,22 @@
+﻿@model MoveFromCompositeToCompositeAdapterViewInformation
+
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+
+@{
+    ViewBag.Title = Html.Title(TitleResources.PromoteToExistingCompositeAdapterTitle);
+}
+
+<h2>@AdapterResources.MoveToExistingCompositeAdapterHeading</h2>
+
+@using (Html.DecorateForm(
+            () => Html.BeginForm("MoveFromCompositeToCompositeAdapter", "Adapter", FormMethod.Post, new{id = "MoveAdapterForm"}),
+            AdapterResources.MoveAdapterText,
+            "MoveAdapterForm",
+            AdapterResources.MoveToExistingCompositeAltText
+    ))
+{
+    @Html.HiddenFor(model => model.CompositeAdapterId)
+    @Html.EditorFor(model => model.MoveToExistingCompositeAdapterViewInformation, "MoveAdapterToCompositeAdapter")
+}
+

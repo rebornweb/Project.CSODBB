@@ -1,0 +1,68 @@
+@model HomeModel
+@using Unify.Framework.Web
+@{
+    ViewBag.Title = Html.Title(TitleResources.HomePageTitle);
+}
+<script type="text/javascript">
+    $(['@Url.WebIcon("Loader.gif")',
+            '@Url.WebIcon("information.png")',
+            '@Url.WebIcon("error.png")',
+            '@Url.WebIcon("exclamation.png")',
+            '@Url.WebIcon("bullet_go.png")',
+            '@Url.WebIcon("control_play_blue.png")',
+            '@Url.WebIcon("control_pause_blue.png")']).preload();
+</script>
+@if (!Model.FIMAgentsConfigured)
+{
+    <div>
+        <h1>@HomeControllerResources.GettingStartedTitleText</h1>
+        <p>
+            @string.Format(HomeControllerResources.GettingStartedMessageText, EventBrokerBranding.Instance.ProductName)
+        </p>
+        @using (Html.BeginForm("Create", "Agents"))
+        {
+            <div  class="FaintBorder">
+                @Html.EditorFor(model => model, "FIMAgent")
+            </div>
+            <br/>
+            <button class="m-btn blue">
+                @HomeControllerResources.CreateMIMAgentButtonText
+            </button>
+        }
+    </div>
+}
+else
+{
+    <div>
+        @* ReSharper disable Mvc.ControllerNotResolved *@
+        @* ReSharper disable Mvc.ActionNotResolved *@
+        @Html.ActionRefresh(Url, "SchedulerRefresh", 5000, "Scheduler", "Home", new { }, Url.Action("ServiceUnavailable", "Error"))
+        @* ReSharper restore Mvc.ActionNotResolved *@
+        @* ReSharper restore Mvc.ControllerNotResolved *@
+    </div>
+    if (Html.IsInRole(UnifyRoles.Read))
+    {
+        <h2>@HomeControllerResources.CurrentOperationListsHeading</h2>
+
+        <div>
+            @* ReSharper disable Mvc.ControllerNotResolved *@
+            @* ReSharper disable Mvc.ActionNotResolved *@
+            @Html.ActionRefresh(Url, "OperationListAlertsRefresh", 5000, "OperationListAlerts", "Operation", new { groupId = (Guid?)null }, Url.Action("ServiceUnavailable", "Error"))
+            @* ReSharper restore Mvc.ActionNotResolved *@
+            @* ReSharper restore Mvc.ControllerNotResolved *@
+        </div>
+    }
+
+    if (Html.IsInRole(UnifyRoles.Read))
+    {
+        <h2>@HomeControllerResources.AlertsHeading</h2>
+
+        <div>
+            @* ReSharper disable Mvc.ControllerNotResolved *@
+            @* ReSharper disable Mvc.ActionNotResolved *@
+            @Html.ActionRefresh(Url, "CurrentAlertsRefresh", 5000, "Alerts", "Home", new { }, Url.Action("ServiceUnavailable", "Error"))
+            @* ReSharper restore Mvc.ActionNotResolved *@
+            @* ReSharper restore Mvc.ControllerNotResolved *@
+        </div>
+    }
+}

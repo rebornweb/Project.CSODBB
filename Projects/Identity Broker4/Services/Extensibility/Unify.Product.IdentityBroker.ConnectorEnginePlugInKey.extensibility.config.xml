@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConnectorEngine>
+  <dataConnection name="repository" repository="Unify.IdentityBroker" />
+  <connectorconfigurations>
+    <connectorconfiguration>
+      <connector id="c5520333-987b-45d4-b1c1-24818db8fae9" connector="Unify.Connectors.PeopleSoft.Employee" name="PeopleSoft Employee Connector" queueMissed="false" enabled="true" auditLevel="None" image="5c500992-47bd-4de9-967d-e55656d5596e">
+        <entitySchema>
+          <field name="EmplId" key="true" readonly="false" required="true" validator="string" id="53a5ee33-849f-45c8-9f64-4829350dc91a">
+            <Extended xmlns="" />
+          </field>
+          <field name="LastName" key="false" readonly="false" required="true" validator="string" id="6f804fd5-893c-4f51-9912-2172e78938c3">
+            <Extended xmlns="" />
+          </field>
+          <field name="FirstName" key="false" readonly="false" required="true" validator="string" id="d95248aa-2b71-4b46-b7be-c29211bf91c7">
+            <Extended xmlns="" />
+          </field>
+          <field name="MiddleName" key="false" readonly="false" required="false" validator="string" id="89097d8d-086f-4dec-a8c5-109ec21cb5cc">
+            <Extended xmlns="" />
+          </field>
+          <field name="PreferredName" key="false" readonly="false" required="false" validator="string" id="ee2f6a4c-1396-4181-b59c-5049880443ae">
+            <Extended xmlns="" />
+          </field>
+          <field name="PrefFirstName" key="false" readonly="false" required="false" validator="string" id="001395ea-5739-4ebf-a303-4ac29b167bbf">
+            <Extended xmlns="" />
+          </field>
+          <field name="CountryCode" key="false" readonly="false" required="false" validator="string" id="1bbc6544-d0d7-4e0b-806a-bb56705d9feb">
+            <Extended xmlns="" />
+          </field>
+          <field name="Class" key="false" readonly="false" required="false" validator="string" id="de16a4f4-e2f2-44d5-af3f-28eaff56f5bc">
+            <Extended xmlns="" />
+          </field>
+          <field name="Sex" key="false" readonly="false" required="false" validator="string" id="d9e2ff96-d42b-4adf-b0c3-0c1ad350ab27">
+            <Extended xmlns="" />
+          </field>
+          <field name="BirthDate" key="false" readonly="false" required="false" validator="date" id="fafcf752-61d0-46a4-9c57-0700ddcb2fb5">
+            <Extended xmlns="" />
+          </field>
+          <field name="NullValue" key="false" readonly="false" required="false" validator="string" id="271ff363-f37a-48ea-a8d4-d8ac3e139393">
+            <Extended xmlns="" />
+          </field>
+          <field name="LastUpdDttm" key="false" readonly="false" required="false" validator="string" id="631a6a89-6476-4e57-a98b-8f1f88d2ab19">
+            <Extended xmlns="" />
+          </field>
+        </entitySchema>
+        <Extended />
+        <Groups>
+          <Group id="dfebe9b2-2bc1-41a4-b29d-86c441b53601" />
+          <Group id="fc0d14b9-e3e4-4970-9f91-73455e0ff332" />
+        </Groups>
+        <Agents>
+          <Agent id="d63ed5cf-d1d7-4d59-9bf6-8ddcbc37ff7d" type="PeopleSoft" />
+        </Agents>
+      </connector>
+      <getAllEntities>
+        <Timing id="7f97194e-781c-46a3-9fb0-5e5917c5436c" name="DailyExclusion" useLocal="true">
+          <ExclusionPeriods>
+            <ExclusionPeriod daysExclusionApplies="Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday" start="PT1S" end="PT6H" />
+          </ExclusionPeriods>
+          <Timing id="8ad10208-f744-48a0-8762-6adb2c7a8f9a" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2015-09-30T05:38:55Z">
+            <Timespan value="PT10M" />
+          </Timing>
+        </Timing>
+      </getAllEntities>
+      <polling>
+        <Timing id="19dfda92-6c9e-42ba-a772-484a4203972a" name="DailyExclusion" useLocal="true">
+          <ExclusionPeriods>
+            <ExclusionPeriod daysExclusionApplies="Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday" start="PT1S" end="PT6H" />
+          </ExclusionPeriods>
+          <Timing id="eb4c0128-d83c-48ed-8113-bd15059c669c" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2015-09-30T05:38:55Z">
+            <Timespan value="PT1M" />
+          </Timing>
+        </Timing>
+      </polling>
+    </connectorconfiguration>
+    <connectorconfiguration>
+      <connector id="29bcc921-6b38-4ab7-95df-47d1c297871e" connector="Unify.Connectors.PeopleSoft.EmployeeNid" name="PeopleSoft EmployeeNid Connector" queueMissed="false" enabled="true" auditLevel="None" image="5c500992-47bd-4de9-967d-e55656d5596e">
+        <entitySchema>
+          <field name="EmplId" key="true" readonly="false" required="true" validator="string" id="562f2be0-9a0c-445d-bcb1-1b08f6c5de47">
+            <Extended />
+          </field>
+          <field name="Country" key="false" readonly="false" required="false" validator="string" id="4e06db1e-930f-4776-b974-3ae314a400aa">
+            <Extended />
+          </field>
+          <field name="NationalIdType" key="false" readonly="false" required="false" validator="string" id="299141c3-0801-4d57-96b9-7624f3754793">
+            <Extended />
+          </field>
+          <field name="NationalId" key="false" readonly="false" required="false" validator="string" id="e744fd6f-0e15-4852-a5d6-7f67be9ec6b2">
+            <Extended />
+          </field>
+          <field name="LastUpDoPrid" key="false" readonly="false" required="false" validator="string" id="abbc8074-e0ea-4885-b478-4afd8c9b2999">
+            <Extended />
+          </field>
+          <field name="Class" key="false" readonly="false" required="false" validator="string" id="00de8284-5994-4019-b5e3-db1dc93d309f">
+            <Extended />
+          </field>
+        </entitySchema>
+        <Extended />
+        <Groups>
+          <Group id="dfebe9b2-2bc1-41a4-b29d-86c441b53601" />
+          <Group id="fc0d14b9-e3e4-4970-9f91-73455e0ff332" />
+        </Groups>
+        <Agents>
+          <Agent id="d63ed5cf-d1d7-4d59-9bf6-8ddcbc37ff7d" type="PeopleSoft" />
+        </Agents>
+      </connector>
+      <getAllEntities>
+        <Timing id="a52bcf5a-6d8e-46c3-9baf-8c00bd0e1be8" name="DailyExclusion" useLocal="false">
+          <ExclusionPeriods>
+            <ExclusionPeriod start="PT1S" end="PT6H" />
+          </ExclusionPeriods>
+          <Timing id="3cc86d3b-4a3b-4dd9-b465-0efc8ea50dd5" name="RecurringTimespanStandardTime" useLocal="false" startFrom="2015-09-30T05:38:56.060505Z">
+            <Timespan value="PT12H" />
+          </Timing>
+        </Timing>
+      </getAllEntities>
+      <polling>
+        <Timing id="607e013e-81a1-4a4a-b2a5-22582474a666" name="DailyExclusion" useLocal="true">
+          <ExclusionPeriods>
+            <ExclusionPeriod daysExclusionApplies="Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday" start="PT1S" end="PT6H" />
+          </ExclusionPeriods>
+          <Timing id="38fb4e8e-25a2-4a2c-b37b-4a234d3f74ed" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2015-09-30T05:38:56Z">
+            <Timespan value="PT1M" />
+          </Timing>
+        </Timing>
+      </polling>
+    </connectorconfiguration>
+    <connectorconfiguration>
+      <connector id="f80fd592-3eb2-4734-992e-2a28955ad3a7" connector="Unify.Connectors.PeopleSoft.Email" name="PeopleSoft Email Connector" queueMissed="false" enabled="true" auditLevel="None" image="5c500992-47bd-4de9-967d-e55656d5596e">
+        <entitySchema>
+          <field name="EmplId" key="true" readonly="false" required="true" validator="string" id="7a0c0a2d-f744-4fc4-bdbb-5b3a727573b0">
+            <Extended />
+          </field>
+          <field name="EmailType" key="true" readonly="false" required="true" validator="string" id="b7588331-674c-4fad-a3b4-9866cb535bd8">
+            <Extended />
+          </field>
+          <field name="EmailId" key="false" readonly="false" required="false" validator="string" id="caa8e58a-6999-4535-9057-d63b9b47726d">
+            <Extended />
+          </field>
+          <field name="Class" key="false" readonly="false" required="true" validator="string" id="71ad7e53-f795-4408-8e9e-cb2ecf68f721">
+            <Extended />
+          </field>
+        </entitySchema>
+        <Extended />
+        <Groups>
+          <Group id="dfebe9b2-2bc1-41a4-b29d-86c441b53601" />
+          <Group id="fc0d14b9-e3e4-4970-9f91-73455e0ff332" />
+        </Groups>
+        <Agents>
+          <Agent id="d63ed5cf-d1d7-4d59-9bf6-8ddcbc37ff7d" type="PeopleSoft" />
+        </Agents>
+      </connector>
+      <getAllEntities>
+        <Timing id="5eba5d22-9a82-4304-8015-078774d09fa0" name="DailyExclusion" useLocal="true">
+          <ExclusionPeriods>
+            <ExclusionPeriod daysExclusionApplies="Sunday" start="PT1S" end="PT6H" />
+          </ExclusionPeriods>
+          <Timing id="114ef622-4fb3-4e63-82ed-8868f5a26482" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2015-09-30T05:38:56Z">
+            <Timespan value="PT2H" />
+          </Timing>
+        </Timing>
+      </getAllEntities>
+      <polling />
+    </connectorconfiguration>
+    <connectorconfiguration>
+      <connector id="2030b82b-bce1-40dd-a1ee-09c9f0dc66c6" connector="Unify.Connectors.PeopleSoft.Grade" name="PeopleSoft Grade Connector" queueMissed="false" enabled="true" auditLevel="None" image="5c500992-47bd-4de9-967d-e55656d5596e">
+        <entitySchema>
+          <field name="KeyHash" key="true" readonly="false" required="false" validator="int" id="b86107f6-022e-475d-b67e-c95c4188859c">
+            <Extended />
+          </field>
+          <field name="SetId" key="false" readonly="false" required="true" validator="string" id="e41179d7-3bdc-4cd8-9d6e-211758925544">
+            <Extended />
+          </field>
+          <field name="SalAdminPlan" key="false" readonly="false" required="true" validator="string" id="8bbde517-267f-4b5e-bb5c-c3d8e2d4e3f9">
+            <Extended />
+          </field>
+          <field name="Grade" key="false" readonly="false" required="true" validator="string" id="193bd852-729f-459f-b314-57b3ea860734">
+            <Extended />
+          </field>
+          <field name="Effdt" key="false" readonly="false" required="true" validator="date" id="72ee4d61-2fda-4b30-aa16-dd859c16b2a6">
+            <Extended />
+          </field>
+          <field name="Description" key="false" readonly="false" required="false" validator="string" id="d9cb154a-9c23-4876-a671-128e026a666d">
+            <Extended />
+          </field>
+          <field name="DescriptionShort" key="false" readonly="false" required="false" validator="string" id="ced8c5b3-9811-490b-a7b4-01e8ad0cfb32">
+            <Extended />
+          </field>
+          <field name="Class" key="false" readonly="false" required="false" validator="string" id="9525a07c-6944-40ec-afbd-4b6c27adb30b">
+            <Extended />
+          </field>
+        </entitySchema>
+        <Extended />
+        <Groups>
+          <Group id="dfebe9b2-2bc1-41a4-b29d-86c441b53601" />
+          <Group id="fc0d14b9-e3e4-4970-9f91-73455e0ff332" />
+        </Groups>
+        <Agents>
+          <Agent id="d63ed5cf-d1d7-4d59-9bf6-8ddcbc37ff7d" type="PeopleSoft" />
+        </Agents>
+      </connector>
+      <getAllEntities>
+        <Timing id="9bfe3642-579c-40b6-8ab7-285f8d6579f7" name="DailyExclusion" useLocal="false">
+          <ExclusionPeriods>
+            <ExclusionPeriod start="PT1S" end="PT6H" />
+          </ExclusionPeriods>
+          <Timing id="18130f89-c080-497a-9b1e-1647be87bcd1" name="RecurringTimespanStandardTime" useLocal="false" startFrom="2015-09-30T05:38:56.060505Z">
+            <Timespan value="PT12H" />
+          </Timing>
+        </Timing>
+      </getAllEntities>
+      <polling />
+    </connectorconfiguration>
+    <connectorconfiguration>
+      <connector id="0857ec4c-9916-47e7-89a7-bd797f9a0a85" connector="Unify.Connectors.PeopleSoft.Job" name="PeopleSoft Job Connector" queueMissed="false" enabled="true" auditLevel="None" image="5c500992-47bd-4de9-967d-e55656d5596e">
+        <entitySchema>
+          <field name="KeyHash" key="true" readonly="false" required="false" validator="int" id="2374680f-cc4d-4d8b-b2d2-9eb479eb270f">
+            <Extended xmlns="" />
+          </field>
+          <field name="EmplId" key="false" readonly="false" required="true" validator="string" id="3f25517e-5cc8-4572-952f-ec41cfc59f33">
+            <Extended xmlns="" />
+          </field>
+          <field name="EmplRcd" key="false" readonly="false" required="true" validator="string" id="d150fe22-ce28-4eee-8712-e6f5ccff2cd6">
+            <Extended xmlns="" />
+          </field>
+          <field name="Effdt" key="true" readonly="false" required="true" validator="date" id="ed57bcfd-fd15-4f9f-9eea-2addf80fb505">
+            <Extended xmlns="" />
+          </field>
+          <field name="EffSeq" key="false" readonly="false" required="true" validator="string" id="0745766a-07ea-4f8c-acea-71aad98014ff">
+            <Extended xmlns="" />
+          </field>
+          <field name="Descr" key="false" readonly="false" required="false" validator="string" id="6ed807c8-bc74-4ea1-bd7e-e7e313cd36d8">
+            <Extended xmlns="" />
+          </field>
+          <field name="JobIndicator" key="false" readonly="false" required="true" validator="string" id="8bd901f9-a6ed-46e7-ad99-ed1e13648ca5">
+            <Extended xmlns="" />
+          </field>
+          <field name="ExpectedEndDate" key="false" readonly="false" required="false" validator="date" id="0af0fe10-6564-44e6-ae55-cb9660468e4b">
+            <Extended xmlns="" />
+          </field>
+          <field name="PerOrg" key="false" readonly="false" required="false" validator="string" id="f0b00102-65a8-4f83-9743-16bf665efa15">
+            <Extended xmlns="" />
+          </field>
+          <field name="DeptId" key="false" readonly="false" required="false" validator="string" id="2cae1809-c323-46f5-81ba-1718368bd80b">
+            <Extended xmlns="" />
+          </field>
+          <field name="PositionNbr" key="false" readonly="false" required="false" validator="string" id="4166e3b9-34b2-463e-8a1b-04bb3efb6ee1">
+            <Extended xmlns="" />
+          </field>
+          <field name="EmplStrng" key="false" readonly="false" required="false" validator="string.multi" id="5aed2880-c6b5-4613-a058-a0f8acec2c33">
+            <Extended xmlns="" />
+          </field>
+          <field name="HrStatus" key="false" readonly="false" required="false" validator="string" id="d38886a7-2d9b-448e-9c67-79f7c0564160">
+            <Extended xmlns="" />
+          </field>
+          <field name="ApptType" key="false" readonly="false" required="false" validator="string" id="dead4cc8-32d7-473d-bdd4-351cdd9f8ef7">
+            <Extended xmlns="" />
+          </field>
+          <field name="Location" key="false" readonly="false" required="false" validator="string" id="b728a0cf-bf4f-475d-845a-0b6eca8919ab">
+            <Extended xmlns="" />
+          </field>
+          <field name="FullPartTime" key="false" readonly="false" required="false" validator="string" id="096eebff-420a-45d1-a0c2-a9c179085c0b">
+            <Extended xmlns="" />
+          </field>
+          <field name="StdHours" key="false" readonly="false" required="false" validator="decimal" id="247bbb7e-c6c9-448c-8660-c33f79ed6832">
+            <Extended xmlns="" />
+          </field>
+          <field name="SalAdminPlan" key="false" readonly="false" required="false" validator="string" id="9a0e638a-3d1b-4d33-9972-cce00ca53b8b">
+            <Extended xmlns="" />
+          </field>
+          <field name="Grade" key="false" readonly="false" required="false" validator="string" id="9dc99757-9493-4d54-8d38-5a6be2c4c579">
+            <Extended xmlns="" />
+          </field>
+          <field name="LastUpDoPrid" key="false" readonly="false" required="false" validator="string" id="102e2421-bbb1-46f5-a41b-e77607737961">
+            <Extended xmlns="" />
+          </field>
+          <field name="Class" key="false" readonly="false" required="false" validator="string" id="99e09ae4-12af-4e05-95f1-e0565f3e8cf4">
+            <Extended xmlns="" />
+          </field>
+          <field name="BusinessTitle" key="false" readonly="false" required="false" validator="string" id="0b14d9dd-01b7-4f40-ae8c-6f8f9b611914">
+            <Extended xmlns="" />
+          </field>
+          <field name="LastUpdDttm" key="false" readonly="false" required="false" validator="string" id="d980d9e0-a57e-4064-8404-6b7cf4075d7a">
+            <Extended xmlns="" />
+          </field>
+          <field name="SupervisorId" key="false" readonly="false" required="false" validator="string" id="cdb8e6b3-c026-4bcf-87c9-00eea292d5df">
+            <Extended xmlns="" />
+          </field>
+        </entitySchema>
+        <Extended />
+        <Groups>
+          <Group id="dfebe9b2-2bc1-41a4-b29d-86c441b53601" />
+          <Group id="fc0d14b9-e3e4-4970-9f91-73455e0ff332" />
+        </Groups>
+        <Agents>
+          <Agent id="d63ed5cf-d1d7-4d59-9bf6-8ddcbc37ff7d" type="PeopleSoft" />
+        </Agents>
+      </connector>
+      <getAllEntities>
+        <Timing id="f2c67594-1065-4c73-abce-b2662bcc8e55" name="DailyExclusion" useLocal="true">
+          <ExclusionPeriods>
+            <ExclusionPeriod daysExclusionApplies="Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday" start="PT1S" end="PT6H" />
+          </ExclusionPeriods>
+          <Timing id="e37f15d0-7444-45a3-8a1c-bf65b19f4a89" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2023-03-02T11:23:58Z">
+            <Timespan value="PT10M" />
+          </Timing>
+        </Timing>
+        <Timing id="5955b5d9-20c1-4810-aeb7-7bf3b7dbbbe7" name="DailyExclusion" useLocal="true">
+          <ExclusionPeriods>
+            <ExclusionPeriod daysExclusionApplies="Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday" start="PT1S" end="PT6H" />
+          </ExclusionPeriods>
+          <Timing id="5c54bb66-c8d2-48b3-a8d5-65e30426df85" name="Expiry" expires="2023-03-02T17:24:06Z" useLocal="true">
+            <Timing id="c5eabe28-9b83-417e-900d-dd97a6bfa77f" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2025-09-30T05:38:56Z">
+              <Timespan value="PT10M" />
+            </Timing>
+          </Timing>
+        </Timing>
+      </getAllEntities>
+      <polling>
+        <Timing id="c68f2d41-a8c1-4402-b099-fb5b6cb61b61" name="DailyExclusion" useLocal="true">
+          <ExclusionPeriods>
+            <ExclusionPeriod daysExclusionApplies="Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday" start="PT0S" end="PT6H" />
+          </ExclusionPeriods>
+          <Timing id="20de6ede-3342-4d90-9a4f-daaad5cd912e" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2023-03-02T12:56:30Z">
+            <Timespan value="PT1M" />
+          </Timing>
+        </Timing>
+        <Timing id="5e09f075-276b-4929-987c-d294c2ad687c" name="DailyExclusion" useLocal="true">
+          <ExclusionPeriods>
+            <ExclusionPeriod daysExclusionApplies="Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday" start="PT1S" end="PT6H" />
+          </ExclusionPeriods>
+          <Timing id="8b560a36-139a-4ac2-a37f-489bbbe7c399" name="Expiry" expires="2023-03-02T17:24:19Z" useLocal="true">
+            <Timing id="64cf7dcc-315e-4a0b-bdcf-73372d8e843f" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2025-09-30T05:38:56Z">
+              <Timespan value="PT1M" />
+            </Timing>
+          </Timing>
+        </Timing>
+      </polling>
+    </connectorconfiguration>
+    <connectorconfiguration>
+      <connector id="e2d6eaf0-a409-448d-a557-0131f8394aa7" connector="Unify.Connectors.PeopleSoft.Department" name="PeopleSoft Department Connector" queueMissed="false" enabled="true" auditLevel="None" image="5c500992-47bd-4de9-967d-e55656d5596e">
+        <entitySchema>
+          <field name="KeyHash" key="true" readonly="false" required="false" validator="int" id="797735b0-65cd-41ca-8ca2-894c5eef6cc8">
+            <Extended />
+          </field>
+          <field name="SetId" key="false" readonly="false" required="true" validator="string" id="4c41b8e4-3a96-4584-b2d4-2e1289e97568">
+            <Extended />
+          </field>
+          <field name="DeptId" key="false" readonly="false" required="true" validator="string" id="7e8dbb11-cf97-4bf4-b0a6-97af55ef29d2">
+            <Extended />
+          </field>
+          <field name="Effdt" key="false" readonly="false" required="true" validator="date" id="ed34ca3b-0e61-4ec7-a956-04a377d6bd3e">
+            <Extended />
+          </field>
+          <field name="Description" key="false" readonly="false" required="false" validator="string" id="730e5869-3bb2-4dc2-a95b-6f321d5ea353">
+            <Extended />
+          </field>
+          <field name="DescriptionShort" key="false" readonly="false" required="false" validator="string" id="68813284-4dca-4938-b959-428218f867da">
+            <Extended />
+          </field>
+          <field name="Class" key="false" readonly="false" required="false" validator="string" id="1cd8b32c-43d1-457e-bb96-edd093e6560a">
+            <Extended />
+          </field>
+        </entitySchema>
+        <Extended />
+        <Groups>
+          <Group id="dfebe9b2-2bc1-41a4-b29d-86c441b53601" />
+          <Group id="fc0d14b9-e3e4-4970-9f91-73455e0ff332" />
+        </Groups>
+        <Agents>
+          <Agent id="d63ed5cf-d1d7-4d59-9bf6-8ddcbc37ff7d" type="PeopleSoft" />
+        </Agents>
+      </connector>
+      <getAllEntities>
+        <Timing id="9364ee96-fb75-478e-ab7b-dddaaead7cbe" name="DailyExclusion" useLocal="false">
+          <ExclusionPeriods>
+            <ExclusionPeriod start="PT1S" end="PT6H" />
+          </ExclusionPeriods>
+          <Timing id="55e50246-7dcd-41f6-83c1-6fb9dbb4bc9a" name="RecurringTimespanStandardTime" useLocal="false" startFrom="2015-09-30T05:38:56.0761049Z">
+            <Timespan value="PT12H" />
+          </Timing>
+        </Timing>
+      </getAllEntities>
+      <polling />
+    </connectorconfiguration>
+    <connectorconfiguration>
+      <connector id="8e1154f8-3336-4641-9627-8455b0dc905f" connector="Unify.Connectors.Direct" name="SAS2IDM Broker" queueMissed="true" enabled="true" auditLevel="None" image="5381aca8-3728-429f-9f29-98980aa487a2">
+        <entitySchema>
+          <field name="SchoolID" key="true" readonly="true" required="true" validator="string" id="5194764f-fc42-44ac-a562-b6a0ed2de578">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="StudentID" key="true" readonly="true" required="true" validator="int" id="e7cf12c3-dc48-4516-888d-1f2ec7bd9f93">
+            <Extended xmlns="" />
+          </field>
+          <field name="Code" key="false" readonly="true" required="false" validator="string" id="cd0528a9-4f7f-4582-bb0c-5397c6c44754">
+            <Extended maxLength="20" xmlns="" />
+          </field>
+          <field name="FirstName" key="false" readonly="true" required="false" validator="string" id="c80a2e7e-f445-42b3-8f94-bb3f5d77e101">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="MiddleName" key="false" readonly="true" required="false" validator="string" id="5791e220-269e-457c-859d-3f572244e182">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="LastName" key="false" readonly="true" required="false" validator="string" id="20eeede3-9dad-4295-8ddb-ec7682d445ea">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="PreferredName" key="false" readonly="true" required="false" validator="string" id="3967ab8e-7ed9-4495-a84f-f24b85adac0c">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="NName" key="false" readonly="true" required="false" validator="string" id="44839749-7bd5-4030-9d21-0c1ea643a1c7">
+            <Extended maxLength="255" xmlns="" />
+          </field>
+          <field name="FormerName" key="false" readonly="true" required="false" validator="string" id="f399491e-5573-43e5-9eba-f0235527022d">
+            <Extended maxLength="255" xmlns="" />
+          </field>
+          <field name="Sex" key="false" readonly="true" required="false" validator="string" id="51926941-82b7-4ae7-9470-b674206d43c7">
+            <Extended maxLength="1" xmlns="" />
+          </field>
+          <field name="DOB" key="false" readonly="true" required="false" validator="timestamp" id="4b5e65be-066e-4b71-9f15-ad084659948b">
+            <Extended xmlns="" />
+          </field>
+          <field name="Year" key="false" readonly="true" required="false" validator="string" id="52024888-42e4-4772-8a0f-733b68a42faf">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="Class" key="false" readonly="true" required="false" validator="string" id="165143c8-091c-4613-a2c1-25121326fcd2">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="HomeGroup" key="false" readonly="true" required="false" validator="string" id="b4229f79-a53b-42aa-8d0f-e9667d58afb1">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="House" key="false" readonly="true" required="false" validator="string" id="6f20025a-ee51-4428-b685-7a1c0e526217">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="AddressID" key="false" readonly="true" required="false" validator="int" id="1cd024c5-c75d-4aab-8b21-71a44dfa5d60">
+            <Extended xmlns="" />
+          </field>
+          <field name="Address1" key="false" readonly="true" required="false" validator="string" id="7a3bacd2-0d4e-4769-9132-7547620bc4e1">
+            <Extended maxLength="100" xmlns="" />
+          </field>
+          <field name="Address2" key="false" readonly="true" required="false" validator="string" id="6e764c8e-d75c-42ad-af4d-2d934f973ba8">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="Address3" key="false" readonly="true" required="false" validator="string" id="c8becbe6-4c5a-4b53-8d63-c1ddfc315e0d">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="PostCode" key="false" readonly="true" required="false" validator="string" id="6d877c23-2bae-47dc-87c4-334f40c0e6b9">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="Country" key="false" readonly="true" required="false" validator="string" id="e6f431ed-3a1f-4f7a-8375-86b706e6209c">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="Email" key="false" readonly="true" required="false" validator="string" id="c3a2e852-782f-4517-95c2-a613264b3541">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="PhoneFamily" key="false" readonly="true" required="false" validator="string" id="8c7821cc-a709-4865-a5b5-8bee92b178bd">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="PhoneHome" key="false" readonly="true" required="false" validator="string" id="c5e4113d-157f-4492-923a-8765e90e32a9">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="PhoneMobile" key="false" readonly="true" required="false" validator="string" id="251ed67f-73ac-49e1-b0e1-7790ce00de27">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="StartYear" key="false" readonly="true" required="false" validator="string" id="08f85c27-fcf0-4d09-b017-ca867ed06495">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="StartDate" key="false" readonly="true" required="false" validator="timestamp" id="5f34fc94-63b5-49ca-a745-fe104a2cae72">
+            <Extended xmlns="" />
+          </field>
+          <field name="Deceased" key="false" readonly="true" required="false" validator="string" id="af6c75dd-630d-4055-a9e4-3d2f60573678">
+            <Extended maxLength="1" xmlns="" />
+          </field>
+          <field name="StudentType" key="false" readonly="true" required="false" validator="string" id="fafc9661-8bcb-4a2e-9773-ff920f5799de">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="DateLeft" key="false" readonly="true" required="false" validator="timestamp" id="a5d526c7-da65-4c4b-8541-435944bd3e9f">
+            <Extended xmlns="" />
+          </field>
+          <field name="ReasonLeft" key="false" readonly="true" required="false" validator="string" id="867db9f0-31ee-419f-9e7e-21c82f138e0f">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="CandidateNumber" key="false" readonly="true" required="false" validator="string" id="f1551099-e73e-41b6-910b-bb038c7ab280">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="AlumniType" key="false" readonly="true" required="false" validator="string" id="3151e3c2-6f27-41ed-8f55-3f784d3fa4ad">
+            <Extended maxLength="1" xmlns="" />
+          </field>
+          <field name="PreEnrolment" key="false" readonly="true" required="false" validator="string" id="405e5467-71ab-4b3e-b26f-fdefc120bcf0">
+            <Extended maxLength="1" xmlns="" />
+          </field>
+          <field name="Archive" key="false" readonly="true" required="false" validator="string" id="54886685-442c-453a-9a8b-dd735b36c011">
+            <Extended maxLength="1" xmlns="" />
+          </field>
+          <field name="UniversalIdentificationNumber" key="false" readonly="true" required="true" validator="string" id="1b4e8e5d-475a-43b8-9643-38ebb9288615">
+            <Extended maxLength="20" xmlns="" />
+          </field>
+          <field name="Mailsuffix" key="false" readonly="true" required="false" validator="string" id="48e9894f-0e99-46fc-9922-cb610c200a15">
+            <Extended maxLength="50" xmlns="" />
+          </field>
+          <field name="PhysicaldeliveryOfficeName" key="false" readonly="true" required="false" validator="string" id="3f1baf49-f340-4cbe-9c36-86afdfc721ba">
+            <Extended maxLength="20" xmlns="" />
+          </field>
+          <field name="CeIder" key="false" readonly="false" required="false" validator="string" id="358901af-10e1-41ba-beef-4ca344b85c81">
+            <Extended />
+          </field>
+        </entitySchema>
+        <Extended>
+          <communicator owner="dbo" table="AllSAS2IDMStudents" readThreshold="1000" />
+        </Extended>
+        <Groups>
+          <Group id="a51e9ff0-43fb-4769-b362-48e39ae3b2e7" />
+          <Group id="b0999a8d-6343-4e9a-a44a-760c690054c8" />
+        </Groups>
+        <Agents>
+          <Agent id="d5165a48-75c6-4f6a-b60a-a7306967f9c5" type="DatabaseAgent" />
+        </Agents>
+      </connector>
+      <getAllEntities>
+        <Timing id="234fc4c3-e85f-4069-a367-7a122e975943" name="DayExclusion" daysToExclude="Sunday,Saturday" useLocal="true">
+          <Timing id="7309a03a-a02b-4ef1-98bb-0b1e9c6657bf" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2023-01-16T17:40:43Z">
+            <Timespan value="PT10M" />
+          </Timing>
+        </Timing>
+      </getAllEntities>
+      <polling />
+    </connectorconfiguration>
+    <connectorconfiguration>
+      <connector id="89970c26-44e5-434a-954d-8361ffcfcc3f" connector="Unify.Connectors.Direct" name="SAS2IDM Google Contacts" queueMissed="true" enabled="true" auditLevel="None" image="5381aca8-3728-429f-9f29-98980aa487a2">
+        <entitySchema>
+          <field name="contactID" key="true" readonly="true" required="true" validator="string" id="ad4b113c-e781-447b-a314-8d4239978cce">
+            <Extended maxLength="100" xmlns="" />
+          </field>
+          <field name="contactName" key="false" readonly="true" required="true" validator="string" id="252b17fb-18fe-4818-9ac3-5f29fd0fcb3a">
+            <Extended maxLength="100" xmlns="" />
+          </field>
+          <field name="contactEmailStaff" key="false" readonly="true" required="true" validator="string" id="bd553e00-5931-45f3-a435-7c188d00c1e3">
+            <Extended maxLength="100" xmlns="" />
+          </field>
+          <field name="SchoolID" key="false" readonly="true" required="false" validator="string" id="1c1a0d55-9aea-463c-988a-4643a6a61c83">
+            <Extended maxLength="100" xmlns="" />
+          </field>
+          <field name="contactCount" key="false" readonly="true" required="true" validator="int" id="e9f0ca4e-3597-4fcc-b5be-9e54f5319ddb">
+            <Extended xmlns="" />
+          </field>
+        </entitySchema>
+        <Extended>
+          <communicator owner="dbo" table="GoogleGroupContacts" readThreshold="1000" />
+        </Extended>
+        <Groups>
+          <Group id="a51e9ff0-43fb-4769-b362-48e39ae3b2e7" />
+          <Group id="b0999a8d-6343-4e9a-a44a-760c690054c8" />
+        </Groups>
+        <Agents>
+          <Agent id="d5165a48-75c6-4f6a-b60a-a7306967f9c5" type="DatabaseAgent" />
+        </Agents>
+      </connector>
+      <getAllEntities>
+        <Timing id="0a2ffb46-d6e4-40c9-83e1-ed043397d9d8" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2015-09-28T15:43:26Z">
+          <Timespan value="PT1H" />
+        </Timing>
+      </getAllEntities>
+      <polling />
+    </connectorconfiguration>
+    <connectorconfiguration>
+      <connector id="539a9f50-8dc8-4e8a-87c8-623b6ee59019" connector="Unify.Connectors.Direct" name="SAS2IDM Student Ex" queueMissed="true" enabled="true" auditLevel="None">
+        <entitySchema>
+          <field name="SchoolID" key="false" readonly="false" required="true" validator="string" id="fc0febad-9a3b-4c41-b9c2-e85b5a67491d">
+            <Extended />
+          </field>
+          <field name="StudentID" key="false" readonly="false" required="true" validator="int" id="4cac52e0-0f23-4e60-8621-88aa98d96996">
+            <Extended />
+          </field>
+          <field name="CeIder" key="true" readonly="false" required="true" validator="string" id="369af5e8-80bc-43af-9c8d-01cb111afba9">
+            <Extended />
+          </field>
+          <field name="UniversalIdentificationNumber" key="false" readonly="false" required="true" validator="string" id="eca1b3e4-9a06-447d-b249-743e086de20a">
+            <Extended />
+          </field>
+        </entitySchema>
+        <Extended>
+          <communicator owner="dbo" table="SAS2IDMStudentEx" readThreshold="1000" />
+        </Extended>
+        <Groups>
+          <Group id="b0999a8d-6343-4e9a-a44a-760c690054c8" />
+        </Groups>
+        <Agents>
+          <Agent id="d5165a48-75c6-4f6a-b60a-a7306967f9c5" type="DatabaseAgent" />
+        </Agents>
+      </connector>
+      <getAllEntities>
+        <Timing id="4b818ee5-d9a7-4f6a-bf09-ee812c7ec3b6" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2017-04-20T12:24:09Z">
+          <Timespan value="PT3M30S" />
+        </Timing>
+      </getAllEntities>
+      <polling />
+    </connectorconfiguration>
+    <connectorconfiguration>
+      <connector id="90bc034f-b792-4df0-8a74-6259f56504b5" connector="Unify.Connectors.PowerShell" name="MIM School Sites" queueMissed="true" enabled="true" auditLevel="None">
+        <entitySchema>
+          <field name="csoSiteCode" key="true" readonly="true" required="true" validator="string" id="d3a1fa87-89f5-49bd-99ef-dc38e9b3c78b">
+            <Extended xmlns="" />
+          </field>
+          <field name="DisplayName" key="false" readonly="true" required="true" validator="string" id="531ed2a0-31c0-4a5d-9f79-3fd5d3290257">
+            <Extended xmlns="" />
+          </field>
+          <field name="Description" key="false" readonly="true" required="false" validator="string" id="a0b8100c-0acc-46d5-a625-07dcd82af8a6">
+            <Extended xmlns="" />
+          </field>
+          <field name="PhysicalDeliveryOfficeName" key="false" readonly="true" required="true" validator="string" id="704905b1-8639-4381-9b26-74447422650c">
+            <Extended xmlns="" />
+          </field>
+          <field name="Address1" key="false" readonly="true" required="false" validator="string" id="276654d8-cea3-44b2-a9e7-ec266bbcf96b">
+            <Extended xmlns="" />
+          </field>
+          <field name="Address2" key="false" readonly="true" required="false" validator="string" id="20326d67-23eb-44dd-8fb7-ce894fd03776">
+            <Extended xmlns="" />
+          </field>
+          <field name="Address3" key="false" readonly="true" required="false" validator="string" id="290ca290-6a9b-4142-ac37-b3de53bd5e1c">
+            <Extended xmlns="" />
+          </field>
+          <field name="PostalCode" key="false" readonly="true" required="false" validator="string" id="5ca20515-0e42-4d4d-9d1c-002078738787">
+            <Extended xmlns="" />
+          </field>
+          <field name="isMigrated" key="false" readonly="true" required="false" validator="string" id="660cc1e8-f493-42eb-bd93-a9c43a19d959">
+            <Extended xmlns="" />
+          </field>
+          <field name="Mailsuffix" key="false" readonly="true" required="false" validator="string" id="be00dbcd-1fa2-4f50-8d21-43e78eca6ba0">
+            <Extended xmlns="" />
+          </field>
+        </entitySchema>
+        <Extended GetAllEntities="# Full import&#xD;&#xA;&#xD;&#xA;[bool]$DebugMode = $false&#xD;&#xA;if (!(Get-Module LithnetRMA)) {&#xD;&#xA;    Import-Module LithnetRMA | Out-Null&#xD;&#xA;}&#xD;&#xA;Set-ResourceManagementClient -BaseAddress http://occcp-im201:5725;&#xD;&#xA;#[string]$xpath = &quot;/csoDepartment&quot;&#xD;&#xA;[string]$xpath = &quot;/csoSite[starts-with(DisplayName,'S____')]&quot;&#xD;&#xA;$sites = Search-Resources -XPath $xpath -AttributesToGet @(&quot;DisplayName&quot;,&quot;csoDeptID&quot;,&quot;Description&quot;,&quot;Address1&quot;,&quot;Address2&quot;,&quot;Address3&quot;,&quot;PostalCode&quot;,&quot;csoSiteCode&quot;,&quot;isMigrated&quot;,&quot;Mailsuffix&quot;)&#xD;&#xA;if ($sites) {&#xD;&#xA;$sites | Foreach-Object {&#xD;&#xA;        if ($DebugMode) {&#xD;&#xA;            &quot;DisplayName: [$($_.DisplayName)], csoSiteCode: [$($_.csoSiteCode)], PostalCode: [$($_.PostalCode)], Address1: [$($_.Address1)], Address2: [$($_.Address2)], Address3: [$($_.Address3)], isMigrated: [$($_.isMigrated)], Mailsuffix: [$($_.Mailsuffix)]&quot;&#xD;&#xA;        } else {&#xD;&#xA;            if($_.csoSiteCode){&#xD;&#xA;                $entity = $entities.Create();&#xD;&#xA;                $entity['DisplayName'] = $_.DisplayName;&#xD;&#xA;                $entity['csoSiteCode'] = $_.csoSiteCode;&#xD;&#xA;                $entity['Description'] = $_.Description;&#xD;&#xA;                $entity['Address1'] = $_.Address1;&#xD;&#xA;                $entity['Address2'] = $_.Address2;&#xD;&#xA;                $entity['Address3'] = $_.Address3;&#xD;&#xA;                $entity['PostalCode'] = $_.PostalCode;&#xD;&#xA;                $entity['PhysicalDeliveryOfficeName'] = $_.DisplayName;&#xD;&#xA;                $entity['Mailsuffix'] = $_.Mailsuffix;&#xD;&#xA;                $entity['isMigrated'] = $_.isMigrated;&#xD;&#xA;                $entity.Commit();&#xD;&#xA;            }&#xD;&#xA;        }&#xD;&#xA;    }&#xD;&#xA;}" AddEntities="foreach ($entity in $components.InputEntities) {  }" UpdateEntities="foreach ($entity in $components.InputEntities) {  }" DeleteEntities="foreach ($entity in $components.InputKeys) {  }" DeleteAllEntities="#" GetSchema="New-Field 'csoSiteCode' 'string' $true $true $true; # name type key read-only required&#xD;&#xA;New-Field 'DisplayName' 'string' $false $true $true;&#xD;&#xA;New-Field 'Description' 'string' $false $true $false;&#xD;&#xA;New-Field 'PhysicalDeliveryOfficeName' 'string' $false $true $true;&#xD;&#xA;New-Field 'Address1' 'string' $false $true $false;&#xD;&#xA;New-Field 'Address2' 'string' $false $true $false;&#xD;&#xA;New-Field 'Address3' 'string' $false $true $false;&#xD;&#xA;New-Field 'PostalCode' 'string' $false $true $false;&#xD;&#xA;New-Field 'isMigrated' 'string' $false $true $false;&#xD;&#xA;New-Field 'Mailsuffix' 'string' $false $true $false;" />
+        <Groups>
+          <Group id="26caf163-7ada-45e2-a48f-5d8112fb28d4" />
+        </Groups>
+        <Agents />
+      </connector>
+      <getAllEntities>
+        <Timing id="5cd243c2-211c-491c-a6c5-44b36086a696" name="DayExclusion" daysToExclude="Sunday,Saturday" useLocal="true">
+          <Timing id="69db3945-63da-4699-a79a-9a765d833ed8" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2022-10-13T00:12:03Z">
+            <Timespan value="PT3H30M" />
+          </Timing>
+        </Timing>
+      </getAllEntities>
+      <polling />
+    </connectorconfiguration>
+    <connectorconfiguration>
+      <connector id="191f86b4-7db9-437b-9b88-f847c71b1750" connector="Unify.Connectors.PowerShell" name="MIM Staff Departments" queueMissed="true" enabled="true" auditLevel="None">
+        <entitySchema>
+          <field name="EmployeeID" key="true" readonly="true" required="true" validator="string" id="9860fc71-6c5d-4e33-97d5-3a343eeb0bcb">
+            <Extended xmlns="" />
+          </field>
+          <field name="AccountName" key="false" readonly="true" required="true" validator="string" id="dc7420b3-ae1e-4298-83e8-218b062733bf">
+            <Extended xmlns="" />
+          </field>
+          <field name="csoDepartmentCodes" key="false" readonly="true" required="false" validator="string.multi" id="6a9bde28-bf51-4f14-9e12-a17f59f63ddf">
+            <Extended xmlns="" />
+          </field>
+          <field name="csoSiteCodes" key="false" readonly="true" required="false" validator="string.multi" id="3dc87dd0-47cb-4220-87e7-f3a19d0cb8ca">
+            <Extended xmlns="" />
+          </field>
+          <field name="csoDepartmentCodesSV" key="false" readonly="true" required="false" validator="string" id="7ad90feb-1a9f-484f-8dac-39592367bde3">
+            <Extended xmlns="" />
+          </field>
+          <field name="csoSiteCodesSV" key="false" readonly="true" required="false" validator="string" id="6fe6c23f-7b92-4dd8-be6e-e3db44f9ca30">
+            <Extended xmlns="" />
+          </field>
+        </entitySchema>
+        <Extended GetAllEntities="# Full import&#xD;&#xA;&#xD;&#xA;[bool]$DebugMode = $false&#xD;&#xA;if (!(Get-Module LithnetRMA)) {&#xD;&#xA;    Import-Module LithnetRMA | Out-Null&#xD;&#xA;}&#xD;&#xA;Set-ResourceManagementClient -BaseAddress http://occcp-im201:5725;&#xD;&#xA;&#xD;&#xA;[string]$xpath = &quot;/Person[PersonType='Staff' and csoHRStatus='A' and starts-with(EmployeeID,'%')]&quot; #AccountName='catherine.berry1' and liana.stella&#xD;&#xA;$users = @(Search-Resources -XPath $xpath -AttributesToGet @(&quot;AccountName&quot;,&quot;EmployeeID&quot;,&quot;csoSites&quot;,&quot;csoDepartments&quot;))&#xD;&#xA;&#xD;&#xA;$usersHT = @{}&#xD;&#xA;$users | % {&#xD;&#xA;    $xpath = (&quot;/Person[ObjectID='{0}']/csoDepartments&quot; -f $_.ObjectID.Value)&#xD;&#xA;    $csoDepartmentCodes = @(Search-Resources -XPath $xpath -AttributesToGet @(&quot;Description&quot;) | Select &quot;Description&quot;)&#xD;&#xA;    $xpath = (&quot;/Person[ObjectID='{0}']/csoSites&quot; -f $_.ObjectID.Value)&#xD;&#xA;    $csoSiteCodes = @(Search-Resources -XPath $xpath -AttributesToGet @(&quot;DisplayName&quot;) | Select &quot;DisplayName&quot;)&#xD;&#xA;    $usersHT.add($_.ObjectID.Value, @{&quot;AccountName&quot;=$_.AccountName;&quot;EmployeeID&quot;=$_.EmployeeID;&quot;csoDepartmentCodes&quot;=$csoDepartmentCodes;&quot;csoSiteCodes&quot;=$csoSiteCodes;})&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;$usersHT.Keys | % {&#xD;&#xA;    [string]$key = $_&#xD;&#xA;    if ($DebugMode) {&#xD;&#xA;        &quot;AccountName: [$($usersHT.($key).AccountName)], EmployeeID: [$($usersHT.($key).EmployeeID)], csoDepartmentCodes: [$($usersHT.($key).csoDepartmentCodes.Description)], csoSiteCodes: [$($usersHT.($key).csoSiteCodes.DisplayName)]&quot;&#xD;&#xA;    } else {&#xD;&#xA;        $entity = $entities.Create();&#xD;&#xA;        $entity['AccountName'] = $usersHT.($key).AccountName;&#xD;&#xA;        $entity['EmployeeID'] = $usersHT.($key).EmployeeID;&#xD;&#xA;&#xD;&#xA;        $csoDepartmentCodes = @($usersHT.($key).csoDepartmentCodes.Description);&#xD;&#xA;        $entity['csoDepartmentCodes'] = $csoDepartmentCodes;&#xD;&#xA;        #&#xD;&#xA;        $csoDepartmentCodesSV = &quot;&quot;&#xD;&#xA;        foreach($depsv in $csoDepartmentCodes){&#xD;&#xA;            if($csoDepartmentCodesSV.Length -gt 0){&#xD;&#xA;                $csoDepartmentCodesSV = $csoDepartmentCodesSV + '|' + $depsv&#xD;&#xA;            }&#xD;&#xA;            else{&#xD;&#xA;                $csoDepartmentCodesSV = $depsv&#xD;&#xA;            }&#xD;&#xA;        }&#xD;&#xA;        $entity['csoDepartmentCodesSV'] = $csoDepartmentCodesSV;&#xD;&#xA;&#xD;&#xA;        $csoSiteCodes = @($usersHT.($key).csoSiteCodes.DisplayName);&#xD;&#xA;        $entity['csoSiteCodes'] = $csoSiteCodes;&#xD;&#xA;&#xD;&#xA;        #&#xD;&#xA;        $csoSiteCodesSV = &quot;&quot;&#xD;&#xA;        foreach($sitesv in $csoSiteCodes){&#xD;&#xA;            if($csoSiteCodesSV.Length -gt 0){&#xD;&#xA;                $csoSiteCodesSV = $csoSiteCodesSV + '|' + $siteSV&#xD;&#xA;            }&#xD;&#xA;            else{&#xD;&#xA;                $csoSiteCodesSV = $siteSV&#xD;&#xA;            }&#xD;&#xA;        }&#xD;&#xA;        $entity['csoSiteCodesSV'] = $csoSiteCodesSV;&#xD;&#xA;&#xD;&#xA;        $entity.Commit();&#xD;&#xA;    }&#xD;&#xA;}" AddEntities="foreach ($entity in $components.InputEntities) {  }" UpdateEntities="foreach ($entity in $components.InputEntities) {  }" DeleteEntities="foreach ($entity in $components.InputKeys) {  }" DeleteAllEntities="#" GetSchema="New-Field 'EmployeeID' 'string' $true $true $true; # name type key read-only required&#xD;&#xA;New-Field 'AccountName' 'string' $false $true $true;&#xD;&#xA;New-Field 'csoDepartmentCodes' 'string.multi' $false $true $false;&#xD;&#xA;New-Field 'csoSiteCodes' 'string.multi' $false $true $false;&#xD;&#xA;New-Field 'csoDepartmentCodesSV' 'string' $false $true $false;&#xD;&#xA;New-Field 'csoSiteCodesSV' 'string' $false $true $false;" />
+        <Groups>
+          <Group id="26caf163-7ada-45e2-a48f-5d8112fb28d4" />
+        </Groups>
+        <Agents />
+      </connector>
+      <getAllEntities>
+        <Timing id="e2c7bc70-7e45-4e7c-a0bb-40d4fe9a16db" name="DayExclusion" daysToExclude="Sunday,Saturday" useLocal="true">
+          <Timing id="ac93f0ef-332c-4d34-92d8-109c6327b01d" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2022-10-13T00:12:42Z">
+            <Timespan value="PT55M" />
+          </Timing>
+        </Timing>
+      </getAllEntities>
+      <polling />
+    </connectorconfiguration>
+  </connectorconfigurations>
+</ConnectorEngine>

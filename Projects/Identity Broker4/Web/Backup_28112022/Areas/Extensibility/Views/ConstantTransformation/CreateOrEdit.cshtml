@@ -1,0 +1,41 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model ConstantTransformationViewInformation
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "ConstantTransformation", FormMethod.Post),
+        TransformationResources.SaveTransformationButtonText,
+        "SaveTransformationForm",
+        TransformationResources.SaveConstantTransformationButtonAltText
+    ))
+{
+    @Html.TransformationDetailsFor(model => model)
+    
+    <fieldset>
+        
+        @using (Html.MetaDataFor(model => model.Target, new { description = TransformationResources.ConstantTargetDescription }))
+        {
+            @Html.LabelFor(model => model.Target)
+            @Html.TextBoxFor(model => model.Target)
+        }
+        
+        @using (Html.MetaDataFor(model => model.Type, new { description = TransformationResources.ConstantTypeDescription, hideRequired = true }, new { @class = "chzn-form-fieldset-container" }))
+        {
+            var values = (Unify.Framework.ValueType[])Enum.GetValues(typeof(Unify.Framework.ValueType));
+            @Html.LabelFor(model => model.Type)
+            @Html.DropDownListFor(
+                    model => model.Type,
+                    new SelectList(values.Where(value => !value.HasFlag(Unify.Framework.ValueType.MultiValue)), Model.Type),
+                    new { @class = "chzn-select" })
+        }
+        
+        @using (Html.MetaDataFor(model => model.Value, new { description = TransformationResources.ConstantValueDescription }))
+        {
+            @Html.LabelFor(model => model.Value)
+            @Html.TextBoxFor(model => model.Value)
+        }
+
+    </fieldset>
+    
+}

@@ -1,0 +1,13 @@
+﻿@using Unify.Connect.Web.Extensions
+@model LdapSettingsViewInformation
+
+<div>
+    <h2>@SettingControllerResources.LdapSettingTitle</h2>
+    <table class="RightSpaced BottomSpaced VerticalAlignTable">
+        <tr>
+            <td>@SettingControllerResources.LdapSettingsFormEnforceSingleSchemaLabelText</td>
+            <td>@Model.EnforceSingleSchema</td>
+        </tr>
+    </table>
+    @Html.ActionLink(SettingControllerResources.LdapSettingEditBtnText, "EditLdapSettings", "Setting", null, new {@class = "m-btn"})
+</div>

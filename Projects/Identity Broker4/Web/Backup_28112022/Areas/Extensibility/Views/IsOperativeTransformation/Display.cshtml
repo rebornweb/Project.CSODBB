@@ -1,0 +1,17 @@
+﻿@using Unify.Connect.Web
+@model IsOperativeTransformationViewInformation
+
+@{
+    string separator = Model.EndDateInclusive ? ">=" : ">";
+}
+
+<div>
+    <p>
+        IF [@Model.Start] &lt;= @@NOW && [@Model.End] @separator @@NOW<br/>
+        &nbsp;&nbsp;&nbsp;"@Model.IsOperative" -> <span class="TransformationAddedField">[@Model.Target]</span>
+    </p>
+    <p>
+        ELSE<br/>
+        &nbsp;&nbsp;&nbsp;"@Model.IsNotOperative" -> <span class="TransformationAddedField">[@Model.Target]</span>
+    </p>
+</div>

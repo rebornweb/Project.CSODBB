@@ -1,0 +1,63 @@
+﻿@using Unify.Framework.Web
+@model SchemaProviderApplicationViewInformation
+
+@{
+    string anticipatedResultContainerId = string.Concat("AnticipatedResult", Model.ConnectorId);
+    string schemaResultFormContainerId = string.Concat("SchemaResultForm", Model.ConnectorId);
+    string schemaResultContentContainerId = string.Concat("SchemaResultContent", Model.ConnectorId);
+    string loadingImageUrl = Url.WebIcon("Loader.gif");
+}
+
+@using (Html.BeginForm("ApplySchemaProviderResult", "Connector", FormMethod.Post, new {id = schemaResultFormContainerId, @class = "IconForm"}))
+{
+    @Html.HiddenFor(model => model.ConnectorId)
+    @Html.HiddenFor(model => model.DisplayName)
+    if (Model.KnownProviders.Length == 1)
+    {
+        <input type="hidden" value="@Model.KnownProviders.First().FactoryName" name="ProviderName" id="Providers"/>
+    }
+
+    <div id="@schemaResultContentContainerId">
+        @if (Model.KnownProviders.Length > 1)
+        {
+            <label>@("Select Provider:")</label>
+            @Html.DropDownListFor(model => model.ProviderName,
+                new SelectList(
+                    Model.KnownProviders.Select(provider => new SelectListItem
+                    {
+                        Value = provider.FactoryName,
+                        Text = provider.Name
+                    }), "Value", "Text"
+                    ),
+                new {id = "Providers", @class = "chzn-select"})
+        }
+
+        <noscript><input type="submit" value="@ConnectorControllerResources.ApplySchemaSubmitText"/></noscript>
+    </div>
+}
+
+<div id="@anticipatedResultContainerId">
+</div>
+
+<script type="text/javascript">
+    function RefreshResult() {
+        $("#@anticipatedResultContainerId").html('<div align="center" style="padding:0;margin:0;width:auto" class="FaintBorder"><span style="vertical-align:middle;width:auto"><br/><b>Loading...&nbsp;<image src="@loadingImageUrl" /></b></span></div>');
+        $.post("@Url.Action("ApplySchemaProviderResult", "Connector")",
+                $("#@schemaResultFormContainerId").serialize(),
+                function (data) {
+                    $("#@anticipatedResultContainerId").html(data);
+                }
+            );
+    }
+
+    $(document).ready(function () {
+        @if (!Model.KnownProviders.Any())
+        {
+            <text>$("#@schemaResultContentContainerId").hide();</text>
+        }
+        RefreshResult();
+        $("#Providers").change(function () {
+            RefreshResult();
+        });
+    });
+</script>

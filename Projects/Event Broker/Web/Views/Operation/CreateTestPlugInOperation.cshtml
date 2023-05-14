@@ -1,0 +1,22 @@
+﻿@using Unify.EventBroker.Web
+@using Unify.Framework.Web
+@model DefaultPlugInConfigurationInformationView
+@{
+    ViewBag.Title = Html.Title(string.Format(TitleResources.CreatePlugInTitleTemplate, TitleResources.CreateTitleCaption, TitleResources.CreateTestPlugInOperationTitleCaption));
+}
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreatePlugInOperation", "Operation", FormMethod.Post, new { id = "CreateOperationForm" }),
+        OperationControllerResources.CreateButtonValue,
+        "CreateOperationForm",
+        OperationResources.ConfigureOperationAltText, "submitButton"))
+{
+
+    <div>
+        @Html.EditorFor(model => model, "OperationDisplayName")
+        <fieldset>
+            @Html.EditorFor(model => model, "OperationInnerDetails")
+        </fieldset>
+    </div>
+
+}

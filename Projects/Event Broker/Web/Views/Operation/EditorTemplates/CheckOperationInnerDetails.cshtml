@@ -1,0 +1,32 @@
+﻿@model PlugInConfigurationInformationViewBase  
+           
+@using Unify.Framework.Web
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#RetryWaitTimeSpanContainer').unifytimepicker();
+    });
+</script>
+
+@Html.HiddenFor(model => model.OperationListId)
+@Html.HiddenFor(model => model.OperationId)
+@Html.HiddenFor(model => model.ParentOperationId)
+@Html.HiddenFor(model => model.OperationTreeItemType)
+@Html.HiddenFor(model => model.EditMode)
+@Html.HiddenFor(model => model.Id)
+
+<legend>@OperationControllerResources.OperationInformationText</legend>
+
+@using (Html.MetaDataFor(model => model.Retries, new { description = OperationControllerResources.RetriesDescription }))
+{
+    @Html.LabelFor(model => model.Retries, OperationControllerResources.RetriesName)
+    @Html.TextBoxFor(model => model.Retries)
+}
+
+@using (Html.MetaDataFor(model => model.RetryWait, new { description = OperationControllerResources.RetryWaitDescription }))
+{
+    @Html.LabelFor(model => model.RetryWait, OperationControllerResources.RetryWaitName)
+    <span id="RetryWaitTimeSpanContainer">
+        @Html.TextBoxFor(model => model.RetryWait, new { @class = "timepickertexthint" })
+    </span>
+}

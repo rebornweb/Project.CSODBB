@@ -1,0 +1,66 @@
+﻿@model IdentityBrokerChangesPlugInConfigurationViewInformation
+@using Unify.Framework.Web
+
+@{
+    ViewBag.Title = Html.CreatePlugInTitle(Model.CreateOrUpdateText, TitleResources.CreateIdBChangesOperationCaption);
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (!Model.ApplicableAgents.Any())
+{
+    <p>@string.Format(
+        OperationControllerResources.NoApplicableAgentMessageTemplate,
+        OperationControllerResources.PlugInOperationsIdBChangesName,
+        OperationControllerResources.AgentsIdBName)
+
+        @if (Html.IsInRole(UnifyRoles.Write))
+        { 
+            @Html.ActionLink("Create Agent", "Create", "Agents",
+                new { agentType = AgentPlugInNames.IdentityBrokerAgentPlugInName },
+                null)
+        }
+        else
+        {
+            <label>@OperationControllerResources.CreateAgentInsufficientPermissions</label>
+        }
+    </p>
+}
+else
+{
+    using (Html.DecorateForm(
+            () => Html.BeginForm("CreateIdentityBrokerChangesPlugInOperationSelectAdapter", "Operation", FormMethod.Post, new { id = "CreateIDBChangeForm" }),
+            Model.CreateOrUpdateText,
+            "CreateIDBChangeForm",
+            OperationResources.ConfigureOperationAltText,
+            "submitButton"))
+    {
+        <div>
+            @Html.HiddenFor(model => model.OperationListId)
+            @Html.HiddenFor(model => model.OperationId)
+            @Html.HiddenFor(model => model.ParentOperationId)
+            @Html.HiddenFor(model => model.OperationTreeItemType)
+            @Html.HiddenFor(model => model.EditMode)
+            @Html.HiddenFor(model => model.Retries)
+            @Html.HiddenFor(model => model.RetryWait)
+            @Html.HiddenFor(model => model.AdapterId)
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.UseOverride)
+            @Html.HiddenFor(model => model.AdapterIdOverride)
+            @Html.HiddenFor(model => model.DisplayName)
+            
+            @using (Html.MetaDataFor(model => model.AgentId, new {description = OperationControllerResources.SelectAgentDescription}, new { @class = "chzn-container" }))
+            {
+                @Html.CustomTooltipFor(model => model.AgentId, OperationControllerResources.SelectAgentName, OperationControllerResources.SelectAgentName)
+                @Html.DropDownListFor(model => model.AgentId,
+                            new SelectList(
+                                Model.ApplicableAgents,
+                                "Id",
+                                "Name",
+                                Model.ApplicableAgents.Any(agent => agent.Id == Model.AgentId)
+                                ? Model.ApplicableAgents.Where(agent => agent.Id == Model.AgentId).Select(agent => agent).First()
+                                : Model.ApplicableAgents.First()),
+                                new { @class = "chzn-select" })
+            }
+        </div>
+    }
+}

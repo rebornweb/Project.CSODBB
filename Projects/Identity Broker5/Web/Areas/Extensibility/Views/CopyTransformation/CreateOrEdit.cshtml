@@ -1,0 +1,18 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model CopyTransformationViewInformation
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "CopyTransformation", FormMethod.Post),
+        TransformationResources.SaveTransformationButtonText,
+        "SaveCopyTransformationForm",
+        TransformationResources.SaveTransformationButtonAltText
+    ))
+{
+    @Html.TransformationDetailsFor(model => model)
+    
+    <fieldset>
+        @Html.ColumnMappingsFor(model => model)
+    </fieldset>
+}

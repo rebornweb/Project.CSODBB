@@ -1,0 +1,10 @@
+﻿@model TalliedStatisticsJobViewInformationBase
+ 
+@if (Model.LastRunStarted != null)
+{
+    <div>
+        @ConnectorControllerResources.LastRunCountLabel
+        @Model.LastRunCount
+    </div>
+    <br/>
+}

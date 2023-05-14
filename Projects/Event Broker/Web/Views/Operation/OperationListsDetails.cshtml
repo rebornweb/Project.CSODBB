@@ -1,0 +1,92 @@
+﻿@using Unify.Framework
+@using Unify.Framework.Web
+@model Unify.EventBroker.Web.Models.IOperationListWithStatusAndAlertInformation
+@if (Model.OperationLists.Any())
+{
+    <div class="ListedOperationList">
+        <table>
+        @foreach (var operationListAlert in Model.OperationLists.OrderBy(opList => opList.Key.Name))
+        {
+            IOperationListInformation operationList = operationListAlert.Key;
+            AlertInformation alert = operationListAlert.Value;
+            IOperationListStatus status = Model.ClientStatus.OperationListStatuses[operationList.Id];
+            string checkedId = string.Concat("check_", operationList.Id);
+
+            <tr>
+                <td>
+                    @if (Html.IsInRole(UnifyRoles.Write))
+                    {
+                        <span>
+                            <input type="checkbox" id="@checkedId" class="ActionRefreshListener OperationCheckBox" name="ids" value="@operationList.Id.ToString()" />
+                        </span>
+                    }
+                </td>
+                <td>
+                    @if (status.State == OperationListState.Running)
+                    {
+                        <span>
+                            <img src="@Url.WebIcon("Loader.gif")" alt="@OperationControllerResources.RunningAlt" title="@OperationControllerResources.RunningAlt" />
+                        </span>
+                    }
+                </td>
+                <td>
+                    <span>
+                        @if (Html.IsInRole(UnifyRoles.Read))
+                        {
+                            @Html.ActionLink(operationList.Name, "OperationList", new { id = operationList.Id })
+                        }
+                        else
+                        {
+                            @operationList.Name
+                        }
+                    </span>
+                </td>
+                <td>
+                    @Html.FriendlyNextRun(Model.ClientStatus.OperationEngineStatus.SchedulerState, status)
+
+                    @if (Model.GroupId != null && operationList.PriorityGroups.Contains((Guid) Model.GroupId))
+                    {
+                        @GroupControllerResources.PriorityGroupText
+                    }
+                </td>
+                <td>
+                    @if (Html.IsInRole(UnifyRoles.Write) && status.State != OperationListState.Running && !status.Enabled)
+                    {
+                        <a href="@Url.Action("CopyOperationList", "Operation", new {operationListId = operationList.Id})">
+                            <img src="@Url.WebIcon("page_copy.png")" alt="@OperationControllerResources.CopyOperationListAltText" title="@OperationControllerResources.CopyOperationListAltText" />
+                        </a>
+                    }
+                </td>
+                <td>
+                    @if (alert != null)
+                    {
+                        <ul class="Severity @alert.Severity" title="@AlertMessages.ShowShortMessage(alert)"><li>@AlertMessages.ShowShortMessage(alert)</li></ul>
+                    }
+                </td>
+            </tr>
+        }
+        </table>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            // Check box staying checked after refresh
+            $(".OperationCheckBox").each(function () {
+                $(this).on("refreshStart", function (event, arg1) {
+                    $(this).each(function () {
+                        if ($(this).is(':checked')) {
+                            var tempId = $(this).attr("id");
+                            arg1[tempId] = $("#" + tempId);
+                        }
+                    });
+                }).on("refreshStop", function (event, arg1) {
+                    var tempId = $(this).attr("id");
+                    if (arg1[tempId]) $("#" + tempId).attr('checked', 'checked');
+                });
+            });
+        });
+    </script>
+}
+else
+{
+    <p>@OperationControllerResources.NoOperationListsInGroupMessage</p>
+}

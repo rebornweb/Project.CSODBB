@@ -1,0 +1,26 @@
+﻿@using Unify.Framework
+@model SchedulerState
+
+@*TODO: PJ - IDB-260 - Html.IsInRole(IdentityBrokerServiceSecurityRoles.ServiceReadRole))*@
+@*TODO: PJ - IDB-260 - Html.IsInRole(IdentityBrokerServiceSecurityRoles.SchedulerEditRole)*@
+<h2>
+    @HomeControllerResources.SchedulerHeading
+    <span>
+        @if (Model == SchedulerState.Stopped)
+        {
+            using (Html.BeginForm("EnableScheduler", "Home", null, FormMethod.Post, new {@class = "IconForm"}))
+            {
+                <input type="submit" value="@HomeControllerResources.SchedulerEnableBtnText" title="@HomeControllerResources.SchedulerEnableAlt" class="m-btn green mini mini-form" />
+            }
+        }
+        else
+        {
+            using (Html.BeginForm("DisableScheduler", "Home", null, FormMethod.Post, new {@class = "IconForm"}))
+            {
+                <input type="submit" value="@HomeControllerResources.SchedulerDisableBtnText" title="@HomeControllerResources.SchedulerDisableAlt" class="m-btn red mini mini-form" />
+            }
+        }
+    </span>
+</h2>
+
+<p>@HomeControllerResources.SchedulerStateName&nbsp;@Model.ToString()</p>

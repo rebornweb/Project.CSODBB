@@ -1,0 +1,37 @@
+﻿@using Unify.Framework.Web
+@model Guid
+
+@{
+    var route = new { id = Model };
+    var deleteFormId = string.Concat("deleteForm", Model);
+    var deleteButtonId = string.Concat("deleteButton", Model);
+}
+
+
+@if (Html.IsInRole(UnifyRoles.Write))
+{
+    <span>
+        <a href="@Url.Action("Edit", route)">
+            <img title="@GroupControllerResources.FunctionsEditGroupAlt" alt="@GroupControllerResources.FunctionsEditGroupAlt" src="@Url.WebIcon("cog.png")" />
+        </a>
+    </span>
+}
+
+@if (Html.IsInRole(UnifyRoles.Read))
+{
+    <span>
+        <a href="@Url.Action("OperationLists", route)">
+            <img title="@GroupControllerResources.FunctionsEditOperationListMembershipAlt" alt="@GroupControllerResources.FunctionsEditOperationListMembershipAlt" src="@Url.WebIcon("folder_link.png")" />
+        </a>
+    </span>
+}
+
+@if (Html.IsInRole(UnifyRoles.Full))
+{
+    <span>
+        @using (Html.BeginForm("DeleteGroup", "Group", new { id = Model }, FormMethod.Post, new { id = deleteFormId, @class = "Reset, IconForm" }))
+        {
+            <input type="image" id="@deleteButtonId" name="@deleteButtonId" value="@deleteButtonId" src="@Url.WebIcon("delete.png")" class="FormIconAlign" />
+        }
+    </span>
+}

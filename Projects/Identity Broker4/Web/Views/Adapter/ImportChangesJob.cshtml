@@ -1,0 +1,9 @@
+﻿@using Unify.Connect.Web.Extensions
+@model AdapterStatisticsImportChangesJobViewInformation
+
+<h3>@AdapterResources.ImportChangesHeadingText</h3>
+
+<div class="PaddedContent">
+    @Html.DisplayFor(model => model, "TalliedAdapterStatisticsConfiguration")
+    @Html.DisplayFor(model => model, "AdapterStatisticsConfiguration")
+</div>

@@ -1,0 +1,48 @@
+﻿@using Unify.Product.IdentityBroker
+@model CurrentAdapterStates
+
+@if (Model.CurrentDescriptions.Any())
+{
+    Guid? adapterGroupId = Model.GroupId;
+    int adapterCount = Model.SoftLimit;
+    
+    foreach (var adapterDescription in Model.CurrentDescriptions)
+    {
+        IAdapterRemotingConfigurationBase remotingConfiguration = adapterDescription.Configuration;
+        string adapterName = remotingConfiguration.AdapterName;
+        Guid adapterId = remotingConfiguration.AdapterId;
+
+        <div>
+            <table class="RightSpaced">
+                <tr>
+                    <td>
+                        @Html.AdapterImage(adapterId, adapterName)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("AdapterDetails", "Adapter", new { id = adapterId })">@remotingConfiguration.AdapterName</a>
+                    </td>
+                    <td>
+                        @{ Html.RenderAction("AdapterProgress", "Home", new { adapterId });}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    }
+
+    if (Model.CurrentDescriptions.Count() >= adapterCount)
+    {
+        <hr/>
+            
+        <p style="text-align:center">
+            <a href="@Url.Action("Index", "Home", new { adapterGroupId, adapterCount = adapterCount + 10 })">@HomeControllerResources.HomeLoadMoreAdaptersText</a>
+        </p>
+    }
+    else
+    {
+        <br/>
+    }
+}
+else
+{
+    <label>@HomeControllerResources.HomeNoOperationalAdaptersText</label>
+}

@@ -1,0 +1,5 @@
+﻿<ConnectorEngine>
+  <dataConnection name="repository" repository="Unify.IdentityBroker" />
+  <connectorconfigurations>
+  </connectorconfigurations>
+</ConnectorEngine>

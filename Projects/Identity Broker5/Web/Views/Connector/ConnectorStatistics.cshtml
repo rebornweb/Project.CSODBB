@@ -1,0 +1,6 @@
+﻿@using System.Globalization
+@model ConnectorStatisticsOperationInformation
+@ConnectorControllerResources.ConnectorCurrentEntityCountLabel
+<a href="@Url.Action("SearchEntities", "Connector", new { partitionId = Model.ConnectorId, searchContext = IdentityBrokerEntitySearchController.StandardEntitySearchContextKey })">
+    @Model.EntityCount.ToString(CultureInfo.CurrentUICulture)
+</a>

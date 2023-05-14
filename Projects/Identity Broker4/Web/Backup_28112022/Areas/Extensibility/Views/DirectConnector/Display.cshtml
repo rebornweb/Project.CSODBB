@@ -1,0 +1,21 @@
+﻿@using Unify.Connect.Web
+@model DirectConnectorViewInformation
+
+<table class="RightSpaced BottomSpaced VerticalAlignTable">
+    <tr>
+        <td>@ConnectorControllerResources.DirectConnectorAgentLabel</td>
+        <td>@Html.ConnectorAgentLinkFor(Model.AgentId)</td>
+    </tr>
+    <tr>
+        <td>@ConnectorControllerResources.DirectConnectorDisplayOwnerTableLabel</td>
+        <td>@string.Concat(Model.Owner, ".", Model.Table)</td>
+    </tr>
+    <tr>
+        <td>@ConnectorControllerResources.DirectConnectorDisplayReadThresholdLabel</td>
+        <td>@Model.ReadThreshold</td>
+    </tr>
+    <tr>
+        <td>@ConnectorControllerResources.DirectConnectorDisplayReadFilterLabel</td>
+        <td>@Model.Filter</td>
+    </tr>
+</table>

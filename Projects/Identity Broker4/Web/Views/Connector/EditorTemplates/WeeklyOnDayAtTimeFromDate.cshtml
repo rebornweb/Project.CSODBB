@@ -1,0 +1,42 @@
+﻿@using Unify.Framework.Web
+@model WeeklyOnDayAtTimeFromDateViewInformation
+
+<script type="text/javascript">
+    $(function () {
+        $("#WeeklyOnDayAtTimeFromDateViewInformation_StartFromDateTime").datetimepicker(
+            {
+                dateFormat: '@ConnectorControllerResources.DateFormat',
+                timeFormat: '@ConnectorControllerResources.TimeFormat',
+                showSecond: true
+            });
+    });
+	</script>
+
+@{
+    
+    string weeklyOnDateAtTimeFromDateStartDateDescription = string.Format(
+            ConnectorControllerResources.WeeklyOnDayAtTimeFromDateStartDateDescription,
+            ConnectorControllerResources.FriendlyDateFormat,
+            ConnectorControllerResources.FriendlyTimeFormat,
+            ConnectorControllerResources.DateFormatExample,
+            ConnectorControllerResources.TimeFormatExample
+        );
+}
+
+@using (Html.MetaDataFor(model => model.NumberOfWeeks, new { description = ConnectorControllerResources.WeeklyOnDayAtTimeFromDateNumberOfWeeksDescription }))
+{
+    @Html.LabelFor(model => model.NumberOfWeeks, ConnectorControllerResources.WeeklyOnDayAtTimeFromDateNumberOfWeeksName)
+    @Html.TextBoxFor(model => model.NumberOfWeeks)
+}
+
+@using (Html.MetaDataFor(model => model.DayOfWeek, new { description = ConnectorControllerResources.WeeklyOnDayAtTimeFromDateDaysDescription }))
+{
+    @Html.LabelFor(model => model.DayOfWeek, ConnectorControllerResources.WeeklyOnDayAtTimeFromDateDaysName)
+    @Html.EnumDropDownList(model => model.DayOfWeek)
+}
+
+@using (Html.MetaDataFor(model => model.StartFromDateTime, new {description = weeklyOnDateAtTimeFromDateStartDateDescription}))
+{
+    @Html.LabelFor(model => model.StartFromDateTime, ConnectorControllerResources.WeeklyOnDayAtTimeFromDateStartDateName)
+    @Html.EditorFor(model => model.StartFromDateTime)
+}

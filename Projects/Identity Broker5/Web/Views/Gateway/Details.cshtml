@@ -1,0 +1,41 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model GatewayViewInformation
+
+<h1>
+    @Model.DisplayName
+    @Html.RenderGatewayOperationsMenu(Url, Model.GatewayId)
+</h1>
+
+<br/>
+
+<div class="PaddedContent">
+    <table class="RightSpaced BottomSpaced VerticalAlignTable">
+        <tr>
+            <td>
+                @GatewayResources.CommentLabel
+            </td>
+            <td>
+                @(
+                    string.IsNullOrWhiteSpace(Model.Comment)
+                        ? GatewayResources.NoCommentGivenText
+                        : Model.Comment
+                )
+            </td>
+        </tr>
+    </table>
+    @{ 
+        Html.RenderAction(
+            "Display",
+            MvcApplication.GetGatewayController(Model.Type),
+            new
+            {
+                displayInformation = new DisplayGatewayInformation {GatewayId = Model.GatewayId},
+                area = "Extensibility"
+            });
+    }
+</div>
+
+<script>
+    @ViewData.RetrieveListItems("StandardGatewaysFunctions")
+</script>

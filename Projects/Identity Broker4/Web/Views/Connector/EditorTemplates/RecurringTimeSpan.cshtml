@@ -1,0 +1,45 @@
+﻿@model RecurringTimeSpanViewInformation
+           
+@using Unify.Framework.Web
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#RecurringTimeSpanFrequencyContainer').unifytimepicker({
+            includeDays: true
+        });
+    });
+</script>
+
+@{
+
+    string recurringTimeSpanStartDateDescription = string.Format(
+            ConnectorControllerResources.RecurringTimeSpanStartDateDescription,
+            ConnectorControllerResources.FriendlyDateFormat,
+            ConnectorControllerResources.FriendlyTimeFormat,
+            ConnectorControllerResources.DateFormatExample,
+            ConnectorControllerResources.TimeFormatExample
+        );
+
+    string recurringTimeSpanFrequencyDescription = string.Format(
+            ConnectorControllerResources.RecurringTimeSpanFrequencyDescription,
+            ConnectorControllerResources.FriendlyTimeFormat,
+            ConnectorControllerResources.TimeFormatExample
+        );     
+    
+}
+
+@using (Html.MetaDataFor(model => model.RecurringTimeSpan, new { description = recurringTimeSpanFrequencyDescription }))
+{
+    @Html.LabelFor(model => model.RecurringTimeSpan, ConnectorControllerResources.RecurringTimeSpanFrequencyName)
+    <span id="RecurringTimeSpanFrequencyContainer">
+        @Html.TextBoxFor(model => model.RecurringTimeSpan, new { @class = "timepickertexthint" })
+    </span>
+}
+
+@using (Html.MetaDataFor(model => model.StartFromDateTime, new{description = recurringTimeSpanStartDateDescription}))
+{
+    @Html.LabelFor(model => model.StartFromDateTime, ConnectorControllerResources.RecurringTimeSpanStartDateName)
+    <span class="StandardDateTime">
+        @Html.EditorFor(model => model.StartFromDateTime)
+    </span>
+}

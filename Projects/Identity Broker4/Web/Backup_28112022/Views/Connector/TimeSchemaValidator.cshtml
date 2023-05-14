@@ -1,0 +1,24 @@
+﻿@model TimeSchemaFieldDefinitionInformation
+           
+@using Unify.Framework.Web
+
+@{
+    string createOrEditSchemaRowText = RenderExtensions.SimpleCreateOrEditText(Model.Edit);
+
+    ViewBag.Title = Html.Title(string.Format(TitleResources.TimeSchemaValidatorTitleTemplate, createOrEditSchemaRowText));
+    
+    Html.RenderAction("SchedulesHeader", "Schedules", new {area = "Framework"});
+}
+
+<div>
+    @using (Html.DecorateForm(
+                () => Html.BeginForm("TimeEntitySchemaValidator", "Connector", new { connectorId = Model.ConnectorId }, FormMethod.Post, new{id = "TimeEntitySchemaValidatorForm"}),
+                WebStudioResources.SaveText,
+                "TimeEntitySchemaValidatorForm",
+                ConnectorControllerResources.SaveFieldDefinitionAltText
+            ))
+    {
+        @Html.EditorFor(model => model, "RenderEntitySchemaCoreValidatorAttributes")
+        @Html.EditorFor(model => model, "RenderEntitySchemaTimeValidatorAttributes")
+    }
+</div>

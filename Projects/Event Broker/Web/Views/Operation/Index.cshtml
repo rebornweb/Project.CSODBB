@@ -1,0 +1,90 @@
+﻿@using Unify.Framework.Web
+@model IEnumerable<IGroup>
+@{
+    ViewBag.Title = Html.Title(TitleResources.OperationListsPageTitle);
+    // operationLists operation menu
+    Guid selectedGroupId = Guid.Empty; // get the selected group for operationLists operation menu
+    // Select Group
+    object tempGroupId;
+    bool groupProvided = TempData.TryGetValue("groupId", out tempGroupId);
+    var selectList = new List<SelectListItem> {new SelectListItem {Text = "All", Value = null}};
+    foreach (IGroup group in Model)
+    {
+        if (groupProvided && group.Key == (Guid) tempGroupId)
+        {
+            selectList.Add(new SelectListItem {Text = group.Name, Value = group.Key.ToString(), Selected = true});
+            selectedGroupId = group.Key;
+        }
+        else
+        {
+            selectList.Add(new SelectListItem {Text = group.Name, Value = group.Key.ToString(), Selected = false});
+        }
+    }
+}
+<div class="OperationListsViewSection">
+    <div class="OperationListsViewSectionHeader">
+        <h2 class="inlineHeader">@OperationControllerResources.OperationListsHeading</h2>
+        <span class="OperationListsOperationsButton">
+            @if (Html.IsInRole(UnifyRoles.Write))
+            {
+                @Html.RenderOperationListsOperationsMenu(Url, selectedGroupId)
+            }
+        </span>
+        <span>
+            @if (Html.IsInRole(UnifyRoles.Read))
+            {
+                using (Html.BeginForm("Index", "Operation", FormMethod.Get, new {id = "OperationGroupForm", @class = "IconForm"}))
+                {
+                    @Html.DropDownList(
+                        "id", // name
+                        selectList,
+                        new {id = "groupId", @class = "chzn-select"})
+                }
+            }
+        </span>
+        <span>
+            <span class="scriptonly">
+                @if (Html.IsInRole(UnifyRoles.Write))
+                {
+                    <input type="checkbox" id="CheckAll" />
+                    @OperationControllerResources.SelectDeselectAllMessage
+                }
+            </span>
+        </span>
+    </div>
+    <div>
+        @* ReSharper disable Mvc.ControllerNotResolved *@
+        @* ReSharper disable Mvc.ActionNotResolved *@
+        @Html.ActionRefresh(
+                Url,
+                "OperationDetailsRefresh", // refresh panel id
+                5000,
+                "OperationListsDetails", // action
+                "Operation", // controller
+                new { groupId = TempData["groupId"] }, // route value
+                Url.Action("ServiceUnavailable", "Error"), // The url to redirect to on errors.
+                "function(cache){ $('.ActionRefreshListener').trigger('refreshStart', cache).unbind('refreshStart').unbind('refreshStop'); }", // startScript
+                "function(cache){ $('.ActionRefreshListener').trigger('refreshStop', cache); $('.scriptonly').show(); }" // endScript
+                )
+        @* ReSharper restore Mvc.ActionNotResolved *@
+        @* ReSharper restore Mvc.ControllerNotResolved *@
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(['@Url.WebIcon("Loader.gif")', '@Url.WebIcon("bullet_go.png")', '@Url.WebIcon("page_copy.png")']).preload();
+        // Actions Function Menu
+        @ViewData.RetrieveListItems("OperationListsFunctions")
+        // Select Group
+        $("#groupId").on("change", function(evt, params) {
+            $("#OperationGroupForm").submit();
+        });
+        // check all checkbox
+        $("#CheckAll").change(function() {
+            var checked = $(this).is(':checked');
+            $('.OperationCheckBox').each(function() {
+                $(this).prop('checked', checked);
+            });
+        });
+    });
+</script>

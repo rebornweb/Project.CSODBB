@@ -1,0 +1,24 @@
+﻿@model FIMAgentViewInformation
+           
+@using Unify.Framework.Web
+
+@{
+    var AgentTitleName = (Model.EditMode) ? Model.Name : AgentsControllerResources.FIMAgentDisplayNameText;
+    ViewBag.Title = Html.Title(Html.CreateAgentTitle(AgentTitleName, Model.CreateOrUpdateText).ToString());
+}
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm(
+            Model.ManagementAgentKey == Guid.Empty
+                ? "Create"
+                : "CreateMAAgent",
+            "Agents",
+            FormMethod.Post,
+            new { id = "CreateAgentForm" }),
+        Model.CreateOrUpdateText,
+        "CreateAgentForm",
+        AgentsControllerResources.ConfigureAgentAltText,
+        "submitButton"))
+{
+    @Html.EditorFor(model => model, "FIMAgent")
+}

@@ -1,0 +1,14 @@
+﻿@model AddOrUpdateTransformationViewInformation
+
+@{
+    Layout = null;
+}
+
+@Html.HiddenFor(model => model.Edit)
+@Html.HiddenFor(model => model.Configuration.ContainingAdapterId)
+@Html.HiddenFor(model => model.Configuration.Description)
+@Html.HiddenFor(model => model.Configuration.DisplayName)
+@Html.HiddenFor(model => model.Configuration.Id)
+@Html.HiddenFor(model => model.Configuration.Type)
+@Html.HiddenFor(model => model.Configuration.PreviousTransformationId)
+@Html.HiddenFor(model => model.Configuration.ExtendedConfigurationString)

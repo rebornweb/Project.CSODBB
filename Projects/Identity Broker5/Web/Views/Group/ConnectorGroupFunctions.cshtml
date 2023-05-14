@@ -1,0 +1,35 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model Guid
+@{
+    Guid groupId = Model;
+    string deleteImageUrl = Url.WebIcon("group_delete.png");
+    string updateGroupMembersImageUrl = Url.WebIcon("group_link.png");
+    string editGroupImageUrl = Url.WebIcon("group_edit.png");
+
+    string deleteConnectorGroupFormId = string.Format("DeleteConnectorGroup{0}", groupId);
+    string deleteConnectorGroupFormInputId = string.Format("DeleteConnectorGroupButton{0}", groupId);
+}
+<a href="@Url.Action("EditConnectorGroup", "Group", new {groupId})">
+    <img src="@editGroupImageUrl" alt="@GroupControllerResources.EditConnectorGroupDetailsAltText" title="@GroupControllerResources.EditConnectorGroupDetailsAltText" />
+</a>
+<a href="@Url.Action("UpdateConnectorGroupConnectors", "Group", new {groupId})">
+    <img src="@updateGroupMembersImageUrl" alt="@GroupControllerResources.UpdateConnectorGroupConnectorsAltText" title="@GroupControllerResources.UpdateConnectorGroupConnectorsAltText" />
+</a>
+@using (Html.BeginForm("DeleteConnectorGroup", "Group", new { groupId }, FormMethod.Post, new { @class = "IconForm", id = deleteConnectorGroupFormId }))
+{
+    <input type="image"
+           src="@deleteImageUrl"
+           alt="@GroupControllerResources.DeleteConnectorGroupAltText"
+           title="@GroupControllerResources.DeleteConnectorGroupAltText"
+           id="@deleteConnectorGroupFormInputId" class="FormIconAlign" />
+}
+<script type="text/javascript">
+    $(function () {
+        $('#@deleteConnectorGroupFormInputId').jQueryUiDialogGenerator({
+            messageHtmlCodeStr: '<div>@GroupControllerResources.DeleteConnectorGroupInitialConfirmationMessage</div>',
+            btnSourceType: sourceTypeEnumFunc().formInput, // btnSourceType == sourceTypeEnumFunc().actionLink   means btn is action link <a>, btnSourceType == sourceTypeEnumFunc().formInput    means the btn is <form><input>
+            formId: "@deleteConnectorGroupFormId"
+        });
+    });
+</script>

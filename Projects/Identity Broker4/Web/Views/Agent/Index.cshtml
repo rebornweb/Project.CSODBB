@@ -1,0 +1,79 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model AgentIndexInformation
+           
+@{
+    const string formId = "AgentFunctionsForm";
+    string deleteImageUrl = Url.WebIcon("delete.png");
+
+    const string deleteInputId = "AdapterFunctionsDeleteButton";
+    string deleteInputMessageId = string.Concat(deleteInputId, "Message");
+    string deleteInputOkCancelScript = RenderExtensions.SubmitOkCancelDialog(formId, deleteInputId, "Function");
+}
+
+<h2>@AgentResources.AgentsHeadingText</h2>
+
+<div>
+    <a href="@Url.Action("NewAgent")" class="m-btn">
+        @AgentResources.IndexAddAgentText
+    </a>
+</div>
+
+<br/>
+
+<div>
+    <input type="checkbox" class="scriptonly" onclick="var checked = $(this).is(':checked'); if (checked) { $('.AgentCheckBox').attr('checked', 'checked'); } else { $('.AgentCheckBox').removeAttr('checked');  }"/>
+    @AdapterResources.SelectDeselectAllText
+</div>
+
+<br/>
+
+<div>
+    @using (Html.BeginForm("AgentIndexOperation", "Agent", FormMethod.Post, new { style = "margin:0px;padding:0px;border:0px", id = formId }))
+    {
+        <div id="@deleteInputMessageId" style="display:none">
+            <div>@AgentResources.DeleteAgentsConfirmationWarningText</div><br/>
+            <div>@AgentResources.DeleteAgentWarningDescriptionText @WebStudioResources.ThisCannotBeUndoneText</div><br/>
+        </div>
+        <div class="ListedComponentFunctions" id="AgentFunctions">
+            <div>
+                <div>
+                    <input type="submit" value="Delete" style="background:url('@deleteImageUrl') no-repeat" class="SubmitImageButton"
+                           name="function" id="@deleteInputId" title="@AgentResources.IndexDeleteAgentsAltText"/>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ListedComponentContainer FaintBorder">
+            <div id="AgentsContainer">
+                @foreach(var agent in Model.Agents)
+                {
+                    <div class="ListedAgent">
+                        <div>
+                            <input type="checkbox" name="agents" value="@agent.AgentId" class="AgentCheckBox"/>
+                        </div>
+                        &nbsp;
+                        <div>
+                            <a href="@Url.Action("Details", "Agent", new{id = agent.AgentId})">
+                                @agent.DisplayName
+                            </a>
+                        </div>
+                    </div>
+                    <br style="clear: left"/>
+                }
+                
+                @if (!Model.Agents.Any())
+                {
+                    <p>@AgentResources.NoAgentsConfiguredText</p>
+                }
+            </div>
+        </div>   
+        <br style="clear: left"/>
+    }
+</div>
+
+<br/>
+
+<script type="text/javascript">
+    @Html.Raw(deleteInputOkCancelScript)
+</script>

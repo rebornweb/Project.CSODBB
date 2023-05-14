@@ -1,0 +1,123 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Collections
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+@model EntitySchemaViewInformation
+
+@{
+    var key = (Func<EntitySchemaRowViewInformation, object>) ViewData["Rows_Key"] ?? SchemaKey;
+    var fieldName = (Func<EntitySchemaRowViewInformation, object>)ViewData["Rows_FieldName"] ?? SchemaName;
+    var validatorFactory = (Func<EntitySchemaRowViewInformation, object>)ViewData["Rows_ValidatorFactory"] ?? SchemaType;
+    var required = (Func<EntitySchemaRowViewInformation, object>)ViewData["Rows_Required"] ?? SchemaRequired;
+    var readOnly = (Func<EntitySchemaRowViewInformation, object>)ViewData["Rows_Readonly"] ?? SchemaReadOnly;
+    var innerValidators = (Func<EntitySchemaRowViewInformation, object>)ViewData["Rows_RightFunctions"] ?? SchemaRightSide;
+}
+
+<div>
+    @if (Model.Errors.Any())
+    {
+        <p class="ui-state-error-text">@SchemaResources.ErrorsLabel @Model.Errors.Length</p>
+    }
+</div>
+
+<div>
+    @if (Model.Rows.Any())
+    {
+        string lockImageUrl = Url.WebIcon("lock.png");
+        int rowNumber = 0;
+        string tableClass = Model.Enabled ? "EntitySchemaRows FeintTableRows" : "EntitySchemaRows FeintTableRows tallRows";
+
+        <table class="@tableClass">
+            <thead>
+                <tr>
+                    <th class="Left" style="min-width:205px"><span style="margin-left:20px">@SchemaResources.FieldNameLabel</span></th>
+                    <th class="Left" style="min-width:265px">@SchemaResources.FieldDefinitionTypeLabel</th>
+                    <th style="min-width:70px">@SchemaResources.KeyLabel</th>
+                    <th style="min-width:70px">@SchemaResources.ReadOnlyLabel</th>
+                    <th style="min-width:70px">@SchemaResources.RequiredLabel</th>
+                    <th style="position: absolute;"></th>
+                </tr>
+            </thead>
+
+            <tbody style="position:relative;">
+                @foreach (EntitySchemaRowViewInformation row in Model.Rows.OrderSchemaViewInformation())
+                {
+                    string rowClass = row.Key ? "schemaKey" : "schemaRow";
+                    if (rowNumber%2 == 0) {rowClass = rowClass + " shadedRow";}
+
+                    <tr class="@rowClass">
+                        <td class="Left Name">
+                            <span style="margin-left:20px">
+                                @fieldName(row)
+                            </span>
+                            @if (row.IsFixed)
+                            {
+                                <img src="@lockImageUrl" 
+                                     alt="@ConnectorControllerResources.FixedEntitySchemaAltText" 
+                                     title="@ConnectorControllerResources.FixedEntitySchemaAltText"/>
+                            }
+                        </td>
+                        <td class="Left">@validatorFactory(row)</td>
+                        <td>@key(row)</td>
+                        <td>@readOnly(row)</td>
+                        <td>@required(row)</td> 
+                        <td style="margin:0;padding:0;height:auto">
+                            <div>
+                                <span style="position:absolute;margin-top:-10px;">@innerValidators(row)</span>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    {
+                        rowNumber++;
+                    }
+                }
+            </tbody>
+        </table>
+    }
+    else
+    { 
+        <div class="FaintBorder">
+            @ConnectorControllerResources.EmptyConnectorSchemaMessageText
+        </div>
+    }
+</div>
+
+@helper SchemaKey(EntitySchemaRowViewInformation row)
+{
+    @row.Key
+}
+
+@helper SchemaName(EntitySchemaRowViewInformation row)
+{
+    @row.FieldName
+}
+
+@helper SchemaType(EntitySchemaRowViewInformation row)
+{
+
+if (Model.ValidatorNames.ContainsKey(row.ValidatorFactoryName))
+{
+        @Model.ValidatorNames[row.ValidatorFactoryName].DisplayName
+}
+else
+{
+    string validNames = StringJoiner.Join(Model.ValidatorNames.Keys);
+    string errorMessage = string.Format(EntitySchemaResources.UnknownValidatorNameTemplate, row.ValidatorFactoryName, validNames);
+    throw new EntitySchemaConfigurationException(errorMessage);
+}
+}
+
+@helper SchemaRequired(EntitySchemaRowViewInformation row)
+{
+    @row.Required
+}
+
+@helper SchemaReadOnly(EntitySchemaRowViewInformation row)
+{
+    @row.ReadOnly
+}
+
+@helper SchemaRightSide(EntitySchemaRowViewInformation row)
+{
+}

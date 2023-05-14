@@ -1,0 +1,54 @@
+﻿@using Unify.Framework.Web
+@model IdBRestAPIPlugInConfigurationViewInformation
+
+@{
+    ViewBag.Title = Html.CreatePlugInTitle(Model.CreateOrUpdateText, TitleResources.CreateIdBRestAPIOperationTitleCaption);
+}
+
+@using (Html.DecorateForm(
+    () => Html.BeginForm("CreatePlugInOperation", "Operation", FormMethod.Post, new { id = "CreateOperationForm" }),
+    Model.CreateOrUpdateText,
+    "CreateOperationForm",
+    OperationResources.ConfigureOperationAltText, "submitButton"))
+{
+    <div>
+        @Html.EditorFor(model => model, "OperationDisplayName")
+        <fieldset>
+            @using (Html.MetaDataFor(model => model.AgentId, new { description = OperationControllerResources.SelectAgentDescription }, new { @class = "chzn-container" }))
+            {
+                @Html.LabelFor(model => model.AgentId, OperationControllerResources.SelectAgentName)
+                @Html.DropDownListFor(model => model.AgentId,
+                    new SelectList(
+                        Model.ApplicableAgents,
+                        "Id",
+                        "Name",
+                        Model.ApplicableAgents.Any(agent => agent.Id == Model.AgentId)
+                            ? Model.ApplicableAgents.Where(agent => agent.Id == Model.AgentId).Select(agent => agent).First()
+                            : Model.ApplicableAgents.First()),
+                    new { @class = "chzn-select" })
+            }
+            <br/>
+
+            @using (Html.MetaDataFor(model => model.OperationType, new { description = OperationControllerResources.IdBRestAPIOperationTypeDescription }, new { @class = "chzn-container" }))
+            {
+                @Html.LabelFor(model => model.OperationType, OperationControllerResources.IdBRestAPIOperationTypeName)
+                @Html.EnumDropDownList(model => model.OperationType, new { @class = "chzn-select" })
+            }
+
+            @using (Html.MetaDataFor(model => model.ConnectorId, new { description = OperationControllerResources.RestAPIConnectorIdDescription }))
+            {
+                @Html.LabelFor(model => model.ConnectorId, OperationControllerResources.RestAPIConnectorIdName)
+                @Html.TextBoxFor(model => model.ConnectorId, new { @class = "wide-text" })
+            }
+
+            @using (Html.MetaDataFor(model => model.RunAsync, new { description = OperationControllerResources.RestAPIRunAsyncDescription }))
+            {
+                @Html.LabelFor(model => model.RunAsync, OperationControllerResources.RestAPIRunAsyncName)
+                @Html.CheckBoxFor(model => model.RunAsync)
+            }
+        </fieldset>
+        <fieldset>
+            @Html.EditorFor(model => model, "OperationInnerDetails")
+        </fieldset>
+    </div>
+}

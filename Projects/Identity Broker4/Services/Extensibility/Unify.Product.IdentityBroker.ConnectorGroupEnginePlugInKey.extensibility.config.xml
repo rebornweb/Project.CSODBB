@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GroupEngine>
+  <GroupConfigurations>
+    <Group id="fc0d14b9-e3e4-4970-9f91-73455e0ff332" name="PeopleSoft" exclusion="true" comment="PeopleSoft PHRIS (WebService API)" />
+    <Group id="b0999a8d-6343-4e9a-a44a-760c690054c8" name="SAS2IDM" exclusion="true" comment="SAS2IDM SQL (OCCCP-DB222)" />
+    <Group id="26caf163-7ada-45e2-a48f-5d8112fb28d4" name="MIM" exclusion="true" comment="MIM Service sourced data" />
+  </GroupConfigurations>
+</GroupEngine>

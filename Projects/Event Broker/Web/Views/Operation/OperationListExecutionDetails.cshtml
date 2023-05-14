@@ -1,0 +1,97 @@
+﻿@using Unify.Framework
+@using Unify.Framework.Web
+@model Unify.EventBroker.Web.Models.IOperationWithStatus
+
+@{
+    ViewBag.Title = Html.Title(TitleResources.OperationListLastExecutionPageTitle);
+
+    OperationListLastExecutionStatus executionStatus = Model.OperationListLastExecutionStatus;
+}
+
+@if (executionStatus != null)
+{
+    <table class="Statistics">
+        <thead>
+        <tr>
+            <th>
+                @OperationControllerResources.LastRunStatisticsNameHeader
+            </th>
+            <td>
+                @Model.OperationList.Name
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>
+                @OperationControllerResources.LastRunBeginNameHeader
+            </th>
+            <td>
+                @Html.LocalTime(executionStatus.BeginTime.Value).ToString(LoggingControllerConstants.DateTimeFormatCSharpReadMode)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @OperationControllerResources.LastRunEndNameHeader
+            </th>
+            <td>
+                @Html.LocalTime(executionStatus.EndTime.Value).ToString(LoggingControllerConstants.DateTimeFormatCSharpReadMode)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @OperationControllerResources.LastRunErrorsNameHeader
+            </th>
+            @if (executionStatus.StoppedOperation.HasValue)
+            {
+                var erroredOperation = Html.GetMatchingOperation(Model.OperationList, executionStatus.StoppedOperation.Value);
+                <td>@erroredOperation.DisplayName</td>
+            }
+            else
+            {
+                <td>@OperationControllerResources.OperationListNoErrorsMessage</td>
+            }
+        </tr>
+        <tr>
+            <th>
+                @OperationControllerResources.LastRunWarningsNameHeader
+            </th>
+            <td>
+                @if (!Model.OperationListLastExecutionStatus.OperationExecutionStatus.Any())
+                {
+                    <label>0</label>
+                }
+                else
+                {
+                    <label>&nbsp;</label>
+                }
+            </td>
+        </tr>
+        @foreach (KeyValuePair<Guid, OperationLastExecutionStatus> operation in Model.OperationListLastExecutionStatus.OperationExecutionStatus)
+        {
+            bool first = true;
+            var matchingOperation = Html.GetMatchingOperation(Model.OperationList, operation.Key);
+            foreach (var status in operation.Value.Retries.OrderBy(item => item.Key))
+            {
+                if (first)
+                {
+                    first = false;
+                    <tr>
+                        <th colspan="2">
+                            @matchingOperation.DisplayName
+                        </th>
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        @Html.CountOfTotal(status.Key + 1, matchingOperation.Retries + 1)
+                    </td>
+                    <td>
+                        @status.Value.Message
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,58 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Connect.Web
+@using Unify.Framework.Web
+@model CompositeAdapterViewInformation
+
+@{
+    Guid adapterId = Model.AdapterId;
+    string comment = ViewContext.GetAdapterComment(adapterId);
+    const string objectClassSeparator = "; ";
+
+    string enableImageUrl = Url.WebIcon("control_play.png");
+    string disableImageUrl = Url.WebIcon("control_stop.png");
+}
+
+<h1>
+    @Model.AdapterName
+    
+    @Html.RenderStandardAdapterOperationsMenu(Url, adapterId, true)
+
+    @if (Model.Enabled)
+    {
+        using (Html.BeginForm("DisableAdapter", "Adapter", new { id = adapterId }, FormMethod.Post, new { @class = "IconForm" }))
+        {
+            <input type="image" src="@disableImageUrl" alt="@AdapterResources.DisableAdapterImageAltText" title="@AdapterResources.DisableAdapterImageAltText"/>
+        }
+    }
+    else
+    {
+        using (Html.BeginForm("EnableAdapter", "Adapter", new { id = adapterId }, FormMethod.Post, new { @class = "IconForm" }))
+        {   
+            <input type="image" src="@enableImageUrl" alt="@AdapterResources.EnableAdapterImageAltText" title="@AdapterResources.EnableAdapterImageAltText"/>
+        }
+    }
+</h1>
+
+<div>
+    @if (!string.IsNullOrWhiteSpace(comment))
+    {
+        <div>
+            <label>@AdapterResources.AdapterCommentLabel</label>
+            <label>@string.Join(objectClassSeparator, comment)</label>
+        </div>
+    
+        <br />
+    }
+        
+    <div>
+        <label>@AdapterResources.CompositeAdapterObjectClassesLabel</label>
+        <label>@string.Join(objectClassSeparator, Model.Adapters.Select(adapter => adapter.ObjectClass))</label>
+    </div>
+
+</div>
+
+@Html.DisplayFor(model => model.AdapterId, "AdapterJobs")
+
+<script type="text/javascript">
+    @ViewData.RetrieveListItems("StandardAdapterFunctions")
+</script>

@@ -1,0 +1,124 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+@model AdapterIndexViewInformation
+@{
+    string addGroupImageUrl = Url.WebIcon("group_add.png");
+    ViewBag.Title = Html.Title(TitleResources.AdapterIndexTitle);
+    List<SelectListItem> selectList = new List<SelectListItem> { new SelectListItem { Text = "All", Value = null } };
+
+    string selectedGroup = string.Empty;
+    Guid? selectedGroupGuid = null;
+    if (TempData.Peek("adapterGroupSelection") != null)
+    {
+        selectedGroup = (string)TempData["adapterGroupSelection"];
+        selectedGroupGuid = new Guid(selectedGroup);
+    }
+
+    selectList.AddRange(Model.AdapterGroups.Select(
+        group => new SelectListItem
+        {
+            Text = group.Name,
+            Value = group.Key.ToString(),
+            Selected = selectedGroup.Equals(group.Key.ToString())
+        }));
+}
+<div class="AdaptersViewSection">
+    <div class="AdaptersViewSectionHeader">
+        <h2 class="inlineHeader">
+            @AdapterResources.IndexAdapterHeading
+        </h2>
+        <span class="AdaptersOperationsButton">
+            @Html.RenderAdaptersOperationsMenu(Url, Model.SelectedGroup)
+        </span>
+        <span>
+            @if (Model.AdapterGroups.Any())
+            {
+                using (Html.BeginForm("Index", "Adapter", FormMethod.Get, new {id = "AdapterGroupForm", @class = "IconForm"}))
+                {
+                    @Html.DropDownList(
+                        "groupId",
+                        selectList,
+                        new {id = "AdapterGroupSelector", @class = "chzn-select"})
+                    <noscript>
+                        <input type="submit" value="@AdapterResources.AdapterSelectGroupSubmitValue" alt="@AdapterResources.AdapterSelectGroupSubmitValue" title="@AdapterResources.AdapterSelectGroupSubmitValue" />
+                    </noscript>
+                }
+            }
+        </span>
+        <span>
+            <input type="checkbox" class="scriptonly" id="SelectDeselectAdapters" />
+            @AdapterResources.SelectDeselectAllText
+        </span>
+    </div>
+    <div id="AdaptersContainer">
+        @Html.ActionRefresh(Url, "AdaptersRefresh", 5000, "Adapters", "Adapter", new RouteValueDictionary(new Dictionary<string, object> { { "groupId", selectedGroupGuid } }),
+            "Adapters",
+            "function(cache) { $('.ActionRefreshListener').trigger('refreshStart', cache); }",
+            "function(cache) { $('.ActionRefreshListener').trigger('refreshStop', cache); $('.scriptonly').show(); }")
+    </div>
+</div>
+
+
+<div class="AdaptersViewSection">
+    <div class="AdaptersViewSectionHeader">
+        <h2 class="inlineHeader">
+            @GroupControllerResources.AdapterGroupsHeadingText
+        </h2>
+        <span>
+            <a href="@Url.Action("CreateAdapterGroup", "Group")"><img src="@addGroupImageUrl" alt="@GroupControllerResources.AddAdapterGroupAltText" title="@GroupControllerResources.AddAdapterGroupAltText" /></a>
+        </span>
+    </div>
+    <div>
+        @if (Model.AdapterGroups.Any())
+        {
+            foreach (AdapterGroup adapterGroup in Model.AdapterGroups)
+            {
+                Guid groupId = adapterGroup.Key;
+                <div class="ListAdapterGroups">
+                    <a href="@Url.Action("AdapterGroupDetails", "Group", new {groupId})">@adapterGroup.Name</a>
+                    @{ Html.RenderAction("AdapterGroupFunctions", "Group", new {groupId}); }
+                </div>
+            }
+        }
+        else
+        {
+            <p class="ListConnectorGroups">@GroupControllerResources.NoAdapterGroupsMessageText</p>
+        }
+        <div id="WelcomeMessage"></div>
+        <div id="AddAdapterContainer"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    @ViewData.RetrieveListItems("AdaptersFunctions");
+    @ViewData.RetrieveListItems("AdapterFunctions");
+    @ViewData.RetrieveListItems("InnerAdapterFunctions");
+    $(document).ready(function() {
+        $("#SelectDeselectAdapters").change(function() {
+            var checked = $(this).is(':checked');
+            $('.AdapterSelections').each(function() {
+                $(this).prop('checked', checked);
+            });
+
+            if (checked) {
+                $('.ListedAdapter').each(function() {
+                    $(this).trigger('checkSelected');
+                });
+            } else {
+                $('.ListedAdapter').each(function() {
+                    $(this).trigger('checkDeselected');
+                });
+            }
+        });
+
+        $("#AdapterGroupSelector").change(function () {
+            $.get("@Url.Action("Adapters", "Adapter")",
+                $("#AdapterGroupForm").serialize(),
+                function(data) {
+                    $("#AdaptersContainer").html(data);
+                });
+        });
+    });
+</script>

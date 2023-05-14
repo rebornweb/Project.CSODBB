@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AgentEngine changeId="3a411a7d-6829-4e0d-a666-b62c46df75b7" testConnections="PT5M">
+  <AgentConfigurations>
+	<!--Dev-->
+    <Agent id="796f072a-095e-46a6-9aa6-9e886a73ec4e" name="Identity Broker v5" type="Unify.EventBroker.Agent.IdentityBroker">
+      <Extended xmlns="">
+        <IdentityBrokerAgent EndPointAddress="http://d-occcp-im202.dbb.local:59990/" ManagementStudioEndpointConfigurationName="IdentityBroker" ChangesEndpointConfigurationName="IdentityBroker" version="v50" />
+      </Extended>
+    </Agent>
+	<!--Test-->
+    <Agent id="796f072a-095e-46a6-9aa6-9e886a73ec4e" name="Identity Broker v5" type="Unify.EventBroker.Agent.IdentityBroker">
+      <Extended xmlns="">
+        <IdentityBrokerAgent EndPointAddress="http://d-occcp-im201.dbb.local:59990/" ManagementStudioEndpointConfigurationName="IdentityBroker" ChangesEndpointConfigurationName="IdentityBroker" version="v50" />
+      </Extended>
+    </Agent>
+	<!--Prod-->
+    <Agent id="796f072a-095e-46a6-9aa6-9e886a73ec4e" name="Identity Broker v5" type="Unify.EventBroker.Agent.IdentityBroker">
+      <Extended xmlns="">
+        <IdentityBrokerAgent EndPointAddress="http://occcp-im201.dbb.local:59990/" ManagementStudioEndpointConfigurationName="IdentityBroker" ChangesEndpointConfigurationName="IdentityBroker" version="v50" />
+      </Extended>
+    </Agent>
+  </AgentConfigurations>
+</AgentEngine>

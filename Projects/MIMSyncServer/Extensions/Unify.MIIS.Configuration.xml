@@ -1,0 +1,3326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UnifyConfiguration>
+  <framework-version>3</framework-version>
+  <version>4.0.1</version>
+  <last-modified>23/05/2019</last-modified>
+  <modified-by>Adrian Corston</modified-by>
+  <miis-global>
+    <logging prefix="UnifyCodelessFrameworkLog" directory="E:\LOGS\FIM.Sync" days="7" >
+      <loglevel>Minimal</loglevel>
+      <PreviewLogLevel>Minimal</PreviewLogLevel>
+    </logging>
+    <provisioning>
+      <enabled>false</enabled>
+    </provisioning>
+    <deprovisioning>
+      <enabled>false</enabled>
+    </deprovisioning>
+    <data-deletion>
+      <allow-cs-deletes>true</allow-cs-deletes>
+      <allow-cd-deletes>true</allow-cd-deletes>
+      <allow-mv-deletes>true</allow-mv-deletes>
+    </data-deletion>
+	<!--
+    <constant name="DomainSuffix" value="DC=unifyfim,DC=unifytest,DC=local"/>
+    <constant name="BaseOU" value="OU=Staff,OU=Users,OU=Diocese,DC=unifyfim,DC=unifytest,DC=local"/>
+    <constant name="NewStartersOU" value="OU=Staff,OU=Users,OU=Diocese,DC=unifyfim,DC=unifytest,DC=local"/>
+    <constant name="DisabledUsersOU" value="OU=Staff,OU=Users,OU=Diocese,DC=unifyfim,DC=unifytest,DC=local"/>
+	-->
+
+    <constant name="DomainSuffix" value="DC=dbb,DC=local"/>
+    <constant name="BaseOU" value="OU=Staff,OU=Users,OU=Diocese,DC=dbb,DC=local"/>
+    <constant name="NewStartersOU" value="OU=Staff,OU=Users,OU=Diocese,DC=dbb,DC=local"/>
+    <constant name="DisabledUsersOU" value="OU=Staff,OU=Users,OU=Diocese,DC=dbb,DC=local"/>
+
+    <constant name="defaultPassword" value="Pass@word1" />
+    <constant name="UAC_EnableValue" value="512"/>
+  </miis-global>
+  <management-agents>
+    <ma name="Staff" loglevel="Minimal" previewloglevel="Minimal">
+      <systemtype>LDAP</systemtype>
+      <datasource>
+        <connectionString>metaverse</connectionString>
+        <Port></Port>
+        <UserName></UserName>
+        <Password></Password>
+      </datasource>
+      <provisioning enabled="false"/>
+      <deprovisioning enabled="true"/>
+      <cs-deletes-enabled enabled="true"/>
+      <cd-deletes-enabled enabled="true"/>
+      <!-- user Object -->
+      <object type="person" csobjecttype="user" anchorattribute="dn">
+        <provisioning>
+          <!-- No provisioning back to PeopleSoft Person -->
+          <enabled>false</enabled>
+        </provisioning>
+        <filter>
+          <!-- No Advanced Filter is required -->
+        </filter>
+        <join>
+          <!-- No Advanced joins required -->
+        </join>
+        <importattributeflow>
+          <!-- No Advanced joins required -->
+        </importattributeflow>
+        <exportattributeflow>
+          <!-- No Advanced EAF is required -->
+        </exportattributeflow>
+        <deprovision>
+          <!-- No deprovisioning required -->
+          <enabled>false</enabled>
+        </deprovision>
+      </object>
+      <!-- group Object -->
+      <object type="group" csobjecttype="group" anchorattribute="dn">
+        <provisioning>
+          <!-- No provisioning back to PeopleSoft Person -->
+          <enabled>false</enabled>
+        </provisioning>
+        <filter>
+          <!-- No Advanced Filter is required -->
+        </filter>
+        <join>
+          <joinrule name="MatchDescriptionToADSCode">
+            <mapvalue datatype="string">
+              <flowrule name="MatchDescriptionToADSCode" ManualPrecedence="False" targetattribute="csoADSCode">
+                <transformation priority="1">
+                  <attributeName>description</attributeName>
+                  <transformType>arraytostring</transformType>
+                  <transformParameter>[description][]</transformParameter>
+                  <filters switch="and" outcome="break">
+                    <filter priority="1">
+                      <attribute>description</attribute>
+                      <compareType>exists</compareType>
+                      <compareValue/>
+                    </filter>
+                  </filters>
+                </transformation>
+                <transformation priority="2">
+                  <attributeName>outcome[1]</attributeName>
+                  <transformType>stringtrimmer</transformType>
+                </transformation>
+                <transformation priority="3">
+                  <attributeName>outcome[2]</attributeName>
+                  <transformType>stringlength</transformType>
+                  <transformParameter>[7][trunc]</transformParameter>
+                </transformation>
+              </flowrule>
+            </mapvalue>
+          </joinrule>
+          <joinrule name="MatchInfoToADSCode">
+            <mapvalue datatype="string">
+              <flowrule name="MatchInfoToADSCode" ManualPrecedence="False" targetattribute="csoADSCode">
+                <transformation priority="1">
+                  <attributeName>info</attributeName>
+                  <transformType>arraytostring</transformType>
+                  <transformParameter>[info][]</transformParameter>
+                  <filters switch="and" outcome="break">
+                    <filter priority="1">
+                      <attribute>info</attribute>
+                      <compareType>exists</compareType>
+                      <compareValue/>
+                    </filter>
+                  </filters>
+                </transformation>
+                <transformation priority="2">
+                  <attributeName>outcome[1]</attributeName>
+                  <transformType>stringtrimmer</transformType>
+                </transformation>
+                <transformation priority="3">
+                  <attributeName>outcome[2]</attributeName>
+                  <transformType>stringlength</transformType>
+                  <transformParameter>[7][trunc]</transformParameter>
+                </transformation>
+              </flowrule>
+            </mapvalue>
+          </joinrule>
+          <joinrule name="MatchGroupTypeToScope">
+            <mapvalue datatype="string">
+              <flowrule name="MatchGroupTypeToScope" ManualPrecedence="False" targetattribute="scope">
+                <transformation priority="1">
+                  <attributeName>groupType</attributeName>
+                  <transformType>tostring</transformType>
+                </transformation>
+                <transformation priority="2">
+                  <attributeName>outcome[1]</attributeName>
+                  <transformType>picklist</transformType>
+                  <transformParameter>
+                    <picklist type="eq">
+                      <!--
+                      <value start="default">-1</value>
+                      <value start="DomainLocal">-2147483644</value>
+                      <value start="Global">-2147483646</value>
+                      -->
+                      <value start="default">UNKNOWN</value>
+                      <value start="-2147483644">DomainLocal</value>
+                      <value start="-2147483646">Global</value>
+                    </picklist>
+                  </transformParameter>
+                  <datatype>int</datatype>
+                </transformation>
+              </flowrule>
+            </mapvalue>
+          </joinrule>
+        </join>
+        <importattributeflow>
+          <flowrule name="DefaultExistsInAD" ManualPrecedence="False" targetattribute="csoExistsInAD" onfailedtransform="continue" >
+            <transformation priority="1">
+              <attributeName>cn</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[true][false]</transformParameter>
+              <datatype>boolean</datatype>
+              <filters switch="and" outcome="break">
+                <filter priority="1">
+                  <attribute>cn</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+          </flowrule>
+        </importattributeflow>
+        <exportattributeflow>
+          <!-- No Advanced EAF is required -->
+        </exportattributeflow>
+        <deprovision loglevel="Minimal" previewloglevel="Minimal">
+          <!-- Stage a delete on the GROUP only for the next export run -->
+          <enabled>true</enabled>
+          <behaviour></behaviour>
+          <cs-deletes-allowed>true</cs-deletes-allowed>
+          <cd-deletes-allowed>true</cd-deletes-allowed>
+          <mv-deletes-allowed>true</mv-deletes-allowed>
+          <csdeletefilters switch="and">
+            <filter priority="1">
+              <attribute>cn</attribute>
+              <compareType>exists</compareType>
+              <compareValue></compareValue>
+            </filter>
+          </csdeletefilters>
+        </deprovision>
+      </object>
+    </ma>
+    <ma name="PHRIS">
+      <systemtype>IdentityBroker</systemtype>
+      <datasource>
+        <connectionString>metaverse</connectionString>
+        <Port></Port>
+        <UserName></UserName>
+        <Password></Password>
+      </datasource>
+      <provisioning enabled="false"/>
+      <deprovisioning enabled="false"/>
+      <cs-deletes-enabled enabled="true"/>
+      <cd-deletes-enabled enabled="false"/>
+      <!-- Person Object -->
+      <object type="person" csobjecttype="person" anchorattribute="dn">
+        <provisioning>
+          <!-- No provisioning back to PeopleSoft Person -->
+          <enabled>false</enabled>
+        </provisioning>
+        <filter>
+          <!-- No Advanced Filter is required -->
+        </filter>
+        <join>
+          <!-- Support secondary match on legacy employeeID -->
+          <joinrule name="JoinLegacyEmployeeID">
+            <transforms>
+              <flowrule name="JoinPerson" targetattribute="none" >
+                <transformation priority="1">
+                  <attributeName>NationalId</attributeName>
+                  <transformType>concat</transformType>
+                  <transformParameter>[S][attribute{NationalId}]</transformParameter>
+                  <datatype>string</datatype>
+                </transformation>
+              </flowrule>
+            </transforms>
+          </joinrule>
+        </join>
+        <importattributeflow>
+          <!-- generate account name and verify against metaverse -->
+          <flowrule name="GenerateAccountName2" ManualPrecedence="False" targetattribute="accountName" onfailedtransform="continue">
+            <!-- First see if accountName is present in MV -->
+            <transformation priority="1">
+              <attributeName>mventry[accountName]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[accountName]</transformParameter>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>LastName</attributeName>
+              <transformType>tostring</transformType>
+              <transformParameter>[][]</transformParameter>
+              <filters switch="and" outcome="break">
+                <filter priority="1">
+                  <attribute>utils[accountName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="3">
+              <attributeName>LastName</attributeName>
+              <transformType>uniquename</transformType>
+              <transformParameter>
+                <uniquename>
+                  <namerule priority="1">
+                    <maxlength>20</maxlength>
+                    <minlength>1</minlength>
+                    <pad-with></pad-with>
+                    <setcase transformto="lower" />
+                    <namecomponent priority="1">
+                      <type>attribute</type>
+                      <value>PrefFirstName</value>
+                      <attributeseparator>.</attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>17</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                    <namecomponent priority="2">
+                      <type>attribute</type>
+                      <value>LastName</value>
+                      <attributeseparator></attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>17</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                  </namerule>
+                  <resolutionrules>
+                    <namerule priority="1">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>PrefFirstName</value>
+                        <attributeseparator>.</attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>17</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>17</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="3">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>3</maxlength>
+                        <minlength>1</minlength>
+                      </namecomponent>
+                    </namerule>
+                  </resolutionrules>
+                  <datasource-attributename>accountName</datasource-attributename>
+                  <verify-against>
+                    <connectionString>metaverse</connectionString>
+                    <Port></Port>
+                    <UserName></UserName>
+                    <Password></Password>
+                  </verify-against>
+                </uniquename>
+              </transformParameter>
+            </transformation>
+            <transformation priority="4">
+              <attributeName>LastName</attributeName>
+              <transformType>uniquename</transformType>
+              <transformParameter>
+                <uniquename>
+                  <namerule priority="1">
+                    <maxlength>20</maxlength>
+                    <minlength>1</minlength>
+                    <pad-with></pad-with>
+                    <setcase transformto="lower" />
+                    <namecomponent priority="1">
+                      <type>attribute</type>
+                      <value>FirstName</value>
+                      <attributeseparator>.</attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>17</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                    <namecomponent priority="2">
+                      <type>attribute</type>
+                      <value>LastName</value>
+                      <attributeseparator></attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>17</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                  </namerule>
+                  <resolutionrules>
+                    <namerule priority="1">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>FirstName</value>
+                        <attributeseparator>.</attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>17</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>17</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="3">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>3</maxlength>
+                        <minlength>1</minlength>
+                      </namecomponent>
+                    </namerule>
+                  </resolutionrules>
+                  <datasource-attributename>accountName</datasource-attributename>
+                  <verify-against>
+                    <connectionString>metaverse</connectionString>
+                    <Port></Port>
+                    <UserName></UserName>
+                    <Password></Password>
+                  </verify-against>
+                </uniquename>
+              </transformParameter>
+            </transformation>
+            <transformation priority="5">
+              <attributeName>LastName</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[outcome{3}][outcome{4}]</transformParameter>
+              <datatype></datatype>
+              <filters switch="and" >
+                <filter priority="1">
+                  <attribute>PrefFirstName</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                  <default>False</default>
+                </filter>
+              </filters>
+            </transformation>
+          </flowrule>
+          <flowrule name="GenerateAccountName" ManualPrecedence="False" targetattribute="accountName" onfailedtransform="continue" loglevel="Minimal" previewloglevel="Diagnostic"><!--Diagnostic-->
+            <!-- First see if accountName is present in MV -->
+            <transformation priority="1">
+              <attributeName>mventry[accountName]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[accountName]</transformParameter>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>LastName</attributeName>
+              <transformType>tostring</transformType>
+              <transformParameter>[][]</transformParameter>
+              <filters switch="and" outcome="break">
+                <filter priority="1">
+                  <attribute>utils[accountName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="3">
+              <attributeName>LastName</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute{PrefFirstName}][attribute{FirstName}]</transformParameter>
+              <datatype></datatype>
+              <filters switch="and" >
+                <filter priority="1">
+                  <attribute>PrefFirstName</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                  <default>False</default>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="4">
+              <attributeName>LastName</attributeName>
+              <transformType>externaldll</transformType>
+              <transformParameter>[CLSFWExtension.dll][CSODBBLIB][CompositeStringLength][outcome{3}][attribute{LastName}]</transformParameter>
+              <datatype>int</datatype>
+            </transformation>
+            <transformation priority="5">
+              <attributeName>LastName</attributeName>
+              <transformType>uniquename</transformType>
+              <transformParameter>
+                <uniquename>
+                  <namerule priority="1">
+                    <maxlength>20</maxlength>
+                    <minlength>1</minlength>
+                    <pad-with></pad-with>
+                    <setcase transformto="lower" />
+                    <namecomponent priority="1">
+                      <type>attribute</type>
+                      <value>LastName</value>
+                      <attributeseparator></attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                  </namerule>
+                  <resolutionrules>
+                    <namerule priority="1">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>19</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>1</maxlength>
+                        <minlength>1</minlength>
+                      </namecomponent>
+                    </namerule>
+                    <namerule priority="2">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>18</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>2</maxlength>
+                        <minlength>2</minlength>
+                      </namecomponent>
+                    </namerule>
+                  </resolutionrules>
+                  <datasource-attributename>accountName</datasource-attributename>
+                  <verify-against>
+                    <connectionString>metaverse</connectionString>
+                    <Port></Port>
+                    <UserName></UserName>
+                    <Password></Password>
+                  </verify-against>
+                </uniquename>
+              </transformParameter>
+            </transformation>
+            <transformation priority="6">
+              <attributeName>LastName</attributeName>
+              <transformType>uniquename</transformType>
+              <transformParameter>
+                <uniquename>
+                  <namerule priority="1">
+                    <maxlength>20</maxlength>
+                    <minlength>1</minlength>
+                    <pad-with></pad-with>
+                    <setcase transformto="lower" />
+                    <namecomponent priority="1">
+                      <type>attribute</type>
+                      <value>PrefFirstName</value>
+                      <attributeseparator>.</attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>18</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                    <namecomponent priority="2">
+                      <type>attribute</type>
+                      <value>LastName</value>
+                      <attributeseparator></attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>18</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                  </namerule>
+                  <resolutionrules>
+                    <namerule priority="1">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>PrefFirstName</value>
+                        <attributeseparator>.</attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>17</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>17</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="3">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>1</maxlength>
+                        <minlength>1</minlength>
+                      </namecomponent>
+                    </namerule>
+                    <namerule priority="2">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>PrefFirstName</value>
+                        <attributeseparator>.</attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>16</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>16</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="3">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>2</maxlength>
+                        <minlength>2</minlength>
+                      </namecomponent>
+                    </namerule>                  </resolutionrules>
+                  <datasource-attributename>accountName</datasource-attributename>
+                  <verify-against>
+                    <connectionString>metaverse</connectionString>
+                    <Port></Port>
+                    <UserName></UserName>
+                    <Password></Password>
+                  </verify-against>
+                </uniquename>
+              </transformParameter>
+            </transformation>
+            <transformation priority="7">
+              <attributeName>LastName</attributeName>
+              <transformType>uniquename</transformType>
+              <transformParameter>
+                <uniquename>
+                  <namerule priority="1">
+                    <maxlength>20</maxlength>
+                    <minlength>1</minlength>
+                    <pad-with></pad-with>
+                    <setcase transformto="lower" />
+                    <namecomponent priority="1">
+                      <type>attribute</type>
+                      <value>FirstName</value>
+                      <attributeseparator>.</attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>18</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                    <namecomponent priority="2">
+                      <type>attribute</type>
+                      <value>LastName</value>
+                      <attributeseparator></attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>18</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                  </namerule>
+                  <resolutionrules>
+                    <namerule priority="1">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>FirstName</value>
+                        <attributeseparator>.</attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>17</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>17</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="3">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>1</maxlength>
+                        <minlength>1</minlength>
+                      </namecomponent>
+                    </namerule>
+                    <namerule priority="2">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>FirstName</value>
+                        <attributeseparator>.</attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>16</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>16</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="3">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>2</maxlength>
+                        <minlength>2</minlength>
+                      </namecomponent>
+                    </namerule>                  </resolutionrules>
+                  <datasource-attributename>accountName</datasource-attributename>
+                  <verify-against>
+                    <connectionString>metaverse</connectionString>
+                    <Port></Port>
+                    <UserName></UserName>
+                    <Password></Password>
+                  </verify-against>
+                </uniquename>
+              </transformParameter>
+            </transformation>
+            <transformation priority="8">
+              <attributeName>LastName</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[outcome{6}][outcome{7}]</transformParameter>
+              <datatype></datatype>
+              <filters switch="and" >
+                <filter priority="1">
+                  <attribute>PrefFirstName</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                  <default>False</default>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="9">
+              <attributeName>outcome[4]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[nameLength]</transformParameter>
+            </transformation>
+            <transformation priority="10">
+              <attributeName>outcome[9]</attributeName>
+              <transformType>picklist</transformType>
+              <transformParameter>
+                <picklist type="between">
+                  <value start="001" end="017">outcome[8]</value>
+                  <value start="default">outcome[5]</value>
+                </picklist>
+              </transformParameter>
+              <datatype></datatype>
+            </transformation>
+            <!--<transformation priority="10">
+              <attributeName>LastName</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[outcome{5}][outcome{8}]</transformParameter>
+              <datatype></datatype>
+              <filters switch="and" >
+                <filter priority="1">
+                  <attribute>utils[nameLength]</attribute>
+                  <compareType>gt</compareType>
+                  <compareValue>'16'</compareValue>
+                  <default>False</default>
+                </filter>
+              </filters>
+            </transformation>-->
+          </flowrule>
+          <!-- get school code from ID -->
+          <flowrule name="SetOfficeLocationFromSchoolID" targetattribute="physicalDeliveryOfficeName" onfailedtransform="continue" deleteblankvalues="true" loglevel="Minimal" previewloglevel="Minimal">
+            <!--
+            <transformation priority="1">
+              <attributeName>mventry[csoSiteCode]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>csoSiteCode</transformParameter>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>DeptId</attributeName>
+              <transformType>tostring</transformType>
+              <transformParameter>[][]</transformParameter>
+              <filters switch="and" outcome="break">
+                <filter priority="1">
+                  <attribute>utils[csoSiteCode]</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            -->
+            <transformation priority="1">
+              <attributeName>DeptId</attributeName>
+              <transformType>findmvunique</transformType>
+              <transformParameter>[csoSiteCode][displayName]</transformParameter>
+              <datatype>string</datatype>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>outcome[1]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>csoSiteName</transformParameter>
+            </transformation>
+            <transformation priority="3">
+              <attributeName>DeptId</attributeName>
+              <transformType>findmvunique</transformType>
+              <transformParameter>[csoMappedSites][displayName]</transformParameter>
+              <datatype>string</datatype>
+            </transformation>
+            <transformation priority="4">
+              <attributeName>outcome[3]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>csoSiteName2</transformParameter>
+            </transformation>
+            <transformation priority="5">
+              <attributeName>DeptId</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[utils[csoSiteName]][utils[csoSiteName2]]</transformParameter>
+              <datatype></datatype>
+              <filters switch="and" >
+                <filter priority="1">
+                  <attribute>utils[csoSiteName]</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                  <default>False</default>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="6">
+              <attributeName>outcome[5]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[csoSiteName]</transformParameter>
+            </transformation>
+            <transformation priority="7">
+              <attributeName>DeptId</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[utils[csoSiteName]][OCCCP]</transformParameter>
+              <datatype></datatype>
+              <filters switch="and" >
+                <filter priority="1">
+                  <attribute>utils[csoSiteName]</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                  <default>False</default>
+                </filter>
+              </filters>
+            </transformation>
+          </flowrule>
+        </importattributeflow>
+        <!-- No Advanced EAF is required -->
+        <exportattributeflow>
+        </exportattributeflow>
+        <deprovision>
+          <enabled>false</enabled>
+          <behaviour>none</behaviour>
+          <cs-deletes-allowed>true</cs-deletes-allowed>
+          <cd-deletes-allowed>false</cd-deletes-allowed>
+          <mv-deletes-allowed>false</mv-deletes-allowed>
+        </deprovision>
+      </object>
+    </ma>
+    <ma name="Prod AD Reload">
+      <systemtype>simple</systemtype>
+      <datasource>
+        <connectionString>metaverse</connectionString>
+        <Port></Port>
+        <UserName></UserName>
+        <Password></Password>
+      </datasource>
+      <provisioning enabled="false"/>
+      <deprovisioning enabled="false"/>
+      <cs-deletes-enabled enabled="false"/>
+      <cd-deletes-enabled enabled="false"/>
+      <!-- Person Object -->
+      <object type="person" csobjecttype="person" anchorattribute="dn">
+        <provisioning>
+          <!-- No provisioning back to CAPS person -->
+          <enabled>false</enabled>
+        </provisioning>
+        <filter>
+          <!-- No Advanced Filter is required -->
+        </filter>
+        <join>
+          <joinrule name="JoinStaff">
+            <mapvalue datatype="string">
+              <flowrule name="employeeNumber-csoLegacyEmployeeID" ManualPrecedence="False" targetattribute="csoLegacyEmployeeID">
+                <transformation priority="1">
+                  <attributeName>employeeNumber</attributeName>
+                  <transformType>filter</transformType>
+                  <transformParameter>[attribute{employeeNumber}][]</transformParameter>
+                  <filters switch="or">
+                    <filter priority="1">
+                      <attribute>employeeNumber</attribute>
+                      <compareType>sw</compareType>
+                      <compareValue>B</compareValue>
+                    </filter>
+                    <filter priority="2">
+                      <attribute>employeeNumber</attribute>
+                      <compareType>sw</compareType>
+                      <compareValue>S</compareValue>
+                    </filter>
+                  </filters>
+                </transformation>
+              </flowrule>
+            </mapvalue>
+          </joinrule>
+          <joinrule name="JoinStudentUSIN">
+            <mapvalue datatype="string">
+              <flowrule name="employeeNumber-USIN" ManualPrecedence="False" targetattribute="USIN">
+                <transformation priority="1">
+                  <attributeName>employeeID</attributeName>
+                  <transformType>filter</transformType>
+                  <transformParameter>[attribute{employeeID}][]</transformParameter>
+                  <filters switch="and">
+                    <filter priority="1">
+                      <attribute>employeeNumber</attribute>
+                      <compareType>nsw</compareType>
+                      <compareValue>B</compareValue>
+                    </filter>
+                    <filter priority="2">
+                      <attribute>employeeNumber</attribute>
+                      <compareType>nsw</compareType>
+                      <compareValue>S</compareValue>
+                    </filter>
+                  </filters>
+                </transformation>
+              </flowrule>
+            </mapvalue>
+          </joinrule>
+        </join>
+        <importattributeflow>
+          <flowrule name="ImportEmployeeNumberStaff" targetattribute="csoLegacyEmployeeID" onfailedtransform="halt" loglevel="Minimal" previewloglevel="Minimal" deleteblankvalues="True">
+            <transformation priority="1">
+              <attributeName>employeeNumber</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute{employeeNumber}][]</transformParameter>
+              <filters switch="or">
+                <filter priority="1">
+                  <attribute>employeeNumber</attribute>
+                  <compareType>sw</compareType>
+                  <compareValue>B</compareValue>
+                </filter>
+                <filter priority="2">
+                  <attribute>employeeNumber</attribute>
+                  <compareType>sw</compareType>
+                  <compareValue>S</compareValue>
+                </filter>
+              </filters>
+            </transformation>
+          </flowrule>
+          <flowrule name="ImportEmployeeNumberStudent" targetattribute="EmployeeNumber" onfailedtransform="halt" loglevel="Minimal" previewloglevel="Minimal" deleteblankvalues="True">
+            <transformation priority="1">
+              <attributeName>employeeNumber</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute{employeeNumber}][]</transformParameter>
+              <filters switch="and">
+                <filter priority="1">
+                  <attribute>employeeNumber</attribute>
+                  <compareType>nsw</compareType>
+                  <compareValue>B</compareValue>
+                </filter>
+                <filter priority="2">
+                  <attribute>employeeNumber</attribute>
+                  <compareType>nsw</compareType>
+                  <compareValue>S</compareValue>
+                </filter>
+              </filters>
+            </transformation>
+          </flowrule>
+          <flowrule name="ImportEmployeeID" targetattribute="USIN" onfailedtransform="halt" loglevel="Minimal" previewloglevel="Minimal" deleteblankvalues="True">
+            <transformation priority="1">
+              <attributeName>employeeID</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute{employeeID}][]</transformParameter>
+              <filters switch="and">
+                <filter priority="1">
+                  <attribute>employeeNumber</attribute>
+                  <compareType>nsw</compareType>
+                  <compareValue>B</compareValue>
+                </filter>
+                <filter priority="2">
+                  <attribute>employeeNumber</attribute>
+                  <compareType>nsw</compareType>
+                  <compareValue>S</compareValue>
+                </filter>
+              </filters>
+            </transformation>
+          </flowrule>
+        </importattributeflow>
+        <!-- No Advanced EAF is required -->
+        <exportattributeflow>
+        </exportattributeflow>
+        <deprovision>
+          <enabled>false</enabled>
+          <behaviour>none</behaviour>
+          <cs-deletes-allowed>false</cs-deletes-allowed>
+          <cd-deletes-allowed>false</cd-deletes-allowed>
+          <mv-deletes-allowed>false</mv-deletes-allowed>
+        </deprovision>
+      </object>
+    </ma>
+    <ma name="SAS2IDM">
+      <systemtype>simple</systemtype>
+      <datasource>
+        <connectionString>metaverse</connectionString>
+        <Port></Port>
+        <UserName></UserName>
+        <Password></Password>
+      </datasource>
+      <provisioning enabled="false"/>
+      <deprovisioning enabled="false"/>
+      <cs-deletes-enabled enabled="true"/>
+      <cd-deletes-enabled enabled="false"/>
+      <!-- Person Object -->
+      <object type="person" csobjecttype="person" anchorattribute="UniversalIdentificationNumber">
+        <provisioning>
+          <!-- No provisioning back to SAS2IDM person -->
+          <enabled>false</enabled>
+        </provisioning>
+        <filter>
+          <!-- No Advanced Filter is required -->
+        </filter>
+        <join>
+          <!-- No Advanced join rules required -->
+        </join>
+        <importattributeflow>
+          <!-- 3 flow rules just to set up utils.transactionproperties -->
+          <flowrule name="ImportFirstName" targetattribute="firstName" onfailedtransform="halt" loglevel="Minimal" previewloglevel="Minimal">
+            <transformation priority="1">
+              <attributeName>mventry{firstName}</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[firstName][]</transformParameter>
+              <filters switch="and" outcome="continue">
+                <filter priority="1">
+                  <attribute>utils[lastName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+              <dataType>string</dataType>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>FirstName</attributeName>
+              <transformType>stringtrimmer</transformType>
+              <transformParameter></transformParameter>
+            </transformation>
+          </flowrule>
+          <flowrule name="ImportLastName" targetattribute="lastName" onfailedtransform="halt" loglevel="Minimal" previewloglevel="Minimal">
+            <transformation priority="1">
+              <attributeName>mventry{lastName}</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[lastName][]</transformParameter>
+              <filters switch="and" outcome="continue">
+                <filter priority="1">
+                  <attribute>utils[lastName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>LastName</attributeName>
+              <transformType>stringtrimmer</transformType>
+              <transformParameter></transformParameter>
+            </transformation>
+          </flowrule>
+          <flowrule name="ImportPhysicaldeliveryOfficeName" targetattribute="physicalDeliveryOfficeName" onfailedtransform="halt" loglevel="Minimal" previewloglevel="Minimal">
+            <transformation priority="1">
+              <attributeName>mventry{physicalDeliveryOfficeName}</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[physicalDeliveryOfficeName][]</transformParameter>
+              <filters switch="and" outcome="continue">
+                <filter priority="1">
+                  <attribute>utils[physicalDeliveryOfficeName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <!---->
+            <transformation priority="2">
+              <attributeName>PhysicaldeliveryOfficeName</attributeName>
+              <transformType>stringtrimmer</transformType>
+              <transformParameter></transformParameter>
+            </transformation>
+          </flowrule>
+          <!-- generate account name and verify against metaverse -->
+          <flowrule name="GenerateAccountName2" ManualPrecedence="False" targetattribute="accountName" onfailedtransform="continue">
+            <!-- First see if accountName is present in MV -->
+            <transformation priority="1">
+              <attributeName>mventry[accountName]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[accountName]</transformParameter>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>LastName</attributeName>
+              <transformType>tostring</transformType>
+              <transformParameter>[][]</transformParameter>
+              <filters switch="and" outcome="break">
+                <filter priority="1">
+                  <attribute>utils[accountName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="3">
+              <attributeName>LastName</attributeName>
+              <transformType>uniquename</transformType>
+              <transformParameter>
+                <uniquename>
+                  <namerule priority="1">
+                    <maxlength>20</maxlength>
+                    <minlength>1</minlength>
+                    <pad-with></pad-with>
+                    <setcase transformto="lower" />
+                    <namecomponent priority="1">
+                      <type>attribute</type>
+                      <value>PreferredName</value>
+                      <attributeseparator>.</attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>18</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                    <namecomponent priority="2">
+                      <type>attribute</type>
+                      <value>LastName</value>
+                      <attributeseparator></attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>18</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                  </namerule>
+                  <resolutionrules>
+                    <namerule priority="1">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>PreferredName</value>
+                        <attributeseparator>.</attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>18</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>18</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="3">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>2</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                    </namerule>
+                  </resolutionrules>
+                  <datasource-attributename>accountName</datasource-attributename>
+                  <verify-against>
+                    <connectionString>metaverse</connectionString>
+                    <Port></Port>
+                    <UserName></UserName>
+                    <Password></Password>
+                  </verify-against>
+                </uniquename>
+              </transformParameter>
+              <datatype>string</datatype>
+            </transformation>
+            <transformation priority="4">
+              <attributeName>LastName</attributeName>
+              <transformType>uniquename</transformType>
+              <transformParameter>
+                <uniquename>
+                  <namerule priority="1">
+                    <maxlength>20</maxlength>
+                    <minlength>1</minlength>
+                    <pad-with></pad-with>
+                    <setcase transformto="lower" />
+                    <namecomponent priority="1">
+                      <type>attribute</type>
+                      <value>FirstName</value>
+                      <attributeseparator>.</attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>18</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                    <namecomponent priority="2">
+                      <type>attribute</type>
+                      <value>LastName</value>
+                      <attributeseparator></attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>18</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                  </namerule>
+                  <resolutionrules>
+                    <namerule priority="1">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>FirstName</value>
+                        <attributeseparator>.</attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>18</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>18</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="3">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>2</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                    </namerule>
+                  </resolutionrules>
+                  <datasource-attributename>accountName</datasource-attributename>
+                  <verify-against>
+                    <connectionString>metaverse</connectionString>
+                    <Port></Port>
+                    <UserName></UserName>
+                    <Password></Password>
+                  </verify-against>
+                </uniquename>
+              </transformParameter>
+              <datatype>string</datatype>
+            </transformation>
+            <transformation priority="5">
+              <attributeName>LastName</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[outcome{3}][outcome{4}]</transformParameter>
+              <datatype></datatype>
+              <filters switch="and" >
+                <filter priority="1">
+                  <attribute>PreferredName</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                  <default>False</default>
+                </filter>
+              </filters>
+            </transformation>
+          </flowrule>
+          <flowrule name="GenerateAccountName" ManualPrecedence="False" targetattribute="accountName" onfailedtransform="continue" loglevel="Minimal" previewloglevel="Minimal">
+            <!--Diagnostic-->
+            <!-- First see if accountName is present in MV -->
+            <transformation priority="1">
+              <attributeName>mventry[accountName]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[accountName]</transformParameter>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>LastName</attributeName>
+              <transformType>tostring</transformType>
+              <transformParameter>[][]</transformParameter>
+              <filters switch="and" outcome="break">
+                <filter priority="1">
+                  <attribute>utils[accountName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="3">
+              <attributeName>LastName</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute{PreferredName}][attribute{FirstName}]</transformParameter>
+              <datatype></datatype>
+              <filters switch="and" >
+                <filter priority="1">
+                  <attribute>PreferredName</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                  <default>False</default>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="4">
+              <attributeName>LastName</attributeName>
+              <transformType>externaldll</transformType>
+              <transformParameter>[CLSFWExtension.dll][CSODBBLIB][CompositeStringLength][outcome{3}][attribute{LastName}]</transformParameter>
+              <datatype>int</datatype>
+            </transformation>
+            <transformation priority="5">
+              <attributeName>LastName</attributeName>
+              <transformType>uniquename</transformType>
+              <transformParameter>
+                <uniquename>
+                  <namerule priority="1">
+                    <maxlength>20</maxlength>
+                    <minlength>1</minlength>
+                    <pad-with></pad-with>
+                    <setcase transformto="lower" />
+                    <namecomponent priority="1">
+                      <type>attribute</type>
+                      <value>LastName</value>
+                      <attributeseparator></attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                  </namerule>
+                  <resolutionrules>
+                    <namerule priority="1">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>19</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>1</maxlength>
+                        <minlength>1</minlength>
+                      </namecomponent>
+                    </namerule>
+                    <namerule priority="2">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>18</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>2</maxlength>
+                        <minlength>2</minlength>
+                      </namecomponent>
+                    </namerule>
+                  </resolutionrules>
+                  <datasource-attributename>accountName</datasource-attributename>
+                  <verify-against>
+                    <connectionString>metaverse</connectionString>
+                    <Port></Port>
+                    <UserName></UserName>
+                    <Password></Password>
+                  </verify-against>
+                </uniquename>
+              </transformParameter>
+            </transformation>
+            <transformation priority="6">
+              <attributeName>LastName</attributeName>
+              <transformType>uniquename</transformType>
+              <transformParameter>
+                <uniquename>
+                  <namerule priority="1">
+                    <maxlength>20</maxlength>
+                    <minlength>1</minlength>
+                    <pad-with></pad-with>
+                    <setcase transformto="lower" />
+                    <namecomponent priority="1">
+                      <type>attribute</type>
+                      <value>PreferredName</value>
+                      <attributeseparator>.</attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>18</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                    <namecomponent priority="2">
+                      <type>attribute</type>
+                      <value>LastName</value>
+                      <attributeseparator></attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>18</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                  </namerule>
+                  <resolutionrules>
+                    <namerule priority="1">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>PreferredName</value>
+                        <attributeseparator>.</attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>17</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>17</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="3">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>1</maxlength>
+                        <minlength>1</minlength>
+                      </namecomponent>
+                    </namerule>
+                    <namerule priority="2">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>PreferredName</value>
+                        <attributeseparator>.</attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>16</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>16</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="3">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>2</maxlength>
+                        <minlength>2</minlength>
+                      </namecomponent>
+                    </namerule>
+                  </resolutionrules>
+                  <datasource-attributename>accountName</datasource-attributename>
+                  <verify-against>
+                    <connectionString>metaverse</connectionString>
+                    <Port></Port>
+                    <UserName></UserName>
+                    <Password></Password>
+                  </verify-against>
+                </uniquename>
+              </transformParameter>
+            </transformation>
+            <transformation priority="7">
+              <attributeName>LastName</attributeName>
+              <transformType>uniquename</transformType>
+              <transformParameter>
+                <uniquename>
+                  <namerule priority="1">
+                    <maxlength>20</maxlength>
+                    <minlength>1</minlength>
+                    <pad-with></pad-with>
+                    <setcase transformto="lower" />
+                    <namecomponent priority="1">
+                      <type>attribute</type>
+                      <value>FirstName</value>
+                      <attributeseparator>.</attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>18</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                    <namecomponent priority="2">
+                      <type>attribute</type>
+                      <value>LastName</value>
+                      <attributeseparator></attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>18</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                  </namerule>
+                  <resolutionrules>
+                    <namerule priority="1">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>FirstName</value>
+                        <attributeseparator>.</attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>17</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>17</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="3">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>1</maxlength>
+                        <minlength>1</minlength>
+                      </namecomponent>
+                    </namerule>
+                    <namerule priority="2">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>FirstName</value>
+                        <attributeseparator>.</attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>16</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>16</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="3">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>2</maxlength>
+                        <minlength>2</minlength>
+                      </namecomponent>
+                    </namerule>
+                  </resolutionrules>
+                  <datasource-attributename>accountName</datasource-attributename>
+                  <verify-against>
+                    <connectionString>metaverse</connectionString>
+                    <Port></Port>
+                    <UserName></UserName>
+                    <Password></Password>
+                  </verify-against>
+                </uniquename>
+              </transformParameter>
+            </transformation>
+            <transformation priority="8">
+              <attributeName>LastName</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[outcome{6}][outcome{7}]</transformParameter>
+              <datatype></datatype>
+              <filters switch="and" >
+                <filter priority="1">
+                  <attribute>PreferredName</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                  <default>False</default>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="9">
+              <attributeName>outcome[4]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[nameLength]</transformParameter>
+            </transformation>
+            <transformation priority="10">
+              <attributeName>outcome[9]</attributeName>
+              <transformType>picklist</transformType>
+              <transformParameter>
+                <picklist type="between">
+                  <value start="001" end="017">outcome[8]</value>
+                  <value start="default">outcome[5]</value>
+                </picklist>
+              </transformParameter>
+              <datatype></datatype>
+            </transformation>
+            <!--<transformation priority="10">
+              <attributeName>LastName</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[outcome{5}][outcome{8}]</transformParameter>
+              <datatype></datatype>
+              <filters switch="and" >
+                <filter priority="1">
+                  <attribute>utils[nameLength]</attribute>
+                  <compareType>gt</compareType>
+                  <compareValue>'16'</compareValue>
+                  <default>False</default>
+                </filter>
+              </filters>
+            </transformation>-->
+          </flowrule>
+          <!-- Set SAS2IDMConnector = true (constant) -->
+          <flowrule name="SetSAS2IDMConnector" targetattribute="SAS2IDMConnector">
+            <transformation priority="1">
+              <attributeName>UniversalIdentificationNumber</attributeName>
+              <transformType>concat</transformType>
+              <transformParameter>[True]</transformParameter>
+            </transformation>
+          </flowrule>
+          <!-- Format DateLeft as dateTime -->
+          <flowrule name="SetDateLeftAsDateTime" targetattribute="DateLeft">
+            <transformation priority="1">
+              <attributeName>DateLeft</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute[DateLeft]][]</transformParameter>
+              <datatype>string</datatype>
+              <filters switch="and" outcome="break" >
+                <filter priority="1">
+                  <attribute>DateLeft</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>outcome[1]</attributeName>
+              <transformType>datetime</transformType>
+              <transformParameter>[outcome[1]][yyyy-MM-ddTHH:mm:ss.000]</transformParameter>
+            </transformation>
+          </flowrule>
+          <!-- Format DOB as dateTime -->
+          <flowrule name="SetDOBAsDateTime" targetattribute="DOB" loglevel="Minimal" previewloglevel="Minimal">
+            <transformation priority="1">
+              <attributeName>DOB</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute[DOB]][]</transformParameter>
+              <filters switch="and" outcome="break" >
+                <filter priority="1">
+                  <attribute>DOB</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>outcome[1]</attributeName>
+              <transformType>datetime</transformType>
+              <transformParameter>[outcome[1]][yyyy-MM-ddTHH:mm:ss.000]</transformParameter>
+            </transformation>
+          </flowrule>
+          <!-- Format StartDate as dateTime -->
+          <flowrule name="SetStartDateAsDateTime" targetattribute="StartDate">
+            <transformation priority="1">
+              <attributeName>StartDate</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute[StartDate]][]</transformParameter>
+              <datatype>string</datatype>
+              <filters switch="and" outcome="break" >
+                <filter priority="1">
+                  <attribute>StartDate</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>outcome[1]</attributeName>
+              <transformType>datetime</transformType>
+              <transformParameter>[outcome[1]][yyyy-MM-ddTHH:mm:ss.000]</transformParameter>
+            </transformation>
+          </flowrule>
+          <!-- Concatenate Address1+2+3 to address -->
+          <flowrule name="SetAddress" targetattribute="address" loglevel="Minimal" previewloglevel="Minimal">
+            <transformation priority="1">
+              <attributeName>Address1</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute{Address1}][]</transformParameter>
+              <datatype>string</datatype>
+              <filters switch="and" outcome="continue" >
+                <filter priority="1">
+                  <attribute>Address1</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>Address2</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute{Address2}][]</transformParameter>
+              <datatype>string</datatype>
+              <filters switch="and" outcome="continue" >
+                <filter priority="1">
+                  <attribute>Address2</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="3">
+              <attributeName>Address3</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute{Address3}][]</transformParameter>
+              <datatype>string</datatype>
+              <filters switch="and" outcome="continue" >
+                <filter priority="1">
+                  <attribute>Address3</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="4">
+              <attributeName>LastName</attributeName>
+              <transformType>concat</transformType>
+              <transformParameter>[outcome{1}][, ][outcome{2}][ ][outcome{3}]</transformParameter>
+            </transformation>
+          </flowrule>
+          <!-- construct the PreferredName, if PreferredName exist use it else use the GivenName -->
+          <flowrule name="ConstructPreferredName" ManualPrecedence="False" targetattribute="PreferredName" onfailedtransform="halt" loglevel="Minimal" previewloglevel="Minimal">
+            <!-- First, save the current MV.preferredName in UTILS.transactionProperties[preferredName] if it's not already set (we need this also for ConstructContactDisplayName) -->
+            <transformation priority="1">
+              <attributeName>mventry{preferredName}</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[preferredName][]</transformParameter>
+              <filters switch="and" outcome="continue">
+                <filter priority="1">
+                  <attribute>utils[preferredName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <!-- Second, save outcome{2} as CS.PreferredName if present, otherwise CS.FirstName -->
+            <transformation priority="2">
+              <attributeName>FirstName</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute{PreferredName}][attribute{FirstName}]</transformParameter>
+              <datatype>string</datatype>
+              <filters switch="and" outcome="continue" >
+                <filter priority="1">
+                  <attribute>PreferredName</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <!-- this next transform was rubbish!
+            <transformation priority="3">
+              <attributeName>mventry{preferredName}</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[outcome{2}][utils[preferredName]]</transformParameter>
+              <filters switch="and" outcome="continue">
+                <filter priority="1">
+                  <attribute>utils[firstName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>-->
+            <!-- Third, save outcome{3} as Trim(outcome{2}) -->
+            <transformation priority="3">
+              <attributeName>outcome[2]</attributeName>
+              <transformType>stringtrimmer</transformType>
+              <transformParameter></transformParameter>
+            </transformation>
+            <!-- We don't want the NEW value but the OLD one!!!
+            <transformation priority="4">
+              <attributeName>outcome[3]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>preferredName</transformParameter>
+            </transformation>-->
+          </flowrule>
+          <!-- Constructing the UNIQUE contactDisplayName in the format "PreferredName/FirstName LastName (PhysicaldeliveryOfficeName)" -->
+          <flowrule name="ConstructContactDisplayName" targetattribute="contactDisplayName" onfailedtransform="break" loglevel="Minimal" previewloglevel="Minimal">
+            <!-- Save the current MV.contactDisplayName in UTILS.transactionProperties[contactDisplayName] -->
+            <transformation priority="1">
+              <attributeName>mventry[contactDisplayName]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[contactDisplayName]</transformParameter>
+              <datatype>string</datatype>
+            </transformation>
+            <!-- Save the current MV.firstName in UTILS.transactionProperties[firstName] if it's not already set -->
+            <transformation priority="2">
+              <attributeName>mventry[firstName]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[firstName][]</transformParameter>
+              <filters switch="or" outcome="continue">
+                <filter priority="1">
+                  <attribute>utils[firstName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+              <datatype>string</datatype>
+            </transformation>
+            <!---->
+            <!-- Save the current MV.lastName in UTILS.transactionProperties[lastName] if it's not already set -->
+            <!-- replaced "utils[lastName]" with "" as second param: -->
+            <transformation priority="3">
+              <attributeName>mventry[lastName]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[lastName][]</transformParameter>
+              <filters switch="or" outcome="continue">
+                <filter priority="1">
+                  <attribute>utils[lastName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+              <datatype>string</datatype>
+            </transformation>
+            <!---->
+            <!-- Save the current MV.physicalDeliveryOfficeName in UTILS.transactionProperties[physicalDeliveryOfficeName] if it's not already set -->
+            <transformation priority="4">
+              <attributeName>mventry[physicalDeliveryOfficeName]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[physicalDeliveryOfficeName][]</transformParameter>
+              <filters switch="or" outcome="continue">
+                <filter priority="1">
+                  <attribute>utils[physicalDeliveryOfficeName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+              <datatype>string</datatype>
+            </transformation>
+            <!---->
+            <!-- Having saved all the existing utils.transactionproperties values, now look at the incoming data and save outcome{5} as CS.PreferredName if exists, otherwise CS.FirstName -->
+            <transformation priority="5">
+              <attributeName>FirstName</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute{PreferredName}][attribute{FirstName}]</transformParameter>
+              <datatype>string</datatype>
+              <filters switch="and" outcome="continue" >
+                <filter priority="1">
+                  <attribute>PreferredName</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <!--
+              so our problem is HERE ... since outcome[5] we know will have our new value
+              there are 2 possibilities at this point:
+              1. mv.preferredName has yet to be updated, in which case we want to compare to mv.preferredName; OR
+              2. mv.preferredName has already been updated, so we wish to compare with utils.transactionProperties(preferredName)!!!
+              
+              so - try using "preferredName" as the first parameter instead of outcome{5}
+            -->
+            <!-- We forgot one more: save the current MV.preferredName in UTILS.transactionProperties[preferredName] if it's not already set -->
+            <transformation priority="6">
+              <attributeName>mventry[preferredName]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[preferredName][]</transformParameter>
+              <filters switch="or" outcome="continue">
+                <filter priority="1">
+                  <attribute>utils[preferredName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+              <datatype>string</datatype>
+            </transformation>
+            <!---->
+            <!-- to access outcome{5} at a lower level transformation we need to save it as utils.transctionproperties[preferredNameNew] -->
+            <transformation priority="7">
+              <attributeName>outcome[5]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[preferredNameNew]</transformParameter>
+              <datatype>string</datatype>
+            </transformation>
+            <!-- Now to compare each of the component attributes for MV.contactDisplayName and see if anything has changed - if it has save the word "YES" as outome{8}
+              otherwise leave as exiting value: THIS is the the trigger for the picklist value in transform 9 -->
+            <transformation priority="8">
+              <attributeName>LastName</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[YES][utils[contactDisplayName]]</transformParameter>
+              <filters switch="or" outcome="continue">
+                <filter priority="1">
+                  <attribute>utils[contactDisplayName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+                <filterset switch="or" passevaluation="true" outcome="continue">
+                  <filter priority="1">
+                    <attribute>utils[lastName]</attribute>
+                    <compareType>ne</compareType>
+                    <compareValue>attribute[LastName]</compareValue>
+                  </filter>
+                  <filter priority="2">
+                    <attribute>utils[firstName]</attribute>
+                    <compareType>ne</compareType>
+                    <compareValue>attribute[FirstName]</compareValue>
+                  </filter>
+                  <filter priority="3">
+                    <attribute>utils[physicalDeliveryOfficeName]</attribute>
+                    <compareType>ne</compareType>
+                    <compareValue>attribute[PhysicaldeliveryOfficeName]</compareValue>
+                  </filter>
+                  <filter priority="4">
+                    <attribute>utils[preferredName]</attribute>
+                    <compareType>ne</compareType>
+                    <compareValue>utils[preferredNameNew]</compareValue>
+                  </filter>
+                </filterset>
+              </filters>
+            </transformation>
+            <!-- If the outcome{8} above is "YES" we have a change to at least one of the component attributes, and we recalculate it here, otherwise we use outcome{8} as the existing value -->
+            <transformation priority="9">
+              <attributeName>outcome[8]</attributeName>
+              <transformType>picklist</transformType>
+              <transformParameter>
+                <picklist type="eq">
+                  <value start="YES">
+                    <flowrule name="YESpicklist" targetattribute="contactDisplayName">
+                      <transformation priority="1">
+                        <attributeName>LastName</attributeName>
+                        <transformType>uniquename</transformType>
+                        <transformParameter>
+                          <uniquename>
+                            <namerule priority="1" AbortOnMissingAttribute="True">
+                              <maxlength>64</maxlength>
+                              <minlength>1</minlength>
+                              <pad-with></pad-with>
+                              <namecomponent priority="1">
+                                <type>attribute</type>
+                                <value>PreferredName</value>
+                                <attributeseparator><![CDATA[ ]]></attributeseparator>
+                                <pad-with></pad-with>
+                                <maxlength>25</maxlength>
+                                <minlength>1</minlength>
+                                <alphanumericsonly>false</alphanumericsonly>
+                              </namecomponent>
+                              <namecomponent priority="2">
+                                <type>attribute</type>
+                                <value>LastName</value>
+                                <attributeseparator><![CDATA[ (]]></attributeseparator>
+                                <pad-with></pad-with>
+                                <maxlength>25</maxlength>
+                                <minlength>1</minlength>
+                                <alphanumericsonly>false</alphanumericsonly>
+                              </namecomponent>
+                              <namecomponent priority="3">
+                                <type>attribute</type>
+                                <value>PhysicaldeliveryOfficeName</value>
+                                <attributeseparator><![CDATA[)]]></attributeseparator>
+                                <pad-with></pad-with>
+                                <maxlength>10</maxlength>
+                                <minlength>1</minlength>
+                                <alphanumericsonly>false</alphanumericsonly>
+                              </namecomponent>
+                            </namerule>
+                            <resolutionrules>
+                              <namerule priority="1" AbortOnMissingAttribute="True">
+                                <maxlength>64</maxlength>
+                                <minlength>1</minlength>
+                                <pad-with></pad-with>
+                                <namecomponent priority="1">
+                                  <type>attribute</type>
+                                  <value>PreferredName</value>
+                                  <attributeseparator><![CDATA[ ]]></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>25</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>false</alphanumericsonly>
+                                </namecomponent>
+                                <namecomponent priority="2">
+                                  <type>attribute</type>
+                                  <value>LastName</value>
+                                  <attributeseparator><![CDATA[ (]]></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>25</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>false</alphanumericsonly>
+                                </namecomponent>
+                                <namecomponent priority="3">
+                                  <type>attribute</type>
+                                  <value>PhysicaldeliveryOfficeName</value>
+                                  <attributeseparator><![CDATA[) ]]></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>10</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>true</alphanumericsonly>
+                                </namecomponent>
+                                <namecomponent priority="4">
+                                  <type>numeric</type>
+                                  <value></value>
+                                  <attributeseparator></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>2</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>true</alphanumericsonly>
+                                </namecomponent>
+                              </namerule>
+                              <namerule priority="2">
+                                <maxlength>64</maxlength>
+                                <minlength>1</minlength>
+                                <pad-with></pad-with>
+                                <namecomponent priority="1">
+                                  <type>attribute</type>
+                                  <value>FirstName</value>
+                                  <attributeseparator><![CDATA[ ]]></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>25</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>false</alphanumericsonly>
+                                </namecomponent>
+                                <namecomponent priority="2">
+                                  <type>attribute</type>
+                                  <value>LastName</value>
+                                  <attributeseparator><![CDATA[ (]]></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>25</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>false</alphanumericsonly>
+                                </namecomponent>
+                                <namecomponent priority="3">
+                                  <type>attribute</type>
+                                  <value>PhysicaldeliveryOfficeName</value>
+                                  <attributeseparator><![CDATA[)]]></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>10</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>true</alphanumericsonly>
+                                </namecomponent>
+                              </namerule>
+                              <namerule priority="3">
+                                <maxlength>64</maxlength>
+                                <minlength>1</minlength>
+                                <pad-with></pad-with>
+                                <namecomponent priority="1">
+                                  <type>attribute</type>
+                                  <value>FirstName</value>
+                                  <attributeseparator><![CDATA[ ]]></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>25</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>false</alphanumericsonly>
+                                </namecomponent>
+                                <namecomponent priority="2">
+                                  <type>attribute</type>
+                                  <value>LastName</value>
+                                  <attributeseparator><![CDATA[ (]]></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>25</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>false</alphanumericsonly>
+                                </namecomponent>
+                                <namecomponent priority="3">
+                                  <type>attribute</type>
+                                  <value>PhysicaldeliveryOfficeName</value>
+                                  <attributeseparator><![CDATA[) ]]></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>10</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>true</alphanumericsonly>
+                                </namecomponent>
+                                <namecomponent priority="4">
+                                  <type>numeric</type>
+                                  <value></value>
+                                  <attributeseparator></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>2</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>true</alphanumericsonly>
+                                </namecomponent>
+                              </namerule>
+                            </resolutionrules>
+                            <datasource-attributename>contactDisplayName</datasource-attributename>
+                            <verify-against>
+                              <connectionString>metaverse</connectionString>
+                              <Port></Port>
+                              <UserName></UserName>
+                              <Password></Password>
+                            </verify-against>
+                          </uniquename>
+                        </transformParameter>
+                      </transformation>
+                    </flowrule>
+                  </value>
+                  <value start="default">outcome[8]</value>
+                </picklist>
+              </transformParameter>
+              <datatype>string</datatype>
+            </transformation>
+          </flowrule>
+          <!-- Constructing the displayName in the format "PreferredName/FirstName LastName (PhysicaldeliveryOfficeName)" -->
+          <flowrule name="ConstructDisplayName" ManualPrecedence="False" targetattribute="displayName" onfailedtransform="halt" loglevel="Minimal" previewloglevel="Minimal">
+            <transformation priority="1">
+              <attributeName>LastName</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute{PreferredName}][attribute{FirstName}]</transformParameter>
+              <datatype>string</datatype>
+              <filters switch="and" >
+                <filter priority="1">
+                  <attribute>PreferredName</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>LastName</attributeName>
+              <transformType>concat</transformType>
+              <transformParameter>[attribute{LastName}][, ][outcome{1}][ (][attribute{Year}][)]</transformParameter>
+              <datatype>string</datatype>
+            </transformation>
+          </flowrule>
+        </importattributeflow>
+        <!-- No Advanced EAF is required -->
+        <exportattributeflow>
+        </exportattributeflow>
+        <deprovision>
+          <enabled>false</enabled>
+          <behaviour>none</behaviour>
+          <cs-deletes-allowed>true</cs-deletes-allowed>
+          <cd-deletes-allowed>false</cd-deletes-allowed>
+          <mv-deletes-allowed>false</mv-deletes-allowed>
+        </deprovision>
+      </object>
+    </ma>
+    <ma name="Compass">
+      <systemtype>simple</systemtype>
+      <datasource>
+        <connectionString>metaverse</connectionString>
+        <Port></Port>
+        <UserName></UserName>
+        <Password></Password>
+      </datasource>
+      <provisioning enabled="false"/>
+      <deprovisioning enabled="false"/>
+      <cs-deletes-enabled enabled="true"/>
+      <cd-deletes-enabled enabled="false"/>
+      <!-- Person Object -->
+      <object type="person" csobjecttype="CEnetStudent" anchorattribute="UniversalIdentificationNumber">
+        <provisioning>
+          <!-- No provisioning back to Compass person -->
+          <enabled>false</enabled>
+        </provisioning>
+        <filter>
+          <!-- No Advanced Filter is required -->
+        </filter>
+        <join>
+          <!-- No Advanced join rules required -->
+        </join>
+        <importattributeflow>
+			<!-- treat 0 as '00' -->
+          <!--<flowrule name="ImportYear" targetattribute="Year" onfailedtransform="halt" loglevel="Minimal" previewloglevel="Minimal">
+            <transformation priority="1">
+              <attributeName>mventry{Year}</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[00][attribute[Year]]</transformParameter>
+              <filters switch="and" outcome="continue">
+                <filter priority="1">
+                  <attribute>Year</attribute>
+                  <compareType>eq</compareType>
+                  <compareValue>0</compareValue>
+                </filter>
+              </filters>
+            </transformation>
+          </flowrule>-->
+          <!-- 3 flow rules just to set up utils.transactionproperties -->
+          <flowrule name="ImportFirstName" targetattribute="firstName" onfailedtransform="halt" loglevel="Minimal" previewloglevel="Minimal">
+            <transformation priority="1">
+              <attributeName>mventry{firstName}</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[firstName][utils[firstName]]</transformParameter>
+              <filters switch="and" outcome="continue">
+                <filter priority="1">
+                  <attribute>utils[firstName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>FirstName</attributeName>
+              <transformType>stringtrimmer</transformType>
+              <transformParameter></transformParameter>
+            </transformation>
+          </flowrule>
+          <flowrule name="ImportLastName" targetattribute="lastName" onfailedtransform="halt" loglevel="Minimal" previewloglevel="Minimal">
+            <transformation priority="1">
+              <attributeName>mventry{lastName}</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[lastName][utils[lastName]]</transformParameter>
+              <filters switch="and" outcome="continue">
+                <filter priority="1">
+                  <attribute>utils[lastName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>LastName</attributeName>
+              <transformType>stringtrimmer</transformType>
+              <transformParameter></transformParameter>
+            </transformation>
+          </flowrule>
+          <flowrule name="ImportPhysicaldeliveryOfficeName" targetattribute="physicalDeliveryOfficeName" onfailedtransform="halt" loglevel="Minimal" previewloglevel="Minimal">
+            <transformation priority="1">
+              <attributeName>mventry{physicalDeliveryOfficeName}</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[physicalDeliveryOfficeName][utils[physicalDeliveryOfficeName]]</transformParameter>
+              <filters switch="and" outcome="continue">
+                <filter priority="1">
+                  <attribute>utils[physicalDeliveryOfficeName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>PhysicalDeliveryOfficeName</attributeName>
+              <transformType>stringtrimmer</transformType>
+              <transformParameter></transformParameter>
+            </transformation>
+          </flowrule>
+          <!-- generate account name and verify against metaverse -->
+          <flowrule name="GenerateAccountName2" ManualPrecedence="False" targetattribute="accountName" onfailedtransform="continue">
+            <!-- First see if accountName is present in MV -->
+            <transformation priority="1">
+              <attributeName>mventry[accountName]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[accountName]</transformParameter>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>LastName</attributeName>
+              <transformType>tostring</transformType>
+              <transformParameter>[][]</transformParameter>
+              <filters switch="and" outcome="break">
+                <filter priority="1">
+                  <attribute>utils[accountName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="3">
+              <attributeName>LastName</attributeName>
+              <transformType>uniquename</transformType>
+              <transformParameter>
+                <uniquename>
+                  <namerule priority="1">
+                    <maxlength>20</maxlength>
+                    <minlength>1</minlength>
+                    <pad-with></pad-with>
+                    <setcase transformto="lower" />
+                    <namecomponent priority="1">
+                      <type>attribute</type>
+                      <value>PreferredName</value>
+                      <attributeseparator>.</attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>18</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                    <namecomponent priority="2">
+                      <type>attribute</type>
+                      <value>LastName</value>
+                      <attributeseparator></attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>18</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                  </namerule>
+                  <resolutionrules>
+                    <namerule priority="1">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>PreferredName</value>
+                        <attributeseparator>.</attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>18</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>18</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="3">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>2</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                    </namerule>
+                  </resolutionrules>
+                  <datasource-attributename>accountName</datasource-attributename>
+                  <verify-against>
+                    <connectionString>metaverse</connectionString>
+                    <Port></Port>
+                    <UserName></UserName>
+                    <Password></Password>
+                  </verify-against>
+                </uniquename>
+              </transformParameter>
+              <datatype>string</datatype>
+            </transformation>
+            <transformation priority="4">
+              <attributeName>LastName</attributeName>
+              <transformType>uniquename</transformType>
+              <transformParameter>
+                <uniquename>
+                  <namerule priority="1">
+                    <maxlength>20</maxlength>
+                    <minlength>1</minlength>
+                    <pad-with></pad-with>
+                    <setcase transformto="lower" />
+                    <namecomponent priority="1">
+                      <type>attribute</type>
+                      <value>FirstName</value>
+                      <attributeseparator>.</attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>18</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                    <namecomponent priority="2">
+                      <type>attribute</type>
+                      <value>LastName</value>
+                      <attributeseparator></attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>18</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                  </namerule>
+                  <resolutionrules>
+                    <namerule priority="1">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>FirstName</value>
+                        <attributeseparator>.</attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>18</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>18</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="3">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>2</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                    </namerule>
+                  </resolutionrules>
+                  <datasource-attributename>accountName</datasource-attributename>
+                  <verify-against>
+                    <connectionString>metaverse</connectionString>
+                    <Port></Port>
+                    <UserName></UserName>
+                    <Password></Password>
+                  </verify-against>
+                </uniquename>
+              </transformParameter>
+              <datatype>string</datatype>
+            </transformation>
+            <transformation priority="5">
+              <attributeName>LastName</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[outcome{3}][outcome{4}]</transformParameter>
+              <datatype></datatype>
+              <filters switch="and" >
+                <filter priority="1">
+                  <attribute>PreferredName</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                  <default>False</default>
+                </filter>
+              </filters>
+            </transformation>
+          </flowrule>
+          <flowrule name="GenerateAccountName" ManualPrecedence="False" targetattribute="accountName" onfailedtransform="continue" loglevel="Minimal" previewloglevel="Minimal">
+            <!--Diagnostic-->
+            <!-- First see if accountName is present in MV -->
+            <transformation priority="1">
+              <attributeName>mventry[accountName]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[accountName]</transformParameter>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>LastName</attributeName>
+              <transformType>tostring</transformType>
+              <transformParameter>[][]</transformParameter>
+              <filters switch="and" outcome="break">
+                <filter priority="1">
+                  <attribute>utils[accountName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="3">
+              <attributeName>LastName</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute{PreferredName}][attribute{FirstName}]</transformParameter>
+              <datatype></datatype>
+              <filters switch="and" >
+                <filter priority="1">
+                  <attribute>PreferredName</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                  <default>False</default>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="4">
+              <attributeName>LastName</attributeName>
+              <transformType>externaldll</transformType>
+              <transformParameter>[CLSFWExtension.dll][CSODBBLIB][CompositeStringLength][outcome{3}][attribute{LastName}]</transformParameter>
+              <datatype>int</datatype>
+            </transformation>
+            <transformation priority="5">
+              <attributeName>LastName</attributeName>
+              <transformType>uniquename</transformType>
+              <transformParameter>
+                <uniquename>
+                  <namerule priority="1">
+                    <maxlength>20</maxlength>
+                    <minlength>1</minlength>
+                    <pad-with></pad-with>
+                    <setcase transformto="lower" />
+                    <namecomponent priority="1">
+                      <type>attribute</type>
+                      <value>LastName</value>
+                      <attributeseparator></attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                  </namerule>
+                  <resolutionrules>
+                    <namerule priority="1">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>19</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>1</maxlength>
+                        <minlength>1</minlength>
+                      </namecomponent>
+                    </namerule>
+                    <namerule priority="2">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>18</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>2</maxlength>
+                        <minlength>2</minlength>
+                      </namecomponent>
+                    </namerule>
+                  </resolutionrules>
+                  <datasource-attributename>accountName</datasource-attributename>
+                  <verify-against>
+                    <connectionString>metaverse</connectionString>
+                    <Port></Port>
+                    <UserName></UserName>
+                    <Password></Password>
+                  </verify-against>
+                </uniquename>
+              </transformParameter>
+            </transformation>
+            <transformation priority="6">
+              <attributeName>LastName</attributeName>
+              <transformType>uniquename</transformType>
+              <transformParameter>
+                <uniquename>
+                  <namerule priority="1">
+                    <maxlength>20</maxlength>
+                    <minlength>1</minlength>
+                    <pad-with></pad-with>
+                    <setcase transformto="lower" />
+                    <namecomponent priority="1">
+                      <type>attribute</type>
+                      <value>PreferredName</value>
+                      <attributeseparator>.</attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>18</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                    <namecomponent priority="2">
+                      <type>attribute</type>
+                      <value>LastName</value>
+                      <attributeseparator></attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>18</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                  </namerule>
+                  <resolutionrules>
+                    <namerule priority="1">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>PreferredName</value>
+                        <attributeseparator>.</attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>17</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>17</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="3">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>1</maxlength>
+                        <minlength>1</minlength>
+                      </namecomponent>
+                    </namerule>
+                    <namerule priority="2">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>PreferredName</value>
+                        <attributeseparator>.</attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>16</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>16</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="3">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>2</maxlength>
+                        <minlength>2</minlength>
+                      </namecomponent>
+                    </namerule>
+                  </resolutionrules>
+                  <datasource-attributename>accountName</datasource-attributename>
+                  <verify-against>
+                    <connectionString>metaverse</connectionString>
+                    <Port></Port>
+                    <UserName></UserName>
+                    <Password></Password>
+                  </verify-against>
+                </uniquename>
+              </transformParameter>
+            </transformation>
+            <transformation priority="7">
+              <attributeName>LastName</attributeName>
+              <transformType>uniquename</transformType>
+              <transformParameter>
+                <uniquename>
+                  <namerule priority="1">
+                    <maxlength>20</maxlength>
+                    <minlength>1</minlength>
+                    <pad-with></pad-with>
+                    <setcase transformto="lower" />
+                    <namecomponent priority="1">
+                      <type>attribute</type>
+                      <value>FirstName</value>
+                      <attributeseparator>.</attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>18</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                    <namecomponent priority="2">
+                      <type>attribute</type>
+                      <value>LastName</value>
+                      <attributeseparator></attributeseparator>
+                      <pad-with></pad-with>
+                      <maxlength>18</maxlength>
+                      <minlength>1</minlength>
+                      <alphanumericsonly>true</alphanumericsonly>
+                    </namecomponent>
+                  </namerule>
+                  <resolutionrules>
+                    <namerule priority="1">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>FirstName</value>
+                        <attributeseparator>.</attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>17</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>17</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="3">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>1</maxlength>
+                        <minlength>1</minlength>
+                      </namecomponent>
+                    </namerule>
+                    <namerule priority="2">
+                      <maxlength>20</maxlength>
+                      <minlength>1</minlength>
+                      <pad-with></pad-with>
+                      <setcase transformto="lower" />
+                      <namecomponent priority="1">
+                        <type>attribute</type>
+                        <value>FirstName</value>
+                        <attributeseparator>.</attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>16</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="2">
+                        <type>attribute</type>
+                        <value>LastName</value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>16</maxlength>
+                        <minlength>1</minlength>
+                        <alphanumericsonly>true</alphanumericsonly>
+                      </namecomponent>
+                      <namecomponent priority="3">
+                        <type>numeric</type>
+                        <value></value>
+                        <attributeseparator></attributeseparator>
+                        <pad-with></pad-with>
+                        <maxlength>2</maxlength>
+                        <minlength>2</minlength>
+                      </namecomponent>
+                    </namerule>
+                  </resolutionrules>
+                  <datasource-attributename>accountName</datasource-attributename>
+                  <verify-against>
+                    <connectionString>metaverse</connectionString>
+                    <Port></Port>
+                    <UserName></UserName>
+                    <Password></Password>
+                  </verify-against>
+                </uniquename>
+              </transformParameter>
+            </transformation>
+            <transformation priority="8">
+              <attributeName>LastName</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[outcome{6}][outcome{7}]</transformParameter>
+              <datatype></datatype>
+              <filters switch="and" >
+                <filter priority="1">
+                  <attribute>PreferredName</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                  <default>False</default>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="9">
+              <attributeName>outcome[4]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[nameLength]</transformParameter>
+            </transformation>
+            <transformation priority="10">
+              <attributeName>outcome[9]</attributeName>
+              <transformType>picklist</transformType>
+              <transformParameter>
+                <picklist type="between">
+                  <value start="001" end="017">outcome[8]</value>
+                  <value start="default">outcome[5]</value>
+                </picklist>
+              </transformParameter>
+              <datatype></datatype>
+            </transformation>
+          </flowrule>
+          <!-- Set CompassConnector = true (constant) -->
+          <flowrule name="SetCompassConnector" targetattribute="CompassConnector">
+            <transformation priority="1">
+              <attributeName>UniversalIdentificationNumber</attributeName>
+              <transformType>concat</transformType>
+              <transformParameter>[True]</transformParameter>
+            </transformation>
+          </flowrule>
+          <!-- Format DateLeft as dateTime -->
+          <flowrule name="SetDateLeftAsDateTime" targetattribute="DateLeft">
+            <transformation priority="1">
+              <attributeName>DateLeft</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute[DateLeft]][]</transformParameter>
+              <datatype>string</datatype>
+              <filters switch="and" outcome="break" >
+                <filter priority="1">
+                  <attribute>DateLeft</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>outcome[1]</attributeName>
+              <transformType>datetime</transformType>
+              <transformParameter>[outcome[1]][yyyy-MM-ddTHH:mm:ss.000]</transformParameter>
+            </transformation>
+          </flowrule>
+          <!-- Format DOB as dateTime -->
+          <flowrule name="SetDOBAsDateTime" targetattribute="DOB" loglevel="Minimal" previewloglevel="Minimal">
+            <transformation priority="1">
+              <attributeName>DOB</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute[DOB]][]</transformParameter>
+              <filters switch="and" outcome="break" >
+                <filter priority="1">
+                  <attribute>DOB</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>outcome[1]</attributeName>
+              <transformType>datetime</transformType>
+              <transformParameter>[outcome[1]][yyyy-MM-ddTHH:mm:ss.000]</transformParameter>
+            </transformation>
+          </flowrule>
+          <!-- Format StartDate as dateTime -->
+          <flowrule name="SetStartDateAsDateTime" targetattribute="StartDate">
+            <transformation priority="1">
+              <attributeName>StartDate</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute[StartDate]][]</transformParameter>
+              <datatype>string</datatype>
+              <filters switch="and" outcome="break" >
+                <filter priority="1">
+                  <attribute>StartDate</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>outcome[1]</attributeName>
+              <transformType>datetime</transformType>
+              <transformParameter>[outcome[1]][yyyy-MM-ddTHH:mm:ss.000]</transformParameter>
+            </transformation>
+          </flowrule>
+          <!-- Concatenate Address1+2+3 to address -->
+          <flowrule name="SetAddress" targetattribute="address" loglevel="Minimal" previewloglevel="Minimal">
+            <transformation priority="1">
+              <attributeName>Address1</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute{Address1}][]</transformParameter>
+              <datatype>string</datatype>
+              <filters switch="and" outcome="continue" >
+                <filter priority="1">
+                  <attribute>Address1</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>Address2</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute{Address2}][]</transformParameter>
+              <datatype>string</datatype>
+              <filters switch="and" outcome="continue" >
+                <filter priority="1">
+                  <attribute>Address2</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="3">
+              <attributeName>Address3</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute{Address3}][]</transformParameter>
+              <datatype>string</datatype>
+              <filters switch="and" outcome="continue" >
+                <filter priority="1">
+                  <attribute>Address3</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="4">
+              <attributeName>LastName</attributeName>
+              <transformType>concat</transformType>
+              <transformParameter>[outcome{1}][, ][outcome{2}][ ][outcome{3}]</transformParameter>
+            </transformation>
+          </flowrule>
+          <!-- construct the PreferredName, if PreferredName exist use it else use the GivenName -->
+          <flowrule name="ConstructPreferredName" ManualPrecedence="False" targetattribute="PreferredName" onfailedtransform="halt" loglevel="Minimal" previewloglevel="Minimal">
+            <!-- First, save the current MV.preferredName in UTILS.transactionProperties[preferredName] if it's not already set (we need this also for ConstructContactDisplayName) -->
+            <transformation priority="1">
+              <attributeName>mventry{preferredName}</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[preferredName][]</transformParameter>
+              <filters switch="and" outcome="continue">
+                <filter priority="1">
+                  <attribute>utils[preferredName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <!-- Second, save outcome{2} as CS.PreferredName if present, otherwise CS.FirstName -->
+            <transformation priority="2">
+              <attributeName>FirstName</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute{PreferredName}][attribute{FirstName}]</transformParameter>
+              <datatype>string</datatype>
+              <filters switch="and" outcome="continue" >
+                <filter priority="1">
+                  <attribute>PreferredName</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <!-- Third, save outcome{3} as Trim(outcome{2}) -->
+            <transformation priority="3">
+              <attributeName>outcome[2]</attributeName>
+              <transformType>stringtrimmer</transformType>
+              <transformParameter></transformParameter>
+            </transformation>
+          </flowrule>
+          <!-- Constructing the UNIQUE contactDisplayName in the format "PreferredName/FirstName LastName (PhysicalDeliveryOfficeName)" -->
+          <flowrule name="ConstructContactDisplayName" targetattribute="contactDisplayName" onfailedtransform="break" loglevel="Minimal" previewloglevel="Minimal">
+            <!-- Save the current MV.contactDisplayName in UTILS.transactionProperties[contactDisplayName] -->
+            <transformation priority="1">
+              <attributeName>mventry[contactDisplayName]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>contactDisplayName</transformParameter>
+              <datatype>string</datatype>
+            </transformation>
+            <!-- Save the current MV.firstName in UTILS.transactionProperties[firstName] if it's not already set -->
+            <transformation priority="2">
+              <attributeName>mventry[firstName]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[firstName][]</transformParameter>
+              <datatype>string</datatype>
+              <filters switch="or" outcome="continue">
+                <filter priority="1">
+                  <attribute>utils[firstName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <!-- Save the current MV.lastName in UTILS.transactionProperties[lastName] if it's not already set -->
+            <!-- replaced "utils[lastName]" with "" as second param: -->
+            <transformation priority="3">
+              <attributeName>mventry[lastName]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[lastName][]</transformParameter>
+              <datatype>string</datatype>
+              <filters switch="or" outcome="continue">
+                <filter priority="1">
+                  <attribute>utils[lastName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <!-- Save the current MV.physicalDeliveryOfficeName in UTILS.transactionProperties[physicalDeliveryOfficeName] if it's not already set -->
+            <transformation priority="4">
+              <attributeName>mventry[physicalDeliveryOfficeName]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[physicalDeliveryOfficeName][]</transformParameter>
+              <datatype>string</datatype>
+              <filters switch="or" outcome="continue">
+                <filter priority="1">
+                  <attribute>utils[physicalDeliveryOfficeName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <!-- Having saved all the existing utils.transactionproperties values, now look at the incoming data and save outcome{5} as CS.PreferredName if exists, otherwise CS.FirstName -->
+            <transformation priority="5">
+              <attributeName>FirstName</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute{PreferredName}][attribute{FirstName}]</transformParameter>
+              <datatype>string</datatype>
+              <filters switch="and" outcome="continue" >
+                <filter priority="1">
+                  <attribute>PreferredName</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <!--
+              so our problem is HERE ... since outcome[5] we know will have our new value
+              there are 2 possibilities at this point:
+              1. mv.preferredName has yet to be updated, in which case we want to compare to mv.preferredName; OR
+              2. mv.preferredName has already been updated, so we wish to compare with utils.transactionProperties(preferredName)!!!
+              
+              so - try using "preferredName" as the first parameter instead of outcome{5}
+            -->
+            <!-- We forgot one more: save the current MV.preferredName in UTILS.transactionProperties[preferredName] if it's not already set -->
+            <transformation priority="6">
+              <attributeName>mventry[preferredName]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>[preferredName][]</transformParameter>
+              <datatype>string</datatype>
+              <filters switch="or" outcome="continue">
+                <filter priority="1">
+                  <attribute>utils[preferredName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <!-- to access outcome{5} at a lower level transformation we need to save it as utils.transctionproperties[preferredNameNew] -->
+            <transformation priority="7">
+              <attributeName>outcome[5]</attributeName>
+              <transformType>utils</transformType>
+              <transformParameter>preferredNameNew</transformParameter>
+              <datatype>string</datatype>
+            </transformation>
+            <!-- Now to compare each of the component attributes for MV.contactDisplayName and see if anything has changed - if it has save the word "YES" as outome{8}
+              otherwise leave as exiting value: THIS is the the trigger for the picklist value in transform 9 -->
+            <transformation priority="8">
+              <attributeName>LastName</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[YES][utils[contactDisplayName]]</transformParameter>
+              <filters switch="or" outcome="continue">
+                <filter priority="1">
+                  <attribute>utils[contactDisplayName]</attribute>
+                  <compareType>notexists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+                <filterset switch="or" passevaluation="true" outcome="continue">
+                  <filter priority="1">
+                    <attribute>utils[lastName]</attribute>
+                    <compareType>ne</compareType>
+                    <compareValue>attribute[LastName]</compareValue>
+                  </filter>
+                  <filter priority="2">
+                    <attribute>utils[firstName]</attribute>
+                    <compareType>ne</compareType>
+                    <compareValue>attribute[FirstName]</compareValue>
+                  </filter>
+                  <filter priority="3">
+                    <attribute>utils[physicalDeliveryOfficeName]</attribute>
+                    <compareType>ne</compareType>
+                    <compareValue>attribute[PhysicalDeliveryOfficeName]</compareValue>
+                  </filter>
+                  <filter priority="4">
+                    <attribute>utils[preferredName]</attribute>
+                    <compareType>ne</compareType>
+                    <compareValue>utils[preferredNameNew]</compareValue>
+                  </filter>
+                </filterset>
+              </filters>
+            </transformation>
+            <!-- If the outcome{8} above is "YES" we have a change to at least one of the component attributes, and we recalculate it here, otherwise we use outcome{8} as the existing value -->
+            <transformation priority="9">
+              <attributeName>outcome[8]</attributeName>
+              <transformType>picklist</transformType>
+              <transformParameter>
+                <picklist type="eq">
+                  <value start="YES">
+                    <flowrule name="YESpicklist" targetattribute="contactDisplayName">
+                      <transformation priority="1">
+                        <attributeName>LastName</attributeName>
+                        <transformType>uniquename</transformType>
+                        <transformParameter>
+                          <uniquename>
+                            <namerule priority="1" AbortOnMissingAttribute="True">
+                              <maxlength>64</maxlength>
+                              <minlength>1</minlength>
+                              <pad-with></pad-with>
+                              <namecomponent priority="1">
+                                <type>attribute</type>
+                                <value>PreferredName</value>
+                                <attributeseparator><![CDATA[ ]]></attributeseparator>
+                                <pad-with></pad-with>
+                                <maxlength>25</maxlength>
+                                <minlength>1</minlength>
+                                <alphanumericsonly>false</alphanumericsonly>
+                              </namecomponent>
+                              <namecomponent priority="2">
+                                <type>attribute</type>
+                                <value>LastName</value>
+                                <attributeseparator><![CDATA[ (]]></attributeseparator>
+                                <pad-with></pad-with>
+                                <maxlength>25</maxlength>
+                                <minlength>1</minlength>
+                                <alphanumericsonly>false</alphanumericsonly>
+                              </namecomponent>
+                              <namecomponent priority="3">
+                                <type>attribute</type>
+                                <value>PhysicalDeliveryOfficeName</value>
+                                <attributeseparator><![CDATA[)]]></attributeseparator>
+                                <pad-with></pad-with>
+                                <maxlength>10</maxlength>
+                                <minlength>1</minlength>
+                                <alphanumericsonly>false</alphanumericsonly>
+                              </namecomponent>
+                            </namerule>
+                            <resolutionrules>
+                              <namerule priority="1" AbortOnMissingAttribute="True">
+                                <maxlength>64</maxlength>
+                                <minlength>1</minlength>
+                                <pad-with></pad-with>
+                                <namecomponent priority="1">
+                                  <type>attribute</type>
+                                  <value>PreferredName</value>
+                                  <attributeseparator><![CDATA[ ]]></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>25</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>false</alphanumericsonly>
+                                </namecomponent>
+                                <namecomponent priority="2">
+                                  <type>attribute</type>
+                                  <value>LastName</value>
+                                  <attributeseparator><![CDATA[ (]]></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>25</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>false</alphanumericsonly>
+                                </namecomponent>
+                                <namecomponent priority="3">
+                                  <type>attribute</type>
+                                  <value>PhysicalDeliveryOfficeName</value>
+                                  <attributeseparator><![CDATA[) ]]></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>10</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>true</alphanumericsonly>
+                                </namecomponent>
+                                <namecomponent priority="4">
+                                  <type>numeric</type>
+                                  <value></value>
+                                  <attributeseparator></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>2</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>true</alphanumericsonly>
+                                </namecomponent>
+                              </namerule>
+                              <namerule priority="2">
+                                <maxlength>64</maxlength>
+                                <minlength>1</minlength>
+                                <pad-with></pad-with>
+                                <namecomponent priority="1">
+                                  <type>attribute</type>
+                                  <value>FirstName</value>
+                                  <attributeseparator><![CDATA[ ]]></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>25</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>false</alphanumericsonly>
+                                </namecomponent>
+                                <namecomponent priority="2">
+                                  <type>attribute</type>
+                                  <value>LastName</value>
+                                  <attributeseparator><![CDATA[ (]]></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>25</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>false</alphanumericsonly>
+                                </namecomponent>
+                                <namecomponent priority="3">
+                                  <type>attribute</type>
+                                  <value>PhysicalDeliveryOfficeName</value>
+                                  <attributeseparator><![CDATA[)]]></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>10</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>true</alphanumericsonly>
+                                </namecomponent>
+                              </namerule>
+                              <namerule priority="3">
+                                <maxlength>64</maxlength>
+                                <minlength>1</minlength>
+                                <pad-with></pad-with>
+                                <namecomponent priority="1">
+                                  <type>attribute</type>
+                                  <value>FirstName</value>
+                                  <attributeseparator><![CDATA[ ]]></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>25</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>false</alphanumericsonly>
+                                </namecomponent>
+                                <namecomponent priority="2">
+                                  <type>attribute</type>
+                                  <value>LastName</value>
+                                  <attributeseparator><![CDATA[ (]]></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>25</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>false</alphanumericsonly>
+                                </namecomponent>
+                                <namecomponent priority="3">
+                                  <type>attribute</type>
+                                  <value>PhysicalDeliveryOfficeName</value>
+                                  <attributeseparator><![CDATA[) ]]></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>10</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>true</alphanumericsonly>
+                                </namecomponent>
+                                <namecomponent priority="4">
+                                  <type>numeric</type>
+                                  <value></value>
+                                  <attributeseparator></attributeseparator>
+                                  <pad-with></pad-with>
+                                  <maxlength>2</maxlength>
+                                  <minlength>1</minlength>
+                                  <alphanumericsonly>true</alphanumericsonly>
+                                </namecomponent>
+                              </namerule>
+                            </resolutionrules>
+                            <datasource-attributename>contactDisplayName</datasource-attributename>
+                            <verify-against>
+                              <connectionString>metaverse</connectionString>
+                              <Port></Port>
+                              <UserName></UserName>
+                              <Password></Password>
+                            </verify-against>
+                          </uniquename>
+                        </transformParameter>
+                      </transformation>
+                    </flowrule>
+                  </value>
+                  <value start="default">outcome[8]</value>
+                </picklist>
+              </transformParameter>
+              <datatype>string</datatype>
+            </transformation>
+          </flowrule>
+          <!-- Constructing the displayName in the format "PreferredName/FirstName LastName (PhysicalDeliveryOfficeName)" -->
+          <flowrule name="ConstructDisplayName" ManualPrecedence="False" targetattribute="displayName" onfailedtransform="halt" loglevel="Minimal" previewloglevel="Minimal">
+            <transformation priority="1">
+              <attributeName>LastName</attributeName>
+              <transformType>filter</transformType>
+              <transformParameter>[attribute{PreferredName}][attribute{FirstName}]</transformParameter>
+              <datatype>string</datatype>
+              <filters switch="and" >
+                <filter priority="1">
+                  <attribute>PreferredName</attribute>
+                  <compareType>exists</compareType>
+                  <compareValue></compareValue>
+                </filter>
+              </filters>
+            </transformation>
+            <transformation priority="2">
+              <attributeName>LastName</attributeName>
+              <transformType>concat</transformType>
+              <transformParameter>[attribute{LastName}][, ][outcome{1}][ (][attribute{Year}][)]</transformParameter>
+              <datatype>string</datatype>
+            </transformation>
+          </flowrule>
+        </importattributeflow>
+        <!-- No Advanced EAF is required -->
+        <exportattributeflow>
+        </exportattributeflow>
+        <deprovision>
+          <enabled>false</enabled>
+          <behaviour>none</behaviour>
+          <cs-deletes-allowed>true</cs-deletes-allowed>
+          <cd-deletes-allowed>false</cd-deletes-allowed>
+          <mv-deletes-allowed>false</mv-deletes-allowed>
+        </deprovision>
+      </object>
+    </ma>
+  </management-agents>
+</UnifyConfiguration>

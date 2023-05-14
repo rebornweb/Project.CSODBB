@@ -1,0 +1,25 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+
+@model AdapterEntityTransformationAddSchemaContribution
+           
+@{
+    string addImageUrl = Url.WebIcon("add.png");
+}
+     
+@Html.HiddenFor(model => model.TransformationId)
+@if (!Model.AddedFields.Any())
+{
+    <p>@AdapterResources.TransformationAddNoFieldsMessage</p>
+}
+
+<ul>
+    @foreach (var addedField in Model.AddedFields)
+    {
+        <li style="list-style-image: url('@addImageUrl')">
+            <b>@TransformationResources.AddSchemaContributionAddText</b>
+            @addedField.FieldName
+        </li>
+    }
+</ul>

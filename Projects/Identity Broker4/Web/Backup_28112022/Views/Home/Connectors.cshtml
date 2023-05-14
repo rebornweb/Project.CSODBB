@@ -1,0 +1,49 @@
+﻿@using Unify.Framework
+@using Unify.Product.IdentityBroker
+@model CurrentConnectorStates
+
+@if (Model.CurrentDescriptions.Any())
+{
+    int connectorCount = Model.SoftLimit;
+    Guid? connectorGroupId = Model.GroupId;
+    
+    foreach (var connectorDescription in Model.CurrentDescriptions)
+    {
+        IConnectorEngineConfigurationBase configuration = connectorDescription.Configuration;
+        string connectorType = configuration.ConnectorType;
+        Guid connectorId = configuration.ConnectorId;
+
+        <table class="RightSpaced">
+            <tr>
+                <td>
+                    @Html.ConnectorImage(connectorId, connectorType)
+                </td>
+                <td>
+                    <a href="@Url.Action("ConnectorDetails", "Connector", new {connectorId })">@configuration.DisplayName</a>
+                </td>
+                <td>
+                    @{ Html.RenderAction("ConnectorProgress", "Home", new { connectorId });}
+                </td>
+            </tr>
+        </table>
+    }
+
+    if (Model.CurrentDescriptions.Count() >= connectorCount)
+    {
+        <hr/>
+            
+        <div>
+            <p style="text-align:center">
+                <a href="@Url.Action("Index", "Home", new { connectorGroupId, connectorCount = connectorCount + 10 })">@HomeControllerResources.HomeLoadMoreConnectorsText</a>
+            </p>
+        </div>
+    }
+    else
+    {
+        <br/>
+    }
+}
+else
+{
+    <label>@HomeControllerResources.HomeNoOperationalConnectorsText</label>
+}

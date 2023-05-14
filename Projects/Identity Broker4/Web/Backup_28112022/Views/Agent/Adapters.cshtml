@@ -1,0 +1,16 @@
+﻿@using Unify.Connect.Web.Extensions
+@model Unify.Product.IdentityBroker.AdapterRemotingConfiguration[]
+           
+<div class="PaddedContent">
+    @foreach (var adapter in Model)
+    {
+        <a href="@Url.Action("AdapterDetails", "Adapter", new { id = adapter.AdapterId, area = string.Empty })">
+            @adapter.AdapterName
+        </a>
+    }
+
+    @if (!Model.Any())
+    {
+        <label>@AgentResources.NoAgentAdaptersText</label>
+    }
+</div>

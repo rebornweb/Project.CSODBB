@@ -1,0 +1,44 @@
+﻿@using Unify.Framework.Collections
+@using Unify.Product.IdentityBroker
+@model EntityViewInformation
+           
+<h3>@EntitySchemaResources.EntityHeading</h3>
+
+<div>
+    <label>
+        @EntitySchemaResources.EntityIdLabel @Model.EntityId.ToString()
+    </label>
+</div>
+
+<br/>
+
+<div>
+    <table class="FeintTableRows EntitySchemaRows">
+        @{
+            IDictionary<GroupedNameValueCollectionKey, string> values = 
+                Model.Entity.EntityDisplayValues(Model.SchemaTypes);
+        }
+
+        @foreach (var valuePair in values)
+        {
+            GroupedNameValueCollectionKey column = valuePair.Key;
+            
+            string value = valuePair.Value;
+            
+            var displayValue = new MvcHtmlString(EntitySerializer.IsNull(value)
+                                                             ? EntitySerializer.NullDisplay()
+                                                             : value);
+            
+            string rowStyle = Model.Schema[column].Key ? "schemaKey" : "standardRow";
+            
+            <tr class="@rowStyle">
+                <td>
+                    <label><b>@column.ToString():</b></label>
+                </td>
+                <td>
+                    <span>@displayValue</span>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

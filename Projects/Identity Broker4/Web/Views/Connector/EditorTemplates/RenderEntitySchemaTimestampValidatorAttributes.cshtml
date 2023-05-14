@@ -1,0 +1,47 @@
+﻿@model TimestampSchemaFieldDefinitionInformation
+           
+@using Unify.Framework.Web
+      
+<script type="text/javascript">
+    $(function () {
+        $("#MaxValue, #MinValue").datetimepicker(
+            {
+                dateFormat: '@ConnectorControllerResources.DateFormat',
+                timeFormat: '@ConnectorControllerResources.TimeFormat',
+                showSecond: true
+            });
+    });
+</script>
+
+<fieldset>
+
+    <legend>
+        @ConnectorControllerResources.MinimumValueInnerValidatorLegendText
+        @Html.CheckBoxFor(model => model.EnableMinValueFlag, new { @class = "CheckCollapse" })
+        <span class="hint">@ConnectorControllerResources.MinimumValueInnerValidatorFlagDescription<span class="hint-pointer">&nbsp;</span></span>
+    </legend>
+    
+    @using (Html.MetaDataFor(model => model.MinValue, new { description = string.Concat(ConnectorControllerResources.EntitySchemaRowMinValueDescription, " ", ConnectorControllerResources.DateTimeFormatDescription) }, new { @class = "CheckSection" }))
+    {
+        @Html.LabelFor(model => model.MinValue, ConnectorControllerResources.EntitySchemaRowMinValueLabel)
+        <span>@Html.EditorFor(model => model.MinValue)</span>
+    }
+
+</fieldset>
+
+<fieldset>
+    
+    <legend>
+        @ConnectorControllerResources.MaximumValueInnerValidatorLegendText
+        @Html.CheckBoxFor(model => model.EnableMaxValueFlag, new { @class = "CheckCollapse" })
+        <span class="hint">@ConnectorControllerResources.MaximumValueInnerValidatorFlagDescription<span class="hint-pointer">&nbsp;</span></span>
+    </legend>
+    
+    @using (Html.MetaDataFor(model => model.MaxValue, new{description = string.Concat(ConnectorControllerResources.EntitySchemaRowMaxValueDescription, " ", ConnectorControllerResources.DateTimeFormatDescription)}, new{@class="CheckSection"}))
+    {
+        @Html.LabelFor(model => model.MaxValue, ConnectorControllerResources.EntitySchemaRowMaxValueLabel)
+        <span>@Html.EditorFor(model => model.MaxValue)</span>
+    }
+
+</fieldset>
+

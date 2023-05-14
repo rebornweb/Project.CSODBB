@@ -1,0 +1,97 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model dynamic
+@{
+    string addGatewayImageUrl = Url.WebIcon("add.png");
+    string deleteImageUrl = Url.WebIcon("delete.png");
+    string recycleImageUrl = Url.WebIcon("connect.png");
+    const string formId = "GatewayFunctionsForm";
+    string gatewayOperationsUrl = Url.Action("GatewayIndexOperation", "Gateway");
+    // add new gateway
+    string addGatewayUrl = Url.Action("NewGateway", "Gateway");
+    string addGatewayImageHtml = string.Format("<img alt=\"{0}\" title=\"{0}\" src=\"{1}\" id=\"AddGatewayButton\"/> {0}", GatewayResources.AddGatewayAltText, addGatewayImageUrl);
+    // delete gateway
+    const string deleteInputId = "GatewayFunctionsDeleteButton";
+    const string deleteInputTextId = "GatewayFunctionsDeleteTextButton";
+    // recycle gateway
+    const string recycleInputId = "GatewayFunctionsRecycleButton";
+    const string recycleInputTextId = "GatewayFunctionsRecycleTextButton";
+}
+<div class="functionsMenuIcon">
+    <a href="@addGatewayUrl">@Html.Raw(addGatewayImageHtml)</a>
+</div>
+<div>
+    @using (Html.BeginForm("GatewayIndexOperation", "Gateway", FormMethod.Post, new {@class = "functionsMenuForm", id = formId, style = "margin-left: -1.2em;"}))
+    {
+        <div id="GatewayFunctions">
+            <div>
+                <div class="functionsMenuIcon">
+                    <input type="submit" value="Delete" name="Function" id="@deleteInputId" style="background: url('@deleteImageUrl') no-repeat"
+                           class="SubmitImageButton" title="@GatewayResources.IndexDeleteGatewaysAltText"/>
+                    <input type="submit" value="Delete" name="Function" id="@deleteInputTextId"
+                           class="SubmitImageText" alt="Delete" title="@GatewayResources.IndexDeleteGatewaysAltText"/>
+                </div>
+                <div class="functionsMenuIcon">
+                    <input type="submit" value="Recycle" name="Function" id="@recycleInputId" style="background: url('@recycleImageUrl') no-repeat"
+                           class="SubmitImageButton GatewaysFunctionsImageButton" title="@GatewayResources.GatewayRecycleGatewayAltText"/>
+                    <input type="submit" value="Recycle" name="Function" id="@recycleInputTextId"
+                           class="SubmitImageText GatewaysFunctionsTextButton" alt="Recycle" title="@GatewayResources.GatewayRecycleGatewayAltText"/>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('.scriptonly').show();
+        function postGatewayFunctions(functionValue) {
+            var gatewaysArr = new Array();
+            var maxIndex = 0;
+            $(".GatewayCheckBox").each(function () {
+                if ($(this).prop("checked")) {
+                    gatewaysArr[maxIndex] = $(this).val();
+                    maxIndex++;
+                }
+            });
+
+            var postData = { 'gateways': gatewaysArr, 'function': functionValue };
+            $.ajaxSettings.traditional = true;
+
+            $.ajax({
+                type: "POST",
+                url: "@gatewayOperationsUrl",
+                data: postData,
+                success: function () {
+                    location.reload(true);
+                }
+            });
+        }
+
+        $(".functionsMenuForm").on('submit', function (e) {
+            e.preventDefault();
+        });
+
+        $(".GatewaysFunctionsImageButton").each(function () {
+            $(this).on("click", function () {
+                postGatewayFunctions($(this).val());
+            });
+        });
+        $(".GatewaysFunctionsTextButton").each(function () {
+            $(this).on("click", function () {
+                postGatewayFunctions($(this).val().replace(/\s+/g, '')); // remove spaces
+            });
+        });
+
+        var deleteBtns = ["#@deleteInputId", "#@deleteInputTextId"];
+        for (var j = 0; j < deleteBtns.length; j++) {
+            $(deleteBtns[j]).jQueryUiDialogGenerator({
+                messageHtmlCodeStr: '<div>@GatewayResources.DeleteGatewaysConfirmationWarningText</div><br/><div>@GatewayResources.DeleteGatewayWarningDescriptionText @WebStudioResources.ThisCannotBeUndoneText</div><br/>',
+                boundElementName: "Function", // name attribute of the bound element
+                btnSourceType: sourceTypeEnumFunc().submitBtnSelfDefine, // btnSourceType == sourceTypeEnumFunc().actionLink   means btn is action link <a>, btnSourceType == sourceTypeEnumFunc().formInput    means the btn is <form><input>
+                submitBtnClick: function () {
+                    postGatewayFunctions($(deleteBtns[0]).val());
+                }
+            });
+        }
+    });
+</script>

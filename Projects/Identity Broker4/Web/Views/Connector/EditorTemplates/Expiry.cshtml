@@ -1,0 +1,20 @@
+﻿@model ExpiryTimingViewInformation
+           
+@using Unify.Framework.Web
+
+@{
+    string expiryDateDescription = string.Format(
+            ConnectorControllerResources.ExpiryDateExpiresDescription,
+            ConnectorControllerResources.FriendlyDateFormat,
+            ConnectorControllerResources.FriendlyTimeFormat,
+            ConnectorControllerResources.DateFormatExample,
+            ConnectorControllerResources.TimeFormatExample);
+}
+
+@Html.HiddenFor(model => model.Selected)
+
+@using (Html.MetaDataFor(model => model.ExpiryDateTime, new { description = expiryDateDescription }))
+{
+    @Html.LabelFor(model => model.ExpiryDateTime, ConnectorControllerResources.ExpiryDateExpiresName)
+    <span class="StandardDateTime">@Html.EditorFor(model => model.ExpiryDateTime)</span>
+}

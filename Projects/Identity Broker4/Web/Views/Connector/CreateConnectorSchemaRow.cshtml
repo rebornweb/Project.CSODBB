@@ -1,0 +1,36 @@
+﻿@using Unify.Connect.Web
+@using Unify.Framework.Web
+@model ChooseValidatorViewInformation
+
+@{
+    ViewBag.TItle = Html.Title(TitleResources.CreateConnectorSchemaRowTitle);
+}
+
+<h2>@ConnectorControllerResources.AddSchemaFieldHeading</h2>
+
+<p>@ConnectorControllerResources.ChooseFieldTypeMessage</p>
+
+@using (Html.DecorateForm(
+            () => Html.BeginForm("CreateOrEditConnectorSchemaRow", "Connector", FormMethod.Post, new{id = "CreateOrEditConnectorSchemaRowForm"}),
+            WebStudioResources.CreateText,
+            "CreateOrEditConnectorSchemaRowForm",
+            ConnectorControllerResources.CreateEntitySchemaRowAltText  
+        ))
+{
+    @Html.HiddenFor(model => model.ConnectorId)
+    @Html.HiddenFor(model => model.SchemaKey)
+    @Html.HiddenFor(model => model.Edit)
+
+    using (Html.MetaDataFor(model => model.SelectedValidatorName, new { description = ConnectorControllerResources.EntitySchemaValidatorsDescription }, new { @class = "chzn-form-fieldset-container" }))
+    {
+        @Html.LabelFor(model => model.SelectedValidatorName, ConnectorControllerResources.EntitySchemaValidatorsLabel)
+
+        @Html.FieldDefinitionDropDown(
+            "SelectedValidatorName",
+            Model.ValidatorNames,
+            new
+            {
+                @class = "chzn-select"
+            })
+    }
+}

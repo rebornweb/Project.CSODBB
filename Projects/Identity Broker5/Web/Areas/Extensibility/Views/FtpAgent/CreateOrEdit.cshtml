@@ -1,0 +1,73 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Communicator
+@using Unify.Framework.Web
+@model FtpAgentViewInformation
+           
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "FtpAgent", new{ area = "Extensibility"}),
+        AgentResources.SaveAgentButtonText,
+        "CreateFtpAgentForm",
+        AgentResources.SaveAgentButtonAltText
+    ))
+{
+    @Html.AgentDetailsFor(model => model)
+    
+    <fieldset>
+        <legend>@AgentResources.ConnectionInformationLegendText</legend>
+        
+        @using (Html.MetaDataFor(model => model.Uri, new { description = AgentResources.FtpAgentUriDescription }))
+        {
+            @Html.LabelFor(model => model.Uri, AgentResources.FtpAgentUriLabel)
+            @Html.TextBoxFor(model => model.Uri)
+        }
+        
+        @Html.CredentialsCommunicatorFor(model => model)
+        
+        @Html.ProxyCommunicatorFor(model => model)
+        
+        @using (Html.MetaDataFor(model => model.KeepAlive, new { description = AgentResources.KeepAliveDescription }))
+        {
+            @Html.LabelFor(model => model.KeepAlive, AgentResources.KeepAliveLabel)
+            @Html.CheckBoxFor(model => model.KeepAlive)
+        }
+
+    </fieldset>
+    
+    <fieldset>
+        <legend>@AgentResources.TransmissionDetailsLegendText</legend>
+        
+        @Html.NetworkCommunicatorFor(model => model)
+        
+        @using (Html.MetaDataFor(model => model.EnableSsl, new {description = AgentResources.EnableSslDescription}))
+        {
+            @Html.LabelFor(model => model.EnableSsl, AgentResources.EnableSslLabel)
+            @Html.CheckBoxFor(model => model.EnableSsl)
+        }
+        
+        @using (Html.MetaDataFor(model => model.UsePassive, new {description = AgentResources.UsePassiveDescription}))
+        {
+            @Html.LabelFor(model => model.UsePassive, AgentResources.UsePassiveLabel)
+            @Html.CheckBoxFor(model => model.UsePassive)
+        }
+        
+        @using (Html.MetaDataFor(model => model.UseBinary, new { description = AgentResources.UseBinaryDescription }))
+        {
+            @Html.LabelFor(model => model.UseBinary, AgentResources.UseBinaryLabel)
+            @Html.CheckBoxFor(model => model.UseBinary)
+        }
+        
+        @using (Html.MetaDataFor(model => model.ReadWriteTimeout, new { description = AgentResources.ReadWriteTimeoutDescription }))
+        {
+            @Html.LabelFor(model => model.ReadWriteTimeout, AgentResources.ReadWriteTimeoutLabel)
+            <span id="RecurringTimeSpanFrequencyContainer">
+                @Html.TextBoxFor(model => model.ReadWriteTimeout)
+            </span>
+        }
+
+    </fieldset>
+}
+
+<script type="text/javascript">
+    $('#RecurringTimeSpanFrequencyContainer').unifytimepicker();
+</script>

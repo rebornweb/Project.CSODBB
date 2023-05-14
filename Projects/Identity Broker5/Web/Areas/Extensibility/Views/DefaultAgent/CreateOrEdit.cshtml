@@ -1,0 +1,17 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@model DefaultAgentViewInformation
+
+<div>
+    <div class="FormText">
+        <p>
+            @AgentResources.UnknownAgentText
+            <ul>
+                @foreach (KeyValuePair<string, string> agent in Model.KnownAgents)
+                {
+                    <li>@agent.Key (@agent.Value)</li>
+                }
+            </ul>
+        </p>
+    </div>
+</div>

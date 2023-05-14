@@ -1,0 +1,68 @@
+﻿@using Unify.Product.IdentityBroker
+@model CurrentAdapterStates
+
+@if (Model.CurrentDescriptions.Any())
+{
+    int adapterCount = Model.SoftLimit;
+    Guid? adapterGroupId = Model.GroupId;
+    int? connectorCount = Model.ConnectorLimitPassThough;
+    Guid? connectorGroupId = Model.ConnectorGroupIdPassThough;
+    
+    RouteValueDictionary valueDictionary = new RouteValueDictionary
+    {
+        {HomeControllerResources.AdapterCountQueryName, adapterCount + Model.AdapterIncrement}
+    };
+
+    if (adapterGroupId.HasValue) { valueDictionary.Add(HomeControllerResources.AdapterGroupIdQueryName, adapterGroupId.Value); }
+    if (connectorCount.HasValue) { valueDictionary.Add(HomeControllerResources.ConnectorCountQueryName, connectorCount.Value);}
+    if (connectorGroupId.HasValue) { valueDictionary.Add(HomeControllerResources.ConnectorGroupIdQueryName, connectorGroupId.Value);}
+
+    foreach (AdapterStateDescription adapterDescription in Model.CurrentDescriptions)
+    {
+        AdapterRemotingConfigurationInformation remotingConfiguration = adapterDescription.Configuration;
+        string adapterName = remotingConfiguration.AdapterName;
+        Guid adapterId = remotingConfiguration.AdapterId;
+
+        <div>
+            <table class="RightSpaced">
+                <tr>
+                    <td>
+                        @Html.AdapterImage(adapterId, adapterName)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("AdapterDetails", "Adapter", new {id = adapterId})">@remotingConfiguration.AdapterName</a>
+                    </td>
+                    <td>
+                        <span class="AdapterAndStatusSeparator">-</span>
+                        <span>
+                            @{
+                                Html.RenderAction("AdapterStatistics", "Adapter", new { id = adapterId, isInLine = true });
+                            }
+                        </span>
+                        <span class="AdapterAndStatusSeparator">-</span>
+                    </td>
+                    <td>
+                        @{ Html.RenderAction("AdapterProgress", "Home", new { adapterId });}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    }
+
+    if (Model.CurrentDescriptions.Count() >= adapterCount)
+    {
+        <hr/>
+            
+        <p style="text-align:center">
+            <a href="@Url.Action("Index", "Home", valueDictionary)">@HomeControllerResources.HomeLoadMoreAdaptersText</a>
+        </p>
+    }
+    else
+    {
+        <br/>
+    }
+}
+else
+{
+    <p>@HomeControllerResources.HomeNoOperationalAdaptersText</p>
+}

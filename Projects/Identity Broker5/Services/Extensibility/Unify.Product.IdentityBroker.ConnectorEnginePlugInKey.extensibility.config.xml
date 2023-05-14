@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConnectorEngine schedulerEnabled="true">
+  <dataConnection name="repository" repository="Unify.IdentityBroker" />
+  <connectorconfigurations>
+    <connectorconfiguration>
+      <connector id="1d1d50f7-05b4-4e9c-865c-d6d842366e6c" connector="Unify.Connectors.CSODBB.CEnet.User" name="CEnet Staff Connector" queueMissed="true" enabled="true" deletionThreshold="1">
+        <entitySchema>
+          <field name="ID" key="true" readonly="true" required="true" validator="string" id="2169dd03-e4af-4ecb-95f5-34863dad52fd">
+            <Extended />
+          </field>
+          <field name="Sex" key="false" readonly="true" required="false" validator="string" id="de5dc9f2-94a6-4b47-af9c-1846f40e1112">
+            <Extended />
+          </field>
+          <field name="BirthDate" key="false" readonly="true" required="false" validator="date" id="e5f555c2-ba32-4210-ba07-7d5bf4350c69">
+            <Extended />
+          </field>
+          <field name="CountryCode" key="false" readonly="true" required="false" validator="string" id="b18ff569-f635-478e-b2a5-c2847f462e7d">
+            <Extended />
+          </field>
+          <field name="FirstName" key="false" readonly="true" required="false" validator="string" id="0778af2d-cc75-43ce-b4c9-c042b65723ca">
+            <Extended />
+          </field>
+          <field name="LastName" key="false" readonly="true" required="false" validator="string" id="fe12dd2f-e3ae-4c29-a8ea-23596a242b0c">
+            <Extended />
+          </field>
+          <field name="MiddleName" key="false" readonly="true" required="false" validator="string" id="36c211cc-d2fc-445b-874a-50b6b45b34f9">
+            <Extended />
+          </field>
+          <field name="NullValue" key="false" readonly="true" required="false" validator="string" id="1d1744a2-d780-45ae-91c6-50f76e687428">
+            <Extended />
+          </field>
+          <field name="PreferredName" key="false" readonly="true" required="false" validator="string" id="ed7e56c8-fdb5-4228-83f1-9add5eae27e0">
+            <Extended />
+          </field>
+          <field name="PrefFirstName" key="false" readonly="true" required="false" validator="string" id="732c4511-ad8c-40dc-b894-0173e4aaea2c">
+            <Extended />
+          </field>
+          <field name="EmplId" key="true" readonly="true" required="true" validator="string" id="34d36bb0-aed1-4e4d-819b-2b57483f77b3">
+            <Extended />
+          </field>
+          <field name="CeIder" key="false" readonly="true" required="false" validator="string" id="053f6973-6e7a-47e7-a5e4-fa7913405a40">
+            <Extended />
+          </field>
+        </entitySchema>
+        <Extended>
+          <apiSchema queryFilter="userType eq Staff">
+            <attribute schemaField="ID" jsonPathValue="$.id" />
+            <attribute schemaField="Sex" jsonPathValue="$.sex" />
+            <attribute schemaField="BirthDate" jsonPathValue="$['urn:cenet:params:scim:schemas:extension:2.0:userExtension'].dateOfBirth" />
+            <attribute schemaField="FirstName" jsonPathValue="$.name.givenName" />
+            <attribute schemaField="LastName" jsonPathValue="$.name.familyName" />
+            <attribute schemaField="EmplId" jsonPathValue="$['urn:cenet:params:scim:schemas:extension:2.0:identifications'][?(@type=='staffNumber')].value" />
+            <attribute schemaField="CeIder" jsonPathValue="$['urn:cenet:params:scim:schemas:extension:2.0:identifications'][?(@type=='ceider')].value" />
+          </apiSchema>
+        </Extended>
+        <Groups>
+          <Group id="ba2523b8-9956-4764-b05a-81620d96c032" />
+        </Groups>
+        <Agents>
+          <Agent id="be2be8bc-d2cc-4f8b-afc6-8b91b0d45d6b" type="Unify.Agent.CSODBB.CENet" />
+        </Agents>
+      </connector>
+      <getAllEntities>
+        <Timing id="05360e04-9497-4261-b7c7-4abb9370411a" enabled="true" name="DayExclusion" daysToExclude="Sunday,Saturday" useLocal="true">
+          <Timing id="59d605b7-a54c-4f9f-9b96-2a05d6e03099" enabled="true" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2022-09-30T13:04:10">
+            <Timespan value="PT4H" />
+          </Timing>
+        </Timing>
+      </getAllEntities>
+      <polling>
+        <Timing id="94eb78ad-f64e-427e-91ec-46c1658f5ff1" enabled="true" name="DayExclusion" daysToExclude="Sunday,Saturday" useLocal="true">
+          <Timing id="7d85747b-02ea-4d11-8afc-ae026806916e" enabled="true" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2022-09-30T13:05:16">
+            <Timespan value="PT10M" />
+          </Timing>
+        </Timing>
+      </polling>
+    </connectorconfiguration>
+    <connectorconfiguration>
+      <connector id="c54b750a-f03a-4a41-8ac6-cebaad595f76" connector="Unify.Connectors.CSODBB.CEnet.User" name="CEnet Student Connector" queueMissed="true" enabled="true" deletionThreshold="1">
+        <entitySchema>
+          <field name="ID" key="true" readonly="true" required="true" validator="string" id="2169dd03-e4af-4ecb-95f5-34863dad52fd">
+            <Extended />
+          </field>
+          <field name="Email" key="false" readonly="true" required="false" validator="string" id="5aa00110-d3fe-4e82-84e1-68009b5bb2ee">
+            <Extended />
+          </field>
+          <field name="DOB" key="false" readonly="true" required="false" validator="date" id="e5f555c2-ba32-4210-ba07-7d5bf4350c69">
+            <Extended />
+          </field>
+          <field name="SchoolID" key="false" readonly="true" required="false" validator="string" id="4739bfa1-7a2d-4ae1-bc41-e6c3a478696c">
+            <Extended />
+          </field>
+          <field name="FirstName" key="false" readonly="true" required="false" validator="string" id="00bd9247-0d9d-4454-b65f-250fefe8e4ca">
+            <Extended maxLength="50" />
+          </field>
+          <field name="LastName" key="false" readonly="true" required="false" validator="string" id="3d40cf99-82b5-4bd5-9ad2-048cd5b1a13b">
+            <Extended maxLength="50" />
+          </field>
+          <field name="PreferredName" key="false" readonly="true" required="false" validator="string" id="5d17059c-7fea-465b-be65-377cbf8c2e95">
+            <Extended maxLength="50" />
+          </field>
+          <field name="Sex" key="false" readonly="true" required="false" validator="string" id="a7a082eb-4ed2-43c1-96eb-66d23986e97a">
+            <Extended maxLength="1" />
+          </field>
+          <field name="Year" key="false" readonly="true" required="false" validator="string" id="ad502d70-cec1-42f9-bb9b-33cdc4621219">
+            <Extended maxLength="50" />
+          </field>
+          <field name="Class" key="false" readonly="true" required="false" validator="string" id="4e1b2ec4-2e77-4599-b5ad-9dd58d63397f">
+            <Extended maxLength="50" />
+          </field>
+          <field name="House" key="false" readonly="true" required="false" validator="string" id="bc5e8cb3-d85b-4a77-916c-767f5c3e54b5">
+            <Extended maxLength="50" />
+          </field>
+          <field name="CandidateNumber" key="false" readonly="true" required="false" validator="string" id="5b2f07b2-f71e-4f35-813d-3b9682277cab">
+            <Extended maxLength="50" />
+          </field>
+          <field name="UniversalIdentificationNumber" key="true" readonly="true" required="false" validator="string" id="6da97df7-aabc-47a7-a6d6-55bf1de37e99">
+            <Extended maxLength="20" />
+          </field>
+          <field name="CeIder" key="false" readonly="false" required="false" validator="string" id="7b43dbc0-9eb4-427b-978a-447f1ae18fca">
+            <Extended />
+          </field>
+          <field name="MiddleName" key="false" readonly="true" required="false" validator="string" id="9fb6b795-6ebb-43e7-a565-bbf5caee4194">
+            <Extended />
+          </field>
+        </entitySchema>
+        <Extended>
+          <apiSchema queryFilter="userType eq Student and active eq true">
+            <attribute schemaField="ID" jsonPathValue="$.id" />
+            <attribute schemaField="Email" jsonPathValue="$.emails[?(@primary == true)].value" />
+            <attribute schemaField="DOB" jsonPathValue="$['urn:cenet:params:scim:schemas:extension:2.0:userExtension'].dateOfBirth" />
+            <attribute schemaField="FirstName" jsonPathValue="$.name.givenName" />
+            <attribute schemaField="LastName" jsonPathValue="$.name.familyName" />
+            <attribute schemaField="Sex" jsonPathValue="$.sex" />
+            <attribute schemaField="Year" jsonPathValue="$.title" />
+            <attribute schemaField="SchoolID" jsonPathValue="$['urn:cenet:params:scim:schemas:extension:2.0:enterpriseRole'][?(@primary == true)].costCenter" />
+            <attribute schemaField="CandidateNumber" jsonPathValue="$['urn:cenet:params:scim:schemas:extension:2.0:identifications'][?(@type=='ceider')].value" />
+            <attribute schemaField="UniversalIdentificationNumber" jsonPathValue="$['urn:cenet:params:scim:schemas:extension:2.0:identifications'][?(@type=='studentNumber')].value" />
+            <attribute schemaField="CeIder" jsonPathValue="$['urn:cenet:params:scim:schemas:extension:2.0:identifications'][?(@type=='ceider')].value" />
+            <attribute schemaField="PreferredName" jsonPathValue="$.name.nickName" />
+            <attribute schemaField="MiddleName" jsonPathValue="$.name.middleName" />
+            <attribute schemaField="Class" jsonPathValue="$['urn:cenet:params:scim:schemas:extension:2.0:enterpriseRole'][?(@primary == true)].department" />
+            <attribute schemaField="House" jsonPathValue="$['urn:cenet:params:scim:schemas:extension:2.0:enterpriseRole'][?(@primary == true)].division" />
+          </apiSchema>
+        </Extended>
+        <Groups>
+          <Group id="ba2523b8-9956-4764-b05a-81620d96c032" />
+        </Groups>
+        <Agents>
+          <Agent id="be2be8bc-d2cc-4f8b-afc6-8b91b0d45d6b" type="Unify.Agent.CSODBB.CENet" />
+        </Agents>
+      </connector>
+      <getAllEntities>
+        <Timing id="bc2dcc8f-0349-4833-afbe-06d1e123496b" enabled="true" name="DayExclusion" daysToExclude="Sunday,Saturday" useLocal="true">
+          <Timing id="cf25e71a-0366-494c-9354-a486e818e479" enabled="true" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2022-09-30T11:59:03">
+            <Timespan value="PT4H" />
+          </Timing>
+        </Timing>
+      </getAllEntities>
+      <polling>
+        <Timing id="d049f9bd-cf52-46cf-81dd-2ddad627833b" enabled="true" name="DayExclusion" daysToExclude="Sunday,Saturday" useLocal="true">
+          <Timing id="f0d1342c-f2f4-4157-b1a0-789e6506a954" enabled="true" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2022-09-30T13:06:22">
+            <Timespan value="PT30M" />
+          </Timing>
+        </Timing>
+      </polling>
+    </connectorconfiguration>
+    <connectorconfiguration>
+      <connector id="5d2ae8ff-7d89-45ea-9ab7-9c7e321fb5e8" connector="Unify.Connectors.PowerShell" name="MIM School Sites" queueMissed="true" enabled="true" deletionThreshold="1">
+        <entitySchema>
+          <field name="csoSiteCode" key="true" readonly="true" required="true" validator="string" id="d36f53e3-5986-4c84-8416-abdbd8bbf89e">
+            <Extended />
+          </field>
+          <field name="DisplayName" key="false" readonly="true" required="true" validator="string" id="4132039b-abb5-42a7-a8e3-58e92be37eb3">
+            <Extended />
+          </field>
+          <field name="Description" key="false" readonly="true" required="false" validator="string" id="bc89e86f-e0ba-4134-a75b-9525f0d7056c">
+            <Extended />
+          </field>
+          <field name="PhysicalDeliveryOfficeName" key="false" readonly="true" required="true" validator="string" id="0eaf0e56-42c5-4f8f-b65e-ce3001e6998b">
+            <Extended />
+          </field>
+          <field name="Address1" key="false" readonly="true" required="false" validator="string" id="ee191750-4a55-49ba-b7bf-aec14153019c">
+            <Extended />
+          </field>
+          <field name="Address2" key="false" readonly="true" required="false" validator="string" id="a6d525ff-9fca-4276-be03-97d6938691c8">
+            <Extended />
+          </field>
+          <field name="Address3" key="false" readonly="true" required="false" validator="string" id="dfe59efa-68f5-4709-89d6-880a771d74ff">
+            <Extended />
+          </field>
+          <field name="MailSuffix" key="false" readonly="true" required="false" validator="string" id="47e81e22-4462-4d73-855a-651592ae82fd">
+            <Extended />
+          </field>
+          <field name="PostalCode" key="false" readonly="true" required="false" validator="string" id="9bc94935-a947-43dc-85e3-82380c2bd626">
+            <Extended />
+          </field>
+        </entitySchema>
+        <Extended>
+          <GetAllEntities>[bool]$DebugMode = $false
+if (!(Get-Module LithnetRMA)) {
+    Import-Module LithnetRMA | Out-Null
+}
+Set-ResourceManagementClient -BaseAddress http://occcp-im201:5725;
+#[string]$xpath = "/csoDepartment"
+[string]$xpath = "/csoSite[starts-with(DisplayName,'S____')]"
+$sites = Search-Resources -XPath $xpath -AttributesToGet @("DisplayName","csoDeptID","Description","Address1","Address2","Address3","PostalCode","csoSiteCode","Mailsuffix")
+if ($sites) {
+$sites | Foreach-Object {
+        if ($DebugMode) {
+            "PhysicalDeliveryOfficeName: [$($_.DisplayName)], csoSiteCode: [$($_.csoSiteCode)], PostalCode: [$($_.PostalCode)], Address1: [$($_.Address1)], Address2: [$($_.Address2)], Address3: [$($_.Address3)], MailSuffix: [$($_.Mailsuffix)]"
+        } else {
+            if($_.csoSiteCode){
+                $entity = $entities.Create();
+                $entity['DisplayName'] = $_.DisplayName;
+                $entity['csoSiteCode'] = $_.csoSiteCode.TrimStart("0");
+                $entity['Description'] = $_.Description;
+                $entity['Address1'] = $_.Address1;
+                $entity['Address2'] = $_.Address2;
+                $entity['Address3'] = $_.Address3;
+                $entity['PostalCode'] = $_.PostalCode;
+                $entity['PhysicalDeliveryOfficeName'] = $_.DisplayName;
+                $entity['MailSuffix'] = $_.Mailsuffix;
+                $entity.Commit();
+            }
+        }
+    }
+}
+</GetAllEntities>
+          <AddEntities>foreach ($entity in $components.InputEntities) {  }</AddEntities>
+          <UpdateEntities>foreach ($entity in $components.InputEntities) {  }</UpdateEntities>
+          <DeleteEntities>foreach ($entity in $components.InputKeys) {  }</DeleteEntities>
+          <GetSchema>New-Field 'csoSiteCode' 'string' $true $true $true; # name type key read-only required
+New-Field 'DisplayName' 'string' $false $true $true;
+New-Field 'Description' 'string' $false $true $false;
+New-Field 'PhysicalDeliveryOfficeName' 'string' $false $true $true;
+New-Field 'Address1' 'string' $false $true $false;
+New-Field 'Address2' 'string' $false $true $false;
+New-Field 'Address3' 'string' $false $true $false;
+New-Field 'PostalCode' 'string' $false $true $false;
+New-Field 'MailSuffix' 'string' $false $true $false;
+</GetSchema>
+        </Extended>
+        <Groups>
+          <Group id="ba2523b8-9956-4764-b05a-81620d96c032" />
+        </Groups>
+        <Agents />
+      </connector>
+      <getAllEntities>
+        <Timing id="897f58c8-83e1-4ee3-8fc4-c86996743ead" enabled="true" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2019-08-15T16:33:37">
+          <Timespan value="PT1H" />
+        </Timing>
+      </getAllEntities>
+      <polling />
+    </connectorconfiguration>
+    <connectorconfiguration>
+      <connector id="d1d5b786-2e5e-495f-8b26-ab3feaf4649c" connector="Unify.Connectors.PowerShell" name="MIM Google Contacts" queueMissed="true" enabled="true" deletionThreshold="1">
+        <entitySchema>
+          <field name="contactID" key="true" readonly="true" required="true" validator="string" id="8d711858-06b3-4d65-97c5-db82bbbc0e56">
+            <Extended />
+          </field>
+          <field name="contactCount" key="false" readonly="false" required="false" validator="string" id="b16c47f1-3b94-4e63-ac1b-58f30ce7a0b5">
+            <Extended />
+          </field>
+          <field name="contactEmailStaff" key="false" readonly="false" required="true" validator="string" id="aed68963-71f1-4228-94b0-cbb9c9f8a48f">
+            <Extended />
+          </field>
+          <field name="contactName" key="false" readonly="false" required="true" validator="string" id="eeef6cdf-67c6-438d-afee-f24d3d120a52">
+            <Extended />
+          </field>
+          <field name="SchoolID" key="false" readonly="false" required="false" validator="string" id="da02a8c4-918b-44f4-924d-79e2d439e6f1">
+            <Extended />
+          </field>
+        </entitySchema>
+        <Extended>
+          <GetAllEntities>$ErrorActionPreference = "Stop"
+
+if (!(Get-Module LithnetRMA)) {
+    Import-Module LithnetRMA | Out-Null
+}
+Set-ResourceManagementClient -BaseAddress http://occcp-im201:5725;
+
+$schoolYearHash = @{}
+
+#Site Information
+[string]$xpath = "/csoSite[starts-with(DisplayName,'S____')]"
+$sites = Search-Resources -XPath $xpath -AttributesToGet @("DisplayName","Description")
+$siteHash = @{}
+if ($sites) {
+    Foreach($st in $sites){
+        if(-not $siteHash.ContainsKey($st.DisplayName)){
+            if($st.Description){
+                $siteHash.Add($st.DisplayName, $st.Description.ToString().ToUpper())
+            }else{
+                $siteHash.Add($st.DisplayName, "NO NAME SET")
+            }
+        }
+    }
+}
+
+#$logger.LogInformation("Sites Found: $($sites.Count)");
+
+#Student Queries
+[string]$xpath = "/Person[PersonType='Student' and SAS2IDMConnector = 'True' and starts-with(OfficeLocation,'%') and starts-with(Year,'%')]"
+$students = Search-Resources -XPath $xpath -AttributesToGet @("USIN","Year","OfficeLocation")
+if ($students) {
+    Foreach($st in $students){
+        if($st.OfficeLocation -and $st.Year){
+            # Student School/Year Groups
+            $processedYear = $st.Year.Replace("0","")
+            $schoolYearKey = "GG.School." +$st.OfficeLocation+ ".Students.Year" + $processedYear
+            if(-not $schoolYearHash.ContainsKey($schoolYearKey)){
+                #$logger.LogInformation("Generating Hash: $($schoolYearKey)");
+                $email = "dbb" + $st.OfficeLocation.ToLower() + "yr" + $processedYear + "@groups.dbb.catholic.edu.au"
+                $name = "GG " + $siteHash[$st.OfficeLocation] + " Year " + $processedYear +  " Students"
+                $att = @{"Year" = $st.Year
+                    "OfficeLocation" = $st.OfficeLocation
+                    "Email" = $email
+                    "Name" = $name
+                    "Count" = 1}
+                $schoolYearHash.Add($schoolYearKey,$att)
+                #$logger.LogInformation("Hash Committed: $($schoolYearHash.Keys.Count)");
+            }else{
+                $schoolYearHash[$schoolYearKey].Count ++
+            }
+                
+            # Student School Groups
+            $schoolYearKey = "GG.School." +$st.OfficeLocation+ ".Students"
+            if(-not $schoolYearHash.ContainsKey($schoolYearKey)){
+                $email = "dbb" + $st.OfficeLocation.ToLower() + "students@groups.dbb.catholic.edu.au"
+                $name = "GG " + $siteHash[$st.OfficeLocation] +  " Students"
+                $att = @{"OfficeLocation" = $st.OfficeLocation
+                    "Email" = $email
+                    "Name" = $name
+                    "Count" = 1}
+                $schoolYearHash.Add($schoolYearKey,$att)
+            }else{
+                $schoolYearHash[$schoolYearKey].Count ++
+            }
+        }
+    }
+}
+
+#$logger.LogInformation("Students Found: $($students.Count)");
+#$logger.LogInformation("Hash Count 1: $($schoolYearHash.Keys.Count)");
+
+#Staff Queries
+[string]$xpath = "/Person[PersonType='Staff' and csoEmployeeStatus='Active' and starts-with(OfficeLocation,'%')]"
+$staff = Search-Resources -XPath $xpath -AttributesToGet @("csoLegacyEmployeeID","OfficeLocation")
+if ($staff) {
+    Foreach($st in $staff){
+        if($st.OfficeLocation){
+            # Staff Groups
+            $schoolYearKey = "GG.School." +$st.OfficeLocation+ ".Staff"
+            if(-not $schoolYearHash.ContainsKey($schoolYearKey)){
+                $email = "dbb" + $st.OfficeLocation.ToLower() + "staff@groups.dbb.catholic.edu.au"
+                $name = "GG " + $siteHash[$st.OfficeLocation] +  " Staff"
+                $att = @{"OfficeLocation" = $st.OfficeLocation
+                     "Email" = $email
+                     "Name" = $name
+                    "Count" = 1}
+                $schoolYearHash.Add($schoolYearKey,$att)
+            }else{
+                $schoolYearHash[$schoolYearKey].Count ++
+            }
+        }
+    }
+}
+
+#Manual Groups
+$email = "dbballstaff@groups.dbb.catholic.edu.au"
+$att = @{"OfficeLocation" = $null
+        "Name" = "GG All Staff"
+        "Email" = $email
+    "Count" = 1}
+$schoolYearHash.Add("GG.Staff",$att)
+
+$email = "dbballstudents@groups.dbb.catholic.edu.au"
+$att = @{"OfficeLocation" = $null
+        "Name" = "GG All Students"
+        "Email" = $email
+    "Count" = 1}
+$schoolYearHash.Add("GG.Students",$att)
+
+
+$schoolYearHash.Keys.Count
+#Commit to Broker
+
+$BlacklistSchoolIDs = @("Casual Pool","CSO")
+
+if($schoolYearHash.Keys.Count -gt 0){
+    Foreach($key in $schoolYearHash.Keys){
+        if($BlacklistSchoolIDs -notcontains $schoolYearHash[$key].OfficeLocation){
+            $entity = $entities.Create();
+            $entity['contactID'] = $key.ToString();
+            $entity['contactEmailStaff'] = $schoolYearHash[$key].Email;
+            $entity['contactName'] = $schoolYearHash[$key].Name;
+            $entity['SchoolID'] = $schoolYearHash[$key].OfficeLocation;
+            $entity['contactCount'] = $schoolYearHash[$key].Count;
+            $entity.Commit();
+        }
+    }
+}else{
+    throw "No Records Returned From MIM Query"
+}</GetAllEntities>
+          <AddEntities>foreach ($entity in $components.InputEntities) {  }</AddEntities>
+          <UpdateEntities>foreach ($entity in $components.InputEntities) {  }</UpdateEntities>
+          <DeleteEntities>foreach ($entity in $components.InputKeys) {  }</DeleteEntities>
+          <GetSchema>New-Field 'contactID' 'string' $true $true $true; # name type key read-only required
+New-Field 'contactCount' 'string' $false $false $false;
+New-Field 'contactEmailStaff' 'string' $false $false $true;
+New-Field 'contactName' 'string' $false $false $true;
+New-Field 'SchoolID' 'string' $false $false $false;</GetSchema>
+        </Extended>
+        <Groups>
+          <Group id="ba2523b8-9956-4764-b05a-81620d96c032" />
+        </Groups>
+        <Agents />
+      </connector>
+      <getAllEntities>
+        <Timing id="a7086b71-f060-4a02-a737-9ce2f789a454" enabled="true" name="DayExclusion" daysToExclude="Sunday,Saturday" useLocal="true">
+          <Timing id="e85d6305-0fc3-4296-ac74-2a61d1b6c423" enabled="true" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2022-09-30T13:07:10">
+            <Timespan value="PT4H" />
+          </Timing>
+        </Timing>
+      </getAllEntities>
+      <polling />
+    </connectorconfiguration>
+    <connectorconfiguration>
+      <connector id="926d876e-74a2-4e93-a864-792859c46ff1" connector="Unify.Connectors.Direct" name="SAS2IDM School Promoted Status" queueMissed="true" enabled="true" deletionThreshold="1">
+        <entitySchema>
+          <field name="SchoolID" key="true" readonly="true" required="true" validator="string" id="ed066224-0639-45a1-9cab-eae1d49b7675">
+            <Extended />
+          </field>
+          <field name="IsPromoted" key="false" readonly="true" required="true" validator="boolean" id="51ef5136-0c72-417d-b137-6284f6aa4998">
+            <Extended />
+          </field>
+        </entitySchema>
+        <Extended>
+          <communicator owner="dbo" table="SAS2IDMSchoolEx" readThreshold="1000" />
+        </Extended>
+        <Groups />
+        <Agents>
+          <Agent id="37f8ea84-5ba2-496c-89cd-c8c3d6934ebd" type="DatabaseAgent" />
+        </Agents>
+      </connector>
+      <getAllEntities>
+        <Timing id="cceefa89-d396-4185-a5b2-9586c17f2653" enabled="true" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2022-09-27T14:54:10">
+          <Timespan value="PT5M" />
+        </Timing>
+      </getAllEntities>
+      <polling />
+    </connectorconfiguration>
+    <connectorconfiguration>
+      <connector id="eedd6c48-954c-452d-a11d-8bd6d7a23bd6" connector="Unify.Connectors.Direct" name="SAS Staff" queueMissed="true" enabled="false" deletionThreshold="1">
+        <entitySchema>
+          <field name="SchoolCode" key="false" readonly="true" required="true" validator="string" id="93b4674e-3f29-4601-8284-50ab310597ec">
+            <Extended />
+          </field>
+          <field name="SchoolName" key="false" readonly="true" required="false" validator="string" id="cee0935f-cc9f-42c7-a773-edda4c18853a">
+            <Extended />
+          </field>
+          <field name="SchoolID" key="true" readonly="true" required="true" validator="string" id="5861b388-8e5a-422b-b3c4-5bd8d6897c31">
+            <Extended />
+          </field>
+          <field name="StaffID" key="true" readonly="true" required="true" validator="int" id="2bc82ef2-f7b5-4c9d-a901-d10607a5558f">
+            <Extended />
+          </field>
+          <field name="ceIder" key="false" readonly="true" required="false" validator="string" id="285e7e73-a754-442c-87af-fd874e4f41a9">
+            <Extended />
+          </field>
+          <field name="FirstName" key="false" readonly="true" required="false" validator="string" id="94a9e5e5-3164-4e26-9a35-61dbceb833c2">
+            <Extended />
+          </field>
+          <field name="MiddleName" key="false" readonly="true" required="false" validator="string" id="971c2185-a7c8-46f3-876b-5330d46bcab2">
+            <Extended />
+          </field>
+          <field name="LastName" key="false" readonly="true" required="false" validator="string" id="8ce5daf9-22aa-4021-bb4b-2db75d74904f">
+            <Extended />
+          </field>
+          <field name="PreferredName" key="false" readonly="true" required="false" validator="string" id="0d3a4aff-1735-4ac4-99cb-80318af56189">
+            <Extended />
+          </field>
+          <field name="Sex" key="false" readonly="true" required="false" validator="string" id="9b8932aa-a12d-46f0-af6f-0cfdc531d54a">
+            <Extended />
+          </field>
+          <field name="DateOfBirth" key="false" readonly="true" required="false" validator="timestamp" id="bdc6f261-87b4-448a-baf1-2eb854a0f308">
+            <Extended />
+          </field>
+          <field name="Form" key="false" readonly="true" required="false" validator="string" id="55d5a5ce-fcfc-426c-94bf-e5b7dbba1b47">
+            <Extended />
+          </field>
+          <field name="Class" key="false" readonly="true" required="false" validator="string" id="e8986fee-41d3-4dea-8e43-c92e34aba29a">
+            <Extended />
+          </field>
+          <field name="Email" key="false" readonly="true" required="false" validator="string" id="95c5f558-d588-4716-b2ab-d421e004eac0">
+            <Extended />
+          </field>
+          <field name="Mobile" key="false" readonly="true" required="false" validator="string" id="4b702ce1-2f9c-4bbd-9c71-850c45285b16">
+            <Extended />
+          </field>
+          <field name="employeeID" key="false" readonly="true" required="false" validator="string" id="72d54a27-ec47-4867-9300-1df7b4a4e597">
+            <Extended />
+          </field>
+          <field name="DateLeft" key="false" readonly="true" required="false" validator="timestamp" id="39759a27-4c27-4c01-9ad3-84ae718f979a">
+            <Extended />
+          </field>
+          <field name="Position" key="false" readonly="true" required="false" validator="string" id="370f2a1f-ea2b-4a01-a2cd-0dd9d5b021d2">
+            <Extended />
+          </field>
+          <field name="IsTeachingStaff" key="false" readonly="true" required="false" validator="string" id="cc1d6af9-db6b-42a2-883b-2821a68e16bd">
+            <Extended />
+          </field>
+          <field name="IsPermanent" key="false" readonly="true" required="false" validator="string" id="f16cf4d8-f32e-4424-9a80-6a30d82218fe">
+            <Extended />
+          </field>
+          <field name="EmploymentStatus" key="false" readonly="true" required="false" validator="string" id="f74a5027-e7c6-40a5-8b32-663c25abfb56">
+            <Extended />
+          </field>
+          <field name="Active" key="false" readonly="true" required="false" validator="string" id="0d0f709b-f9e4-4a80-907a-8f8e17c70466">
+            <Extended />
+          </field>
+        </entitySchema>
+        <Extended>
+          <communicator owner="dbo" table="GetLatestStaffData" readThreshold="1000" />
+        </Extended>
+        <Groups />
+        <Agents>
+          <Agent id="37f8ea84-5ba2-496c-89cd-c8c3d6934ebd" type="DatabaseAgent" />
+        </Agents>
+      </connector>
+      <getAllEntities />
+      <polling />
+    </connectorconfiguration>
+  </connectorconfigurations>
+</ConnectorEngine>

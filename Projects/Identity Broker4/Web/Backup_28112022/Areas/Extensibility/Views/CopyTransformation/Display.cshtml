@@ -1,0 +1,20 @@
+﻿@using Unify.Connect.Web
+@model CopyTransformationViewInformation
+
+@try
+{
+    var mappings = ExtensibleTransformationControllerExtensions.Deserialize(Model.Mappings.Text);
+        
+    <div>
+    @foreach (var line in mappings)
+    {
+        <p>
+            [@line.Key] -> <span class="TransformationAddedField">[@line.Value]</span>
+        </p>
+    }
+    </div>
+}
+catch (Exception)
+{
+    <span>@Model.Mappings.Text</span>
+}

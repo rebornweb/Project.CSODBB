@@ -1,0 +1,1741 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OperationEngine changeId="1f7d1ca4-661d-4788-8ab7-d0f200f7acea" SchedulerState="Started">
+  <OperationListConfigurations>
+    <OperationList id="091bfe48-404e-49aa-bdd0-74cd4d240afd" name="FIM Agent PHRIS Incoming" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <CheckOperation id="b537d2bc-154a-47eb-b036-31e5d8ee90df" plugIn="Unify.EventBroker.PlugIn.IdentityBroker" displayName="Identity Broker Changes">
+        <Failure retryCount="0" retryWaitPeriod="PT10S" />
+        <Agents>
+          <Agent key="Agent" id="18eb1d41-e527-40d5-8c7a-76d3e6ab63bd" />
+        </Agents>
+        <Extended>
+          <IdentityBrokerChanges adapterId="5db0f5e1-a032-450a-9415-fa4863f171da" />
+        </Extended>
+      </CheckOperation>
+      <Schedules>
+        <Timing id="853603fe-51ee-479d-a136-f0a0991594d8" name="DayExclusion" daysToExclude="Sunday" useLocal="true">
+          <Timing id="5dc1ab89-18de-4271-9f13-e7c6df6cc3c0" name="Daily" timeOfDay="PT1H" useLocal="true" startFrom="2019-07-22T01:00:00Z" numberOfDays="1" />
+        </Timing>
+        <Timing id="7c460765-d18f-40ee-b393-15514856f2d4" name="DayExclusion" daysToExclude="Sunday" useLocal="true">
+          <Timing id="87c1c257-2006-4101-b3a4-75d64765ab7e" name="Daily" timeOfDay="PT12H" useLocal="true" startFrom="2019-07-15T12:00:00Z" numberOfDays="1" />
+        </Timing>
+        <Timing id="ce1e634e-5816-4ae2-b74e-646a9e062431" name="DayExclusion" daysToExclude="Sunday" useLocal="true">
+          <Timing id="48e68aa8-5a92-407b-b402-919ffbe906a5" name="Daily" timeOfDay="PT17H" useLocal="true" startFrom="2019-07-15T17:00:00Z" numberOfDays="1" />
+        </Timing>
+        <Timing id="a3ee05f6-491f-43b2-a875-9927ad6267ed" name="DayExclusion" daysToExclude="Sunday" useLocal="true">
+          <Timing id="bc625903-1bcb-4d1c-ad2e-4d62b2e325c5" name="Daily" timeOfDay="PT7H55M" useLocal="true" startFrom="2019-12-09T07:55:00Z" numberOfDays="1" />
+        </Timing>
+      </Schedules>
+      <Operations>
+        <Operation id="7654de82-0282-4190-82da-6dee8d5bb012" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: PHRIS - Run Profile: Delta import">
+          <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="55b3f33d-3a58-4d13-a39f-223d065a6aa9" runProfileId="d0a46561-956e-4768-b6d8-7f29dd48f30e" />
+          </Extended>
+        </Operation>
+        <Operation id="2cb3eafb-2e83-46f6-93dd-35dd4fb33dfb" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Check Thresholds">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunChild" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; 'D:\Scripts\EventBroker\Halt-ThresholdExceeded.ps1' -MAName "PHRIS" -maxDeletes 100 -maxAdds 100 -maxRenames 100 -maxUpdates 100 -logFile "PHRIS.DI.XML" -isFullImport $false -attributes "HrStatus|BirthDate|LastName|FirstName|PrefFirstName|DeptId" -OperationListsToDisableGUID "091bfe48-404e-49aa-bdd0-74cd4d240afd|bad897f9-c699-4236-a166-1c759ef746a9|556b3b9d-9484-4e3d-8da9-fcd8e279959d" #(FUN Agent PHRIS Incoming | Global Baseline for FIM Agent | PHRIS Nightly)</Script>
+            </PSChanges>
+          </Extended>
+          <Operations>
+            <Operation id="defa76d3-dc62-4a5a-9103-80187950af8b" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: PHRIS - Run Profile: Delta synchronization">
+              <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+              <Agents>
+                <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+              </Agents>
+              <Extended>
+                <RunProfile legacyKeyMode="false" managementAgentId="55b3f33d-3a58-4d13-a39f-223d065a6aa9" runProfileId="468334be-15db-4c4f-86f6-e31fc9d7e319" />
+              </Extended>
+            </Operation>
+          </Operations>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="100d0bd7-c3f8-4f89-a642-cd565b37b207" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs incoming operations for the PHRIS management agent]]></Comment>
+    </OperationList>
+    <OperationList id="429da589-5b25-4cb7-ade3-e25caf598402" name="FIM MA Reload" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules>
+        <Timing id="16d58159-6f1b-4e66-ac57-adf3f86175ae" name="Daily" timeOfDay="PT17H34M51S" useLocal="true" startFrom="2013-11-20T17:34:51Z" numberOfDays="1" />
+      </Schedules>
+      <Operations>
+        <Operation id="daaa5c9a-6977-429c-9703-19fd3e95b253" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: FIM Portal - Run Profile: FI and DS">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="bad42974-fbdc-4273-bd34-2a40a4ca2111" runProfileId="7518af2a-78e5-4e31-82f3-fb56c1f87d72" />
+          </Extended>
+        </Operation>
+        <Operation id="80e4c7ff-618b-47ac-a225-9ca283642972" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Drop Full Import audit file for Replay MA">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges PSScript="&amp; &quot;C:\Program Files\Microsoft Forefront Identity Manager\2010\Synchronization Service\MaData\FIM Portal\ReplayLDIF-GenerateData.ps1&quot; -RunType &quot;Full&quot;" />
+          </Extended>
+        </Operation>
+        <Operation id="b79858e5-dda3-43f4-8d29-9732b18b9a6a" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: Replay FIM Portal - Run Profile: FIDS">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="41db660c-ff01-4dc6-8a5b-b4f052d9a7c5" runProfileId="0309918b-2313-44c5-bde3-f787609bfe8f" />
+          </Extended>
+        </Operation>
+        <Operation id="91d64b2c-fb4f-4d92-8dc1-2732179252df" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Staff AD Delta Sync">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="a2527e10-11ee-4da6-9ccc-ea4aca1bc4e9" runProfileId="164ecce8-3685-40ac-964e-8857edd8d9e4" />
+          </Extended>
+        </Operation>
+        <Operation id="852c706f-9e85-41ad-b418-a7e09b3f0851" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Users and Groups AD Delta Sync">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="c18a2909-5383-4306-8cf6-2df6c8dbd4b5" runProfileId="380d9bc1-ce1c-484a-8584-ae55816e5694" />
+          </Extended>
+        </Operation>
+        <Operation id="6b75db3c-12b0-47eb-baf3-0cfb5fe59e9e" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Contacts AD Delta Sync">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="1f920b75-4fae-40a8-9c8b-fa9409b590af" runProfileId="01e8d9b5-e5de-4594-a53b-5bfb9d770e2e" />
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </TriggerGroups>
+      <Comment><![CDATA[Account for lost FIM Service changes during delta import regime]]></Comment>
+    </OperationList>
+    <OperationList id="44d5df18-14a9-4a63-8c28-d8e81573677b" name="FIM Agent Users and Groups Outgoing" runOnStartup="false" queueMissed="false" delay="PT0S" enabled="true">
+      <CheckOperation id="01555371-f8f1-4c00-9e10-97f10dfb18e9" plugIn="Unify.EventBroker.PlugIn.Outgoing" displayName="Pending Export for Management Agent Users and Groups">
+        <Failure retryCount="0" retryWaitPeriod="PT10S" />
+        <Agents>
+          <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+        </Agents>
+        <Extended>
+          <OutgoingPending legacyKeyMode="false" managementAgentId="c18a2909-5383-4306-8cf6-2df6c8dbd4b5" />
+        </Extended>
+      </CheckOperation>
+      <Schedules>
+        <Timing id="5c3fa39f-3ed0-4b1c-b364-ffe9bc5bb31b" name="DailyExclusion" useLocal="true">
+          <ExclusionPeriods>
+            <ExclusionPeriod daysExclusionApplies="Sunday" start="PT5H" end="PT9H" />
+          </ExclusionPeriods>
+          <Timing id="9253aa65-df2f-47dd-9f62-dd112a714bc3" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2013-08-29T06:46:47Z">
+            <Timespan value="PT30S" />
+          </Timing>
+        </Timing>
+      </Schedules>
+      <Operations>
+        <Operation id="fe498c1d-7067-47e4-87a5-83cc82be3776" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: Users and Groups - Run Profile: Export to Drop File and stop run">
+          <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="c18a2909-5383-4306-8cf6-2df6c8dbd4b5" runProfileId="30e4f0e0-7ce6-4e65-8217-4ecd9344b19b" />
+          </Extended>
+        </Operation>
+        <Operation id="1eaf8b48-94c1-4953-a363-15d3a9f40486" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Check Thresholds">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunChild" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; "D:\Scripts\EventBroker\Halt-ThresholdExceeded.ps1" -MAName "Users and Groups" -maxAdds 100 -maxRenames 100  -maxUpdates 100 -isFullImport $false -attributes "member|userAccountControl" -logFile "UsersAndGroups.E.xml" -OperationListsToDisableGUID "44d5df18-14a9-4a63-8c28-d8e81573677b"</Script>
+            </PSChanges>
+          </Extended>
+          <Operations>
+            <Operation id="14b20aaf-bcbf-4d31-a121-bd7dc653afea" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: Users and Groups - Run Profile: Export">
+              <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+              <Agents>
+                <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+              </Agents>
+              <Extended>
+                <RunProfile legacyKeyMode="false" managementAgentId="c18a2909-5383-4306-8cf6-2df6c8dbd4b5" runProfileId="0e93cd25-8963-4b51-927a-b6f9f4fc5002" />
+              </Extended>
+            </Operation>
+          </Operations>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs outgoing operations for the Users and Groups management agent]]></Comment>
+    </OperationList>
+    <OperationList id="bad897f9-c699-4236-a166-1c759ef746a9" name="Global Baseline for FIM Agent" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules>
+        <Timing id="15d605ff-a678-4bb8-a6b1-88e01b64c82b" name="Weekly" timeOfDay="PT5H46M8S" useLocal="true" dayOfWeek="Sunday" numberOfWeeks="1" startFrom="2016-12-01T05:46:08Z" />
+      </Schedules>
+      <Operations>
+        <Operation id="14f9df60-58d8-4259-9364-43402ba16896" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: FIM Portal - Run Profile: FI FS">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="bad42974-fbdc-4273-bd34-2a40a4ca2111" runProfileId="86823423-e17a-4d23-a7b6-2ed322a0f4b8" />
+          </Extended>
+        </Operation>
+        <Operation id="d9b1c1de-de1f-4949-ac07-0a54d9db2270" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Drop Full Import audit file for Replay MA">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges PSScript="&amp; &quot;C:\Program Files\Microsoft Forefront Identity Manager\2010\Synchronization Service\MaData\FIM Portal\ReplayLDIF-GenerateData.ps1&quot; -RunType &quot;Full&quot;" />
+          </Extended>
+        </Operation>
+        <Operation id="ce23e70e-5a13-4b32-9188-71e03c2cc718" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: Replay FIM Portal - Run Profile: FIFS">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="41db660c-ff01-4dc6-8a5b-b4f052d9a7c5" runProfileId="a2bf145f-a23e-445b-96bd-fa6ec4683a80" />
+          </Extended>
+        </Operation>
+        <Operation id="0f8ab2b4-b4f2-42b9-b3a8-c17845b84e78" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: Staff - Run Profile: FI FS">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="RunNext" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="a2527e10-11ee-4da6-9ccc-ea4aca1bc4e9" runProfileId="56c0ef1d-0b8f-4e3c-911c-6c726b830492" />
+          </Extended>
+        </Operation>
+        <Operation id="09809c41-5b91-4771-9258-b5576432485c" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: PHRIS - Run Profile: Full import">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="55b3f33d-3a58-4d13-a39f-223d065a6aa9" runProfileId="5605561a-2e19-43a6-9061-fda46c814e32" />
+          </Extended>
+        </Operation>
+        <Operation id="fae2369d-45e1-4cdc-8201-8c7bd32f20e5" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Check Thresholds">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunChild" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; 'D:\Scripts\EventBroker\Halt-ThresholdExceeded.ps1' -MAName 'PHRIS' -maxDeletes 100 -maxAdds 100 -maxUpdates 100 -logFile 'PHRIS.FI.XML' -isFullImport $true -attributes 'HrStatus|BirthDate|LastName|FirstName|PrefFirstName|DeptId' -OperationListsToDisableGUID 'afa4d46b-f240-404e-b6fb-04587fa77e5c|e6093c0d-5921-4c9c-9d93-4fc0f47f1fcf|bad897f9-c699-4236-a166-1c759ef746a9|ceabd2d6-d819-47ca-935c-46dd81633f26'</Script>
+            </PSChanges>
+          </Extended>
+          <Operations>
+            <Operation id="48cf7ce3-35f5-4efa-ad4e-380b2a36d730" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: PHRIS - Run Profile: Full synchronization">
+              <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="RunNext" />
+              <Agents>
+                <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+              </Agents>
+              <Extended>
+                <RunProfile legacyKeyMode="false" managementAgentId="55b3f33d-3a58-4d13-a39f-223d065a6aa9" runProfileId="ac02e6a6-7119-4b15-b91a-6a84e4878e78" />
+              </Extended>
+            </Operation>
+          </Operations>
+        </Operation>
+        <Operation id="eb4a05b2-6c67-4fd1-8a8b-5e7de0c3c75e" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: Users and Groups - Run Profile: FI FS">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="RunNext" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="c18a2909-5383-4306-8cf6-2df6c8dbd4b5" runProfileId="ef27f892-0c23-4972-bbc0-527f94fa3648" />
+          </Extended>
+        </Operation>
+        <Operation id="5e920479-14ff-4472-9224-d70a8b83e449" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: Contacts - Run Profile: FI FS">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="RunNext" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="1f920b75-4fae-40a8-9c8b-fa9409b590af" runProfileId="76911383-a9bb-4d37-88c1-0138d1b30e3b" />
+          </Extended>
+        </Operation>
+        <Operation id="8c7d2f1a-4dce-444b-8bff-afbf1f07e69b" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: SAS2IDM - Run Profile: Full import">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="RunNext" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="af47543b-498d-426a-86e3-e6dde34c4581" runProfileId="1be43267-21f0-4fbf-9ccf-69f94d240d5a" />
+          </Extended>
+        </Operation>
+        <Operation id="0b48bfed-f1de-4f64-89f2-67662ed9a31b" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Check Thresholds">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunChild" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; 'D:\Scripts\EventBroker\Halt-ThresholdExceeded.ps1' -MAName 'SAS2IDM' -maxDeletes 100 -maxAdds 100 -maxUpdates 100 -logFile 'SAS2IDM.FI.XML' -isFullImport $true -attributes 'PhysicaldeliveryOfficeName|UniversalIdentificationNumber' -OperationListsToDisableGUID '9713e644-8d6b-4313-b16f-e85c2d6cd3a5|bad897f9-c699-4236-a166-1c759ef746a9|ceabd2d6-d819-47ca-935c-46dd81633f26'</Script>
+            </PSChanges>
+          </Extended>
+          <Operations>
+            <Operation id="467b8f72-9cd5-46d5-b4c6-08ff5554e999" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: SAS2IDM - Run Profile: Full synchronization">
+              <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+              <Agents>
+                <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+              </Agents>
+              <Extended>
+                <RunProfile legacyKeyMode="false" managementAgentId="af47543b-498d-426a-86e3-e6dde34c4581" runProfileId="9f7c4579-80f6-4112-8450-c91d80751913" />
+              </Extended>
+            </Operation>
+          </Operations>
+        </Operation>
+        <Operation id="410045bd-7948-4087-83ab-0924da72198a" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: CSODBB LDS - Run Profile: FIFS">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="7030a56b-0c9e-46d9-9be0-13d9bf13664d" runProfileId="2621b512-dbb8-479e-aea4-dc36a0a83b7e" />
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="9bf22628-6626-4c35-937a-5d59afbcfcf7" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="9bf22628-6626-4c35-937a-5d59afbcfcf7" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs a baseline for the FIM Agent instance.]]></Comment>
+    </OperationList>
+    <OperationList id="9713e644-8d6b-4313-b16f-e85c2d6cd3a5" name="FIM Agent SAS2IDM Incoming" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <CheckOperation id="a2c89b42-1c73-48b3-b656-5d18758c4345" plugIn="Unify.EventBroker.PlugIn.IdentityBroker" displayName="Identity Broker Changes">
+        <Failure retryCount="0" retryWaitPeriod="PT10S" />
+        <Agents>
+          <Agent key="Agent" id="18eb1d41-e527-40d5-8c7a-76d3e6ab63bd" />
+        </Agents>
+        <Extended>
+          <IdentityBrokerChanges adapterId="69c49870-11b2-49aa-a479-a1e3e4f3a548" />
+        </Extended>
+      </CheckOperation>
+      <Schedules>
+        <Timing id="adcdde57-48c4-46e2-ae6d-604606726cd1" name="DailyExclusion" useLocal="true">
+          <ExclusionPeriods>
+            <ExclusionPeriod daysExclusionApplies="Sunday" start="PT5H" end="PT9H" />
+          </ExclusionPeriods>
+          <Timing id="d3ed4f7e-8755-44ce-8445-3bdc15faf69d" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2023-01-12T10:05:00Z">
+            <Timespan value="PT30S" />
+          </Timing>
+        </Timing>
+      </Schedules>
+      <Operations>
+        <Operation id="51b0cb93-1f65-447a-8681-32e36e2a4dfe" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: SAS2IDM - Run Profile: Delta import">
+          <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="RunNext" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="af47543b-498d-426a-86e3-e6dde34c4581" runProfileId="23855e90-7f45-47ac-b3a7-d5f5e2255b3c" />
+          </Extended>
+        </Operation>
+        <Operation id="fcadd8b2-880a-4259-b199-e28c33ebc758" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Check Thresholds">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunChild" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; 'D:\Scripts\EventBroker\Halt-ThresholdExceeded.ps1' -MAName 'SAS2IDM' -maxDeletes 100 -maxAdds 100 -maxUpdates 100 -logFile 'SAS2IDM.DI.XML' -isFullImport $false -attributes 'PhysicaldeliveryOfficeName|UniversalIdentificationNumber' -OperationListsToDisableGUID '9713e644-8d6b-4313-b16f-e85c2d6cd3a5|bad897f9-c699-4236-a166-1c759ef746a9|429da589-5b25-4cb7-ade3-e25caf598402|f51f0e1a-c147-4d83-8a96-43dc58b1a672'</Script>
+            </PSChanges>
+          </Extended>
+          <Operations>
+            <Operation id="28082dc1-1e04-4e48-862f-376b4e697817" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: SAS2IDM - Run Profile: Delta synchronization">
+              <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+              <Agents>
+                <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+              </Agents>
+              <Extended>
+                <RunProfile legacyKeyMode="false" managementAgentId="af47543b-498d-426a-86e3-e6dde34c4581" runProfileId="20ad121c-1649-4e78-bffb-c753e9a802e6" />
+              </Extended>
+            </Operation>
+          </Operations>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="100d0bd7-c3f8-4f89-a642-cd565b37b207" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+        <Group id="c94ba0ba-353b-4133-b944-4feaf5ea0ccf" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs incoming operations for the SAS2IDM management agent]]></Comment>
+    </OperationList>
+    <OperationList id="62f66e30-0f54-4557-ab72-ff9b09484715" name="FIM Agent PHRIS Outgoing" runOnStartup="false" queueMissed="false" delay="PT0S" enabled="true">
+      <CheckOperation id="cb00de54-2b03-48ac-bd34-6f87836ae8cd" plugIn="Unify.EventBroker.PlugIn.Outgoing" displayName="Pending Export for Management Agent PHRIS">
+        <Failure retryCount="0" retryWaitPeriod="PT10S" />
+        <Agents>
+          <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+        </Agents>
+        <Extended>
+          <OutgoingPending legacyKeyMode="false" managementAgentId="55b3f33d-3a58-4d13-a39f-223d065a6aa9" />
+        </Extended>
+      </CheckOperation>
+      <Schedules>
+        <Timing id="a83521ed-8bae-4f33-b669-4c78c05c993e" name="DailyExclusion" useLocal="true">
+          <ExclusionPeriods>
+            <ExclusionPeriod daysExclusionApplies="Monday,Tuesday,Wednesday,Thursday,Friday,Saturday" start="PT0S" end="PT6H" />
+          </ExclusionPeriods>
+          <Timing id="35f4b4c5-c0ee-4657-87e3-5b22eca3940e" name="DayExclusion" daysToExclude="Sunday" useLocal="true">
+            <Timing id="0a9eac1a-b57e-43ff-a6c9-e9fc4d2f6738" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2013-08-29T06:42:04Z">
+              <Timespan value="PT30S" />
+            </Timing>
+          </Timing>
+        </Timing>
+      </Schedules>
+      <Operations>
+        <Operation id="7db6a768-65a5-4e5c-b306-1a3d2a298a7d" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: PHRIS - Run Profile: Export (Audit Only)">
+          <Failure retryCount="2" retryWaitPeriod="PT30S" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="55b3f33d-3a58-4d13-a39f-223d065a6aa9" runProfileId="73f44b65-856b-456b-b912-b086ba562a07" />
+          </Extended>
+        </Operation>
+        <Operation id="4f5ae991-3460-44e7-824d-03234557e3f0" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Check Thresholds">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunChild" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; "D:\Scripts\EventBroker\Halt-ThresholdExceeded.ps1" -MAName "PHRIS" -attributes "Email" -logFile "PHRIS.E.xml" -isFullImport $false -OperationListsToDisableGUID "62f66e30-0f54-4557-ab72-ff9b09484715"</Script>
+            </PSChanges>
+          </Extended>
+          <Operations>
+            <Operation id="cae509ad-55f2-4029-ac37-2eb5a7a26fca" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: PHRIS - Run Profile: Export">
+              <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+              <Agents>
+                <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+              </Agents>
+              <Extended>
+                <RunProfile legacyKeyMode="false" managementAgentId="55b3f33d-3a58-4d13-a39f-223d065a6aa9" runProfileId="4220acbf-f735-45a5-b6d1-a0e48cacab61" />
+              </Extended>
+            </Operation>
+          </Operations>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+        <Group id="100d0bd7-c3f8-4f89-a642-cd565b37b207" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+        <Group id="9bf22628-6626-4c35-937a-5d59afbcfcf7" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs outgoing operations for the PHRIS management agent]]></Comment>
+    </OperationList>
+    <OperationList id="6613ecf6-a2bb-4a26-bb8b-9913549bb9aa" name="FIM Agent FIM Portal Incoming" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules />
+      <Operations>
+        <Operation id="06e3b1d7-ad49-46cd-ab80-2718bb26e65c" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: FIM Portal - Run Profile: DI">
+          <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="bad42974-fbdc-4273-bd34-2a40a4ca2111" runProfileId="963993ff-e165-4d60-9073-dbaac2b4282b" />
+          </Extended>
+        </Operation>
+        <Operation id="bc65fcb9-d5ea-46a9-9627-8b1f9adb1f05" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Drop Delta Import audit file for Replay MA">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges PSScript="&amp; &quot;C:\Program Files\Microsoft Forefront Identity Manager\2010\Synchronization Service\MaData\FIM Portal\ReplayLDIF-GenerateData.ps1&quot; -RunType &quot;Delta&quot;" />
+          </Extended>
+        </Operation>
+        <Operation id="6a50de49-2aa3-4741-932d-e30a1fc34cc3" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: Replay FIM Portal - Run Profile: DIDS">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="41db660c-ff01-4dc6-8a5b-b4f052d9a7c5" runProfileId="0b95edf3-b588-4c91-8b6c-57ed083ec38e" />
+          </Extended>
+        </Operation>
+        <Operation id="facf80dd-5e84-4c37-826f-783ea23b80e4" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: FIM Portal - Run Profile: DS">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="bad42974-fbdc-4273-bd34-2a40a4ca2111" runProfileId="70614359-e5a2-4f63-8bc4-20687be60d99" />
+          </Extended>
+        </Operation>
+        <Operation id="cb2c0507-b8f4-42e5-9ef2-74b08b58134a" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: Replay FIM Portal - Run Profile: DS">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="41db660c-ff01-4dc6-8a5b-b4f052d9a7c5" runProfileId="687bcb26-1ed0-4041-8b90-e7506a4803b1" />
+          </Extended>
+        </Operation>
+        <Operation id="3e09413d-0771-432a-8473-01d8b4a145da" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Staff MA DS">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="a2527e10-11ee-4da6-9ccc-ea4aca1bc4e9" runProfileId="164ecce8-3685-40ac-964e-8857edd8d9e4" />
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs incoming operations for the FIM Portal management agent]]></Comment>
+    </OperationList>
+    <OperationList id="60a8cb5e-665a-4600-b9f9-722ca32dc3d4" name="FIM Agent Contacts Outgoing" runOnStartup="false" queueMissed="false" delay="PT0S" enabled="true">
+      <CheckOperation id="f9a5e617-fb10-4dad-89e9-9a8aa4401b07" plugIn="Unify.EventBroker.PlugIn.Outgoing" displayName="Pending Export for Management Agent Contacts">
+        <Failure retryCount="0" retryWaitPeriod="PT10S" />
+        <Agents>
+          <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+        </Agents>
+        <Extended>
+          <OutgoingPending legacyKeyMode="false" managementAgentId="1f920b75-4fae-40a8-9c8b-fa9409b590af" />
+        </Extended>
+      </CheckOperation>
+      <Schedules>
+        <Timing id="80f5a67e-8576-456f-9137-b0d8b5ac8324" name="DailyExclusion" useLocal="true">
+          <ExclusionPeriods>
+            <ExclusionPeriod daysExclusionApplies="Sunday" start="PT5H" end="PT9H" />
+          </ExclusionPeriods>
+          <Timing id="5955bb4d-0115-4fa4-a64a-05e451d00c41" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2013-08-30T05:43:23Z">
+            <Timespan value="PT30S" />
+          </Timing>
+        </Timing>
+      </Schedules>
+      <Operations>
+        <Operation id="4f6b3d85-c3b5-4db7-801e-c3d0132dcde9" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: Contancts - Run Profile: Export to Drop File and stop run">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="1f920b75-4fae-40a8-9c8b-fa9409b590af" runProfileId="c293c18e-b966-44bc-a8b6-e3697945c911" />
+          </Extended>
+        </Operation>
+        <Operation id="ea990d18-c797-4f91-b0b7-e017bf5d2c5f" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Check Threshold">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunChild" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; "D:\Scripts\EventBroker\Halt-ThresholdExceeded.ps1" -MAName "Contacts" -maxAdds 100 -maxDeletes 100 -isFullImport $false -attributes "member|userAccountControl" -logFile "Contacts.E.xml" -OperationListsToDisableGUID "60a8cb5e-665a-4600-b9f9-722ca32dc3d4"</Script>
+            </PSChanges>
+          </Extended>
+          <Operations>
+            <Operation id="5038c129-0294-4af9-8662-0489020fda4b" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: Contacts - Run Profile: Export">
+              <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="Stop" />
+              <Agents>
+                <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+              </Agents>
+              <Extended>
+                <RunProfile legacyKeyMode="false" managementAgentId="1f920b75-4fae-40a8-9c8b-fa9409b590af" runProfileId="75206d2d-6823-46a5-9c47-165c4e26ce50" />
+              </Extended>
+            </Operation>
+            <Operation id="6ff437f1-3c73-43a8-a757-a91c07d54011" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Upgrade Legacy Exchange Contacts">
+              <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+              <Agents />
+              <Extended>
+                <PSChanges>
+                  <Script>&amp; "D:\Scripts\Exchange\UpgradeContacts.ps1" -AdminAccount "dbb\svcilm_ma_ad" -ExchangeCAS "OCCCP-EX301.dbb.local" -SearchBase "dbb.local/Contacts/MyMail" -Path "D:\Scripts\Exchange" -LogPath "D:\Logs\Exchange"</Script>
+                </PSChanges>
+              </Extended>
+            </Operation>
+          </Operations>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs outgoing operations for the Contacts management agent]]></Comment>
+    </OperationList>
+    <OperationList id="bf9264a9-1525-4d39-8398-24f8c3283600" name="FIM Agent FIM Portal Outgoing" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <CheckOperation id="b4ce4b9e-ceab-40bf-968c-381e2b07a55c" plugIn="Unify.EventBroker.PlugIn.Outgoing" displayName="Pending Export for Management Agent FIM Portal">
+        <Failure retryCount="0" retryWaitPeriod="PT10S" />
+        <Agents>
+          <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+        </Agents>
+        <Extended>
+          <OutgoingPending legacyKeyMode="false" managementAgentId="bad42974-fbdc-4273-bd34-2a40a4ca2111" />
+        </Extended>
+      </CheckOperation>
+      <Schedules>
+        <Timing id="6f6a8059-6b19-46f0-abf8-9838d7660cf6" name="DailyExclusion" useLocal="true">
+          <ExclusionPeriods>
+            <ExclusionPeriod daysExclusionApplies="Sunday" start="PT5H" end="PT9H" />
+          </ExclusionPeriods>
+          <Timing id="8fb3ca07-e5fd-4455-b1b3-c0b16cc15e5a" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2013-08-29T06:39:24Z">
+            <Timespan value="PT30S" />
+          </Timing>
+        </Timing>
+      </Schedules>
+      <Operations>
+        <Operation id="34af98d6-aca8-427a-9a10-a3ec9548bfc0" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: FIM Portal - Run Profile: Export">
+          <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="bad42974-fbdc-4273-bd34-2a40a4ca2111" runProfileId="cacda505-ec57-4ebd-805a-3185c88a6c2a" />
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+        <Group id="9bf22628-6626-4c35-937a-5d59afbcfcf7" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs outgoing operations for the FIM Portal management agent]]></Comment>
+    </OperationList>
+    <OperationList id="51a5cde2-681b-4329-8da8-d9a0e2b4fceb" name="FIM Agent Staff Incoming" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <CheckOperation id="d5b787ed-822c-4ffc-8455-c512adf60002" plugIn="Unify.EventBroker.PlugIn.ADSyncChanges" displayName="Active Directory Sync Changes">
+        <Failure retryCount="0" retryWaitPeriod="PT10S" />
+        <Agents>
+          <Agent key="Agent" id="d3187109-fc0d-41f9-bd94-3a60a8757457" />
+        </Agents>
+        <Extended>
+          <ADSyncChanges ouName="DC=dbb,DC=local">
+            <Filter><![CDATA[(&(|(objectClass=user)(objectClass=group))(!(sAMAccountName=GPO Editors-D)))]]></Filter>
+          </ADSyncChanges>
+        </Extended>
+      </CheckOperation>
+      <Schedules>
+        <Timing id="4d33e1f1-82a0-4424-856e-5f4fd40e312c" name="DailyExclusion" useLocal="true">
+          <ExclusionPeriods>
+            <ExclusionPeriod daysExclusionApplies="Sunday,Saturday" start="PT5H" end="PT9H" />
+          </ExclusionPeriods>
+          <Timing id="4ab7d69d-69a7-4ac0-8876-15c1cb1b6363" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2013-08-29T07:05:43Z">
+            <Timespan value="PT5M" />
+          </Timing>
+        </Timing>
+      </Schedules>
+      <Operations>
+        <Operation id="56d947cf-3fe7-4ebb-8669-b61ffee4e86f" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: Staff - Run Profile: Delta Import and Delta Synchronisation">
+          <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="a2527e10-11ee-4da6-9ccc-ea4aca1bc4e9" runProfileId="60ade2f3-c510-4117-aff9-3d722f167250" />
+          </Extended>
+        </Operation>
+        <Operation id="06a9f382-6ca4-4c78-9ffd-58ccbce74ced" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: Users and Groups - Run Profile: DI DS">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="c18a2909-5383-4306-8cf6-2df6c8dbd4b5" runProfileId="5f786415-7c5c-4016-a288-d26f441581b6" />
+          </Extended>
+        </Operation>
+        <Operation id="05c2b9fb-9b50-493a-ba11-56582de47abc" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: Contacts - Run Profile: DI DS Single Step">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="1f920b75-4fae-40a8-9c8b-fa9409b590af" runProfileId="7bd2c05c-d105-4129-b145-63c681cb4537" />
+          </Extended>
+        </Operation>
+        <Operation id="6b3fa541-163f-4dd5-8841-a41841ba4398" plugIn="Unify.EventBroker.PlugIn.ADSyncCommit" displayName="Active Directory Sync Commit">
+          <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <CommitADChanges />
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="06043e7f-5a32-462f-a6c4-fb0c9dd02dbc" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs incoming operations for the Staff management agent]]></Comment>
+    </OperationList>
+    <OperationList id="0b9ea6f2-f6ca-43aa-ba8d-8785b4d1346e" name="FIM Agent Staff Outgoing" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <CheckOperation id="65f204b5-f6d6-40a0-bba3-c03cbd02a44f" plugIn="Unify.EventBroker.PlugIn.Outgoing" displayName="Pending Export for Management Agent Staff">
+        <Failure retryCount="0" retryWaitPeriod="PT10S" />
+        <Agents>
+          <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+        </Agents>
+        <Extended>
+          <OutgoingPending legacyKeyMode="false" managementAgentId="a2527e10-11ee-4da6-9ccc-ea4aca1bc4e9" />
+        </Extended>
+      </CheckOperation>
+      <Schedules>
+        <Timing id="0cc52975-52a8-49f6-818c-bd21318fb05c" name="DailyExclusion" useLocal="true">
+          <ExclusionPeriods>
+            <ExclusionPeriod daysExclusionApplies="Sunday" start="PT5H" end="PT9H" />
+          </ExclusionPeriods>
+          <Timing id="d32d1579-8b68-4696-9860-be2095eafd1b" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2013-08-29T07:05:43Z">
+            <Timespan value="PT30S" />
+          </Timing>
+        </Timing>
+      </Schedules>
+      <Operations>
+        <Operation id="ebbd7ef8-c383-422a-9891-7cdd64905b9b" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: Staff - Run Profile: Export Audit Only">
+          <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="a2527e10-11ee-4da6-9ccc-ea4aca1bc4e9" runProfileId="bff27f2f-0a11-4b87-972a-e3d800b4561a" />
+          </Extended>
+        </Operation>
+        <Operation id="5d8c8e45-f43d-4865-b164-8f30bb20c8b5" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Check Thresholds">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunChild" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; "D:\Scripts\EventBroker\Halt-ThresholdExceeded.ps1" -MAName "Staff" -maxAdds 100 -attributes "member|userAccountControl" -logFile "Staff.E.xml" -isFullImport $false -OperationListsToDisableGUID "0b9ea6f2-f6ca-43aa-ba8d-8785b4d1346e"</Script>
+            </PSChanges>
+          </Extended>
+          <Operations>
+            <Operation id="89b4a750-e0b4-41f7-8f7c-6416591a183c" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: Staff - Run Profile: Export">
+              <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+              <Agents>
+                <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+              </Agents>
+              <Extended>
+                <RunProfile legacyKeyMode="false" managementAgentId="a2527e10-11ee-4da6-9ccc-ea4aca1bc4e9" runProfileId="e7c30156-a8fd-4547-b489-b33c491b8b58" />
+              </Extended>
+            </Operation>
+            <Operation id="1d040d3f-11f0-4be7-aeed-c79a38a704fa" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Create Exchange Mailboxes CSBB">
+              <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+              <Agents />
+              <Extended>
+                <PSChanges>
+                  <Script>Start-Sleep -Seconds 30
+&amp; "D:\Scripts\Exchange\ProvisionRemoteMBs.ps1" -AdminAccount "dbb\svcilm_ma_ad" -ExchangeCAS "OCCCP-EX301.dbb.local" -SearchBase "OU=Staff,OU=Users,OU=CSBB,DC=dbb,DC=local" -Path "D:\Scripts\Exchange" -LogPath "D:\Logs\Exchange" -UserType "Staff"</Script>
+                </PSChanges>
+              </Extended>
+            </Operation>
+            <Operation id="0209407e-90e7-4042-a12f-94c5a451f49a" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Create Exchange Mailboxes">
+              <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+              <Agents />
+              <Extended>
+                <PSChanges>
+                  <Script>Start-Sleep -Seconds 30
+&amp; "D:\Scripts\Exchange\ProvisionRemoteMBs.ps1" -AdminAccount "dbb\svcilm_ma_ad" -ExchangeCAS "OCCCP-EX301.dbb.local" -SearchBase "OU=Staff,OU=Users,OU=Diocese,DC=dbb,DC=local" -Path "D:\Scripts\Exchange" -LogPath "D:\Logs\Exchange" -UserType "Staff"</Script>
+                </PSChanges>
+              </Extended>
+            </Operation>
+          </Operations>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+        <Group id="9bf22628-6626-4c35-937a-5d59afbcfcf7" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs outgoing operations for the Staff management agent]]></Comment>
+    </OperationList>
+    <OperationList id="06ea7d04-9df1-4831-b79e-850284a61629" name="Clear Run History for FIM Agent" runOnStartup="false" queueMissed="false" delay="PT0S" enabled="true">
+      <Schedules>
+        <Timing id="2881e868-478f-4b02-9ac0-1511d8273822" name="Daily" timeOfDay="PT21H35M25S" useLocal="true" startFrom="2013-09-27T21:35:25Z" numberOfDays="1" />
+      </Schedules>
+      <Operations>
+        <Operation id="1c7324a3-dff1-4122-affd-ac6d4ff99c2a" plugIn="Unify.EventBroker.PlugIn.ClearRunHistory" displayName="Clear Run History">
+          <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <ClearRunHistory archiveRuns="true" deleteRunsAfterDays="7" customXslFilePath="MIISRunHistory.xsl" archiveFileLocation="D:\Logs\FIMSync" />
+          </Extended>
+        </Operation>
+        <Operation id="af872edb-ce69-4732-9a99-87007b7fbae7" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Archive IIS Log Files">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>[string]$logRoot = "C:\inetpub\logs\LogFiles\"
+[string[]]$logDirectories = @("W3svc1","W3svc2","W3svc3")
+[int]$dayDiff = 30
+foreach($logDirectory in $logDirectories) {
+    $logDirectoryPath = [System.IO.Path]::Combine($logRoot,$logDirectory)
+    Write-Output ("Deleting log files in $logDirectoryPath older than: " + (Get-Date).toString('MM/dd/yyyy'))
+    dir $logDirectoryPath | where { $_.creationtime -lt (get-date).adddays(-$dayDiff) -and $_.Extension -eq ".log" } | remove-item
+}
+</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+      </Groups>
+      <TriggerGroups />
+      <Comment><![CDATA[Regularly clears and archives the run history for the FIM Agent agent.]]></Comment>
+    </OperationList>
+    <OperationList id="556b3b9d-9484-4e3d-8da9-fcd8e279959d" name="PHRIS Nightly" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules>
+        <Timing id="c4167fa0-41b2-41d4-b639-b4498d700f76" name="Daily" timeOfDay="PT18H40M" useLocal="true" startFrom="2013-10-18T18:40:00Z" numberOfDays="1" />
+      </Schedules>
+      <Operations>
+        <Operation id="58e11a97-b220-478a-9425-79efa0ac364e" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: PHRIS - Run Profile: Full import and full synchronization">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="55b3f33d-3a58-4d13-a39f-223d065a6aa9" runProfileId="2ed1a7f6-baf5-4479-a49b-82bf29d419f5" />
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="100d0bd7-c3f8-4f89-a642-cd565b37b207" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </TriggerGroups>
+    </OperationList>
+    <OperationList id="928475cc-4a61-4949-b39c-2bfe9d15ee29" name="PHRIS Scheduled Email Updates" runOnStartup="false" queueMissed="false" delay="PT0S" enabled="true">
+      <Schedules>
+        <Timing id="63ed5e72-06a5-4aed-8acb-8484d0d8dff4" name="Daily" timeOfDay="PT17H" useLocal="true" startFrom="2013-12-20T17:00:00Z" numberOfDays="1" />
+        <Timing id="ee087da6-da90-429e-aee3-cf10ae69e5be" name="Daily" timeOfDay="PT7H" useLocal="true" startFrom="2013-12-20T07:00:00Z" numberOfDays="1" />
+      </Schedules>
+      <Operations>
+        <Operation id="353e1a06-17d1-4baa-adc8-8e568a50ef0a" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: PHRIS - Run Profile: Export">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="55b3f33d-3a58-4d13-a39f-223d065a6aa9" runProfileId="4220acbf-f735-45a5-b6d1-a0e48cacab61" />
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="100d0bd7-c3f8-4f89-a642-cd565b37b207" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+      </Groups>
+      <TriggerGroups />
+      <Comment><![CDATA[Work-around for future dated hires failing to have their email updated in PHRIS - this ensures that the email update succeeds once the hire date elapses.]]></Comment>
+    </OperationList>
+    <OperationList id="f51f0e1a-c147-4d83-8a96-43dc58b1a672" name="SAS2IDM Nightly" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules>
+        <Timing id="888a9c14-aaa5-4aa7-993d-0917ea6e1667" name="Daily" timeOfDay="PT17H15M" useLocal="true" startFrom="2022-01-11T17:15:00Z" numberOfDays="1" />
+      </Schedules>
+      <Operations>
+        <Operation id="6b791c69-b888-42d7-8b0c-effd1350dce8" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: SAS2IDM - Run Profile: Full import">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="RunNext" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="af47543b-498d-426a-86e3-e6dde34c4581" runProfileId="1be43267-21f0-4fbf-9ccf-69f94d240d5a" />
+          </Extended>
+        </Operation>
+        <Operation id="8bbf82fd-d06f-4174-a64c-974c18346f65" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: SAS2IDM - Run Profile: Full synchronization">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="af47543b-498d-426a-86e3-e6dde34c4581" runProfileId="9f7c4579-80f6-4112-8450-c91d80751913" />
+          </Extended>
+        </Operation>
+        <Operation id="f0b7276e-194a-47c3-994e-31f9faeffc2d" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: Users and Groups - Run Profile: DS">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="c18a2909-5383-4306-8cf6-2df6c8dbd4b5" runProfileId="380d9bc1-ce1c-484a-8584-ae55816e5694" />
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="100d0bd7-c3f8-4f89-a642-cd565b37b207" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+        <Group id="c94ba0ba-353b-4133-b944-4feaf5ea0ccf" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </TriggerGroups>
+      <Comment><![CDATA[Nightly full import/full sync]]></Comment>
+    </OperationList>
+    <OperationList id="fab63c50-34cf-48fd-b529-58d83902c0a0" name="Reconcile Role Membership" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules>
+        <Timing id="198b6cab-2af4-4a3c-8b9b-8d6c058ba60f" name="Daily" timeOfDay="PT19H" useLocal="true" startFrom="2014-03-15T19:00:00Z" numberOfDays="1" />
+      </Schedules>
+      <Operations>
+        <Operation id="21497771-bd35-49cd-886e-a148083bc0ed" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Generate User Role Discrepencies XML File">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&lt;#&amp; "D:\Scripts\Entitlements\ExecuteSQLXMLProc.ps1" -svr "SQLFIM" -db "FIMService" -xmlFile "D:\Scripts\Entitlements\roleUsers.xml" -timeout 7200
+#&gt;
+
+&amp; "D:\Scripts\Entitlements\Get-MismatchedEntitlements.ps1" -ObjectID ""
+</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+        <Operation id="e53cb614-3108-408d-adfd-f915bd5cccfb" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Process XML File">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; "D:\Scripts\Entitlements\TriggerEntitlementsHousekeeping.ps1" -EntitlementsPath "D:\Scripts\Entitlements" -ThisUri "http://occcp-im201:5725" -AccountName "FIMPortalAdmin@dbb.local"
+</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+      </Groups>
+      <TriggerGroups />
+      <Comment><![CDATA[Run a SQL procedure to reconcile Person[ObjectID=XXX].cosRoles to csoEntitlement[UserID=XXX]]]></Comment>
+    </OperationList>
+    <OperationList id="c3062f5d-9d14-4399-9e59-a759b5a2cd28" name="FIM Agent CSODBB LDS Incoming" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <ListenOperation id="8047485f-38f0-44fe-a81f-7b87b0087bf4" plugIn="Unify.EventBroker.PlugIn.ADListen" displayName="Active Directory Listen" RecycleTimeout="P1D">
+        <Failure retryCount="0" retryWaitPeriod="PT10S" />
+        <Agents>
+          <Agent key="Agent" id="ee3509eb-3667-484b-a013-e933be28a050" />
+        </Agents>
+        <Extended>
+          <ADListen distinguishedName="DC=CSODBB" searchScope="Subtree" ignoreRecentLastLogon="false" requestTimeout="P1D" />
+        </Extended>
+      </ListenOperation>
+      <CheckOperation id="20649369-91fa-4d17-81ed-de7d444cf35a" plugIn="Unify.EventBroker.PlugIn.ADSyncChanges" displayName="Active Directory Sync Changes">
+        <Failure retryCount="0" retryWaitPeriod="PT10S" />
+        <Agents>
+          <Agent key="Agent" id="ee3509eb-3667-484b-a013-e933be28a050" />
+        </Agents>
+        <Extended>
+          <ADSyncChanges ouName="DC=CSODBB">
+            <Filter><![CDATA[(objectClass=*)]]></Filter>
+          </ADSyncChanges>
+        </Extended>
+      </CheckOperation>
+      <Schedules>
+        <Timing id="b7cfb586-8491-40a7-a531-5cef7a824d4f" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2015-11-27T08:21:33Z">
+          <Timespan value="PT45S" />
+        </Timing>
+      </Schedules>
+      <Operations>
+        <Operation id="9f7f5751-02e4-4078-93f0-ca5d3b941fdf" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: CSODBB LDS - Run Profile: DIDS">
+          <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="7030a56b-0c9e-46d9-9be0-13d9bf13664d" runProfileId="e6dfb125-1dbd-45dd-9e6f-e61a7e079239" />
+          </Extended>
+        </Operation>
+        <Operation id="992e783c-31b0-4db8-801c-c629ee22bfa1" plugIn="Unify.EventBroker.PlugIn.ADSyncCommit" displayName="Active Directory Sync Commit">
+          <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <CommitADChanges />
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="06043e7f-5a32-462f-a6c4-fb0c9dd02dbc" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs incoming operations for the CSODBB LDS management agent]]></Comment>
+    </OperationList>
+    <OperationList id="9ab80597-569b-45d2-ade1-998af9dc0c84" name="FIM Agent CSODBB LDS Outgoing" runOnStartup="false" queueMissed="false" delay="PT0S" enabled="true">
+      <CheckOperation id="3e1aaa9e-a6ec-4c43-8069-3015b8b3f97c" plugIn="Unify.EventBroker.PlugIn.Outgoing" displayName="Pending Export for Management Agent CSODBB LDS">
+        <Failure retryCount="0" retryWaitPeriod="PT10S" />
+        <Agents>
+          <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+        </Agents>
+        <Extended>
+          <OutgoingPending legacyKeyMode="false" managementAgentId="7030a56b-0c9e-46d9-9be0-13d9bf13664d" />
+        </Extended>
+      </CheckOperation>
+      <Schedules>
+        <Timing id="c6d1de81-334f-424f-a4d9-731a258ff1d3" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2019-02-28T07:28:16Z">
+          <Timespan value="PT30S" />
+        </Timing>
+      </Schedules>
+      <Operations>
+        <Operation id="15c31b00-c1f8-49a6-83c9-dadf92fabc71" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: CSODBB LDS - Run Profile: E">
+          <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="7030a56b-0c9e-46d9-9be0-13d9bf13664d" runProfileId="f7bc05a7-fd25-4e30-95c6-e7ebb65a3e24" />
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="9bf22628-6626-4c35-937a-5d59afbcfcf7" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs outgoing operations for the CSODBB LDS management agent]]></Comment>
+    </OperationList>
+    <OperationList id="0bbe4fa0-f025-4ff7-95ea-9708152d489a" name="Approved PHRIS Outgoing" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules />
+      <Operations>
+        <Operation id="650d759d-9fe9-4c0e-8cc9-97a20abdcc72" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: PHRIS - Run Profile: Export">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="55b3f33d-3a58-4d13-a39f-223d065a6aa9" runProfileId="4220acbf-f735-45a5-b6d1-a0e48cacab61" />
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+        <Group id="100d0bd7-c3f8-4f89-a642-cd565b37b207" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs outgoing operations for the PHRIS management agent]]></Comment>
+    </OperationList>
+    <OperationList id="0ce22a27-b796-44cc-911c-6e25b514fa0f" name="Approved Staff Outgoing" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules />
+      <Operations>
+        <Operation id="cade3306-be23-44f6-a853-4161e674b942" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: Staff - Run Profile: Export">
+          <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="a2527e10-11ee-4da6-9ccc-ea4aca1bc4e9" runProfileId="e7c30156-a8fd-4547-b489-b33c491b8b58" />
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs outgoing operations for the Staff management agent]]></Comment>
+    </OperationList>
+    <OperationList id="ae103d79-4fb4-4755-ab26-11be731a4332" name="Approved Users and Groups Outgoing" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules />
+      <Operations>
+        <Operation id="6a924a78-2750-4903-9e1d-d3332dbb5113" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: Users and Groups - Run Profile: Export">
+          <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="c18a2909-5383-4306-8cf6-2df6c8dbd4b5" runProfileId="0e93cd25-8963-4b51-927a-b6f9f4fc5002" />
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs outgoing operations for the Users and Groups management agent]]></Comment>
+    </OperationList>
+    <OperationList id="e83859e4-0f2c-4994-985d-66da74f6d816" name="FIM Agent SAS2IDM Outgoing" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <CheckOperation id="04032518-3494-4627-b007-4bfc214b1145" plugIn="Unify.EventBroker.PlugIn.Outgoing" displayName="Pending Export for Management Agent SAS2IDM">
+        <Failure retryCount="0" retryWaitPeriod="PT1M" />
+        <Agents>
+          <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+        </Agents>
+        <Extended>
+          <OutgoingPending legacyKeyMode="false" managementAgentId="af47543b-498d-426a-86e3-e6dde34c4581" />
+        </Extended>
+      </CheckOperation>
+      <Schedules>
+        <Timing id="e8ba6d06-3954-4c70-8013-9fd559e0773c" name="DailyExclusion" useLocal="true">
+          <ExclusionPeriods>
+            <ExclusionPeriod daysExclusionApplies="Sunday" start="PT5H" end="PT9H" />
+          </ExclusionPeriods>
+          <Timing id="8d7ef680-4284-439c-af6f-495a204712a4" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2023-01-12T10:00:28Z">
+            <Timespan value="PT30S" />
+          </Timing>
+        </Timing>
+      </Schedules>
+      <Operations>
+        <Operation id="4bf67e5b-cb6b-4584-84e6-d7c731e9c779" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: SAS2IDM - Run Profile: Export">
+          <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="RunNext" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="af47543b-498d-426a-86e3-e6dde34c4581" runProfileId="bfc29d43-73de-4151-b9f7-53c682ca3329" />
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="100d0bd7-c3f8-4f89-a642-cd565b37b207" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+        <Group id="9bf22628-6626-4c35-937a-5d59afbcfcf7" />
+        <Group id="c94ba0ba-353b-4133-b944-4feaf5ea0ccf" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs incoming operations for the SAS2IDM management agent]]></Comment>
+    </OperationList>
+    <OperationList id="29cf6324-c9ad-4b16-b449-1a5c8a1b8a3e" name="ZZZ Clear IIS Log Files" runOnStartup="false" queueMissed="false" delay="PT0S" enabled="false">
+      <Schedules />
+      <Operations>
+        <Operation id="217a030c-2c51-46cb-be05-6bb7f5b4b69f" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Archive IIS Log Files">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>[string]$logRoot = "C:\inetpub\logs\LogFiles\"
+[string[]]$logDirectories = @("W3svc1","W3svc2","W3svc3")
+[int]$dayDiff = 30
+foreach($logDirectory in $logDirectories) {
+    $logDirectoryPath = [System.IO.Path]::Combine($logRoot,$logDirectory)
+    Write-Output ("Deleting log files in $logDirectoryPath older than: " + (Get-Date).toString('MM/dd/yyyy'))
+    dir $logDirectoryPath | where { $_.creationtime -lt (get-date).adddays(-$dayDiff) -and $_.Extension -eq ".log" } | remove-item
+}
+</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+      </Groups>
+      <TriggerGroups />
+      <Comment><![CDATA[Delete IIS logs > 30 days]]></Comment>
+    </OperationList>
+    <OperationList id="e59fc719-a6cf-4a8d-9340-4d11e474bb3c" name="Pending Exports - Students and Groups" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules />
+      <Operations>
+        <Operation id="926a1bf7-ac43-4576-8df3-4d907258cca4" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="AD Export Audit File Only">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="c18a2909-5383-4306-8cf6-2df6c8dbd4b5" runProfileId="b2db08a9-a454-4e7d-8899-ad31647227a2" />
+          </Extended>
+        </Operation>
+        <Operation id="fdbbfcf7-b966-49ae-a039-89c1a7f6253e" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Generate Report">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; "D:\Scripts\PendingExports\PendingExports-GenerateData.ps1" -SourceMA "Users and Groups" -MaData "C:\Program Files\Microsoft Forefront Identity Manager\2010\Synchronization Service\MaData" -DropFile "UsersAndGroups.E.xml"</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </TriggerGroups>
+    </OperationList>
+    <OperationList id="2b51a5e9-3bbe-4f7c-8aee-5e040a8a24aa" name="Approved Contacts Outgoing" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules />
+      <Operations>
+        <Operation id="a92fd709-bf51-4a68-8d49-9adb214535ce" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: Users and Groups - Run Profile: Export">
+          <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="1f920b75-4fae-40a8-9c8b-fa9409b590af" runProfileId="75206d2d-6823-46a5-9c47-165c4e26ce50" />
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs outgoing operations for the Users and Groups management agent]]></Comment>
+    </OperationList>
+    <OperationList id="eefce7b7-eb9b-47d3-804f-f3db93884af7" name="Pending Exports - Staff" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules />
+      <Operations>
+        <Operation id="771e4bb6-886e-4970-b844-a9d062615119" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="AD Export Audit File Only">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="a2527e10-11ee-4da6-9ccc-ea4aca1bc4e9" runProfileId="bff27f2f-0a11-4b87-972a-e3d800b4561a" />
+          </Extended>
+        </Operation>
+        <Operation id="69a635a7-bd8e-4e63-bde6-685ec69f2eed" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Generate Report">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; "D:\Scripts\PendingExports\PendingExports-GenerateData.ps1" -SourceMA "Staff" -MaData "C:\Program Files\Microsoft Forefront Identity Manager\2010\Synchronization Service\MaData" -DropFile "Staff.E.xml"</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </TriggerGroups>
+    </OperationList>
+    <OperationList id="0be3d1a6-e218-4f73-9c40-23786ff89db8" name="Reconcile SAS School Students" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules>
+        <Timing id="95797f9e-7cef-480c-a111-1da8896517cd" name="DayExclusion" daysToExclude="Sunday,Saturday" useLocal="true">
+          <Timing id="eb541bb6-a389-47b0-8720-fc7e83279a93" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2023-01-09T20:15:00Z">
+            <Timespan value="P1D" />
+          </Timing>
+        </Timing>
+      </Schedules>
+      <Operations>
+        <Operation id="043652d2-b983-4a1b-a270-7bb22885cb91" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Mismatching CeIder Candidate Numbers">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="RunNext" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; "D:\Scripts\Get-MismatchingCeIderCandidateNumbers.ps1"</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+        <Operation id="4b6b2e88-8de6-4ef5-a78c-b6e1f503d12e" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Email check totals report">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="RunNext" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; "D:\Scripts\Get-SAS2IDMtoMetaverseStudentCounts.ps1"
+</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+        <Operation id="ce8fb71a-8da5-43fb-8f16-1324117b6e51" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Email student discrepancies report">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="RunNext" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; "D:\Scripts\Get-SAS2IDMtoMetaverseStudentDetails.ps1"
+</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+        <Operation id="7e366aab-db02-4900-9bda-20d98424cbe0" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="SAS to MIM Missing or Mismatching Students">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="RunNext" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; "D:\Scripts\Get-SAS2IDMMissingAndMismatching.ps1"
+</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups />
+      <TriggerGroups />
+      <Comment><![CDATA[Summary report to compare total students count between each of SAS (44), SAS2IDM (1) and MIM Sync (1) databases]]></Comment>
+    </OperationList>
+    <OperationList id="7fe89664-98a6-40f4-83cd-63019358ba16" name="Pending Imports - PHRIS" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules />
+      <Operations>
+        <Operation id="8ee6674d-2623-467e-92e7-68d2d7fc0eb5" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Generate Report">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; "D:\Scripts\PendingExports\PendingImports-GenerateData.ps1" -SourceMA "PHRIS" -DropFile "PHRIS.DI.XML"</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </TriggerGroups>
+    </OperationList>
+    <OperationList id="aa084eb8-d26d-48e8-9253-4b39455b7269" name="Pending Imports - SAS2IDM" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules />
+      <Operations>
+        <Operation id="04f2f8dc-0944-4d16-ad6e-ade9d9151d59" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Generate Report">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; "D:\Scripts\PendingExports\PendingImports-GenerateData.ps1" -SourceMA "SAS2IDM" -DropFile "SAS2IDM.DI.XML"</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </TriggerGroups>
+    </OperationList>
+    <OperationList id="24dd8733-2f51-45ee-b225-580086d80252" name="Weekly Extracts" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules>
+        <Timing id="c687cc14-b70f-4828-b565-d57761bda071" name="Daily" timeOfDay="PT20H" useLocal="true" startFrom="2022-05-27T20:00:00Z" numberOfDays="7" />
+      </Schedules>
+      <Operations>
+        <Operation id="d0328f69-3bbd-4271-9153-7c129a540bf5" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Pixevity Extracts">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; "D:\Scripts\Get-PixevityMemberData.ps1" -siteID "S*"</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+        <Operation id="f6ec5ba8-98f2-4b8b-b504-ddd775d424c8" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Active Staff Ceider Num">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="RunNext" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>Import-Module 'D:\Scripts\POWERSHELL\ceidernumcsv\ceidernumcsv2.ps1'</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </TriggerGroups>
+      <Comment><![CDATA[Initially only the Pixevity MEMBER2 extract, this will eventually handle this and any other extract scripts that need to be run weekly]]></Comment>
+    </OperationList>
+    <OperationList id="31aff5c9-e6d0-466f-9191-9a974f55846f" name="Reconcile SAS School Staff" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules>
+        <Timing id="f5b02bea-b1e5-4327-95e1-f21bf0d63582" name="DayExclusion" daysToExclude="Sunday,Saturday" useLocal="true">
+          <Timing id="0cbf7a16-9c08-4ac5-975a-625c086f444c" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2021-10-29T19:30:00Z">
+            <Timespan value="P1D" />
+          </Timing>
+        </Timing>
+      </Schedules>
+      <Operations>
+        <Operation id="0730a344-b787-4d9c-b2bd-167fe3e64de4" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="SAS Staff Extract - ALL CSBB Schools">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="RunNext" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; "D:\Scripts\Get-SASStaffData.ps1" -schoolFilter ""
+</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups />
+      <TriggerGroups />
+      <Comment><![CDATA[Summary report to compare total staff count between each of SAS (44), SAS2IDM (1) and MIM Sync (1) databases]]></Comment>
+    </OperationList>
+    <OperationList id="2352e98c-2832-4a38-8218-0476676888ec" name="FIM Agent Compass Incoming" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <CheckOperation id="4b2ca43f-c34d-438d-9701-d5dda00805be" plugIn="Unify.EventBroker.PlugIn.IdentityBroker" displayName="Identity Broker Changes Operation - Adapter: CEnet Student Adapter">
+        <Failure retryCount="0" retryWaitPeriod="PT10S" />
+        <Agents>
+          <Agent key="Agent" id="796f072a-095e-46a6-9aa6-9e886a73ec4e" />
+        </Agents>
+        <Extended>
+          <IdentityBrokerChanges adapterId="2484ffb0-4500-4778-81ae-a78f3aa65aec" />
+        </Extended>
+      </CheckOperation>
+      <Schedules>
+        <Timing id="9c45d683-25a9-414f-88e4-7fedcc29ee83" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2022-09-23T03:01:25.292765Z">
+          <Timespan value="PT30S" />
+        </Timing>
+      </Schedules>
+      <Operations>
+        <Operation id="3299bd25-aa57-4e66-8e16-a040edb6e0ee" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Delta Import CEnetStudents">
+          <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="2e96691f-cc1d-472d-a2f4-02538be09389" runProfileId="2ff07083-edd3-4022-b2a9-9c0409b6b9e7" />
+          </Extended>
+        </Operation>
+        <Operation id="860f0302-7bcb-4d62-8ecc-c7a97585bc7c" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Check Thresholds">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; 'D:\Scripts\EventBroker\Halt-ThresholdExceeded.ps1' -MAName "Compass" -maxDeletes 25 -maxAdds 200 -maxUpdates 200 -logFile "Compass.DI.CEnetStudent.XML" -isFullImport $false -attributes "PhysicalDeliveryOfficeName|UniversalIdentificationNumber" -OperationListsToDisableGUID "ecea19d1-947a-4dea-8165-8e57255b3297|2352e98c-2832-4a38-8218-0476676888ec|bad897f9-c699-4236-a166-1c759ef746a9"</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+        <Operation id="695a7191-c367-4d51-977c-a2a7fc66f45d" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Delta Import Contact">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="2e96691f-cc1d-472d-a2f4-02538be09389" runProfileId="802d970c-c15f-43e6-ac53-27d3cedc9d23" />
+          </Extended>
+        </Operation>
+        <Operation id="f791837d-5142-43b8-883e-c7cdea7f2e94" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Check Thresholds">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; 'D:\Scripts\EventBroker\Halt-ThresholdExceeded.ps1' -MAName "Compass" -maxDeletes 25 -maxAdds 200 -maxUpdates 200 -logFile "Compass.DI.CEnetContact.XML" -isFullImport $false -attributes "PhysicalDeliveryOfficeName|UniversalIdentificationNumber" -OperationListsToDisableGUID "ecea19d1-947a-4dea-8165-8e57255b3297|2352e98c-2832-4a38-8218-0476676888ec|bad897f9-c699-4236-a166-1c759ef746a9"</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+        <Operation id="06711ae2-3019-43a7-8782-cfd44ccc3b88" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Delta Import CEnetStaff">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="2e96691f-cc1d-472d-a2f4-02538be09389" runProfileId="1a8ec057-c324-4021-aa2f-608e3c7fa840" />
+          </Extended>
+        </Operation>
+        <Operation id="f9dce134-03c5-4755-b9d8-379c9b1d561a" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Check Thresholds">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; 'D:\Scripts\EventBroker\Halt-ThresholdExceeded.ps1' -MAName "Compass" -maxDeletes 25 -maxAdds 200 -maxUpdates 200 -logFile "Compass.DI.CEnetStaff.XML" -isFullImport $false -attributes "PhysicalDeliveryOfficeName|UniversalIdentificationNumber" -OperationListsToDisableGUID "ecea19d1-947a-4dea-8165-8e57255b3297|2352e98c-2832-4a38-8218-0476676888ec|bad897f9-c699-4236-a166-1c759ef746a9"</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+        <Operation id="1150bebc-b142-4ebb-88cf-fac9089f953e" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="DS - Safety Catch TBC!!!">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="2e96691f-cc1d-472d-a2f4-02538be09389" runProfileId="b347d3b1-35e9-45ca-93fe-577222e4e582" />
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="100d0bd7-c3f8-4f89-a642-cd565b37b207" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs incoming operations for the Compass management agent]]></Comment>
+    </OperationList>
+    <OperationList id="ecea19d1-947a-4dea-8165-8e57255b3297" name="Compass Nightly" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules>
+        <Timing id="b86de0c8-d3d6-4315-bd0e-ceebcde0ae5c" name="DayExclusion" daysToExclude="Sunday,Saturday" useLocal="true">
+          <Timing id="7c5f586d-3e2a-462e-9322-e3a7b7bcf5fd" name="Daily" timeOfDay="PT20H" useLocal="true" startFrom="2022-10-10T20:00:00Z" numberOfDays="1" />
+        </Timing>
+      </Schedules>
+      <Operations>
+        <Operation id="5855b590-80e3-43e8-9cd8-0302d066c212" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="FI CEnetStudent">
+          <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="2e96691f-cc1d-472d-a2f4-02538be09389" runProfileId="7757747e-abc8-40bd-affb-3d1c71f7e097" />
+          </Extended>
+        </Operation>
+        <Operation id="69f749c6-48fd-4a59-b23f-90116efe82a0" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Check Thresholds">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; 'D:\Scripts\EventBroker\Halt-ThresholdExceeded.ps1' -MAName "Compass" -maxDeletes 25 -maxAdds 20000 -maxUpdates 200 -logFile "Compass.FI.CEnetStudent.XML" -isFullImport $false -attributes "PhysicalDeliveryOfficeName|UniversalIdentificationNumber" -OperationListsToDisableGUID "ecea19d1-947a-4dea-8165-8e57255b3297|2352e98c-2832-4a38-8218-0476676888ec|bad897f9-c699-4236-a166-1c759ef746a9"</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+        <Operation id="e1ec331e-2fae-426c-8e01-d2c79cf587e3" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="FI Contact">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="2e96691f-cc1d-472d-a2f4-02538be09389" runProfileId="5957180d-8dca-4118-a473-35914596f68e" />
+          </Extended>
+        </Operation>
+        <Operation id="d87e66c1-2e86-4630-b86c-c13c1450731b" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Check Thresholds">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; 'D:\Scripts\EventBroker\Halt-ThresholdExceeded.ps1' -MAName "Compass" -maxDeletes 25 -maxAdds 2000 -maxUpdates 200 -logFile "Compass.FI.CEnetContact.XML" -isFullImport $false -attributes "PhysicalDeliveryOfficeName|UniversalIdentificationNumber" -OperationListsToDisableGUID "ecea19d1-947a-4dea-8165-8e57255b3297|2352e98c-2832-4a38-8218-0476676888ec|bad897f9-c699-4236-a166-1c759ef746a9"</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+        <Operation id="0237865c-ac39-47e1-a8f4-1da593ce14ee" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="FI CEnetStaff">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="2e96691f-cc1d-472d-a2f4-02538be09389" runProfileId="6adc8815-7897-433c-b787-61381a645f90" />
+          </Extended>
+        </Operation>
+        <Operation id="67a5fd50-da15-4226-b1db-25173d21aba2" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Check Thresholds">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; 'D:\Scripts\EventBroker\Halt-ThresholdExceeded.ps1' -MAName "Compass" -maxDeletes 25 -maxAdds 20000 -maxUpdates 200 -logFile "Compass.FI.CEnetStaff.XML" -isFullImport $false -attributes "PhysicalDeliveryOfficeName|UniversalIdentificationNumber" -OperationListsToDisableGUID "ecea19d1-947a-4dea-8165-8e57255b3297|2352e98c-2832-4a38-8218-0476676888ec|bad897f9-c699-4236-a166-1c759ef746a9"</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+        <Operation id="863a2c43-a876-4140-ab3a-d32a4f4bdfe1" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="DS - Safety Catch TBC!!!">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="2e96691f-cc1d-472d-a2f4-02538be09389" runProfileId="b347d3b1-35e9-45ca-93fe-577222e4e582" />
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="100d0bd7-c3f8-4f89-a642-cd565b37b207" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </TriggerGroups>
+      <Comment><![CDATA[Nightly full import/delta sync]]></Comment>
+    </OperationList>
+    <OperationList id="dae18c7b-125c-4ed9-b4bf-30ce04b1c263" name="Approved PHRIS Incoming" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules />
+      <Operations>
+        <Operation id="78fe86c9-d9f9-492c-b2fe-94f75f2e73b4" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: PHRIS - Run Profile: Full Sync">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="55b3f33d-3a58-4d13-a39f-223d065a6aa9" runProfileId="ac02e6a6-7119-4b15-b91a-6a84e4878e78" />
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+        <Group id="100d0bd7-c3f8-4f89-a642-cd565b37b207" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs incoming (sync) operations for the PHRIS management agent]]></Comment>
+    </OperationList>
+    <OperationList id="5425aa58-d5cb-4731-906e-5ab3b4a0188b" name="Approved SAS2IDM Incoming" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules />
+      <Operations>
+        <Operation id="5b209ae2-24c9-4a21-a2c1-6cb066afdfb4" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Management Agent: SAS2IDM - Run Profile: Full Sync">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="af47543b-498d-426a-86e3-e6dde34c4581" runProfileId="9f7c4579-80f6-4112-8450-c91d80751913" />
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+        <Group id="8035077e-5d01-4c82-a4a6-18a5bd02017a" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+        <Group id="100d0bd7-c3f8-4f89-a642-cd565b37b207" />
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+        <Group id="41141aa2-fe75-4dda-8f85-e25682c78ee8" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs incoming (sync) operations for the SAS2IDM management agent]]></Comment>
+    </OperationList>
+    <OperationList id="dfa1c3f4-2d9e-490d-a475-0fdefc9e950d" name="Pending Exports - CSODBB LDS" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules />
+      <Operations>
+        <Operation id="02e1775b-d333-4b99-94c6-989cce7e2b97" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="ADLDS Export Audit File Only">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="7030a56b-0c9e-46d9-9be0-13d9bf13664d" runProfileId="aceb7a62-2b16-4706-8ab8-31cebf5e467e" />
+          </Extended>
+        </Operation>
+        <Operation id="f61a53d6-99a6-4a34-ac35-325798396fc7" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Generate Report">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; "D:\Scripts\PendingExports\PendingExports-GenerateData.ps1" -SourceMA "CSODBB LDS" -MaData "C:\Program Files\Microsoft Forefront Identity Manager\2010\Synchronization Service\MaData" -DropFile "LDS.Export.xml"</Script>
+            </PSChanges>
+          </Extended>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="1fcba787-bafa-49fe-8b75-ada3ce0b00be" />
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="68faf2ad-13d6-4c7b-b984-cf55fbc8f100" />
+      </TriggerGroups>
+      <Comment><![CDATA[Generate a pending export of pending ADLDS changes (for sync to CEnet) for examination in Excel]]></Comment>
+    </OperationList>
+  </OperationListConfigurations>
+</OperationEngine>

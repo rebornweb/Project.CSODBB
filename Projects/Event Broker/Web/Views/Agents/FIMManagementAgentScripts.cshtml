@@ -1,0 +1,44 @@
+﻿@using Unify.Framework.Web
+@model Unify.Product.EventBroker.FIM.FIMManagementAgentScriptViewInformation
+
+@{
+    ViewBag.Title = Html.Title(TitleResources.FIMManagementAgentScriptsTitle);
+}
+
+@Html.HiddenFor(model => model.FIMIncomingOperationListId)
+@Html.HiddenFor(model => model.FIMAgentId)
+
+<h2>@AgentsControllerResources.FIMManagementAgentScriptsHeader</h2>
+
+<div class="FaintBorder">
+    
+    <div class="FormText" style="width:auto">
+        In order for real-time management of the FIM Portal to be achieved, ensure the following steps have been carried out prior to continuing.
+        
+        <ol>
+            <li>Ensure the @EventBrokerBranding.Instance.ProductName Changes Activity has been installed on each server where the FIM Service is installed, using the <em>@Model.BrandingProductName Broker Portal Workflow</em> MSI.</li>
+            <li>Run the <em>ConfigureEventBrokerChangesActivity</em> PowerShell script. This will register the activity with the FIM Portal.</li>
+            <li>Update the <em>Microsoft.ResourceManagement.exe.config</em> file with the following configuration - This needs to be placed in the <em>system.serviceModel</em> element. @Html.ActionLink("Download", "DownloadFIMPortalWorkflowConfigurationFile", "Agents")</li>
+            <li>Restart the Microsoft Identity Manager Service.</li>
+            <li>Perform an IIS Reset on the FIM Portal instance.</li>
+        </ol>
+    </div>
+
+    <p>
+        Most management agents in @EventBrokerBranding.Instance.ProductName are represented through <b>Operation Lists</b> which request changes from their target systems.
+    </p>
+    <p>
+        For the FIM MA the roles are reversed, and the FIM Portal is responsible for notifying @EventBrokerBranding.Instance.ProductName of changes. This is achieved through <b>Workflows</b> on the correct <b>Management Policy Rules</b>.
+    </p>
+    <p>
+        The following script will generate a workflow for the Incoming Operation List of the <b>FIM MA</b>:
+    </p>
+    <p>
+	@Html.ActionLink("Download Workflow Script", "DownloadConfiguredWorkflowScript", "Agents", new {operationListId = Model.FIMIncomingOperationListId, workflowType = FIMPortalWorkflowType.DataChanges}, new {@class="m-btn blue"})    
+    </p>
+    <p>
+        For more information, refer to <a href="https://unifysolutions.jira.com/wiki/display/EB300/FIM+Portal+Integration">FIM Portal Integration</a>.
+    </p>
+</div>
+
+@{ Html.RenderButtons(new[] { new UnifyButtonRowBackButton("Id") }); }

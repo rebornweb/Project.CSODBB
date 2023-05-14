@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AdapterEngine>
+  <dataConnection name="repository" repository="Unify.IdentityBroker" />
+  <LDAPSettings enforceSingleSchema="false" />
+  <AdapterEngineConfigurations />
+</AdapterEngine>

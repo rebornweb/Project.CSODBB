@@ -1,0 +1,26 @@
+﻿@using Unify.Framework
+@model ConnectorStatisticsImportAllJobViewInformation
+           
+<h3>
+    @ConnectorControllerResources.ImportAllHeadingText
+
+    @if (Model.Enabled)
+    {
+        if (Model.SchedulerState == SchedulerState.Started)
+        {
+            using (Html.BeginForm("ExecuteFullImport", "Connector", new { connectorId = Model.ConnectorId }, FormMethod.Post, new { @class = "IconForm" }))
+            {
+                <button class="m-btn sm" alt="@ConnectorControllerResources.ExecuteFullImportLabel" title="@ConnectorControllerResources.ExecuteFullImportLabel">
+                    Run
+                </button>
+            }
+        }
+    }
+</h3>
+
+<div>
+    <div class="PaddedContent">
+        @Html.DisplayFor(model => model, "TalliedConnectorStatisticsConfiguration")
+        @Html.DisplayFor(model => model, "ConnectorStatisticsConfiguration")
+    </div>
+</div>

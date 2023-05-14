@@ -1,0 +1,36 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model AdapterTransformedConfigurationViewInformation
+
+@{
+    ViewBag.Title = Html.Title(TitleResources.AdapterTransformedConfigurationTitle);
+}
+
+<h1>
+    @(Model.AdapterId.HasValue 
+           ? AdapterResources.TransformedAdapterConfigurationHeading
+           : AdapterResources.TransformedAdaptersConfigurationHeading)
+</h1>
+
+<div>
+    <a href="@Url.Action("DownloadAdapterTransformedConfiguration", "Adapter", new { adapterId = Model.AdapterId })">
+        @AdapterResources.DownloadTransformedConfigurationLabel
+    </a>
+</div>
+
+<div>
+    <a href="@Url.Action("DownloadAdapterEngineConfiguration", "Adapter")">
+        @AdapterResources.DownloadOriginalConfigurationLabel
+    </a>
+</div>
+
+@if (Model.AvailableFileNames.Any())
+{
+    using (Html.BeginForm("AdapterTransformedConfiguration", "Adapter", new{adapterId = Model.AdapterId}))
+    {
+        @Html.DropDownList("transformationFile",
+                           new SelectList(Model.AvailableFileNames.Union(new[]{Model.FileName}), Model.FileName))
+    }
+}
+
+@{ Html.RenderAction("DisplayAdapterTransformedConfiguration", "Adapter", new{adapterId = Model.AdapterId, transformationFile = Model.FileName});}

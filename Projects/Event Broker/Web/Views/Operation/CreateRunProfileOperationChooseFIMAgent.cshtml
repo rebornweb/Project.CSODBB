@@ -1,0 +1,73 @@
+﻿@model RunProfilePlugInConfigurationViewInformation
+
+@using Unify.Framework.Web
+
+@{
+    ViewBag.Title = Html.CreatePlugInTitle(Model.CreateOrUpdateText, TitleResources.CreateRunProfileOperationTitleCaption);
+}
+
+<h2>@TitleResources.CreateRunProfileOperationChooseFIMAgentTitleCaption</h2>
+
+@if (!Model.ApplicableAgents.Any())
+{
+    <p>@string.Format(
+        OperationControllerResources.NoApplicableAgentMessageTemplate,
+        OperationControllerResources.PlugInOperationsRunProfileName,
+        OperationControllerResources.AgentsFIMName)
+
+        @if (Html.IsInRole(UnifyRoles.Write))
+        { 
+            @Html.ActionLink("Create Agent", "Create", "Agents",
+                new { agentType = AgentPlugInNames.FIMAgentPlugInName },
+                null)
+        }
+        else
+        {
+            <label>@OperationControllerResources.CreateAgentInsufficientPermissions</label>
+        }
+    </p>
+}
+else
+{
+    using (Html.DecorateForm(
+            () => Html.BeginForm("CreateRunProfileOperationChooseFIMAgent", "Operation", FormMethod.Post, new { id = "ChooseFIMAgentForm" }),
+            Model.CreateOrUpdateText,
+            "ChooseFIMAgentForm",
+            OperationResources.ConfigureOperationAltText, 
+            "submitButton"))
+    {
+        @Html.HiddenFor(model => model.OperationListId)
+        @Html.HiddenFor(model => model.OperationId)
+        @Html.HiddenFor(model => model.ParentOperationId)
+        @Html.HiddenFor(model => model.OperationTreeItemType)
+
+        @Html.HiddenFor(model => model.ManagementAgentKey)
+        @Html.HiddenFor(model => model.Retries)
+        @Html.HiddenFor(model => model.RetryWait)
+        @Html.HiddenFor(model => model.SuccessAction)
+        @Html.HiddenFor(model => model.FailureAction)
+        @Html.HiddenFor(model => model.RunProfileKey)
+        @Html.HiddenFor(model => model.EditMode)
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.DisplayName)
+
+        <div>
+            <fieldset>
+                @using (Html.MetaDataFor(model => Model.AgentId, new { description = OperationControllerResources.SelectFIMAgentDescription }, new { @class = "chzn-container" }))
+                {
+                    @Html.CustomTooltipFor(model => model.AgentId, OperationControllerResources.SelectFIMAgentName, OperationControllerResources.SelectAgentDescription)
+
+                    @Html.DropDownListFor(model => model.AgentId,
+                                new SelectList(
+                                    Model.ApplicableAgents,
+                                    "Id",
+                                    "Name",
+                                    Model.ApplicableAgents.Any(agent => agent.Id == Model.AgentId)
+                                    ? Model.ApplicableAgents.Where(agent => agent.Id == Model.AgentId).Select(agent => agent).First()
+                                    : Model.ApplicableAgents.First()),
+                                    new { @class = "chzn-select" })
+                }
+            </fieldset>
+        </div>
+    }
+}

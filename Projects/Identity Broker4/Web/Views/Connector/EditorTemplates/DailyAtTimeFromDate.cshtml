@@ -1,0 +1,26 @@
+﻿@model DailyAtTimeFromDateViewInformation
+           
+@using Unify.Framework.Web
+
+@{
+    string startDateDescription = string.Format(
+            ConnectorControllerResources.DailyAtTimeFromDateStartDateDescription,
+            ConnectorControllerResources.FriendlyDateFormat,
+            ConnectorControllerResources.FriendlyTimeFormat,
+            ConnectorControllerResources.DateFormatExample,
+            ConnectorControllerResources.TimeFormatExample);    
+}
+
+@using (Html.MetaDataFor(model => model.NumberOfDays, new { description = ConnectorControllerResources.DailyAtTimeFromDateNumberOfDaysDescription }))
+{
+    @Html.LabelFor(model => model.NumberOfDays, ConnectorControllerResources.DailyAtTimeFromDateNumberOfDaysName)
+    @Html.TextBoxFor(model => model.NumberOfDays)
+}
+
+@using (Html.MetaDataFor(model => model.StartFromDateTime, new { description = startDateDescription }))
+{
+    @Html.LabelFor(model => model.StartFromDateTime, ConnectorControllerResources.DailyAtTimeFromDateStartDateName)
+    <span class="StandardDateTime">
+        @Html.EditorFor(model => model.StartFromDateTime)
+    </span>
+}

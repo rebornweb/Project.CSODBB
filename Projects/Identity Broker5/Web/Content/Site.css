@@ -1,0 +1,480 @@
+.navbar-brand {
+    padding: 5px 0 5px 15px;
+}
+.navbar-brand>img {
+    height: 100%;
+    width: auto;
+}
+
+/* Themes */
+.opaque1 {
+    -ms-opacity: 0.2;
+    opacity: 0.2;
+}
+
+.opaque2 {
+    -ms-opacity: 0.4;
+    opacity: 0.4;
+}
+
+.opaque3 {
+    -ms-opacity: 0.6;
+    opacity: 0.6;
+}
+
+.opaque4 {
+    -ms-opacity: 0.8;
+    opacity: 0.8;
+}
+
+.opaque5 {
+    -ms-opacity: 0.99;
+    opacity: 0.99;
+}
+
+.TitleHeadingNavigation {
+    background-color: #F49211;
+}
+
+.ActiveTab {
+    background-color: #EfAA4E !important;
+}
+
+a {
+    color: #F49211;
+}
+
+form input:focus, form textarea:focus {
+    background-color: #F6B35B;
+    border-color: #F49211;
+}
+
+.hint {
+    background: #F6B35B url("forms/pointer_orange.gif") no-repeat -10px 5px;
+    border-color: #F49211;
+}
+
+.hint .hint-pointer {
+    background: url("forms/pointer_orange.gif") left top no-repeat;
+}
+
+/* Identity Broker data-tables override 
+-----------------------------------------------------------*/
+
+tr.odd {
+    background-color: #FDEAD0 !important;
+}
+
+td.sorting_1 {
+    background-color: #FBDCB2 !important;
+}
+
+td.sorting_2 {
+    background-color: #FBDCB2 !important;
+}
+
+td.sorting_3 {
+    background-color: #FBDCB2 !important;
+}
+
+/* Entity view override
+-----------------------------------------------------------*/
+
+table.originTable th, table.originTable td {
+    padding: 2px 7px !important;
+    text-align: center;
+}
+
+table.originTable a, table.entityViewTable a {
+    cursor: pointer !important;
+    color: #e4720e !important;
+}
+
+table.originTable tr.originBoundryRow {
+    background-color: #f9f9f9;
+    color: #7f7f7f
+}
+
+/* Identity Broker specific 
+-----------------------------------------------------------*/
+
+.RightSpaced td {
+    padding-right: 10px;
+}
+
+.BottomSpaced td {
+    padding-bottom: 5px;
+}
+
+.VerticalAlignTable td {
+    vertical-align: text-top;
+}
+
+.LeftAlignTable td {
+    text-align: left;
+    padding-left: 5px;
+}
+
+div.InnerAdapter {
+    display: inline;
+    margin-left: 150px;
+}
+
+.schemaKey {
+    background-color: #F9C27A !important;
+}
+
+.schemaKey .formcontrol {
+    background-color: #FFF;
+}
+
+td.FeintTableRows {
+    border-bottom-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    padding-bottom: 10px;
+    max-width: 400px;
+    overflow-x: scroll;
+}
+
+table.EntitySchemaRows tr, table.EntitySchemaRowControls tr {
+    height: 20px;
+    text-align: center;
+}
+
+.tallRows tr {
+    height: 30px !important;
+}
+
+.shadedRow {
+    background-color: #FEF3E4;
+}
+
+.shadedTable tr:nth-child(even) {
+    background-color: #FEF3E4 !important;
+}
+
+table.EntitySchemaRows, table.EntitySchemaRowControls {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+tr.MultiPartComponent {
+    border: 1px solid #D45C5C;
+}
+
+.ProgressContainer {
+    border: 1px solid #CCC;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    height: 33px;
+    width: 240px;
+    overflow-x: hidden;
+}
+
+.RunningProgressContainer {
+    background-image: url('/Content/LightLoader.gif');
+    overflow: hidden;
+}
+
+.CompleteProgressContainer, .SuccessfullyCompleteProgressContainer {
+    background: #D7E5BD;
+}
+
+.CompletedWithWarningsProgressContainer {
+    background: #F5EE9E;
+}
+
+.CompletedWithErrorsProgressContainer {
+    background: #DC7676;
+}
+
+.BlockedProgressContainer, .QueuedProgressContainer {
+    background: #EBEBF4;
+}
+
+
+.InactiveProgressContainer {
+    background: transparent;
+}
+
+.ProgressValue {
+    font-size: 0.8em;
+    margin: 5px 0 0 5px;
+    padding: 5px 0 0 5px;
+    position: absolute;
+}
+
+.ProgressBlind {
+    background-color: #F6F6F6;
+    border-left: 2px solid #FAB355;
+    -ms-border-radius: 0 10px 10px 0;
+    border-radius: 0 10px 10px 0;
+    float: right;
+    height: 33px;
+}
+
+.ActiveProgressBlind {
+}
+
+.InactiveProgressBlind {
+    display: none;
+}
+
+.ErroredComponent {
+    background-color: #E7E7E7;
+    padding: 20px;
+}
+
+.InternalSearchTermComponent {
+    float: left;
+}
+
+.ListedComponentFunctions {
+    float: left;
+    height: 200px;
+    margin: 0;
+    padding: 5px;
+    zoom: 1;
+    position: relative;
+}
+
+.ListedComponentContainer {
+    float: left;
+    height: 300px;
+    margin: 0;
+    max-height: 300px;
+    -moz-min-width: 100px;
+    -ms-min-width: 100px;
+    -o-min-width: 100px;
+    -webkit-min-width: 100px;
+    min-width: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 85%;
+    zoom: 1;
+    position: relative;
+}
+
+.ListedAdapter, .ListedConnector, .ListConnectorGroups, .ListAdapterGroups, .ListedAgent {
+    margin-left: 2em;
+    margin-bottom: 1em;
+    zoom: 1;
+}
+
+.ListedAgent div {
+    display: inline;
+}
+
+.ListedConnector .ConnectorSelections, .ListedAdapter .AdapterSelections, .ListedAgent .AgentCheckBox {
+    margin-right: 1em;
+}
+
+.ListedConnector .ConnectorAndStatusSeparator, .ListedAdapter .AdapterAndStatusSeparator {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.ConnectorsOperationsButton, .AdaptersOperationsButton, .AgentsOperationsButton {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.ConnectorsViewSection, .AdaptersViewSection, .AgentsViewSection {
+    margin-bottom: 2em;
+}
+
+.ConnectorsViewSection .ConnectorsViewSectionHeader, .AdaptersViewSection .AdaptersViewSectionHeader {
+    margin-bottom: 1.5em;
+}
+
+.inlineHeader {
+    display: inline;
+}
+
+.ConfimationButton, .PendingSubmission {
+    margin: 0;
+    padding: 7px;
+    color: black;
+    -moz-min-width: 100px;
+    -ms-min-width: 100px;
+    -o-min-width: 100px;
+    -webkit-min-width: 100px;
+    min-width: 100px;
+}
+
+.ConfimationButton {
+    background-color: #E4F7C6;
+}
+
+.PendingSubmission {
+}
+
+.UnderText {
+    font-size: 0.8em;
+    padding-left: 2em;
+}
+
+.UnifySlider {
+    overflow: hidden;
+}
+
+.ui-slider-horizontal {
+    height: 1.4em !important;
+}
+
+.ui-slider-horizontal .ui-slider-handle
+{
+top: 0 !important;
+}
+
+#PlainFieldSection, #PlainFieldSection > div:first-of-type {
+    overflow: visible;
+}
+
+/* Chosen Select Lists */
+
+.chzn-container, .chzn-form-fieldset-container {
+    overflow: visible;
+    margin: 0;
+}
+
+form fieldset div .chzn-select {
+    overflow: auto;
+}
+
+.chzn-single, .chzn-drop {
+    -moz-min-width: 220px;
+    -ms-min-width: 220px;
+    -o-min-width: 220px;
+    -webkit-min-width: 220px;
+    min-width: 220px;
+}
+
+.chzn-drop {
+    text-align: left;
+    margin: 0;
+    padding-left: 8px;
+}
+
+.chzn-search input {
+    -moz-min-width: 185px;
+    -ms-min-width: 185px;
+    -o-min-width: 185px;
+    -webkit-min-width: 185px;
+    min-width: 185px;
+}
+
+.chzn-select {
+    width: auto;
+}
+
+.FormText {
+    background-color: #f4f4f4;
+    border-left: 1px solid #CCC;
+    border-right: 1px solid #CCC;
+    padding: 1em;
+}
+
+/* Distinguished name styles */
+
+.DnComponent {
+    margin-left: 2px;
+    margin-right: 2px;
+    padding: 0.6em;
+    padding-right: 0;
+}
+
+.DnComponent:hover {
+    border-style: solid;
+    border-width: 0 1px;
+    border-color: #CCC;
+}
+
+.DnComponent button {
+    display: none;
+    border: none;
+    color: #AAA;
+    background: none;
+}
+
+.DnComponent:hover button {
+    display: inherit;
+}
+
+.DnComponent label {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    display: inline;
+    text-align: left;
+    float: none;
+}
+
+.DnComponents {
+    border: solid 1px #CCC;
+    padding: 1em;
+    position: relative;
+    height: auto;
+    min-height: 2em;
+    overflow: hidden;
+}
+
+.DnComponents label {
+    width: auto;
+}
+
+.DnComponents div {
+    padding: 0;
+}
+
+.DnComponentsButton {
+    margin: 0 10px 0 0;
+}
+
+.DnComponentsShowHide {
+}
+
+.DnComponents:hover .DnComponentsShowHide {
+    display: inherit;
+}
+
+.DnValueListing {
+    padding: 0;
+    margin: 0;
+    padding-left: 3em;
+}
+
+.DnValueListing a {
+    color: #BF7411;
+}
+
+.TransformationAddedField {
+    color: #D6A247;
+}
+
+.dataTables_scroll {
+    clear: both;
+    overflow: auto;
+}
+
+.functionsMenuIcon {
+    margin-bottom: 1em;
+}
+
+.functionsMenuForm {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*Fix jQuery ui diolog function menu position.*/
+.ui-dialog {
+    z-index: 1030 !important;
+}
+
+.DeletionThresholdSliderStyle {
+    width: 19em;
+    display: inline-block;
+    margin-left:0.5em;
+}

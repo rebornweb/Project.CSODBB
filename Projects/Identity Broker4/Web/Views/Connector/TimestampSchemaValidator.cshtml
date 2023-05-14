@@ -1,0 +1,24 @@
+﻿@model TimestampSchemaFieldDefinitionInformation
+           
+@using Unify.Framework.Web
+
+@{
+    string createOrEditSchemaRowText = RenderExtensions.SimpleCreateOrEditText(Model.Edit);
+
+    ViewBag.Title = Html.Title(string.Format(TitleResources.TimestampSchemaValidatorTitleTemplate, createOrEditSchemaRowText));
+    
+    Html.RenderAction("SchedulesHeader", "Schedules", new {area = "Framework"});
+}
+
+<div>
+    @using (Html.DecorateForm(
+                () => Html.BeginForm("TimestampEntitySchemaValidator", "Connector", new { connectorId = Model.ConnectorId }, FormMethod.Post, new{id = "TimestampEntitySchemaValidatorForm"}),
+                WebStudioResources.SaveText,
+                "TimestampEntitySchemaValidatorForm",
+                ConnectorControllerResources.SaveFieldDefinitionAltText
+            ))
+    {
+        @Html.EditorFor(model => model, "RenderEntitySchemaCoreValidatorAttributes")
+        @Html.EditorFor(model => model, "RenderEntitySchemaTimestampValidatorAttributes")
+    }
+</div>

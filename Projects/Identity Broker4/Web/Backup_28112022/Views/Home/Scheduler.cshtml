@@ -1,0 +1,35 @@
+﻿@using Unify.Framework
+@using Unify.Framework.Web
+@model SchedulerState
+
+@{
+    string output = string.Empty;
+    string playImageUrl = Url.WebIcon("control_play.png");
+    string pauseImageUrl = Url.WebIcon("control_stop.png");
+}
+
+@*TODO: PJ - IDB-260 - Html.IsInRole(IdentityBrokerServiceSecurityRoles.ServiceReadRole))*@
+@if (true)
+{
+    string link;
+    string image;
+    string alt;
+    if (Model == SchedulerState.Stopped)
+    {
+        link = Url.Action("EnableScheduler");
+        image = playImageUrl;
+        alt = HomeControllerResources.SchedulerEnableAlt;
+    }
+    else
+    {
+        link = Url.Action("DisableScheduler");
+        image = pauseImageUrl;
+        alt = HomeControllerResources.SchedulerDisableAlt;
+    }
+    output = string.Format("&nbsp;<a href=\"{0}\"><img src=\"{1}\" title=\"{2}\" alt=\"{2}\" /></a>", link, image, alt);
+}
+
+@*TODO: PJ - IDB-260 - Html.IsInRole(IdentityBrokerServiceSecurityRoles.SchedulerEditRole)*@
+<h2>@HomeControllerResources.SchedulerHeading @if (true) { @Html.Raw(output) } </h2>
+
+<p>@HomeControllerResources.SchedulerStateName&nbsp;@Model.ToString()</p>

@@ -1,0 +1,25 @@
+﻿@model MaxLengthSchemaFieldDefinitionInformation
+           
+@using Unify.Framework.Web
+
+@{
+    string createOrEditSchemaRowText = RenderExtensions.SimpleCreateOrEditText(Model.Edit);
+
+    ViewBag.Title = Html.Title(string.Format(TitleResources.MaxLengthSchemaValidatorTitleTemplate, createOrEditSchemaRowText));
+    
+    Html.RenderAction("SchedulesHeader", "Schedules", new {area = "Framework"});
+}
+
+<div>
+    @using (Html.DecorateForm(
+                () => Html.BeginForm("MaxLengthEntitySchemaValidator", "Connector", new { connectorId = Model.ConnectorId }, FormMethod.Post, new{id = "MaxLengthEntitySchemaValidatorForm"}),
+                WebStudioResources.SaveText,
+                "MaxLengthEntitySchemaValidatorForm",
+                ConnectorControllerResources.SaveFieldDefinitionAltText))
+    { 
+        <div>
+            @Html.EditorFor(model => model, "RenderEntitySchemaCoreValidatorAttributes")
+            @Html.EditorFor(model => model, "RenderEntitySchemaMaxLengthValidatorAttributes")
+        </div>
+    }
+</div>

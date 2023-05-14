@@ -1,0 +1,224 @@
+﻿@using System.Linq
+@using Unify.EventBroker.Web.Views.Agents.FIMAutoConfig
+@using Unify.Framework
+@using Unify.Framework.Web
+@using Unify.Product.EventBroker.FIM
+@model FIMAutoConfigurationAgentConfigurationViewInformation
+@{
+    ViewBag.Title = SiteMap.CurrentNode.Title;
+
+    MADetails fimMA = Model.DetectedManagementAgents.FirstOrDefault(ma => ma.IsFIMManagementAgent());
+}
+
+<h1>
+    @("Management Agents")
+    
+    <span class="m-btn-group">
+        <a href="@Url.Action("RefreshFIMAgent", new { id = Model.FIMAgentId })" class="m-btn mini mini-form">
+            @AutoConfigurationResources.RefreshMAsButtonText
+        </a>
+        @if (fimMA != null && Model.ConfiguredManagementAgents.Contains(fimMA.Key))
+        {
+            <a href="@Url.Action("FIMManagementAgentScripts", "Agents", new { fimAgentId = Model.FIMAgentId, managementAgentKey = fimMA.Key })" class="m-btn mini blue">
+                FIM Portal Integration
+            </a>
+        }
+    </span>
+</h1>
+
+<div>
+    <div class="PaddedContent">
+        @Html.HiddenFor(model => model.FIMIncomingOperationListId)
+        @Html.HiddenFor(model => model.BaseliningOperationListId)
+        <div class="Left">
+            <div class="SettingsContainer">
+                <div class="SettingsComponent WizardLeftContent" style="min-width:40%;max-width:40%;width:40%">
+                    <p>
+                        Microsoft Identity Manager (MIM) facilitates synchronization through <b>Management Agents</b> and their relationships.
+                    </p>
+                    <p>
+                        @Model.BrandingProductName can manage this synchronization during a number of events:<br/><br/>
+                        1. When changes occur in target systems (Incoming); <br/>
+                        2. When exports are pending execution (Outgoing); and <br/>
+                        3. through regular Baselining synchronization.<br/>
+                    </p>
+                    <p>
+                        Configure any of the listed Management Agents to get started.
+                    </p>
+                    <h3>Agents</h3>
+                    <p>
+                        Most Management Agents have a corresponding target system used for synchronization.
+                        @Model.BrandingProductName represents each of these individual target systems as individual corresponding <b>Agents</b>.
+                    </p>
+                    <p>
+                        The following is the list of configured Agents:
+                    </p>
+                    <ul>
+                        @foreach (var agent in Model.ConfiguredAgents)
+                        {
+                            AlertInformation agentAlert;
+                            
+                            <li>
+                                <a href="@Url.Action(AutoConfigurationResources.EditButtonText, new { id = agent.Id, fimAgentId = Model.FIMAgentId })">
+                                    @agent.Name
+                                </a>
+                                @if (Model.AgentAlerts.TryGetValue(agent.Id, out agentAlert) && agentAlert != null)
+                                {
+                                    <span>
+                                        <img src="@Url.WebIcon("error.png")" title="@AlertMessages.ShowShortMessage(agentAlert)" />
+                                        @AlertMessages.ShowShortMessage(agentAlert)
+                                    </span>
+                                }
+                            </li>
+                        }
+                    </ul>
+                    <span class="m-btn sm green-stripe" id="AddAgentButton">
+                        @AutoConfigurationResources.AddAgentValue
+                    </span>
+                    <div id="AddPlaceholderContainer" class="AddComponentContainer" style="width: auto;min-width:20em;overflow-y: auto;overflow-x: visible;height:23em;">
+                        @using (Html.BeginForm("AddPlaceholderAgent", "Agents", FormMethod.Post, new { @class = "AddComponentForm", style = "padding-left:4em;" }))
+                        {
+                            <br/>
+                        
+                            @Html.HiddenFor(model => model.FIMAgentId)
+                        
+                            <fieldset>
+                                <div>
+                                    <label>@AgentsControllerResources.AgentNameLabel</label>
+                                    @Html.TextBox("AgentName")
+                                </div>
+                                
+                                <br/>
+                                
+                                @foreach (var agentType in Model.AgentTypes)
+                                {
+                                    <div>
+                                        <label>@agentType.Key</label>   
+                                        @Html.RadioButton("AgentType", agentType.Value)
+                                    </div>
+                                }
+
+                            </fieldset>
+                        
+                            <div style="margin-left:11em;" class="m-btn-group">
+                                <button class="m-btn green scriptonly WiderButton">
+                                    @AutoConfigurationResources.CreateAgentButton
+                                </button>
+                            </div>
+                        }
+                        <span class="BlueButton m-btn sm" id="CancelAddAgent">
+                            @SharedResources.CancelButtonText
+                        </span>
+                    </div>
+                </div>
+                <div class="SettingsComponent WizardRightContent" style="min-width:50%;max-width:50%;width:50%;padding-left:10%;">
+                    <div>
+                        @if (!Model.DetectedManagementAgents.Any())
+                        {
+                            <div class="message">@AutoConfigurationResources.NoManagementAgentsFoundWarningText</div>
+                        }
+                        else
+                        {
+                            <table>
+                                @foreach (MADetails managementAgent in Model.DetectedManagementAgents.OrderBy(ma => !Model.ConfiguredManagementAgents.Contains(ma.Key)))
+                                {
+                                    <tr>
+                                        <td class="ManagementAgent">
+                                            @managementAgent.LastKnownMAName
+                                            <br/>
+                                            <div class="UnderText">
+                                                @managementAgent.Type
+                                                <br/>
+                                            
+                                                @{
+                                                   bool isConfigured = Model.ConfiguredManagementAgents.Contains(managementAgent.Key);
+                                                   bool isDisabled = Model.DisabledConfiguredMAs.Contains(managementAgent.Key);
+                                                }
+                                                
+                                            </div>
+                                        </td>
+                                        @if (!isConfigured)
+                                        {
+                                            <td>
+                                                @Html.ActionLink(
+                                                    AutoConfigurationResources.ConfigureButtonText,
+                                                    "ConfigureManagementAgent",
+                                                    "Agents",
+                                                    new
+                                                    {
+                                                        fimAgentId = Model.FIMAgentId,
+                                                        managementAgentKey = managementAgent.Key
+                                                    }, new
+                                                    {
+                                                        @class = "m-btn sm"
+                                                    })
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            if (isDisabled)
+                                            {
+                                                <td>
+                                                    @using (Html.BeginForm("EnableFIMMA", "Agents", new { fimAgentId = Model.FIMAgentId, managementAgentKey = managementAgent.Key }, FormMethod.Post, new { style = "padding:0;margin:0;display:block" }))
+                                                    {
+                                                        <button class="m-btn green sm">
+                                                            @AutoConfigurationResources.StartListeningButtonText
+                                                        </button>
+                                                    }
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td onmouseover="   $('#@managementAgent.Key').removeClass('disabled').addClass('red').html('@AutoConfigurationResources.PauseListeningButtonText')"
+                                                    onmouseout="   $('#@managementAgent.Key').addClass('disabled').removeClass('red').html('@AutoConfigurationResources.ListeningIndicatorInitialButtonText')">
+                                                    @using (Html.BeginForm("DisableFIMMA", "Agents", new { fimAgentId = Model.FIMAgentId, managementAgentKey = managementAgent.Key }, FormMethod.Post, new { style = "padding:0;margin:0;display:block" }))
+                                                    {
+                                                        <button class="m-btn sm disabled" id="@managementAgent.Key">
+                                                            @AutoConfigurationResources.ListeningIndicatorInitialButtonText
+                                                        </button>
+                                                    }
+                                                </td>
+                                            }
+                                        }
+                                        
+                                        
+                                        
+                                        @if (isConfigured && isDisabled)
+                                        {
+                                            <td>
+                                                @using (Html.BeginForm("ClearManagementAgentOperationLists", "Agents", new { fimAgentId = Model.FIMAgentId, managementAgentKey = managementAgent.Key }, FormMethod.Post, new { style = "padding:0;margin:0;display:inline" }))
+                                                {
+                                                    <input type="submit" value="@AutoConfigurationResources.DeleteOperationListsButtonText" name="submitButton" class="m-btn sm red" alt="@AutoConfigurationResources.DeleteOperationListsButtonText" title="@AutoConfigurationResources.DeleteOperationListsButtonText">
+                                                }
+                                            </td>
+                                        }
+                                        
+
+                                    </tr>
+                                }
+                            </table>
+                        }
+                    </div>
+                    <br class="Clear"/>
+                </div>
+                <span class="Clear">&nbsp;</span>
+            </div>
+        </div>
+    </div>
+    <br class="Clear"/>
+    <div class="m-btn-group">
+        @{ new UnifyButtonRowBackButton("BackButton").Render(ViewContext); }
+    </div>
+
+    <script type="text/javascript">
+        $("#AddPlaceholderContainer").hide();
+        $("#AddAgentButton").click(function () {
+            $("#AddPlaceholderContainer").show();
+            $("#AddAgentButton").hide();
+        });
+        $("#CancelAddAgent").click(function () {
+            $("#AddPlaceholderContainer").hide();
+            $("#AddAgentButton").show();
+        });
+    </script>
+</div>

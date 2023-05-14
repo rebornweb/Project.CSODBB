@@ -1,0 +1,37 @@
+﻿@using Unify.Framework.Web
+@model NonStandardPlugInOperationConfigurationViewInformation
+
+@{
+    ViewBag.Title = Model.CreateOrUpdateText;
+}
+
+@using (
+    Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEditNonStandardPlugInOperationResult", "Operation", FormMethod.Post, new { id = "CreateNonStandardPlugInOperationForm" }),
+        Model.CreateOrUpdateText,
+        "CreateNonStandardPlugInOperationForm",
+        OperationResources.ConfigureOperationAltText, "submitButton"))
+{ 
+    <div>
+        
+        @Html.EditorFor(model => model, "OperationDisplayName")
+
+        <fieldset>
+            
+            @using (Html.MetaDataFor(model => model.ConfigurationString, new { description = OperationControllerResources.NonStandardPlugInConfigurationDescription }))
+            {
+                @Html.LabelFor(model => model.ConfigurationString, OperationControllerResources.NonStandardPlugInConfigurationName)
+                @Html.TextAreaFor(model => model.ConfigurationString)
+            }
+
+            @Html.EditorFor(model => model, "OperationInnerDetails")
+        
+        </fieldset>
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#RecycleTimeoutContainer').unifytimepicker({ 'includeDays': true });
+    });
+</script>

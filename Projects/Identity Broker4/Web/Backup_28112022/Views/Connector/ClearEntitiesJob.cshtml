@@ -1,0 +1,38 @@
+﻿@using Unify.Framework
+@using Unify.Framework.Web
+@model ConnectorStatisticsClearJobViewInformation
+           
+@{
+    string clearConnectorImageUrl = Url.WebIcon("database_delete.png");
+    const string clearInputId = "ClearAdapterButton";
+    const string formId = "ClearAdapterForm";
+    string clearInputMessageId = string.Concat(clearInputId, "Message");
+    string clearInputOkCancelScript = RenderExtensions.SubmitOkCancelDialog(formId, clearInputId, "Function");
+    IUnifyBranding branding = ViewContext.GetCurrentBranding();
+}
+
+<div>   
+    <div id="@clearInputMessageId" style="display:none">
+        <div>@string.Format(ConnectorControllerResources.ClearConnectorDescriptionText, branding.ProductName)</div><br/>
+        <div>@ConnectorControllerResources.ClearConnectorConfirmationFinalWarning</div>
+    </div>
+    <h3>
+        @ConnectorControllerResources.ClearEntitiesHeadingText
+        @if (Model.Enabled && Model.SchedulerState == SchedulerState.Started)
+        {
+            using (Html.BeginForm("ExecuteClearConnector", "Connector", new { connectorId = Model.ConnectorId}, FormMethod.Post, new { @class = "IconForm", id=formId }))
+            {
+                <button class="m-btn sm" alt="@ConnectorControllerResources.ExecuteClearConnectorLabel" title="@ConnectorControllerResources.ExecuteClearConnectorLabel">
+                    Clear
+                </button>
+            }
+        }
+    </h3>
+     <script type="text/javascript">
+        @Html.Raw(clearInputOkCancelScript)
+    </script>
+                
+    <div class="PaddedContent">
+        @Html.DisplayFor(model => model, "ConnectorStatisticsConfiguration")
+    </div>
+</div>

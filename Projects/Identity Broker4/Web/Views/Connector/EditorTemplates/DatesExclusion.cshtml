@@ -1,0 +1,34 @@
+﻿@model DatesExclusionViewInformation
+           
+@using Unify.Framework.Web
+
+@{
+    string startDateDescription = string.Format(
+            ConnectorControllerResources.DatesExclusionStartDateDescription,
+            ConnectorControllerResources.FriendlyDateFormat,
+            ConnectorControllerResources.DateFormatExample
+        );
+
+    string endDateDescription = string.Format(
+            ConnectorControllerResources.DatesExclusionEndDateDescription,
+            ConnectorControllerResources.FriendlyDateFormat,
+            ConnectorControllerResources.DateFormatExample
+        );        
+        
+}
+
+@using (Html.MetaDataFor(model => model.StartDate, new { description = startDateDescription }))
+{
+    @Html.LabelFor(model => model.StartDate, ConnectorControllerResources.DatesExclusionStartDateName)
+    <span class="StandardDate">
+        @Html.EditorFor(model => model.StartDate)
+    </span>
+}
+
+@using (Html.MetaDataFor(model => model.EndDate, new { description = endDateDescription }))
+{
+    @Html.LabelFor(model => model.EndDate, ConnectorControllerResources.DatesExclusionEndDateName)
+    <span class="StandardDate">
+        @Html.EditorFor(model => model.EndDate)
+    </span>
+}

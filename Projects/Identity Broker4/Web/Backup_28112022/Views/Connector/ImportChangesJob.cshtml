@@ -1,0 +1,28 @@
+﻿@using Unify.Framework
+@model ConnectorStatisticsPollChangesJobViewInformation
+           
+<div>                   
+    <h3>
+        @ConnectorControllerResources.PollChangesHeadingText
+
+        @if (Model.Enabled)
+        {
+            if (Model.SchedulerState == SchedulerState.Started)
+            {
+                using (Html.BeginForm("ExecuteDeltaImport", "Connector", new { connectorId = Model.ConnectorId }, FormMethod.Post, new { @class = "IconForm" }))
+                {
+                    <button class="m-btn sm" alt="@ConnectorControllerResources.ExecuteDeltaImportLabel" title="@ConnectorControllerResources.ExecuteDeltaImportLabel">
+                        Poll
+                    </button>
+                }
+            }
+        }
+    </h3>      
+</div>
+
+<div>
+    <div class="PaddedContent">
+        @Html.DisplayFor(model => model, "TalliedConnectorStatisticsConfiguration")
+        @Html.DisplayFor(model => model, "ConnectorStatisticsConfiguration")
+    </div>
+</div>

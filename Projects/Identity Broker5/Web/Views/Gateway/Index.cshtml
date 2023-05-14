@@ -1,0 +1,46 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model GatewayIndexInformation
+<div class="GatewaysViewSection">
+    <div class="GatewaysViewSectionHeader">
+        <h2 class="inlineHeader">
+            @GatewayResources.GatewaysHeadingText
+        </h2>
+        <span class="GatewaysOperationsButton">
+            @Html.RenderGatewaysOperationsMenu(Url)
+            <script type="text/javascript">
+                @ViewData.RetrieveListItems("GatewaysFunctions")
+            </script>
+        </span>
+        <span>
+            <input type="checkbox" class="scriptonly" id="SelectDeselectGateways" />
+            @GatewayResources.SelectDeselectAllText
+        </span>
+    </div>
+    <div id="AgentsContainer" style="margin-top: 1em;">
+        @Html.ActionRefresh(Url, "GatewaysRefresh", 5000, "Gateways", "Gateway",
+            "function(cache) { $('.ActionRefreshListener').trigger('refreshStart', cache); }",
+            "function(cache) { $('.ActionRefreshListener').trigger('refreshStop', cache); $('.scriptonly').show(); }")
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $("#SelectDeselectGateways").change(function () {
+            var checked = $(this).is(':checked');
+            $('.GatewayCheckBox').each(function () {
+                $(this).prop('checked', checked);
+            });
+
+            if (checked) {
+                $('.GatewayCheckBox').each(function () {
+                    $(this).trigger('checkSelected');
+                });
+            } else {
+                $('.GatewayCheckBox').each(function () {
+                    $(this).trigger('checkDeselected');
+                });
+            }
+        });
+    });
+</script>

@@ -1,0 +1,133 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model EntityMergedSchemaViewInformation
+
+@{
+    var key = (Func<EntitySchemaRowViewInformation, object>) ViewData["Rows_Key"] ?? SchemaKey;
+    var fieldName = (Func<EntitySchemaRowViewInformation, object>)ViewData["Rows_FieldName"] ?? SchemaName;
+    var validatorFactory = (Func<EntitySchemaRowViewInformation, object>)ViewData["Rows_ValidatorFactory"] ?? SchemaType;
+    var required = (Func<EntitySchemaRowViewInformation, object>)ViewData["Rows_Required"] ?? SchemaRequired;
+    var readOnly = (Func<EntitySchemaRowViewInformation, object>)ViewData["Rows_Readonly"] ?? SchemaReadOnly;
+    var innerValidators = (Func<EntitySchemaRowViewInformation, object>)ViewData["Rows_RightFunctions"] ?? SchemaRightSide;
+
+    string lockImageUrl = Url.WebIcon("lock.png");
+}
+
+@DisplayRows(SharedResources.MergedSchemaNewFieldsHeading, Model.NewRows.ToArray(), true, fieldName, lockImageUrl, validatorFactory, key, readOnly, required, innerValidators)
+@DisplayRows(SharedResources.MergedSchemaIntersectingFieldsHeading, Model.IntersectingRows.ToArray(), false, fieldName, lockImageUrl, validatorFactory, key, readOnly, required, innerValidators)
+@DisplayRows(SharedResources.MergedSchemaExistingFieldsHeading, Model.ExistingRows.ToArray(), false, fieldName, lockImageUrl, validatorFactory, key, readOnly, required, innerValidators)
+
+@helper SchemaKey(EntitySchemaRowViewInformation row)
+{
+    @row.Key
+}
+
+@helper SchemaName(EntitySchemaRowViewInformation row)
+{
+    @row.FieldName
+}
+
+@helper SchemaType(EntitySchemaRowViewInformation row)
+{
+    @Model.ValidatorNames[row.ValidatorFactoryName].DisplayName
+}
+
+@helper SchemaRequired(EntitySchemaRowViewInformation row)
+{
+    @row.Required
+}
+
+@helper SchemaReadOnly(EntitySchemaRowViewInformation row)
+{
+    @row.ReadOnly
+}
+
+@helper SchemaRightSide(EntitySchemaRowViewInformation row)
+{
+}
+
+@helper DisplayRows(string heading, EntitySchemaRowViewInformation[] rows, bool showCheckbox, Func<EntitySchemaRowViewInformation, object> fieldName, string lockImageUrl, Func<EntitySchemaRowViewInformation, object> validatorFactory, Func<EntitySchemaRowViewInformation, object> key, Func<EntitySchemaRowViewInformation, object> readOnly, Func<EntitySchemaRowViewInformation, object> required, Func<EntitySchemaRowViewInformation, object> innerValidators)
+{
+    int rowNumber = 0;
+    string checkAllId = Guid.NewGuid().ToString("N");
+    string checkRowClass = Guid.NewGuid().ToString("N");
+
+    <fieldset>
+        <legend>@heading</legend>
+
+        @if (rows.Any())
+        {
+            <table class="EntitySchemaRows FeintTableRows tallRows">
+                <thead>
+                <tr>
+                    @if (showCheckbox)
+                    {
+                        <th><input type="checkbox" checked="checked" id="@checkAllId"/></th>
+                    }
+                    <th class="Left" style="min-width: 205px">
+                        <span style="margin-left: 20px">@SchemaResources.FieldNameLabel</span>
+                    </th>
+                    <th class="Left" style="min-width: 265px">@SchemaResources.FieldDefinitionTypeLabel</th>
+                    <th style="min-width: 70px">@SchemaResources.KeyLabel</th>
+                    <th style="min-width: 70px">@SchemaResources.ReadOnlyLabel</th>
+                    <th style="min-width: 70px">@SchemaResources.RequiredLabel</th>
+                    <th style="position: absolute;"></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (EntitySchemaRowViewInformation row in rows.OrderSchemaViewInformation())
+                {
+                    string rowClass = row.Key ? "schemaKey" : "schemaRow";
+                    if (rowNumber%2 == 0)
+                    {
+                        rowClass = rowClass + " shadedRow";
+                    }
+                    rowNumber++;
+
+                    <tr class="@rowClass">
+                        @if (showCheckbox)
+                        {
+                            <td><input type="checkbox" name="AppliedFields" value="@row.FieldName.ToString()" checked="checked" class="@checkRowClass"/></td>
+                        }
+                        <td class="Left Name">
+                            <span style="margin-left: 20px">@fieldName(row)</span>
+                            @if (row.IsFixed)
+                            {
+                                <img src="@lockImageUrl" alt="@ConnectorControllerResources.FixedEntitySchemaAltText" title="@ConnectorControllerResources.FixedEntitySchemaAltText"/>
+                            }
+                        </td>
+                        <td class="Left">@validatorFactory(row)</td>
+                        <td>@key(row)</td>
+                        <td>@readOnly(row)</td>
+                        <td>@required(row)</td>
+                        <td style="margin: 0; padding: 0; height: auto">
+                            <div>
+                                <span style="position: absolute; margin-top: -10px;">@innerValidators(row)</span>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            @SharedResources.NoSchemaFieldsMessage
+        }
+    </fieldset>
+
+    if (showCheckbox && rows.Any())
+    {
+        <script type="text/javascript" language="javascript">
+            $("#@checkAllId")
+                .on("change",
+                    function () {
+                        var checked = this.checked;
+                        $(".@checkRowClass")
+                            .each(function() {
+                                $(this).prop('checked', checked);
+                            });
+                    });
+        </script>
+    }
+}

@@ -1,0 +1,99 @@
+﻿@model ClearRunHistoryPlugInConfigurationViewInformation
+@using Unify.EventBroker.Web
+@using Unify.Framework.Web
+           
+@{
+    ViewBag.Title = Html.CreatePlugInTitle(Model.CreateOrUpdateText, TitleResources.CreateClearRunHistoryOperationTitleCaption);      
+}
+
+@if (!Model.ApplicableAgents.Any())
+{
+    <p>@string.Format(
+        OperationControllerResources.NoApplicableAgentMessageTemplate,
+        OperationControllerResources.PlugInOperationsClearRunHistoryName,
+        OperationControllerResources.AgentsFIMName)
+
+        @if (Html.IsInRole(UnifyRoles.Write))
+        { 
+            @Html.ActionLink("Create Agent", "Create", "Agents",
+                new { agentType = AgentPlugInNames.FIMAgentPlugInName },
+                null)
+        }
+        else
+        {
+            <label>@OperationControllerResources.CreateAgentInsufficientPermissions</label>
+        }
+    </p>
+}
+else
+{
+    using (Html.DecorateForm(
+            () => Html.BeginForm("CreatePlugInOperation", "Operation", FormMethod.Post, new { id = "CreateOperationForm" }),
+            Model.CreateOrUpdateText,
+            "CreateOperationForm",
+            OperationResources.ConfigureOperationAltText, "submitButton"))
+    {
+        <div>
+            @Html.EditorFor(model => model, "OperationDisplayName")
+            
+            <fieldset>
+                @using (Html.MetaDataFor(model => model.AgentId, new{ description = OperationControllerResources.SelectAgentDescription }, new { @class = "chzn-container" }))
+                {
+                    @Html.LabelFor(model => model.AgentId, OperationControllerResources.SelectAgentName)
+                    @Html.DropDownListFor(model => model.AgentId,
+                            new SelectList(
+                                Model.ApplicableAgents,
+                                "Id",
+                                "Name",
+                                Model.ApplicableAgents.Any(agent => agent.Id == Model.AgentId)
+                                    ? Model.ApplicableAgents.Where(agent => agent.Id == Model.AgentId).Select(agent => agent).First()
+                                    : Model.ApplicableAgents.First()),
+                            new { @class = "chzn-select" })
+                }
+            </fieldset>
+
+            <fieldset>
+                <legend>@OperationControllerResources.ClearRunHistoryPlugInOperationInformationText</legend>
+
+                @using (Html.MetaDataFor(model => model.DeleteRunsAfterDays, new { description = OperationControllerResources.DeleteRunAfterDaysDescription }))
+                {
+                    @Html.LabelFor(model => model.DeleteRunsAfterDays, OperationControllerResources.DeleteRunAfterDaysName)
+                    @Html.TextBoxFor(model => model.DeleteRunsAfterDays)
+                }
+                @using (Html.MetaDataFor(model => model.ArchiveRuns, new{description = OperationControllerResources.ArchiveRunsDescription}))
+                {
+                    @Html.LabelFor(model => model.ArchiveRuns, OperationControllerResources.ArchiveRunsName)
+                    @Html.CheckBoxFor(model => model.ArchiveRuns, new{id = "ArchiveRuns"})
+                }
+                @using (Html.MetaDataFor(model => model.ArchiveFileLocation, new { description = OperationControllerResources.ArchiveFileLocationDescription }, new{id = "ArchiveFileLocation"}))
+                {
+                    @Html.LabelFor(model => model.ArchiveFileLocation, OperationControllerResources.ArchiveFileLocationName)
+                    @Html.TextBoxFor(model => model.ArchiveFileLocation, new { @class = "wide-text" })
+                }
+                @using (Html.MetaDataFor(model => model.CustomXslFilePath, new { description = OperationControllerResources.CustomXslFilePathDescription }, new { id = "CustomXslFilePath" }))
+                {
+                    @Html.LabelFor(model => model.CustomXslFilePath, OperationControllerResources.CustomXslFilePathName)
+                    @Html.TextBoxFor(model => model.CustomXslFilePath, new { @class = "wide-text" })
+                }
+            </fieldset>
+
+            <fieldset>
+                @Html.EditorFor(model => model, "OperationInnerDetails")
+            </fieldset>
+        </div>
+    }
+}
+
+<script type="text/javascript">
+    function ShowHide() {
+        var isChecked = $('#ArchiveRuns').is(':checked');
+        $('#CustomXslFilePath').toggle(isChecked);
+        $('#ArchiveFileLocation').toggle(isChecked);
+    }
+
+    $('#ArchiveRuns').change(function () {
+        ShowHide();
+    });
+
+    ShowHide();
+</script>

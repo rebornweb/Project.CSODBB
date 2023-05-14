@@ -1,0 +1,34 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework
+@using Unify.Framework.Web
+@model LdapGatewayAgentViewInformation
+
+@using (Html.DecorateForm(
+    () => Html.BeginForm("CreateOrEdit", "LdapGateway", new {area = "Extensibility"}),
+    GatewayResources.SaveGatewaySubmit,
+    "SaveGatewayForm",
+    GatewayResources.SaveGatewayDescription))
+{
+    @Html.GatewayDetailsFor(model => model)
+
+    <fieldset>
+        <legend>@GatewayResources.SettingsLegendText</legend>
+
+        @using (Html.MetaDataFor(model => model.Address, new {description = GatewayResources.LdapSettingsFormAddressHint}))
+        {
+            @Html.LabelFor(model => model.Address, GatewayResources.LdapSettingsFormAddressLabelText)
+            @Html.TextBoxFor(model => model.Address)
+        }
+        @using (Html.MetaDataFor(model => model.PortNumber, new {description = GatewayResources.LdapSettingsFormPortNumberHint}))
+        {
+            @Html.LabelFor(model => model.PortNumber, GatewayResources.LdapSettingsFormPortNumberLabelText)
+            @Html.TextBoxFor(model => model.PortNumber)
+        }
+        @using (Html.MetaDataFor(model => model.MaxOps, new {description = GatewayResources.LdapSettingsFormMaxOpsHint}))
+        {
+            @Html.LabelFor(model => model.MaxOps, GatewayResources.LdapSettingsFormMaxOpsLabelText)
+            @Html.TextBoxFor(model => model.MaxOps)
+        }
+    </fieldset>
+}

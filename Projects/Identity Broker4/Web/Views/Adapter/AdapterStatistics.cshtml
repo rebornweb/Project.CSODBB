@@ -1,0 +1,25 @@
+﻿@using System.Globalization
+@using Unify.Connect.Web.Extensions
+@model AdapterOperationStatisticsViewInformation
+           
+<table class="RightSpaced BottomSpaced VerticalAlignTable">
+           
+    <tr>
+        <td>@AdapterResources.CurrentEntityCountForAdapterText</td>
+        <td>
+            <a href="@Url.Action("SearchEntities", new { partitionId = Model.AdapterId, searchContext = IdentityBrokerEntitySearchController.StandardEntitySearchContextKey })">
+                @Model.EntityCount.ToString(CultureInfo.InvariantCulture)
+            </a>
+        </td>
+    </tr>
+
+    <tr>
+        <td>@AdapterResources.CurrentPendingChangesCountForAdapterText</td>
+        <td>
+            <a href="@Url.Action("SearchEntities", new { partitionId = Model.AdapterId, searchContext = AdapterController.AdapterChangesSearchContextKey })">
+                @Model.PendingChanges.ToString(CultureInfo.InvariantCulture)
+            </a>
+        </td>
+    </tr>
+
+</table>

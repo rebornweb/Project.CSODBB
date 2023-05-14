@@ -1,0 +1,437 @@
+<saved-ma-configuration server='OCCCP-IM301' export-date='2023-05-12 03:38:42.273'>
+<!--WARNING>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+!! The contents of this file should not be edited.
+!! Any such modifications to this file may result in errors during import.
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+</WARNING-->
+<ma-data>
+ <format-version>1</format-version>
+ <id>{6C9ECEDB-4256-4FCC-8C0C-DF9C05C8C664}</id>
+ <name>PHRIS</name>
+ <category>Extensible</category>
+ <subtype>Identity Broker for PHRIS HR (UNIFY Solutions)</subtype>
+ <ma-listname>UNIFY Identity Broker for PHRIS HR (UNIFY Solutions)</ma-listname>
+ <ma-companyname>UNIFY Solutions</ma-companyname>
+ <creation-time>2012-07-31 15:56:24.047</creation-time>
+ <last-modification-time>2023-05-06 20:32:12.986</last-modification-time>
+ <version>2677</version>
+ <internal-version>1</internal-version>
+ <password-sync-allowed>0</password-sync-allowed>
+ <schema>
+  <dsml:dsml xmlns:dsml="http://www.dsml.org/DSML" xmlns:ms-dsml="http://www.microsoft.com/MMS/DSML"><dsml:directory-schema ms-dsml:no-objectclass-validation="true"><dsml:class id="container" type="structural"><dsml:name>container</dsml:name><dsml:attribute ref="#export_password" required="false" /></dsml:class><dsml:class id="person" type="structural"><dsml:name>person</dsml:name><dsml:attribute ref="#MiddleName" required="false" /><dsml:attribute ref="#PrefFirstName" required="false" /><dsml:attribute ref="#BirthDate" required="false" /><dsml:attribute ref="#CountryCode" required="false" /><dsml:attribute ref="#Class" required="false" /><dsml:attribute ref="#NationalId" required="false" /><dsml:attribute ref="#Email" required="false" /><dsml:attribute ref="#jobs" required="false" /><dsml:attribute ref="#Grade" required="false" /><dsml:attribute ref="#SalAdminPlan" required="false" /><dsml:attribute ref="#SupervisorId" required="false" /><dsml:attribute ref="#DeptId" required="false" /><dsml:attribute ref="#Manager" required="false" /><dsml:attribute ref="#Departments" required="false" /><dsml:attribute ref="#Grades" required="false" /><dsml:attribute ref="#HrStatus" required="false" /><dsml:attribute ref="#NullValue" required="false" /><dsml:attribute ref="#PrimJobTitle" required="false" /><dsml:attribute ref="#BirthDateAdj" required="false" /><dsml:attribute ref="#NextEffdt" required="false" /><dsml:attribute ref="#NextHrStatus" required="false" /><dsml:attribute ref="#Sex" required="false" /><dsml:attribute ref="#Department" required="false" /><dsml:attribute ref="#BusinessTitle" required="false" /><dsml:attribute ref="#Address3" required="false" /><dsml:attribute ref="#Address2" required="false" /><dsml:attribute ref="#Address1" required="false" /><dsml:attribute ref="#PostalCode" required="false" /><dsml:attribute ref="#Supervisors" required="false" /><dsml:attribute ref="#Depts" required="false" /><dsml:attribute ref="#csoDepartmentCodes" required="false" /><dsml:attribute ref="#csoSiteCodes" required="false" /><dsml:attribute ref="#csoSiteCodesSV" required="false" /><dsml:attribute ref="#csoDepartmentCodesSV" required="false" /><dsml:attribute ref="#IdBID" required="true" /><dsml:attribute ref="#EmplId" required="true" /><dsml:attribute ref="#LastName" required="true" /><dsml:attribute ref="#FirstName" required="true" /><dsml:attribute ref="#BigDate" required="true" /><dsml:attribute ref="#export_password" required="false" /></dsml:class><dsml:class id="personEmail" type="structural"><dsml:name>personEmail</dsml:name><dsml:attribute ref="#EmailId" required="false" /><dsml:attribute ref="#EmailClass" required="false" /><dsml:attribute ref="#IdBID" required="true" /><dsml:attribute ref="#EmplId" required="true" /><dsml:attribute ref="#EmailType" required="true" /><dsml:attribute ref="#export_password" required="false" /></dsml:class><dsml:class id="department" type="structural"><dsml:name>department</dsml:name><dsml:attribute ref="#IdBID" required="true" /><dsml:attribute ref="#SetId" required="true" /><dsml:attribute ref="#DeptId" required="true" /><dsml:attribute ref="#Effdt" required="false" /><dsml:attribute ref="#Description" required="false" /><dsml:attribute ref="#DescriptionShort" required="false" /><dsml:attribute ref="#Class" required="false" /><dsml:attribute ref="#export_password" required="false" /></dsml:class><dsml:class id="grade" type="structural"><dsml:name>grade</dsml:name><dsml:attribute ref="#IdBID" required="true" /><dsml:attribute ref="#SetId" required="true" /><dsml:attribute ref="#SalAdminPlan" required="true" /><dsml:attribute ref="#Grade" required="true" /><dsml:attribute ref="#Effdt" required="false" /><dsml:attribute ref="#Description" required="false" /><dsml:attribute ref="#DescriptionShort" required="false" /><dsml:attribute ref="#Class" required="false" /><dsml:attribute ref="#export_password" required="false" /></dsml:class><dsml:class id="job" type="structural"><dsml:name>job</dsml:name><dsml:attribute ref="#Effdt" required="false" /><dsml:attribute ref="#EffSeq" required="false" /><dsml:attribute ref="#PerOrg" required="false" /><dsml:attribute ref="#DeptId" required="false" /><dsml:attribute ref="#PositionNbr" required="false" /><dsml:attribute ref="#SupervisorId" required="false" /><dsml:attribute ref="#HrStatus" required="false" /><dsml:attribute ref="#ApptType" required="false" /><dsml:attribute ref="#Location" required="false" /><dsml:attribute ref="#FullPartTime" required="false" /><dsml:attribute ref="#StdHours" required="false" /><dsml:attribute ref="#SalAdminPlan" required="false" /><dsml:attribute ref="#Grade" required="false" /><dsml:attribute ref="#User" required="false" /><dsml:attribute ref="#LastUpDoPrid" required="false" /><dsml:attribute ref="#Class" required="false" /><dsml:attribute ref="#JobLastUpdDttm" required="false" /><dsml:attribute ref="#Manager" required="false" /><dsml:attribute ref="#Department" required="false" /><dsml:attribute ref="#JobGrade" required="false" /><dsml:attribute ref="#JobIndicator" required="false" /><dsml:attribute ref="#BusinessTitle" required="false" /><dsml:attribute ref="#IdBID" required="true" /><dsml:attribute ref="#EmplId" required="true" /><dsml:attribute ref="#EmplRcd" required="true" /><dsml:attribute ref="#export_password" required="false" /></dsml:class><dsml:class id="dept" type="structural"><dsml:name>dept</dsml:name><dsml:attribute ref="#Effdt" required="false" /><dsml:attribute ref="#DescriptionShort" required="false" /><dsml:attribute ref="#Description" required="false" /><dsml:attribute ref="#Class" required="false" /><dsml:attribute ref="#IdBID" required="true" /><dsml:attribute ref="#SetId" required="true" /><dsml:attribute ref="#DeptId" required="true" /><dsml:attribute ref="#export_password" required="false" /></dsml:class><dsml:attribute-type id="IdBID" single-value="true"><dsml:name>IdBID</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EmplId" single-value="true"><dsml:name>EmplId</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="LastName" single-value="true"><dsml:name>LastName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="FirstName" single-value="true"><dsml:name>FirstName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="MiddleName" single-value="true"><dsml:name>MiddleName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PrefFirstName" single-value="true"><dsml:name>PrefFirstName</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="BirthDate" single-value="true"><dsml:name>BirthDate</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="CountryCode" single-value="true"><dsml:name>CountryCode</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Class" single-value="true"><dsml:name>Class</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="BigDate" single-value="true"><dsml:name>BigDate</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="NationalId" single-value="true"><dsml:name>NationalId</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Email" single-value="true"><dsml:name>Email</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="jobs" single-value="false"><dsml:name>jobs</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Grade" single-value="true"><dsml:name>Grade</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="SalAdminPlan" single-value="true"><dsml:name>SalAdminPlan</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="SupervisorId" single-value="true"><dsml:name>SupervisorId</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="DeptId" single-value="true"><dsml:name>DeptId</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Manager" single-value="true"><dsml:name>Manager</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Departments" single-value="false"><dsml:name>Departments</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Grades" single-value="false"><dsml:name>Grades</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EmailType" single-value="true"><dsml:name>EmailType</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EmailId" single-value="true"><dsml:name>EmailId</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EmailClass" single-value="true"><dsml:name>EmailClass</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="SetId" single-value="true"><dsml:name>SetId</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Effdt" single-value="true"><dsml:name>Effdt</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Description" single-value="true"><dsml:name>Description</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="DescriptionShort" single-value="true"><dsml:name>DescriptionShort</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EmplRcd" single-value="true"><dsml:name>EmplRcd</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EffSeq" single-value="true"><dsml:name>EffSeq</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PerOrg" single-value="true"><dsml:name>PerOrg</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PositionNbr" single-value="true"><dsml:name>PositionNbr</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="HrStatus" single-value="true"><dsml:name>HrStatus</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="ApptType" single-value="true"><dsml:name>ApptType</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Location" single-value="true"><dsml:name>Location</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="FullPartTime" single-value="true"><dsml:name>FullPartTime</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="StdHours" single-value="true" ms-dsml:range-lower="0"><dsml:name>StdHours</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="User" single-value="true"><dsml:name>User</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="LastUpDoPrid" single-value="true"><dsml:name>LastUpDoPrid</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="JobLastUpdDttm" single-value="true"><dsml:name>JobLastUpdDttm</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Department" single-value="true"><dsml:name>Department</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="JobGrade" single-value="true"><dsml:name>JobGrade</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="NullValue" single-value="true"><dsml:name>NullValue</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PrimJobTitle" single-value="true"><dsml:name>PrimJobTitle</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="BirthDateAdj" single-value="true"><dsml:name>BirthDateAdj</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="JobIndicator" single-value="true"><dsml:name>JobIndicator</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="NextHrStatus" single-value="true"><dsml:name>NextHrStatus</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="NextEffdt" single-value="true"><dsml:name>NextEffdt</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Sex" single-value="true"><dsml:name>Sex</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="BusinessTitle" single-value="true"><dsml:name>BusinessTitle</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="EmplStr" single-value="false"><dsml:name>EmplStr</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Address1" single-value="true"><dsml:name>Address1</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Address2" single-value="true"><dsml:name>Address2</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Address3" single-value="true"><dsml:name>Address3</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Supervisors" single-value="false"><dsml:name>Supervisors</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="PostalCode" single-value="true"><dsml:name>PostalCode</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="Depts" single-value="false"><dsml:name>Depts</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.12</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="csoSiteCodes" single-value="false"><dsml:name>csoSiteCodes</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="csoDepartmentCodes" single-value="false"><dsml:name>csoDepartmentCodes</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="csoSiteCodesSV" single-value="true"><dsml:name>csoSiteCodesSV</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="csoDepartmentCodesSV" single-value="true"><dsml:name>csoDepartmentCodesSV</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type><dsml:attribute-type id="export_password" single-value="true" ms-dsml:encrypted="true" ms-dsml:export-only="true"><dsml:name>export_password</dsml:name><dsml:syntax>1.3.6.1.4.1.1466.115.121.1.15</dsml:syntax></dsml:attribute-type></dsml:directory-schema></dsml:dsml>
+ </schema>
+ <attribute-inclusion><attribute>IdBID</attribute><attribute>EmplId</attribute><attribute>LastName</attribute><attribute>FirstName</attribute><attribute>MiddleName</attribute><attribute>PrefFirstName</attribute><attribute>BirthDate</attribute><attribute>CountryCode</attribute><attribute>Class</attribute><attribute>BigDate</attribute><attribute>NationalId</attribute><attribute>Email</attribute><attribute>jobs</attribute><attribute>Grade</attribute><attribute>SalAdminPlan</attribute><attribute>SupervisorId</attribute><attribute>DeptId</attribute><attribute>Manager</attribute><attribute>Departments</attribute><attribute>Grades</attribute><attribute>EmailType</attribute><attribute>EmailId</attribute><attribute>EmailClass</attribute><attribute>SetId</attribute><attribute>Effdt</attribute><attribute>Description</attribute><attribute>DescriptionShort</attribute><attribute>EmplRcd</attribute><attribute>EffSeq</attribute><attribute>PerOrg</attribute><attribute>PositionNbr</attribute><attribute>HrStatus</attribute><attribute>ApptType</attribute><attribute>Location</attribute><attribute>FullPartTime</attribute><attribute>StdHours</attribute><attribute>User</attribute><attribute>LastUpDoPrid</attribute><attribute>JobLastUpdDttm</attribute><attribute>Department</attribute><attribute>JobGrade</attribute><attribute>NullValue</attribute><attribute>PrimJobTitle</attribute><attribute>BirthDateAdj</attribute><attribute>JobIndicator</attribute><attribute>NextHrStatus</attribute><attribute>NextEffdt</attribute><attribute>Sex</attribute><attribute>BusinessTitle</attribute><attribute>EmplStr</attribute><attribute>Address1</attribute><attribute>Address2</attribute><attribute>Address3</attribute><attribute>Supervisors</attribute><attribute>PostalCode</attribute><attribute>Depts</attribute><attribute>csoSiteCodes</attribute><attribute>csoDepartmentCodes</attribute><attribute>csoSiteCodesSV</attribute><attribute>csoDepartmentCodesSV</attribute><attribute>export_password</attribute></attribute-inclusion>
+ <stay-disconnector><filter-set import-filter="0" cd-object-type="personEmail" type="declared"><filter-alternative id="{1AE8B8E9-1649-4B31-912F-E1A43C3B7A90}"><condition cd-attribute="EmailType" operator="inequality"><value>BUS</value></condition></filter-alternative></filter-set></stay-disconnector>
+ <join>
+ <join-profile cd-object-type="department">
+  <join-criterion join-cri-type="none" id="{3DCA15BE-F70F-43DE-A6F6-6BC88313C9F5}">
+   <search mv-object-type="csoSite">
+    <attribute-mapping mv-attribute="csoSiteCode">
+     <direct-mapping>
+      <src-attribute>DeptId</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+  <join-criterion join-cri-type="none" id="{CFD4E1EB-D977-4368-B984-60AA079D96D4}">
+   <search mv-object-type="csoSite">
+    <attribute-mapping mv-attribute="csoMappedSites">
+     <direct-mapping>
+      <src-attribute>DeptId</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+ </join-profile>
+ <join-profile cd-object-type="person">
+  <join-criterion join-cri-type="none" id="{4E8A6CF7-4197-499A-81B7-CED41A8D49A3}">
+   <search mv-object-type="person">
+    <attribute-mapping mv-attribute="employeeID">
+     <direct-mapping>
+      <src-attribute>EmplId</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+  <join-criterion join-cri-type="none" id="{DDA7BF8A-840E-4320-A8DA-F15D1BE2558D}">
+   <search mv-object-type="person">
+    <attribute-mapping mv-attribute="csoLegacyEmployeeID">
+     <scripted-mapping>
+      <src-attribute>NationalId</src-attribute>
+      <script-context>JoinLegacyEmployeeID</script-context>
+     </scripted-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+ </join-profile>
+ <join-profile cd-object-type="personEmail">
+  <join-criterion join-cri-type="none" id="{80591486-AB34-450F-9DD1-ACBD9D100B26}">
+   <search mv-object-type="person">
+    <attribute-mapping mv-attribute="employeeID">
+     <direct-mapping>
+      <src-attribute>EmplId</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+ </join-profile>
+ <join-profile cd-object-type="dept">
+  <join-criterion join-cri-type="sync-rule" id="{1407E84B-0173-451D-AA78-AD410A3FE9CF}" sync-rule-id="{813C4D77-09BD-E611-8590-005056947981}">
+   <search mv-object-type="csoDepartment">
+    <attribute-mapping mv-attribute="uid">
+     <direct-mapping>
+      <src-attribute>DeptId</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+ </join-profile>
+ <join-profile cd-object-type="person">
+  <join-criterion join-cri-type="sync-rule" id="{D499646B-920D-49FB-8D00-1B8B5C765111}" sync-rule-id="{68F01868-DB94-E511-AB0C-005056947981}">
+   <search mv-object-type="person">
+    <attribute-mapping mv-attribute="employeeID">
+     <direct-mapping>
+      <src-attribute>EmplId</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+ </join-profile>
+ <join-profile cd-object-type="grade">
+  <join-criterion join-cri-type="sync-rule" id="{0B1939AA-B7D0-4AE6-968B-57ECE6A9F2EC}" sync-rule-id="{3916841F-CF58-E211-9ED6-005056947981}">
+   <search mv-object-type="csoGrade">
+    <attribute-mapping mv-attribute="csoEffectiveDate">
+     <direct-mapping>
+      <src-attribute>Effdt</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+    <attribute-mapping mv-attribute="csoSalaryAdminPlan">
+     <direct-mapping>
+      <src-attribute>SalAdminPlan</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+    <attribute-mapping mv-attribute="csoGrade">
+     <direct-mapping>
+      <src-attribute>Grade</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+ </join-profile>
+ <join-profile cd-object-type="job">
+  <join-criterion join-cri-type="sync-rule" id="{C3FAAD6B-3DBD-454A-A546-8393CF58CB31}" sync-rule-id="{3516841F-CF58-E211-9ED6-005056947981}">
+   <search mv-object-type="csoJob">
+    <attribute-mapping mv-attribute="csoEmploymentRecord">
+     <direct-mapping>
+      <src-attribute>EmplRcd</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+    <attribute-mapping mv-attribute="employeeID">
+     <direct-mapping>
+      <src-attribute>EmplId</src-attribute>
+     </direct-mapping>
+    </attribute-mapping>
+   </search>
+   <resolution type="none">
+    <script-context></script-context>
+   </resolution>
+  </join-criterion>
+ </join-profile>
+</join>
+
+ <projection>
+ <class-mapping cd-object-type="job" type="sync-rule" id="{CB05A13C-1D40-44BE-837D-5C1C58C26DC9}" sync-rule-id="{3516841F-CF58-E211-9ED6-005056947981}">
+  <mv-object-type>csoJob</mv-object-type>
+ </class-mapping>
+ <class-mapping cd-object-type="grade" type="sync-rule" id="{BE4D7AE7-8576-4EE0-87BD-A4FB5A79DBB3}" sync-rule-id="{3916841F-CF58-E211-9ED6-005056947981}">
+  <mv-object-type>csoGrade</mv-object-type>
+ </class-mapping>
+ <class-mapping cd-object-type="person" type="sync-rule" id="{6E86D1F1-27CE-4350-8527-4D938D0A70E2}" sync-rule-id="{68F01868-DB94-E511-AB0C-005056947981}">
+  <mv-object-type>person</mv-object-type>
+ </class-mapping>
+ <class-mapping cd-object-type="dept" type="sync-rule" id="{E9CB0CCB-8C44-40E1-A5C4-8F3D9A9DF76C}" sync-rule-id="{813C4D77-09BD-E611-8590-005056947981}">
+  <mv-object-type>csoDepartment</mv-object-type>
+ </class-mapping>
+</projection>
+
+ <export-attribute-flow>
+ <export-flow-set cd-object-type="personEmail" mv-object-type="person">
+  <export-flow cd-attribute="dn" id="{7587FD6D-C75B-4831-AD88-C69E51073A2E}" suppress-deletions="false">
+   <sync-rule-mapping mapping-type="expression" sync-rule-id="{DD564A0F-CF58-E211-9ED6-005056947981}" sync-rule-mapping-id="{C5002157-466F-4A9F-B201-AE8F112A9D9F}" initial-flow-only="true" is-existence-test="false">
+    <src-attribute>employeeID</src-attribute>
+    <sync-rule-value>
+     <export-flow allows-null="false"><src><attr>employeeID</attr></src><dest>dn</dest><scoping></scoping><fn id="+" isCustomExpression="false"><arg>"CN=BUS,CN="</arg><arg>employeeID</arg><arg>",OU=People"</arg></fn></export-flow>
+    </sync-rule-value>
+   </sync-rule-mapping>
+  </export-flow>
+  <export-flow cd-attribute="EmailClass" id="{CA408CCF-7CEA-42EB-BF36-7DF20BB9BFF8}" suppress-deletions="true">
+   <sync-rule-mapping mapping-type="constant" sync-rule-id="{DD564A0F-CF58-E211-9ED6-005056947981}" sync-rule-mapping-id="{F3E02C09-3B6A-4F1C-914A-34ABEEF7F964}" initial-flow-only="false" is-existence-test="false">
+    <sync-rule-value>R</sync-rule-value>
+   </sync-rule-mapping>
+  </export-flow>
+  <export-flow cd-attribute="EmplId" id="{B23588D7-1E9E-4E22-8A20-7F1F8BCB2A65}" suppress-deletions="true">
+   <sync-rule-mapping mapping-type="direct" sync-rule-id="{DD564A0F-CF58-E211-9ED6-005056947981}" sync-rule-mapping-id="{655B937A-08D1-45E4-A73F-AFF8FF4719ED}" initial-flow-only="false" is-existence-test="false">
+    <src-attribute>employeeID</src-attribute>
+   </sync-rule-mapping>
+  </export-flow>
+  <export-flow cd-attribute="EmailId" id="{A6EFF58F-B32B-41F6-832C-55AA538CCE8F}" suppress-deletions="true">
+   <sync-rule-mapping mapping-type="expression" sync-rule-id="{DD564A0F-CF58-E211-9ED6-005056947981}" sync-rule-mapping-id="{4B01FA7A-05FD-49F2-866E-2A6D3F0E6333}" initial-flow-only="false" is-existence-test="false">
+    <src-attribute>email</src-attribute>
+    <sync-rule-value>
+     <export-flow allows-null="false"><src><attr>email</attr></src><dest>EmailId</dest><scoping></scoping><fn id="IIF" isCustomExpression="false"><arg><fn id="Eq" isCustomExpression="true"><arg><fn id="UpperCase" isCustomExpression="false"><arg><fn id="Trim" isCustomExpression="false"><arg>$EmailOverride</arg></fn></arg></fn></arg><arg>"NONE"</arg></fn></arg><arg>email</arg><arg>$EmailOverride</arg></fn></export-flow>
+    </sync-rule-value>
+   </sync-rule-mapping>
+  </export-flow>
+  <export-flow cd-attribute="EmailType" id="{F4C65826-540D-49AF-9C62-868AFEEAB629}" suppress-deletions="true">
+   <sync-rule-mapping mapping-type="expression" sync-rule-id="{DD564A0F-CF58-E211-9ED6-005056947981}" sync-rule-mapping-id="{D8F827B4-C5B6-427B-A6AD-FD18BB5D2B5F}" initial-flow-only="false" is-existence-test="false">
+    <src-attribute>csoEmailType</src-attribute>
+    <sync-rule-value>
+     <export-flow allows-null="false"><src><attr>csoEmailType</attr></src><dest>EmailType</dest><scoping></scoping><fn id="IIF" isCustomExpression="false"><arg><fn id="IsPresent" isCustomExpression="true"><arg>csoEmailType</arg></fn></arg><arg>csoEmailType</arg><arg>"BUS"</arg></fn></export-flow>
+    </sync-rule-value>
+   </sync-rule-mapping>
+  </export-flow>
+ </export-flow-set>
+</export-attribute-flow>
+
+ <provisioning-cleanup type="declared"><action>delete-object</action></provisioning-cleanup>
+ <extension><assembly-name>Unify.CodelessProvisioning.MiisSp2.MAExtension.dll</assembly-name><application-protection>low</application-protection></extension>
+ <controller-configuration>
+ <application-protection>low</application-protection>
+ <application-architecture>process</application-architecture>
+</controller-configuration>
+
+ <description>CSO FIM V2: Peoplesoft PHRIS management for staff, jobs, departments and grades</description>
+ <ma-ui-settings><account-joiner-queries><attributes><cs><attribute name="&lt;objectType&gt;" header="&lt;objectType&gt;" size="100" /><attribute name="&lt;DN&gt;" header="&lt;DN&gt;" size="185" /><attribute name="EmplId" header="EmplId" size="100" /><attribute name="NationalId" header="NationalId" size="100" /><attribute name="EmailId" header="EmailId" size="193" /><attribute name="LastName" header="LastName" size="100" /><attribute name="FirstName" header="FirstName" size="100" /></cs><mv><attribute name="uid" header="uid" size="100" /><attribute name="csoSiteCode" header="csoSiteCode" size="100" /><attribute name="displayName" header="displayName" size="100" /><attribute name="description" header="description" size="152" /></mv></attributes><filters max_mv_search_results=""><filter name="EmployeeID" collation="Latin1_General_CI_AS" searchscope=""><element cdattribute="EmplId" mvattribute="employeeID" mvtextflag="false" elementoperator="Equals" /></filter><filter name="Surname" collation="Latin1_General_CI_AS" searchscope="person"><element cdattribute="LastName" mvattribute="lastName" mvtextflag="false" elementoperator="Equals" /><element cdattribute="Staff" mvattribute="PersonType" mvtextflag="true" elementoperator="Equals" /><element cdattribute="" mvattribute="csoGrades" mvtextflag="false" elementoperator="Is not present" /></filter><filter name="constant" collation="Latin1_General_CI_AS" searchscope=""><element cdattribute="aimee wharf" mvattribute="displayName" mvtextflag="true" elementoperator="Equals" /></filter><filter name="First Name" collation="Latin1_General_CI_AS" searchscope="person"><element cdattribute="FirstName" mvattribute="firstName" mvtextflag="false" elementoperator="Equals" /></filter></filters></account-joiner-queries></ma-ui-settings>
+ <private-configuration>
+  <MAConfig><ui-data><xmlwizard><properties><sample_file>C:\Schema.txt</sample_file><code_page_description>Unicode</code_page_description></properties><partitions><partition cd_name="default" guid="{E9E6DADE-6DAC-47BD-9354-4D81C41D3D91}" version="88"><object_class>container</object_class><object_class>person</object_class><object_class>personEmail</object_class><object_class>department</object_class><object_class>grade</object_class><object_class>job</object_class><object_class>dept</object_class></partition></partitions><primary_class_mappings><mapping user_define="-1" object_class="container" primary_class="container" /><mapping user_define="-1" object_class="person" primary_class="person"><attribute>IdBID</attribute><attribute>EmplId</attribute><attribute>LastName</attribute><attribute>FirstName</attribute><attribute>MiddleName</attribute><attribute>PrefFirstName</attribute><attribute>BirthDate</attribute><attribute>CountryCode</attribute><attribute>Class</attribute><attribute>BigDate</attribute><attribute>NationalId</attribute><attribute>Email</attribute><attribute>jobs</attribute><attribute>Grade</attribute><attribute>SalAdminPlan</attribute><attribute>SupervisorId</attribute><attribute>DeptId</attribute><attribute>Manager</attribute><attribute>Departments</attribute><attribute>Grades</attribute></mapping><mapping user_define="-1" object_class="personEmail" primary_class="personEmail"><attribute>IdBID</attribute><attribute>EmplId</attribute><attribute>EmailType</attribute><attribute>EmailId</attribute><attribute>Class</attribute><attribute>EmailClass</attribute></mapping><mapping user_define="-1" object_class="department" primary_class="department"><attribute>IdBID</attribute><attribute>SetId</attribute><attribute>DeptId</attribute><attribute>Effdt</attribute><attribute>Description</attribute><attribute>DescriptionShort</attribute><attribute>Class</attribute></mapping><mapping user_define="-1" object_class="grade" primary_class="grade"><attribute>IdBID</attribute><attribute>SetId</attribute><attribute>SalAdminPlan</attribute><attribute>Grade</attribute><attribute>Effdt</attribute><attribute>Description</attribute><attribute>DescriptionShort</attribute><attribute>Class</attribute></mapping><mapping user_define="-1" object_class="job" primary_class="job"><attribute>IdBID</attribute><attribute>EmplId</attribute><attribute>EmplRcd</attribute><attribute>Effdt</attribute><attribute>EffSeq</attribute><attribute>PerOrg</attribute><attribute>DeptId</attribute><attribute>PositionNbr</attribute><attribute>SupervisorId</attribute><attribute>HrStatus</attribute><attribute>ApptType</attribute><attribute>Location</attribute><attribute>FullPartTime</attribute><attribute>StdHours</attribute><attribute>SalAdminPlan</attribute><attribute>Grade</attribute><attribute>User</attribute><attribute>LastUpDoPrid</attribute><attribute>Class</attribute><attribute>JobLastUpdDttm</attribute><attribute>Manager</attribute><attribute>Department</attribute><attribute>JobGrade</attribute></mapping><mapping object_class="dept" primary_class="dept" user_define="-1"><attribute>IdBID</attribute><attribute>EmplId</attribute><attribute>LastName</attribute><attribute>FirstName</attribute><attribute>MiddleName</attribute><attribute>PrefFirstName</attribute><attribute>BirthDate</attribute><attribute>CountryCode</attribute><attribute>Class</attribute><attribute>BigDate</attribute><attribute>NationalId</attribute><attribute>Email</attribute><attribute>jobs</attribute><attribute>Grade</attribute><attribute>SalAdminPlan</attribute><attribute>SupervisorId</attribute><attribute>DeptId</attribute><attribute>Manager</attribute><attribute>Departments</attribute><attribute>Grades</attribute><attribute>EmailType</attribute><attribute>EmailId</attribute><attribute>EmailClass</attribute><attribute>SetId</attribute><attribute>Effdt</attribute><attribute>Description</attribute><attribute>DescriptionShort</attribute><attribute>EmplRcd</attribute><attribute>EffSeq</attribute><attribute>PerOrg</attribute><attribute>PositionNbr</attribute><attribute>HrStatus</attribute><attribute>ApptType</attribute><attribute>Location</attribute><attribute>FullPartTime</attribute><attribute>StdHours</attribute><attribute>User</attribute><attribute>LastUpDoPrid</attribute><attribute>JobLastUpdDttm</attribute><attribute>Department</attribute><attribute>JobGrade</attribute><attribute>NullValue</attribute><attribute>PrimJobTitle</attribute><attribute>BirthDateAdj</attribute><attribute>JobIndicator</attribute><attribute>NextHrStatus</attribute><attribute>NextEffdt</attribute><attribute>Sex</attribute></mapping></primary_class_mappings><object_classes><object_class selected="-1" user_define="-1" configured="-1" anchor="" cd_name="container" dn_as_anchor="-1" /><object_class selected="-1" user_define="-1" configured="-1" anchor="" cd_name="person" dn_as_anchor="-1"><attribute mandatory="0">MiddleName</attribute><attribute mandatory="0">PrefFirstName</attribute><attribute mandatory="0">BirthDate</attribute><attribute mandatory="0">CountryCode</attribute><attribute mandatory="0">Class</attribute><attribute mandatory="0">NationalId</attribute><attribute mandatory="0">Email</attribute><attribute mandatory="0">jobs</attribute><attribute mandatory="0">Grade</attribute><attribute mandatory="0">SalAdminPlan</attribute><attribute mandatory="0">SupervisorId</attribute><attribute mandatory="0">DeptId</attribute><attribute mandatory="0">Manager</attribute><attribute mandatory="0">Departments</attribute><attribute mandatory="0">Grades</attribute><attribute mandatory="0">HrStatus</attribute><attribute mandatory="0">NullValue</attribute><attribute mandatory="0">PrimJobTitle</attribute><attribute mandatory="0">BirthDateAdj</attribute><attribute mandatory="0">NextEffdt</attribute><attribute mandatory="0">NextHrStatus</attribute><attribute mandatory="0">Sex</attribute><attribute mandatory="0">Department</attribute><attribute mandatory="0">BusinessTitle</attribute><attribute mandatory="0">Address3</attribute><attribute mandatory="0">Address2</attribute><attribute mandatory="0">Address1</attribute><attribute mandatory="0">PostalCode</attribute><attribute mandatory="0">Supervisors</attribute><attribute mandatory="0">Depts</attribute><attribute mandatory="0">csoDepartmentCodes</attribute><attribute mandatory="0">csoSiteCodes</attribute><attribute mandatory="0">csoSiteCodesSV</attribute><attribute mandatory="0">csoDepartmentCodesSV</attribute><attribute mandatory="-1">IdBID</attribute><attribute mandatory="-1">EmplId</attribute><attribute mandatory="-1">LastName</attribute><attribute mandatory="-1">FirstName</attribute><attribute mandatory="-1">BigDate</attribute></object_class><object_class selected="-1" user_define="-1" configured="-1" anchor="" cd_name="personEmail" dn_as_anchor="-1"><attribute mandatory="0">EmailId</attribute><attribute mandatory="0">EmailClass</attribute><attribute mandatory="-1">IdBID</attribute><attribute mandatory="-1">EmplId</attribute><attribute mandatory="-1">EmailType</attribute></object_class><object_class selected="-1" user_define="-1" configured="-1" anchor="" cd_name="department" dn_as_anchor="-1"><attribute mandatory="-1">IdBID</attribute><attribute mandatory="-1">SetId</attribute><attribute mandatory="-1">DeptId</attribute><attribute mandatory="0">Effdt</attribute><attribute mandatory="0">Description</attribute><attribute mandatory="0">DescriptionShort</attribute><attribute mandatory="0">Class</attribute></object_class><object_class selected="-1" user_define="-1" configured="-1" anchor="" cd_name="grade" dn_as_anchor="-1"><attribute mandatory="-1">IdBID</attribute><attribute mandatory="-1">SetId</attribute><attribute mandatory="-1">SalAdminPlan</attribute><attribute mandatory="-1">Grade</attribute><attribute mandatory="0">Effdt</attribute><attribute mandatory="0">Description</attribute><attribute mandatory="0">DescriptionShort</attribute><attribute mandatory="0">Class</attribute></object_class><object_class selected="-1" user_define="-1" configured="-1" anchor="" cd_name="job" dn_as_anchor="-1"><attribute mandatory="0">Effdt</attribute><attribute mandatory="0">EffSeq</attribute><attribute mandatory="0">PerOrg</attribute><attribute mandatory="0">DeptId</attribute><attribute mandatory="0">PositionNbr</attribute><attribute mandatory="0">SupervisorId</attribute><attribute mandatory="0">HrStatus</attribute><attribute mandatory="0">ApptType</attribute><attribute mandatory="0">Location</attribute><attribute mandatory="0">FullPartTime</attribute><attribute mandatory="0">StdHours</attribute><attribute mandatory="0">SalAdminPlan</attribute><attribute mandatory="0">Grade</attribute><attribute mandatory="0">User</attribute><attribute mandatory="0">LastUpDoPrid</attribute><attribute mandatory="0">Class</attribute><attribute mandatory="0">JobLastUpdDttm</attribute><attribute mandatory="0">Manager</attribute><attribute mandatory="0">Department</attribute><attribute mandatory="0">JobGrade</attribute><attribute mandatory="0">JobIndicator</attribute><attribute mandatory="0">BusinessTitle</attribute><attribute mandatory="-1">IdBID</attribute><attribute mandatory="-1">EmplId</attribute><attribute mandatory="-1">EmplRcd</attribute></object_class><object_class cd_name="dept" selected="-1" user_define="0" configured="-1" anchor="" dn_as_anchor="-1"><attribute mandatory="0">Effdt</attribute><attribute mandatory="0">DescriptionShort</attribute><attribute mandatory="0">Description</attribute><attribute mandatory="0">Class</attribute><attribute mandatory="-1">IdBID</attribute><attribute mandatory="-1">SetId</attribute><attribute mandatory="-1">DeptId</attribute></object_class></object_classes><attributes><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="IdBID" sample_data="IdBID" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="EmplId" sample_data="EmplId" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="LastName" sample_data="LastName" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="FirstName" sample_data="FirstName" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="MiddleName" sample_data="MiddleName" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="PrefFirstName" sample_data="PrefFirstName" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="BirthDate" sample_data="BirthDate" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="CountryCode" sample_data="CountryCode" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Class" sample_data="Class" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="BigDate" sample_data="BigDate" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="NationalId" sample_data="NationalId" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Email" sample_data="Email" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="jobs" sample_data="jobs" type="DN" multi_valued="-1" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Grade" sample_data="Grade" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="SalAdminPlan" sample_data="SalAdminPlan" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="SupervisorId" sample_data="SupervisorId" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="DeptId" sample_data="DeptId" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Manager" sample_data="Manager" type="DN" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Departments" sample_data="Departments" type="DN" multi_valued="-1" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Grades" sample_data="Grades" type="DN" multi_valued="-1" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="EmailType" sample_data="EmailType" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="EmailId" sample_data="EmailId" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="EmailClass" sample_data="EmailClass" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="SetId" sample_data="SetId" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Effdt" sample_data="Effdt" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Description" sample_data="Description" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="DescriptionShort" sample_data="DescriptionShort" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="EmplRcd" sample_data="EmplRcd" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="EffSeq" sample_data="EffSeq" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="PerOrg" sample_data="PerOrg" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="PositionNbr" sample_data="PositionNbr" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="HrStatus" sample_data="HrStatus" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="ApptType" sample_data="ApptType" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Location" sample_data="Location" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="FullPartTime" sample_data="FullPartTime" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="0" upper_bound="" user_define="0" cd_name="StdHours" sample_data="StdHours" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="User" sample_data="User" type="DN" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="LastUpDoPrid" sample_data="LastUpDoPrid" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="JobLastUpdDttm" sample_data="JobLastUpdDttm" type="String" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="Department" sample_data="Department" type="DN" multi_valued="0" /><attribute binary="0" file_reference="0" selected="-1" lower_bound="" upper_bound="" user_define="0" cd_name="JobGrade" sample_data="JobGrade" type="DN" multi_valued="0" /><attribute cd_name="NullValue" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="PrimJobTitle" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="BirthDateAdj" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="JobIndicator" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="NextHrStatus" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="NextEffdt" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="Sex" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="BusinessTitle" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="EmplStr" sample_data="" binary="0" multi_valued="-1" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="Address1" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="Address2" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="Address3" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="Supervisors" sample_data="" binary="0" multi_valued="-1" file_reference="0" selected="-1" type="DN" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="PostalCode" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="Depts" sample_data="" binary="0" multi_valued="-1" file_reference="0" selected="-1" type="DN" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="csoSiteCodes" sample_data="" binary="0" multi_valued="-1" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="csoDepartmentCodes" sample_data="" binary="0" multi_valued="-1" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="csoSiteCodesSV" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /><attribute cd_name="csoDepartmentCodesSV" sample_data="" binary="0" multi_valued="0" file_reference="0" selected="-1" type="String" lower_bound="" upper_bound="" user_define="-1" /></attributes></xmlwizard><ma-help-text>UNIFY Identity Broker for PHRIS HR (UNIFY Solutions)</ma-help-text></ui-data><importing><anchor><dn /></anchor><per-class-settings><class><name>container</name><anchor><dn /></anchor></class><class><name>person</name><anchor><dn /></anchor></class><class><name>personEmail</name><anchor><dn /></anchor></class><class><name>department</name><anchor><dn /></anchor></class><class><name>grade</name><anchor><dn /></anchor></class><class><name>job</name><anchor><dn /></anchor></class><class><name>dept</name><anchor><dn /></anchor></class></per-class-settings></importing><exporting></exporting><ldif_format><code_page>65001</code_page></ldif_format><primary_class_mappings><mapping><primary_class>container</primary_class><oc-value>container</oc-value></mapping><mapping><primary_class>person</primary_class><oc-value>person</oc-value></mapping><mapping><primary_class>personEmail</primary_class><oc-value>personEmail</oc-value></mapping><mapping><primary_class>department</primary_class><oc-value>department</oc-value></mapping><mapping><primary_class>grade</primary_class><oc-value>grade</oc-value></mapping><mapping><primary_class>job</primary_class><oc-value>job</oc-value></mapping><mapping><primary_class>dept</primary_class><oc-value>dept</oc-value></mapping></primary_class_mappings><enable-unapplied-merge>0</enable-unapplied-merge><password-extension-config><password-extension-enabled>0</password-extension-enabled><dll data-owner="ISV" /><password-set-enabled /><password-change-enabled /><connection-info><connect-to /><user /></connection-info><timeout /></password-extension-config><file-type>LDIF</file-type><extension-config><filename data-owner="ISV">Unify.IdentityBroker.FIMAdapter.dll</filename><export-mode data-owner="ISV">call-based</export-mode><import-enabled data-owner="ISV">1</import-enabled><export-enabled data-owner="ISV">1</export-enabled><connection-info><connect-to>http://localhost:59990/IdentityBroker/FIMLDIFAdapter.svc</connect-to><user></user></connection-info><attributes><attribute data-owner="ISV" name="AdapterId">5db0f5e1-a032-450a-9415-fa4863f171da</attribute><attribute data-owner="ISV" name="ImportFileFormat">LDIF</attribute><attribute data-owner="ISV" name="EnableReplay">false</attribute></attributes></extension-config></MAConfig>
+ </private-configuration>
+ <SyncConfig-refresh-schema>0</SyncConfig-refresh-schema>
+ <ma-partition-data>
+ <partition>
+  <id>{E9E6DADE-6DAC-47BD-9354-4D81C41D3D91}</id>
+  <name>default</name>
+  <creation-time>2012-07-31 15:56:24.047</creation-time>
+  <last-modification-time>2023-03-02 08:32:37.607</last-modification-time>
+  <version>90</version>
+  <selected>1</selected>
+  <filter>
+   <object-classes>
+    <object-class>container</object-class>
+    <object-class>person</object-class>
+    <object-class>personEmail</object-class>
+    <object-class>department</object-class>
+    <object-class>grade</object-class>
+    <object-class>job</object-class>
+    <object-class>dept</object-class>
+   </object-classes>
+   <containers>
+    <exclusions/>
+    <inclusions>
+     <inclusion></inclusion>
+    </inclusions>
+   </containers>
+  </filter>
+  <allowed-operations>27</allowed-operations>
+  <current>
+   <batch-number>10153</batch-number>
+   <sequence-number>77464</sequence-number>
+  </current>
+  <last-successful-batch>10152</last-successful-batch>
+  <filter-hints>
+   <object-classes>
+    <object-class>
+     <name>container</name>
+     <hierarchy>
+      <object-class>container</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+    <object-class>
+     <name>person</name>
+     <hierarchy>
+      <object-class>person</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+    <object-class>
+     <name>personEmail</name>
+     <hierarchy>
+      <object-class>personEmail</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+    <object-class>
+     <name>department</name>
+     <hierarchy>
+      <object-class>department</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+    <object-class>
+     <name>grade</name>
+     <hierarchy>
+      <object-class>grade</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+    <object-class>
+     <name>job</name>
+     <hierarchy>
+      <object-class>job</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+    <object-class>
+     <name>dept</name>
+     <hierarchy>
+      <object-class>dept</object-class>
+     </hierarchy>
+     <included>1</included>
+    </object-class>
+   </object-classes>
+  </filter-hints>
+ </partition>
+</ma-partition-data>
+
+ <ma-run-data>
+ <run-configuration>
+  <id>{EA15E917-163D-479D-9BE3-4A6F7AD4B431}</id>
+  <name>Delta import</name>
+  <creation-time>2012-07-31 15:56:24.110</creation-time>
+  <version>30</version>
+  <last-modification-time>2022-11-28 23:43:24.417</last-modification-time>
+  <configuration><step><step-type type="delta-import"><import-subtype>to-file</import-subtype><import-subtype>resume-from-file</import-subtype><import-subtype>to-cs</import-subtype></step-type><dropfile-name>PHRIS.DI.xml</dropfile-name><threshold><batch-size>1</batch-size></threshold><partition>{E9E6DADE-6DAC-47BD-9354-4D81C41D3D91}</partition><custom-data><run-config><input-file>UNIFYDelta.txt</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{73AC835B-E23E-4E05-A1EB-7822162B7F06}</id>
+  <name>Delta import and delta synchronization</name>
+  <creation-time>2012-07-31 15:56:24.110</creation-time>
+  <version>31</version>
+  <last-modification-time>2022-11-28 23:43:24.417</last-modification-time>
+  <configuration><step><step-type type="delta-import"><import-subtype>to-file</import-subtype><import-subtype>resume-from-file</import-subtype><import-subtype>to-cs</import-subtype></step-type><dropfile-name>PHRIS.DI.xml</dropfile-name><threshold><batch-size>1</batch-size></threshold><partition>{E9E6DADE-6DAC-47BD-9354-4D81C41D3D91}</partition><custom-data><run-config><input-file>UNIFYDelta.txt</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step><step><step-type type="apply-rules"><apply-rules-subtype>apply-pending</apply-rules-subtype></step-type><threshold><batch-size>1</batch-size></threshold><partition>{E9E6DADE-6DAC-47BD-9354-4D81C41D3D91}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{5F90DE9D-9EF4-4910-88B7-70024D6833C0}</id>
+  <name>Delta synchronization</name>
+  <creation-time>2012-07-31 15:56:24.127</creation-time>
+  <version>31</version>
+  <last-modification-time>2022-11-28 23:43:24.417</last-modification-time>
+  <configuration><step><step-type type="apply-rules"><apply-rules-subtype>apply-pending</apply-rules-subtype></step-type><threshold /><partition>{E9E6DADE-6DAC-47BD-9354-4D81C41D3D91}</partition><custom-data /></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{B18F2743-ADB4-411E-BFF1-9CCC9E1E953F}</id>
+  <name>Export</name>
+  <creation-time>2012-07-31 15:56:24.127</creation-time>
+  <version>33</version>
+  <last-modification-time>2022-11-28 23:43:24.417</last-modification-time>
+  <configuration><step><step-type type="export" /><threshold /><partition>{E9E6DADE-6DAC-47BD-9354-4D81C41D3D91}</partition><custom-data><run-config><input-file /><timeout>0</timeout></run-config></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{F157A5B7-9586-4EEC-BED2-66DC1D2B9ADA}</id>
+  <name>Full import</name>
+  <creation-time>2012-07-31 15:56:24.127</creation-time>
+  <version>30</version>
+  <last-modification-time>2022-11-28 23:43:24.417</last-modification-time>
+  <configuration><step><step-type type="full-import"><import-subtype>to-file</import-subtype><import-subtype>resume-from-file</import-subtype><import-subtype>to-cs</import-subtype></step-type><dropfile-name>PHRIS.FI.xml</dropfile-name><threshold><batch-size>1</batch-size></threshold><partition>{E9E6DADE-6DAC-47BD-9354-4D81C41D3D91}</partition><custom-data><run-config><input-file>UNIFYFull.txt</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{9212C98D-D698-40E1-8763-38FCDEA7E830}</id>
+  <name>Full import and full synchronization</name>
+  <creation-time>2012-07-31 15:56:24.127</creation-time>
+  <version>31</version>
+  <last-modification-time>2022-11-28 23:43:24.417</last-modification-time>
+  <configuration><step><step-type type="full-import"><import-subtype>to-file</import-subtype><import-subtype>resume-from-file</import-subtype><import-subtype>to-cs</import-subtype></step-type><dropfile-name>PHRIS.FI.xml</dropfile-name><threshold><batch-size>1</batch-size></threshold><partition>{E9E6DADE-6DAC-47BD-9354-4D81C41D3D91}</partition><custom-data><run-config><input-file>UNIFYFull.txt</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step><step><step-type type="apply-rules"><apply-rules-subtype>reevaluate-flow-connectors</apply-rules-subtype></step-type><threshold><batch-size>1</batch-size></threshold><partition>{E9E6DADE-6DAC-47BD-9354-4D81C41D3D91}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{9A3317C4-D03F-4A86-A68F-099284CE86A4}</id>
+  <name>Full synchronization</name>
+  <creation-time>2012-07-31 15:56:24.127</creation-time>
+  <version>31</version>
+  <last-modification-time>2022-11-28 23:43:24.417</last-modification-time>
+  <configuration><step><step-type type="apply-rules"><apply-rules-subtype>reevaluate-flow-connectors</apply-rules-subtype></step-type><threshold /><partition>{E9E6DADE-6DAC-47BD-9354-4D81C41D3D91}</partition><custom-data /></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{2CF65BA3-A78E-4181-A841-1C26043E62ED}</id>
+  <name>Full import and delta synchronization</name>
+  <creation-time>2012-07-31 15:56:24.127</creation-time>
+  <version>31</version>
+  <last-modification-time>2022-11-28 23:43:24.417</last-modification-time>
+  <configuration><step><step-type type="full-import"><import-subtype>to-file</import-subtype><import-subtype>resume-from-file</import-subtype><import-subtype>to-cs</import-subtype></step-type><dropfile-name>PHRIS.FI.xml</dropfile-name><threshold><batch-size>1</batch-size></threshold><partition>{E9E6DADE-6DAC-47BD-9354-4D81C41D3D91}</partition><custom-data><run-config><input-file>UNIFYFull.txt</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step><step><step-type type="apply-rules"><apply-rules-subtype>apply-pending</apply-rules-subtype></step-type><threshold><batch-size>1</batch-size></threshold><partition>{E9E6DADE-6DAC-47BD-9354-4D81C41D3D91}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{751B28EE-E29C-43AA-A049-1FF164DAB65B}</id>
+  <name>Export (Audit Only)</name>
+  <creation-time>2013-09-23 08:56:33.990</creation-time>
+  <version>26</version>
+  <last-modification-time>2022-11-28 23:43:24.433</last-modification-time>
+  <configuration><step><step-type type="export"><export-subtype>to-file</export-subtype></step-type><dropfile-name>PHRIS.Export.xml</dropfile-name><threshold><batch-size>1</batch-size></threshold><partition>{E9E6DADE-6DAC-47BD-9354-4D81C41D3D91}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{AE36EDB4-B957-4E2E-ACC5-01C85585B58B}</id>
+  <name>Export 1</name>
+  <creation-time>2014-01-23 23:41:28.963</creation-time>
+  <version>11</version>
+  <last-modification-time>2022-11-28 23:43:24.433</last-modification-time>
+  <configuration><step><step-type type="export"></step-type><threshold><object>1</object><batch-size>1</batch-size></threshold><partition>{E9E6DADE-6DAC-47BD-9354-4D81C41D3D91}</partition><custom-data><run-config><timeout>0</timeout></run-config></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{2093B4D1-E2F1-4E1F-AF7F-2BAA2107B5AE}</id>
+  <name>FI</name>
+  <creation-time>2022-11-28 23:43:23.117</creation-time>
+  <version>2</version>
+  <last-modification-time>2022-11-28 23:43:24.433</last-modification-time>
+  <configuration><step><step-type type="full-import"><import-subtype>to-cs</import-subtype></step-type><threshold><batch-size>1</batch-size></threshold><partition>{E9E6DADE-6DAC-47BD-9354-4D81C41D3D91}</partition><custom-data><run-config><input-file>UNIFYFull.txt</input-file><delete-file-after-use>0</delete-file-after-use><timeout>0</timeout></run-config></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{93C6E679-DCD4-4935-BC9A-BA78B40D1A17}</id>
+  <name>FS</name>
+  <creation-time>2022-11-28 23:43:23.117</creation-time>
+  <version>2</version>
+  <last-modification-time>2022-11-28 23:43:24.433</last-modification-time>
+  <configuration><step><step-type type="apply-rules"><apply-rules-subtype>reevaluate-flow-connectors</apply-rules-subtype></step-type><threshold><batch-size>1</batch-size></threshold><partition>{E9E6DADE-6DAC-47BD-9354-4D81C41D3D91}</partition><custom-data></custom-data></step></configuration>
+ </run-configuration>
+ <run-configuration>
+  <id>{30F477CD-BAA3-4707-A621-B07073372201}</id>
+  <name>Export 10</name>
+  <creation-time>2015-11-27 04:48:17.603</creation-time>
+  <version>22</version>
+  <last-modification-time>2022-11-28 23:43:24.433</last-modification-time>
+  <configuration><step><step-type type="export"></step-type><threshold><object>10</object><batch-size>1</batch-size></threshold><partition>{E9E6DADE-6DAC-47BD-9354-4D81C41D3D91}</partition><custom-data><run-config><timeout>0</timeout></run-config></custom-data></step></configuration>
+ </run-configuration>
+</ma-run-data>
+
+ <capabilities-mask>79071</capabilities-mask>
+ <export-type>3</export-type>
+ <dn-construction/>
+ <password-sync><maximum-retry-count>10</maximum-retry-count><retry-interval>60</retry-interval><allow-low-security>0</allow-low-security></password-sync>
+ <component_mappings />
+</ma-data>
+
+</saved-ma-configuration>

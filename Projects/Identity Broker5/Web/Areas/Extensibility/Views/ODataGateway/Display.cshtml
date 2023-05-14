@@ -1,0 +1,28 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework
+@using Unify.Framework.Api
+@using Unify.Framework.Web
+@model ODataGatewayAgentViewInformation
+
+<table class="RightSpaced BottomSpaced VerticalAlignTable">
+    <tr>
+        <td>@GatewayResources.ODataSettingsFormAddressLabelText</td>
+        <td>@Model.Address</td>
+    </tr>
+    <tr>
+        <td>@GatewayResources.ODataSettingsFormAuthenticationTypeLabelText</td>
+        <td>@Model.AuthenticationType.ToString()</td>
+    </tr>
+    @if (Model.AuthenticationType == UnifyAuthenticationType.AzureActiveDirectoryBearer)
+    {
+        <tr>
+            <td>@GatewayResources.ODataSettingsFormTenantLabelText</td>
+            <td>@Model.Tenant</td>
+        </tr>
+        <tr>
+            <td>@GatewayResources.ODataSettingsFormAudienceLabelText</td>
+            <td>@Model.Audience</td>
+        </tr>
+    }
+</table>

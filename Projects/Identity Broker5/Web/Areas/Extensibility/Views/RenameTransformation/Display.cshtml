@@ -1,0 +1,23 @@
+﻿@using Unify.Connect.Web
+@using Unify.Framework.Collections
+@model RenameTransformationViewInformation
+
+@try
+{
+    IEnumerable<KeyValuePair<GroupedNameValueCollectionKey, GroupedNameValueCollectionKey>> mappings = TransformationControllerExtensions.Deserialize(Model.Mappings.Text);
+
+    <div>
+    @foreach (var line in mappings)
+    {
+        <p>
+            [@line.Key] RENAME-TO <span class="TransformationAddedField">[@line.Value]</span>
+        </p>
+    }
+    </div>
+}
+catch(Exception)
+{
+    <p>
+        @Model.Mappings.Text
+    </p>
+}

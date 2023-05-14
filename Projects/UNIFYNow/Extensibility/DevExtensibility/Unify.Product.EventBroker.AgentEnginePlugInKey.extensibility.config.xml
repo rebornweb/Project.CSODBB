@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AgentEngine changeId="3a411a7d-6829-4e0d-a666-b62c46df75b7" testConnections="PT5M">
+  <AgentConfigurations>
+    <Agent id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" name="FIM Agent" type="Unify.EventBroker.Agent.FIM">
+      <Extended xmlns="">
+        <FIMAgent serverName="D-OCCCP-IM303.DBB.LOCAL" userName="UNIFYFIM\evbsvc" password="+sKaVeCfrnsyRkT+icBFww==" connectionString="dVmK5qP/4x73QR+Icj77JdHqfe4oOAl9FzmPuWNOFmBrT95wfVOin3tQwu/mtTjV3RoxKM5nejSqNSu1W94P/wHicOw+8OTq3/qNFaq+PgdYJWUOo3EvgC3AzhSBJztqjf2mdomMrqDa0VkDlxAx0g==" useStandardView="true" successStatus="success;in-progress;completed-no-objects;completed-warnings;completed-sync-errors;completed-discovery-errors;completed-export-errors;completed-transient-objects;stopped-object-limit;no-start-ma-already-running;call-failure:0x8023063D" isLocalInstance="true" />
+      </Extended>
+    </Agent>
+    <Agent id="d3187109-fc0d-41f9-bd94-3a60a8757457" name="UNIFYFIM AD" type="Unify.EventBroker.Agent.AD">
+      <Extended xmlns="">
+        <AD UserName="adsync@unifyfim.unifytest.local" Password="t4p1HsO81UziozvllJorNQ==" Authentication="None">
+          <Servers>
+            <Server name="unifyfim.unifytest.local:389" />
+          </Servers>
+        </AD>
+      </Extended>
+    </Agent>
+    <Agent id="18eb1d41-e527-40d5-8c7a-76d3e6ab63bd" name="Identity Broker v4" type="Unify.EventBroker.Agent.IdentityBroker">
+      <Extended xmlns="">
+        <IdentityBrokerAgent EndPointAddress="http://d-occcp-im303.dbb.local:59990/" ManagementStudioEndpointConfigurationName="IdentityBroker" ChangesEndpointConfigurationName="IdentityBroker" version="v41" />
+      </Extended>
+    </Agent>
+    <Agent id="796f072a-095e-46a6-9aa6-9e886a73ec4e" name="Identity Broker v5" type="Unify.EventBroker.Agent.IdentityBroker">
+      <Extended xmlns="">
+        <IdentityBrokerAgent EndPointAddress="http://d-occcp-im202.dbb.local:59990/" ManagementStudioEndpointConfigurationName="IdentityBroker" ChangesEndpointConfigurationName="IdentityBroker" version="v50" />
+      </Extended>
+    </Agent>
+    <Agent id="6523b1b0-2469-40b1-b186-3c26bb2489e7" name="CSODBB ADLDS" type="Unify.EventBroker.Agent.AD">
+      <Extended xmlns="">
+        <AD UserName="adsync@unifyfim.unifytest.local" Password="t4p1HsO81UziozvllJorNQ==" Authentication="Secure">
+          <Servers>
+            <Server name="10.19.229.35:50000" />
+          </Servers>
+        </AD>
+      </Extended>
+    </Agent>
+  </AgentConfigurations>
+</AgentEngine>

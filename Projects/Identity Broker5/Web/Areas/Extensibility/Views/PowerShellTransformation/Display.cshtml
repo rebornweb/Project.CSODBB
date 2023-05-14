@@ -1,0 +1,52 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+
+@model PowerShellTransformationViewInformation
+
+@{
+    Guid randomId = Guid.NewGuid();
+    int lengthToDisplay = 20; // the length of the script string to display before press click more btn
+    string powerShellScriptClass = string.Concat("PowerShellScript", randomId);
+    string revPowerShellScriptClass = string.Concat("RevPowerShellScript", randomId);
+    string clickForMoreBtnClass = string.Concat("ClickForMoreBtn", randomId);
+    string revClickForMoreBtnClass = string.Concat("RevClickForMoreBtn", randomId);
+}
+
+<div>
+    <span class="@powerShellScriptClass" style="white-space: nowrap; font-family: monospace, monospace">
+        @(Model.TransformationScript.Length > lengthToDisplay ? Model.TransformationScript.Substring(0, lengthToDisplay) : Model.TransformationScript)
+    </span>
+    <span class="@powerShellScriptClass" style="display: none; white-space: pre-wrap; font-family: monospace, monospace">@Model.TransformationScript</span>
+    @if (Model.TransformationScript.Length > lengthToDisplay)
+    {
+        <br/>
+        <a href="javascript:;" class="@clickForMoreBtnClass">@TransformationResources.ClickToDisplayScriptText</a>
+        <a href="javascript:;" class="@clickForMoreBtnClass" style="display: none;">@TransformationResources.ClickToHideScriptText</a>
+    }
+</div>
+<br />
+<div>
+    <span class="@revPowerShellScriptClass" style="white-space: nowrap; font-family: monospace, monospace">
+        @(Model.ReverseTransformationScript.Length > lengthToDisplay ? Model.ReverseTransformationScript.Substring(0, lengthToDisplay) : Model.ReverseTransformationScript)
+    </span>
+    <span class="@revPowerShellScriptClass" style="display: none; white-space: pre-wrap; font-family: monospace, monospace">@Model.ReverseTransformationScript</span>
+    @if (Model.ReverseTransformationScript.Length > lengthToDisplay)
+    {
+        <br />
+        <a href="javascript:;" class="@revClickForMoreBtnClass">@TransformationResources.ClickToDisplayScriptText</a>
+        <a href="javascript:;" class="@revClickForMoreBtnClass" style="display: none;">@TransformationResources.ClickToHideScriptText</a>
+    }
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(".@clickForMoreBtnClass").on("click", function () {
+            $(".@clickForMoreBtnClass").toggle();
+            $(".@powerShellScriptClass").toggle();
+        });
+
+        $(".@revClickForMoreBtnClass").on("click", function () {
+            $(".@revClickForMoreBtnClass").toggle();
+            $(".@revPowerShellScriptClass").toggle();
+        });
+    });
+</script>

@@ -1,0 +1,50 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model StandardAgentFunctionsViewInformation
+
+@{
+    string editAgentImageUrl = Url.WebIcon("wrench.png");
+    string testConnectionImageUrl = Url.WebIcon("connect.png");
+    
+    string deleteAgentImageUrl = Url.WebIcon("delete.png");
+    string deleteAgentFormId = string.Format("DeleteAgentForm{0}", Model.AgentId);
+    string deleteAgentFormInputId = string.Format("DeleteAgentButton{0}", Model.AgentId);
+    string deleteAgentMessageId = string.Concat(deleteAgentFormInputId, "Message");
+    string deleteAgentOkCancelScript = RenderExtensions.SubmitOkCancelDialog(deleteAgentFormId, deleteAgentFormInputId, string.Empty);
+}
+
+<div class="FunctionsMenuContainer">
+    
+    <div id="@deleteAgentMessageId" style="display:none">
+        <div>@AgentResources.DeleteAgentsConfirmationWarningText</div><br/>
+        <div>@AgentResources.DeleteAgentWarningDescriptionText @WebStudioResources.ThisCannotBeUndoneText</div><br/>
+    </div>
+
+    <div>
+        <a href="@Url.Action("Edit", MvcApplication.GetAgentController(Model.Type), new{Model.AgentId, area="Extensibility"})">
+            <img src="@editAgentImageUrl" title="@AgentResources.EditAgentAltText" alt="@AgentResources.EditAgentAltText"/>
+            @AgentResources.EditAgentLabel
+        </a>    
+    </div>
+    
+    <div>
+        @using (Html.BeginForm("Delete", "Agent", new { id = Model.AgentId }, FormMethod.Post, new { @class="IconForm", id = deleteAgentFormId }))
+        {
+            <input type="image" src="@deleteAgentImageUrl" alt="@AgentResources.DeleteAgentAltText" title="@AgentResources.DeleteAgentAltText"/>
+            <input type="submit" value="@AgentResources.DeleteAgentButtonText" title="@AgentResources.DeleteAgentAltText" id="@deleteAgentFormInputId" class="SubmitImageText"/>
+        }
+    </div>
+    
+    <div>
+        @using (Html.BeginForm("RunTest", "Agent", new { id = Model.AgentId }, FormMethod.Post, new { @class="IconForm" }))
+        {
+            <input type="image" src="@testConnectionImageUrl" alt="@AgentResources.AgentTestConnectionAltText" title="@AgentResources.AgentTestConnectionAltText" />
+            <input type="submit" value="@AgentResources.TestAgentConnectionButtonText" title="@AgentResources.AgentTestConnectionAltText" class="SubmitImageText"/>
+        }
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    @Html.Raw(deleteAgentOkCancelScript)
+</script>

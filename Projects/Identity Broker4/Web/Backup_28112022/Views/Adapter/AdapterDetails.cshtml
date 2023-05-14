@@ -1,0 +1,41 @@
+﻿@using Unify.Connect.Web
+@using Unify.Framework
+@using Unify.Framework.Web
+
+@model AdapterDetailsViewInformation
+
+@{
+    ViewBag.Title = Html.Title(TitleResources.AdapterIndexTitle);
+}
+
+<div>
+    @foreach (var adapter in Model.StandardAdapters ?? Enumerable.Empty<AdapterViewInformation>())
+    {
+        @Html.DisplayFor(model => adapter, "AdapterConfiguration");
+    }
+    
+    @foreach (var compositeAdapter in Model.CompositeAdapters ?? Enumerable.Empty<CompositeAdapterViewInformation>())
+    {
+        @Html.DisplayFor(model => compositeAdapter, "CompositeAdapterConfiguration");
+    }
+</div>
+
+<div style="margin-left:20px">
+    @foreach (var compositeAdapter in Model.CompositeAdapters ?? Enumerable.Empty<CompositeAdapterViewInformation>())
+    {
+        foreach (var adapter in compositeAdapter.Adapters ?? Enumerable.Empty<AdapterViewInformation>())
+        {
+            @RenderInnerAdapter(adapter, compositeAdapter.AdapterId);
+        }
+    }
+</div>
+
+@helper RenderInnerAdapter(AdapterViewInformation innerAdapter, Guid adapterId)
+{
+    ViewData["isHead"] = false;
+    ViewData["containingCompositeId"] = adapterId;
+    
+    <div class="InnerAdapter">
+        @Html.DisplayFor(model => innerAdapter, "AdapterConfiguration") 
+    </div>
+}

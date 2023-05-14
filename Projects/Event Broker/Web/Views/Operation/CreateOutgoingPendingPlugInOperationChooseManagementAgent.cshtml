@@ -1,0 +1,49 @@
+﻿@model OutgoingPendingPlugInConfigurationViewInformation
+
+@using Unify.Framework.Web
+
+@{
+
+    ViewBag.Title = Html.CreatePlugInTitle(Model.CreateOrUpdateText, TitleResources.CreateOutgoingPendingOperationChooseManagementAgentTitleCaption);
+
+    const string KeyFieldName = "Key";
+    const string ValueFieldName = "Value";
+}
+
+@if (Model.ApplicableManagementAgents == null || !Model.ApplicableManagementAgents.Any())
+{
+    <div>@OperationControllerResources.NoAccessibleManagementAgentsErrorMessage</div>
+}
+else
+{
+    using (Html.DecorateForm(
+            () => Html.BeginForm("CreatePlugInOperation", "Operation", FormMethod.Post, new { id = "CreateOperationForm" }),
+            Model.CreateOrUpdateText,
+            "CreateOperationForm",
+            OperationResources.ConfigureOperationAltText, "submitButton"))
+    {
+        <div>
+            @Html.HiddenFor(model => model.AgentId)
+            @Html.EditorFor(model => model, "OperationDisplayName")
+
+            <fieldset>
+                @using (Html.MetaDataFor(model => model.ManagementAgentKey, new {description = OperationControllerResources.SelectMADescription}, new {@class = "chzn-container"}))
+                {
+                    @Html.LabelFor(model => model.ManagementAgentKey, OperationControllerResources.SelectMAName)
+                    @Html.DropDownListFor(model => model.ManagementAgentKey,
+                        new SelectList(
+                            Model.ApplicableManagementAgents,
+                            ValueFieldName,
+                            KeyFieldName,
+                            Model.ManagementAgentKey != Guid.Empty && Model.ApplicableManagementAgents.ContainsValue(Model.ManagementAgentKey)
+                                ? Model.ApplicableManagementAgents.First(item => item.Value == Model.ManagementAgentKey)
+                                : Model.ApplicableManagementAgents.First()),
+                        new {@class = "chzn-select"})
+                }
+
+                @Html.EditorFor(model => model, "CheckOperationInnerDetails")
+
+            </fieldset>
+        </div>
+    }
+}

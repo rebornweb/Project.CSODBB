@@ -1,0 +1,15 @@
+﻿<bindings>
+   <basicHttpBinding>
+       <binding name="StreamingFileTransferServicesBinding"
+       transferMode="StreamedResponse"
+       maxBufferSize="65536"
+       maxReceivedMessageSize="204003200"
+       sendTimeout="10:00:00"/>
+   </basicHttpBinding>
+</bindings>
+<client>
+   <endpoint
+       binding="basicHttpBinding" bindingConfiguration="StreamingFileTransferServicesBinding"
+       contract="EventBrokerService.IEventServiceCollector"
+       name="ServerNotifications" />
+</client>

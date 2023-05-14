@@ -1,0 +1,32 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Product.IdentityBroker
+@model ConnectionDetailsInformation
+
+<div>
+    <h2>@GatewayResources.ActiveConnectionTitle</h2>
+    <div>
+        @if (!Model.Connections.Any())
+        {
+            <span>@GatewayResources.ActiveConnectionNoActiveConnectionMessage</span>
+        }
+        else
+        {
+            <table class="RightSpaced BottomSpaced VerticalAlignTable">
+                <thead>
+                    <tr>
+                        <th>@GatewayResources.ActiveConnectionIPAddressMessageTitle</th>
+                        <th>@GatewayResources.ActiveConnectionInitialConnectTimeTitle</th>
+                    </tr>
+                </thead>
+                @foreach (BasicLDAPConnectionInformation connection in Model.Connections)
+                {
+                    <tr>
+                        <td>@connection.Address</td>
+                        <td>@connection.ConnectionStartTime.ToLocalTime()</td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+</div>

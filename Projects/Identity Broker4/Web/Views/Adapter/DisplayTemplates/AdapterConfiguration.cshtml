@@ -1,0 +1,158 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.IO
+@using Unify.Framework.Web
+@using Unify.Connect.Web
+
+@model AdapterViewInformation
+
+@{
+    Guid adapterId = Model.AdapterId;
+
+    string comment = ViewContext.GetAdapterComment(adapterId);
+
+    bool isHead = !ViewData.ContainsKey("isHead") || (bool)ViewData["isHead"];
+
+    string enableImageUrl = Url.WebIcon("control_play.png");
+    string disableImageUrl = Url.WebIcon("control_stop.png");
+
+    bool baseConnectorAvailable = !string.IsNullOrWhiteSpace(Model.BaseConnectorName);
+    bool enableableBasedOnBaseConnector = baseConnectorAvailable && Model.BaseConnectorEnabled;
+}
+
+@helper RenderAdapterHeader(Guid adapterId, string enableAdapterImageUrl, string disableAdapterImageUrl, bool enableable, bool isHead)
+    {
+    @Html.AdapterImage(adapterId, new Dictionary<string, string> { { "style", "vertical-align: middle;" } })
+    
+    @Model.AdapterName
+
+    if (isHead)
+    {
+        @Html.RenderStandardAdapterOperationsMenu(Url, adapterId, false)
+        
+        if (Model.Enabled)
+        {
+            using (Html.BeginForm("DisableAdapter", "Adapter", new { id = adapterId }, FormMethod.Post, new { @class = "IconForm" }))
+            {
+                    <input type="image" src="@disableAdapterImageUrl" alt="@AdapterResources.DisableAdapterImageAltText" title="@AdapterResources.DisableAdapterImageAltText"/>
+            }
+        }
+        else
+        {
+            if (enableable)
+            {
+                using (Html.BeginForm("EnableAdapter", "Adapter", new { id = adapterId }, FormMethod.Post, new { @class = "IconForm" }))
+                {   
+                    <input type="image" src="@enableAdapterImageUrl" alt="@AdapterResources.EnableAdapterImageAltText" title="@AdapterResources.EnableAdapterImageAltText"/>
+                }
+            }
+            else
+            {
+                <input type="image" src="@enableAdapterImageUrl" alt="@AdapterResources.UnableToEnableAdapterImageAltText" title="@AdapterResources.UnableToEnableAdapterImageAltText" disabled="disabled" class="DisabledComponent"/>
+            }
+        }
+    }
+    else if (!Model.Enabled)
+    {
+        @Html.RenderInnerAdapterOperationsMenu(Url, adapterId, (Guid)ViewData["containingCompositeId"])
+    }
+}
+
+<div class="AdapterConfiguration">
+    @if (isHead)
+    {
+        <h1>
+            @RenderAdapterHeader(adapterId, enableImageUrl, disableImageUrl, enableableBasedOnBaseConnector, true)
+        </h1>
+    }
+    else
+    {
+        <h2>
+            @RenderAdapterHeader(adapterId, enableImageUrl, disableImageUrl, enableableBasedOnBaseConnector, false)
+        </h2>
+    }
+
+    <div>
+        <div>
+            <table class="RightSpaced BottomSpaced VerticalAlignTable">
+                @if (!string.IsNullOrWhiteSpace(comment))
+                {
+                    <tr>
+                        <td style="min-width: 100px;">
+                            @AdapterResources.AdapterCommentLabel
+                        </td>
+                        <td>
+                            @comment
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td style="min-width: 100px;">
+                        @AdapterResources.BaseConnectorLabel
+                    </td>
+                    <td>
+                        @if (baseConnectorAvailable)
+                        {
+                            <a href="@Url.Action("ConnectorDetails", "Connector", new { connectorId = Model.BaseConnectorId })">
+                                @Model.BaseConnectorName
+                            </a>
+
+                           if (Model.BaseConnectorEnabled)
+                           {
+                               using (Html.BeginForm("DisableAdapterConnector", "Adapter", new { id = Model.AdapterId, connectorId = Model.BaseConnectorId }, FormMethod.Post, new { @class = "IconForm" }))
+                               {
+                                    <input type="image" src="@disableImageUrl" alt="@ConnectorControllerResources.ConnectorDisableAltText" title="@ConnectorControllerResources.ConnectorDisableAltText" />
+                               }
+                           }
+                           else
+                           {
+                               using (Html.BeginForm("EnableAdapterConnector", "Adapter", new { id = Model.AdapterId, connectorId = Model.BaseConnectorId }, FormMethod.Post, new { @class = "IconForm" }))
+                               {
+                                    <input type="image" src="@enableImageUrl" alt="@ConnectorControllerResources.ConnectorEnableAltText" title="@ConnectorControllerResources.ConnectorEnableAltText" />
+                               }
+                           }
+                        }
+                        else
+                        {
+                            <span>
+                                <img src="@Url.WebIcon("error.png")"/>
+                                @AboutControllerResources.BaeConnectorNotFoundMessageText
+                                <a href="@Url.Action("EditStandardAdapter", new{ id = Model.AdapterId }  )">
+                                    @AdapterResources.PickAnotherConnectorText
+                                </a>
+                            </span>    
+                        }
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>@AdapterResources.ObjectClassLabel</td>
+                    <td>@Model.ObjectClass</td>
+                </tr>
+                
+                <tr>
+                    <td>@AdapterResources.DistinguishedNameTemplateLabel</td>
+                    <td>@Model.Template</td>
+                </tr>
+                
+            </table>
+            
+            @Html.ActionRefresh(Url, string.Format("AdapterStatistics{0}", Model.AdapterId), 5000, "AdapterStatistics", "Adapter", new { id = Model.AdapterId }, Url.Action("AdapterDetails", "Adapter", new { id = Model.AdapterId }))
+
+        </div>
+        
+        @if (isHead)
+        {
+            @Html.DisplayFor(model => model.AdapterId, "AdapterJobs")
+        }
+        
+        @if (baseConnectorAvailable)
+        {
+            Html.RenderAction("Transformations", "Adapter", new { id = adapterId });
+        }
+    </div>
+</div>
+
+<script type="text/javascript">
+    @ViewData.RetrieveListItems("StandardAdapterFunctions")
+    @ViewData.RetrieveListItems("InnerAdapterFunctions")
+</script>

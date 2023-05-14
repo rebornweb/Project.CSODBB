@@ -1,0 +1,84 @@
+﻿@model DefaultSchemaFieldDefinitionInformation
+           
+@using Unify.Framework.Web
+
+@{
+    string createOrEditSchemaRowText = RenderExtensions.SimpleCreateOrEditText(Model.Edit);
+
+    ViewBag.Title = Html.Title(string.Format(TitleResources.EntitySchemaDefaultValidatorTitleTemplate, createOrEditSchemaRowText));
+}
+
+@{
+    // ReSharper disable Mvc.ControllerNotResolved
+    // ReSharper disable Mvc.ActionNotResolved
+    Html.RenderAction("CodeMirrorHeader", "Shared", new { area = "Framework" });
+    // ReSharper enable Mvc.ActionNotResolved
+    // ReSharper enable Mvc.ControllerNotResolved
+}
+
+<style type="text/css">
+    .CodeMirror 
+    {
+        border-top: 1px solid black; 
+        border-bottom: 1px solid black;
+        width:60%;
+    }
+    
+    .activeline 
+    {
+        background: #f0fcff !important;
+    }
+    
+    .CodeMirror-scroll {
+        height: auto;
+        overflow-y: hidden;
+        overflow-x: auto;
+        width: 60%;
+      }
+    
+    form fieldset div 
+    {
+        overflow:hidden !important;
+        padding:0 !important;
+    }
+</style>
+
+<div>
+    @using (
+        Html.DecorateForm(
+            () => Html.BeginForm("DefaultEntitySchemaValidator", "Connector", FormMethod.Post, new { id = "DefaultEntitySchemaValidatorForm" }),
+            WebStudioResources.SaveText,
+            "DefaultEntitySchemaValidatorForm",
+            ConnectorControllerResources.SaveFieldDefinitionAltText
+        ))
+    {
+        @Html.HiddenFor(model => model.ValidatorName)
+
+        <div>
+            @Html.EditorFor(model => model, "RenderEntitySchemaCoreValidatorAttributes")
+        </div>
+    
+        <fieldset>
+            <legend>@ConnectorControllerResources.ExtendedFieldDefinitionConfigurationLegendText</legend>
+            
+            @using (Html.MetaDataFor(model => model.CustomSchemaConfigurationString, new{ description = ConnectorControllerResources.ExtendedFieldDefinitionConfigurationDescription }))
+            {
+                @Html.LabelFor(model => model.CustomSchemaConfigurationString, ConnectorControllerResources.ExtendedFieldDefinitionConfigurationLabel)
+                @Html.TextAreaFor(model => model.CustomSchemaConfigurationString, new { id = "code", style = "width:60%;" })
+            }
+        </fieldset>
+    }
+</div>
+
+<script type="text/javascript">
+    var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        mode: "application/xml",
+        lineNumbers: true,
+        onCursorActivity: function () {
+            editor.setLineClass(hlLine, null);
+            hlLine = editor.setLineClass(editor.getCursor().line, "activeline");
+        }
+    });
+
+    var hlLine = editor.setLineClass(0, "activeline");
+</script>

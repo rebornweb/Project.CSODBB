@@ -1,0 +1,20 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+
+@model CompositeAdapterViewInformation
+
+@Html.HiddenFor(model => model.AdapterId)
+
+@using (Html.MetaDataFor(model => model.AdapterName, new { description = AdapterResources.AdapterNameDescription }))
+{
+    @Html.LabelFor(model => model.AdapterName, AdapterResources.AdapterNameLabel)
+    @Html.TextBoxFor(model => model.AdapterName)
+}
+
+@using (Html.MetaDataFor(model => model.AdapterComment, new { description = AdapterResources.AdapterCommentDescription }))
+{
+    @Html.LabelFor(model => model.AdapterComment, AdapterResources.AdapterCommentLabel)
+    @Html.TextAreaFor(model => model.AdapterComment, new { @class = "wide-text" })
+}
+    
+

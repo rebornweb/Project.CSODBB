@@ -1,0 +1,32 @@
+﻿@using Unify.Framework.Web
+@model IMappedTransformation
+@{
+    string uniqueId = Guid.NewGuid().ToString("N");
+    string mappingStrHiddenID = string.Concat(uniqueId, "_mappingStrHiddenID");
+    string mappingStrWidgetID = string.Concat("mappingStrWidgetID_", uniqueId);
+    // copyToMappingStrGenerator
+    string leftArr = Model.Mappings.Schema.GroupedKeys.DataArrayString();
+    string inputjQueryMappingStr = string.IsNullOrEmpty(Model.Mappings.Text) ? string.Empty : Model.Mappings.Text.Replace(Environment.NewLine, "\\n");
+    var leftAndRightSeparatorStrDisplay = Model.LeftAndRightSeparatorStrDisplay == "JoinTransformationViewInformation" ? "map to" : Model.LeftAndRightSeparatorStrDisplay;
+}
+@using (Html.MetaDataFor(model => model.Mappings, new { description = Model.MappingsDescription, hideRequired = true }))
+{
+    @Html.TextAreaFor(model => model.Mappings.Text, new { id = @mappingStrHiddenID })
+    @Html.ValidationMessageFor(model => model.Mappings.Text)
+    <div id="@mappingStrWidgetID"></div>
+}
+<script type="text/javascript">
+    $(function () {
+        $("#@mappingStrHiddenID").hide();
+        $("#@mappingStrWidgetID").copyToMappingStrGenerator({
+            columnMappingStr: "@inputjQueryMappingStr",
+            leftColumnDataArr: @Html.Raw(leftArr),
+            componentSeparatorStrDisplay: '<br/>',
+            leftAndRightSeparatorStrDisplay: ' @leftAndRightSeparatorStrDisplay ',
+            leftAndRightSeparatorStrDisplayInColumnMappingStrFieldDisplay: '  <span style="font-weight:bold; color:blue; font-size:14px;"> @leftAndRightSeparatorStrDisplay </span> ',
+            afterCommit: function (event, mappingStrDisplay, mappingStrReal) {
+                $("#@mappingStrHiddenID").val(mappingStrReal);
+            }
+        });
+    });
+</script>

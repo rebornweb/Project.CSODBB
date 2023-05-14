@@ -1,0 +1,60 @@
+﻿@model Unify.Product.EventBroker.FIM.IdentityBrokerManagementAgentConfigurationViewInformation
+           
+@using Unify.Framework.Web
+
+@Html.Hidden("AgentType", AgentPlugInNames.IdentityBrokerAgentPlugInName)
+
+@if (Model.AvailableAdapters != null && Model.AvailableAdapters.Count() != 0)
+{
+    using (Html.MetaDataFor(model => model.UseOverride, new { description = OperationControllerResources.UseAdapterIdOverrideDescription }, new { @class = "controlset" }))
+    {
+        @Html.LabelFor(model => model.UseOverride, OperationControllerResources.UseAdapterIdOverrideName)
+        @Html.RadioButtonFor(model => model.UseOverride, true)
+        <label>@OperationControllerResources.UseAdapterIdOverrideYesName</label>
+        @Html.RadioButtonFor(model => model.UseOverride, false)
+        <label>@OperationControllerResources.UseAdapterIdOverrideNoName</label>
+    }
+
+    using (Html.MetaDataFor(model => model.AdapterId, new { description = OperationControllerResources.SelectAdapterDescription }, new { id = "AdapterDropDownSection", @class="chzn-container"}))
+    {
+        @Html.LabelFor(model => model.AdapterId, OperationControllerResources.SelectAdapterName)
+
+        @Html.DropDownListFor(model => model.AdapterId,
+                new SelectList(
+                    Model.AvailableAdapters,
+                    "Key",
+                    "Value",
+                    Model.AvailableAdapters.Any(adapter => adapter.Key == Model.AdapterId)
+                        ? Model.AvailableAdapters.Where(adapter => adapter.Key == Model.AdapterId).Select(adapter => adapter).First()
+                        : Model.AvailableAdapters.First()),
+                    new { @class = "chzn-select" })
+    }
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var useOverrideTrue = $('input[type=radio][id=UseOverride][value=True]');
+            var useOverrideFalse = $('input[type=radio][id=UseOverride][value=False]');
+            var adapterDropDownSection = $('#AdapterDropDownSection');
+            var adapterIdSection = $('#AdapterIdSection');
+
+            ShowHideSection(useOverrideTrue, adapterIdSection, adapterDropDownSection);
+            useOverrideTrue.bind('change', function (event) {
+                ShowHideSection(useOverrideTrue, adapterIdSection, adapterDropDownSection);
+            });
+            useOverrideFalse.bind('change', function (event) {
+                ShowHideSection(useOverrideTrue, adapterIdSection, adapterDropDownSection);
+            });
+        });
+    </script>
+}
+else
+{
+    Model.UseOverride = true;
+    @Html.HiddenFor(model => model.UseOverride)
+}
+
+@using (Html.MetaDataFor(model => model.AdapterIdOverride, new { description = OperationControllerResources.AdapterIdDescription }, new { id = "AdapterIdSection" }))
+{
+    @Html.LabelFor(model => model.AdapterIdOverride, OperationControllerResources.AdapterIdName)
+    @Html.TextBoxFor(model => model.AdapterIdOverride, new { @class = "guid-length" })
+}

@@ -1,0 +1,38 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model OleDbAgentViewInformation
+
+@using (Html.DecorateForm(
+        () => Html.BeginForm("CreateOrEdit", "OleDbAgent", new { area = "Extensibility" }),
+        AgentResources.SaveAgentButtonText,
+        "CreateOleDbAgentForm",
+        AgentResources.SaveAgentButtonAltText
+    ))
+{
+    @Html.AgentDetailsFor(model => model)
+    
+    <fieldset>
+        <legend>@AgentResources.OleDbAgentConnectionDetailsFieldsetText</legend>
+            
+        @using (Html.MetaDataFor(model => model.ConnectionString, new { description = AgentResources.OleDbAgentConnectionStringDescription }))
+        {
+            @Html.LabelFor(model => model.ConnectionString, AgentResources.OleDbAgentConnectionStringName)
+            @Html.TextAreaFor(model => model.ConnectionString, new { @class = "wide-text", rows = "4" })
+        }
+        @using (Html.MetaDataFor(model => model.EnableTransactions, new {description = AgentResources.OleDbAgentEnableTransactionsDescription}))
+        {
+            @Html.LabelFor(model => model.EnableTransactions, AgentResources.OleDbAgentEnableTransactionsName)
+            @Html.CheckBoxFor(model => model.EnableTransactions)
+        }
+        @using (Html.MetaDataFor(model => model.OperationTimeout, new {description = AgentResources.OleDbAgentOperationTimeoutDescription}))
+        {
+            @Html.LabelFor(model => model.OperationTimeout, AgentResources.OleDbAgentOperationTimeoutName)
+            <span id="OperationTimeoutContainer">@Html.TextBoxFor(model => model.OperationTimeout)</span>
+        }
+    </fieldset>
+}
+
+<script type="text/javascript">
+    $('#OperationTimeoutContainer').unifytimepicker();
+</script>

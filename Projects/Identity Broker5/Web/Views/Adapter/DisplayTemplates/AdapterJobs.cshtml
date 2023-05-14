@@ -1,0 +1,32 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model Guid
+
+<h2>@AdapterResources.JobsHeadingText</h2>
+
+<div>
+    <div>
+      @Html.ActionRefresh(Url, "ImportAllJob", 5000, "ImportAllJob", "Adapter", new { id = Model }, Url.Action("AdapterDetails", "Adapter", new { id = Model }))  
+    </div>
+    <br />
+    <div>
+        @Html.ActionRefresh(Url, "ImportChangesJob", 5000, "ImportChangesJob", "Adapter", new { id = Model }, Url.Action("AdapterDetails", "Adapter", new { id = Model }))    
+    </div>
+    <br/>
+    <div>
+        @Html.ActionRefresh(Url, "ClearEntitiesJob", 5000, "ClearEntitiesJob", "Adapter", new { id = Model }, Url.Action("AdapterDetails", "Adapter", new { id = Model }))    
+    </div>
+    <br />
+    <div>
+        @Html.ActionRefresh(Url, "AddEntitiesJob", 5000, "AddEntitiesJob", "Adapter", new { id = Model }, Url.Action("AdapterDetails", "Adapter", new { id = Model }))    
+    </div>
+    <br/>
+    <div>
+        @Html.ActionRefresh(Url, "DeleteEntitiesJob", 5000, "DeleteEntitiesJob", "Adapter", new { id = Model }, Url.Action("AdapterDetails", "Adapter", new { id = Model }))    
+    </div>
+    <br/>
+    <div>
+        @Html.ActionRefresh(Url, "UpdateEntitiesJob", 5000, "UpdateEntitiesJob", "Adapter", new { id = Model }, Url.Action("AdapterDetails", "Adapter", new { id = Model }))    
+    </div>
+    <br/>
+</div>

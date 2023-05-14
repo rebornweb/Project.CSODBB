@@ -1,0 +1,29 @@
+﻿@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model NewGatewayViewInformation
+
+@using (Html.DecorateForm(
+    () => Html.BeginForm(
+            "Add",
+            "Gateway",
+            FormMethod.Get),
+    GatewayResources.CreateGatewayButtonText,
+    "SelectGatewayTypeForCreationForm",
+    GatewayResources.CreateGatewayButtonAltText))
+{
+    using (Html.MetaDataFor(model => model.Type, new {description = GatewayResources.CreateGatewayTypeDescription}, new {@class = "chzn-container"}))
+    {
+        @Html.LabelFor(model => model.Type)
+
+        @Html.DropDownListFor(
+            model => model.Type,
+            new SelectList(
+                Model.Types,
+                "Key",
+                "Value"),
+            new
+            {
+                @class = "chzn-select"
+            })
+    }
+}

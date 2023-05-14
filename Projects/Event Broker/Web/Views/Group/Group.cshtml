@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = Html.Title(TitleResources.GroupTitle);
+}
+
+@model IGroupContents
+@using Unify.Framework.Web
+
+@{
+    Guid id = Model.Key;
+}
+
+<div>
+    <div>
+        <span>
+            <h2>
+                @Model.Name @if(Model.ExclusionGroup) {@GroupControllerResources.ExclusionGroupText}
+            </h2>
+        </span>
+        @Html.DisplayFor(model => id, "GroupFunctions")
+    </div>
+</div>
+
+<div class="FormSection">
+    <div class="FormSectionHeading"><h3>@GroupControllerResources.GroupCommentHeading</h3></div>
+    <div>
+        @if (string.IsNullOrWhiteSpace(Model.Comment))
+        {
+        <p>@GroupControllerResources.GroupNoCommentAvailableText</p>
+        }
+        else
+        {
+        <p>@Html.Raw(Html.EncodeTextSplitLines(Model.Comment))</p>
+        }
+    </div>
+</div>
+
+<div class="FormSection">
+    <div class="FormSectionHeading"><h3>@GroupControllerResources.GroupOperationListsSectionHeading</h3></div>
+    <div>
+        @if (Model.OperationLists.Any())
+        {
+            if (Model.PriorityOperationLists.Any())
+            {
+                <h4>@GroupControllerResources.GroupPriorityOperationListsHeading</h4>
+                foreach (KeyValuePair<Guid, string> operationList in Model.PriorityOperationLists)
+                {
+                    <p>@operationList.Value</p>
+                }
+                <br />
+            }
+            if (Model.OperationLists.Count > Model.PriorityOperationLists.Count)
+            {
+                <h4>@GroupControllerResources.GroupNormalOperationListsHeading</h4>
+                foreach (KeyValuePair<Guid, string> operationList in Model.OperationLists.Except(Model.PriorityOperationLists))
+                {
+                    <p>@operationList.Value</p>
+                }
+            }
+        }
+        else
+        {
+            <p>@GroupControllerResources.GroupNoOperationListsAddedMessage</p>
+        }
+    </div>
+</div>
+
+@Html.DisplayFor(model => id, "GroupFunctionScripts")

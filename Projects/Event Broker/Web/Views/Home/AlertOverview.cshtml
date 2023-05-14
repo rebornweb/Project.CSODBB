@@ -1,0 +1,11 @@
+﻿@using System.Collections.Generic
+@using Unify.Framework
+@model IEnumerable<AlertInformation>
+
+@{
+ // ReSharper disable Mvc.ActionNotResolved
+ // ReSharper disable Mvc.ControllerNotResolved
+    Html.RenderAction("Alerts", "Alerts", new { area = "Framework", alerts = Model.ToArray(), renderFunctions = AlertMessages.Messages});
+ // ReSharper restore Mvc.ControllerNotResolved
+ // ReSharper restore Mvc.ActionNotResolved
+}

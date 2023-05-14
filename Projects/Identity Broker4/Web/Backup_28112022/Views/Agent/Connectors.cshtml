@@ -1,0 +1,17 @@
+﻿@using Unify.Connect.Web.Extensions
+@model Unify.Product.IdentityBroker.ConnectorEngineConfiguration[]
+           
+<div class="PaddedContent">
+
+    @foreach(var connector in Model)
+    {
+        <a href="@Url.Action("ConnectorDetails","Connector", new{connectorId = connector.ConnectorId, area = string.Empty})">@connector.DisplayName</a>
+        <br/>
+    }
+
+    @if (!Model.Any())
+    {
+        <label>@AgentResources.NoAgentConnectorsText</label>
+    }
+
+</div>

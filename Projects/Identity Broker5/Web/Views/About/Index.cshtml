@@ -1,0 +1,194 @@
+﻿@using Unify.Framework
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@using Unify.Product.IdentityBroker
+@model AboutViewInformation
+
+@{
+    ViewBag.Title = Html.Title(AboutControllerResources.AboutTitle);
+
+    IEnumerable<LicensedProductDetailsExpositor> licensedProducts = new[]
+    {
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.BootstrapHeading,
+            ProductLink = AboutControllerResources.BootstrapUrlText,
+            ProductLinkDescription = AboutControllerResources.BootstrapAddressText,
+            LicenseLink = AboutControllerResources.BootstrapLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.BootstrapLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.CassiniDevHeading,
+            ProductLink = AboutControllerResources.CassiniDevUrlText,
+            ProductLinkDescription = AboutControllerResources.CassiniDevAddressText,
+            LicenseLink = AboutControllerResources.CassiniDevLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.CassiniDevLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.ChosenHeading,
+            ProductLink = AboutControllerResources.ChosenUrlText,
+            ProductLinkDescription = AboutControllerResources.ChosenAddressText,
+            LicenseLink = AboutControllerResources.ChosenLicenseUrlText,
+            LicenseType = AboutControllerResources.ChosenLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.CodeMirrorHeading,
+            ProductLink = AboutControllerResources.CodeMirrorUrlText,
+            ProductLinkDescription = AboutControllerResources.CodeMirrorAddressText,
+            LicenseLink = AboutControllerResources.CodeMirrorLicenseText,
+            LicenseType = AboutControllerResources.CodeMirrorLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.DataTablesHeading,
+            ProductLink = AboutControllerResources.DataTablesUrlText,
+            ProductLinkDescription = AboutControllerResources.DataTablesAddressText,
+            LicenseLink = AboutControllerResources.DataTablesLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.DataTablesLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.InterLINQHeading,
+            ProductLink = AboutControllerResources.InterLINQUrlText,
+            ProductLinkDescription = AboutControllerResources.InterLINQAddressText,
+            LicenseLink = AboutControllerResources.InterLINQLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.InterLINQLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.JQueryHeading,
+            ProductLink = AboutControllerResources.JQueryUrlText,
+            ProductLinkDescription = AboutControllerResources.JQueryAddressText,
+            LicenseLink = AboutControllerResources.JQueryLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.JQueryLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.NewtonsoftJsonHeading,
+            ProductLink = AboutControllerResources.NewtonsoftJsonUrlText,
+            ProductLinkDescription = AboutControllerResources.NewtonsoftJsonAddressText,
+            LicenseLink = AboutControllerResources.NewtonsoftJsonLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.NewtonsoftJsonLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.NovellLDAPHeading,
+            ProductLink = AboutControllerResources.NovellLDAPUrlText,
+            ProductLinkDescription = AboutControllerResources.NovellLDAPAddressText,
+            LicenseLink = AboutControllerResources.NovellLDAPLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.NovellLDAPLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.SilkIconsHeading,
+            ProductLink = AboutControllerResources.SilkIconsUrlText,
+            ProductLinkDescription = AboutControllerResources.SilkIconsAddressText,
+            LicenseLink = AboutControllerResources.SilkIconsLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.SilkIconsLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.SplunkHeading,
+            ProductLink = AboutControllerResources.SplunkUrlText,
+            ProductLinkDescription = AboutControllerResources.SplunkAddressText,
+            LicenseLink = AboutControllerResources.SplunkLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.SplunkLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.TimepickerHeading,
+            ProductLink = AboutControllerResources.TimepickerUrlText,
+            ProductLinkDescription = AboutControllerResources.TimepickerAddressText,
+            LicenseLink = AboutControllerResources.TimepickerLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.TimepickerLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.NSwagHeading,
+            ProductLink = AboutControllerResources.NSwagUrlText,
+            ProductLinkDescription = AboutControllerResources.NSwagAddressText,
+            LicenseLink = AboutControllerResources.NSwagLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.NSwagLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.NJsonSchemaHeading,
+            ProductLink = AboutControllerResources.NJsonSchemaUrlText,
+            ProductLinkDescription = AboutControllerResources.NJsonSchemaAddressText,
+            LicenseLink = AboutControllerResources.NJsonSchemaLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.NJsonSchemaLicenseTypeText
+        },
+        new LicensedProductDetailsExpositor
+        {
+            ProductName = AboutControllerResources.ODataNetHeading,
+            ProductLink = AboutControllerResources.ODataNetUrlText,
+            ProductLinkDescription = AboutControllerResources.ODataNetAddressText,
+            LicenseLink = AboutControllerResources.ODataNetLicenseTypeUrlText,
+            LicenseType = AboutControllerResources.ODataNetLicenseTypeText
+        }
+    };
+}
+
+<h2>@AboutControllerResources.AboutPageHeading</h2>
+<br />
+
+<div class="FaintBorder">
+@{ 
+    //ReSharper disable once Mvc.ActionNotResolved
+    Html.RenderAction("DisplayProductDetails", "About", new {
+        expositor = new CompanyProductDetailsExpositor
+        {
+            ProductLinkDescription = ViewContext.CreateAboutMessage(typeof(MvcApplication).Assembly).ToString(),
+            CompanyName = UnifyIdentityBrokerBranding.Instance.CompanyAndProductName,
+            ProductName = UnifyIdentityBrokerBranding.Instance.ProductName,
+
+            ProductLink = UnifyIdentityBrokerBranding.Instance.LicensingInformation,
+            SupportEmailLink = UnifyIdentityBrokerBranding.Instance.SupportEmail,
+            SupportEmailName = UnifyIdentityBrokerBranding.Instance.SupportEmail
+        },
+        area = "Framework"
+    });
+}
+</div>
+
+<br />
+<br />
+
+@if (Model.PlugInInformations.Any())
+{
+    <div class="FaintBorder">
+        <h3>@AboutControllerResources.VersionsHeading</h3>
+        <table>
+            <thead style="font-weight: bold;">
+                <tr>
+                    <td>@AboutControllerResources.PlugInKeyLabel</td><td>@AboutControllerResources.VersionLabel</td>
+                </tr>
+            </thead>
+            @foreach (var plugIn in Model.PlugInInformations)
+            {
+                <tr>
+                    <td style="padding-right: 10px;">@plugIn.PlugInKey</td>
+                    <td>@plugIn.PlugInVersion</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <br />
+    <br />
+}
+
+<h3>@AboutControllerResources.AcknowledgementsHeading</h3>
+@foreach (LicensedProductDetailsExpositor expositor in licensedProducts)
+{
+    <div class="FaintBorder" style="padding-top:0">
+        @{
+            //ReSharper disable once Mvc.ActionNotResolved
+            Html.RenderAction("DisplayLicensedProductDetails", "About", new {area = "Framework", expositor});
+        }
+    </div>
+    <br />
+}

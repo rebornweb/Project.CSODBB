@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OperationEngine changeId="5e9c089d-3dbc-4403-a686-525d18e2854f" SchedulerState="Started">
+  <OperationListConfigurations>
+	<!-- Global Baseline for FIM Agent -->
+    <OperationList id="bad897f9-c699-4236-a166-1c759ef746a9" name="Global Baseline for FIM Agent" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+		<!-- begin snippet (insert after Contacts operations) -->
+        <Operation id="d8814d43-353c-43a5-9d99-2be9b050731f" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Full Import - Compass">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="7c19b4ca-e7b2-4777-8ff6-2e71ac233a3f" runProfileId="28c1928e-f5d0-4d9b-9f32-92a134b5376a" />
+          </Extended>
+        </Operation>
+        <Operation id="72286e59-f3a3-4ba0-a15a-dd9e09a00e1f" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Check Thresholds">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; 'D:\Scripts\EventBroker\Halt-ThresholdExceeded.ps1' -MAName "Compass" -maxDeletes 100 -maxAdds 100 -maxUpdates 100 -logFile "Compass.FI.XML" -isFullImport $true -attributes "PhysicalDeliveryOfficeName|UniversalIdentificationNumber" -OperationListsToDisableGUID "2352e98c-2832-4a38-8218-0476676888ec|bad897f9-c699-4236-a166-1c759ef746a9|ceabd2d6-d819-47ca-935c-46dd81633f26"</Script>
+            </PSChanges>
+          </Extended>
+          <Operations>
+            <Operation id="1690bcfb-a3f3-4e2e-8e84-243bcc6e8c65" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Full Sync - Compass">
+              <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+              <Agents>
+                <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+              </Agents>
+              <Extended>
+                <RunProfile legacyKeyMode="false" managementAgentId="7c19b4ca-e7b2-4777-8ff6-2e71ac233a3f" runProfileId="1c3cf024-c329-4469-be4c-fa0f9816298c" />
+              </Extended>
+            </Operation>
+          </Operations>
+        </Operation>
+		<!-- end snippet -->
+    </OperationList>
+	<!-- FIM Agent Compass Incoming -->
+    <OperationList id="2352e98c-2832-4a38-8218-0476676888ec" name="FIM Agent Compass Incoming" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <CheckOperation id="4b2ca43f-c34d-438d-9701-d5dda00805be" plugIn="Unify.EventBroker.PlugIn.IdentityBroker" displayName="Identity Broker Changes Operation - Adapter: CEnet Student Adapter">
+        <Failure retryCount="0" retryWaitPeriod="PT10S" />
+        <Agents>
+          <Agent key="Agent" id="796f072a-095e-46a6-9aa6-9e886a73ec4e" />
+        </Agents>
+        <Extended>
+          <IdentityBrokerChanges adapterId="2484ffb0-4500-4778-81ae-a78f3aa65aec" />
+        </Extended>
+      </CheckOperation>
+      <Schedules>
+        <Timing id="9c45d683-25a9-414f-88e4-7fedcc29ee83" name="RecurringTimespanStandardTime" useLocal="true" startFrom="2022-09-23T03:01:25.292765Z">
+          <Timespan value="PT30S" />
+        </Timing>
+      </Schedules>
+      <Operations>
+        <Operation id="3299bd25-aa57-4e66-8e16-a040edb6e0ee" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Delta Import">
+          <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="7c19b4ca-e7b2-4777-8ff6-2e71ac233a3f" runProfileId="ac37da4f-015b-4b80-a407-477591b3c500" />
+          </Extended>
+        </Operation>
+        <Operation id="0926d89d-0371-43cb-8645-542f890b38f9" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Check Thresholds">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunChild" failureAction="RunNext" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; 'D:\Scripts\EventBroker\Halt-ThresholdExceeded.ps1' -MAName "Compass" -maxDeletes 25 -maxAdds 2000 -maxUpdates 2000 -logFile "Compass.DI.XML" -isFullImport $false -attributes "PhysicalDeliveryOfficeName|UniversalIdentificationNumber" -OperationListsToDisableGUID "ecea19d1-947a-4dea-8165-8e57255b3297|2352e98c-2832-4a38-8218-0476676888ec|bad897f9-c699-4236-a166-1c759ef746a9"</Script>
+            </PSChanges>
+          </Extended>
+          <Operations>
+            <Operation id="cef999d5-0851-4989-a307-33d7daf10224" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Delta Sync">
+              <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+              <Agents>
+                <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+              </Agents>
+              <Extended>
+                <RunProfile legacyKeyMode="false" managementAgentId="7c19b4ca-e7b2-4777-8ff6-2e71ac233a3f" runProfileId="0d7c6449-7a6b-4033-bcc3-72db626d2488" />
+              </Extended>
+            </Operation>
+          </Operations>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+      </TriggerGroups>
+      <Comment><![CDATA[Performs incoming operations for the Compass management agent]]></Comment>
+    </OperationList>
+	<!-- Compass Nightly -->
+    <OperationList id="ecea19d1-947a-4dea-8165-8e57255b3297" name="Compass Nightly" runOnStartup="false" queueMissed="true" delay="PT0S" enabled="true">
+      <Schedules>
+        <Timing id="b86de0c8-d3d6-4315-bd0e-ceebcde0ae5c" name="DayExclusion" daysToExclude="Sunday,Saturday" useLocal="true">
+          <Timing id="7c5f586d-3e2a-462e-9322-e3a7b7bcf5fd" name="Daily" timeOfDay="PT20H" useLocal="true" startFrom="2022-10-10T20:00:00Z" numberOfDays="1" />
+        </Timing>
+      </Schedules>
+      <Operations>
+        <Operation id="5855b590-80e3-43e8-9cd8-0302d066c212" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Full Import">
+          <Failure retryCount="0" retryWaitPeriod="PT10S" successAction="RunNext" failureAction="Stop" />
+          <Agents>
+            <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+          </Agents>
+          <Extended>
+            <RunProfile legacyKeyMode="false" managementAgentId="7c19b4ca-e7b2-4777-8ff6-2e71ac233a3f" runProfileId="28c1928e-f5d0-4d9b-9f32-92a134b5376a" />
+          </Extended>
+        </Operation>
+        <Operation id="e2cfe57c-48be-48ad-93c1-7b0c525ebf85" plugIn="Unify.EventBroker.PlugIn.PowerShellScript" displayName="Check Thresholds">
+          <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunChild" failureAction="RunNext" />
+          <Agents />
+          <Extended>
+            <PSChanges>
+              <Script>&amp; 'D:\Scripts\EventBroker\Halt-ThresholdExceeded.ps1' -MAName "Compass" -maxDeletes 25 -maxAdds 2000 -maxUpdates 2000 -logFile "Compass.DI.XML" -isFullImport $false -attributes "PhysicalDeliveryOfficeName|UniversalIdentificationNumber" -OperationListsToDisableGUID "ecea19d1-947a-4dea-8165-8e57255b3297|2352e98c-2832-4a38-8218-0476676888ec|bad897f9-c699-4236-a166-1c759ef746a9"</Script>
+            </PSChanges>
+          </Extended>
+          <Operations>
+            <Operation id="67d5363f-1682-4f06-a415-804011da2bef" plugIn="Unify.EventBroker.PlugIn.RunProfile" displayName="Delta Sync">
+              <Failure retryCount="0" retryWaitPeriod="PT1M" successAction="RunNext" failureAction="Stop" />
+              <Agents>
+                <Agent key="Agent" id="1088cdf5-f53a-4152-bf70-d9274ad8efe6" />
+              </Agents>
+              <Extended>
+                <RunProfile legacyKeyMode="false" managementAgentId="7c19b4ca-e7b2-4777-8ff6-2e71ac233a3f" runProfileId="0d7c6449-7a6b-4033-bcc3-72db626d2488" />
+              </Extended>
+            </Operation>
+          </Operations>
+        </Operation>
+      </Operations>
+      <Groups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+      </Groups>
+      <TriggerGroups>
+        <Group id="c0090dbe-9204-4e1a-a9f4-ab235df8e374" />
+      </TriggerGroups>
+      <Comment><![CDATA[Nightly full import/delta sync]]></Comment>
+    </OperationList>
+  </OperationListConfigurations>
+</OperationEngine>

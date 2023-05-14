@@ -1,0 +1,19 @@
+﻿@model MaxLengthSchemaFieldDefinitionInformation
+           
+@using Unify.Framework.Web
+
+<fieldset>
+
+    <legend>
+        @ConnectorControllerResources.MaximumLengthInnerValidatorLegendText
+        @Html.CheckBoxFor(model => model.EnableMaxLengthFlag, new { @class = "CheckCollapse" })
+        <span class="hint">@ConnectorControllerResources.MaximumLengthInnerValidatorFlagDescription<span class="hint-pointer">&nbsp;</span></span>    
+    </legend>
+    
+    @using (Html.MetaDataFor(model => model.MaxLength, new { description = ConnectorControllerResources.EntitySchemaRowMaxLengthDescription }, new { @class = "CheckSection" }))
+    {
+        @Html.LabelFor(model => model.MaxLength, ConnectorControllerResources.EntitySchemaRowMaxLengthLabel)
+        @Html.TextBoxFor(model => model.MaxLength)
+    }
+
+</fieldset>

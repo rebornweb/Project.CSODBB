@@ -1,0 +1,18 @@
+﻿@using Unify.Connect.Web
+@using Unify.Connect.Web.Extensions
+@using Unify.Framework.Web
+@model DefaultGatewayViewInformation
+
+<div>
+    <div class="FormText">
+        <p>
+            @GatewayResources.UnknownGatewayText
+            <ul>
+                @foreach (KeyValuePair<string, string> agent in Model.KnownGateways)
+                {
+                    <li>@agent.Key (@agent.Value)</li>
+                }
+            </ul>
+        </p>
+    </div>
+</div>

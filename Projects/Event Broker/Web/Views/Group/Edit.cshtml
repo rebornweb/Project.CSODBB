@@ -1,0 +1,39 @@
+﻿@model EditGroupInformation
+
+@using Unify.Framework.Web
+
+@{
+    ViewBag.Title = Html.Title(TitleResources.EditGroupPageTitle);
+}
+
+@using (Html.DecorateForm(
+            () => Html.BeginForm("Edit", "Group", FormMethod.Post, new { id = "EditGroupForm" }),
+            GroupControllerResources.EditUpdateButtonText,
+            "EditGroupForm",
+            GroupModelResources.ConfigureGroupAltText, 
+            "submitButton"))
+{
+    <div>
+        
+        @Html.HiddenFor(hidden => hidden.GroupId)
+        
+        @using (Html.MetaDataFor(model => model.Name, new { description = GroupControllerResources.EditGroupNameDescription }))
+        {
+            @Html.LabelFor(label => label.Name, GroupControllerResources.EditGroupNameName)
+            @Html.TextBoxFor(text => text.Name)
+        }
+        
+        @using (Html.MetaDataFor(model => model.Comment, new { description = GroupControllerResources.EditGroupCommentDescription }))
+        {
+            @Html.LabelFor(label => label.Comment, GroupControllerResources.EditGroupCommentName)
+            @Html.TextAreaFor(text => text.Comment, new { rows = 5, style = "width: 300px;" })
+        }
+        
+        @using (Html.MetaDataFor(model => model.Comment, new { description = GroupControllerResources.EditGroupExclusionGroupDescription }))
+        {
+            @Html.LabelFor(label => label.ExclusionGroup, GroupControllerResources.EditGroupExclusionGroupName)
+            @Html.CheckBoxFor(check => check.ExclusionGroup)
+        }
+
+    </div>
+}

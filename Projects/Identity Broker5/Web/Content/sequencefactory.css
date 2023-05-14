@@ -1,0 +1,53 @@
+.SequenceWidgetFactory {
+    float: left; /* toNextLine */
+    width: 100%; /* toNextLine */
+}
+
+.SequenceWidgetFactory .WidgetBtnStyle {
+    /*background: #a9a9a9;*/
+    /*color: white;*/
+    /* apply to "+"  "Edit"  "Submit"  "Cancel" */
+    float: left;
+    /*font-size: 1.8em; /* padding-left: 10px; */
+    padding: 10px 14px;
+    line-height: 14px;
+    margin-right: -15px;
+    text-align: center;
+    cursor: pointer;
+    z-index : 100;
+    position : relative;  /* z-index will not work without this */
+}
+
+.SequenceWidgetFactory .WidgetBtnTextStyle {
+    /* apply to "Edit"  "Submit"  "Cancel" */
+    width: 100px; /* padding-right: 10px;  */
+}
+
+.SequenceWidgetFactory .toNextLine{
+    float: left;
+    margin-bottom: 3px; /* the distance between next new line */
+    width: 100%;
+    overflow: hidden;
+}
+
+.SequenceWidgetFactory .SortableWidgetStyle .SortableWidgetItemStyle {
+    float: left;
+    height: 35px; /*float: left;    horizontal or vertical sortable*/
+    margin: 0 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+    width: auto;
+    overflow: visible;
+    margin-right: 29px; /*make the new SortableWidgetItem to next line*/
+}
+
+.SequenceWidgetFactory .SortableWidgetStyle .SortableWidgetItemStyle .DragBtnStyle {
+    cursor: pointer;
+}
+
+.SequenceWidgetFactory .SortableWidgetStyle .SortableWidgetItemStyle span { float: left; }
+
+.SequenceWidgetFactory .SortableWidgetStyle .SortableWidgetItemStyle .ui-icon  { width: 18px; }
+
+.SequenceWidgetFactory .SortableWidgetStyle .SortableWidgetItemStyle .TextStyle {
+    height: 18px; /* Height of Textbox which is part of Editable Dropdown list */
+}
